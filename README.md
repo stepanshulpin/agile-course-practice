@@ -24,19 +24,19 @@
 
 <!-- LINKS -->
 
+[gitter]:           https://gitter.im/agile-course-practice-2019/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+[gitter-badge]:     https://badges.gitter.im/agile-course-practice-2019/Lobby.svg
 [travis]:           https://travis-ci.org/UNN-VMK-Software/agile-course-practice
 [travis-badge]:     https://travis-ci.org/UNN-VMK-Software/agile-course-practice.svg
-[gitter]:           https://gitter.im/agile-course-practice-2018/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
-[gitter-badge]:     https://badges.gitter.im/agile-course-practice-2018/Lobby.svg
 [coveralls]:        https://coveralls.io/github/UNN-VMK-Software/agile-course-practice?branch=master
 [coveralls-badge]:  https://coveralls.io/repos/github/UNN-VMK-Software/agile-course-practice/badge.svg?branch=master
 
-[hall-of-fame]:         https://docs.google.com/spreadsheets/d/1JXyJBOlLZ8yvMGVVAJ6U3uiH10mMzcm-6n77SWg3p9Q/edit#gid=1556468627
-[lab-topics]:           https://docs.google.com/spreadsheets/d/1JXyJBOlLZ8yvMGVVAJ6U3uiH10mMzcm-6n77SWg3p9Q/edit#gid=154282983
+[hall-of-fame]:         https://docs.google.com/spreadsheets/d/18nTSUPsRYQMnMKo5A9pO9OlYU3G4Ts_-x8laM9NW780/edit#gid=1613595355
+[lab-topics]:           https://docs.google.com/spreadsheets/d/18nTSUPsRYQMnMKo5A9pO9OlYU3G4Ts_-x8laM9NW780/edit#gid=489721713
 [labs]:                 https://github.com/UNN-VMK-Software/agile-course-practice/tree/master/docs
 [control-questions]:    https://github.com/UNN-VMK-Software/agile-course-theory/blob/master/slides/control-questions.md
 [cheatsheet]:           https://docs.google.com/document/d/1QhdJOnSw-Gn_-WM9RWLzmxZMrWTB4EbyTkaNBWMGA3Y/edit
-[exam-questions]:       https://docs.google.com/spreadsheets/d/1JXyJBOlLZ8yvMGVVAJ6U3uiH10mMzcm-6n77SWg3p9Q/edit#gid=1728105479
+[exam-questions]:       https://docs.google.com/spreadsheets/d/18nTSUPsRYQMnMKo5A9pO9OlYU3G4Ts_-x8laM9NW780/edit#gid=827430395
 
 [cc3]:              http://creativecommons.org/licenses/by-sa/3.0/
 [book-agile]:       http://www.books.ru/books/printsipy-patterny-i-metodiki-gibkoi-razrabotki-na-yazyke-c-fail-pdf-864714/?show=1
