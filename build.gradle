@@ -3,9 +3,13 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'de.aaschmid:gradle-cpd-plugin:1.0'
+        // classpath 'de.aaschmid:gradle-cpd-plugin:1.0'
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.7.1'
     }
+}
+
+plugins {
+  id "de.aaschmid.cpd" version "2.0"
 }
 
 apply plugin: 'java'
@@ -21,13 +25,13 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    compile 'net.sourceforge.pmd:pmd:5.8.1'
-}
+// dependencies {
+//     compile 'net.sourceforge.pmd:pmd:5.8.1'
+// }
 
 cpd {
     language = 'java'
-    toolVersion = '5.8.1'
+    // toolVersion = '5.8.1'
     encoding = 'UTF-8'
 }
 
@@ -88,7 +92,7 @@ subprojects {
     apply plugin: 'eclipse'
     apply plugin: 'idea'
     apply plugin: 'checkstyle'
-    apply plugin: 'pmd'
+    // apply plugin: 'pmd'
 
     repositories {
        maven {
@@ -127,10 +131,10 @@ subprojects {
         checkstyleTest.configFile = new File(rootDir.getAbsolutePath() + "/config/checkstyle/", "test.xml")
     }
 
-    pmd {
-        pmdMain.ruleSetFiles = files(rootDir.getAbsolutePath() + "/config/pmd/rules.xml")
-        pmdTest.ruleSets = [ "java-basic", "java-braces" ]
-    }
+    // pmd {
+    //     pmdMain.ruleSetFiles = files(rootDir.getAbsolutePath() + "/config/pmd/rules.xml")
+    //     pmdTest.ruleSets = [ "java-basic", "java-braces" ]
+    // }
 
     gradle.taskGraph.beforeTask { Task task ->
         if (task.name == 'jfxDeploy') {

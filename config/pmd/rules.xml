@@ -9,14 +9,12 @@
   </description>
 
   <rule ref="rulesets/internal/all-java.xml">
-    <!-- Remove everything before the blank line -->
-    <exclude name="PackageCase"/>
-    <exclude name="NonStaticInitializer"/>
-    <exclude name="SystemPrintln"/>
     <exclude name="AvoidPrintStackTrace"/>
+    <exclude name="NonStaticInitializer"/>
+    <exclude name="PackageCase"/>
     <exclude name="StringInstantiation"/>
-
-    <exclude name="AbstractNaming"/>
+    <exclude name="SystemPrintln"/>
+    <!-- Enable everything below -->
     <exclude name="AccessorMethodGeneration"/>
     <exclude name="AddEmptyString"/>
     <exclude name="AppendCharacterWithChar"/>
@@ -28,7 +26,6 @@
     <exclude name="AvoidFinalLocalVariable"/>
     <exclude name="AvoidInstantiatingObjectsInLoops"/>
     <exclude name="AvoidLiteralsInIfCondition"/>
-    <exclude name="AvoidPrefixingMethodParameters"/>
     <exclude name="AvoidSynchronizedAtMethodLevel"/>
     <exclude name="AvoidThrowingNullPointerException"/>
     <exclude name="AvoidThrowingRawExceptionTypes"/>
@@ -50,44 +47,47 @@
     <exclude name="ExcessiveImports"/>
     <exclude name="ExcessivePublicCount"/>
     <exclude name="FieldDeclarationsShouldBeAtStartOfClass"/>
-    <exclude name="ForLoopsMustUseBraces"/>
     <exclude name="GodClass"/>
-    <exclude name="GuardDebugLogging"/>
     <exclude name="GuardLogStatement"/>
-    <exclude name="GuardLogStatementJavaUtil"/>
-    <exclude name="IfStmtsMustUseBraces"/>
     <exclude name="ImmutableField"/>
     <exclude name="LawOfDemeter"/>
     <exclude name="LocalVariableCouldBeFinal"/>
-    <exclude name="LoggerIsNotStaticFinal"/>
     <exclude name="LongVariable"/>
     <exclude name="LoosePackageCoupling"/>
     <exclude name="MethodArgumentCouldBeFinal"/>
     <exclude name="MethodReturnsInternalArray"/>
-    <exclude name="ModifiedCyclomaticComplexity"/>
     <exclude name="NullAssignment"/>
     <exclude name="OneDeclarationPerLine"/>
     <exclude name="OnlyOneReturn"/>
     <exclude name="PrematureDeclaration"/>
     <exclude name="RedundantFieldInitializer"/>
-    <exclude name="SignatureDeclareThrowsException"/>
-    <exclude name="SimpleDateFormatNeedsLocale"/>
-    <exclude name="SimplifyConditional"/>
     <exclude name="ShortClassName"/>
     <exclude name="ShortMethodName"/>
     <exclude name="ShortMethodName"/>
     <exclude name="ShortVariable"/>
-    <exclude name="StdCyclomaticComplexity"/>
+    <exclude name="SignatureDeclareThrowsException"/>
+    <exclude name="SimpleDateFormatNeedsLocale"/>
+    <exclude name="SimplifyConditional"/>
     <exclude name="TooManyFields"/>
     <exclude name="TooManyMethods"/>
     <exclude name="UncommentedEmptyMethodBody"/>
-    <exclude name="UnusedPrivateMethod"/>
     <exclude name="UnnecessaryConstructor"/>
-    <exclude name="UnnecessaryParentheses"/>
+    <exclude name="UnusedPrivateMethod"/>
     <exclude name="UseConcurrentHashMap"/>
     <exclude name="UseIndexOfChar"/>
     <exclude name="UselessParentheses"/>
     <exclude name="UseStringBufferForStringAppends"/>
     <exclude name="UseVarargs"/>
+    <!-- KK 2019-10: renamed -->
+    <!-- <exclude name="UnnecessaryParentheses"/> -->
+    <!-- <exclude name="GuardDebugLogging"/> -->
+    <!-- <exclude name="StdCyclomaticComplexity"/> -->
+    <!-- <exclude name="ModifiedCyclomaticComplexity"/> -->
+    <!-- <exclude name="AvoidPrefixingMethodParameters"/> -->
+    <!-- <exclude name="LoggerIsNotStaticFinal"/> -->
+    <!-- <exclude name="ForLoopsMustUseBraces"/> -->
+    <!-- <exclude name="IfStmtsMustUseBraces"/> -->
+    <!-- <exclude name="GuardLogStatementJavaUtil"/> -->
+    <!-- <exclude name="AbstractNaming"/> -->
   </rule>
 </ruleset>
