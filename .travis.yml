@@ -1,6 +1,6 @@
 # Parameters
 language: java
-jdk: oraclejdk9
+jdk: openjdk11
 sudo: false # run in Docker
 notifications:
     email: false
