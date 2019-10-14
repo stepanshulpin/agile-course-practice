@@ -1,4 +1,14 @@
-apply from:   rootDir.getAbsolutePath() + '/config/scripts/javafx.plugin'
+// apply from:   rootDir.getAbsolutePath() + '/config/scripts/javafx.plugin'
+
+plugins {
+  id 'application'
+  id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+javafx {
+    version = "11.0.2"
+    modules = [ 'javafx.controls', 'javafx.graphics', 'javafx.base', 'javafx.fxml' ]
+}
 
 dependencies {
     compile project(':korniakov-kirill-lab3-ViewModel')
