@@ -176,6 +176,8 @@ subprojects {
 
 coveralls {
     sourceDirs = files(subprojects.sourceSets.main.allSource.srcDirs).files.absolutePath
+    saveAsFile = true
+    sendToCoveralls = false
 }
 
 task jacocoRootReport(type: org.gradle.testing.jacoco.tasks.JacocoReport) {
