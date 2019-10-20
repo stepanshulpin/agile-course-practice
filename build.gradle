@@ -2,14 +2,12 @@ buildscript {
     repositories {
         mavenCentral()
     }
-    dependencies {
-        // classpath 'de.aaschmid:gradle-cpd-plugin:1.0'
-        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.7.1'
-    }
 }
 
 plugins {
-  id "de.aaschmid.cpd" version "2.0"
+    id "de.aaschmid.cpd" version "2.0"
+    id 'jacoco'
+    id 'com.github.kt3k.coveralls' version '2.8.4'
 }
 
 apply plugin: 'java'
@@ -46,22 +44,22 @@ tasks.cpdCheck {
     }
 
     doFirst {
-        println '*****************************************************'
-        println '**************** Copy/Paste Analysis ****************'
-        println '*****************************************************'
-
         def root = allprojects.toArray()[0]
         def fileTree = fileTree(root.getProjectDir())
         fileTree.include "**/*.java"
         source = fileTree.filter{ !it.path.contains('korniakov-kirill') }
-        //println "source: " + source.getFiles()
+        // println "source: " + source.getFiles()
     }
 
     doLast {
+        println '*****************************************************'
+        println '**************** Copy/Paste Analysis ****************'
+        println '*****************************************************'
+
         def copyPasted = new XmlParser().parse(reportName)
         def rate = copyPasted.duplication.size()
         println '*****************************************************'
-        println '   Copy/Paste Rate: '  + rate + ' times'
+        println '   Copy/Paste Rate: ' + rate + ' times'
         println '*****************************************************'
 
         copyPasted.duplication.each {
@@ -182,9 +180,9 @@ coveralls {
 
 task jacocoRootReport(type: org.gradle.testing.jacoco.tasks.JacocoReport) {
     dependsOn = subprojects.test
-    sourceDirectories = files(subprojects.sourceSets.main.allSource.srcDirs)
-    classDirectories = files(subprojects.sourceSets.main.output)
-    executionData = files(subprojects.jacocoTestReport.executionData)
+    getSourceDirectories().from(files(subprojects.sourceSets.main.allSource.srcDirs))
+    getClassDirectories().from(files(subprojects.sourceSets.main.output))
+    getExecutionData().from(files(subprojects.jacocoTestReport.executionData))
 
     reports {
         html.enabled = true
@@ -194,11 +192,8 @@ task jacocoRootReport(type: org.gradle.testing.jacoco.tasks.JacocoReport) {
     }
 
     afterEvaluate {
-        classDirectories = files(classDirectories.files.collect {
-            fileTree(dir: it, exclude: [
-                                        'ru/unn/agile/*/view/*'
-                                       ]
-            )
-        })
+        getClassDirectories().from(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: ['ru/unn/agile/*/view/*'])
+        }))
     }
 }
