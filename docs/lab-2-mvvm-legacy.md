@@ -277,6 +277,6 @@ MVVM.
 
 <!-- LINKS -->
 
-[settings.gradle]: <https://github.com/UNN-VMK-Software/agile-course-practice/pull/63/files#diff-18>
+[settings.gradle]: <https://github.com/UNN-ITMM-Software/agile-course-practice/pull/63/files#diff-18>
 [IDEA-GUI-Designer]: <http://www.jetbrains.com/idea/training/demos/GUI_Designer/GUI_Designer.html>
 [jdk8]: <http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>

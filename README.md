@@ -26,15 +26,15 @@
 
 [gitter]:           https://gitter.im/agile-course-practice-2019/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [gitter-badge]:     https://badges.gitter.im/agile-course-practice-2019/Lobby.svg
-[travis]:           https://travis-ci.org/UNN-VMK-Software/agile-course-practice
-[travis-badge]:     https://travis-ci.org/UNN-VMK-Software/agile-course-practice.svg
-[coveralls]:        https://coveralls.io/github/UNN-VMK-Software/agile-course-practice?branch=master
-[coveralls-badge]:  https://coveralls.io/repos/github/UNN-VMK-Software/agile-course-practice/badge.svg?branch=master
+[travis]:           https://travis-ci.org/UNN-ITMM-Software/agile-course-practice
+[travis-badge]:     https://travis-ci.org/UNN-ITMM-Software/agile-course-practice.svg
+[coveralls]:        https://coveralls.io/github/UNN-ITMM-Software/agile-course-practice?branch=master
+[coveralls-badge]:  https://coveralls.io/repos/github/UNN-ITMM-Software/agile-course-practice/badge.svg?branch=master
 
 [hall-of-fame]:         https://docs.google.com/spreadsheets/d/18nTSUPsRYQMnMKo5A9pO9OlYU3G4Ts_-x8laM9NW780/edit#gid=1613595355
 [lab-topics]:           https://docs.google.com/spreadsheets/d/18nTSUPsRYQMnMKo5A9pO9OlYU3G4Ts_-x8laM9NW780/edit#gid=489721713
-[labs]:                 https://github.com/UNN-VMK-Software/agile-course-practice/tree/master/docs
-[control-questions]:    https://github.com/UNN-VMK-Software/agile-course-theory/blob/master/slides/control-questions.md
+[labs]:                 https://github.com/UNN-ITMM-Software/agile-course-practice/tree/master/docs
+[control-questions]:    https://github.com/UNN-ITMM-Software/agile-course-theory/blob/master/slides/control-questions.md
 [cheatsheet]:           https://docs.google.com/document/d/1QhdJOnSw-Gn_-WM9RWLzmxZMrWTB4EbyTkaNBWMGA3Y/edit
 [exam-questions]:       https://docs.google.com/spreadsheets/d/18nTSUPsRYQMnMKo5A9pO9OlYU3G4Ts_-x8laM9NW780/edit#gid=827430395
 

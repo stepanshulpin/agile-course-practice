@@ -163,12 +163,12 @@
 
 [chat]:         https://gitter.im/agile-course-practice-2018/Lobby
 [topics]:       https://docs.google.com/spreadsheets/d/1JXyJBOlLZ8yvMGVVAJ6U3uiH10mMzcm-6n77SWg3p9Q/edit#gid=8
-[central-repo]: https://github.com/UNN-VMK-Software/agile-course-practice
+[central-repo]: https://github.com/UNN-ITMM-Software/agile-course-practice
 [help-git]:     https://help.github.com/articles/set-up-git
 [help-fork]:    https://help.github.com/articles/fork-a-repo
 [help-pr]:      https://help.github.com/articles/using-pull-requests
 [gfm]:          https://help.github.com/articles/github-flavored-markdown
-[travis]:       https://travis-ci.org/UNN-VMK-Software/agile-course-practice/pull_requests
+[travis]:       https://travis-ci.org/UNN-ITMM-Software/agile-course-practice/pull_requests
 [gitcast]:      http://www.youtube.com/playlist?list=PLSzOhsr5tmhrgV7u7CSzX4Ki1a9r0AKzV
 [java-download]: https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [gradle]:       http://www.gradle.org/downloads
