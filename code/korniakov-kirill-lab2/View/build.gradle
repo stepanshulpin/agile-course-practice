@@ -4,8 +4,8 @@ plugins {
   id 'org.openjfx.javafxplugin' version '0.0.8'
 }
 
-apply plugin: 'application'
-mainClassName = 'ru.unn.agile.ComplexNumber.view.Main'
+// apply plugin: 'application'
+// mainClassName = 'ru.unn.agile.ComplexNumber.view.Main'
 
 javafx {
     version = "11.0.2"
