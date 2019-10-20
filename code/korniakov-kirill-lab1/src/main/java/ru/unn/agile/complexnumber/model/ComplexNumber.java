@@ -1,12 +1,22 @@
-package ru.unn.agile.complexnumber.model;
+package ru.unn.agile.ComplexNumber.model;
 
 public class ComplexNumber {
-    private double re;
-    private double im;
+    private final double re;
+    private final double im;
 
-    public ComplexNumber(final double real, final double imaginary) {
-        this.re = real;
-        this.im = imaginary;
+    public ComplexNumber() {
+        re = 0;
+        im = 0;
+    }
+
+    public ComplexNumber(final double re, final double im) {
+        this.re = re;
+        this.im = im;
+    }
+
+    public ComplexNumber(final String re, final String im) {
+        this.re = Double.parseDouble(re);
+        this.im = Double.parseDouble(im);
     }
 
     @Override
@@ -20,11 +30,14 @@ public class ComplexNumber {
         return result;
     }
 
-    @Override
     public boolean equals(final Object object) {
-        ComplexNumber number = (ComplexNumber) object;
-        return number.getReal() == getReal()
-                && number.getImaginary() == getImaginary();
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof ComplexNumber)) {
+            return false;
+        }
+        return hashCode() == object.hashCode();
     }
 
     public ComplexNumber add(final ComplexNumber other) {
@@ -38,16 +51,8 @@ public class ComplexNumber {
                 other.getReal() * getImaginary() + other.getImaginary() * getReal());
     }
 
-    public void setReal(final double real) {
-        this.re = real;
-    }
-
     public double getReal() {
         return re;
-    }
-
-    public void setImaginary(final double imaginary) {
-        this.im = imaginary;
     }
 
     public double getImaginary() {
@@ -56,5 +61,30 @@ public class ComplexNumber {
 
     public String toString() {
         return Formatter.getFormatted(this);
+    }
+
+    public enum Operation {
+        ADD("Add") {
+            public ComplexNumber apply(final ComplexNumber l, final ComplexNumber r) {
+                return l.add(r);
+            }
+        },
+        MULTIPLY("Mul") {
+            public ComplexNumber apply(final ComplexNumber l, final ComplexNumber r) {
+                return l.multiply(r);
+            }
+        };
+
+        private final String name;
+        Operation(final String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
+
+        public abstract ComplexNumber apply(ComplexNumber l, ComplexNumber r);
     }
 }
