@@ -23,8 +23,7 @@
       ([pdf][book-refactoring])
 
 <!-- LINKS -->
-
-[gitter]:           https://gitter.im/agile-course-practice-2019/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+[gitter]:           https://gitter.im/agile-course-practice-2019/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 [gitter-badge]:     https://badges.gitter.im/agile-course-practice-2019/Lobby.svg
 [travis]:           https://travis-ci.org/UNN-ITMM-Software/agile-course-practice
 [travis-badge]:     https://travis-ci.org/UNN-ITMM-Software/agile-course-practice.svg
