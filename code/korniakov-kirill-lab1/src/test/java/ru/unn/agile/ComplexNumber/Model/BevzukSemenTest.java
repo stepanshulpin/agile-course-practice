@@ -50,7 +50,7 @@ public class BevzukSemenTest {
     @Test
     public void canHashComplexNumber(){
         ComplexNumber a = new ComplexNumber(1.0, 2.0);
-        int hash = 0;
+        int hash;
 
         hash = a.hashCode();
 
@@ -58,7 +58,7 @@ public class BevzukSemenTest {
     }
 
     @Test
-    public void areDifferentComplexNumberHashCodeNotEqual(){
+    public void areDifferentComplexNumbersHashCodeNotEqual(){
         ComplexNumber a = new ComplexNumber(1.0, 2.0);
         ComplexNumber b = new ComplexNumber(2.0, 1.0);
 
@@ -69,18 +69,18 @@ public class BevzukSemenTest {
     }
 
     @Test
-    public void areEqualComplexNumberHashCodeEqual(){
+    public void areEqualComplexNumbersHashCodeEqual(){
         ComplexNumber a = new ComplexNumber(1.0, 2.0);
         ComplexNumber b = new ComplexNumber(1.0, 2.0);
 
         int hash_a = a.hashCode();
         int hash_b = b.hashCode();
 
-        assertTrue(hash_a == hash_b);
+        assertEquals(hash_a, hash_b);
     }
 
     @Test
-    public void areEqualComplexNumberEqual() {
+    public void areEqualComplexNumbersEqual() {
         ComplexNumber a = new ComplexNumber(10, 20.3);
         ComplexNumber b = new ComplexNumber(10, 20.3);
 
@@ -88,11 +88,31 @@ public class BevzukSemenTest {
     }
 
     @Test
-    public void areDifferentComplexNumberNotEqual() {
+    public void areDifferentComplexNumbersNotEqual() {
         ComplexNumber a = new ComplexNumber(40, 20.3);
         ComplexNumber b = new ComplexNumber(10, 50.3);
 
         assertFalse(a.equals(b));
+    }
+
+    @Test
+    public void canAddComplexNumbers() {
+        ComplexNumber a = new ComplexNumber(0, 1);
+        ComplexNumber b = new ComplexNumber(2, 3);
+
+        ComplexNumber sum = a.add(b);
+
+        assertEquals(new ComplexNumber(2, 4), sum);
+    }
+
+    @Test
+    public void canMultiplyComplexNumbers() {
+        ComplexNumber a = new ComplexNumber(0, 1);
+        ComplexNumber b = new ComplexNumber( 2, 3);
+
+        ComplexNumber sum = a.multiply(b);
+
+        assertEquals(new ComplexNumber(-3, 2), sum);
     }
 
     @Test
