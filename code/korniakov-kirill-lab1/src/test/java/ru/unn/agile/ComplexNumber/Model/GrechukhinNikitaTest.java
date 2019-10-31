@@ -29,14 +29,16 @@ public class GrechukhinNikitaTest {
 
     @Test
     public void canGetRealPart() {
-        var complexNumber = new ComplexNumber(10.2, 93.4);
-        assertEquals(10.2, complexNumber.getReal(), delta);
+        var expectedRealPart = 10.2;
+        var complexNumber = new ComplexNumber(expectedRealPart, 93.4);
+        assertEquals(expectedRealPart, complexNumber.getReal(), delta);
     }
 
     @Test
     public void canGetImaginaryPart() {
-        var complexNumber = new ComplexNumber(0.0, 0.1);
-        assertEquals(0.1, complexNumber.getImaginary(), delta);
+        var expectedImaginaryPart = 0.1;
+        var complexNumber = new ComplexNumber(0.0, expectedImaginaryPart);
+        assertEquals(expectedImaginaryPart, complexNumber.getImaginary(), delta);
     }
 
     @Test(expected = NumberFormatException.class)
