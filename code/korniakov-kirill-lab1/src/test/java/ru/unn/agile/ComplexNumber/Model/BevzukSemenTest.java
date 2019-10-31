@@ -50,10 +50,49 @@ public class BevzukSemenTest {
     @Test
     public void canHashComplexNumber(){
         ComplexNumber a = new ComplexNumber(1.0, 2.0);
+        int hash = 0;
 
-        int hash = a.hashCode();
+        hash = a.hashCode();
 
-        assertNotNull(hash);
+        assertTrue(hash != 0);
+    }
+
+    @Test
+    public void areDifferentComplexNumberHashCodeNotEqual(){
+        ComplexNumber a = new ComplexNumber(1.0, 2.0);
+        ComplexNumber b = new ComplexNumber(2.0, 1.0);
+
+        int hash_a = a.hashCode();
+        int hash_b = b.hashCode();
+
+        assertTrue(hash_a != hash_b);
+    }
+
+    @Test
+    public void areEqualComplexNumberHashCodeEqual(){
+        ComplexNumber a = new ComplexNumber(1.0, 2.0);
+        ComplexNumber b = new ComplexNumber(1.0, 2.0);
+
+        int hash_a = a.hashCode();
+        int hash_b = b.hashCode();
+
+        assertTrue(hash_a == hash_b);
+    }
+
+    @Test
+    public void areEqualComplexNumberEqual() {
+        ComplexNumber a = new ComplexNumber(10, 20.3);
+        ComplexNumber b = new ComplexNumber(10, 20.3);
+
+        assertTrue(a.equals(b));
+    }
+
+    @Test
+    public void areDifferentComplexNumberNotEqual() {
+        ComplexNumber a = new ComplexNumber(40, 20.3);
+        ComplexNumber b = new ComplexNumber(10, 50.3);
+
+        assertFalse(a.equals(b));
     }
 
     @Test
