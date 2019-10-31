@@ -9,35 +9,35 @@ public class BevzukSemenTest {
     private final double delta = 0.001;
 
     @Test
-    public void canCreateComplexNumberByDefault(){
+    public void canCreateComplexNumberByDefault() {
         ComplexNumber a = new ComplexNumber();
 
         assertNotNull(a);
     }
 
     @Test
-    public void canCreateComplexNumberWithParameters(){
+    public void canCreateComplexNumberWithParameters() {
         ComplexNumber a = new ComplexNumber(1.0, 2.0);
 
         assertNotNull(a);
     }
 
     @Test
-    public void canSetInitialReal(){
+    public void canSetInitialReal() {
         ComplexNumber a = new ComplexNumber(1.0, 2.0);
 
         assertEquals(1.0, a.getReal(), delta);
     }
 
     @Test
-    public void canSetInitialImaginary(){
+    public void canSetInitialImaginary() {
         ComplexNumber a = new ComplexNumber(1.0, 2.0);
 
         assertEquals(2.0, a.getImaginary(), delta);
     }
 
     @Test
-    public void canCreateComplexNumberFromString(){
+    public void canCreateComplexNumberFromString() {
         String re = "-10.0";
         String im = "20";
         ComplexNumber a = new ComplexNumber(-10.0, 20);
@@ -48,7 +48,7 @@ public class BevzukSemenTest {
     }
 
     @Test
-    public void canHashComplexNumber(){
+    public void canHashComplexNumber() {
         ComplexNumber a = new ComplexNumber(1.0, 2.0);
         int hash;
 
@@ -58,25 +58,25 @@ public class BevzukSemenTest {
     }
 
     @Test
-    public void areDifferentComplexNumbersHashCodeNotEqual(){
+    public void areDifferentComplexNumbersHashCodeNotEqual() {
         ComplexNumber a = new ComplexNumber(1.0, 2.0);
         ComplexNumber b = new ComplexNumber(2.0, 1.0);
 
-        int hash_a = a.hashCode();
-        int hash_b = b.hashCode();
+        int aHash = a.hashCode();
+        int bHash = b.hashCode();
 
-        assertTrue(hash_a != hash_b);
+        assertTrue(aHash != bHash);
     }
 
     @Test
-    public void areEqualComplexNumbersHashCodeEqual(){
+    public void areEqualComplexNumbersHashCodeEqual() {
         ComplexNumber a = new ComplexNumber(1.0, 2.0);
         ComplexNumber b = new ComplexNumber(1.0, 2.0);
 
-        int hash_a = a.hashCode();
-        int hash_b = b.hashCode();
+        int aHash = a.hashCode();
+        int bHash = b.hashCode();
 
-        assertEquals(hash_a, hash_b);
+        assertEquals(aHash, bHash);
     }
 
     @Test
@@ -116,7 +116,7 @@ public class BevzukSemenTest {
     }
 
     @Test
-    public void canConvertComplexNumberToString(){
+    public void canConvertComplexNumberToString() {
         ComplexNumber a = new ComplexNumber(1.0, -2.0);
 
         String string = a.toString();
