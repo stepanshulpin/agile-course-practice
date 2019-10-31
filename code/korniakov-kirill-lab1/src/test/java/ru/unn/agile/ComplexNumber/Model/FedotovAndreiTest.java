@@ -36,7 +36,7 @@ public class FedotovAndreiTest {
     }
 
     @Test
-    public void canCompareWithOtherType() {
+    public void canCompareWithObject() {
         assertFalse(new ComplexNumber().equals(new Object()));
     }
 
