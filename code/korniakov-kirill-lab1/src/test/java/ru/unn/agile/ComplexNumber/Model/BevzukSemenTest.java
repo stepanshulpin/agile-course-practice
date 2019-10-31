@@ -108,7 +108,7 @@ public class BevzukSemenTest {
     @Test
     public void canMultiplyComplexNumbers() {
         ComplexNumber a = new ComplexNumber(0, 1);
-        ComplexNumber b = new ComplexNumber( 2, 3);
+        ComplexNumber b = new ComplexNumber(2, 3);
 
         ComplexNumber sum = a.multiply(b);
 
