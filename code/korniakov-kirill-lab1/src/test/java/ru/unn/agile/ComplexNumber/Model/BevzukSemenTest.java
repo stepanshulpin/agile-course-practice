@@ -35,4 +35,33 @@ public class BevzukSemenTest {
 
         assertEquals(2.0, a.getImaginary(), delta);
     }
+
+    @Test
+    public void canCreateComplexNumberFromString(){
+        String re = "-10.0";
+        String im = "20";
+        ComplexNumber a = new ComplexNumber(-10.0, 20);
+
+        ComplexNumber b = new ComplexNumber(re, im);
+
+        assertEquals(a, b);
+    }
+
+    @Test
+    public void canHashComplexNumber(){
+        ComplexNumber a = new ComplexNumber(1.0, 2.0);
+
+        int hash = a.hashCode();
+
+        assertNotNull(hash);
+    }
+
+    @Test
+    public void canConvertComplexNumberToString(){
+        ComplexNumber a = new ComplexNumber(1.0, -2.0);
+
+        String string = a.toString();
+
+        assertEquals("1.0 - 2.0i", string);
+    }
 }
