@@ -2,6 +2,10 @@
 include "code/bevzuk-anton"
 project(":code/bevzuk-anton").name = "bevzuk-anton-Model"
 
+// Kildishev Maksim
+include "code/kildishev-maksim"
+project(":code/kildishev-maksim").name = "kildishev-maksim-Model"
+
 // Korniakov Kirill, lab1
 include "code/korniakov-kirill-lab1"
 project(":code/korniakov-kirill-lab1").name = "korniakov-kirill-lab1-Model"
