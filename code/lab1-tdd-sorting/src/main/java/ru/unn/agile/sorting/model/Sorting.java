@@ -2,18 +2,18 @@ package ru.unn.agile.sorting.model;
 
 public final class Sorting {
 
-    private String direction;
+    private final Direction direction;
 
     public Sorting() {
-        direction = "asc";
+        direction = Direction.ASC;
     }
 
-    public Sorting(String direction) {
+    public Sorting(Direction direction) {
         this.direction = direction;
     }
 
     public int[] sort(int[] numbers) {
-        if (direction.equals("asc")) {
+        if (direction.equals(Direction.ASC)) {
             return ascSort(numbers);
         } else {
             return descSort(numbers);
