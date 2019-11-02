@@ -10,13 +10,13 @@ public class LahtachevYaroslavTest {
     private final double delta = 0.001;
 
     @Test
-    public void defaultConstructorMakeZeroNumber() {
+    public void canCreateComplexNumberWithoutInitialValues() {
         ComplexNumber complexNumber = new ComplexNumber();
         assertEquals(new ComplexNumber(0, 0), complexNumber);
     }
 
     @Test
-    public void constructorStringAndDoubleReturnEqualNumber() {
+    public void areNumbersWithDifferentInitialTypesEqual() {
         ComplexNumber complexNumber1 = new ComplexNumber("1", "1");
         ComplexNumber complexNumber2 = new ComplexNumber(1, 1);
         assertEquals(complexNumber1, complexNumber2);
