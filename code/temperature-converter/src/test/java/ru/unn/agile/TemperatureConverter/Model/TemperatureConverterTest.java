@@ -11,10 +11,18 @@ public class TemperatureConverterTest {
     @Test
     public void canConvertCelsius0ToFahrenheit32() {
         TemperatureConverter converter = new TemperatureConverter();
-        double celsius = 0.0;
 
-        double fahrenheit = converter.convertCelsiusToFahrenheit(celsius);
+        double fahrenheit = converter.convertCelsiusToFahrenheit(0.0);
 
         assertEquals(32.0, fahrenheit, delta);
+    }
+
+    @Test
+    public void canConvertCelsius5ToFahrenheit41() {
+        TemperatureConverter converter = new TemperatureConverter();
+
+        double fahrenheit = converter.convertCelsiusToFahrenheit(5.0);
+
+        assertEquals(41.0, fahrenheit, delta);
     }
 }
