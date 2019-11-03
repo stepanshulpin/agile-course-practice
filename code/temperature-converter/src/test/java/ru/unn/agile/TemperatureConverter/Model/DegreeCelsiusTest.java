@@ -22,9 +22,18 @@ public class DegreeCelsiusTest {
         assertEquals(100.01, celsius.getTemperature(), delta);
     }
 
-
     @Test(expected = IllegalArgumentException.class)
     public void canNotCreateDegreeCelsiusLessAbsoluteZro() {
         DegreeCelsius celsius = new DegreeCelsius(-274.15);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canNotCreateDegreeCelsiusLessAbsoluteZroFromString() {
+        DegreeCelsius celsius = new DegreeCelsius("-300.01");
+    }
+
+    @Test(expected = NumberFormatException.class)
+    public void canNotCreateDegreeCelsiusFromIncorrectString() {
+        DegreeCelsius celsius = new DegreeCelsius("abc100.0 1");
     }
 }
