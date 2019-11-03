@@ -2,6 +2,8 @@ package ru.unn.agile.ComplexNumber.Model;
 
 import org.junit.Test;
 import ru.unn.agile.ComplexNumber.model.ComplexNumber;
+import static ru.unn.agile.ComplexNumber.model.ComplexNumber.Operation.ADD;
+import static ru.unn.agile.ComplexNumber.model.ComplexNumber.Operation.MULTIPLY;
 
 import static org.junit.Assert.*;
 
@@ -74,7 +76,7 @@ public class LapinArtemTest {
         ComplexNumber cn1 = new ComplexNumber(1.0, 1.0);
         ComplexNumber cn2 = new ComplexNumber(0.0, 1.1);
 
-        ComplexNumber addResult = cn1.add(cn2);
+        ComplexNumber addResult = ADD.apply(cn1, cn2);
 
         assertEquals(new ComplexNumber(1.0, 2.1), addResult);
     }
@@ -107,7 +109,7 @@ public class LapinArtemTest {
         ComplexNumber cn1 = new ComplexNumber(1.0, 1.0);
         ComplexNumber cn2 = new ComplexNumber(0.0, 1.0);
 
-        ComplexNumber addResult = cn1.multiply(cn2);
+        ComplexNumber addResult = MULTIPLY.apply(cn1, cn2);
 
         assertEquals(new ComplexNumber(-1.0, 1.0), addResult);
     }
