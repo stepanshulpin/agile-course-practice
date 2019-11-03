@@ -43,36 +43,23 @@ public final class Sorting {
     }
 
     public int[] sort(final int[] numbers) {
+        for (int i = 1; i < numbers.length; i++) {
+            int current = numbers[i];
+            int j = i - 1;
+            while (j >= 0 && compareTwoNumber(current, numbers[j])) {
+                numbers[j + 1] = numbers[j];
+                j--;
+            }
+            numbers[j + 1] = current;
+        }
+        return numbers;
+    }
+
+    private boolean compareTwoNumber(final int number1, final int number2) {
         if (direction.equals(Direction.ASC)) {
-            return ascSort(numbers);
+            return expression.compare(number1, number2);
         } else {
-            return descSort(numbers);
+            return !expression.compare(number1, number2);
         }
-    }
-
-    private int[] ascSort(final int[] numbers) {
-        for (int i = 1; i < numbers.length; i++) {
-            int current = numbers[i];
-            int j = i - 1;
-            while (j >= 0 && expression.compare(current, numbers[j])) {
-                numbers[j + 1] = numbers[j];
-                j--;
-            }
-            numbers[j + 1] = current;
-        }
-        return numbers;
-    }
-
-    private int[] descSort(final int[] numbers) {
-        for (int i = 1; i < numbers.length; i++) {
-            int current = numbers[i];
-            int j = i - 1;
-            while (j >= 0 && !expression.compare(current, numbers[j])) {
-                numbers[j + 1] = numbers[j];
-                j--;
-            }
-            numbers[j + 1] = current;
-        }
-        return numbers;
     }
 }
