@@ -59,6 +59,16 @@ public class ShulpinStepanTest {
     }
 
     @Test
+    public void canCreateFromScientificString() {
+        String re = "0.3";
+        String im = "-0.7E3";
+
+        ComplexNumber z = new ComplexNumber(re, im);
+
+        assertEquals(new ComplexNumber(0.3, -0.7E3), z);
+    }
+
+    @Test
     public void canGiveRealFromStringConstructor() {
         ComplexNumber z = new ComplexNumber("0.3", "0.7");
         double real = 0.3;
