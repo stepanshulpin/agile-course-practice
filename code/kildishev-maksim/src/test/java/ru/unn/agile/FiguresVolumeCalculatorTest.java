@@ -30,8 +30,17 @@ public class FiguresVolumeCalculatorTest {
 
     @Test
     public void canCalculateSphereVolume() {
-        //assertEquals();
+        assertEquals(113.097, FiguresVolumeCalculator.sphereVolumeCalculate(3), 0.01);
     }
+
+    @Test
+    public void canThrowExceptionIfRadiusIsNegative() {
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("Radius can't be negative");
+        FiguresVolumeCalculator.sphereVolumeCalculate(-3);
+    }
+
+
 
 
 }
