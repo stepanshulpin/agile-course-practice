@@ -7,13 +7,44 @@ import static org.junit.Assert.*;
 public class SortingTest {
 
     @Test
-    public void canCreateSorting() {
-        assertNotNull(new Sorting());
+    public void canCreateSortingWithoutInitialValues() {
+        Sorting sorting = new Sorting();
+        assertNotNull(sorting);
     }
 
     @Test
     public void canCreateSortingWithDirection() {
-        assertNotNull(new Sorting(Direction.ASC));
+        Sorting sorting = new Sorting(Direction.ASC);
+        assertEquals(Direction.ASC, sorting.getDirection());
+    }
+
+    @Test
+    public void canCreateSortingWithExpression() {
+        Expression less = new LessExpression();
+        Sorting sorting = new Sorting(less);
+        assertEquals(less, sorting.getExpression());
+    }
+
+    @Test
+    public void canCreateSortingWithDirectionAndExpression() {
+        Expression less = new LessExpression();
+        Sorting sorting = new Sorting(Direction.ASC, less);
+        assertNotNull(sorting);
+    }
+
+    @Test
+    public void canSetDirection() {
+        Sorting sorting = new Sorting(Direction.ASC);
+        sorting.setDirection(Direction.DESC);
+        assertEquals(Direction.DESC, sorting.getDirection());
+    }
+
+    @Test
+    public void canSetExpression() {
+        Sorting sorting = new Sorting(Direction.ASC);
+        Expression less = new LessExpression();
+        sorting.setExpression(less);
+        assertEquals(less, sorting.getExpression());
     }
 
     @Test
@@ -126,6 +157,20 @@ public class SortingTest {
         int[] numbers = {-2, -1, 3, -6, 9, -7, 4, -8, -5};
         Sorting sorting = new Sorting(Direction.DESC);
         assertArrayEquals(new int[]{9, 4, 3, -1, -2, -5, -6, -7, -8}, sorting.sort(numbers));
+    }
+
+    @Test
+    public void canSortTenNumbersGreaterExpressionAsc() {
+        int[] numbers = {-2, -1, 3, -6, 9, -7, 4, -8, -5};
+        Sorting sorting = new Sorting(Direction.ASC, new GreaterExpression());
+        assertArrayEquals(new int[]{9, 4, 3, -1, -2, -5, -6, -7, -8}, sorting.sort(numbers));
+    }
+
+    @Test
+    public void canSortTenNumbersGreaterExpressionDesc() {
+        int[] numbers = {-2, -1, 3, -6, 9, -7, 4, -8, -5};
+        Sorting sorting = new Sorting(Direction.DESC, new GreaterExpression());
+        assertArrayEquals(new int[]{-8, -7, -6, -5, -2, -1, 3, 4, 9}, sorting.sort(numbers));
     }
 
 }
