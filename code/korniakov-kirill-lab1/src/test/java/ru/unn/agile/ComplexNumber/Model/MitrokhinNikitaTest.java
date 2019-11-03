@@ -26,7 +26,7 @@ public class MitrokhinNikitaTest {
 
         // Act
         String strComplex = z.toString();
-	    var expectedString = "-1.0 - 1.0i";
+        var expectedString = "-1.0 - 1.0i";
 
         // Assert
         assertEquals(expectedString, strComplex);
@@ -52,7 +52,7 @@ public class MitrokhinNikitaTest {
 
         // Act
         ComplexNumber z = z1.multiply(z2);
-	    ComplexNumber expectedComplexNumber = new ComplexNumber(0.0, 0.0);
+        ComplexNumber expectedComplexNumber = new ComplexNumber(0.0, 0.0);
 
         // Assert
         assertEquals(expectedComplexNumber, z);
