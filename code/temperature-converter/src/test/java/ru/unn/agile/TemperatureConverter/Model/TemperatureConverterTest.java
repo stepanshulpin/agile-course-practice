@@ -10,10 +10,9 @@ public class TemperatureConverterTest {
 
     @Test
     public void canConvertCelsius0ToFahrenheit32() {
-        double celsius = 0.0;
         TemperatureConverter converter = new TemperatureConverter();
 
-        double fahrenheit = converter.convertCelsiusToFahrenheit(celsius);
+        double fahrenheit = converter.convertCelsiusToFahrenheit(0.0);
 
         assertEquals(32.0, fahrenheit, delta);
     }
