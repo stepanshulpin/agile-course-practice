@@ -15,6 +15,14 @@ public class DegreeCelsiusTest {
         assertEquals(0.0, celsius.getTemperature(), delta);
     }
 
+    @Test
+    public void canCreateDegreeCelsiusFromString() {
+        DegreeCelsius celsius = new DegreeCelsius("100.01");
+
+        assertEquals(100.01, celsius.getTemperature(), delta);
+    }
+
+
     @Test(expected = IllegalArgumentException.class)
     public void canNotCreateDegreeCelsiusLessAbsoluteZro() {
         DegreeCelsius celsius = new DegreeCelsius(-274.15);

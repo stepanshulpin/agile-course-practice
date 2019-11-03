@@ -11,6 +11,10 @@ public class DegreeCelsius {
         this.temperature = temperature;
     }
 
+    public DegreeCelsius(final String temperature) {
+        this(Double.parseDouble(temperature));
+    }
+
     public double getTemperature() {
         return this.temperature;
     }
