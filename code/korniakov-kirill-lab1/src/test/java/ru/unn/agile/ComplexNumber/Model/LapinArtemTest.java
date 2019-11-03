@@ -54,18 +54,6 @@ public class LapinArtemTest {
     }
 
     @Test
-    public void realPartCreatedCorrect() {
-        ComplexNumber cn = new ComplexNumber(1.0, 1.0);
-        assertEquals(cn.getReal(), 1.0, delta);
-    }
-
-    @Test
-    public void imaginaryPartCreatedCorrect() {
-        ComplexNumber cn = new ComplexNumber(1.0, 1.0);
-        assertEquals(cn.getImaginary(), 1.0, delta);
-    }
-
-    @Test
     public void canCreateWithStringParameters() {
         ComplexNumber cn = new ComplexNumber("1.0", "-1.0");
         assertEquals(new ComplexNumber(1.0, -1.0), cn);
