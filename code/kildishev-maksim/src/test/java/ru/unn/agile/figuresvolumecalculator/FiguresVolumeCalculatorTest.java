@@ -9,12 +9,15 @@ import static org.junit.Assert.*;
 
 
 public class FiguresVolumeCalculatorTest {
+
+    private final double delta = 1e-2;
+
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void canCalculatePyramidVolume() {
-        assertEquals(3, FiguresVolumeCalculator.pyramidVolumeCalculate(3, 3), 0.01);
+        assertEquals(3, FiguresVolumeCalculator.pyramidVolumeCalculate(3, 3), delta);
     }
 
     @Test
@@ -26,12 +29,12 @@ public class FiguresVolumeCalculatorTest {
 
     @Test
     public void canCalculatePyramidVolumeWithNegativeHeight() {
-        assertEquals(3, FiguresVolumeCalculator.pyramidVolumeCalculate(3, -3), 0.01);
+        assertEquals(3, FiguresVolumeCalculator.pyramidVolumeCalculate(3, -3), delta);
     }
 
     @Test
     public void canCalculateSphereVolume() {
-        assertEquals(113.097, FiguresVolumeCalculator.sphereVolumeCalculate(3), 0.01);
+        assertEquals(113.097, FiguresVolumeCalculator.sphereVolumeCalculate(3), delta);
     }
 
     @Test
@@ -44,13 +47,13 @@ public class FiguresVolumeCalculatorTest {
     @Test
     public void canCalculateCylinderVolume() {
         assertEquals(84.82,
-                FiguresVolumeCalculator.cylinderVolumeCalculate(3, 3), 0.01);
+                FiguresVolumeCalculator.cylinderVolumeCalculate(3, 3), delta);
     }
 
     @Test
     public void canCalculateCylinderVolumeWithNegativeHeight() {
         assertEquals(84.82,
-                FiguresVolumeCalculator.cylinderVolumeCalculate(3, -3), 0.01);
+                FiguresVolumeCalculator.cylinderVolumeCalculate(3, -3), delta);
     }
 
     @Test
