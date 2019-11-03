@@ -28,6 +28,29 @@ public class ShulpinStepanTest {
     }
 
     @Test
+    public void areNumbersWithDifferentRealNotEqual() {
+        ComplexNumber z1 = new ComplexNumber(0.3, 0.7);
+        ComplexNumber z2 = new ComplexNumber(0.7, 0.7);
+
+        assertNotEquals(z1, z2);
+    }
+
+    @Test
+    public void areNumbersWithDifferentImaginaryNotEqual() {
+        ComplexNumber z1 = new ComplexNumber(0.3, 0.7);
+        ComplexNumber z2 = new ComplexNumber(0.3, 0.3);
+
+        assertNotEquals(z1, z2);
+    }
+
+    @Test
+    public void canCreateWithoutParameters() {
+        ComplexNumber z = new ComplexNumber();
+
+        assertEquals(new ComplexNumber(0, 0), z);
+    }
+
+    @Test
     public void canCreateFromString() {
         ComplexNumber z1 = new ComplexNumber("0.3", "0.7");
         ComplexNumber z2 = new ComplexNumber(0.3, 0.7);
