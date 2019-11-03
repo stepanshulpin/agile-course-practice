@@ -5,10 +5,13 @@ import ru.unn.agile.ComplexNumber.model.ComplexNumber;
 import static org.junit.Assert.*;
 
 public class KildishevMaksimTest {
+
+    private final double delta = 1e-3;
+
     @Test
     public void areComplexNumberAndStringNotEqual() {
-        ComplexNumber z1 = new ComplexNumber(1, 1);
         String string = "str";
+        ComplexNumber z1 = new ComplexNumber(1, 1);
         assertFalse(z1.equals(string));
     }
 
@@ -21,13 +24,15 @@ public class KildishevMaksimTest {
 
     @Test
     public void canGetReal() {
-        ComplexNumber z1 = new ComplexNumber(1.5, -1);
-        assertTrue(z1.getReal() == 1.5);
+        final double expectedRealPart = 1.5;
+        ComplexNumber z1 = new ComplexNumber(expectedRealPart, -1);
+        assertEquals(expectedRealPart, z1.getReal(), delta);
     }
 
     @Test
     public void canGetImaginary() {
-        ComplexNumber z1 = new ComplexNumber(1.5, -1);
-        assertTrue(z1.getImaginary() == -1);
+        final double expectedImaginaryPart = -1;
+        ComplexNumber z1 = new ComplexNumber(1.5, expectedImaginaryPart);
+        assertEquals(expectedImaginaryPart, z1.getImaginary(), delta);
     }
 }
