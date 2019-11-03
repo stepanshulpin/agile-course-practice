@@ -4,6 +4,8 @@ import org.junit.Test;
 import ru.unn.agile.ComplexNumber.model.ComplexNumber;
 
 import static org.junit.Assert.*;
+import static ru.unn.agile.ComplexNumber.model.ComplexNumber.Operation.ADD;
+import static ru.unn.agile.ComplexNumber.model.ComplexNumber.Operation.MULTIPLY;
 
 public class KarevBorisTest {
 
@@ -72,7 +74,7 @@ public class KarevBorisTest {
     public void canAddNumbersWithNegativePart() {
         ComplexNumber z1 = new ComplexNumber(-1, 2);
         ComplexNumber z2 = new ComplexNumber(3, -4);
-        ComplexNumber sum = z1.add(z2);
+        ComplexNumber sum = ADD.apply(z1, z2);
         assertTrue(sum.equals(new ComplexNumber(2, -2)));
     }
 
@@ -108,5 +110,13 @@ public class KarevBorisTest {
         ComplexNumber z = new ComplexNumber(re, im);
 
         assertEquals(new ComplexNumber(3.14, -1e3), z);
+    }
+
+    @Test
+    public void canMultiplyNumbersByEnumOperation() {
+        ComplexNumber z1 = new ComplexNumber(1, 2);
+        ComplexNumber z2 = new ComplexNumber(3, 4);
+        ComplexNumber mult = MULTIPLY.apply(z1, z2);
+        assertEquals(new ComplexNumber(-5, 10), mult);
     }
 }
