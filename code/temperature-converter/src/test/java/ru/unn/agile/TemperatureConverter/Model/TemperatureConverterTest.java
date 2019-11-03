@@ -15,7 +15,7 @@ public class TemperatureConverterTest {
         TemperatureConverter converter = new TemperatureConverter();
         DegreeCelsius celsius = new DegreeCelsius(0.0);
 
-        DegreeFahrenheit fahrenheit = converter.convertCelsiusToFahrenheit(celsius);
+        DegreeFahrenheit fahrenheit = converter.convertToFahrenheit(celsius);
 
         assertEquals(32.0, fahrenheit.getTemperature(), delta);
     }
@@ -25,7 +25,7 @@ public class TemperatureConverterTest {
         TemperatureConverter converter = new TemperatureConverter();
         DegreeCelsius celsius = new DegreeCelsius(5);
 
-        DegreeFahrenheit fahrenheit = converter.convertCelsiusToFahrenheit(celsius);
+        DegreeFahrenheit fahrenheit = converter.convertToFahrenheit(celsius);
 
         assertEquals(41.0, fahrenheit.getTemperature(), delta);
     }
