@@ -46,7 +46,7 @@ public final class Sorting {
         for (int i = 1; i < numbers.length; i++) {
             int current = numbers[i];
             int j = i - 1;
-            while (j >= 0 && compareTwoNumber(current, numbers[j])) {
+            while (j >= 0 && compareTwoNumbers(current, numbers[j])) {
                 numbers[j + 1] = numbers[j];
                 j--;
             }
@@ -55,7 +55,7 @@ public final class Sorting {
         return numbers;
     }
 
-    private boolean compareTwoNumber(final int number1, final int number2) {
+    private boolean compareTwoNumbers(final int number1, final int number2) {
         if (direction.equals(Direction.ASC)) {
             return expression.compare(number1, number2);
         } else {
