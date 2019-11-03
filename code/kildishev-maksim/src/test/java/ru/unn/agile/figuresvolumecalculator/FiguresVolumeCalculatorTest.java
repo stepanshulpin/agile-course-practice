@@ -1,8 +1,9 @@
-package ru.unn.agile;
+package ru.unn.agile.figuresvolumecalculator;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import ru.unn.agile.figuresvolumecalculator.model.FiguresVolumeCalculator;
 
 import static org.junit.Assert.*;
 
@@ -34,10 +35,29 @@ public class FiguresVolumeCalculatorTest {
     }
 
     @Test
-    public void canThrowExceptionIfRadiusIsNegative() {
+    public void canThrowExceptionIfSphereRadiusIsNegative() {
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Radius can't be negative");
         FiguresVolumeCalculator.sphereVolumeCalculate(-3);
+    }
+
+    @Test
+    public void canCalculateCylinderVolume() {
+        assertEquals(84.82,
+                FiguresVolumeCalculator.cylinderVolumeCalculate(3, 3), 0.01);
+    }
+
+    @Test
+    public void canCalculateCylinderVolumeWithNegativeHeight() {
+        assertEquals(84.82,
+                FiguresVolumeCalculator.cylinderVolumeCalculate(3, -3), 0.01);
+    }
+
+    @Test
+    public void canThrowExceptionIfCylinderBaseRadiusIsNegative() {
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("Radius can't be negative");
+        FiguresVolumeCalculator.cylinderVolumeCalculate(-3, 3);
     }
 
 
