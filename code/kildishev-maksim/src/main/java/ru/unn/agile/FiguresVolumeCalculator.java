@@ -15,4 +15,8 @@ public class FiguresVolumeCalculator {
         }
         return 4./3 * Math.PI * Math.pow(radius, 3);
     }
+
+    public static double cylinderVolumeCalculate(final double baseRadius, final double height) {
+        return 0;
+    }
 }
