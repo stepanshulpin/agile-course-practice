@@ -33,7 +33,7 @@ public class MitrokhinNikitaTest {
     }
 
     @Test
-    public void canCompareComplexNumbers() {
+    public void canCompareEqualComplexNumbers() {
         // Arrange
         ComplexNumber z1 = new ComplexNumber(0.0, 1.0);
 
