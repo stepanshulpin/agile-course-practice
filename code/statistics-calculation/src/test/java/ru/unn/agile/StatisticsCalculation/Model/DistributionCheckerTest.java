@@ -93,4 +93,13 @@ public class DistributionCheckerTest {
 
         checker.validate(values, probabilities);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenValidateProbsWithBigValues() {
+        Integer[] values = {1, 2, 3};
+        Double[] probabilities = {0.1, 1.2, 0.1};
+        DistributionChecker checker = new DistributionChecker();
+
+        checker.validate(values, probabilities);
+    }
 }

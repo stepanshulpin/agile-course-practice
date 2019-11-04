@@ -28,9 +28,10 @@ public class DistributionChecker {
 
     private static void checkProbability(final Double[] probabilities){
         Double min = 0.0;
+        Double max = 1.0;
         for (int i=0;i<probabilities.length;i++){
-            if (probabilities[i]<min)
-                throw new IllegalArgumentException("Probability should be more than 0.0!");
+            if (probabilities[i]>max || probabilities[i]<min)
+                throw new IllegalArgumentException("Probability should be more than 0.0 and less than 1.0!");
         }
     }
 }
