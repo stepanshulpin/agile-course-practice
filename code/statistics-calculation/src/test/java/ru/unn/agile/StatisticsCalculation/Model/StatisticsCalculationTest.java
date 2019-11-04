@@ -92,4 +92,15 @@ public class StatisticsCalculationTest {
         assertEquals(expectedValue, realExpectedValue, delta);
     }
 
+    @Test
+    public void canCalculateExpectedValueForDoubleAndInteger() {
+        Number[] values = {-1.0,  3, 5.0};
+        double[] probabilities = {0.2, 0.4, 0.4};
+        StatisticsCalculation calculator = new StatisticsCalculation();
+        double expectedValue = 3.0;
+
+        double realExpectedValue = calculator.calculateExpectedValue (values, probabilities);
+
+        assertEquals(expectedValue, realExpectedValue, delta);
+    }
 }
