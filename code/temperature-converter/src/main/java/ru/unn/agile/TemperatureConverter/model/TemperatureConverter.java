@@ -22,4 +22,9 @@ public class TemperatureConverter {
         final double shift = 32.0;
         return new CelsiusTemperature(coefficient * (fahrenheit.getValue() - shift));
     }
+
+    public KelvinTemperature convertToKelvin(final FahrenheitTemperature fahrenheit) {
+        final CelsiusTemperature celsius = convertToCelsius(fahrenheit);
+        return convertToKelvin(celsius);
+    }
 }
