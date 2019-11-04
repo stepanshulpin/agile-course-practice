@@ -13,7 +13,7 @@ public class StatisticsCalculationTest {
     @Test
     public void canCalculateExpectedValueForConstantOne() {
         Integer[] values = {1};
-        double[] probabilities = {1.0};
+        Double[] probabilities = {1.0};
         StatisticsCalculation calculator = new StatisticsCalculation();
         double expectedValue = 1.0;
 
@@ -25,7 +25,7 @@ public class StatisticsCalculationTest {
     @Test
     public void canCalculateExpectedValueForConstantTwo() {
         Integer[] values = {2};
-        double[] probabilities = {1.0};
+        Double[] probabilities = {1.0};
         StatisticsCalculation calculator = new StatisticsCalculation();
         double expectedValue = 2.0;
 
@@ -37,7 +37,7 @@ public class StatisticsCalculationTest {
     @Test
     public void canCalculateExpectedValueForConstantMinusOne() {
         Integer[] values = {-1};
-        double[] probabilities = {1.0};
+        Double[] probabilities = {1.0};
         StatisticsCalculation calculator = new StatisticsCalculation();
         double expectedValue = -1.0;
 
@@ -49,7 +49,7 @@ public class StatisticsCalculationTest {
     @Test
     public void canCalculateExpectedValueForTwoDimValues() {
         Integer[] values = {-1 , 3};
-        double[] probabilities = {0.5 , 0.5};
+        Double[] probabilities = {0.5 , 0.5};
         StatisticsCalculation calculator = new StatisticsCalculation();
         double expectedValue = 1.0;
 
@@ -61,7 +61,7 @@ public class StatisticsCalculationTest {
     @Test
     public void canCalculateExpectedValueForThreeDimValues() {
         Integer[] values = {-1 , 3, 5};
-        double[] probabilities = {0.2 , 0.3, 0.5};
+        Double[] probabilities = {0.2 , 0.3, 0.5};
         StatisticsCalculation calculator = new StatisticsCalculation();
         double expectedValue = 3.2;
 
@@ -73,7 +73,7 @@ public class StatisticsCalculationTest {
     @Test
     public void canCalculateExpectedValueForDouble() {
         Double[] values = {-1.0,  3.0};
-        double[] probabilities = {0.2, 0.8};
+        Double[] probabilities = {0.2, 0.8};
         StatisticsCalculation calculator = new StatisticsCalculation();
         double expectedValue = 2.2;
 
@@ -85,7 +85,7 @@ public class StatisticsCalculationTest {
     @Test
     public void canCalculateExpectedValueForDoubleAndInteger() {
         Number[] values = {-1.0,  3, 5.0};
-        double[] probabilities = {0.2, 0.4, 0.4};
+        Double[] probabilities = {0.2, 0.4, 0.4};
         StatisticsCalculation calculator = new StatisticsCalculation();
         double expectedValue = 3.0;
 
@@ -105,7 +105,7 @@ public class StatisticsCalculationTest {
     @Test
     public void canCalculateExpectedValueForBigDimValues() {
         Number[] values = createSequentialValues(1000);
-        double[] probabilities = new double[1000];
+        Double[] probabilities = new Double[1000];
         Arrays.fill(probabilities, 0.001);
         StatisticsCalculation calculator = new StatisticsCalculation();
         double expectedValue = 499.5;
@@ -118,7 +118,7 @@ public class StatisticsCalculationTest {
     @Test(expected = IllegalArgumentException.class)
     public void throwWhenCalculateExpectedValueForEmptyValuesAndProbs() {
         Integer[] values = {};
-        double[] probabilities = {};
+        Double[] probabilities = {};
         StatisticsCalculation calculator = new StatisticsCalculation();
 
         calculator.calculateExpectedValue (values, probabilities);
@@ -127,7 +127,7 @@ public class StatisticsCalculationTest {
     @Test(expected = IllegalArgumentException.class)
     public void throwWhenCalculateExpectedValueForEmptyValues() {
         Integer[] values = {};
-        double[] probabilities = {1.0};
+        Double[] probabilities = {1.0};
         StatisticsCalculation calculator = new StatisticsCalculation();
 
         calculator.calculateExpectedValue (values, probabilities);
@@ -136,7 +136,7 @@ public class StatisticsCalculationTest {
     @Test(expected = IllegalArgumentException.class)
     public void throwWhenCalculateExpectedValueForEmptyProbs() {
         Integer[] values = {1};
-        double[] probabilities = {};
+        Double[] probabilities = {};
         StatisticsCalculation calculator = new StatisticsCalculation();
 
         calculator.calculateExpectedValue (values, probabilities);
@@ -145,7 +145,7 @@ public class StatisticsCalculationTest {
     @Test(expected = IllegalArgumentException.class)
     public void throwWhenCalculateExpectedValueForNullValuesAndProbs() {
         Integer[] values = null;
-        double[] probabilities = null;
+        Double[] probabilities = null;
         StatisticsCalculation calculator = new StatisticsCalculation();
 
         calculator.calculateExpectedValue (values, probabilities);
@@ -154,7 +154,7 @@ public class StatisticsCalculationTest {
     @Test(expected = IllegalArgumentException.class)
     public void throwWhenCalculateExpectedValueForNullValues() {
         Integer[] values = null;
-        double[] probabilities = {1.0};
+        Double[] probabilities = {1.0};
         StatisticsCalculation calculator = new StatisticsCalculation();
 
         calculator.calculateExpectedValue (values, probabilities);
@@ -163,7 +163,7 @@ public class StatisticsCalculationTest {
     @Test(expected = IllegalArgumentException.class)
     public void throwWhenCalculateExpectedValueForNullProbs() {
         Integer[] values = {1};
-        double[] probabilities = null;
+        Double[] probabilities = null;
         StatisticsCalculation calculator = new StatisticsCalculation();
 
         calculator.calculateExpectedValue (values, probabilities);
