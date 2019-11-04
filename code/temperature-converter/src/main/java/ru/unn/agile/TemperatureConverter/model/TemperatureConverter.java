@@ -47,4 +47,9 @@ public class TemperatureConverter {
         final CelsiusTemperature celsius = convertToCelsius(kelvin);
         return convertToNewton(celsius);
     }
+
+    public CelsiusTemperature convertToCelsius(final NewtonTemperature newton) {
+        final double coefficient = 100.0 / 33.0;
+        return new CelsiusTemperature(coefficient * newton.getValue());
+    }
 }

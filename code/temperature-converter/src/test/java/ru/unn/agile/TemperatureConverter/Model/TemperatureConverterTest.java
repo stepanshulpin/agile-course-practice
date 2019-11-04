@@ -131,4 +131,24 @@ public class TemperatureConverterTest {
 
         assertEquals(60.0, newton.getValue(), delta);
     }
+
+    @Test
+    public void canConvertNewton0ToCelsius0() {
+        TemperatureConverter converter = new TemperatureConverter();
+        NewtonTemperature newton = new NewtonTemperature(0.0);
+
+        CelsiusTemperature celsius = converter.convertToCelsius(newton);
+
+        assertEquals(0.0, celsius.getValue(), delta);
+    }
+
+    @Test
+    public void canConvertNewton33ToCelsius100() {
+        TemperatureConverter converter = new TemperatureConverter();
+        NewtonTemperature newton = new NewtonTemperature(33.0);
+
+        CelsiusTemperature celsius = converter.convertToCelsius(newton);
+
+        assertEquals(100.0, celsius.getValue(), delta);
+    }
 }
