@@ -1,6 +1,6 @@
 package ru.unn.agile.StatisticsCalculation.model;
 
-public class DistributionChecker {
+public final class DistributionChecker {
     public static void validate(final Number[] values, final Double[] probabilities) {
         checkValues(values);
         checkProbabilities(probabilities);
@@ -33,8 +33,8 @@ public class DistributionChecker {
 
     private static void compareArraysSize(final Number[] values, final Double[] probabilities) {
         if (values.length != probabilities.length) {
-            throw new IllegalArgumentException("Values and probabilities arrays " +
-                    "should have the same size!");
+            throw new IllegalArgumentException("Values and probabilities arrays "
+                    + "should have the same size!");
         }
     }
 
@@ -43,8 +43,8 @@ public class DistributionChecker {
         Double max = 1.0;
         for (int i = 0; i < probabilities.length; i++) {
             if (probabilities[i] > max || probabilities[i] < min) {
-                throw new IllegalArgumentException("Probabilities' elements " +
-                        "should be more than 0.0 and less than 1.0!");
+                throw new IllegalArgumentException("Probabilities' elements "
+                        + "should be more than 0.0 and less than 1.0!");
             }
         }
     }
@@ -61,4 +61,6 @@ public class DistributionChecker {
             throw new IllegalArgumentException("Probabilities sum should be equal 1.0!");
         }
     }
+
+    private DistributionChecker() { }
 }

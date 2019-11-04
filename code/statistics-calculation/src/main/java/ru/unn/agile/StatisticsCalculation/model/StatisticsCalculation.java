@@ -1,6 +1,6 @@
 package ru.unn.agile.StatisticsCalculation.model;
 
-public class StatisticsCalculation {
+public final class StatisticsCalculation {
     public static double calculateExpectedValue(final Number[] values,
                                                 final Double[] probabilities) {
         DistributionChecker.validate(values, probabilities);
@@ -10,4 +10,6 @@ public class StatisticsCalculation {
         }
         return result;
     }
+
+    private StatisticsCalculation() { }
 }
