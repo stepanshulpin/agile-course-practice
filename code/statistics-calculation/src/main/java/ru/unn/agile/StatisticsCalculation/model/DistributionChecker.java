@@ -1,7 +1,13 @@
 package ru.unn.agile.StatisticsCalculation.model;
 
 public class DistributionChecker {
-    public static void checkArraysInitialization(final Number[] array){
+    public static void validate(final Number[] values,final Double[] probabilities) {
+        checkArraysInitialization(values);
+        checkArraysInitialization(probabilities);
+        checkArraysSize(values, probabilities);
+    }
+
+    private static void checkArraysInitialization(final Number[] array){
         if (array == null) {
             throw new IllegalArgumentException("Array should be initialized!");
         }
@@ -13,7 +19,7 @@ public class DistributionChecker {
         }
     }
 
-    public static void checkArraysSize(final Number[] values, final Double[] probabilities){
+    private static void checkArraysSize(final Number[] values, final Double[] probabilities){
         if (values.length != probabilities.length) {
             throw new IllegalArgumentException("Values and probabilities arrays should have the same dimension!");
         }
