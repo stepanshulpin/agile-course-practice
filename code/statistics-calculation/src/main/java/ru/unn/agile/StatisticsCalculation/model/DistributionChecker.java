@@ -2,9 +2,17 @@ package ru.unn.agile.StatisticsCalculation.model;
 
 public class DistributionChecker {
     public static void validate(final Number[] values,final Double[] probabilities) {
+        checkValues(values);
+        checkProbabilities(probabilities);
+        compareArraysSize(values, probabilities);
+    }
+
+    private static void checkValues(final Number[] values){
         checkArraysInitialization(values);
+    }
+
+    private static void checkProbabilities(final Double[] probabilities){
         checkArraysInitialization(probabilities);
-        checkArraysSize(values, probabilities);
         checkProbability(probabilities);
         checkProbabilitySum(probabilities);
     }
@@ -21,7 +29,7 @@ public class DistributionChecker {
         }
     }
 
-    private static void checkArraysSize(final Number[] values, final Double[] probabilities){
+    private static void compareArraysSize(final Number[] values, final Double[] probabilities){
         if (values.length != probabilities.length) {
             throw new IllegalArgumentException("Values and probabilities arrays should have the same dimension!");
         }
