@@ -61,4 +61,14 @@ public class TemperatureConverterTest {
 
         assertEquals(10.89, newton.getValue(), delta);
     }
+
+    @Test
+    public void canConvertFahrenheit41Celsius5To() {
+        TemperatureConverter converter = new TemperatureConverter();
+        FahrenheitTemperature fahrenheit = new FahrenheitTemperature(41);
+
+        CelsiusTemperature celsius = converter.convertToCelsius(fahrenheit);
+
+        assertEquals(5.0, celsius.getValue(), delta);
+    }
 }

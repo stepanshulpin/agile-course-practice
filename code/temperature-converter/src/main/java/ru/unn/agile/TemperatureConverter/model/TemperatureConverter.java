@@ -16,4 +16,10 @@ public class TemperatureConverter {
         final double coefficient = 33.0 / 100.0;
         return new NewtonTemperature(coefficient * celsius.getValue());
     }
+
+    public CelsiusTemperature convertToCelsius(final FahrenheitTemperature fahrenheit) {
+        final double coefficient = 5.0 / 9.0;
+        final double shift = 32.0;
+        return new CelsiusTemperature(coefficient * (fahrenheit.getValue() - shift));
+    }
 }
