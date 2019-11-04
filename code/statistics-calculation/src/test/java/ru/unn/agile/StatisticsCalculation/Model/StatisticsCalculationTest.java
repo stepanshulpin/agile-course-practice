@@ -123,4 +123,22 @@ public class StatisticsCalculationTest {
 
         calculator.calculateExpectedValue (values, probabilities);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCalculateExpectedValueForEmptyValues() {
+        Integer[] values = {};
+        double[] probabilities = {1.0};
+        StatisticsCalculation calculator = new StatisticsCalculation();
+
+        calculator.calculateExpectedValue (values, probabilities);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCalculateExpectedValueForEmptyProbs() {
+        Integer[] values = {1};
+        double[] probabilities = {};
+        StatisticsCalculation calculator = new StatisticsCalculation();
+
+        calculator.calculateExpectedValue (values, probabilities);
+    }
 }

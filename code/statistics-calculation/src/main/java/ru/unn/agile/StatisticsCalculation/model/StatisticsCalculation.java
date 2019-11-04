@@ -3,7 +3,10 @@ package ru.unn.agile.StatisticsCalculation.model;
 public class StatisticsCalculation {
     public static double calculateExpectedValue(final Number[] values, final double[] probabilities) {
         if (values.length == 0) {
-            throw new IllegalArgumentException("Array should be initialized!");
+            throw new IllegalArgumentException("Values array should be initialized!");
+        }
+        if (probabilities.length == 0) {
+            throw new IllegalArgumentException("Probabilities array should be initialized!");
         }
         Double result = 0.0;
         for (int i = 0; i < values.length; i++) {
