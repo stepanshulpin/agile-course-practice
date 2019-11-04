@@ -2,25 +2,23 @@ package ru.unn.agile.TemperatureConverter.model;
 
 public class TemperatureConverter {
     public FahrenheitTemperature convertToFahrenheit(final CelsiusTemperature celsius) {
-        final double coefficient = 9.0 / 5.0;
-        final double shift = 32.0;
-        return new FahrenheitTemperature(coefficient * celsius.getValue() + shift);
+        ConverterCelsiusFahrenheit converter = new ConverterCelsiusFahrenheit();
+        return converter.convertToFahrenheit(celsius);
     }
 
     public KelvinTemperature convertToKelvin(final CelsiusTemperature celsius) {
-        final double shift =  273.15;
-        return new KelvinTemperature(celsius.getValue() + shift);
+        ConverterCelsiusKelvin converter = new ConverterCelsiusKelvin();
+        return converter.convertToKelvin(celsius);
     }
 
     public NewtonTemperature convertToNewton(final CelsiusTemperature celsius) {
-        final double coefficient = 33.0 / 100.0;
-        return new NewtonTemperature(coefficient * celsius.getValue());
+        ConverterCelsiusNewton converter = new ConverterCelsiusNewton();
+        return converter.convertToNewton(celsius);
     }
 
     public CelsiusTemperature convertToCelsius(final FahrenheitTemperature fahrenheit) {
-        final double coefficient = 5.0 / 9.0;
-        final double shift = 32.0;
-        return new CelsiusTemperature(coefficient * (fahrenheit.getValue() - shift));
+        ConverterCelsiusFahrenheit converter = new ConverterCelsiusFahrenheit();
+        return converter.convertToCelsius(fahrenheit);
     }
 
     public KelvinTemperature convertToKelvin(final FahrenheitTemperature fahrenheit) {
@@ -34,8 +32,8 @@ public class TemperatureConverter {
     }
 
     public CelsiusTemperature convertToCelsius(final KelvinTemperature kelvin) {
-        final double shift = 273.15;
-        return new CelsiusTemperature(kelvin.getValue() - shift);
+        ConverterCelsiusKelvin converter = new ConverterCelsiusKelvin();
+        return converter.convertToCelsius(kelvin);
     }
 
     public FahrenheitTemperature convertToFahrenheit(final KelvinTemperature kelvin) {
@@ -49,8 +47,8 @@ public class TemperatureConverter {
     }
 
     public CelsiusTemperature convertToCelsius(final NewtonTemperature newton) {
-        final double coefficient = 100.0 / 33.0;
-        return new CelsiusTemperature(coefficient * newton.getValue());
+        ConverterCelsiusNewton converter = new ConverterCelsiusNewton();
+        return converter.convertToCelsius(newton);
     }
 
     public FahrenheitTemperature convertToFahrenheit(final NewtonTemperature newton) {
