@@ -4,6 +4,7 @@ import org.junit.Test;
 import ru.unn.agile.TemperatureConverter.model.TemperatureConverter;
 import ru.unn.agile.TemperatureConverter.model.CelsiusTemperature;
 import ru.unn.agile.TemperatureConverter.model.FahrenheitTemperature;
+import ru.unn.agile.TemperatureConverter.model.KelvinTemperature;
 
 import static org.junit.Assert.*;
 
@@ -28,5 +29,15 @@ public class TemperatureConverterTest {
         FahrenheitTemperature fahrenheit = converter.convertToFahrenheit(celsius);
 
         assertEquals(41.0, fahrenheit.getValue(), delta);
+    }
+
+    @Test
+    public void canConvertCelsius0ToKelvin273() {
+        TemperatureConverter converter = new TemperatureConverter();
+        CelsiusTemperature celsius = new CelsiusTemperature(0.0);
+
+        KelvinTemperature kelvin = converter.convertToKelvin(celsius);
+
+        assertEquals(273.15, kelvin.getValue(), delta);
     }
 }
