@@ -3,6 +3,8 @@ package ru.unn.agile.StatisticsCalculation.Model;
 import org.junit.Test;
 import ru.unn.agile.StatisticsCalculation.model.StatisticsCalculation;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class StatisticsCalculationTest {
@@ -98,6 +100,27 @@ public class StatisticsCalculationTest {
         double[] probabilities = {0.2, 0.4, 0.4};
         StatisticsCalculation calculator = new StatisticsCalculation();
         double expectedValue = 3.0;
+
+        double realExpectedValue = calculator.calculateExpectedValue (values, probabilities);
+
+        assertEquals(expectedValue, realExpectedValue, delta);
+    }
+
+    private Number[] createSequentialValues(int size){
+        Number [] values = new Number[size];
+        for (int i=0;i<size;i++){
+            values[i]=i;
+        }
+        return values;
+    }
+
+    @Test
+    public void canCalculateExpectedValueForBigDimValues() {
+        Number[] values = createSequentialValues(1000);
+        double[] probabilities = new double[1000];
+        Arrays.fill(probabilities, 0.001);
+        StatisticsCalculation calculator = new StatisticsCalculation();
+        double expectedValue = 499.5;
 
         double realExpectedValue = calculator.calculateExpectedValue (values, probabilities);
 
