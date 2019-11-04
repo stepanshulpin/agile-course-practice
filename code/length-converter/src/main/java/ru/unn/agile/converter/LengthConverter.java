@@ -1,34 +1,38 @@
 package ru.unn.agile.converter;
 
+import java.util.HashMap;
+
+import static ru.unn.agile.converter.ConverterConstants.*;
+import static ru.unn.agile.converter.LengthType.*;
+
 public final class LengthConverter {
-    private LengthConverter() {
+    private double value;
+    private LengthType type;
+
+    private final HashMap<LengthType, Double> coefficients = new HashMap<>() {{
+        put(METER, METER_TO_METER);
+        put(CENTIMETER, METER_TO_CENTIMETER);
+        put(KILOMETER, METER_TO_KILOMETER);
+        put(MILLIMETER, METER_TO_MILLIMETER);
+        put(MILE, METER_TO_MILE);
+    }};
+
+    public LengthConverter(final double value, final LengthType type) {
+        this.value = value;
+        this.type = type;
     }
 
-    private static double convert(final double value, final double constant) {
-        return value * constant;
+    public double convert(final LengthType type) {
+        value = getMeter() * coefficients.get(type);
+        this.type = type;
+        return value;
     }
 
-    public static double meterToCentimeter(final double meter) {
-        return convert(meter, ConverterConstants.METER_TO_CENTIMETER);
+    public void setValue(final double value) {
+        this.value = value;
     }
 
-    public static double meterToKilometer(final double meter) {
-        return convert(meter, ConverterConstants.METER_TO_KILOMETER);
-    }
-
-    public static double meterToMillimeter(final double meter) {
-        return convert(meter, ConverterConstants.METER_TO_MILLIMETER);
-    }
-
-    public static double meterToMile(final double meter) {
-        return convert(meter, ConverterConstants.METER_TO_MILE);
-    }
-
-    public static double centimeterToMeter(final double cm) {
-        return cm / ConverterConstants.METER_TO_CENTIMETER;
-    }
-
-    public static double centimeterToKilometer(final double cm) {
-        return cm / ConverterConstants.METER_TO_CENTIMETER * ConverterConstants.METER_TO_KILOMETER;
+    private double getMeter() {
+        return value / coefficients.get(type);
     }
 }

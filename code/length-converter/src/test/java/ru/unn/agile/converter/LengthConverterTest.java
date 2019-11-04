@@ -10,37 +10,43 @@ public class LengthConverterTest {
 
     @Test
     public void canConvertMeterToCentimeter() {
-        double cm = LengthConverter.meterToCentimeter(5);
+        LengthConverter converter = new LengthConverter(5, LengthType.METER);
+        double cm = converter.convert(LengthType.CENTIMETER);
         assertEquals(500, cm, delta);
     }
 
     @Test
     public void canConvertMeterToKilometer() {
-        double km = LengthConverter.meterToKilometer(5000);
+        LengthConverter converter = new LengthConverter(5000, LengthType.METER);
+        double km = converter.convert(LengthType.KILOMETER);
         assertEquals(5, km, delta);
     }
 
     @Test
     public void canConvertMeterToMillimeter() {
-        double mm = LengthConverter.meterToMillimeter(2);
+        LengthConverter converter = new LengthConverter(2, LengthType.METER);
+        double mm = converter.convert(LengthType.MILLIMETER);
         assertEquals(2000, mm, delta);
     }
 
     @Test
     public void canConvertMeterToMile() {
-        double mile = LengthConverter.meterToMile(10000);
+        LengthConverter converter = new LengthConverter(10000, LengthType.METER);
+        double mile = converter.convert(LengthType.MILE);
         assertEquals(6.213712, mile, delta);
     }
 
     @Test
     public void canConvertCentimeterToMeter() {
-        double meter = LengthConverter.centimeterToMeter(250);
+        LengthConverter converter = new LengthConverter(250, LengthType.CENTIMETER);
+        double meter = converter.convert(LengthType.METER);
         assertEquals(2.5, meter, delta);
     }
 
     @Test
     public void canConvertCentimeterToKilometer() {
-        double km = LengthConverter.centimeterToKilometer(35000);
+        LengthConverter converter = new LengthConverter(35000, LengthType.CENTIMETER);
+        double km = converter.convert(LengthType.KILOMETER);
         assertEquals(0.35, km, delta);
     }
 }
