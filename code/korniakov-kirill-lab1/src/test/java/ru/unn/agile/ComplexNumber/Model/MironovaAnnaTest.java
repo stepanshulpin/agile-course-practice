@@ -22,4 +22,24 @@ public class MironovaAnnaTest {
 
         assertNotNull(z);
     }
+
+    @Test
+    public void canCompareEqualComplexNumbers() {
+        ComplexNumber z1 = new ComplexNumber(1.0, 0.0);
+        ComplexNumber z2 = new ComplexNumber(1.0, 0.0);
+
+        boolean flag = z1.equals(z2);
+
+        assertTrue(flag);
+    }
+
+    @Test
+    public void canCompareNotEqualComplexNumbers() {
+        ComplexNumber z1 = new ComplexNumber(1.0, 0.0);
+        ComplexNumber z2 = new ComplexNumber(1.0, 1.0);
+
+        boolean flag = z1.equals(z2);
+
+        assertFalse(flag);
+    }
 }
