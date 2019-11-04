@@ -42,4 +42,15 @@ public class MironovaAnnaTest {
 
         assertFalse(flag);
     }
+
+    @Test
+    public void canMultiplyComplexNumbers() {
+        ComplexNumber z1 = new ComplexNumber(3.0, 3.0);
+        ComplexNumber z2 = new ComplexNumber(1.0, 1.0);
+        ComplexNumber expected = new ComplexNumber(0.0, 6.0);
+
+        ComplexNumber real = z1.multiply(z2);
+
+        assertEquals(expected, real);
+    }
 }
