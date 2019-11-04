@@ -38,10 +38,13 @@ public class DistributionChecker {
 
     private static void checkProbabilitySum(final Double[] probabilities){
         double sum = 0.0;
+        final double expectedSum = 1.0;
+        final double delta = 0.001;
+
         for (int i=0;i<probabilities.length;i++){
             sum += probabilities[i];
         }
-        if (sum > 1.0){
+        if (Math.abs(expectedSum - sum) > delta){
             throw new IllegalArgumentException("Probabilities sum should be equal 1.0!");
         }
     }
