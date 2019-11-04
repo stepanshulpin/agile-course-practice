@@ -16,7 +16,8 @@ public class StatisticsCalculationTest {
         Double[] probabilities = {1.0};
         double expectedValue = 1.0;
 
-        double realExpectedValue = StatisticsCalculation.calculateExpectedValue (values, probabilities);
+        double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
+                probabilities);
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
@@ -27,7 +28,8 @@ public class StatisticsCalculationTest {
         Double[] probabilities = {1.0};
         double expectedValue = 2.0;
 
-        double realExpectedValue = StatisticsCalculation.calculateExpectedValue (values, probabilities);
+        double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
+                probabilities);
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
@@ -38,29 +40,32 @@ public class StatisticsCalculationTest {
         Double[] probabilities = {1.0};
         double expectedValue = -1.0;
 
-        double realExpectedValue = StatisticsCalculation.calculateExpectedValue (values, probabilities);
+        double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
+                probabilities);
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
 
     @Test
     public void canCalculateExpectedValueForTwoDimValues() {
-        Integer[] values = {-1 , 3};
-        Double[] probabilities = {0.5 , 0.5};
+        Integer[] values = {-1, 3};
+        Double[] probabilities = {0.5, 0.5};
         double expectedValue = 1.0;
 
-        double realExpectedValue = StatisticsCalculation.calculateExpectedValue (values, probabilities);
+        double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
+                probabilities);
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
 
     @Test
     public void canCalculateExpectedValueForThreeDimValues() {
-        Integer[] values = {-1 , 3, 5};
-        Double[] probabilities = {0.2 , 0.3, 0.5};
+        Integer[] values = {-1, 3, 5};
+        Double[] probabilities = {0.2, 0.3, 0.5};
         double expectedValue = 3.2;
 
-        double realExpectedValue = StatisticsCalculation.calculateExpectedValue (values, probabilities);
+        double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
+                probabilities);
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
@@ -71,7 +76,8 @@ public class StatisticsCalculationTest {
         Double[] probabilities = {0.2, 0.8};
         double expectedValue = 2.2;
 
-        double realExpectedValue = StatisticsCalculation.calculateExpectedValue (values, probabilities);
+        double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
+                probabilities);
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
@@ -82,15 +88,16 @@ public class StatisticsCalculationTest {
         Double[] probabilities = {0.2, 0.4, 0.4};
         double expectedValue = 3.0;
 
-        double realExpectedValue = StatisticsCalculation.calculateExpectedValue (values, probabilities);
+        double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
+                probabilities);
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
 
-    private Number[] createSequentialValues(int size){
-        Number [] values = new Number[size];
-        for (int i=0;i<size;i++){
-            values[i]=i;
+    private Number[] createSequentialValues(final int size) {
+        Number[] values = new Number[size];
+        for (int i = 0; i < size; i++) {
+            values[i] = i;
         }
         return values;
     }
@@ -102,7 +109,8 @@ public class StatisticsCalculationTest {
         Arrays.fill(probabilities, 0.001);
         double expectedValue = 499.5;
 
-        double realExpectedValue = StatisticsCalculation.calculateExpectedValue (values, probabilities);
+        double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
+                probabilities);
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
