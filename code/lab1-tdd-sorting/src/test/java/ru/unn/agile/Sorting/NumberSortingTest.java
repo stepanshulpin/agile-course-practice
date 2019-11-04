@@ -181,7 +181,8 @@ public class NumberSortingTest {
     public void canSortTenNumbersGreaterExpressionAsc() {
         Integer[] numbers = {-2, 1, 3, -6, 9, -7, 4, -8, -5};
         Integer[] sortedNumbers = new Integer[]{9, 4, 3, 1, -2, -5, -6, -7, -8};
-        Sorting<Integer> numberSorting = new NumberSorting(Direction.ASC, new NumberGreaterExpression());
+        Expression<Integer> numberGreaterExpression = new NumberGreaterExpression();
+        Sorting<Integer> numberSorting = new NumberSorting(Direction.ASC, numberGreaterExpression);
         assertArrayEquals(sortedNumbers, numberSorting.sort(numbers));
     }
 
@@ -189,7 +190,8 @@ public class NumberSortingTest {
     public void canSortTenNumbersGreaterExpressionDesc() {
         Integer[] numbers = {-2, 1, 3, -6, 9, -7, 4, -8, -5};
         Integer[] sortedNumbers = new Integer[]{-8, -7, -6, -5, -2, 1, 3, 4, 9};
-        Sorting<Integer> numberSorting = new NumberSorting(Direction.DESC, new NumberGreaterExpression());
+        Expression<Integer> numberGreaterExpression = new NumberGreaterExpression();
+        Sorting<Integer> numberSorting = new NumberSorting(Direction.DESC, numberGreaterExpression);
         assertArrayEquals(sortedNumbers, numberSorting.sort(numbers));
     }
 }
