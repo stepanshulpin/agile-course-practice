@@ -52,6 +52,8 @@ project(":code/korniakov-kirill-lab3/Infrastructure").name = "korniakov-kirill-l
 // Зырина Анна
 // Кальянов Дмитрий
 // Карев Борис
+include "code/length-converter"
+project(":code/length-converter").name = "length-converter-Model"
 // Кильдишев Максим
 // Киселева Ольга
 // Конева Александра
