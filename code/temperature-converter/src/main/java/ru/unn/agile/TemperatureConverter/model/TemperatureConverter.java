@@ -52,4 +52,9 @@ public class TemperatureConverter {
         final double coefficient = 100.0 / 33.0;
         return new CelsiusTemperature(coefficient * newton.getValue());
     }
+
+    public FahrenheitTemperature convertToFahrenheit(final NewtonTemperature newton) {
+        final CelsiusTemperature celsius = convertToCelsius(newton);
+        return convertToFahrenheit(celsius);
+    }
 }

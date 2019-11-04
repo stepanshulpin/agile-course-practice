@@ -151,4 +151,14 @@ public class TemperatureConverterTest {
 
         assertEquals(100.0, celsius.getValue(), delta);
     }
+
+    @Test
+    public void canConvertNewton0ToFahrenheit32() {
+        TemperatureConverter converter = new TemperatureConverter();
+        NewtonTemperature newton = new NewtonTemperature(0.0);
+
+        FahrenheitTemperature fahrenheit = converter.convertToFahrenheit(newton);
+
+        assertEquals(32, fahrenheit.getValue(), delta);
+    }
 }
