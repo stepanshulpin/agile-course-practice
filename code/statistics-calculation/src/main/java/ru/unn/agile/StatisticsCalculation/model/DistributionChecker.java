@@ -5,6 +5,7 @@ public class DistributionChecker {
         checkArraysInitialization(values);
         checkArraysInitialization(probabilities);
         checkArraysSize(values, probabilities);
+        checkProbability(probabilities);
     }
 
     private static void checkArraysInitialization(final Number[] array){
@@ -22,6 +23,14 @@ public class DistributionChecker {
     private static void checkArraysSize(final Number[] values, final Double[] probabilities){
         if (values.length != probabilities.length) {
             throw new IllegalArgumentException("Values and probabilities arrays should have the same dimension!");
+        }
+    }
+
+    private static void checkProbability(final Double[] probabilities){
+        Double min = 0.0;
+        for (int i=0;i<probabilities.length;i++){
+            if (probabilities[i]<min)
+                throw new IllegalArgumentException("Probability should be more than 0.0!");
         }
     }
 }
