@@ -1,39 +1,39 @@
 package ru.unn.agile.TemperatureConverter.Model;
 
 import org.junit.Test;
-import ru.unn.agile.TemperatureConverter.model.DegreeFahrenheit;
+import ru.unn.agile.TemperatureConverter.model.FahrenheitTemperature;
 
 import static org.junit.Assert.assertEquals;
 
-public class DegreesFahrenheitTest {
+public class FahrenheitTemperatureTest {
     private final double delta = 0.001;
 
     @Test
     public void canCreateDegreeFahrenheit0() {
-        DegreeFahrenheit fahrenheit = new DegreeFahrenheit(0.0);
+        FahrenheitTemperature fahrenheit = new FahrenheitTemperature(0.0);
 
-        assertEquals(0.0, fahrenheit.getTemperature(), delta);
+        assertEquals(0.0, fahrenheit.getValue(), delta);
     }
 
     @Test
     public void canCreateDegreeCelsiusFromString() {
-        DegreeFahrenheit celsius = new DegreeFahrenheit("100.01");
+        FahrenheitTemperature celsius = new FahrenheitTemperature("100.01");
 
-        assertEquals(100.01, celsius.getTemperature(), delta);
+        assertEquals(100.01, celsius.getValue(), delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void canNotCreateDegreeCelsiusLessAbsoluteZro() {
-        DegreeFahrenheit celsius = new DegreeFahrenheit(-500.0);
+        FahrenheitTemperature celsius = new FahrenheitTemperature(-500.0);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void canNotCreateDegreeCelsiusLessAbsoluteZroFromString() {
-        DegreeFahrenheit celsius = new DegreeFahrenheit("-500.01");
+        FahrenheitTemperature celsius = new FahrenheitTemperature("-500.01");
     }
 
     @Test(expected = NumberFormatException.class)
     public void canNotCreateDegreeCelsiusFromIncorrectString() {
-        DegreeFahrenheit celsius = new DegreeFahrenheit("abc100.0 1");
+        FahrenheitTemperature celsius = new FahrenheitTemperature("abc100.0 1");
     }
 }

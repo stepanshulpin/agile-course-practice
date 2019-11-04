@@ -2,8 +2,8 @@ package ru.unn.agile.TemperatureConverter.Model;
 
 import org.junit.Test;
 import ru.unn.agile.TemperatureConverter.model.TemperatureConverter;
-import ru.unn.agile.TemperatureConverter.model.DegreeCelsius;
-import ru.unn.agile.TemperatureConverter.model.DegreeFahrenheit;
+import ru.unn.agile.TemperatureConverter.model.CelsiusTemperature;
+import ru.unn.agile.TemperatureConverter.model.FahrenheitTemperature;
 
 import static org.junit.Assert.*;
 
@@ -13,20 +13,20 @@ public class TemperatureConverterTest {
     @Test
     public void canConvertCelsius0ToFahrenheit32() {
         TemperatureConverter converter = new TemperatureConverter();
-        DegreeCelsius celsius = new DegreeCelsius(0.0);
+        CelsiusTemperature celsius = new CelsiusTemperature(0.0);
 
-        DegreeFahrenheit fahrenheit = converter.convertToFahrenheit(celsius);
+        FahrenheitTemperature fahrenheit = converter.convertToFahrenheit(celsius);
 
-        assertEquals(32.0, fahrenheit.getTemperature(), delta);
+        assertEquals(32.0, fahrenheit.getValue(), delta);
     }
 
     @Test
     public void canConvertCelsius5ToFahrenheit41() {
         TemperatureConverter converter = new TemperatureConverter();
-        DegreeCelsius celsius = new DegreeCelsius(5);
+        CelsiusTemperature celsius = new CelsiusTemperature(5);
 
-        DegreeFahrenheit fahrenheit = converter.convertToFahrenheit(celsius);
+        FahrenheitTemperature fahrenheit = converter.convertToFahrenheit(celsius);
 
-        assertEquals(41.0, fahrenheit.getTemperature(), delta);
+        assertEquals(41.0, fahrenheit.getValue(), delta);
     }
 }
