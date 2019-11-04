@@ -19,4 +19,28 @@ public class StatisticsCalculationTest {
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
+
+    @Test
+    public void canCalculateExpectedValueForConstantTwo() {
+        int[] values = {2};
+        double[] probabilities = {1.0};
+        StatisticsCalculation calculator = new StatisticsCalculation();
+        double expectedValue = 2.0;
+
+        double realExpectedValue = calculator.calculateExpectedValue (values, probabilities);
+
+        assertEquals(expectedValue, realExpectedValue, delta);
+    }
+
+    @Test
+    public void canCalculateExpectedValueForConstantMinusOne() {
+        int[] values = {-1};
+        double[] probabilities = {1.0};
+        StatisticsCalculation calculator = new StatisticsCalculation();
+        double expectedValue = -1.0;
+
+        double realExpectedValue = calculator.calculateExpectedValue (values, probabilities);
+
+        assertEquals(expectedValue, realExpectedValue, delta);
+    }
 }
