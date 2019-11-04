@@ -92,6 +92,7 @@ public class TemperatureConverterTest {
         assertEquals(255.372, kelvin.getValue(), delta);
     }
 
+    @Test
     public void canConvertFahrenheit32ToNewton0() {
         TemperatureConverter converter = new TemperatureConverter();
         FahrenheitTemperature fahrenheit = new FahrenheitTemperature(32.0);
