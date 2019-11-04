@@ -1,10 +1,10 @@
 package ru.unn.agile.StatisticsCalculation.model;
 
 public class StatisticsCalculation {
-    public static double calculateExpectedValue(final int[] values, final double[] probabilities) {
-        double result = 0.0;
+    public static double calculateExpectedValue(final Number[] values, final double[] probabilities) {
+        Double result = 0.0;
         for (int i = 0; i < values.length; i++) {
-            result += values[i] * probabilities[i];
+            result += values[i].doubleValue() * probabilities[i];
         }
         return result;
     }
