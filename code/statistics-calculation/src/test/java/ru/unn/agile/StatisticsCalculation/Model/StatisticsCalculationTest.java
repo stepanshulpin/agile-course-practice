@@ -55,4 +55,16 @@ public class StatisticsCalculationTest {
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
+
+    @Test
+    public void canCalculateExpectedValueForThreeDimValues() {
+        int[] values = {-1 , 3, 5};
+        double[] probabilities = {0.2 , 0.3, 0.5};
+        StatisticsCalculation calculator = new StatisticsCalculation();
+        double expectedValue = 3.2;
+
+        double realExpectedValue = calculator.calculateExpectedValue (values, probabilities);
+
+        assertEquals(expectedValue, realExpectedValue, delta);
+    }
 }

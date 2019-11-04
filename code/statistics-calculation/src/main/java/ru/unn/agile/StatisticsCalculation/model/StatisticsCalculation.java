@@ -9,6 +9,9 @@ public class StatisticsCalculation {
         else if (values.length == 2){
             result =  values[0] * probabilities[0] + values[1]*probabilities[1];
         }
+        else if (values.length == 3){
+            result =  values[0] * probabilities[0] + values[1]*probabilities[1] + values[2]*probabilities[2];
+        }
         return result;
     }
 }
