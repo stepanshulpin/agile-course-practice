@@ -1,4 +1,4 @@
-package ru.unn.agile.sorting.model;
+package ru.unn.agile.sorting.api;
 
 public enum Direction {
     ASC,
