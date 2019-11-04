@@ -24,16 +24,16 @@ public class FahrenheitTemperatureTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void canNotCreateDegreeFahrenheitLessAbsoluteZro() {
-        FahrenheitTemperature celsius = new FahrenheitTemperature(-500.0);
+        FahrenheitTemperature fahrenheit = new FahrenheitTemperature(-500.0);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void canNotCreateDegreeFahrenheitLessAbsoluteZroFromString() {
-        FahrenheitTemperature celsius = new FahrenheitTemperature("-500.01");
+        FahrenheitTemperature fahrenheit = new FahrenheitTemperature("-500.01");
     }
 
     @Test(expected = NumberFormatException.class)
     public void canNotCreateDegreeFahrenheitFromIncorrectString() {
-        FahrenheitTemperature celsius = new FahrenheitTemperature("abc100.0 1");
+        FahrenheitTemperature fahrenheit = new FahrenheitTemperature("abc100.0 1");
     }
 }

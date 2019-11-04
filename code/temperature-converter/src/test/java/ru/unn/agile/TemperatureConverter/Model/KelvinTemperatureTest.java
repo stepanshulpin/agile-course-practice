@@ -24,16 +24,16 @@ public class KelvinTemperatureTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void canNotCreateDegreeKelvinLessAbsoluteZro() {
-        KelvinTemperature celsius = new KelvinTemperature(-500.0);
+        KelvinTemperature kelvin = new KelvinTemperature(-500.0);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void canNotCreateDegreeKelvinLessAbsoluteZroFromString() {
-        KelvinTemperature celsius = new KelvinTemperature("-500.01");
+        KelvinTemperature kelvin = new KelvinTemperature("-500.01");
     }
 
     @Test(expected = NumberFormatException.class)
     public void canNotCreateDegreeKelvinFromIncorrectString() {
-        KelvinTemperature celsius = new KelvinTemperature("abc100.0 1");
+        KelvinTemperature kelvin = new KelvinTemperature("abc100.0 1");
     }
 }
