@@ -111,4 +111,14 @@ public class TemperatureConverterTest {
 
         assertEquals(-273.15, celsius.getValue(), delta);
     }
+
+    @Test
+    public void canConvertKelvin0ToFahrenheitAbsoluteZero() {
+        TemperatureConverter converter = new TemperatureConverter();
+        KelvinTemperature kelvin = new KelvinTemperature(0.0);
+
+        FahrenheitTemperature fahrenheit = converter.convertToFahrenheit(kelvin);
+
+        assertEquals(-459.67, fahrenheit.getValue(), delta);
+    }
 }
