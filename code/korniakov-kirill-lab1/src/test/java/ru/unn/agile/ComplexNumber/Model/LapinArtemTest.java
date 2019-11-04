@@ -2,8 +2,7 @@ package ru.unn.agile.ComplexNumber.Model;
 
 import org.junit.Test;
 import ru.unn.agile.ComplexNumber.model.ComplexNumber;
-import static ru.unn.agile.ComplexNumber.model.ComplexNumber.Operation.ADD;
-import static ru.unn.agile.ComplexNumber.model.ComplexNumber.Operation.MULTIPLY;
+import static ru.unn.agile.ComplexNumber.model.ComplexNumber.Operation;
 
 import static org.junit.Assert.*;
 
@@ -34,19 +33,19 @@ public class LapinArtemTest {
     @Test
     public void toStringWorksCorrect() {
         ComplexNumber cn = new ComplexNumber(1.0, 1.0);
-        assertEquals(cn.toString(), "1.0 + 1.0i");
+        assertEquals("1.0 + 1.0i", cn.toString());
     }
 
     @Test
     public void toStringWithNegativePartsWorksCorrect() {
         ComplexNumber cn = new ComplexNumber(-1.0, -1.0);
-        assertEquals(cn.toString(), "-1.0 - 1.0i");
+        assertEquals("-1.0 - 1.0i", cn.toString());
     }
 
     @Test
     public void toStringWithZeroNumberWorksCorrect() {
         ComplexNumber cn = new ComplexNumber(0.0, 0.0);
-        assertEquals(cn.toString(), "0.0 + 0.0i");
+        assertEquals("0.0 + 0.0i", cn.toString());
     }
 
     @Test
@@ -76,7 +75,7 @@ public class LapinArtemTest {
         ComplexNumber cn1 = new ComplexNumber(1.0, 1.0);
         ComplexNumber cn2 = new ComplexNumber(0.0, 1.1);
 
-        ComplexNumber addResult = ADD.apply(cn1, cn2);
+        ComplexNumber addResult = Operation.ADD.apply(cn1, cn2);
 
         assertEquals(new ComplexNumber(1.0, 2.1), addResult);
     }
@@ -109,9 +108,9 @@ public class LapinArtemTest {
         ComplexNumber cn1 = new ComplexNumber(1.0, 1.0);
         ComplexNumber cn2 = new ComplexNumber(0.0, 1.0);
 
-        ComplexNumber addResult = MULTIPLY.apply(cn1, cn2);
+        ComplexNumber multResult = Operation.MULTIPLY.apply(cn1, cn2);
 
-        assertEquals(new ComplexNumber(-1.0, 1.0), addResult);
+        assertEquals(new ComplexNumber(-1.0, 1.0), multResult);
     }
 
     @Test
@@ -120,9 +119,9 @@ public class LapinArtemTest {
         ComplexNumber cn1 = new ComplexNumber(1.0, 1.0);
         ComplexNumber cn2 = new ComplexNumber(0.0, 0.0);
 
-        ComplexNumber addResult = cn1.multiply(cn2);
+        ComplexNumber multResult = cn1.multiply(cn2);
 
-        assertEquals(new ComplexNumber(0.0, 0.0), addResult);
+        assertEquals(new ComplexNumber(0.0, 0.0), multResult);
     }
 
     @Test
@@ -131,9 +130,9 @@ public class LapinArtemTest {
         ComplexNumber cn1 = new ComplexNumber(1.0, 1.0);
         ComplexNumber cn2 = new ComplexNumber(-2.0, -2.0);
 
-        ComplexNumber addResult = cn1.multiply(cn2);
+        ComplexNumber multResult = cn1.multiply(cn2);
 
-        assertEquals(new ComplexNumber(0.0, -4.0), addResult);
+        assertEquals(new ComplexNumber(0.0, -4.0), multResult);
     }
 
     @Test
