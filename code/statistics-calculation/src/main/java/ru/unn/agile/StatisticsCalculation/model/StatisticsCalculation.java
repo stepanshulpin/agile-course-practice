@@ -22,6 +22,8 @@ public class StatisticsCalculation {
         checkArraysSize(values, probabilities);
         Double result = 0.0;
         for (int i = 0; i < values.length; i++) {
+            if (values[i] == null) throw new IllegalArgumentException("Array should be initialized!");
+            if (probabilities[i] == null) throw new IllegalArgumentException("Array should be initialized!");
             result += values[i].doubleValue() * probabilities[i];
         }
         return result;
