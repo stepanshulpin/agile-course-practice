@@ -6,6 +6,7 @@ public class DistributionChecker {
         checkArraysInitialization(probabilities);
         checkArraysSize(values, probabilities);
         checkProbability(probabilities);
+        checkProbabilitySum(probabilities);
     }
 
     private static void checkArraysInitialization(final Number[] array){
@@ -32,6 +33,16 @@ public class DistributionChecker {
         for (int i=0;i<probabilities.length;i++){
             if (probabilities[i]>max || probabilities[i]<min)
                 throw new IllegalArgumentException("Probability should be more than 0.0 and less than 1.0!");
+        }
+    }
+
+    private static void checkProbabilitySum(final Double[] probabilities){
+        double sum = 0.0;
+        for (int i=0;i<probabilities.length;i++){
+            sum += probabilities[i];
+        }
+        if (sum > 1.0){
+            throw new IllegalArgumentException("Probabilities sum should be equal 1.0!");
         }
     }
 }

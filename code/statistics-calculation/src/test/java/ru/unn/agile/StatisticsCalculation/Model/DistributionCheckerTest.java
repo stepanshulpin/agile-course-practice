@@ -102,4 +102,13 @@ public class DistributionCheckerTest {
 
         checker.validate(values, probabilities);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenValidateProbsWithSumMoreOne() {
+        Integer[] values = {1, 2, 3};
+        Double[] probabilities = {0.1, 0.9, 0.1};
+        DistributionChecker checker = new DistributionChecker();
+
+        checker.validate(values, probabilities);
+    }
 }
