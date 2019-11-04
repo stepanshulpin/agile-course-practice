@@ -7,7 +7,7 @@ class ConverterCelsiusKelvin {
     }
 
     KelvinTemperature convertToKelvin(final CelsiusTemperature celsius) {
-        final double shift =  273.15;
+        final double shift = 273.15;
         return new KelvinTemperature(celsius.getValue() + shift);
     }
 }
