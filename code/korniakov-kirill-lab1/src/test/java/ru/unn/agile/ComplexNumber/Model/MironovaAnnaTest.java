@@ -12,4 +12,14 @@ public class MironovaAnnaTest {
 
         assertNotNull(z);
     }
+
+    @Test
+    public void canCreateComplexNumberWithStringArguments() {
+        final String re = "1.0";
+        final String im = "1.0";
+
+        ComplexNumber z = new ComplexNumber(re, im);
+
+        assertNotNull(z);
+    }
 }
