@@ -1,58 +1,63 @@
 package ru.unn.agile.StatisticsCalculation.model;
 
 public class DistributionChecker {
-    public static void validate(final Number[] values,final Double[] probabilities) {
+    public static void validate(final Number[] values, final Double[] probabilities) {
         checkValues(values);
         checkProbabilities(probabilities);
         compareArraysSize(values, probabilities);
     }
 
-    private static void checkValues(final Number[] values){
+    private static void checkValues(final Number[] values) {
         checkArraysInitialization(values);
     }
 
-    private static void checkProbabilities(final Double[] probabilities){
+    private static void checkProbabilities(final Double[] probabilities) {
         checkArraysInitialization(probabilities);
         checkEachProbability(probabilities);
         checkProbabilitiesSum(probabilities);
     }
 
-    private static void checkArraysInitialization(final Number[] array){
+    private static void checkArraysInitialization(final Number[] array) {
         if (array == null) {
             throw new IllegalArgumentException("Array should not be null!");
         }
         if (array.length == 0) {
             throw new IllegalArgumentException("Array's length should be more 0!");
         }
-        for (int i = 0; i< array.length;i++){
-            if (array[i] == null) throw new IllegalArgumentException("Array's elements should not be null!");
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == null) {
+                throw new IllegalArgumentException("Array's elements should not be null!");
+            }
         }
     }
 
-    private static void compareArraysSize(final Number[] values, final Double[] probabilities){
+    private static void compareArraysSize(final Number[] values, final Double[] probabilities) {
         if (values.length != probabilities.length) {
-            throw new IllegalArgumentException("Values and probabilities arrays should have the same size!");
+            throw new IllegalArgumentException("Values and probabilities arrays " +
+                    "should have the same size!");
         }
     }
 
-    private static void checkEachProbability(final Double[] probabilities){
+    private static void checkEachProbability(final Double[] probabilities) {
         Double min = 0.0;
         Double max = 1.0;
-        for (int i=0;i<probabilities.length;i++){
-            if (probabilities[i]>max || probabilities[i]<min)
-                throw new IllegalArgumentException("Probabilities' elements should be more than 0.0 and less than 1.0!");
+        for (int i = 0; i < probabilities.length; i++) {
+            if (probabilities[i] > max || probabilities[i] < min) {
+                throw new IllegalArgumentException("Probabilities' elements " +
+                        "should be more than 0.0 and less than 1.0!");
+            }
         }
     }
 
-    private static void checkProbabilitiesSum(final Double[] probabilities){
+    private static void checkProbabilitiesSum(final Double[] probabilities) {
         double sum = 0.0;
         final double expectedSum = 1.0;
         final double delta = 0.001;
 
-        for (int i=0;i<probabilities.length;i++){
+        for (int i = 0; i < probabilities.length; i++) {
             sum += probabilities[i];
         }
-        if (Math.abs(expectedSum - sum) > delta){
+        if (Math.abs(expectedSum - sum) > delta) {
             throw new IllegalArgumentException("Probabilities sum should be equal 1.0!");
         }
     }
