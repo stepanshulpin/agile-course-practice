@@ -141,4 +141,31 @@ public class StatisticsCalculationTest {
 
         calculator.calculateExpectedValue (values, probabilities);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCalculateExpectedValueForNullValuesAndProbs() {
+        Integer[] values = null;
+        double[] probabilities = null;
+        StatisticsCalculation calculator = new StatisticsCalculation();
+
+        calculator.calculateExpectedValue (values, probabilities);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCalculateExpectedValueForNullValues() {
+        Integer[] values = null;
+        double[] probabilities = {1.0};
+        StatisticsCalculation calculator = new StatisticsCalculation();
+
+        calculator.calculateExpectedValue (values, probabilities);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCalculateExpectedValueForNullProbs() {
+        Integer[] values = {1};
+        double[] probabilities = null;
+        StatisticsCalculation calculator = new StatisticsCalculation();
+
+        calculator.calculateExpectedValue (values, probabilities);
+    }
 }
