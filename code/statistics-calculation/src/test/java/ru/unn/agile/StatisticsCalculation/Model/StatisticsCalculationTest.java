@@ -71,18 +71,6 @@ public class StatisticsCalculationTest {
     }
 
     @Test
-    public void canCalculateExpectedValueForEmptyValues() {
-        Integer[] values = {};
-        double[] probabilities = {};
-        StatisticsCalculation calculator = new StatisticsCalculation();
-        double expectedValue = 0.0;
-
-        double realExpectedValue = calculator.calculateExpectedValue (values, probabilities);
-
-        assertEquals(expectedValue, realExpectedValue, delta);
-    }
-
-    @Test
     public void canCalculateExpectedValueForDouble() {
         Double[] values = {-1.0,  3.0};
         double[] probabilities = {0.2, 0.8};
@@ -125,5 +113,14 @@ public class StatisticsCalculationTest {
         double realExpectedValue = calculator.calculateExpectedValue (values, probabilities);
 
         assertEquals(expectedValue, realExpectedValue, delta);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCalculateExpectedValueForEmptyValuesAndProbs() {
+        Integer[] values = {};
+        double[] probabilities = {};
+        StatisticsCalculation calculator = new StatisticsCalculation();
+
+        calculator.calculateExpectedValue (values, probabilities);
     }
 }
