@@ -42,4 +42,9 @@ public class TemperatureConverter {
         final CelsiusTemperature celsius = convertToCelsius(kelvin);
         return convertToFahrenheit(celsius);
     }
+
+    public NewtonTemperature convertToNewton(final KelvinTemperature kelvin) {
+        final CelsiusTemperature celsius = convertToCelsius(kelvin);
+        return convertToNewton(celsius);
+    }
 }
