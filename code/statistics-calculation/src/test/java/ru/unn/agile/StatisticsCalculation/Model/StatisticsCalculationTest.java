@@ -43,4 +43,16 @@ public class StatisticsCalculationTest {
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
+
+    @Test
+    public void canCalculateExpectedValueForTwoDimValues() {
+        int[] values = {-1 , 3};
+        double[] probabilities = {0.5 , 0.5};
+        StatisticsCalculation calculator = new StatisticsCalculation();
+        double expectedValue = 1.0;
+
+        double realExpectedValue = calculator.calculateExpectedValue (values, probabilities);
+
+        assertEquals(expectedValue, realExpectedValue, delta);
+    }
 }
