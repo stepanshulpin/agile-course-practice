@@ -7,7 +7,7 @@ public class TemperatureConverter {
         return new FahrenheitTemperature(coefficient * celsius.getValue() + shift);
     }
 
-    public KelvinTemperature convertToKelvin(CelsiusTemperature celsius) {
+    public KelvinTemperature convertToKelvin(final CelsiusTemperature celsius) {
         final double shift =  273.15;
         return new KelvinTemperature(celsius.getValue() + shift);
     }
