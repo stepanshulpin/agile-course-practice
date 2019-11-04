@@ -13,6 +13,9 @@ public class StatisticsCalculation {
     public static double calculateExpectedValue(final Number[] values, final Double[] probabilities) {
         checkArraysInitialization(values);
         checkArraysInitialization(probabilities);
+        if (values.length != probabilities.length) {
+            throw new IllegalArgumentException("Values and probabilities arrays should have the same dimension!");
+        }
         Double result = 0.0;
         for (int i = 0; i < values.length; i++) {
             result += values[i].doubleValue() * probabilities[i];

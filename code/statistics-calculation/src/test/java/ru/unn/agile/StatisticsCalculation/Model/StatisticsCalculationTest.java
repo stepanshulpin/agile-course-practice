@@ -168,4 +168,13 @@ public class StatisticsCalculationTest {
 
         calculator.calculateExpectedValue (values, probabilities);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCalculateExpectedValueForNotEqualsValsAndProbs() {
+        Integer[] values = {1, 2, 3};
+        Double[] probabilities = {0.1, 0.9};
+        StatisticsCalculation calculator = new StatisticsCalculation();
+
+        calculator.calculateExpectedValue (values, probabilities);
+    }
 }
