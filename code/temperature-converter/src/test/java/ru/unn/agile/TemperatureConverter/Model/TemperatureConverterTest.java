@@ -1,10 +1,11 @@
 package ru.unn.agile.TemperatureConverter.Model;
 
 import org.junit.Test;
-import ru.unn.agile.TemperatureConverter.model.TemperatureConverter;
 import ru.unn.agile.TemperatureConverter.model.CelsiusTemperature;
 import ru.unn.agile.TemperatureConverter.model.FahrenheitTemperature;
 import ru.unn.agile.TemperatureConverter.model.KelvinTemperature;
+import ru.unn.agile.TemperatureConverter.model.NewtonTemperature;
+import ru.unn.agile.TemperatureConverter.model.TemperatureConverter;
 
 import static org.junit.Assert.*;
 
@@ -39,5 +40,25 @@ public class TemperatureConverterTest {
         KelvinTemperature kelvin = converter.convertToKelvin(celsius);
 
         assertEquals(273.15, kelvin.getValue(), delta);
+    }
+
+    @Test
+    public void canConvertCelsius0ToNewton0() {
+        TemperatureConverter converter = new TemperatureConverter();
+        CelsiusTemperature celsius = new CelsiusTemperature(0.0);
+
+        NewtonTemperature newton = converter.convertToNewton(celsius);
+
+        assertEquals(0, newton.getValue(), delta);
+    }
+
+    @Test
+    public void canConvertCelsius33ToNewton10() {
+        TemperatureConverter converter = new TemperatureConverter();
+        CelsiusTemperature celsius = new CelsiusTemperature(33.0);
+
+        NewtonTemperature newton = converter.convertToNewton(celsius);
+
+        assertEquals(10.89, newton.getValue(), delta);
     }
 }

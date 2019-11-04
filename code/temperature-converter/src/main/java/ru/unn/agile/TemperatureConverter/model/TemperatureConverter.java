@@ -11,4 +11,9 @@ public class TemperatureConverter {
         final double shift =  273.15;
         return new KelvinTemperature(celsius.getValue() + shift);
     }
+
+    public NewtonTemperature convertToNewton(final CelsiusTemperature celsius) {
+        final double coefficient = 33.0 / 100.0;
+        return new NewtonTemperature(coefficient * celsius.getValue());
+    }
 }
