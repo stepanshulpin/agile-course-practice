@@ -19,4 +19,16 @@ public final class LengthConverter {
     public static double meterToMillimeter(final double meter) {
         return convert(meter, ConverterConstants.METER_TO_MILLIMETER);
     }
+
+    public static double meterToMile(final double meter) {
+        return convert(meter, ConverterConstants.METER_TO_MILE);
+    }
+
+    public static double centimeterToMeter(final double cm) {
+        return cm / ConverterConstants.METER_TO_CENTIMETER;
+    }
+
+    public static double centimeterToKilometer(final double cm) {
+        return cm / ConverterConstants.METER_TO_CENTIMETER * ConverterConstants.METER_TO_KILOMETER;
+    }
 }

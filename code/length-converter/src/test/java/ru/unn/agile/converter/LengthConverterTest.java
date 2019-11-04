@@ -25,4 +25,22 @@ public class LengthConverterTest {
         double mm = LengthConverter.meterToMillimeter(2);
         assertEquals(2000, mm, delta);
     }
+
+    @Test
+    public void canConvertMeterToMile() {
+        double mile = LengthConverter.meterToMile(10000);
+        assertEquals(6.213712, mile, delta);
+    }
+
+    @Test
+    public void canConvertCentimeterToMeter() {
+        double meter = LengthConverter.centimeterToMeter(250);
+        assertEquals(2.5, meter, delta);
+    }
+
+    @Test
+    public void canConvertCentimeterToKilometer() {
+        double km = LengthConverter.centimeterToKilometer(35000);
+        assertEquals(0.35, km, delta);
+    }
 }
