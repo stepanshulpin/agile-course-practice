@@ -3,14 +3,8 @@ package ru.unn.agile.StatisticsCalculation.model;
 public class StatisticsCalculation {
     public static double calculateExpectedValue(final int[] values, final double[] probabilities) {
         double result = 0.0;
-        if(values.length == 1){
-           result = (double)values[0];
-        }
-        else if (values.length == 2){
-            result =  values[0] * probabilities[0] + values[1]*probabilities[1];
-        }
-        else if (values.length == 3){
-            result =  values[0] * probabilities[0] + values[1]*probabilities[1] + values[2]*probabilities[2];
+        for (int i = 0; i < values.length; i++) {
+            result += values[i] * probabilities[i];
         }
         return result;
     }
