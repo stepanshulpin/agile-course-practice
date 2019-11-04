@@ -10,12 +10,16 @@ public class StatisticsCalculation {
         }
     }
 
-    public static double calculateExpectedValue(final Number[] values, final Double[] probabilities) {
-        checkArraysInitialization(values);
-        checkArraysInitialization(probabilities);
+    private static void checkArraysSize(final Number[] values, final Double[] probabilities){
         if (values.length != probabilities.length) {
             throw new IllegalArgumentException("Values and probabilities arrays should have the same dimension!");
         }
+    }
+
+    public static double calculateExpectedValue(final Number[] values, final Double[] probabilities) {
+        checkArraysInitialization(values);
+        checkArraysInitialization(probabilities);
+        checkArraysSize(values, probabilities);
         Double result = 0.0;
         for (int i = 0; i < values.length; i++) {
             result += values[i].doubleValue() * probabilities[i];
