@@ -101,4 +101,14 @@ public class TemperatureConverterTest {
 
         assertEquals(0.0, newton.getValue(), delta);
     }
+
+    @Test
+    public void canConvertKelvin0ToCelsiumAbsoluteZero() {
+        TemperatureConverter converter = new TemperatureConverter();
+        KelvinTemperature kelvin = new KelvinTemperature(0.0);
+
+        CelsiusTemperature celsius = converter.convertToCelsius(kelvin);
+
+        assertEquals(-273.15, celsius.getValue(), delta);
+    }
 }

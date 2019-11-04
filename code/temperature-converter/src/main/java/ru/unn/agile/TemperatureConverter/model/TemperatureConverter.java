@@ -32,4 +32,9 @@ public class TemperatureConverter {
         final CelsiusTemperature celsius = convertToCelsius(fahrenheit);
         return convertToNewton(celsius);
     }
+
+    public CelsiusTemperature convertToCelsius(final KelvinTemperature kelvin) {
+        final double shift = 273.15;
+        return new CelsiusTemperature(kelvin.getValue() - shift);
+    }
 }
