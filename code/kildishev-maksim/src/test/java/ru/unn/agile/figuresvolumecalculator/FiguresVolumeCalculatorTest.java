@@ -63,6 +63,11 @@ public class FiguresVolumeCalculatorTest {
         FiguresVolumeCalculator.cylinderVolumeCalculate(-3, 3);
     }
 
+    @Test
+    public void canCalculateConeVolumeWithZeroHeight() {
+        assertEquals(0, FiguresVolumeCalculator.coneVolumeCalculate(1,0), delta);
+    }
+
 
 
 

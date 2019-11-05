@@ -26,4 +26,8 @@ public final class FiguresVolumeCalculator {
         }
         return Math.PI * Math.pow(baseRadius, MathConstants.TWO) * Math.abs(height);
     }
+
+    public static double coneVolumeCalculate(final double baseRadius, final double height) {
+        return 0;
+    }
 }
