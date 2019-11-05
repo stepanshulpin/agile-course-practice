@@ -198,4 +198,17 @@ public class StatisticsCalculationTest {
 
         assertEquals(dispersion, realDispersion, delta);
     }
+
+    @Test
+    public void canCalculateDispersionForBigDimValues() {
+        Number[] values = createSequentialValues(1000);
+        Double[] probabilities = new Double[1000];
+        Arrays.fill(probabilities, 0.001);
+        Double dispersion = 83333.25;
+
+        Double realDispersion = StatisticsCalculation.calculateDispersion(values,
+                probabilities);
+
+        assertEquals(dispersion, realDispersion, delta);
+    }
 }
