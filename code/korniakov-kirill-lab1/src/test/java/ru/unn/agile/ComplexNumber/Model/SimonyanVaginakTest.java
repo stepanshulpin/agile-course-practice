@@ -32,18 +32,18 @@ public class SimonyanVaginakTest {
         ComplexNumber complexNumber2 = new ComplexNumber("4.5", "3.1");
 
         ComplexNumber sum = complexNumber1.add(complexNumber2);
-        assertEquals(sum, new ComplexNumber("7.6", "7.6"));
+        assertEquals(new ComplexNumber("7.6", "7.6"), sum);
     }
 
     @Test
     public void canGetRealPart() {
         ComplexNumber complexNumber1 = new ComplexNumber("3.1", "4.5");
-        assertEquals(complexNumber1.getReal(), 3.1, compareDelta);
+        assertEquals(3.1, complexNumber1.getReal(), compareDelta);
     }
 
     @Test
     public void canGetImaginaryPart() {
         ComplexNumber complexNumber1 = new ComplexNumber("3.1", "4.5");
-        assertEquals(complexNumber1.getImaginary(), 4.5, compareDelta);
+        assertEquals(4.5, complexNumber1.getImaginary(), compareDelta);
     }
 }
