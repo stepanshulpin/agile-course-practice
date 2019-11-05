@@ -266,4 +266,17 @@ public class StatisticsCalculationTest {
 
         assertEquals(rawMoment, realRawMoment, delta);
     }
+
+    @Test
+    public void canCalculateBigOrderRawMoment() {
+        Number[] values = {1.0, 5.0};
+        Double[] probabilities = {0.5, 0.5};
+        Integer order = 10;
+        Double rawMoment = 4882813.0;
+
+        Double realRawMoment = StatisticsCalculation.calculateRawMoment(values,
+                probabilities, order);
+
+        assertEquals(rawMoment, realRawMoment, delta);
+    }
 }
