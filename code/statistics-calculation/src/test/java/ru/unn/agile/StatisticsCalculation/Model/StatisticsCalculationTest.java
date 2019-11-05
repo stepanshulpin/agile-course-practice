@@ -253,4 +253,17 @@ public class StatisticsCalculationTest {
 
         assertEquals(rawMoment, realRawMoment, delta);
     }
+
+    @Test
+    public void canCalculateThirdOrderRawMoment() {
+        Number[] values = {1.0, 5.0};
+        Double[] probabilities = {0.5, 0.5};
+        Integer order = 3;
+        Double rawMoment = 63.0;
+
+        Double realRawMoment = StatisticsCalculation.calculateRawMoment(values,
+                probabilities, order);
+
+        assertEquals(rawMoment, realRawMoment, delta);
+    }
 }

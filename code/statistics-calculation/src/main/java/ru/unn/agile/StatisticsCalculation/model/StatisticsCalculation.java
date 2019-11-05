@@ -30,6 +30,13 @@ public final class StatisticsCalculation {
             }
             return result;
         }
+        else if (order == 3) {
+            Double result = 0.0;
+            for (int i = 0; i < values.length; i++) {
+                result += probabilities[i] * Math.pow((values[i].doubleValue()), 3);
+            }
+            return result;
+        }
         return calculateExpectedValue(values, probabilities);
     }
 
