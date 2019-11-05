@@ -31,10 +31,12 @@ public final class FiguresVolumeCalculator {
         if (baseRadius < 0) {
             throw new IllegalArgumentException("Radius can't be negative");
         }
-        return MathConstants.ONE_THIRD * Math.PI * Math.pow(baseRadius, MathConstants.TWO) * Math.abs(height);
+        return MathConstants.ONE_THIRD * Math.PI
+                * Math.pow(baseRadius, MathConstants.TWO) * Math.abs(height);
     }
 
-    public static double parallelepipedVolumeCalculate(final double baseSquare, final double height) {
+    public static double parallelepipedVolumeCalculate(final double baseSquare,
+                                                       final double height) {
         return 0;
     }
 }
