@@ -279,4 +279,18 @@ public class StatisticsCalculationTest {
 
         assertEquals(rawMoment, realRawMoment, delta);
     }
+
+    @Test
+    public void canCalculateSecondOrderRawMomentForBigDist() {
+        Number[] values = createSequentialValues(1000);
+        Double[] probabilities = new Double[1000];
+        Arrays.fill(probabilities, 0.001);
+        Integer order = 2;
+        Double rawMoment = 332833.5;
+
+        Double realRawMoment = StatisticsCalculation.calculateRawMoment(values,
+                probabilities, order);
+
+        assertEquals(rawMoment, realRawMoment, delta);
+    }
 }
