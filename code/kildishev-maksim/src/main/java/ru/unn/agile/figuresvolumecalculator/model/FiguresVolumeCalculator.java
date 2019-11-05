@@ -28,6 +28,9 @@ public final class FiguresVolumeCalculator {
     }
 
     public static double coneVolumeCalculate(final double baseRadius, final double height) {
+        if (baseRadius < 0) {
+            throw new IllegalArgumentException("Radius can't be negative");
+        }
         return MathConstants.ONE_THIRD * Math.PI * Math.pow(baseRadius, MathConstants.TWO) * Math.abs(height);
     }
 }
