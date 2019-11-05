@@ -83,4 +83,9 @@ public class FiguresVolumeCalculatorTest {
         assertEquals(9, FiguresVolumeCalculator.parallelepipedVolumeCalculate(3, 3), delta);
     }
 
+    @Test
+    public void canCalculateParallelepipedVolumeWithNegativeHeight() {
+        assertEquals(9, FiguresVolumeCalculator.parallelepipedVolumeCalculate(3, -3), delta);
+    }
+
 }

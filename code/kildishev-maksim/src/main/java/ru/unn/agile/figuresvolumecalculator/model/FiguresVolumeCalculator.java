@@ -37,6 +37,6 @@ public final class FiguresVolumeCalculator {
 
     public static double parallelepipedVolumeCalculate(final double baseSquare,
                                                        final double height) {
-        return baseSquare * height;
+        return baseSquare * Math.abs(height);
     }
 }
