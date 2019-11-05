@@ -311,4 +311,18 @@ public class StatisticsCalculationTest {
 
         StatisticsCalculation.calculateRawMoment(values, probabilities, order);
     }
+
+    @Test
+    public void canCalculateFirstOrderCentralMoment() {
+        Number[] values = {1.0, 5.0};
+        Double[] probabilities = {0.5, 0.5};
+        Integer order = 1;
+        Double centralMoment = 0.0;
+
+        Double realCentralMoment = StatisticsCalculation.calculateCentralMoment(values,
+                probabilities, order);
+
+        assertEquals(centralMoment, realCentralMoment, delta);
+    }
+
 }
