@@ -47,6 +47,7 @@ public final class FiguresVolumeCalculator {
         if (edgeLength < 0) {
             throw new IllegalArgumentException("Edge can't be negative");
         }
-        return MathConstants.ONE_THIRD * Math.sqrt(MathConstants.TWO) * Math.pow(edgeLength, MathConstants.THREE);
+        return MathConstants.ONE_THIRD * Math.sqrt(MathConstants.TWO)
+                * Math.pow(edgeLength, MathConstants.THREE);
     }
 }
