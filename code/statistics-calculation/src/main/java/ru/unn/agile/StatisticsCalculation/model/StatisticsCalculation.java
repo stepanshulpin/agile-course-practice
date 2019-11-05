@@ -30,12 +30,18 @@ public final class StatisticsCalculation {
 
     public static Double calculateCentralMoment(final Number[] values,
                                             final Double[] probabilities, final Integer order) {
-        Double expectedValue = calculateExpectedValue(values,probabilities);
-        Double result = 0.0;
-        for(int i = 0; i < values.length; i++) {
-            result += probabilities[i] * (values[i].doubleValue() - expectedValue);
+        if (order == 2 )
+        {
+            return calculateDispersion(values, probabilities);
         }
-        return result;
+        else {
+            Double expectedValue = calculateExpectedValue(values, probabilities);
+            Double result = 0.0;
+            for (int i = 0; i < values.length; i++) {
+                result += probabilities[i] * (values[i].doubleValue() - expectedValue);
+            }
+            return result;
+        }
     }
 
     private StatisticsCalculation() { }
