@@ -19,13 +19,8 @@ public final class StatisticsCalculation {
 
     public static Double calculateCentralMoment(final Number[] values,
                                             final Double[] probabilities, final Integer order) {
-        MomentOrderChecker.checkOrder(order);
         Double expectedValue = calculateExpectedValue(values, probabilities);
-        Double result = 0.0;
-        for (int i = 0; i < values.length; i++) {
-            result += probabilities[i] * Math.pow((values[i].doubleValue() - expectedValue), order);
-        }
-        return result;
+        return calculateMoment(values, probabilities, order, expectedValue);
     }
 
     private static Double calculateMoment(final Number[] values,
