@@ -23,6 +23,13 @@ public final class StatisticsCalculation {
 
     public static Double calculateRawMoment(final Number[] values,
                                              final Double[] probabilities, final Integer order) {
+        if (order == 2) {
+            Double result = 0.0;
+            for (int i = 0; i < values.length; i++) {
+                result += probabilities[i] * Math.pow((values[i].doubleValue()), 2);
+            }
+            return result;
+        }
         return calculateExpectedValue(values, probabilities);
     }
 
