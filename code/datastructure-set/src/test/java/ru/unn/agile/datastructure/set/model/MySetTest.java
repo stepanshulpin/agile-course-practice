@@ -29,4 +29,11 @@ public class MySetTest {
         mySet.add("second row");
         Assert.assertEquals(mySet.size(), 2);
     }
+
+    @Test
+    public void canCheckEmpty() {
+        MySet mySet = new MySet();
+        Assert.assertTrue(mySet.isEmpty());
+    }
+
 }

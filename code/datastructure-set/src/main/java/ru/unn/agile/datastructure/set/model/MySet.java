@@ -19,4 +19,9 @@ public class MySet<E> {
     public Boolean add(final E e) {
         return this.container.add(e);
     }
+
+    public Boolean isEmpty() {
+        return this.container.isEmpty();
+    }
+
 }
