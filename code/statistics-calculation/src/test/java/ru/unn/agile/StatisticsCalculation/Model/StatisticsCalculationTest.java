@@ -338,4 +338,16 @@ public class StatisticsCalculationTest {
         assertEquals(centralMoment, realCentralMoment, delta);
     }
 
+    @Test
+    public void canCalculateThirdOrderCentralMoment() {
+        Number[] values = {1.0, 5.0};
+        Double[] probabilities = {0.4, 0.6};
+        Integer order = 3;
+        Double centralMoment = -3.072;
+
+        Double realCentralMoment = StatisticsCalculation.calculateCentralMoment(values,
+                probabilities, order);
+
+        assertEquals(centralMoment, realCentralMoment, delta);
+    }
 }
