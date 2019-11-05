@@ -6,6 +6,7 @@ import org.junit.Test;
 public class MySetTest {
     @Test
     public void canInitDefaultConstructor() {
-       Assert.assertTrue(true);
+        MySet mySet = new MySet();
+        Assert.assertNotNull(mySet);
     }
 }
