@@ -8,12 +8,7 @@ public final class StatisticsCalculation {
 
     public static Double calculateDispersion(final Number[] values,
                                              final Double[] probabilities) {
-        Double result = 0.0;
-        Double expectedValue = calculateExpectedValue(values, probabilities);
-        for (int i = 0; i < values.length; i++) {
-            result += probabilities[i] * Math.pow((values[i].doubleValue() - expectedValue), 2);
-        }
-        return result;
+        return calculateCentralMoment(values, probabilities, 2);
     }
 
     public static Double calculateRawMoment(final Number[] values,
