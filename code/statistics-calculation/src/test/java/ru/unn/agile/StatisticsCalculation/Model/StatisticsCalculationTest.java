@@ -377,4 +377,22 @@ public class StatisticsCalculationTest {
 
         assertEquals(centralMoment, realCentralMoment, delta);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCalculateCentralMomentWithIncorrectOrder() {
+        Integer[] values = {1, 2, 3};
+        Double[] probabilities = {0.1, 0.8, 0.1};
+        Integer order = 0;
+
+        StatisticsCalculation.calculateCentralMoment(values, probabilities, order);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCalculateCentralMomentForIncorrectDistribution() {
+        Integer[] values = {1, 2, 3};
+        Double[] probabilities = {0.1, 0.9};
+        Integer order = 2;
+
+        StatisticsCalculation.calculateCentralMoment(values, probabilities, order);
+    }
 }
