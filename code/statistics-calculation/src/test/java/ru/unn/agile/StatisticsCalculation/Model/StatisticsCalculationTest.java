@@ -14,9 +14,9 @@ public class StatisticsCalculationTest {
     public void canCalculateExpectedValueForConstantOne() {
         Integer[] values = {1};
         Double[] probabilities = {1.0};
-        double expectedValue = 1.0;
+        Double expectedValue = 1.0;
 
-        double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
+        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
                 probabilities);
 
         assertEquals(expectedValue, realExpectedValue, delta);
@@ -26,9 +26,9 @@ public class StatisticsCalculationTest {
     public void canCalculateExpectedValueForConstantTwo() {
         Integer[] values = {2};
         Double[] probabilities = {1.0};
-        double expectedValue = 2.0;
+        Double expectedValue = 2.0;
 
-        double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
+        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
                 probabilities);
 
         assertEquals(expectedValue, realExpectedValue, delta);
@@ -38,9 +38,9 @@ public class StatisticsCalculationTest {
     public void canCalculateExpectedValueForConstantMinusOne() {
         Integer[] values = {-1};
         Double[] probabilities = {1.0};
-        double expectedValue = -1.0;
+        Double expectedValue = -1.0;
 
-        double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
+        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
                 probabilities);
 
         assertEquals(expectedValue, realExpectedValue, delta);
@@ -50,9 +50,9 @@ public class StatisticsCalculationTest {
     public void canCalculateExpectedValueForTwoDimValues() {
         Integer[] values = {-1, 3};
         Double[] probabilities = {0.5, 0.5};
-        double expectedValue = 1.0;
+        Double expectedValue = 1.0;
 
-        double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
+        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
                 probabilities);
 
         assertEquals(expectedValue, realExpectedValue, delta);
@@ -62,9 +62,9 @@ public class StatisticsCalculationTest {
     public void canCalculateExpectedValueForThreeDimValues() {
         Integer[] values = {-1, 3, 5};
         Double[] probabilities = {0.2, 0.3, 0.5};
-        double expectedValue = 3.2;
+        Double expectedValue = 3.2;
 
-        double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
+        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
                 probabilities);
 
         assertEquals(expectedValue, realExpectedValue, delta);
@@ -74,9 +74,9 @@ public class StatisticsCalculationTest {
     public void canCalculateExpectedValueForDouble() {
         Double[] values = {-1.0,  3.0};
         Double[] probabilities = {0.2, 0.8};
-        double expectedValue = 2.2;
+        Double expectedValue = 2.2;
 
-        double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
+        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
                 probabilities);
 
         assertEquals(expectedValue, realExpectedValue, delta);
@@ -86,9 +86,9 @@ public class StatisticsCalculationTest {
     public void canCalculateExpectedValueForDoubleAndInteger() {
         Number[] values = {-1.0,  3, 5.0};
         Double[] probabilities = {0.2, 0.4, 0.4};
-        double expectedValue = 3.0;
+        Double expectedValue = 3.0;
 
-        double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
+        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
                 probabilities);
 
         assertEquals(expectedValue, realExpectedValue, delta);
@@ -107,9 +107,9 @@ public class StatisticsCalculationTest {
         Number[] values = createSequentialValues(1000);
         Double[] probabilities = new Double[1000];
         Arrays.fill(probabilities, 0.001);
-        double expectedValue = 499.5;
+        Double expectedValue = 499.5;
 
-        double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
+        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
                 probabilities);
 
         assertEquals(expectedValue, realExpectedValue, delta);
@@ -119,9 +119,9 @@ public class StatisticsCalculationTest {
     public void canCalculateDispersionForConstantOne() {
         Number[] values = {1.0};
         Double[] probabilities = {1.0};
-        double dispersion = 0.0;
+        Double dispersion = 0.0;
 
-        double realDispersion = StatisticsCalculation.calculateDispersion(values,
+        Double realDispersion = StatisticsCalculation.calculateDispersion(values,
                 probabilities);
 
         assertEquals(dispersion, realDispersion, delta);
@@ -131,9 +131,9 @@ public class StatisticsCalculationTest {
     public void canCalculateDispersionForConstantMinusOne() {
         Number[] values = {-1.0};
         Double[] probabilities = {1.0};
-        double dispersion = 0.0;
+        Double dispersion = 0.0;
 
-        double realDispersion = StatisticsCalculation.calculateDispersion(values,
+        Double realDispersion = StatisticsCalculation.calculateDispersion(values,
                 probabilities);
 
         assertEquals(dispersion, realDispersion, delta);
@@ -143,9 +143,9 @@ public class StatisticsCalculationTest {
     public void canCalculateDispersionForTwoDimValues1() {
         Number[] values = {-1.0, 4.0};
         Double[] probabilities = {0.7, 0.3};
-        double dispersion = 5.25;
+        Double dispersion = 5.25;
 
-        double realDispersion = StatisticsCalculation.calculateDispersion(values,
+        Double realDispersion = StatisticsCalculation.calculateDispersion(values,
                 probabilities);
 
         assertEquals(dispersion, realDispersion, delta);
@@ -155,9 +155,9 @@ public class StatisticsCalculationTest {
     public void canCalculateDispersionForTwoDimValues2() {
         Number[] values = {-3.0, 1.0};
         Double[] probabilities = {0.7, 0.3};
-        double dispersion = 3.36;
+        Double dispersion = 3.36;
 
-        double realDispersion = StatisticsCalculation.calculateDispersion(values,
+        Double realDispersion = StatisticsCalculation.calculateDispersion(values,
                 probabilities);
 
         assertEquals(dispersion, realDispersion, delta);
@@ -167,9 +167,9 @@ public class StatisticsCalculationTest {
     public void canCalculateDispersionForThreeDimValues1() {
         Number[] values = {-3.0, 1.5, 10.0};
         Double[] probabilities = {0.5, 0.2, 0.3};
-        double dispersion = 31.71;
+        Double dispersion = 31.71;
 
-        double realDispersion = StatisticsCalculation.calculateDispersion(values,
+        Double realDispersion = StatisticsCalculation.calculateDispersion(values,
                 probabilities);
 
         assertEquals(dispersion, realDispersion, delta);
@@ -179,9 +179,9 @@ public class StatisticsCalculationTest {
     public void canCalculateDispersionForThreeDimValues2() {
         Number[] values = {-3.0, -1.5, -1.0};
         Double[] probabilities = {0.1, 0.1, 0.8};
-        double dispersion = 0.3625;
+        Double dispersion = 0.3625;
 
-        double realDispersion = StatisticsCalculation.calculateDispersion(values,
+        Double realDispersion = StatisticsCalculation.calculateDispersion(values,
                 probabilities);
 
         assertEquals(dispersion, realDispersion, delta);
@@ -191,9 +191,9 @@ public class StatisticsCalculationTest {
     public void canCalculateDispersionForFiveDimValues() {
         Number[] values = {-3.0, -1.5, -1.0, 0.0, 1.0};
         Double[] probabilities = {0.1, 0.1, 0.6, 0.1, 0.1};
-        double dispersion = 0.9225;
+        Double dispersion = 0.9225;
 
-        double realDispersion = StatisticsCalculation.calculateDispersion(values,
+        Double realDispersion = StatisticsCalculation.calculateDispersion(values,
                 probabilities);
 
         assertEquals(dispersion, realDispersion, delta);

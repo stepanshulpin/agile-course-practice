@@ -1,7 +1,7 @@
 package ru.unn.agile.StatisticsCalculation.model;
 
 public final class StatisticsCalculation {
-    public static double calculateExpectedValue(final Number[] values,
+    public static Double calculateExpectedValue(final Number[] values,
                                                 final Double[] probabilities) {
         DistributionChecker.validate(values, probabilities);
         Double result = 0.0;
@@ -11,10 +11,10 @@ public final class StatisticsCalculation {
         return result;
     }
 
-    public static double calculateDispersion(final Number[] values,
+    public static Double calculateDispersion(final Number[] values,
                                              final Double[] probabilities) {
-        double result = 0.0;
-        double expectedValue = calculateExpectedValue(values, probabilities);
+        Double result = 0.0;
+        Double expectedValue = calculateExpectedValue(values, probabilities);
         for (int i = 0; i < values.length; i++) {
             result += probabilities[i] * Math.pow((values[i].doubleValue()-expectedValue), 2);
         }
