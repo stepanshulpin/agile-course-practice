@@ -2,8 +2,8 @@ package ru.unn.agile.StatisticsCalculation.model;
 
 public class MomentOrderChecker {
     public static void checkOrder(final Integer order) {
-        checkNegativeOrder(order);
         checkNullOrder(order);
+        checkNegativeOrder(order);
     }
 
     private static void checkNegativeOrder(final Integer order) {

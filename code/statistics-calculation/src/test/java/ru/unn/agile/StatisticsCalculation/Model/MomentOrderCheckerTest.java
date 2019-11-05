@@ -17,4 +17,11 @@ public class MomentOrderCheckerTest {
 
         MomentOrderChecker.checkOrder(order);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCheckZeroOrder() {
+        Integer order = 0;
+
+        MomentOrderChecker.checkOrder(order);
+    }
 }
