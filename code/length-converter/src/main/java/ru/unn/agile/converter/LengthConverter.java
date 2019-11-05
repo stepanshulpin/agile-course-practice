@@ -9,7 +9,7 @@ public class LengthConverter {
     private double value;
     private LengthType type;
 
-    private final HashMap<LengthType, Double> coefficients = new HashMap<>() {{
+    private final HashMap<LengthType, Double> converterCoefficients = new HashMap<>() {{
         put(METER, METER_TO_METER);
         put(CENTIMETER, METER_TO_CENTIMETER);
         put(KILOMETER, METER_TO_KILOMETER);
@@ -27,7 +27,7 @@ public class LengthConverter {
     }
 
     public double convert(final LengthType type) {
-        value = getMeter() * coefficients.get(type);
+        value = convertToMeter() * converterCoefficients.get(type);
         this.type = type;
         return value;
     }
@@ -44,7 +44,7 @@ public class LengthConverter {
         return type;
     }
 
-    private double getMeter() {
-        return value / coefficients.get(type);
+    private double convertToMeter() {
+        return value / converterCoefficients.get(type);
     }
 }
