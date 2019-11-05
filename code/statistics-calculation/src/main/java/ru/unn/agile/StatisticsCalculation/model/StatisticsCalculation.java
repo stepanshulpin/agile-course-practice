@@ -24,6 +24,7 @@ public final class StatisticsCalculation {
     public static Double calculateRawMoment(final Number[] values,
                                              final Double[] probabilities, final Integer order) {
 
+        DistributionChecker.validate(values, probabilities);
         MomentOrderChecker.checkOrder(order);
         Double result = 0.0;
         for (int i = 0; i < values.length; i++) {
