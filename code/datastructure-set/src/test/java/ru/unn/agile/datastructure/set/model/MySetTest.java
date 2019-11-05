@@ -21,4 +21,12 @@ public class MySetTest {
         MySet<String> mySet = new MySet<>();
         Assert.assertTrue(mySet.add("test"));
     }
+
+    @Test
+    public void canGetRealSize() {
+        MySet<String> mySet = new MySet<>();
+        mySet.add("first row");
+        mySet.add("second row");
+        Assert.assertEquals(mySet.size(), 2);
+    }
 }

@@ -1,15 +1,22 @@
 package ru.unn.agile.datastructure.set.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MySet<E> {
 
-    public MySet() { }
+    private List<E> container;
+
+    public MySet() {
+        container = new ArrayList<>();
+    }
 
 
     public int size() {
-        return 0;
+        return this.container.size();
     }
 
     public Boolean add(final E e) {
-        return true;
+        return this.container.add(e);
     }
 }
