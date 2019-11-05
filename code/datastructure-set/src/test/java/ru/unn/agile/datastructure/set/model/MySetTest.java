@@ -9,4 +9,10 @@ public class MySetTest {
         MySet mySet = new MySet();
         Assert.assertNotNull(mySet);
     }
+
+    @Test
+    public void canGetSize() {
+        MySet mySet = new MySet();
+        Assert.assertEquals(mySet.size(),  0);
+    }
 }
