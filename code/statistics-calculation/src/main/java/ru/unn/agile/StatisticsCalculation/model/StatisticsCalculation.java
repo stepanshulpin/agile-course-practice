@@ -19,6 +19,11 @@ public final class StatisticsCalculation {
             result = probabilities[0]*(values[0].doubleValue()-expectedValue)*(values[0].doubleValue()-expectedValue)
                     + probabilities[1]*(values[1].doubleValue()-expectedValue)*(values[1].doubleValue()-expectedValue);
         }
+        else if (values.length == 3) {
+            result = probabilities[0]*(values[0].doubleValue()-expectedValue)*(values[0].doubleValue()-expectedValue)
+                    + probabilities[1]*(values[1].doubleValue()-expectedValue)*(values[1].doubleValue()-expectedValue)
+                    + probabilities[2]*(values[2].doubleValue()-expectedValue)*(values[2].doubleValue()-expectedValue);
+        }
         return result;
     }
 
