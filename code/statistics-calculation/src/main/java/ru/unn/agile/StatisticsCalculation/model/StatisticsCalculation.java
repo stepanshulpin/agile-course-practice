@@ -12,13 +12,14 @@ public final class StatisticsCalculation {
     }
 
     public static Double calculateRawMoment(final Number[] values,
-                                                 final Double[] probabilities, final Integer order) {
-
+                                            final Double[] probabilities,
+                                            final Integer order) {
         return calculateMoment(values, probabilities, order, 0.0);
     }
 
     public static Double calculateCentralMoment(final Number[] values,
-                                            final Double[] probabilities, final Integer order) {
+                                                final Double[] probabilities,
+                                                final Integer order) {
         Double expectedValue = calculateExpectedValue(values, probabilities);
         return calculateMoment(values, probabilities, order, expectedValue);
     }
@@ -30,7 +31,8 @@ public final class StatisticsCalculation {
         MomentOrderChecker.checkOrder(order);
         Double result = 0.0;
         for (int i = 0; i < values.length; i++) {
-            result += probabilities[i] * Math.pow((values[i].doubleValue() - offset.doubleValue()), order);
+            result += probabilities[i] * Math.pow((values[i].doubleValue()
+                    - offset.doubleValue()), order);
         }
         return result;
     }
