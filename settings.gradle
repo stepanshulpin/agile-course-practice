@@ -78,6 +78,8 @@ project(":code/quadratic-equasion").name = "quadratic-equasion-Model"
 // Разин Вячеслав
 // Сизова Ксения
 // Симонян Вагинак
+include "code/students-performance"
+project(":code/students-performance").name = "students-performance-Model"
 // Смирнов Андрей
 // Смирнов Егор
 // Тамилина Дарья
