@@ -13,7 +13,7 @@ public class MySetTest {
     @Test
     public void canGetSize() {
         MySet mySet = new MySet();
-        Assert.assertEquals(mySet.size(),  0);
+        Assert.assertEquals(mySet.size(), 0);
     }
 
     @Test

@@ -11,7 +11,6 @@ public class MySet<E> {
         container = new ArrayList<>();
     }
 
-
     public int size() {
         return this.container.size();
     }
