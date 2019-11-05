@@ -3,12 +3,7 @@ package ru.unn.agile.StatisticsCalculation.model;
 public final class StatisticsCalculation {
     public static Double calculateExpectedValue(final Number[] values,
                                                 final Double[] probabilities) {
-        DistributionChecker.validate(values, probabilities);
-        Double result = 0.0;
-        for (int i = 0; i < values.length; i++) {
-            result += values[i].doubleValue() * probabilities[i];
-        }
-        return result;
+        return calculateRawMoment(values, probabilities, 1);
     }
 
     public static Double calculateDispersion(final Number[] values,
