@@ -115,6 +115,14 @@ public class StatisticsCalculationTest {
         assertEquals(expectedValue, realExpectedValue, delta);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCalculateExpectedValueForIncorrectDistribution() {
+        Integer[] values = {1, 2, 3, 4};
+        Double[] probabilities = {0.1, 0.3, 0.1};
+
+        StatisticsCalculation.calculateExpectedValue(values, probabilities);
+    }
+
     @Test
     public void canCalculateDispersionForConstantOne() {
         Number[] values = {1.0};
@@ -210,5 +218,13 @@ public class StatisticsCalculationTest {
                 probabilities);
 
         assertEquals(dispersion, realDispersion, delta);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCalculateDispersionForIncorrectDistribution() {
+        Integer[] values = {1, 2, 3};
+        Double[] probabilities = {0.1, 1.3, 0.1};
+
+        StatisticsCalculation.calculateDispersion(values, probabilities);
     }
 }
