@@ -37,6 +37,6 @@ public final class FiguresVolumeCalculator {
 
     public static double parallelepipedVolumeCalculate(final double baseSquare,
                                                        final double height) {
-        return 0;
+        return baseSquare * height;
     }
 }
