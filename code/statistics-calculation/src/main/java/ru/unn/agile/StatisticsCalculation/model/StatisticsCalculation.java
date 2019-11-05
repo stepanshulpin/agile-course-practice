@@ -23,6 +23,9 @@ public final class StatisticsCalculation {
 
     public static Double calculateRawMoment(final Number[] values,
                                              final Double[] probabilities, final Integer order) {
+        if (order == null) {
+            throw new IllegalArgumentException("Raw moment order should not be null!");
+        }
         if (order > 0) {
             Double result = 0.0;
             for (int i = 0; i < values.length; i++) {

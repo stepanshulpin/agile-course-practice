@@ -302,4 +302,13 @@ public class StatisticsCalculationTest {
 
         StatisticsCalculation.calculateRawMoment(values, probabilities, order);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCalculateRawMomentWithNullOrder() {
+        Integer[] values = {1, 2, 3};
+        Double[] probabilities = {0.1, 0.8, 0.1};
+        Integer order = null;
+
+        StatisticsCalculation.calculateRawMoment(values, probabilities, order);
+    }
 }
