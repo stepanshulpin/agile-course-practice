@@ -42,4 +42,8 @@ public final class FiguresVolumeCalculator {
         }
         return baseSquare * Math.abs(height);
     }
+
+    public static double octahedronVolumeCalculate(final double edgeLength) {
+        return MathConstants.ONE_THIRD * Math.sqrt(MathConstants.TWO) * Math.pow(edgeLength, MathConstants.THREE);
+    }
 }

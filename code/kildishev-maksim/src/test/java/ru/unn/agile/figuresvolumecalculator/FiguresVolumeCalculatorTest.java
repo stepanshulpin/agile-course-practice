@@ -93,4 +93,9 @@ public class FiguresVolumeCalculatorTest {
         FiguresVolumeCalculator.parallelepipedVolumeCalculate(-3, 3);
     }
 
+    @Test
+    public void canCalculateOctahedronVolume() {
+        assertEquals(12.72, FiguresVolumeCalculator.octahedronVolumeCalculate(3), delta);
+    }
+
 }
