@@ -17,7 +17,7 @@ public class IuferevKirillTest {
     @Test
     public void canFormatToString() {
         ComplexNumber complexNumber = new ComplexNumber(2.4, 4.4);
-        assertTrue("2.4 + 4.4i" == complexNumber.toString());
+        assertEquals("2.4 + 4.4i", complexNumber.toString());
     }
 
     @Test
