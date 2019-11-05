@@ -16,7 +16,7 @@ public final class StatisticsCalculation {
         Double result = 0.0;
         Double expectedValue = calculateExpectedValue(values, probabilities);
         for (int i = 0; i < values.length; i++) {
-            result += probabilities[i] * Math.pow((values[i].doubleValue()-expectedValue), 2);
+            result += probabilities[i] * Math.pow((values[i].doubleValue() - expectedValue), 2);
         }
         return result;
     }
