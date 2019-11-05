@@ -23,19 +23,13 @@ public final class StatisticsCalculation {
 
     public static Double calculateRawMoment(final Number[] values,
                                              final Double[] probabilities, final Integer order) {
-        if (order == null) {
-            throw new IllegalArgumentException("Raw moment order should not be null!");
+
+        MomentOrderChecker.checkOrder(order);
+        Double result = 0.0;
+        for (int i = 0; i < values.length; i++) {
+            result += probabilities[i] * Math.pow((values[i].doubleValue()), order);
         }
-        if (order > 0) {
-            Double result = 0.0;
-            for (int i = 0; i < values.length; i++) {
-                result += probabilities[i] * Math.pow((values[i].doubleValue()), order);
-            }
-            return result;
-        }
-        else {
-            throw new IllegalArgumentException("Raw moment order should be more than 0");
-        }
+        return result;
     }
 
     private StatisticsCalculation() { }
