@@ -5,7 +5,7 @@ import java.util.HashMap;
 import static ru.unn.agile.converter.ConverterConstants.*;
 import static ru.unn.agile.converter.LengthType.*;
 
-public final class LengthConverter {
+public class LengthConverter {
     private double value;
     private LengthType type;
 
@@ -15,6 +15,10 @@ public final class LengthConverter {
         put(KILOMETER, METER_TO_KILOMETER);
         put(MILLIMETER, METER_TO_MILLIMETER);
         put(MILE, METER_TO_MILE);
+        put(YARD, METER_TO_YARD);
+        put(INCH, METER_TO_INCH);
+        put(FOOT, METER_TO_FOOT);
+        put(NAUTICAL_MILE, METER_TO_NAUTICAL_MILE);
     }};
 
     public LengthConverter(final double value, final LengthType type) {
@@ -30,6 +34,14 @@ public final class LengthConverter {
 
     public void setValue(final double value) {
         this.value = value;
+    }
+
+    public double getValue() {
+        return value;
+    }
+
+    public LengthType getType() {
+        return type;
     }
 
     private double getMeter() {

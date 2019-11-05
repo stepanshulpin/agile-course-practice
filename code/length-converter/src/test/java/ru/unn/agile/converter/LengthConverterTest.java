@@ -49,4 +49,79 @@ public class LengthConverterTest {
         double km = converter.convert(LengthType.KILOMETER);
         assertEquals(0.35, km, delta);
     }
+
+    @Test
+    public void canGetConverterValue() {
+        LengthConverter converter = new LengthConverter(0, LengthType.METER);
+        assertEquals(0, converter.getValue(), delta);
+    }
+
+    @Test
+    public void canGetConverterType() {
+        LengthConverter converter = new LengthConverter(0, LengthType.METER);
+        assertEquals(LengthType.METER, converter.getType());
+    }
+
+    @Test
+    public void canSetNewValue() {
+        LengthConverter converter = new LengthConverter(0, LengthType.METER);
+        converter.setValue(10);
+        assertEquals(10, converter.getValue(), delta);
+    }
+
+    @Test
+    public void isValueChangedAfterConvert() {
+        LengthConverter converter = new LengthConverter(120, LengthType.METER);
+        double newValue = converter.convert(LengthType.KILOMETER);
+        assertEquals(newValue, converter.getValue(), delta);
+    }
+
+    @Test
+    public void isTypeChangedAfterConvert() {
+        LengthConverter converter = new LengthConverter(10, LengthType.METER);
+        converter.convert(LengthType.KILOMETER);
+        assertEquals(LengthType.KILOMETER, converter.getType());
+    }
+
+    @Test
+    public void canConvertKilometerToYard() {
+        LengthConverter converter = new LengthConverter(5, LengthType.KILOMETER);
+        double yard = converter.convert(LengthType.YARD);
+        assertEquals(5468.0665, yard, delta);
+    }
+
+    @Test
+    public void canConvertMillimeterToInch() {
+        LengthConverter converter = new LengthConverter(150, LengthType.MILLIMETER);
+        double in = converter.convert(LengthType.INCH);
+        assertEquals(5.90551, in, delta);
+    }
+
+    @Test
+    public void canConvertMeterToFoot() {
+        LengthConverter converter = new LengthConverter(50.456, LengthType.METER);
+        double ft = converter.convert(LengthType.FOOT);
+        assertEquals(165.5381, ft, delta);
+    }
+
+    @Test
+    public void canConvertKilometerToNauticalMile() {
+        LengthConverter converter = new LengthConverter(12.345, LengthType.KILOMETER);
+        double mile = converter.convert(LengthType.NAUTICAL_MILE);
+        assertEquals(6.6658, mile, delta);
+    }
+
+    @Test
+    public void canConvertFewTimesCorrectly() {
+        LengthConverter converter1 = new LengthConverter(105, LengthType.YARD);
+        LengthConverter converter2 = new LengthConverter(105, LengthType.YARD);
+
+        double mile1 = converter1.convert(LengthType.MILE);
+
+        converter2.convert(LengthType.FOOT);
+        converter2.convert(LengthType.CENTIMETER);
+        double mile2 = converter2.convert(LengthType.MILE);
+
+        assertEquals(mile1, mile2, delta);
+    }
 }

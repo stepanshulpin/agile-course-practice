@@ -5,5 +5,9 @@ public enum LengthType {
     CENTIMETER,
     KILOMETER,
     MILLIMETER,
-    MILE
+    MILE,
+    YARD,
+    INCH,
+    FOOT,
+    NAUTICAL_MILE
 }
