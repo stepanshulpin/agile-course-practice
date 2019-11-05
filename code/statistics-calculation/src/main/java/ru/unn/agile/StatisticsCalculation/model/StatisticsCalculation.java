@@ -21,5 +21,10 @@ public final class StatisticsCalculation {
         return result;
     }
 
+    public static Double calculateRawMoment(final Number[] values,
+                                             final Double[] probabilities, final Integer order) {
+        return calculateExpectedValue(values, probabilities);
+    }
+
     private StatisticsCalculation() { }
 }
