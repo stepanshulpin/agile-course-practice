@@ -114,4 +114,16 @@ public class StatisticsCalculationTest {
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
+
+    @Test
+    public void canCalculateDispersionForConstantOne() {
+        Number[] values = {1.0};
+        Double[] probabilities = {1.0};
+        double dispersion = 0.0;
+
+        double realDispersion = StatisticsCalculation.calculateDispersion(values,
+                probabilities);
+
+        assertEquals(dispersion, realDispersion, delta);
+    }
 }

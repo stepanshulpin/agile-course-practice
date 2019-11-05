@@ -11,5 +11,10 @@ public final class StatisticsCalculation {
         return result;
     }
 
+    public static double calculateDispersion(final Number[] values,
+                                             final Double[] probabilities) {
+        return 0.0;
+    }
+
     private StatisticsCalculation() { }
 }
