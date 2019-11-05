@@ -44,6 +44,9 @@ public final class FiguresVolumeCalculator {
     }
 
     public static double octahedronVolumeCalculate(final double edgeLength) {
+        if (edgeLength < 0) {
+            throw new IllegalArgumentException("Edge can't be negative");
+        }
         return MathConstants.ONE_THIRD * Math.sqrt(MathConstants.TWO) * Math.pow(edgeLength, MathConstants.THREE);
     }
 }

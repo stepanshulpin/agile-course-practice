@@ -98,4 +98,9 @@ public class FiguresVolumeCalculatorTest {
         assertEquals(12.72, FiguresVolumeCalculator.octahedronVolumeCalculate(3), delta);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void canThrowExceptionIfOctahedronEdgeIsNegative() {
+        FiguresVolumeCalculator.octahedronVolumeCalculate(-1);
+    }
+
 }
