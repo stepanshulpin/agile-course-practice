@@ -293,4 +293,13 @@ public class StatisticsCalculationTest {
 
         assertEquals(rawMoment, realRawMoment, delta);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCalculateRawMomentWithNegativeOrder() {
+        Integer[] values = {1, 2, 3};
+        Double[] probabilities = {0.1, 0.8, 0.1};
+        Integer order = -1;
+
+        StatisticsCalculation.calculateRawMoment(values, probabilities, order);
+    }
 }
