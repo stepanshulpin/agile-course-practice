@@ -33,4 +33,8 @@ public final class FiguresVolumeCalculator {
         }
         return MathConstants.ONE_THIRD * Math.PI * Math.pow(baseRadius, MathConstants.TWO) * Math.abs(height);
     }
+
+    public static double parallelepipedVolumeCalculate(final double baseSquare, final double height) {
+        return 0;
+    }
 }

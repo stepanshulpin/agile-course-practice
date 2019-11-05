@@ -73,9 +73,9 @@ public class FiguresVolumeCalculatorTest {
         FiguresVolumeCalculator.coneVolumeCalculate(-3, 3);
     }
 
-
-
-
-
+    @Test
+    public void canCalculateParallelepipedVolumeWithZeroHeight() {
+        assertEquals(0, FiguresVolumeCalculator.parallelepipedVolumeCalculate(1, 0), delta);
+    }
 
 }
