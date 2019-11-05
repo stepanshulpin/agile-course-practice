@@ -162,11 +162,24 @@ public class StatisticsCalculationTest {
 
         assertEquals(dispersion, realDispersion, delta);
     }
+
     @Test
-    public void canCalculateDispersionForThreeDimValues() {
+    public void canCalculateDispersionForThreeDimValues1() {
         Number[] values = {-3.0, 1.5, 10.0};
         Double[] probabilities = {0.5, 0.2, 0.3};
         double dispersion = 31.71;
+
+        double realDispersion = StatisticsCalculation.calculateDispersion(values,
+                probabilities);
+
+        assertEquals(dispersion, realDispersion, delta);
+    }
+
+    @Test
+    public void canCalculateDispersionForThreeDimValues2() {
+        Number[] values = {-3.0, -1.5, -1.0};
+        Double[] probabilities = {0.1, 0.1, 0.8};
+        double dispersion = 0.3625;
 
         double realDispersion = StatisticsCalculation.calculateDispersion(values,
                 probabilities);
