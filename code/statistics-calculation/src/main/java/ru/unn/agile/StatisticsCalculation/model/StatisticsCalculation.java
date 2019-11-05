@@ -23,14 +23,11 @@ public final class StatisticsCalculation {
 
     public static Double calculateRawMoment(final Number[] values,
                                              final Double[] probabilities, final Integer order) {
-        if (order > 1) {
-            Double result = 0.0;
-            for (int i = 0; i < values.length; i++) {
-                result += probabilities[i] * Math.pow((values[i].doubleValue()), order);
-            }
-            return result;
+        Double result = 0.0;
+        for (int i = 0; i < values.length; i++) {
+            result += probabilities[i] * Math.pow((values[i].doubleValue()), order);
         }
-        return calculateExpectedValue(values, probabilities);
+        return result;
     }
 
     private StatisticsCalculation() { }
