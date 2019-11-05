@@ -364,6 +364,7 @@ public class StatisticsCalculationTest {
         assertEquals(centralMoment, realCentralMoment, delta);
     }
 
+    @Test
     public void canCalculateFourthOrderCentralMomentForBigDist() {
         Number[] values = createSequentialValues(1000);
         Double[] probabilities = new Double[1000];
