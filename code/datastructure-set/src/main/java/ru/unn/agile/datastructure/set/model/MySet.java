@@ -8,4 +8,8 @@ public class MySet<E> {
     public int size() {
         return 0;
     }
+
+    public Boolean add(final E e) {
+        return true;
+    }
 }

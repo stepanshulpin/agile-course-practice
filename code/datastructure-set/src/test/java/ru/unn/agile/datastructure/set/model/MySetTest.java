@@ -15,4 +15,10 @@ public class MySetTest {
         MySet mySet = new MySet();
         Assert.assertEquals(mySet.size(),  0);
     }
+
+    @Test
+    public void canAddElement() {
+        MySet<String> mySet = new MySet<>();
+        Assert.assertTrue(mySet.add("test"));
+    }
 }
