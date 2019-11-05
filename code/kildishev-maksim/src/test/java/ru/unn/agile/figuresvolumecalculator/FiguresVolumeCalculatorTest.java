@@ -88,4 +88,9 @@ public class FiguresVolumeCalculatorTest {
         assertEquals(9, FiguresVolumeCalculator.parallelepipedVolumeCalculate(3, -3), delta);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void canThrowExceptionIfParallelepipedBaseSquareIsNegative() {
+        FiguresVolumeCalculator.parallelepipedVolumeCalculate(-3, 3);
+    }
+
 }

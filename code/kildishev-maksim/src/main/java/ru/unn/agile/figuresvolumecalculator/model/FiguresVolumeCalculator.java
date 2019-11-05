@@ -37,6 +37,9 @@ public final class FiguresVolumeCalculator {
 
     public static double parallelepipedVolumeCalculate(final double baseSquare,
                                                        final double height) {
+        if (baseSquare < 0) {
+            throw new IllegalArgumentException("Square can't be negative");
+        }
         return baseSquare * Math.abs(height);
     }
 }
