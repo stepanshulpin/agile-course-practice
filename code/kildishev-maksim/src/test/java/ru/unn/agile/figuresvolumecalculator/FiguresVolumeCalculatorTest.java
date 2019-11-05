@@ -58,6 +58,12 @@ public class FiguresVolumeCalculatorTest {
         assertEquals(0, FiguresVolumeCalculator.coneVolumeCalculate(1, 0), delta);
     }
 
+    @Test
+    public void canCalculateConeVolumeWithArbitraryPositiveParams() {
+        assertEquals(28.27, FiguresVolumeCalculator.coneVolumeCalculate(3, 3), delta);
+    }
+
+
 
 
 
