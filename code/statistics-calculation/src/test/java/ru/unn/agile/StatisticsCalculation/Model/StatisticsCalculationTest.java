@@ -363,4 +363,17 @@ public class StatisticsCalculationTest {
 
         assertEquals(centralMoment, realCentralMoment, delta);
     }
+
+    public void canCalculateFourthOrderCentralMomentForBigDist() {
+        Number[] values = createSequentialValues(1000);
+        Double[] probabilities = new Double[1000];
+        Arrays.fill(probabilities, 0.001);
+        Integer order = 4;
+        Double centralMoment = 12499958333.3625;
+
+        Double realCentralMoment = StatisticsCalculation.calculateCentralMoment(values,
+                probabilities, order);
+
+        assertEquals(centralMoment, realCentralMoment, delta);
+    }
 }
