@@ -36,4 +36,12 @@ public class MySetTest {
         Assert.assertTrue(mySet.isEmpty());
     }
 
+    @Test
+    public void canBeCleared() {
+        MySet<String> mySet = new MySet<>();
+        mySet.add("first row");
+        mySet.add("second row");
+        mySet.clear();
+        Assert.assertTrue(mySet.isEmpty());
+    }
 }

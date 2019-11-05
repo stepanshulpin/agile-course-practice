@@ -24,4 +24,7 @@ public class MySet<E> {
         return this.container.isEmpty();
     }
 
+    public void clear() {
+        this.container.clear();
+    }
 }
