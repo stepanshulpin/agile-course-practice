@@ -140,10 +140,22 @@ public class StatisticsCalculationTest {
     }
 
     @Test
-    public void canCalculateDispersionForTwoDimValues() {
+    public void canCalculateDispersionForTwoDimValues1() {
         Number[] values = {-1.0, 4.0};
         Double[] probabilities = {0.7, 0.3};
         double dispersion = 5.25;
+
+        double realDispersion = StatisticsCalculation.calculateDispersion(values,
+                probabilities);
+
+        assertEquals(dispersion, realDispersion, delta);
+    }
+
+    @Test
+    public void canCalculateDispersionForTwoDimValues2() {
+        Number[] values = {-3.0, 1.0};
+        Double[] probabilities = {0.7, 0.3};
+        double dispersion = 3.36;
 
         double realDispersion = StatisticsCalculation.calculateDispersion(values,
                 probabilities);

@@ -13,12 +13,13 @@ public final class StatisticsCalculation {
 
     public static double calculateDispersion(final Number[] values,
                                              final Double[] probabilities) {
+        double result = 0.0;
+        double expectedValue = calculateExpectedValue(values, probabilities);
         if (values.length == 2) {
-            return 5.25;
+            result = probabilities[0]*(values[0].doubleValue()-expectedValue)*(values[0].doubleValue()-expectedValue)
+                    + probabilities[1]*(values[1].doubleValue()-expectedValue)*(values[1].doubleValue()-expectedValue);
         }
-        else {
-            return 0.0;
-        }
+        return result;
     }
 
     private StatisticsCalculation() { }
