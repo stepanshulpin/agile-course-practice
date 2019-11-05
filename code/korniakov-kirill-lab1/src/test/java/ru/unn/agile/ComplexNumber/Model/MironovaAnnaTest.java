@@ -28,9 +28,7 @@ public class MironovaAnnaTest {
         ComplexNumber z1 = new ComplexNumber(1.0, 0.0);
         ComplexNumber z2 = new ComplexNumber(1.0, 0.0);
 
-        boolean flag = z1.equals(z2);
-
-        assertTrue(flag);
+        assertTrue(z1.equals(z2));
     }
 
     @Test
@@ -38,9 +36,7 @@ public class MironovaAnnaTest {
         ComplexNumber z1 = new ComplexNumber(1.0, 0.0);
         ComplexNumber z2 = new ComplexNumber(1.0, 1.0);
 
-        boolean flag = z1.equals(z2);
-
-        assertFalse(flag);
+        assertFalse(z1.equals(z2));
     }
 
     @Test
