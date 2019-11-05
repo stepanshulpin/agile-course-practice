@@ -63,6 +63,10 @@ public class FiguresVolumeCalculatorTest {
         assertEquals(28.27, FiguresVolumeCalculator.coneVolumeCalculate(3, 3), delta);
     }
 
+    @Test
+    public void canCalculateConeVolumeWithNegativeHeight() {
+        assertEquals(28.27, FiguresVolumeCalculator.coneVolumeCalculate(3, -3), delta);
+    }
 
 
 
