@@ -15,14 +15,10 @@ public final class StatisticsCalculation {
                                              final Double[] probabilities) {
         double result = 0.0;
         double expectedValue = calculateExpectedValue(values, probabilities);
-        if (values.length == 2) {
-            result = probabilities[0]*(values[0].doubleValue()-expectedValue)*(values[0].doubleValue()-expectedValue)
-                    + probabilities[1]*(values[1].doubleValue()-expectedValue)*(values[1].doubleValue()-expectedValue);
-        }
-        else if (values.length == 3) {
-            result = probabilities[0]*(values[0].doubleValue()-expectedValue)*(values[0].doubleValue()-expectedValue)
-                    + probabilities[1]*(values[1].doubleValue()-expectedValue)*(values[1].doubleValue()-expectedValue)
-                    + probabilities[2]*(values[2].doubleValue()-expectedValue)*(values[2].doubleValue()-expectedValue);
+        if (values.length > 1) {
+            for (int i = 0; i < values.length; i++) {
+                result += probabilities[i]*(values[i].doubleValue()-expectedValue)*(values[i].doubleValue()-expectedValue);
+            }
         }
         return result;
     }
