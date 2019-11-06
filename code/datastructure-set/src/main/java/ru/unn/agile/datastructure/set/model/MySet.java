@@ -60,4 +60,8 @@ public class MySet<E> {
     public boolean containsAll(final Collection<E> e) {
         return this.container.containsAll(e);
     }
+
+    public boolean removeAll(final Collection<E> e) {
+        return this.container.removeAll(e);
+    }
 }

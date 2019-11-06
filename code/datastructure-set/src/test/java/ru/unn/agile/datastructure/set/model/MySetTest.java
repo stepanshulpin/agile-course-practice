@@ -120,4 +120,14 @@ public class MySetTest {
         testSet.add("second row");
         Assert.assertTrue(mySet.containsAll(testSet));
     }
+
+    @Test
+    public void canRemoveCollectionsIntersection() {
+        MySet<String> mySet = new MySet<>();
+        mySet.add("first row");
+        mySet.add("second row");
+        Set<String> testSet = new HashSet<>();
+        testSet.add("first row");
+        Assert.assertTrue(mySet.removeAll(testSet));
+    }
 }
