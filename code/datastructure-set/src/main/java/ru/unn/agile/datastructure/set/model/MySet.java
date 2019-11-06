@@ -88,6 +88,10 @@ public class MySet<E> {
     }
 
     public boolean retainAll(final Collection<E> e) {
+        if (e == null) {
+            throw new NullPointerException(ERROR_MESSAGE);
+        }
+
         return this.container.retainAll(e);
     }
 }

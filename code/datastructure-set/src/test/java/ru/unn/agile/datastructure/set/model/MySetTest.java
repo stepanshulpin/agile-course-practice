@@ -225,4 +225,12 @@ public class MySetTest {
         mySet.retainAll(testSet);
         Assert.assertEquals(mySet.size(), 1);
     }
+
+    @Test(expected = NullPointerException.class)
+    public void canNotRetainWithNullCollections() {
+        MySet<String> mySet = new MySet<>();
+        mySet.add("first row");
+        mySet.add("second row");
+        mySet.retainAll(null);
+    }
 }
