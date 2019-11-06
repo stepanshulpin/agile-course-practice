@@ -4,8 +4,6 @@ import ru.unn.agile.figuresvolumecalculator.model.constants.MathConstants;
 
 public final class FiguresVolumeCalculator {
 
-    private FiguresVolumeCalculator() { }
-
     public static double pyramidVolumeCalculate(final double baseSquare, final double height) {
         if (baseSquare < 0) {
             throw new IllegalArgumentException("Square can't be negative");
@@ -32,7 +30,7 @@ public final class FiguresVolumeCalculator {
             throw new IllegalArgumentException("Radius can't be negative");
         }
         return MathConstants.ONE_THIRD * Math.PI
-                * Math.pow(baseRadius, MathConstants.TWO) * Math.abs(height);
+               * Math.pow(baseRadius, MathConstants.TWO) * Math.abs(height);
     }
 
     public static double parallelepipedVolumeCalculate(final double baseSquare,
@@ -48,6 +46,8 @@ public final class FiguresVolumeCalculator {
             throw new IllegalArgumentException("Edge can't be negative");
         }
         return MathConstants.ONE_THIRD * Math.sqrt(MathConstants.TWO)
-                * Math.pow(edgeLength, MathConstants.THREE);
+               * Math.pow(edgeLength, MathConstants.THREE);
     }
+
+    private FiguresVolumeCalculator() { }
 }
