@@ -61,5 +61,12 @@ public class MySetTest {
         Assert.assertEquals(mySet.size(), 1);
     }
 
+    @Test(expected = NullPointerException.class)
+    public void canAddOnlyOneNull() {
+        MySet<String> mySet = new MySet<>();
+        mySet.add("first");
+        mySet.add(null);
+        mySet.add(null);
+    }
 
 }
