@@ -61,4 +61,12 @@ public class PolynomialTest {
         assertEquals(1, polynomial.getDegree());
     }
 
+    @Test
+    public void nonZeroPolynomialHasCorrectCoef() {
+        var polynomial = new Polynomial(1., 1);
+        var degree = polynomial.getDegree();
+
+        assertEquals(1., polynomial.getCoef(degree), delta);
+    }
+
 }
