@@ -84,7 +84,8 @@ public class MySetTest {
         mySet.add("first row");
         mySet.add("second row");
         mySet.add("third row");
-        Assert.assertTrue(mySet.remove("second row"));
+        mySet.remove("second row");
+        Assert.assertEquals(mySet.size(), 2);
     }
 
 }
