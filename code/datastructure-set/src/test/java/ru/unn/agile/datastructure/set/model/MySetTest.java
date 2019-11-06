@@ -15,6 +15,12 @@ public class MySetTest {
     }
 
     @Test
+    public void canInitWithSpecificType() {
+        MySet<String> mySet = new MySet<>();
+        Assert.assertNotNull(mySet);
+    }
+
+    @Test
     public void canGetSize() {
         MySet mySet = new MySet();
         Assert.assertEquals(mySet.size(), 0);
