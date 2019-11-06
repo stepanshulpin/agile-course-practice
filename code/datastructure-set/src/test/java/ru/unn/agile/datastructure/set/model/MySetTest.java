@@ -3,6 +3,8 @@ package ru.unn.agile.datastructure.set.model;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Iterator;
+
 public class MySetTest {
     @Test
     public void canInitDefaultConstructor() {
@@ -96,4 +98,12 @@ public class MySetTest {
         mySet.remove(null);
     }
 
+    @Test
+    public void canGiveIterator() {
+        MySet<String> mySet = new MySet<>();
+        mySet.add("first row");
+        mySet.add("second row");
+        Iterator<String> iterator = mySet.iterator();
+        Assert.assertNotNull(iterator);
+    }
 }

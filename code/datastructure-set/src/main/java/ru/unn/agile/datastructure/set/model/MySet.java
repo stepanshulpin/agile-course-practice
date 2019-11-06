@@ -1,6 +1,7 @@
 package ru.unn.agile.datastructure.set.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class MySet<E> {
@@ -49,5 +50,9 @@ public class MySet<E> {
             throw new NullPointerException(ERROR_MESSAGE);
         }
         return this.container.remove(e);
+    }
+
+    public Iterator<E> iterator() {
+        return this.container.iterator();
     }
 }
