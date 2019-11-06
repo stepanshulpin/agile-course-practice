@@ -69,4 +69,14 @@ public class MySetTest {
         mySet.add(null);
     }
 
+    @Test
+    public void canCheckExistingElement() {
+        MySet<String> mySet = new MySet<>();
+        mySet.add("first row");
+        mySet.add("second row");
+        mySet.add("third row");
+        mySet.add("fourth row");
+        Assert.assertTrue(mySet.contains("third row"));
+    }
+
 }
