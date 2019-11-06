@@ -8,8 +8,22 @@ import static org.junit.Assert.*;
 
 public class QueueTest {
     @Test
-    public void canCreateQueue() {
+    public void canCreateQueueWithInteger() {
         Queue<Integer> newQueue = new Queue<>();
+
+        assertNotEquals(null, newQueue);
+    }
+
+    @Test
+    public void canCreateQueueWithDouble() {
+        Queue<Double> newQueue = new Queue<>();
+
+        assertNotEquals(null, newQueue);
+    }
+
+    @Test
+    public void canCreateQueueWithString() {
+        Queue<String> newQueue = new Queue<>();
 
         assertNotEquals(null, newQueue);
     }
@@ -24,21 +38,32 @@ public class QueueTest {
         assertEquals(expectedElement, newQueue.getTail());
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void throwWhenPushNullElementToQueue() {
-        Queue<Integer> newQueue = new Queue<>();
-
-        newQueue.push(null);
-    }
-
     @Test
-    public void canPushDoublerElementToQueue() {
+    public void canPushDoubleElementToQueue() {
         Queue<Double> newQueue = new Queue<>();
         Double expectedElement = 1.0;
 
         newQueue.push(expectedElement);
 
         assertEquals(expectedElement, newQueue.getTail());
+    }
+
+    @Test
+    public void canPushStringElementToQueue() {
+        Queue<String> newQueue = new Queue<>();
+        String expectedElement = "Test string";
+
+        newQueue.push(expectedElement);
+
+        assertEquals(expectedElement, newQueue.getTail());
+    }
+
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenPushNullElementToQueue() {
+        Queue<Integer> newQueue = new Queue<>();
+
+        newQueue.push(null);
     }
 
     @Test
@@ -51,6 +76,13 @@ public class QueueTest {
     @Test
     public void isQueueWithoutDoubleElementsEmptiness() {
         Queue<Double> newQueue = new Queue<>();
+
+        assertTrue(newQueue.isEmpty());
+    }
+
+    @Test
+    public void isQueueWithoutStringElementsEmptiness() {
+        Queue<String> newQueue = new Queue<>();
 
         assertTrue(newQueue.isEmpty());
     }
@@ -71,6 +103,14 @@ public class QueueTest {
         assertFalse(newQueue.isEmpty());
     }
 
+    @Test
+    public void isQueueWithOneStringElementNotEmpty() {
+        Queue<String> newQueue = new Queue<>();
+        newQueue.push("Test string");
+
+        assertFalse(newQueue.isEmpty());
+    }
+
     @Test(expected = NullPointerException.class)
     public void throwWhenGetTailIntegerElementFromEmptyQueue() {
         Queue<Integer> newQueue = new Queue<>();
@@ -81,6 +121,13 @@ public class QueueTest {
     @Test(expected = NullPointerException.class)
     public void throwWhenGetTailDoubleElementFromEmptyQueue() {
         Queue<Double> newQueue = new Queue<>();
+
+        newQueue.getTail();
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void throwWhenGetTailStringElementFromEmptyQueue() {
+        Queue<String> newQueue = new Queue<>();
 
         newQueue.getTail();
     }
@@ -107,6 +154,17 @@ public class QueueTest {
         assertEquals(expectedElement, actualElement);
     }
 
+    @Test
+    public void canPopStringElementFromQueue() {
+        Queue<String> newQueue = new Queue<>();
+        String expectedElement = "Test string";
+        newQueue.push(expectedElement);
+
+        String actualElement = newQueue.pop();
+
+        assertEquals(expectedElement, actualElement);
+    }
+
     @Test(expected = NullPointerException.class)
     public void throwWhenPopIntegerFromEmptyQueue() {
         Queue<Integer> newQueue = new Queue<>();
@@ -122,6 +180,13 @@ public class QueueTest {
     }
 
     @Test(expected = NullPointerException.class)
+    public void throwWhenPopStringFromEmptyQueue() {
+        Queue<String> newQueue = new Queue<>();
+
+        newQueue.pop();
+    }
+
+    @Test(expected = NullPointerException.class)
     public void throwWhenGetHeadIntegerElementFromEmptyQueue() {
         Queue<Integer> newQueue = new Queue<>();
 
@@ -131,6 +196,13 @@ public class QueueTest {
     @Test(expected = NullPointerException.class)
     public void throwWhenGetHeadDoubleElementFromEmptyQueue() {
         Queue<Double> newQueue = new Queue<>();
+
+        newQueue.getHead();
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void throwWhenGetHeadStringElementFromEmptyQueue() {
+        Queue<String> newQueue = new Queue<>();
 
         newQueue.getHead();
     }
@@ -160,6 +232,21 @@ public class QueueTest {
 
         Double firstActualElement = newQueue.pop();
         Double secondActualElement = newQueue.pop();
+
+        assertEquals(firstExpectedElement, firstActualElement);
+        assertEquals(secondExpectedElement, secondActualElement);
+    }
+
+    @Test
+    public void isFIFOPrincipleWorkWithString() {
+        Queue<String> newQueue = new Queue<>();
+        String firstExpectedElement = "Test string number one";
+        String secondExpectedElement = "Test string number two";
+        newQueue.push(firstExpectedElement);
+        newQueue.push(secondExpectedElement);
+
+        String firstActualElement = newQueue.pop();
+        String secondActualElement = newQueue.pop();
 
         assertEquals(firstExpectedElement, firstActualElement);
         assertEquals(secondExpectedElement, secondActualElement);
