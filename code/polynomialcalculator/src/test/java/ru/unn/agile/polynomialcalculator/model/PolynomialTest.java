@@ -46,4 +46,12 @@ public class PolynomialTest {
 
         assertEquals("0", polynomial.toString());
     }
+
+    @Test
+    public void canCreatePolynomialWithNonZeroCoefAndDegree() {
+        var polynomial = new Polynomial(1., 1);
+
+        assertNotNull(polynomial);
+    }
+
 }
