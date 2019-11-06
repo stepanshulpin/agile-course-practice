@@ -76,4 +76,11 @@ public class PolynomialTest {
         assertEquals("2.3x^2", polynomial.toString());
     }
 
+    @Test
+    public void stringReprOfFirstDegreePolynomialOmitsDegreeSign() {
+        var polynomial = new Polynomial(1.5, 1);
+
+        assertEquals("1.5x", polynomial.toString());
+    }
+
 }

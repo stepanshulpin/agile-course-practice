@@ -23,7 +23,14 @@ public class Polynomial {
             }
             double coef = this.coefs[degree];
             if(coef != 0.) {
-                result.append(coef).append("x^").append(degree).append(" ");
+                result.append(coef);
+                if(degree > 0) {
+                    result.append("x");
+                }
+                if(degree > 1) {
+                    result.append("^").append(degree);
+                }
+                result.append(" ");
             }
         }
         return result.toString().strip();
