@@ -11,21 +11,21 @@ public class QueueTest {
     public void canCreateQueueWithInteger() {
         Queue<Integer> newQueue = new Queue<>();
 
-        assertNotEquals(null, newQueue);
+        assertNotNull(newQueue);
     }
 
     @Test
     public void canCreateQueueWithDouble() {
         Queue<Double> newQueue = new Queue<>();
 
-        assertNotEquals(null, newQueue);
+        assertNotNull(newQueue);
     }
 
     @Test
     public void canCreateQueueWithString() {
         Queue<String> newQueue = new Queue<>();
 
-        assertNotEquals(null, newQueue);
+        assertNotNull(newQueue);
     }
 
     @Test
