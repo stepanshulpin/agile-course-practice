@@ -3,7 +3,9 @@ package ru.unn.agile.datastructure.set.model;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 public class MySetTest {
     @Test
@@ -105,5 +107,17 @@ public class MySetTest {
         mySet.add("second row");
         Iterator<String> iterator = mySet.iterator();
         Assert.assertNotNull(iterator);
+    }
+
+    @Test
+    public void canCheckExistingCollection() {
+        MySet<String> mySet = new MySet<>();
+        mySet.add("first row");
+        mySet.add("second row");
+        mySet.add("third row");
+        Set<String> testSet = new HashSet<>();
+        testSet.add("first row");
+        testSet.add("second row");
+        Assert.assertTrue(mySet.containsAll(testSet));
     }
 }

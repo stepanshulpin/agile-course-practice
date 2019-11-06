@@ -1,6 +1,7 @@
 package ru.unn.agile.datastructure.set.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -54,5 +55,9 @@ public class MySet<E> {
 
     public Iterator<E> iterator() {
         return this.container.iterator();
+    }
+
+    public boolean containsAll(final Collection<E> e) {
+        return this.container.containsAll(e);
     }
 }
