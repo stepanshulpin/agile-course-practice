@@ -16,13 +16,10 @@ public class MySet<E> {
     }
 
     public Boolean add(final E e) {
-        for (E item : this.container) {
-            if (item.equals(e)) {
-                return false;
-            }
+        if (!contains(e)) {
+            return this.container.add(e);
         }
-
-        return this.container.add(e);
+        return false;
     }
 
     public Boolean isEmpty() {
@@ -35,5 +32,14 @@ public class MySet<E> {
 
     public Object[] toArray() {
         return this.container.toArray();
+    }
+
+    private Boolean contains(final E e) {
+        for (E item : this.container) {
+            if (item.equals(e)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
