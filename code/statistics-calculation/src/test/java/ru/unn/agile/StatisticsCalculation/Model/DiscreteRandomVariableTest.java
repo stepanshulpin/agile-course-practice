@@ -17,4 +17,32 @@ public class DiscreteRandomVariableTest {
 
         assertNotNull(var);
     }
+
+    @Test
+    public void canCreateDisceteVarWithDoubleVals() {
+        Double[] values = {1.0, 2.0};
+        Double[] probabilities = {0.5, 0.5};
+
+        DiscreteRandomVariable var = new DiscreteRandomVariable(values, probabilities);
+
+        assertNotNull(var);
+    }
+
+    @Test
+    public void canGetValues() {
+        Double[] values = {1.0, 2.0};
+        Double[] probabilities = {0.5, 0.5};
+        DiscreteRandomVariable var = new DiscreteRandomVariable(values, probabilities);
+
+        assertArrayEquals(values, var.getValues());
+    }
+
+    @Test
+    public void canGetProbabilities() {
+        Double[] values = {1.0, 2.0};
+        Double[] probabilities = {0.5, 0.5};
+        DiscreteRandomVariable var = new DiscreteRandomVariable(values, probabilities);
+
+        assertArrayEquals(probabilities, var.getProbabilities());
+    }
 }

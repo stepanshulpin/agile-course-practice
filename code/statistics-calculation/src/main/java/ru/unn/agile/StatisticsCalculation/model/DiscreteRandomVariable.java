@@ -8,4 +8,12 @@ public class DiscreteRandomVariable {
         this.values = values;
         this.probabilities = probabilities;
     }
+
+    public Number[] getValues() {
+        return this.values;
+    }
+
+    public Double[] getProbabilities() {
+        return this.probabilities;
+    }
 }
