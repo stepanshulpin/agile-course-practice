@@ -124,4 +124,45 @@ public class LengthConverterTest {
 
         assertEquals(mile1, mile2, delta);
     }
+
+    @Test
+    public void canSetMeterTypeByDefaultInit() {
+        LengthConverter converter = new LengthConverter(100);
+        assertEquals(LengthType.METER, converter.getType());
+    }
+
+    @Test
+    public void convertedZeroValueIsZero() {
+        LengthConverter converter = new LengthConverter(0);
+        converter.convert(LengthType.MILE);
+        assertEquals(0, converter.getValue(), delta);
+    }
+
+    @Test
+    public void convertedNegativeValueIsNegative() {
+        LengthConverter converter = new LengthConverter(-1000);
+        converter.convert(LengthType.KILOMETER);
+        assertEquals(-1, converter.getValue(), delta);
+    }
+
+    @Test
+    public void canSetConverterType() {
+        LengthConverter converter = new LengthConverter(10, LengthType.MILE);
+        converter.setType(LengthType.YARD);
+        assertEquals(LengthType.YARD, converter.getType());
+    }
+
+    @Test
+    public void canSetConverterTypeWithoutValueChanging() {
+        LengthConverter converter = new LengthConverter(10, LengthType.MILE);
+        converter.setType(LengthType.YARD);
+        assertEquals(10, converter.getValue(), delta);
+    }
+
+    @Test
+    public void canConvertToTheSameType() {
+        LengthConverter converter = new LengthConverter(4.278, LengthType.MILE);
+        converter.convert(LengthType.MILE);
+        assertEquals(4.278, converter.getValue(), delta);
+    }
 }

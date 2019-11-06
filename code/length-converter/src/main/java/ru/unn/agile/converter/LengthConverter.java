@@ -26,9 +26,16 @@ public class LengthConverter {
         this.type = type;
     }
 
+    public LengthConverter(final double value) {
+        this.value = value;
+        this.type = LengthType.METER;
+    }
+
     public double convert(final LengthType type) {
-        value = convertToMeter() * converterCoefficients.get(type);
-        this.type = type;
+        if (!this.type.equals(type)) {
+            value = convertToMeter() * converterCoefficients.get(type);
+            this.type = type;
+        }
         return value;
     }
 
@@ -46,5 +53,9 @@ public class LengthConverter {
 
     private double convertToMeter() {
         return value / converterCoefficients.get(type);
+    }
+
+    public void setType(final LengthType type) {
+        this.type = type;
     }
 }
