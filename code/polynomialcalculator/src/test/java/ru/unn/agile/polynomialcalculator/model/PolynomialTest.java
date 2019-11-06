@@ -49,6 +49,13 @@ public class PolynomialTest {
     }
 
     @Test
+    public void zeroDegreePolynomialWithNonZeroCoefHasCorrectStringRepr() {
+        var polynomial = new Polynomial(3, 0);
+
+        assertEquals("3.0", polynomial.toString());
+    }
+
+    @Test
     public void canCreatePolynomialWithNonZeroCoefAndDegree() {
         var polynomial = new Polynomial(1., 1);
 

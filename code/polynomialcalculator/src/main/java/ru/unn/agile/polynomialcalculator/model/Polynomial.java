@@ -1,11 +1,13 @@
 package ru.unn.agile.polynomialcalculator.model;
 
+import java.util.Locale;
+
 public class Polynomial {
 
     private int degree;
     private double[] coefs;
 
-    public Polynomial(double coef, int degree) {
+    public Polynomial(final double coef, final int degree) {
         if (degree < 0) {
             throw new IllegalArgumentException("Can not create polynomial with negative degree!");
         }
@@ -18,12 +20,9 @@ public class Polynomial {
     public String toString() {
         StringBuilder result = new StringBuilder();
         for (int degree = this.degree; degree >= 0; degree--) {
-            if (degree == 0 && result.toString().equals("")) {
-                return "0";
-            }
             double coef = this.coefs[degree];
             if (coef != 0.) {
-                result.append(coef);
+                result.append(String.format(Locale.US, "%.1f", coef));
                 if (degree > 0) {
                     result.append("x");
                 }
@@ -31,7 +30,12 @@ public class Polynomial {
                     result.append("^").append(degree);
                 }
                 result.append(" ");
+            } else {
+                if (degree == 0 && result.toString().equals("")) {
+                    result.append("0");
+                }
             }
+
         }
         return result.toString().strip();
     }
@@ -40,7 +44,7 @@ public class Polynomial {
         return degree;
     }
 
-    public double getCoef(int degree) {
+    public double getCoef(final int degree) {
         return coefs[degree];
     }
 }
