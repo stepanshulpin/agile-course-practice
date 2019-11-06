@@ -17,10 +17,22 @@ public class Queue<Type> {
         list.add(element);
     }
 
+    public Type pop() {
+        checkIsNotEmpty();
+
+        return list.remove(0);
+    }
+
     public Type getTail() {
         checkIsNotEmpty();
 
         return list.get(list.size() - 1);
+    }
+
+    public Type getHead() {
+        checkIsNotEmpty();
+
+        return list.get(0);
     }
 
     public boolean isEmpty() {
