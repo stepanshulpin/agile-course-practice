@@ -50,7 +50,7 @@ public class MySetTest {
         MySet<String> mySet = new MySet<>();
         mySet.add("first");
         mySet.add("second");
-        Assert.assertArrayEquals(new String[] {"first", "second"}, mySet.toArray());
+        Assert.assertArrayEquals(new String[]{"first", "second"}, mySet.toArray());
     }
 
     @Test
