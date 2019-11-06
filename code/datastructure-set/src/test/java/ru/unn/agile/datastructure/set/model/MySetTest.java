@@ -130,4 +130,13 @@ public class MySetTest {
         testSet.add("first row");
         Assert.assertTrue(mySet.removeAll(testSet));
     }
+
+    @Test
+    public void canUnionCollections() {
+        MySet<String> mySet = new MySet<>();
+        mySet.add("first");
+        Set<String> testSet = new HashSet<>();
+        testSet.add("second");
+        Assert.assertTrue(mySet.addAll(testSet));
+    }
 }

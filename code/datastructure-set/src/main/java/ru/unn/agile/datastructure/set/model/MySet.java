@@ -30,6 +30,17 @@ public class MySet<E> {
         return false;
     }
 
+    public boolean addAll(final Collection<E> e) {
+        boolean modified = false;
+        for (E elem : e) {
+            if (this.add(elem)) {
+                modified = true;
+            }
+        }
+
+        return modified;
+    }
+
     public boolean isEmpty() {
         return this.container.isEmpty();
     }
