@@ -147,6 +147,22 @@ public class MySetTest {
     }
 
     @Test
+    public void canRemoveByIterator() {
+        MySet<Integer> mySet = new MySet<>();
+        mySet.add(1);
+        mySet.add(2);
+        mySet.add(3);
+        Iterator<Integer> iterator = mySet.iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().equals(2)) {
+                iterator.remove();
+            }
+        }
+
+        Assert.assertEquals(mySet.size(), 2);
+    }
+
+    @Test
     public void canCheckExistingCollection() {
         MySet<String> mySet = new MySet<>();
         mySet.add("first row");
