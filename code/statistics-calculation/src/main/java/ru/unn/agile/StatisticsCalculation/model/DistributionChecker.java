@@ -1,6 +1,6 @@
 package ru.unn.agile.StatisticsCalculation.model;
 
-public final class DistributionChecker {
+final class DistributionChecker {
     public static void validate(final Number[] values, final Double[] probabilities) {
         checkValues(values);
         checkProbabilities(probabilities);
