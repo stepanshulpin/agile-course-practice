@@ -75,4 +75,8 @@ public class MySet<E> {
     public boolean removeAll(final Collection<E> e) {
         return this.container.removeAll(e);
     }
+
+    public boolean retainAll(final Collection<E> e) {
+        return this.container.retainAll(e);
+    }
 }

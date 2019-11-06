@@ -139,4 +139,16 @@ public class MySetTest {
         testSet.add("second");
         Assert.assertTrue(mySet.addAll(testSet));
     }
+
+    @Test
+    public void canRetainCollections() {
+        MySet<Integer> mySet = new MySet<>();
+        mySet.add(1);
+        mySet.add(2);
+        mySet.add(3);
+        Set<Integer> testSet = new HashSet<>();
+        testSet.add(1);
+        mySet.retainAll(testSet);
+        Assert.assertEquals(mySet.size(), 1);
+    }
 }
