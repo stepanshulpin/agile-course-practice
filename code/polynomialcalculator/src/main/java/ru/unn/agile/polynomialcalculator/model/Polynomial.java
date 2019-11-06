@@ -9,4 +9,8 @@ public class Polynomial {
     public int getDegree() {
         return degree;
     }
+
+    public double getValue(int degree) {
+        return 0;
+    }
 }
