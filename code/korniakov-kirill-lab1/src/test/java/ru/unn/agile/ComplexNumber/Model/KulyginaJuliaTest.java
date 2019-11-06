@@ -68,7 +68,7 @@ public class KulyginaJuliaTest {
         ComplexNumber z = new ComplexNumber(5.0, 7.0);
         ComplexNumber z2 = z;
 
-        assertEquals(z2, z);
+        assertEquals(z, z2);
     }
 
     @Test()
