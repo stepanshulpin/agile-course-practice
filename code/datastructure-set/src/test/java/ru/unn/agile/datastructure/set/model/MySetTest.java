@@ -174,6 +174,17 @@ public class MySetTest {
         Assert.assertTrue(mySet.containsAll(testSet));
     }
 
+    @Test(expected = NullPointerException.class)
+    public void canNotCheckCollectionWithNull() {
+        MySet<Integer> mySet = new MySet<>();
+        mySet.add(1);
+        mySet.add(2);
+        Set<Integer> testSet = new HashSet<>();
+        testSet.add(1);
+        testSet.add(null);
+        mySet.containsAll(testSet);
+    }
+
     @Test
     public void canRemoveCollectionsIntersection() {
         MySet<String> mySet = new MySet<>();

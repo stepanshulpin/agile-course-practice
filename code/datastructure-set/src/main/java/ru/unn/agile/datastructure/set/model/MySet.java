@@ -74,7 +74,13 @@ public class MySet<E> {
     }
 
     public boolean containsAll(final Collection<E> e) {
-        return this.container.containsAll(e);
+        for (E elem : e) {
+            if (!contains(elem)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public boolean removeAll(final Collection<E> e) {
