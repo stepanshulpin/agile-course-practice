@@ -195,6 +195,14 @@ public class MySetTest {
         Assert.assertTrue(mySet.removeAll(testSet));
     }
 
+    @Test(expected = NullPointerException.class)
+    public void canNotRemoveNullCollection() {
+        MySet<String> mySet = new MySet<>();
+        mySet.add("first row");
+        mySet.add("second row");
+        mySet.removeAll(null);
+    }
+
     @Test
     public void canUnionCollections() {
         MySet<String> mySet = new MySet<>();
