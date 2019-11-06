@@ -17,17 +17,17 @@ public class Polynomial {
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
-        for (int degree = this.degree; degree>=0; degree--) {
+        for (int degree = this.degree; degree >= 0; degree--) {
             if (degree == 0 && result.toString().equals("")) {
                 return "0";
             }
             double coef = this.coefs[degree];
-            if(coef != 0.) {
+            if (coef != 0.) {
                 result.append(coef);
-                if(degree > 0) {
+                if (degree > 0) {
                     result.append("x");
                 }
-                if(degree > 1) {
+                if (degree > 1) {
                     result.append("^").append(degree);
                 }
                 result.append(" ");
