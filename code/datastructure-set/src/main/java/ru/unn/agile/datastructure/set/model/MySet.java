@@ -26,4 +26,8 @@ public class MySet<E> {
     public void clear() {
         this.container.clear();
     }
+
+    public Object[] toArray() {
+        return this.container.toArray();
+    }
 }

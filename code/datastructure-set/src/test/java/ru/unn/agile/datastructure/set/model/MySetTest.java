@@ -44,4 +44,12 @@ public class MySetTest {
         mySet.clear();
         Assert.assertTrue(mySet.isEmpty());
     }
+
+    @Test
+    public void canConvertToArray() {
+        MySet<String> mySet = new MySet<>();
+        mySet.add("first");
+        mySet.add("second");
+        Assert.assertArrayEquals(new String[] {"first", "second"}, mySet.toArray());
+    }
 }
