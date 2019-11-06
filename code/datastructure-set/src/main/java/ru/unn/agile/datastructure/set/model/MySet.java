@@ -5,6 +5,7 @@ import java.util.List;
 
 public class MySet<E> {
 
+    private static final String ERROR_MESSAGE = "MySet collection doesn't support Null values";
     private List<E> container;
 
     public MySet() {
@@ -17,7 +18,7 @@ public class MySet<E> {
 
     public boolean add(final E e) {
         if (e == null) {
-            throw new NullPointerException("MySet collection doesn't support Null values");
+            throw new NullPointerException(ERROR_MESSAGE);
         }
 
         if (!this.container.contains(e)) {
@@ -44,6 +45,9 @@ public class MySet<E> {
     }
 
     public boolean remove(final E e) {
+        if (e == null) {
+            throw new NullPointerException(ERROR_MESSAGE);
+        }
         return this.container.remove(e);
     }
 }

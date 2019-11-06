@@ -88,4 +88,12 @@ public class MySetTest {
         Assert.assertEquals(mySet.size(), 2);
     }
 
+    @Test(expected = NullPointerException.class)
+    public void canNotRemoveNullElement() {
+        MySet<String> mySet = new MySet<>();
+        mySet.add("first row");
+        mySet.add("second row");
+        mySet.remove(null);
+    }
+
 }
