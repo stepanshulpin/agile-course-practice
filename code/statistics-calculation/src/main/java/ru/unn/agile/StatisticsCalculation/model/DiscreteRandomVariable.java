@@ -10,7 +10,7 @@ public class DiscreteRandomVariable {
         this.probabilities = probabilities;
     }
 
-    public DiscreteRandomVariable (final DiscreteRandomVariable variable) {
+    public DiscreteRandomVariable(final DiscreteRandomVariable variable) {
         this(variable.getValues(), variable.getProbabilities());
     }
 
