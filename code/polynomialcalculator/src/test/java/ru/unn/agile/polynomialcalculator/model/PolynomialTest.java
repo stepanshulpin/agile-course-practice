@@ -27,4 +27,11 @@ public class PolynomialTest {
 
         assertEquals(0, polynomial.getCoef(degree), delta);
     }
+
+    @Test
+    public void zeroPolynomialHasCorrectStringRepr() {
+        var polynomial = new Polynomial(0,0);
+
+        assertEquals("0", polynomial.toString());
+    }
 }

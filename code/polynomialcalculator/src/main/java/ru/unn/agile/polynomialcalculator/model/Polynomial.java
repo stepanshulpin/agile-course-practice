@@ -10,6 +10,21 @@ public class Polynomial {
         this.coefs[degree] = coef;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for (int degree = this.degree; degree>=0; degree--) {
+            if (degree == 0 && result.toString().equals("")) {
+                return "0";
+            }
+            double coef = this.coefs[degree];
+            if(coef != 0.) {
+                result.append(coef).append("x^").append(degree).append(" ");
+            }
+        }
+        return result.toString().strip();
+    }
+
     public int getDegree() {
         return degree;
     }
