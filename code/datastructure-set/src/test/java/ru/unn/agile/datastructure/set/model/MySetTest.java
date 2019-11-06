@@ -175,7 +175,7 @@ public class MySetTest {
     }
 
     @Test(expected = NullPointerException.class)
-    public void canNotCheckCollectionWithNull() {
+    public void canNotCheckExistingCollectionWithNull() {
         MySet<Integer> mySet = new MySet<>();
         mySet.add(1);
         mySet.add(2);
@@ -202,6 +202,16 @@ public class MySetTest {
         Set<String> testSet = new HashSet<>();
         testSet.add("second");
         Assert.assertTrue(mySet.addAll(testSet));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void canNotUnionCollectionWithNull() {
+        MySet<String> mySet = new MySet<>();
+        mySet.add("first");
+        Set<String> testSet = new HashSet<>();
+        testSet.add("second");
+        testSet.add(null);
+        mySet.addAll(testSet);
     }
 
     @Test
