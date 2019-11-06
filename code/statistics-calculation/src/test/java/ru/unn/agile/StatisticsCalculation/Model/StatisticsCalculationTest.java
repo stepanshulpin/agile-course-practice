@@ -295,10 +295,28 @@ public class StatisticsCalculationTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void throwWhenCalculateRawMomentWithIncorrectOrder() {
+    public void throwWhenCalculateRawMomentWithNegativeOrder() {
         Integer[] values = {1, 2, 3};
         Double[] probabilities = {0.1, 0.8, 0.1};
         Integer order = -1;
+
+        StatisticsCalculation.calculateRawMoment(values, probabilities, order);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCalculateRawMomentWithNullOrder() {
+        Integer[] values = {1, 2, 3};
+        Double[] probabilities = {0.1, 0.8, 0.1};
+        Integer order = null;
+
+        StatisticsCalculation.calculateRawMoment(values, probabilities, order);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCalculateRawMomentWithZeroOrder() {
+        Integer[] values = {1, 2, 3};
+        Double[] probabilities = {0.1, 0.8, 0.1};
+        Integer order = 0;
 
         StatisticsCalculation.calculateRawMoment(values, probabilities, order);
     }
@@ -379,7 +397,25 @@ public class StatisticsCalculationTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void throwWhenCalculateCentralMomentWithIncorrectOrder() {
+    public void throwWhenCalculateCentralMomentWithNegativeOrder() {
+        Integer[] values = {1, 2, 3};
+        Double[] probabilities = {0.1, 0.8, 0.1};
+        Integer order = -1;
+
+        StatisticsCalculation.calculateCentralMoment(values, probabilities, order);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCalculateCentralMomentWithNullOrder() {
+        Integer[] values = {1, 2, 3};
+        Double[] probabilities = {0.1, 0.8, 0.1};
+        Integer order = null;
+
+        StatisticsCalculation.calculateCentralMoment(values, probabilities, order);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void throwWhenCalculateCentralMomentWithZeroOrder() {
         Integer[] values = {1, 2, 3};
         Double[] probabilities = {0.1, 0.8, 0.1};
         Integer order = 0;
