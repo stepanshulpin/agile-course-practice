@@ -6,6 +6,9 @@ public class Polynomial {
     private double[] coefs;
 
     public Polynomial(double coef, int degree) {
+        if (degree < 0) {
+            throw new IllegalArgumentException("Can not create polynomial with negative degree!");
+        }
         this.coefs = new double[degree + 1];
         this.coefs[degree] = coef;
     }

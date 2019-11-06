@@ -34,4 +34,9 @@ public class PolynomialTest {
 
         assertEquals("0", polynomial.toString());
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void cannotCreatePolynomialWithNegativeDegree() {
+        new Polynomial(0, -1);
+    }
 }
