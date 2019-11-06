@@ -21,7 +21,7 @@ public class MySetTest {
     }
 
     @Test
-    public void canGetSize() {
+    public void canGetZeroSize() {
         MySet mySet = new MySet();
         Assert.assertEquals(mySet.size(), 0);
     }
