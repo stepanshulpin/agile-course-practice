@@ -2,7 +2,7 @@ package ru.unn.agile.polynomialcalculator.model;
 
 public class Polynomial {
 
-    private int degree = 0;
+    private int degree;
     private double[] coefs;
 
     public Polynomial(double coef, int degree) {
@@ -11,6 +11,7 @@ public class Polynomial {
         }
         this.coefs = new double[degree + 1];
         this.coefs[degree] = coef;
+        this.degree = degree;
     }
 
     @Override

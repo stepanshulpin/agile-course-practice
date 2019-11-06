@@ -54,4 +54,11 @@ public class PolynomialTest {
         assertNotNull(polynomial);
     }
 
+    @Test
+    public void nonZeroPolynomialHasCorrectDegree() {
+        var polynomial = new Polynomial(1., 1);
+
+        assertEquals(1, polynomial.getDegree());
+    }
+
 }
