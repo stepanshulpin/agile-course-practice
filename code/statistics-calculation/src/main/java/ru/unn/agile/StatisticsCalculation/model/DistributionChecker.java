@@ -17,7 +17,8 @@ public final class DistributionChecker {
         checkProbabilitiesSum(probabilities);
     }
 
-    private static void checkArraysInitialization(final Number[] array) {
+    private static void checkArraysInitialization(final Number[] array)
+            throws IllegalArgumentException {
         if (array == null) {
             throw new IllegalArgumentException("Array should not be null!");
         }
@@ -31,14 +32,16 @@ public final class DistributionChecker {
         }
     }
 
-    private static void compareArraysSize(final Number[] values, final Double[] probabilities) {
+    private static void compareArraysSize(final Number[] values, final Double[] probabilities)
+            throws IllegalArgumentException {
         if (values.length != probabilities.length) {
             throw new IllegalArgumentException("Values and probabilities arrays "
                     + "should have the same size!");
         }
     }
 
-    private static void checkEachProbability(final Double[] probabilities) {
+    private static void checkEachProbability(final Double[] probabilities)
+            throws IllegalArgumentException {
         Double min = 0.0;
         Double max = 1.0;
         for (int i = 0; i < probabilities.length; i++) {
@@ -49,7 +52,8 @@ public final class DistributionChecker {
         }
     }
 
-    private static void checkProbabilitiesSum(final Double[] probabilities) {
+    private static void checkProbabilitiesSum(final Double[] probabilities)
+            throws IllegalArgumentException {
         double sum = 0.0;
         final double expectedSum = 1.0;
         final double delta = 0.001;
