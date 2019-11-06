@@ -130,6 +130,23 @@ public class MySetTest {
     }
 
     @Test
+    public void canIterateByIterator() {
+        MySet<String> mySet = new MySet<>();
+        mySet.add("first row");
+        mySet.add("second row");
+        mySet.add("third row");
+        Iterator<String> iterator = mySet.iterator();
+        boolean foundValue = false;
+        while (iterator.hasNext()) {
+            if (iterator.next().equals("second row")) {
+                foundValue = true;
+            }
+        }
+
+        Assert.assertTrue(foundValue);
+    }
+
+    @Test
     public void canCheckExistingCollection() {
         MySet<String> mySet = new MySet<>();
         mySet.add("first row");
