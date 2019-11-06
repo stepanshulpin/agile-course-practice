@@ -13,94 +13,148 @@ public class FiguresVolumeCalculatorTest {
 
     @Test
     public void canCalculatePyramidVolume() {
-        assertEquals(3, FiguresVolumeCalculator.pyramidVolumeCalculate(3, 3), delta);
+        final double expectedVolume = 3;
+        final double baseSquare = 3;
+        final double height = 3;
+        assertEquals(expectedVolume,
+                FiguresVolumeCalculator.pyramidVolumeCalculate(baseSquare, height), delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void canThrowExceptionIfSquareIsNegative() {
-        FiguresVolumeCalculator.pyramidVolumeCalculate(-3, 3);
+        final double baseSquare = -3;
+        final double height = 3;
+        FiguresVolumeCalculator.pyramidVolumeCalculate(baseSquare, height);
     }
 
     @Test
     public void canCalculatePyramidVolumeWithNegativeHeight() {
-        assertEquals(3, FiguresVolumeCalculator.pyramidVolumeCalculate(3, -3), delta);
+        final double expectedVolume = 3;
+        final double baseSquare = 3;
+        final double height = -3;
+        assertEquals(expectedVolume,
+                FiguresVolumeCalculator.pyramidVolumeCalculate(baseSquare, height), delta);
     }
 
     @Test
     public void canCalculateSphereVolume() {
-        assertEquals(113.097, FiguresVolumeCalculator.sphereVolumeCalculate(3), delta);
+        final double expectedVolume = 113.097;
+        final double radius = 3;
+        assertEquals(expectedVolume,
+                FiguresVolumeCalculator.sphereVolumeCalculate(radius), delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void canThrowExceptionIfSphereRadiusIsNegative() {
-        FiguresVolumeCalculator.sphereVolumeCalculate(-3);
+        final double radius = -3;
+        FiguresVolumeCalculator.sphereVolumeCalculate(radius);
     }
 
     @Test
     public void canCalculateCylinderVolume() {
-        assertEquals(84.82,
-                FiguresVolumeCalculator.cylinderVolumeCalculate(3, 3), delta);
+        final double expectedVolume = 84.82;
+        final double baseRadius = 3;
+        final double height = 3;
+        assertEquals(expectedVolume,
+                FiguresVolumeCalculator.cylinderVolumeCalculate(baseRadius, height), delta);
     }
 
     @Test
     public void canCalculateCylinderVolumeWithNegativeHeight() {
-        assertEquals(84.82,
-                FiguresVolumeCalculator.cylinderVolumeCalculate(3, -3), delta);
+        final double expectedVolume = 84.82;
+        final double baseRadius = 3;
+        final double height = -3;
+        assertEquals(expectedVolume,
+                FiguresVolumeCalculator.cylinderVolumeCalculate(baseRadius, height), delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void canThrowExceptionIfCylinderBaseRadiusIsNegative() {
-        FiguresVolumeCalculator.cylinderVolumeCalculate(-3, 3);
+        final double baseRadius = -3;
+        final double height = 3;
+        FiguresVolumeCalculator.cylinderVolumeCalculate(baseRadius, height);
     }
 
     @Test
     public void canCalculateConeVolumeWithZeroHeight() {
-        assertEquals(0, FiguresVolumeCalculator.coneVolumeCalculate(1, 0), delta);
+        final double expectedVolume = 0;
+        final double baseRadius = 1;
+        final double height = 0;
+        assertEquals(expectedVolume,
+                FiguresVolumeCalculator.coneVolumeCalculate(baseRadius, height), delta);
     }
 
     @Test
     public void canCalculateConeVolumeWithArbitraryPositiveParams() {
-        assertEquals(28.27, FiguresVolumeCalculator.coneVolumeCalculate(3, 3), delta);
+        final double expectedVolume = 28.27;
+        final double baseRadius = 3;
+        final double height = 3;
+        assertEquals(expectedVolume,
+                FiguresVolumeCalculator.coneVolumeCalculate(baseRadius, height), delta);
     }
 
     @Test
     public void canCalculateConeVolumeWithNegativeHeight() {
-        assertEquals(28.27, FiguresVolumeCalculator.coneVolumeCalculate(3, -3), delta);
+        final double expectedVolume = 28.27;
+        final double baseRadius = 3;
+        final double height = -3;
+        assertEquals(expectedVolume,
+                FiguresVolumeCalculator.coneVolumeCalculate(baseRadius, height), delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void canThrowExceptionIfConeBaseRadiusIsNegative() {
-        FiguresVolumeCalculator.coneVolumeCalculate(-3, 3);
+        final double baseRadius = -3;
+        final double height = 3;
+        FiguresVolumeCalculator.coneVolumeCalculate(baseRadius, height);
     }
 
     @Test
     public void canCalculateParallelepipedVolumeWithZeroHeight() {
-        assertEquals(0, FiguresVolumeCalculator.parallelepipedVolumeCalculate(1, 0), delta);
+        final double expectedVolume = 0;
+        final double baseSquare = 1;
+        final double height = 0;
+        assertEquals(expectedVolume,
+                FiguresVolumeCalculator.parallelepipedVolumeCalculate(baseSquare, height), delta);
     }
 
     @Test
     public void canCalculateParallelepipedVolumeWithArbitraryPositiveParams() {
-        assertEquals(9, FiguresVolumeCalculator.parallelepipedVolumeCalculate(3, 3), delta);
+        final double expectedVolume = 9;
+        final double baseSquare = 3;
+        final double height = 3;
+        assertEquals(expectedVolume,
+                FiguresVolumeCalculator.parallelepipedVolumeCalculate(baseSquare, height), delta);
     }
 
     @Test
     public void canCalculateParallelepipedVolumeWithNegativeHeight() {
-        assertEquals(9, FiguresVolumeCalculator.parallelepipedVolumeCalculate(3, -3), delta);
+        final double expectedVolume = 9;
+        final double baseSquare = 3;
+        final double height = -3;
+        assertEquals(expectedVolume,
+                FiguresVolumeCalculator.parallelepipedVolumeCalculate(baseSquare, height), delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void canThrowExceptionIfParallelepipedBaseSquareIsNegative() {
-        FiguresVolumeCalculator.parallelepipedVolumeCalculate(-3, 3);
+        final double baseSquare = -3;
+        final double height = 3;
+        FiguresVolumeCalculator.parallelepipedVolumeCalculate(baseSquare, height);
     }
 
     @Test
     public void canCalculateOctahedronVolume() {
-        assertEquals(12.72, FiguresVolumeCalculator.octahedronVolumeCalculate(3), delta);
+        final double expectedVolume = 12.72;
+        final double edgeLength = 3;
+        assertEquals(expectedVolume,
+                FiguresVolumeCalculator.octahedronVolumeCalculate(edgeLength), delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void canThrowExceptionIfOctahedronEdgeIsNegative() {
-        FiguresVolumeCalculator.octahedronVolumeCalculate(-1);
+        final double edgeLength = -1;
+        FiguresVolumeCalculator.octahedronVolumeCalculate(edgeLength);
     }
 
 }
