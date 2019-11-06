@@ -1,6 +1,6 @@
 package ru.unn.agile.StatisticsCalculation.model;
 
-public final class MomentOrderChecker {
+final class MomentOrderChecker {
     public static void checkOrder(final Integer order) {
         checkNullOrder(order);
         checkNegativeOrder(order);
