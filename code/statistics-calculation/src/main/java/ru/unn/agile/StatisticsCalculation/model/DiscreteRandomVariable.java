@@ -9,6 +9,10 @@ public class DiscreteRandomVariable {
         this.probabilities = probabilities;
     }
 
+    public DiscreteRandomVariable (DiscreteRandomVariable variable) {
+        this(variable.getValues(), variable.getProbabilities());
+    }
+
     public Number[] getValues() {
         return this.values;
     }

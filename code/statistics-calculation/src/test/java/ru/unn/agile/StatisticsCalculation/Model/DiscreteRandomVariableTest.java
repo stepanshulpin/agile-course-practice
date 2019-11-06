@@ -30,7 +30,7 @@ public class DiscreteRandomVariableTest {
 
     @Test
     public void canGetValues() {
-        Double[] values = {1.0, 2.0};
+        Number[] values = {-1.0, 2};
         Double[] probabilities = {0.5, 0.5};
         DiscreteRandomVariable var = new DiscreteRandomVariable(values, probabilities);
 
@@ -45,4 +45,18 @@ public class DiscreteRandomVariableTest {
 
         assertArrayEquals(probabilities, var.getProbabilities());
     }
+
+    @Test
+    public void canCopyDiscreteRandomVariable() {
+        Double[] values = {-1.0, 2.0, 5.0};
+        Double[] probabilities = {0.1, 0.1, 0.8};
+        DiscreteRandomVariable var = new DiscreteRandomVariable(values, probabilities);
+
+        DiscreteRandomVariable var2 = var;
+
+        assertEquals(var, var2);
+    }
+
+
+
 }
