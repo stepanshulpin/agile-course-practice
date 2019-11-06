@@ -1,22 +1,20 @@
 package ru.unn.agile.polynomialcalculator.model;
 
-import java.util.ArrayList;
-
 public class Polynomial {
 
     private int degree = 0;
-    private ArrayList<Double> coefs;
+    private double[] coefs;
 
-    public Polynomial() {
-        this.coefs = new ArrayList<>();
-        this.coefs.add(0.);
+    public Polynomial(double coef, int degree) {
+        this.coefs = new double[degree + 1];
+        this.coefs[degree] = coef;
     }
 
     public int getDegree() {
         return degree;
     }
 
-    public double getValue(int degree) {
-        return 0;
+    public double getCoef(int degree) {
+        return coefs[degree];
     }
 }

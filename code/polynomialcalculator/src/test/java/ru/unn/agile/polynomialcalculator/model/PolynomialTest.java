@@ -9,22 +9,22 @@ public class PolynomialTest {
     private double delta = 1e-3;
 
     @Test
-    public void canInitDefaultPolynomial() {
-        var polynomial = new Polynomial();
+    public void canInitZeroPolynomial() {
+        var polynomial = new Polynomial(0, 0);
         assertNotNull(polynomial);
     }
 
     @Test
-    public void defaultPolynomialHasZeroDegree() {
-        var polynomial = new Polynomial();
+    public void zeroPolynomialHasZeroDegree() {
+        var polynomial = new Polynomial(0,0);
         assertEquals(0, polynomial.getDegree());
     }
 
     @Test
-    public void defaultPolynomialEqualsZero() {
-        var polynomial = new Polynomial();
+    public void zeroPolynomialHasZeroCoef() {
+        var polynomial = new Polynomial(0,0);
         var degree = polynomial.getDegree();
 
-        assertEquals(0, polynomial.getValue(degree), delta);
+        assertEquals(0, polynomial.getCoef(degree), delta);
     }
 }
