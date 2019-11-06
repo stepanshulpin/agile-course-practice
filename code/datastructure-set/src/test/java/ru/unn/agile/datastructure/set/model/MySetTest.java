@@ -95,6 +95,13 @@ public class MySetTest {
         Assert.assertTrue(mySet.contains("third row"));
     }
 
+    @Test(expected = NullPointerException.class)
+    public void canNotCheckExistingNull() {
+        MySet<String> mySet = new MySet<>();
+        mySet.add("first row");
+        mySet.contains(null);
+    }
+
     @Test
     public void canRemoveElement() {
         MySet<String> mySet = new MySet<>();

@@ -54,6 +54,10 @@ public class MySet<E> {
     }
 
     public boolean contains(final E e) {
+        if (e == null) {
+            throw new NullPointerException(ERROR_MESSAGE);
+        }
+
         return this.container.contains(e);
     }
 
@@ -61,6 +65,7 @@ public class MySet<E> {
         if (e == null) {
             throw new NullPointerException(ERROR_MESSAGE);
         }
+
         return this.container.remove(e);
     }
 
