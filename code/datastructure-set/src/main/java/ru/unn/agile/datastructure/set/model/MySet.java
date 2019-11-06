@@ -16,9 +16,14 @@ public class MySet<E> {
     }
 
     public boolean add(final E e) {
-        if (!isContain(e)) {
+        if (e == null) {
+            throw new NullPointerException("MySet collection doesn't support Null values");
+        }
+
+        if (!this.container.contains(e)) {
             return this.container.add(e);
         }
+
         return false;
     }
 
@@ -35,16 +40,7 @@ public class MySet<E> {
     }
 
     public boolean contains(final E e) {
-        return this.isContain(e);
-    }
-
-    private boolean isContain(final E e) {
-        for (E item : this.container) {
-            if (item.equals(e)) {
-                return true;
-            }
-        }
-        return false;
+        return this.container.contains(e);
     }
 
 }

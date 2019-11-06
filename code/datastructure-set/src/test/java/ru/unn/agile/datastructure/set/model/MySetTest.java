@@ -62,10 +62,9 @@ public class MySetTest {
     }
 
     @Test(expected = NullPointerException.class)
-    public void canAddOnlyOneNull() {
+    public void canNotAddNull() {
         MySet<String> mySet = new MySet<>();
         mySet.add("first");
-        mySet.add(null);
         mySet.add(null);
     }
 
@@ -78,5 +77,6 @@ public class MySetTest {
         mySet.add("fourth row");
         Assert.assertTrue(mySet.contains("third row"));
     }
+
 
 }
