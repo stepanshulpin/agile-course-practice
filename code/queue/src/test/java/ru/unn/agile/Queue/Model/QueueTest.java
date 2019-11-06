@@ -13,4 +13,14 @@ public class QueueTest {
 
         assertNotEquals(null, newQueue);
     }
+
+    @Test
+    public void canPushIntegerElementToQueue() {
+        Queue<Integer> newQueue = new Queue<>();
+        Integer expectedElement = 1;
+
+        newQueue.push(expectedElement);
+
+        assertEquals(expectedElement, newQueue.getTail());
+    }
 }
