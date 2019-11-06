@@ -1,6 +1,5 @@
 package ru.unn.agile.figuresvolumecalculator;
 
-
 import org.junit.Test;
 import ru.unn.agile.figuresvolumecalculator.model.FiguresVolumeCalculator;
 
