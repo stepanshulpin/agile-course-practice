@@ -69,4 +69,11 @@ public class PolynomialTest {
         assertEquals(1., polynomial.getCoef(degree), delta);
     }
 
+    @Test
+    public void nonZeroPolynomialHasCorrectStringRepr() {
+        var polynomial = new Polynomial(2.3, 2);
+
+        assertEquals("2.3x^2", polynomial.toString());
+    }
+
 }
