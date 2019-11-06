@@ -5,7 +5,6 @@ import ru.unn.agile.figuresvolumecalculator.model.FiguresVolumeCalculator;
 
 import static org.junit.Assert.*;
 
-
 public class FiguresVolumeCalculatorTest {
 
     private final double delta = 1e-2;
@@ -158,5 +157,4 @@ public class FiguresVolumeCalculatorTest {
         final double edgeLength = -1;
         FiguresVolumeCalculator.octahedronVolumeCalculate(edgeLength);
     }
-
 }
