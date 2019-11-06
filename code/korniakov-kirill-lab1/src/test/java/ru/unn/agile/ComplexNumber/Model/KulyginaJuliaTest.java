@@ -1,6 +1,5 @@
 package ru.unn.agile.ComplexNumber.Model;
 
-//import java.lang.NumberFormatException;
 import org.junit.Test;
 import ru.unn.agile.ComplexNumber.model.ComplexNumber;
 
