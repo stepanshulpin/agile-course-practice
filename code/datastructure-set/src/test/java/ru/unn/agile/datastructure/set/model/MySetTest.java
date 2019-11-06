@@ -52,4 +52,12 @@ public class MySetTest {
         mySet.add("second");
         Assert.assertArrayEquals(new String[] {"first", "second"}, mySet.toArray());
     }
+
+    @Test
+    public void canNotAddDuplicateElement() {
+        MySet<String> mySet = new MySet<>();
+        mySet.add("first");
+        mySet.add("first");
+        Assert.assertEquals(mySet.size(), 1);
+    }
 }

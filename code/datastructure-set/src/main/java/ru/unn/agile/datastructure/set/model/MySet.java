@@ -16,6 +16,12 @@ public class MySet<E> {
     }
 
     public Boolean add(final E e) {
+        for (E item : this.container) {
+            if (item.equals(e)) {
+                return false;
+            }
+        }
+
         return this.container.add(e);
     }
 
