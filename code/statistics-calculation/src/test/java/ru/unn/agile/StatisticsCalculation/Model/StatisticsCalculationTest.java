@@ -1,6 +1,7 @@
 package ru.unn.agile.StatisticsCalculation.Model;
 
 import org.junit.Test;
+import ru.unn.agile.StatisticsCalculation.model.DiscreteRandomVariable;
 import ru.unn.agile.StatisticsCalculation.model.StatisticsCalculation;
 
 import java.util.Arrays;
@@ -14,10 +15,10 @@ public class StatisticsCalculationTest {
     public void canCalculateExpectedValueForConstantOne() {
         Integer[] values = {1};
         Double[] probabilities = {1.0};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Double expectedValue = 1.0;
 
-        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
-                probabilities);
+        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(variable);
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
@@ -26,10 +27,10 @@ public class StatisticsCalculationTest {
     public void canCalculateExpectedValueForConstantTwo() {
         Integer[] values = {2};
         Double[] probabilities = {1.0};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Double expectedValue = 2.0;
 
-        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
-                probabilities);
+        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(variable);
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
@@ -38,10 +39,10 @@ public class StatisticsCalculationTest {
     public void canCalculateExpectedValueForConstantMinusOne() {
         Integer[] values = {-1};
         Double[] probabilities = {1.0};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Double expectedValue = -1.0;
 
-        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
-                probabilities);
+        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(variable);
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
@@ -50,10 +51,10 @@ public class StatisticsCalculationTest {
     public void canCalculateExpectedValueForTwoDimValues() {
         Integer[] values = {-1, 3};
         Double[] probabilities = {0.5, 0.5};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Double expectedValue = 1.0;
 
-        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
-                probabilities);
+        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(variable);
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
@@ -62,10 +63,10 @@ public class StatisticsCalculationTest {
     public void canCalculateExpectedValueForThreeDimValues() {
         Integer[] values = {-1, 3, 5};
         Double[] probabilities = {0.2, 0.3, 0.5};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Double expectedValue = 3.2;
 
-        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
-                probabilities);
+        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(variable);
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
@@ -74,10 +75,10 @@ public class StatisticsCalculationTest {
     public void canCalculateExpectedValueForDouble() {
         Double[] values = {-1.0,  3.0};
         Double[] probabilities = {0.2, 0.8};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Double expectedValue = 2.2;
 
-        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
-                probabilities);
+        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(variable);
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
@@ -86,10 +87,10 @@ public class StatisticsCalculationTest {
     public void canCalculateExpectedValueForDoubleAndInteger() {
         Number[] values = {-1.0,  3, 5.0};
         Double[] probabilities = {0.2, 0.4, 0.4};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Double expectedValue = 3.0;
 
-        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
-                probabilities);
+        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(variable);
 
         assertEquals(expectedValue, realExpectedValue, delta);
     }
@@ -107,30 +108,22 @@ public class StatisticsCalculationTest {
         Number[] values = createSequentialValues(1000);
         Double[] probabilities = new Double[1000];
         Arrays.fill(probabilities, 0.001);
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Double expectedValue = 499.5;
 
-        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(values,
-                probabilities);
+        Double realExpectedValue = StatisticsCalculation.calculateExpectedValue(variable);
 
         assertEquals(expectedValue, realExpectedValue, delta);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void throwWhenCalculateExpectedValueForIncorrectDistribution() {
-        Integer[] values = {1, 2, 3, 4};
-        Double[] probabilities = {0.1, 0.3, 0.1};
-
-        StatisticsCalculation.calculateExpectedValue(values, probabilities);
     }
 
     @Test
     public void canCalculateDispersionForConstantOne() {
         Number[] values = {1.0};
         Double[] probabilities = {1.0};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Double dispersion = 0.0;
 
-        Double realDispersion = StatisticsCalculation.calculateDispersion(values,
-                probabilities);
+        Double realDispersion = StatisticsCalculation.calculateDispersion(variable);
 
         assertEquals(dispersion, realDispersion, delta);
     }
@@ -139,10 +132,10 @@ public class StatisticsCalculationTest {
     public void canCalculateDispersionForConstantMinusOne() {
         Number[] values = {-1.0};
         Double[] probabilities = {1.0};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Double dispersion = 0.0;
 
-        Double realDispersion = StatisticsCalculation.calculateDispersion(values,
-                probabilities);
+        Double realDispersion = StatisticsCalculation.calculateDispersion(variable);
 
         assertEquals(dispersion, realDispersion, delta);
     }
@@ -151,10 +144,10 @@ public class StatisticsCalculationTest {
     public void canCalculateDispersionForTwoDimValues1() {
         Number[] values = {-1.0, 4.0};
         Double[] probabilities = {0.7, 0.3};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Double dispersion = 5.25;
 
-        Double realDispersion = StatisticsCalculation.calculateDispersion(values,
-                probabilities);
+        Double realDispersion = StatisticsCalculation.calculateDispersion(variable);
 
         assertEquals(dispersion, realDispersion, delta);
     }
@@ -163,10 +156,10 @@ public class StatisticsCalculationTest {
     public void canCalculateDispersionForTwoDimValues2() {
         Number[] values = {-3.0, 1.0};
         Double[] probabilities = {0.7, 0.3};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Double dispersion = 3.36;
 
-        Double realDispersion = StatisticsCalculation.calculateDispersion(values,
-                probabilities);
+        Double realDispersion = StatisticsCalculation.calculateDispersion(variable);
 
         assertEquals(dispersion, realDispersion, delta);
     }
@@ -175,10 +168,10 @@ public class StatisticsCalculationTest {
     public void canCalculateDispersionForThreeDimValues1() {
         Number[] values = {-3.0, 1.5, 10.0};
         Double[] probabilities = {0.5, 0.2, 0.3};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Double dispersion = 31.71;
 
-        Double realDispersion = StatisticsCalculation.calculateDispersion(values,
-                probabilities);
+        Double realDispersion = StatisticsCalculation.calculateDispersion(variable);
 
         assertEquals(dispersion, realDispersion, delta);
     }
@@ -187,10 +180,10 @@ public class StatisticsCalculationTest {
     public void canCalculateDispersionForThreeDimValues2() {
         Number[] values = {-3.0, -1.5, -1.0};
         Double[] probabilities = {0.1, 0.1, 0.8};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Double dispersion = 0.3625;
 
-        Double realDispersion = StatisticsCalculation.calculateDispersion(values,
-                probabilities);
+        Double realDispersion = StatisticsCalculation.calculateDispersion(variable);
 
         assertEquals(dispersion, realDispersion, delta);
     }
@@ -199,10 +192,10 @@ public class StatisticsCalculationTest {
     public void canCalculateDispersionForFiveDimValues() {
         Number[] values = {-3.0, -1.5, -1.0, 0.0, 1.0};
         Double[] probabilities = {0.1, 0.1, 0.6, 0.1, 0.1};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Double dispersion = 0.9225;
 
-        Double realDispersion = StatisticsCalculation.calculateDispersion(values,
-                probabilities);
+        Double realDispersion = StatisticsCalculation.calculateDispersion(variable);
 
         assertEquals(dispersion, realDispersion, delta);
     }
@@ -212,31 +205,23 @@ public class StatisticsCalculationTest {
         Number[] values = createSequentialValues(1000);
         Double[] probabilities = new Double[1000];
         Arrays.fill(probabilities, 0.001);
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Double dispersion = 83333.25;
 
-        Double realDispersion = StatisticsCalculation.calculateDispersion(values,
-                probabilities);
+        Double realDispersion = StatisticsCalculation.calculateDispersion(variable);
 
         assertEquals(dispersion, realDispersion, delta);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void throwWhenCalculateDispersionForIncorrectDistribution() {
-        Integer[] values = {1, 2, 3};
-        Double[] probabilities = {0.1, 1.3, 0.1};
-
-        StatisticsCalculation.calculateDispersion(values, probabilities);
     }
 
     @Test
     public void canCalculateFirstOrderRawMoment() {
         Number[] values = {1.0, 5.0};
         Double[] probabilities = {0.5, 0.5};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Integer order = 1;
         Double rawMoment = 3.0;
 
-        Double realRawMoment = StatisticsCalculation.calculateRawMoment(values,
-                probabilities, order);
+        Double realRawMoment = StatisticsCalculation.calculateRawMoment(variable, order);
 
         assertEquals(rawMoment, realRawMoment, delta);
     }
@@ -245,11 +230,11 @@ public class StatisticsCalculationTest {
     public void canCalculateSecondOrderRawMoment() {
         Number[] values = {1.0, 5.0};
         Double[] probabilities = {0.5, 0.5};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Integer order = 2;
         Double rawMoment = 13.0;
 
-        Double realRawMoment = StatisticsCalculation.calculateRawMoment(values,
-                probabilities, order);
+        Double realRawMoment = StatisticsCalculation.calculateRawMoment(variable, order);
 
         assertEquals(rawMoment, realRawMoment, delta);
     }
@@ -258,11 +243,11 @@ public class StatisticsCalculationTest {
     public void canCalculateThirdOrderRawMoment() {
         Number[] values = {1.0, 5.0};
         Double[] probabilities = {0.5, 0.5};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Integer order = 3;
         Double rawMoment = 63.0;
 
-        Double realRawMoment = StatisticsCalculation.calculateRawMoment(values,
-                probabilities, order);
+        Double realRawMoment = StatisticsCalculation.calculateRawMoment(variable, order);
 
         assertEquals(rawMoment, realRawMoment, delta);
     }
@@ -271,11 +256,11 @@ public class StatisticsCalculationTest {
     public void canCalculateBigOrderRawMoment() {
         Number[] values = {1.0, 5.0};
         Double[] probabilities = {0.5, 0.5};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Integer order = 10;
         Double rawMoment = 4882813.0;
 
-        Double realRawMoment = StatisticsCalculation.calculateRawMoment(values,
-                probabilities, order);
+        Double realRawMoment = StatisticsCalculation.calculateRawMoment(variable, order);
 
         assertEquals(rawMoment, realRawMoment, delta);
     }
@@ -285,11 +270,11 @@ public class StatisticsCalculationTest {
         Number[] values = createSequentialValues(1000);
         Double[] probabilities = new Double[1000];
         Arrays.fill(probabilities, 0.001);
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Integer order = 2;
         Double rawMoment = 332833.5;
 
-        Double realRawMoment = StatisticsCalculation.calculateRawMoment(values,
-                probabilities, order);
+        Double realRawMoment = StatisticsCalculation.calculateRawMoment(variable, order);
 
         assertEquals(rawMoment, realRawMoment, delta);
     }
@@ -298,47 +283,41 @@ public class StatisticsCalculationTest {
     public void throwWhenCalculateRawMomentWithNegativeOrder() {
         Integer[] values = {1, 2, 3};
         Double[] probabilities = {0.1, 0.8, 0.1};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Integer order = -1;
 
-        StatisticsCalculation.calculateRawMoment(values, probabilities, order);
+        StatisticsCalculation.calculateRawMoment(variable, order);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void throwWhenCalculateRawMomentWithNullOrder() {
         Integer[] values = {1, 2, 3};
         Double[] probabilities = {0.1, 0.8, 0.1};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Integer order = null;
 
-        StatisticsCalculation.calculateRawMoment(values, probabilities, order);
+        StatisticsCalculation.calculateRawMoment(variable, order);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void throwWhenCalculateRawMomentWithZeroOrder() {
         Integer[] values = {1, 2, 3};
         Double[] probabilities = {0.1, 0.8, 0.1};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Integer order = 0;
 
-        StatisticsCalculation.calculateRawMoment(values, probabilities, order);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void throwWhenCalculateRawMomentForIncorrectDistribution() {
-        Integer[] values = {1, 2, 3};
-        Double[] probabilities = {-0.1, 1.0, 0.1};
-        Integer order = 2;
-
-        StatisticsCalculation.calculateRawMoment(values, probabilities, order);
+        StatisticsCalculation.calculateRawMoment(variable, order);
     }
 
     @Test
     public void canCalculateFirstOrderCentralMoment() {
         Number[] values = {1.0, 5.0};
         Double[] probabilities = {0.5, 0.5};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Integer order = 1;
         Double centralMoment = 0.0;
 
-        Double realCentralMoment = StatisticsCalculation.calculateCentralMoment(values,
-                probabilities, order);
+        Double realCentralMoment = StatisticsCalculation.calculateCentralMoment(variable, order);
 
         assertEquals(centralMoment, realCentralMoment, delta);
     }
@@ -347,11 +326,11 @@ public class StatisticsCalculationTest {
     public void canCalculateSecondOrderCentralMoment() {
         Number[] values = {1.0, 5.0};
         Double[] probabilities = {0.5, 0.5};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Integer order = 2;
         Double centralMoment = 4.0;
 
-        Double realCentralMoment = StatisticsCalculation.calculateCentralMoment(values,
-                probabilities, order);
+        Double realCentralMoment = StatisticsCalculation.calculateCentralMoment(variable, order);
 
         assertEquals(centralMoment, realCentralMoment, delta);
     }
@@ -360,11 +339,11 @@ public class StatisticsCalculationTest {
     public void canCalculateThirdOrderCentralMoment() {
         Number[] values = {1.0, 5.0};
         Double[] probabilities = {0.4, 0.6};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Integer order = 3;
         Double centralMoment = -3.072;
 
-        Double realCentralMoment = StatisticsCalculation.calculateCentralMoment(values,
-                probabilities, order);
+        Double realCentralMoment = StatisticsCalculation.calculateCentralMoment(variable, order);
 
         assertEquals(centralMoment, realCentralMoment, delta);
     }
@@ -373,11 +352,11 @@ public class StatisticsCalculationTest {
     public void canCalculateBigOrderCentralMoment() {
         Number[] values = {1.0, 5.0};
         Double[] probabilities = {0.4, 0.6};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Integer order = 16;
         Double centralMoment = 485769.796;
 
-        Double realCentralMoment = StatisticsCalculation.calculateCentralMoment(values,
-                probabilities, order);
+        Double realCentralMoment = StatisticsCalculation.calculateCentralMoment(variable, order);
 
         assertEquals(centralMoment, realCentralMoment, delta);
     }
@@ -387,11 +366,11 @@ public class StatisticsCalculationTest {
         Number[] values = createSequentialValues(1000);
         Double[] probabilities = new Double[1000];
         Arrays.fill(probabilities, 0.001);
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Integer order = 4;
         Double centralMoment = 12499958333.3625;
 
-        Double realCentralMoment = StatisticsCalculation.calculateCentralMoment(values,
-                probabilities, order);
+        Double realCentralMoment = StatisticsCalculation.calculateCentralMoment(variable, order);
 
         assertEquals(centralMoment, realCentralMoment, delta);
     }
@@ -400,35 +379,29 @@ public class StatisticsCalculationTest {
     public void throwWhenCalculateCentralMomentWithNegativeOrder() {
         Integer[] values = {1, 2, 3};
         Double[] probabilities = {0.1, 0.8, 0.1};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Integer order = -1;
 
-        StatisticsCalculation.calculateCentralMoment(values, probabilities, order);
+        StatisticsCalculation.calculateCentralMoment(variable, order);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void throwWhenCalculateCentralMomentWithNullOrder() {
         Integer[] values = {1, 2, 3};
         Double[] probabilities = {0.1, 0.8, 0.1};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Integer order = null;
 
-        StatisticsCalculation.calculateCentralMoment(values, probabilities, order);
+        StatisticsCalculation.calculateCentralMoment(variable, order);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void throwWhenCalculateCentralMomentWithZeroOrder() {
         Integer[] values = {1, 2, 3};
         Double[] probabilities = {0.1, 0.8, 0.1};
+        DiscreteRandomVariable variable = new DiscreteRandomVariable(values, probabilities);
         Integer order = 0;
 
-        StatisticsCalculation.calculateCentralMoment(values, probabilities, order);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void throwWhenCalculateCentralMomentForIncorrectDistribution() {
-        Integer[] values = {1, 2, 3};
-        Double[] probabilities = {0.1, 0.9};
-        Integer order = 2;
-
-        StatisticsCalculation.calculateCentralMoment(values, probabilities, order);
+        StatisticsCalculation.calculateCentralMoment(variable, order);
     }
 }
