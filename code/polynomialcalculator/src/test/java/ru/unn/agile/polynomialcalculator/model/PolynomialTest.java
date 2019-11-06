@@ -39,4 +39,11 @@ public class PolynomialTest {
     public void cannotCreatePolynomialWithNegativeDegree() {
         new Polynomial(0, -1);
     }
+
+    @Test
+    public void nonZeroDegreePolynomialWithZeroCoefHasCorrectStringRepr() {
+        var polynomial = new Polynomial(0, 3);
+
+        assertEquals("0", polynomial.toString());
+    }
 }
