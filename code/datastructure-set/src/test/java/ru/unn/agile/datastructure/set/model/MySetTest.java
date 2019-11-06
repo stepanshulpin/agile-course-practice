@@ -78,5 +78,13 @@ public class MySetTest {
         Assert.assertTrue(mySet.contains("third row"));
     }
 
+    @Test
+    public void canRemoveElement() {
+        MySet<String> mySet = new MySet<>();
+        mySet.add("first row");
+        mySet.add("second row");
+        mySet.add("third row");
+        Assert.assertTrue(mySet.remove("second row"));
+    }
 
 }

@@ -43,4 +43,7 @@ public class MySet<E> {
         return this.container.contains(e);
     }
 
+    public boolean remove(final E e) {
+        return this.container.remove(e);
+    }
 }
