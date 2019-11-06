@@ -95,4 +95,15 @@ public class KulyginaJuliaTest {
         assertEquals("5.2 + 7.6i", z.toString());
     }
 
+    @Test()
+    public void createWithNegativesNumbers() {
+        ComplexNumber z = new ComplexNumber(-5.2, -7.6);
+        assertEquals("-5.2 - 7.6i", z.toString());
+    }
+
+    @Test()
+    public void createWithNulls() {
+        ComplexNumber z = new ComplexNumber(0, 0);
+        assertEquals("0.0 + 0.0i", z.toString());
+    }
 }
