@@ -57,7 +57,8 @@ public final class FractionCalculator {
         return sum(first, negativeSecond);
     }
 
-    private static void checkFractionsNotNull(Fraction... fractions) throws NullPointerException {
+    private static void checkFractionsNotNull(final Fraction... fractions)
+            throws NullPointerException {
         Arrays.stream(Objects.requireNonNull(fractions)).forEach(Objects::requireNonNull);
     }
 }
