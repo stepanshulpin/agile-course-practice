@@ -31,8 +31,8 @@ public class Fraction {
         if (!(o instanceof Fraction)) {
             return false;
         }
-        var thisReducedFraction = new FractionCalculator(this).reduce();
-        var thatReducedFraction = new FractionCalculator((Fraction) o).reduce();
+        var thisReducedFraction = FractionCalculator.reduce(this);
+        var thatReducedFraction = FractionCalculator.reduce((Fraction) o);
         return thisReducedFraction.numerator == thatReducedFraction.numerator
                 && thisReducedFraction.denominator == thatReducedFraction.denominator;
     }

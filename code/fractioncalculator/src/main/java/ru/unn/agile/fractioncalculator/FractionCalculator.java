@@ -1,18 +1,10 @@
 package ru.unn.agile.fractioncalculator;
 
-public class FractionCalculator {
+public final class FractionCalculator {
 
-    private Fraction fraction;
+    private FractionCalculator() {}
 
-    public FractionCalculator(final Fraction fraction) {
-        this.fraction = fraction;
-    }
-
-    public Fraction getFraction() {
-        return fraction;
-    }
-
-    public Fraction reduce() {
+    public static Fraction reduce(Fraction fraction) {
         var tmpNumerator = Math.abs(fraction.getNumerator());
         var tmpDenominator = Math.abs(fraction.getDenominator());
         while (tmpNumerator != 0 && tmpDenominator != 0) {
@@ -31,4 +23,16 @@ public class FractionCalculator {
                 fraction.getDenominator() / nod
         );
     }
+
+    public static Fraction multiple(Fraction first, Fraction second) {
+        return new Fraction(
+                first.getNumerator() * second.getNumerator(),
+                first.getDenominator() * second.getDenominator()
+        );
+    }
+
+    public static Fraction multipleWithReduce(Fraction first, Fraction second) {
+        return reduce(multiple(first, second));
+    }
+
 }
