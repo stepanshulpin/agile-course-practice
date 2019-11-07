@@ -23,7 +23,7 @@ public class MySetTest {
     @Test
     public void canGetZeroSize() {
         MySet mySet = new MySet();
-        Assert.assertEquals(mySet.size(), 0);
+        Assert.assertEquals(0, mySet.size());
     }
 
     @Test
@@ -37,7 +37,7 @@ public class MySetTest {
         MySet<String> mySet = new MySet<>();
         mySet.add("first row");
         mySet.add("second row");
-        Assert.assertEquals(mySet.size(), 2);
+        Assert.assertEquals(2, mySet.size());
     }
 
     @Test
@@ -75,7 +75,7 @@ public class MySetTest {
         MySet<String> mySet = new MySet<>();
         mySet.add("first");
         mySet.add("first");
-        Assert.assertEquals(mySet.size(), 1);
+        Assert.assertEquals(1, mySet.size());
     }
 
     @Test(expected = NullPointerException.class)
@@ -109,7 +109,7 @@ public class MySetTest {
         mySet.add("second row");
         mySet.add("third row");
         mySet.remove("second row");
-        Assert.assertEquals(mySet.size(), 2);
+        Assert.assertEquals(2, mySet.size());
     }
 
     @Test(expected = NullPointerException.class)
@@ -159,7 +159,7 @@ public class MySetTest {
             }
         }
 
-        Assert.assertEquals(mySet.size(), 2);
+        Assert.assertEquals(2, mySet.size());
     }
 
     @Test
@@ -231,7 +231,7 @@ public class MySetTest {
         Set<Integer> testSet = new HashSet<>();
         testSet.add(1);
         mySet.retainAll(testSet);
-        Assert.assertEquals(mySet.size(), 1);
+        Assert.assertEquals(1, mySet.size());
     }
 
     @Test(expected = NullPointerException.class)
