@@ -12,4 +12,19 @@ public class StackTest {
         Stack stack = new Stack();
         assertTrue(stack.isStackCreated());
     }
+
+    @Test(expected = Test.None.class)
+    public void canPushIntegerToStack() {
+        Stack<Integer> stack = new Stack<>();
+        int valueToAdd = 5;
+
+        stack.push(valueToAdd);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canThrowWhenPushNullElementToSTack() {
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(null);
+    }
 }
