@@ -148,4 +148,33 @@ public class PolynomialTest {
         assertNotNull(p3);
     }
 
+    @Test
+    public void minusProducesCorrectCoefs() {
+        var p1 = new Polynomial(2.1, 1);
+        var p2 = new Polynomial(1.8, 1);
+
+        var p3 = p1.minus(p2);
+
+        assertEquals(0.3, p3.getCoef(1), delta);
+    }
+
+    @Test
+    public void minusProducesCorrectDegree() {
+        var p1 = new Polynomial(1.1, 1);
+        var p2 = new Polynomial(1.4, 2);
+
+        var p3 = p1.minus(p2);
+
+        assertEquals(2, p3.getDegree());
+    }
+
+    @Test
+    public void minusHasCorrectStringRepr() {
+        var p1 = new Polynomial(1.1, 1);
+        var p2 = new Polynomial(1.4, 2);
+
+        var p3 = p1.minus(p2);
+
+        assertEquals("- 1.4x^2 + 1.1x", p3.toString());
+    }
 }
