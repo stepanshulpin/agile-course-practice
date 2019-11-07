@@ -92,10 +92,11 @@ public class Polynomial {
         return derivative;
     }
 
-    public double evaluate(double x) {
+    public double evaluate(final double x) {
         double result = 0;
-        for (int i = this.degree; i >= 0; i--)
+        for (int i = this.degree; i >= 0; i--) {
             result = this.coefs[i] + (x * result);
+        }
         return result;
     }
 
@@ -153,9 +154,8 @@ public class Polynomial {
 
     @Override
     public int hashCode() {
-        int magicNumber = 31; // TravisCI don't like default IntelliJ implementation of hashCode
         int result = Objects.hash(degree);
-        result = magicNumber * result + Arrays.hashCode(coefs);
+        result += Arrays.hashCode(coefs);
         return result;
     }
 }

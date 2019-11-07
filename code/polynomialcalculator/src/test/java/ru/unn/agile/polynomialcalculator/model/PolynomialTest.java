@@ -355,15 +355,15 @@ public class PolynomialTest {
     @Test
     public void evaluateOfComplexPolynomialCorrectly() {
         var p0 = new Polynomial(3.0, 0);
-        var p1 = new Polynomial(1.2, 1);
-        var p2 = new Polynomial(2.3, 2);
+        var p1 = new Polynomial(1.3, 1);
+        var p2 = new Polynomial(2.4, 2);
         var p3 = new Polynomial(-4.1, 3);
-        var p4 = new Polynomial(-1, 4);
+        var p4 = new Polynomial(3.1, 4);
 
         var polynomial = p4.plus(p3).minus(p2).plus(p1).plus(p0);
 
         var x = 2.;
-        assertEquals(-52.6, polynomial.evaluate(x), delta);
+        assertEquals(12.8, polynomial.evaluate(x), delta);
     }
 
 
