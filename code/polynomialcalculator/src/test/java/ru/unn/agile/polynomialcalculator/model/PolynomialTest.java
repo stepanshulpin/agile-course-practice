@@ -200,4 +200,17 @@ public class PolynomialTest {
 
         assertEquals("2.0x^2 + 3.9x", result.toString());
     }
+
+    @Test
+    public void longPolynomialHasCorrectStringRepr() {
+        var p0 = new Polynomial(3.0, 0);
+        var p1 = new Polynomial(1.2, 1);
+        var p2 = new Polynomial(2.3, 2);
+        var p3 = new Polynomial(-4.1, 3);
+        var p4 = new Polynomial(-1, 4);
+
+        var polynomial = p4.plus(p3).minus(p2).plus(p1).plus(p0);
+
+        assertEquals("- 1.0x^4 - 4.1x^3 - 2.3x^2 + 1.2x + 3.0", polynomial.toString());
+    }
 }
