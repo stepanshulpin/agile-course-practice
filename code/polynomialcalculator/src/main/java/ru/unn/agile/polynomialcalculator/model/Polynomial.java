@@ -53,6 +53,16 @@ public class Polynomial {
         return coefs[degree];
     }
 
+    private void reduce() {
+        this.degree = 0;
+        for (int i = this.coefs.length - 1; i >= 0; i--) {
+            if (coefs[i] != 0) {
+                this.degree = i;
+                return;
+            }
+        }
+    }
+
     public Polynomial plus(Polynomial that) {
         Polynomial sum = new Polynomial(0, Math.max(this.getDegree(), that.getDegree()));
         for (int i = 0; i <= this.degree; i++) {
@@ -61,6 +71,7 @@ public class Polynomial {
         for (int i = 0; i <= that.degree; i++) {
             sum.coefs[i] += that.coefs[i];
         }
+        sum.reduce();
         return sum;
     }
 
@@ -72,6 +83,7 @@ public class Polynomial {
         for (int i = 0; i <= that.degree; i++) {
             minus.coefs[i] -= that.coefs[i];
         }
+        minus.reduce();
         return minus;
     }
 }

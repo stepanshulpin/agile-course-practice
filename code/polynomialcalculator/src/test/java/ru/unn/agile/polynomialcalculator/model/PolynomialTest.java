@@ -177,4 +177,15 @@ public class PolynomialTest {
 
         assertEquals("- 1.4x^2 + 1.1x", p3.toString());
     }
+
+    @Test
+    public void polynomialReducesDegreeCorrectly() {
+        var p1 = new Polynomial(1., 1);
+        var p2 = new Polynomial(2.1, 2);
+
+        var sum = p2.plus(p1);
+        var p1Copy = sum.minus(p2);
+
+        assertEquals(1, p1Copy.getDegree());
+    }
 }
