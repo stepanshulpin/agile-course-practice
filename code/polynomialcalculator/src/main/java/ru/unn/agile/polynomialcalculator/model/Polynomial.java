@@ -35,7 +35,6 @@ public class Polynomial {
                 if (degree > 1) {
                     result.append("^").append(degree);
                 }
-                result.append(" ");
             } else {
                 if (degree == 0 && result.toString().equals("")) {
                     result.append("0");

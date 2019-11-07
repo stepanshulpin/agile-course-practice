@@ -118,4 +118,24 @@ public class PolynomialTest {
         assertEquals(2.5, p3.getCoef(1), delta);
     }
 
+    @Test
+    public void sumProducesCorrectDegree() {
+        var p1 = new Polynomial(1.1, 1);
+        var p2 = new Polynomial(1.4, 2);
+
+        var p3 = p1.plus(p2);
+
+        assertEquals(2, p3.getDegree());
+    }
+
+    @Test
+    public void sumHasCorrectStringRepr() {
+        var p1 = new Polynomial(1.1, 1);
+        var p2 = new Polynomial(1.4, 2);
+
+        var p3 = p1.plus(p2);
+
+        assertEquals("1.4x^2 + 1.1x", p3.toString());
+    }
+
 }
