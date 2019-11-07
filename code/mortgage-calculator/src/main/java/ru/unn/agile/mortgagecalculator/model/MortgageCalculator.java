@@ -4,7 +4,7 @@ public class MortgageCalculator {
 
     private final double FRACTION_OF_HUNDRED = 0.01;
 
-    public double calculateWithoutPayments(double i, double i1) {
-        return i + i * i1 * FRACTION_OF_HUNDRED;
+    public double calculateWithoutPayments(double amount, double percent) {
+        return amount + amount * percent * FRACTION_OF_HUNDRED;
     }
 }
