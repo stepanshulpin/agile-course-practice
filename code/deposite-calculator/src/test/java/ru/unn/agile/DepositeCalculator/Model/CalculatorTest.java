@@ -10,7 +10,7 @@ public class CalculatorTest {
     @Test
     public void caclYearDepositeWithoutCapitalization() {
         Calculator calc = new Calculator();
-        double depositeRes = calc.calculate(100, 10, 1);
+        double depositeRes = calc.calculate(100, 10, 12);
 
         assertEquals(110, depositeRes, delta);
     }
@@ -18,8 +18,24 @@ public class CalculatorTest {
     @Test
     public void cacl2YearDepositeWithoutCapitalization() {
         Calculator calc = new Calculator();
-        double depositeRes = calc.calculate(100, 10, 2);
+        double depositeRes = calc.calculate(100, 10, 24);
 
         assertEquals(120, depositeRes, delta);
+    }
+
+    @Test
+    public void cacl6MonthDepositeWithoutCapitalization() {
+        Calculator calc = new Calculator();
+        double depositeRes = calc.calculate(200, 10, 6);
+
+        assertEquals(210, depositeRes, delta);
+    }
+
+    @Test
+    public void caclMonthDepositeWithoutCapitalization() {
+        Calculator calc = new Calculator();
+        double depositeRes = calc.calculate(144, 50, 1);
+
+        assertEquals(150, depositeRes, delta);
     }
 }
