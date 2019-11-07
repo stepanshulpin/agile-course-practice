@@ -44,7 +44,8 @@ public final class Fraction {
         }
         var thisReducedFraction = FractionCalculator.reduce(this);
         var thatReducedFraction = FractionCalculator.reduce((Fraction) o);
-        if (thisReducedFraction.isNegative() && !thatReducedFraction.isNegative()) {
+
+        if (thisReducedFraction.isNegative() != thatReducedFraction.isNegative()) {
             return false;
         }
         var numeratorEquals = Math.abs(thisReducedFraction.numerator)
