@@ -303,4 +303,44 @@ public class PolynomialTest {
 
         assertEquals("18.0x^8 + 48.0x^4 + 32.0", composition.toString());
     }
+
+    @Test
+    public void differentiateOfPolynomialsIsNotNull() {
+        var p1 = new Polynomial(2, 2);
+        var p2 = new Polynomial(3, 4);
+
+        var p3 = p1.plus(p2).differentiate();
+
+        assertNotNull(p3);
+    }
+
+    @Test
+    public void differentiateOfPolynomialsHasCorrectDegree() {
+        var p1 = new Polynomial(2, 2);
+        var p2 = new Polynomial(3, 4);
+
+        var p3 = p1.plus(p2).differentiate();
+
+        assertEquals(3, p3.getDegree());
+    }
+
+    @Test
+    public void differentiateOfPolynomialsHasCorrectCoef() {
+        var p1 = new Polynomial(2, 2);
+        var p2 = new Polynomial(3, 4);
+
+        var p3 = p1.plus(p2).differentiate();
+        assertEquals(12., p3.getCoef(3), delta);
+    }
+
+    @Test
+    public void differentiateOfPolynomialsHasCorrectStringRepr() {
+        var p1 = new Polynomial(2, 2);
+        var p2 = new Polynomial(3, 4);
+        var p3 = new Polynomial(4, 0);
+
+        var derivative = p1.plus(p2).plus(p3).differentiate();
+
+        assertEquals("12.0x^3 + 4.0x", derivative.toString());
+    }
 }

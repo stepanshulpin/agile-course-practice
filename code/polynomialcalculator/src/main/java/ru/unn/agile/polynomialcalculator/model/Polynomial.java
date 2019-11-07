@@ -80,6 +80,17 @@ public class Polynomial {
         return composition;
     }
 
+    public Polynomial differentiate() {
+        if (this.degree == 0) {
+            return new Polynomial(0, 0);
+        }
+        Polynomial derivative = new Polynomial(0, this.degree - 1);
+        derivative.degree = this.degree - 1;
+        for (int i = 0; i < this.degree; i++)
+            derivative.coefs[i] = (i + 1) * this.coefs[i + 1];
+        return derivative;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
