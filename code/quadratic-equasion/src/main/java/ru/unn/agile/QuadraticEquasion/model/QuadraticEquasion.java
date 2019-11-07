@@ -1,7 +1,5 @@
 package ru.unn.agile.QuadraticEquasion.model;
 
-//import ru.unn.agile.ComplexNumber.model.ComplexNumber;
-
 import ru.unn.agile.ComplexNumber.model.ComplexNumber;
 
 public final class QuadraticEquasion {

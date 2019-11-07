@@ -31,13 +31,11 @@ public class QuadraticEquasionTests {
     @Test(expected = IllegalArgumentException.class)
     public void canNotCreateWithAllZeroIndexes() {
         QuadraticEquasion qe = new QuadraticEquasion(0, 0, 0);
-        assertNotNull(qe);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void canNotCreateWithAAndBZeroIndexes() {
-        QuadraticEquasion qe = new QuadraticEquasion(0, 0, 0);
-        assertNotNull(qe);
+        QuadraticEquasion qe = new QuadraticEquasion(0, 0, 10);
     }
 
     @Test public void canSolveSimpleEquasion() {
@@ -54,12 +52,22 @@ public class QuadraticEquasionTests {
 
     @Test public void canSolveEquasionWithZeroACoeff() {
         QuadraticEquasion qe = new QuadraticEquasion(0, 3, -9);
-        ComplexNumber[] solution = new ComplexNumber[2];
+        ComplexNumber[] solution = new ComplexNumber[1];
         solution[0] = new ComplexNumber(3, 0);
 
         ComplexNumber[] actual = qe.solve();
 
         assertEquals(solution[0], actual[0]);
+    }
+
+    @Test public void solutionWithZeroACoeffGivesOneX() {
+        QuadraticEquasion qe = new QuadraticEquasion(0, 4, -16);
+        ComplexNumber[] solution = new ComplexNumber[1];
+        solution[0] = new ComplexNumber(4, 0);
+
+        ComplexNumber[] actual = qe.solve();
+
+        assertEquals(solution.length, 1);
     }
 
     @Test public void canSolveEquasionWithZeroBCoeff() {

@@ -4,6 +4,12 @@ public final class Formatter {
 
     private Formatter() { }
 
+    private static Integer getTwoDigitsAfterPoint(final double value) {
+        final int hundred = 100;
+        double val = value * hundred;
+        return (int) val % hundred;
+    }
+
     public static String formatPositiveDouble(final double value) {
         if (value < 0) {
             throw new IllegalArgumentException();
@@ -12,11 +18,9 @@ public final class Formatter {
         Integer i = (int) value;
         String buffer = i.toString();
 
-        final int hundred = 100;
         final int ten = 10;
 
-        double val = value * hundred; // We want only 2 digits
-        i = (int) val % hundred;
+        i = getTwoDigitsAfterPoint(value);
         buffer += ".";
         if (i == 0) {
             buffer += "0";
