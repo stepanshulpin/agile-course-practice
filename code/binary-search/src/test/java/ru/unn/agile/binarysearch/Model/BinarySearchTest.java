@@ -24,29 +24,39 @@ public class BinarySearchTest {
     public void canDoSimpleSearch() {
         int[] inputArray = {1};
         BinarySearch binarySearch = new BinarySearch(inputArray);
-        int key = 1;
+        int element = 1;
         int expectedPosition = 0;
 
-        assertEquals(binarySearch.search(key), expectedPosition);
+        assertEquals(binarySearch.search(element), expectedPosition);
     }
 
     @Test
     public void canSearchElementInSortedArraySimple() {
         int[] inputArray = {1, 2, 3};
         BinarySearch binarySearch = new BinarySearch(inputArray);
-        int key = 3;
+        int element = 3;
         int expectedPosition = 2;
 
-        assertEquals(binarySearch.search(key), expectedPosition);
+        assertEquals(binarySearch.search(element), expectedPosition);
     }
 
     @Test
     public void canSearchElementInSortedArrayMiddle() {
         int[] inputArray = {1, 2, 3, 4, 5, 6, 7};
         BinarySearch binarySearch = new BinarySearch(inputArray);
-        int key = 5;
+        int element = 5;
         int expectedPosition = 4;
 
-        assertEquals(binarySearch.search(key), expectedPosition);
+        assertEquals(binarySearch.search(element), expectedPosition);
+    }
+
+    @Test
+    public void canNotSearchElementInArray() {
+        int[] inputArray = {1, 2, 3, 4, 5, 6, 7};
+        BinarySearch binarySearch = new BinarySearch(inputArray);
+        int element = 9;
+        int expectedPosition = -1;
+
+        assertEquals(binarySearch.search(element), expectedPosition);
     }
 }

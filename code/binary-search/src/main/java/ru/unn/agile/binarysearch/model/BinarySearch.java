@@ -15,17 +15,22 @@ public class BinarySearch {
         return array;
     }
 
-    public int search(final int key) {
+    public int search(final int element) {
         int leftBorder = 0;
         int rightBorder = array.length;
         while (rightBorder - leftBorder > 1) {
             int mid = (leftBorder + rightBorder) / 2;
-            if (key >= array[mid]) {
+            if (element >= array[mid]) {
                 leftBorder = mid;
             } else {
                 rightBorder = mid;
             }
         }
+
+        if (array[leftBorder] != element) {
+            return -1;
+        }
+
         return leftBorder;
     }
 }
