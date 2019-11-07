@@ -10,6 +10,7 @@ public class StackTest {
     @Test
     public void canCreateStack() {
         Stack stack = new Stack();
+
         assertTrue(stack.isStackCreated());
     }
 
@@ -35,6 +36,14 @@ public class StackTest {
 
         stack.push(valueToAdd);
         Integer actualItem = stack.pop();
+
         assertEquals(valueToAdd, actualItem);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void canThrowWhenPopFromEmptySTack() {
+        Stack<Integer> stack = new Stack<>();
+
+        stack.pop();
     }
 }
