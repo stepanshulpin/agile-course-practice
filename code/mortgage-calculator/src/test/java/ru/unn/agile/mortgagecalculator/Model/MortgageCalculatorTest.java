@@ -206,4 +206,14 @@ public class MortgageCalculatorTest {
         assertEquals(2750, overpayment, delta);
     }
 
+    @Test
+    public void canCalculateForOneYearWithAnnuityPayments() {
+        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, PeriodType.YEAR, 1);
+
+        double finalAmount = calculator.calculateWithAnnuityPayments(parameters).getFinalAmount();
+
+        assertEquals(53309.27, finalAmount, delta);
+    }
+
 }

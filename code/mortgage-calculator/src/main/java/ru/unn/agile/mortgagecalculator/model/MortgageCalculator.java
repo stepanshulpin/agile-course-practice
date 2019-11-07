@@ -49,4 +49,17 @@ public class MortgageCalculator {
     private double round(double value) {
         return Math.round(value * 100.0) / 100.0;
     }
+
+    public MortgageReport calculateWithAnnuityPayments(MortgageParameters parameters) {
+
+        int months = parameters.getMonthsPeriod();
+        double monthPercent = parameters.getMonthPercent();
+        double annuityPayment = parameters.getAmount() * (monthPercent + monthPercent / (Math.pow(1 + monthPercent, months) - 1));
+
+        MortgageReport report = new MortgageReport(parameters.getAmount());
+
+        report.setFinalAmount(round(annuityPayment * months));
+
+        return report;
+    }
 }
