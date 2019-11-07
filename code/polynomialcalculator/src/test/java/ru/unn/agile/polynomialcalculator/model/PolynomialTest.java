@@ -91,4 +91,11 @@ public class PolynomialTest {
         assertEquals("1.5x", polynomial.toString());
     }
 
+    @Test
+    public void stringReprOfContainMinusSignWithNegativeCoef() {
+        var polynomial = new Polynomial(-2.3, 2);
+
+        assertEquals("- 2.3x^2", polynomial.toString());
+    }
+
 }

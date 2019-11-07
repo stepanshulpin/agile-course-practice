@@ -22,7 +22,13 @@ public class Polynomial {
         for (int degree = this.degree; degree >= 0; degree--) {
             double coef = this.coefs[degree];
             if (coef != 0.) {
-                result.append(String.format(Locale.US, "%.1f", coef));
+                if (coef > 0 && !result.toString().equals("")) {
+                    result.append(" + ");
+                }
+                if (coef < 0) {
+                    result.append(" - ");
+                }
+                result.append(String.format(Locale.US, "%.1f", Math.abs(coef)));
                 if (degree > 0) {
                     result.append("x");
                 }
