@@ -86,8 +86,9 @@ public class Polynomial {
         }
         Polynomial derivative = new Polynomial(0, this.degree - 1);
         derivative.degree = this.degree - 1;
-        for (int i = 0; i < this.degree; i++)
+        for (int i = 0; i < this.degree; i++) {
             derivative.coefs[i] = (i + 1) * this.coefs[i + 1];
+        }
         return derivative;
     }
 
