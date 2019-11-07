@@ -3,34 +3,33 @@ package ru.unn.agile.mortgagecalculator.model;
 public class MortgageCalculator {
 
     private final double FRACTION_OF_HUNDRED = 0.01;
-    private final int MONTHS_IN_YEAR = 12;
 
-    public double calculateWithoutPayments(double amount, double percent, PeriodType periodType, int period) {
-        Validator validator = new Validator();
-        validator.checkPositiveInteger(period);
-        int months = getMonths(periodType, period);
-        double monthPercent = percent / MONTHS_IN_YEAR;
-        double finalAmount = amount;
+    public double calculateWithoutPayments(MortgageParameters parameters) {
+
+        int months = parameters.getMonthsPeriod();
+        double monthPercent = parameters.getMonthPercent();
+        double percent = parameters.getFractionPercent();
+        double finalAmount = parameters.getAmount();
         while (months >= 12) {
-            finalAmount = finalAmount + round(finalAmount * percent * FRACTION_OF_HUNDRED);
-            months-= 12;
+            finalAmount = finalAmount + round(finalAmount * percent);
+            months -= 12;
         }
-        finalAmount = finalAmount + round(finalAmount * monthPercent * months * FRACTION_OF_HUNDRED);
+        finalAmount = finalAmount + round(finalAmount * monthPercent * months);
         return finalAmount;
+
     }
 
-    public double calculateWithDifferentialPayments(double amount, double percent, PeriodType periodType, int period) {
-        Validator validator = new Validator();
-        validator.checkPositiveInteger(period);
-        int months = getMonths(periodType, period);
-        double monthPercent = percent / MONTHS_IN_YEAR;
-        double basicPayment = amount / months;
-        double currentAmount = amount;
+    public double calculateWithDifferentialPayments(MortgageParameters parameters) {
+
+        int months = parameters.getMonthsPeriod();
+        double monthPercent = parameters.getMonthPercent();
+        double basicPayment = parameters.getAmount() / months;
+        double currentAmount = parameters.getAmount();
 
         double finalAmount = 0;
 
         while (months > 0) {
-            double percentPayment = currentAmount * monthPercent * FRACTION_OF_HUNDRED;
+            double percentPayment = currentAmount * monthPercent;
             double payment = basicPayment + percentPayment;
             currentAmount -= basicPayment;
             finalAmount += payment;
@@ -38,17 +37,10 @@ public class MortgageCalculator {
         }
 
         return round(finalAmount);
+
     }
 
     private double round(double value) {
         return Math.round(value * 100.0) / 100.0;
-    }
-
-    private int getMonths(PeriodType periodType, int period) {
-        if (PeriodType.MONTH.equals(periodType)) {
-            return period;
-        } else {
-            return period * MONTHS_IN_YEAR;
-        }
     }
 }

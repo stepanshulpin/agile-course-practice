@@ -2,6 +2,7 @@ package ru.unn.agile.mortgagecalculator.Model;
 
 import org.junit.Test;
 import ru.unn.agile.mortgagecalculator.model.MortgageCalculator;
+import ru.unn.agile.mortgagecalculator.model.MortgageParameters;
 import ru.unn.agile.mortgagecalculator.model.PeriodType;
 
 import static org.junit.Assert.*;
@@ -13,8 +14,9 @@ public class MortgageCalculatorTest {
     @Test
     public void canCalculateForOneYearWithoutPayments() {
         MortgageCalculator calculator = new MortgageCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 1);
 
-        double finalAmount = calculator.calculateWithoutPayments(50000, 10, PeriodType.YEAR, 1);
+        double finalAmount = calculator.calculateWithoutPayments(parameters);
 
         assertEquals(55000, finalAmount, delta);
     }
@@ -22,8 +24,9 @@ public class MortgageCalculatorTest {
     @Test
     public void canCalculateForTwoYearsWithoutPayments() {
         MortgageCalculator calculator = new MortgageCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 2);
 
-        double finalAmount = calculator.calculateWithoutPayments(50000, 10, PeriodType.YEAR, 2);
+        double finalAmount = calculator.calculateWithoutPayments(parameters);
 
         assertEquals(60500, finalAmount, delta);
     }
@@ -31,8 +34,9 @@ public class MortgageCalculatorTest {
     @Test
     public void canCalculateForThreeYearsWithoutPayments() {
         MortgageCalculator calculator = new MortgageCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 3);
 
-        double finalAmount = calculator.calculateWithoutPayments(50000, 10, PeriodType.YEAR, 3);
+        double finalAmount = calculator.calculateWithoutPayments(parameters);
 
         assertEquals(66550, finalAmount, delta);
     }
@@ -40,8 +44,9 @@ public class MortgageCalculatorTest {
     @Test
     public void canCalculateForFiveYearsWithoutPayments() {
         MortgageCalculator calculator = new MortgageCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 5);
 
-        double finalAmount = calculator.calculateWithoutPayments(50000, 10, PeriodType.YEAR, 5);
+        double finalAmount = calculator.calculateWithoutPayments(parameters);
 
         assertEquals(80525.50, finalAmount, delta);
     }
@@ -49,8 +54,9 @@ public class MortgageCalculatorTest {
     @Test
     public void canCalculateForNineYearsWithoutPayments() {
         MortgageCalculator calculator = new MortgageCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 9);
 
-        double finalAmount = calculator.calculateWithoutPayments(50000, 10, PeriodType.YEAR, 9);
+        double finalAmount = calculator.calculateWithoutPayments(parameters);
 
         assertEquals(117897.40, finalAmount, delta);
     }
@@ -58,32 +64,30 @@ public class MortgageCalculatorTest {
     @Test
     public void canCalculateForTwentyFourYearsWithoutPayments() {
         MortgageCalculator calculator = new MortgageCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 24);
 
-        double finalAmount = calculator.calculateWithoutPayments(50000, 10, PeriodType.YEAR, 24);
+        double finalAmount = calculator.calculateWithoutPayments(parameters);
 
         assertEquals(492486.68, finalAmount, delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void canCalculateForZeroYearWithoutPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
-
-        double finalAmount = calculator.calculateWithoutPayments(50000, 10, PeriodType.YEAR, 0);
+    public void canInitParametersForZeroYear() {
+        MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 0);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void canCalculateForNegativeYearWithoutPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
-
-        double finalAmount = calculator.calculateWithoutPayments(50000, 10, PeriodType.YEAR, -3);
+    public void canInitParametersForNegativeMounts() {
+        MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.MONTH, -3);
     }
 
 
     @Test
     public void canCalculateForOneYearWithDifferentialPayments() {
         MortgageCalculator calculator = new MortgageCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 1);
 
-        double finalAmount = calculator.calculateWithDifferentialPayments(50000, 10, PeriodType.YEAR, 1);
+        double finalAmount = calculator.calculateWithDifferentialPayments(parameters);
 
         assertEquals(52708.33, finalAmount, delta);
     }
@@ -91,8 +95,9 @@ public class MortgageCalculatorTest {
     @Test
     public void canCalculateForTwoYearsWithDifferentialPayments() {
         MortgageCalculator calculator = new MortgageCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 2);
 
-        double finalAmount = calculator.calculateWithDifferentialPayments(50000, 10, PeriodType.YEAR, 2);
+        double finalAmount = calculator.calculateWithDifferentialPayments(parameters);
 
         assertEquals(55208.33, finalAmount, delta);
     }
@@ -100,31 +105,19 @@ public class MortgageCalculatorTest {
     @Test
     public void canCalculateForSevenYearsWithDifferentialPayments() {
         MortgageCalculator calculator = new MortgageCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 7);
 
-        double finalAmount = calculator.calculateWithDifferentialPayments(50000, 10, PeriodType.YEAR, 7);
+        double finalAmount = calculator.calculateWithDifferentialPayments(parameters);
 
         assertEquals(67708.33, finalAmount, delta);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void canCalculateForZeroYearWithDifferentialPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
-
-        double finalAmount = calculator.calculateWithDifferentialPayments(50000, 10, PeriodType.YEAR, 0);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void canCalculateForNegativeYearWithDifferentialPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
-
-        double finalAmount = calculator.calculateWithDifferentialPayments(50000, 10, PeriodType.YEAR, -3);
     }
 
     @Test
     public void canCalculateForSevenMonthsWithDifferentialPayments() {
         MortgageCalculator calculator = new MortgageCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 10, 7);
 
-        double finalAmount = calculator.calculateWithDifferentialPayments(50000, 10, PeriodType.MONTH, 7);
+        double finalAmount = calculator.calculateWithDifferentialPayments(parameters);
 
         assertEquals(51666.67, finalAmount, delta);
     }
@@ -132,24 +125,11 @@ public class MortgageCalculatorTest {
     @Test
     public void canCalculateForTwentySevenMonthsWithDifferentialPayments() {
         MortgageCalculator calculator = new MortgageCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 10, 27);
 
-        double finalAmount = calculator.calculateWithDifferentialPayments(50000, 10, PeriodType.MONTH, 27);
+        double finalAmount = calculator.calculateWithDifferentialPayments(parameters);
 
         assertEquals(55833.33, finalAmount, delta);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void canCalculateForZeroMonthWithDifferentialPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
-
-        double finalAmount = calculator.calculateWithDifferentialPayments(50000, 10, PeriodType.MONTH, 0);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void canCalculateForNegativeMonthWithDifferentialPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
-
-        double finalAmount = calculator.calculateWithDifferentialPayments(50000, 10, PeriodType.MONTH, -3);
     }
 
 }
