@@ -35,7 +35,7 @@ public class Polynomial {
     }
 
     public Polynomial plus(Polynomial that) {
-        Polynomial sum = new Polynomial(0, Math.max(this.getDegree(), that.getDegree()));
+        Polynomial sum = new Polynomial(0, Math.max(this.degree, that.degree));
         for (int i = 0; i <= this.degree; i++) {
             sum.coefs[i] += this.coefs[i];
         }
@@ -47,7 +47,7 @@ public class Polynomial {
     }
 
     public Polynomial minus(Polynomial that) {
-        Polynomial minus = new Polynomial(0, Math.max(this.getDegree(), that.getDegree()));
+        Polynomial minus = new Polynomial(0, Math.max(this.degree, that.degree));
         for (int i = 0; i <= this.degree; i++) {
             minus.coefs[i] += this.coefs[i];
         }
