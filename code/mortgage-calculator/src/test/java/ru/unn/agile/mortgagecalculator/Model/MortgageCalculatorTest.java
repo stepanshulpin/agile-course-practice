@@ -1,9 +1,12 @@
 package ru.unn.agile.mortgagecalculator.Model;
 
 import org.junit.Test;
-import ru.unn.agile.mortgagecalculator.model.MortgageCalculator;
-import ru.unn.agile.mortgagecalculator.model.MortgageParameters;
-import ru.unn.agile.mortgagecalculator.model.PeriodType;
+import ru.unn.agile.mortgagecalculator.model.calculator.MortgageCalculator;
+import ru.unn.agile.mortgagecalculator.model.calculator.MortgageWithAnnuityPaymentsCalculator;
+import ru.unn.agile.mortgagecalculator.model.calculator.MortgageWithDifferentialPaymentsCalculator;
+import ru.unn.agile.mortgagecalculator.model.calculator.MortgageWithoutPaymentsCalculator;
+import ru.unn.agile.mortgagecalculator.model.parameters.MortgageParameters;
+import ru.unn.agile.mortgagecalculator.model.report.PeriodType;
 
 import static org.junit.Assert.*;
 
@@ -13,60 +16,60 @@ public class MortgageCalculatorTest {
 
     @Test
     public void canCalculateForOneYearWithoutPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageCalculator calculator = new MortgageWithoutPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 1);
 
-        double finalAmount = calculator.calculateWithoutPayments(parameters);
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
 
         assertEquals(55000, finalAmount, delta);
     }
 
     @Test
     public void canCalculateForTwoYearsWithoutPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageCalculator calculator = new MortgageWithoutPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 2);
 
-        double finalAmount = calculator.calculateWithoutPayments(parameters);
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
 
         assertEquals(60500, finalAmount, delta);
     }
 
     @Test
     public void canCalculateForThreeYearsWithoutPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageCalculator calculator = new MortgageWithoutPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 3);
 
-        double finalAmount = calculator.calculateWithoutPayments(parameters);
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
 
         assertEquals(66550, finalAmount, delta);
     }
 
     @Test
     public void canCalculateForFiveYearsWithoutPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageCalculator calculator = new MortgageWithoutPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 5);
 
-        double finalAmount = calculator.calculateWithoutPayments(parameters);
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
 
         assertEquals(80525.50, finalAmount, delta);
     }
 
     @Test
     public void canCalculateForNineYearsWithoutPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageCalculator calculator = new MortgageWithoutPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 9);
 
-        double finalAmount = calculator.calculateWithoutPayments(parameters);
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
 
         assertEquals(117897.40, finalAmount, delta);
     }
 
     @Test
     public void canCalculateForTwentyFourYearsWithoutPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageCalculator calculator = new MortgageWithoutPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 24);
 
-        double finalAmount = calculator.calculateWithoutPayments(parameters);
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
 
         assertEquals(492486.68, finalAmount, delta);
     }
@@ -108,110 +111,110 @@ public class MortgageCalculatorTest {
 
     @Test
     public void canCalculateForOneYearWithDifferentialPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 1);
 
-        double finalAmount = calculator.calculateWithDifferentialPayments(parameters).getFinalAmount();
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
 
         assertEquals(52708.33, finalAmount, delta);
     }
 
     @Test
     public void canCalculateForTwoYearsWithDifferentialPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 2);
 
-        double finalAmount = calculator.calculateWithDifferentialPayments(parameters).getFinalAmount();
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
 
         assertEquals(55208.33, finalAmount, delta);
     }
 
     @Test
     public void canCalculateForSevenYearsWithDifferentialPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 7);
 
-        double finalAmount = calculator.calculateWithDifferentialPayments(parameters).getFinalAmount();
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
 
         assertEquals(67708.33, finalAmount, delta);
     }
 
     @Test
     public void canCalculateForSevenMonthsWithDifferentialPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 10, 7);
 
-        double finalAmount = calculator.calculateWithDifferentialPayments(parameters).getFinalAmount();
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
 
         assertEquals(51666.67, finalAmount, delta);
     }
 
     @Test
     public void canCalculateForTwentySevenMonthsWithDifferentialPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 10, 27);
 
-        double finalAmount = calculator.calculateWithDifferentialPayments(parameters).getFinalAmount();
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
 
         assertEquals(55833.33, finalAmount, delta);
     }
 
     @Test
     public void canGetPaymentAtSecondMonthWithDifferentialPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
 
-        double payment = calculator.calculateWithDifferentialPayments(parameters).getMonthReport(2).getPayment();
+        double payment = calculator.calculate(parameters).getMonthReport(2).getPayment();
 
         assertEquals(5450.00, payment, delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void canGetPaymentAtFourteenMonthWithDifferentialPaymentsForOneYera() {
-        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 12, PeriodType.YEAR, 1);
 
-        double payment = calculator.calculateWithDifferentialPayments(parameters).getMonthReport(14).getPayment();
+        double payment = calculator.calculate(parameters).getMonthReport(14).getPayment();
 
         assertEquals(5450.00, payment, delta);
     }
 
     @Test
     public void canGetOutstandingAmountAtFifthMonthWithDifferentialPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
 
-        double outstandingAmount = calculator.calculateWithDifferentialPayments(parameters).getMonthReport(5).getOutstandingAmount();
+        double outstandingAmount = calculator.calculate(parameters).getMonthReport(5).getOutstandingAmount();
 
         assertEquals(25000.00, outstandingAmount, delta);
     }
 
     @Test
     public void canGetPercentPaymentAtSixMonthWithDifferentialPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
 
-        double outstandingAmount = calculator.calculateWithDifferentialPayments(parameters).getMonthReport(6).getPercentPayment();
+        double outstandingAmount = calculator.calculate(parameters).getMonthReport(6).getPercentPayment();
 
         assertEquals(250, outstandingAmount, delta);
     }
 
     @Test
     public void canGetOverpaymentWithDifferentialPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
 
-        double overpayment = calculator.calculateWithDifferentialPayments(parameters).getOverpayment();
+        double overpayment = calculator.calculate(parameters).getOverpayment();
 
         assertEquals(2750, overpayment, delta);
     }
 
     @Test
     public void canCalculateForOneYearWithAnnuityPayments() {
-        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageCalculator calculator = new MortgageWithAnnuityPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 12, PeriodType.YEAR, 1);
 
-        double finalAmount = calculator.calculateWithAnnuityPayments(parameters).getFinalAmount();
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
 
         assertEquals(53309.27, finalAmount, delta);
     }

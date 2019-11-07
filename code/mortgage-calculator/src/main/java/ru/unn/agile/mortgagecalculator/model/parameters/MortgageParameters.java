@@ -1,4 +1,7 @@
-package ru.unn.agile.mortgagecalculator.model;
+package ru.unn.agile.mortgagecalculator.model.parameters;
+
+import ru.unn.agile.mortgagecalculator.model.report.PeriodType;
+import ru.unn.agile.mortgagecalculator.model.validation.Validator;
 
 public class MortgageParameters {
 

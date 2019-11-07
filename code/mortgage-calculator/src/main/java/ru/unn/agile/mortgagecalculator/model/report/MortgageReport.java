@@ -1,4 +1,6 @@
-package ru.unn.agile.mortgagecalculator.model;
+package ru.unn.agile.mortgagecalculator.model.report;
+
+import ru.unn.agile.mortgagecalculator.model.validation.Validator;
 
 import java.util.ArrayList;
 import java.util.List;

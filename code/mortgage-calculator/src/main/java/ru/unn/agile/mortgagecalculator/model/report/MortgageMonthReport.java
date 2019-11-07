@@ -1,4 +1,4 @@
-package ru.unn.agile.mortgagecalculator.model;
+package ru.unn.agile.mortgagecalculator.model.report;
 
 public class MortgageMonthReport {
 
