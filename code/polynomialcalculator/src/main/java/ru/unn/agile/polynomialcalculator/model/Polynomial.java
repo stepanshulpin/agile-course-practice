@@ -58,6 +58,17 @@ public class Polynomial {
         return minus;
     }
 
+    public Polynomial multiply(Polynomial that) {
+        Polynomial product = new Polynomial(0, this.degree + that.degree);
+        for (int i = 0; i <= this.degree; i++) {
+            for (int j = 0; j <= that.degree; j++) {
+                product.coefs[i + j] += this.coefs[i] * that.coefs[j];
+            }
+        }
+        product.reduce();
+        return product;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();

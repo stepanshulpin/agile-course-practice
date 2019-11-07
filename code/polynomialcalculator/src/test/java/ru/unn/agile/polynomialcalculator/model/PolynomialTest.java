@@ -213,4 +213,46 @@ public class PolynomialTest {
 
         assertEquals("- 1.0x^4 - 4.1x^3 - 2.3x^2 + 1.2x + 3.0", polynomial.toString());
     }
+
+    @Test
+    public void productOfPolynomialsIsNotNull() {
+        var p1 = new Polynomial(1.2, 2);
+        var p2 = new Polynomial(2., 3);
+
+        var p3 = p1.multiply(p2);
+
+        assertNotNull(p3);
+    }
+
+    @Test
+    public void productOfPolynomialsHasCorrectDegree() {
+        var p1 = new Polynomial(1.2, 2);
+        var p2 = new Polynomial(2., 3);
+
+        var p3 = p1.multiply(p2);
+
+        assertEquals(5, p3.getDegree());
+    }
+
+    @Test
+    public void productOfPolynomialsHasCorrectCoef() {
+        var p1 = new Polynomial(1.2, 2);
+        var p2 = new Polynomial(2., 3);
+
+        var p3 = p1.multiply(p2);
+
+        assertEquals(2.4, p3.getCoef(5), delta);
+    }
+
+    @Test
+    public void productOfPolynomialsHasCorrectStringRepr() {
+        var p1 = new Polynomial(1, 2);
+        var p2 = new Polynomial(3, 1);
+        var p3 = p1.plus(p2);
+
+        var pr = new Polynomial(2, 3);
+        var product = p3.multiply(pr);
+
+        assertEquals("2.0x^5 + 6.0x^4", product.toString());
+    }
 }
