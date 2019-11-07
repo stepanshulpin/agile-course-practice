@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 
 public class CalculatorTest {
 
-    private final double delta = 0.0001;
+    private final double delta = 0.01;
 
     @Test
     public void caclYearDepositeWithoutCapitalization() {
@@ -176,5 +176,23 @@ public class CalculatorTest {
                 .calculate();
 
         assertTrue(depositeMonth >= depositeQuarter);
+    }
+
+    @Test
+    public void depositeWithCapitalizationBetterWithoutCapitalization() {
+        Calculator calc = new Calculator();
+
+        double depositeCapital = calc.setStartSum(1000)
+                .setPercent(10)
+                .setPeriod(DepositeTimeType.YEAR, 3)
+                .setCapitalizationPeriod(CapitalizationPeriod.YEAR)
+                .calculate();
+
+        double depositeDefault = calc.setStartSum(1000)
+                .setPercent(10)
+                .setPeriod(DepositeTimeType.YEAR, 3)
+                .calculate();
+
+        assertTrue(depositeCapital > depositeDefault);
     }
 }

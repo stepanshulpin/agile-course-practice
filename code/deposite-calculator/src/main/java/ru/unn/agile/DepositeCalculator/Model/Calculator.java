@@ -66,16 +66,29 @@ public class Calculator {
 
     public double calculate() {
 
+        double result = 0.0;
         if (mCapitalizationCount == 0) {
-            return mStartSum + mStartSum * mPercent * mPeriodCoeff;
+            result = mStartSum + mStartSum * mPercent * mPeriodCoeff;
         } else {
             int i = 0;
+            result = mStartSum;
             while (i < mCapitalizationCount) {
-                double capitalizationPerPeriod = mStartSum * mPercent * mCapitalizationCoeff;
-                mStartSum += capitalizationPerPeriod;
+                double capitalizationPerPeriod = result * mPercent * mCapitalizationCoeff;
+                result += capitalizationPerPeriod;
                 i++;
             }
-            return mStartSum;
         }
+
+        clear();
+        return result;
+    }
+
+    private void clear() {
+        mStartSum = 0;
+        mPercent = 0.0;
+        mPeriodCoeff = 0.0;
+        mPeriodInDays = 0;
+        mCapitalizationCount = 0;
+        mCapitalizationCoeff = 0.0;
     }
 }
