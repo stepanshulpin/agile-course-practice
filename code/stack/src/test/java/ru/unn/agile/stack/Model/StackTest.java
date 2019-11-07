@@ -41,9 +41,27 @@ public class StackTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void canThrowWhenPopFromEmptySTack() {
+    public void canThrowWhenPopFromEmptyStack() {
         Stack<Integer> stack = new Stack<>();
 
         stack.pop();
+    }
+
+    @Test
+    public void canPeekItemFromStack() {
+        Stack<Integer> stack = new Stack<>();
+        Integer valueToAdd = 5;
+
+        stack.push(valueToAdd);
+        Integer actualItem = stack.peek();
+
+        assertEquals(valueToAdd, actualItem);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void canThrowWhenPeekFromEmptyStack() {
+        Stack<Integer> stack = new Stack<>();
+
+        stack.peek();
     }
 }

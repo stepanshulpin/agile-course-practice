@@ -31,4 +31,13 @@ public class Stack<T> {
         return list.remove(size - 1);
     }
 
+    public T peek() {
+        int size = list.size();
+
+        if (size < 1) {
+            throw new IndexOutOfBoundsException("Stack is Empty!");
+        }
+
+        return list.get(size - 1);
+    }
 }
