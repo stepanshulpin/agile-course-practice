@@ -87,4 +87,36 @@ public class MortgageCalculatorTest {
         assertEquals(52708.33, finalAmount, delta);
     }
 
+    @Test
+    public void canCalculateForTwoYearsWithDifferentialPayments() {
+        MortgageCalculator calculator = new MortgageCalculator();
+
+        double finalAmount = calculator.calculateWithDifferentialPayments(50000, 10, 2);
+
+        assertEquals(55208.33, finalAmount, delta);
+    }
+
+    @Test
+    public void canCalculateForSevenYearsWithDifferentialPayments() {
+        MortgageCalculator calculator = new MortgageCalculator();
+
+        double finalAmount = calculator.calculateWithDifferentialPayments(50000, 10, 7);
+
+        assertEquals(67708.33, finalAmount, delta);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canCalculateForZeroYearWithDifferentialPayments() {
+        MortgageCalculator calculator = new MortgageCalculator();
+
+        double finalAmount = calculator.calculateWithDifferentialPayments(50000, 10, 0);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canCalculateForNegativeYearWithDifferentialPayments() {
+        MortgageCalculator calculator = new MortgageCalculator();
+
+        double finalAmount = calculator.calculateWithDifferentialPayments(50000, 10, -3);
+    }
+
 }

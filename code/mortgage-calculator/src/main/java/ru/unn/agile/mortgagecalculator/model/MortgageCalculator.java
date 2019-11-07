@@ -21,6 +21,8 @@ public class MortgageCalculator {
     }
 
     public double calculateWithDifferentialPayments(double amount, double percent, int years) {
+        Validator validator = new Validator();
+        validator.checkPositiveInteger(years);
         int months = years * MONTHS_IN_YEAR;
         double monthPercent = percent / MONTHS_IN_YEAR;
         double basicPayment = amount / months;
