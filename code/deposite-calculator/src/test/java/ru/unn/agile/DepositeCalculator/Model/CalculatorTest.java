@@ -61,4 +61,15 @@ public class CalculatorTest {
 
         assertEquals(731, depositeRes, delta);
     }
+
+    @Test
+    public void caclHalfYearDaysDepositeWithoutCapitalization() {
+        Calculator calc = new Calculator();
+        double depositeRes = calc.setStartSum(66430)
+                .setPercent(10)
+                .setPeriod(DepositeTimeType.DAY, 182)
+                .calculate();
+
+        assertEquals(69742.4, depositeRes, delta);
+    }
 }
