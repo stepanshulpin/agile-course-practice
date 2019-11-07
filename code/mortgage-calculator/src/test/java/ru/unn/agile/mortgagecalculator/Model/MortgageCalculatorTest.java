@@ -27,4 +27,55 @@ public class MortgageCalculatorTest {
         assertEquals(60500, finalAmount, delta);
     }
 
+    @Test
+    public void canCalculateForThreeYearsWithoutPayments() {
+        MortgageCalculator calculator = new MortgageCalculator();
+
+        double finalAmount = calculator.calculateWithoutPayments(50000, 10, 3);
+
+        assertEquals(66550, finalAmount, delta);
+    }
+
+    @Test
+    public void canCalculateForFiveYearsWithoutPayments() {
+        MortgageCalculator calculator = new MortgageCalculator();
+
+        double finalAmount = calculator.calculateWithoutPayments(50000, 10, 5);
+
+        assertEquals(80525.50, finalAmount, delta);
+    }
+
+    @Test
+    public void canCalculateForNineYearsWithoutPayments() {
+        MortgageCalculator calculator = new MortgageCalculator();
+
+        double finalAmount = calculator.calculateWithoutPayments(50000, 10, 9);
+
+        assertEquals(117897.40, finalAmount, delta);
+    }
+
+    @Test
+    public void canCalculateForTwentyFourYearsWithoutPayments() {
+        MortgageCalculator calculator = new MortgageCalculator();
+
+        double finalAmount = calculator.calculateWithoutPayments(50000, 10, 24);
+
+        assertEquals(492486.68, finalAmount, delta);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canCalculateForZeroYearWithoutPayments() {
+        MortgageCalculator calculator = new MortgageCalculator();
+
+        double finalAmount = calculator.calculateWithoutPayments(50000, 10, 0);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canCalculateForNegativeYearWithoutPayments() {
+        MortgageCalculator calculator = new MortgageCalculator();
+
+        double finalAmount = calculator.calculateWithoutPayments(50000, 10, -3);
+    }
+
+
 }
