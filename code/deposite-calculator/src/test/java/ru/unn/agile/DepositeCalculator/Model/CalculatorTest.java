@@ -72,4 +72,16 @@ public class CalculatorTest {
 
         assertEquals(69742.4, depositeRes, delta);
     }
+
+    @Test
+    public void caclYearDepositeWithCapitalization() {
+        Calculator calc = new Calculator();
+        double depositeRes = calc.setStartSum(100)
+                .setPercent(10)
+                .setPeriod(DepositeTimeType.YEAR, 1)
+                .setCapitalizationPeriod(DepositeTimeType.YEAR)
+                .calculate();
+
+        assertEquals(110, depositeRes, delta);
+    }
 }

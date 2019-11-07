@@ -9,6 +9,7 @@ public class Calculator {
     private double mStartSum;
     private double mPercent;
     private double mPeriodCoeff;
+    private int mCapitalizationCount;
 
     public Calculator setStartSum(double startSum) {
         mStartSum = startSum;
@@ -35,7 +36,28 @@ public class Calculator {
         return this;
     }
 
+    public Calculator setCapitalizationPeriod(DepositeTimeType capitalizationPeriod) {
+        switch (capitalizationPeriod) {
+            case YEAR:
+                mCapitalizationCount = 1;
+                break;
+            case MONTH:
+                mCapitalizationCount = MONTHS_IN_YEAR;
+                break;
+            case DAY:
+                mCapitalizationCount = DAYS_IN_YEAR;
+                break;
+        }
+        return this;
+    }
+
     public double calculate() {
-        return mStartSum + mStartSum * mPercent * mPeriodCoeff;
+
+        if (mCapitalizationCount == 0) {
+            return mStartSum + mStartSum * mPercent * mPeriodCoeff;
+        } else {
+            double effectiveInterestRate = Math.pow(1 + mPercent/mCapitalizationCount, mCapitalizationCount) - 1;
+            return mStartSum + mStartSum * effectiveInterestRate * mPeriodCoeff;
+        }
     }
 }
