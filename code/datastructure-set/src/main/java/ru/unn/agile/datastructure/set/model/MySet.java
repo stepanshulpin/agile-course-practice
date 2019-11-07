@@ -7,7 +7,8 @@ import java.util.List;
 
 public class MySet<E> {
 
-    private static final String ERROR_MESSAGE = "MySet collection doesn't support Null values";
+    private static final String NULL_VALUE_ERROR_MESSAGE =
+            "MySet collection doesn't support Null values";
     private List<E> container;
 
     public MySet() {
@@ -20,7 +21,7 @@ public class MySet<E> {
 
     public boolean add(final E e) {
         if (e == null) {
-            throw new IllegalArgumentException(ERROR_MESSAGE);
+            throw new IllegalArgumentException(NULL_VALUE_ERROR_MESSAGE);
         }
 
         if (!this.container.contains(e)) {
@@ -32,7 +33,7 @@ public class MySet<E> {
 
     public boolean addAll(final Collection<E> e) {
         if (e == null) {
-            throw new NullPointerException(ERROR_MESSAGE);
+            throw new NullPointerException(NULL_VALUE_ERROR_MESSAGE);
         }
 
         boolean modified = false;
@@ -59,7 +60,7 @@ public class MySet<E> {
 
     public boolean contains(final E e) {
         if (e == null) {
-            throw new NullPointerException(ERROR_MESSAGE);
+            throw new NullPointerException(NULL_VALUE_ERROR_MESSAGE);
         }
 
         return this.container.contains(e);
@@ -67,7 +68,7 @@ public class MySet<E> {
 
     public boolean remove(final E e) {
         if (e == null) {
-            throw new NullPointerException(ERROR_MESSAGE);
+            throw new NullPointerException(NULL_VALUE_ERROR_MESSAGE);
         }
 
         return this.container.remove(e);
@@ -79,7 +80,7 @@ public class MySet<E> {
 
     public boolean containsAll(final Collection<E> e) {
         if (e == null) {
-            throw new NullPointerException(ERROR_MESSAGE);
+            throw new NullPointerException(NULL_VALUE_ERROR_MESSAGE);
         }
 
         for (E elem : e) {
@@ -97,7 +98,7 @@ public class MySet<E> {
 
     public boolean retainAll(final Collection<E> e) {
         if (e == null) {
-            throw new NullPointerException(ERROR_MESSAGE);
+            throw new NullPointerException(NULL_VALUE_ERROR_MESSAGE);
         }
 
         return this.container.retainAll(e);
