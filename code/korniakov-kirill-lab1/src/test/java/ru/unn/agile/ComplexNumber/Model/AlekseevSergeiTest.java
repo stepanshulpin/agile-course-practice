@@ -7,11 +7,23 @@ import static org.junit.Assert.*;
 public class AlekseevSergeiTest {
 
     @Test
-    public void areEuqalNumbersEqual() {
-        ComplexNumber z1 = new ComplexNumber(1.1, 2.3);
-        ComplexNumber z2 = new ComplexNumber(1.1, 2.3);
+    public void areAddingZeroDoesntChangeNumber() {
+        ComplexNumber z = new ComplexNumber(1.1, 2.3);
+        ComplexNumber zero = new ComplexNumber(0.0, 0.0);
 
-        assertTrue(z1.equals(z2));
+        ComplexNumber sum = z.add(zero);
+
+        assertTrue(sum.equals(z));
+    }
+
+    @Test
+    public void areMultiplicationByZeroChangeNumber() {
+        ComplexNumber z = new ComplexNumber(1.1, 2.3);
+        ComplexNumber zero = new ComplexNumber(0.0, 0.0);
+
+        ComplexNumber mult = z.multiply(zero);
+
+        assertTrue(mult.equals(zero));
     }
 
     @Test
