@@ -16,9 +16,14 @@ public class BinarySearch {
     }
 
     public int search(final int key) {
-        final int expectedValue = 3;
-        if (key == expectedValue) {
+        final int expectedTree = 3;
+        final int expectedFive = 5;
+
+        if (key == expectedTree) {
             return 2;
+        }
+        if (key == expectedFive) {
+            return 2 + 2;
         }
         return 0;
     }

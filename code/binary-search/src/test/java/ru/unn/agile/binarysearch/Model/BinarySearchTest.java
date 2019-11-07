@@ -39,4 +39,14 @@ public class BinarySearchTest {
 
         assertEquals(binarySearch.search(key), expectedPosition);
     }
+
+    @Test
+    public void canSearchElementInSortedArrayMiddle() {
+        int[] inputArray = {1, 2, 3, 4, 5, 6, 7};
+        BinarySearch binarySearch = new BinarySearch(inputArray);
+        int key = 5;
+        int expectedPosition = 4;
+
+        assertEquals(binarySearch.search(key), expectedPosition);
+    }
 }
