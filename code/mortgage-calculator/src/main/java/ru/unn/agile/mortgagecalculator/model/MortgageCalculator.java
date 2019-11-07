@@ -5,25 +5,24 @@ public class MortgageCalculator {
     private final double FRACTION_OF_HUNDRED = 0.01;
     private final int MONTHS_IN_YEAR = 12;
 
-    public double calculateWithoutPayments(double amount, double percent, int years) {
+    public double calculateWithoutPayments(double amount, double percent, PeriodType periodType, int period) {
         Validator validator = new Validator();
-        validator.checkPositiveInteger(years);
+        validator.checkPositiveInteger(period);
+        int months = getMonths(periodType, period);
+        double monthPercent = percent / MONTHS_IN_YEAR;
         double finalAmount = amount;
-        while (years > 0) {
+        while (months >= 12) {
             finalAmount = finalAmount + round(finalAmount * percent * FRACTION_OF_HUNDRED);
-            years--;
+            months-= 12;
         }
+        finalAmount = finalAmount + round(finalAmount * monthPercent * months * FRACTION_OF_HUNDRED);
         return finalAmount;
     }
 
-    private double round(double value) {
-        return Math.round(value * 100.0) / 100.0;
-    }
-
-    public double calculateWithDifferentialPayments(double amount, double percent, int years) {
+    public double calculateWithDifferentialPayments(double amount, double percent, PeriodType periodType, int period) {
         Validator validator = new Validator();
-        validator.checkPositiveInteger(years);
-        int months = years * MONTHS_IN_YEAR;
+        validator.checkPositiveInteger(period);
+        int months = getMonths(periodType, period);
         double monthPercent = percent / MONTHS_IN_YEAR;
         double basicPayment = amount / months;
         double currentAmount = amount;
@@ -39,5 +38,17 @@ public class MortgageCalculator {
         }
 
         return round(finalAmount);
+    }
+
+    private double round(double value) {
+        return Math.round(value * 100.0) / 100.0;
+    }
+
+    private int getMonths(PeriodType periodType, int period) {
+        if (PeriodType.MONTH.equals(periodType)) {
+            return period;
+        } else {
+            return period * MONTHS_IN_YEAR;
+        }
     }
 }
