@@ -5,10 +5,12 @@ import java.util.List;
 
 public class MortgageReport {
 
+    private double amount;
     private List<MortgageMonthReport> monthsReports;
     private double finalAmount;
 
-    public MortgageReport() {
+    public MortgageReport(double amount) {
+        this.amount = amount;
         monthsReports = new ArrayList<>();
     }
 
@@ -35,5 +37,9 @@ public class MortgageReport {
     public MortgageMonthReport getMonthReport(int month) {
         new Validator().checkReportSize(month, monthsReports.size());
         return monthsReports.get(month - 1);
+    }
+
+    public double getOverpayment() {
+        return finalAmount - amount;
     }
 }

@@ -24,7 +24,7 @@ public class MortgageCalculator {
         double basicPayment = parameters.getAmount() / months;
         double currentAmount = parameters.getAmount();
 
-        MortgageReport report = new MortgageReport();
+        MortgageReport report = new MortgageReport(parameters.getAmount());
 
         double finalAmount = 0;
 

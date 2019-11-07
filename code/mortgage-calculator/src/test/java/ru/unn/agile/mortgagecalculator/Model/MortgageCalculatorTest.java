@@ -196,4 +196,14 @@ public class MortgageCalculatorTest {
         assertEquals(250, outstandingAmount, delta);
     }
 
+    @Test
+    public void canGetOverpaymentWithDifferentialPayments() {
+        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+
+        double overpayment = calculator.calculateWithDifferentialPayments(parameters).getOverpayment();
+
+        assertEquals(2750, overpayment, delta);
+    }
+
 }
