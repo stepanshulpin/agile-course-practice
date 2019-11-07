@@ -13,9 +13,18 @@ public class MortgageCalculatorTest {
     public void canCalculateForOneYearWithoutPayments() {
         MortgageCalculator calculator = new MortgageCalculator();
 
-        double finalAmount = calculator.calculateWithoutPayments(50000, 10);
+        double finalAmount = calculator.calculateWithoutPayments(50000, 10, 1);
 
         assertEquals(55000, finalAmount, delta);
+    }
+
+    @Test
+    public void canCalculateForTwoYearsWithoutPayments() {
+        MortgageCalculator calculator = new MortgageCalculator();
+
+        double finalAmount = calculator.calculateWithoutPayments(50000, 10, 2);
+
+        assertEquals(60500, finalAmount, delta);
     }
 
 }
