@@ -188,4 +188,16 @@ public class PolynomialTest {
 
         assertEquals(1, p1Copy.getDegree());
     }
+
+    @Test
+    public void polynomialHasCorrectStringReprAfterReduction() {
+        var p1 = new Polynomial(1.2, 3);
+        var p2 = new Polynomial(2, 2);
+        var p3 = new Polynomial(3.9, 1);
+
+        var p1Negative = new Polynomial(-1.2, 3);
+        var result = p1.plus(p2).plus(p3).plus(p1Negative);
+
+        assertEquals("2.0x^2 + 3.9x", result.toString());
+    }
 }
