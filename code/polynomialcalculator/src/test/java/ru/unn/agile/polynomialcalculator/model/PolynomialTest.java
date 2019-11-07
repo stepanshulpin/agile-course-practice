@@ -255,4 +255,12 @@ public class PolynomialTest {
 
         assertEquals("2.0x^5 + 6.0x^4", product.toString());
     }
+
+    @Test
+    public void samePolynomialsAreEquals() {
+        var p1 = new Polynomial(3.2, 2);
+        var p2 = new Polynomial(4.2, 3);
+
+        assertEquals(p1.plus(p2), p2.plus(p1));
+    }
 }

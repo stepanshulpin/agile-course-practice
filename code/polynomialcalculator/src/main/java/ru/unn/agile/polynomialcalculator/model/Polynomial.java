@@ -97,4 +97,16 @@ public class Polynomial {
         }
         return result.toString().strip();
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) return true;
+        if (other == null) return false;
+        if (other.getClass() != this.getClass()) return false;
+        Polynomial that = (Polynomial) other;
+        if (this.degree != that.degree) return false;
+        for (int i = this.degree; i >= 0; i--)
+            if (this.coefs[i] != that.coefs[i]) return false;
+        return true;
+    }
 }
