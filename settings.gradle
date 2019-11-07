@@ -56,8 +56,8 @@ project(":code/korniakov-kirill-lab3/Infrastructure").name = "korniakov-kirill-l
 // Киселева Ольга
 // Конева Александра
 // Коневский Виталий
-include "code/deposite-calculator"
-project(":code/deposite-calculator").name = "deposite-calculator-Model"
+include "code/deposit-calculator"
+project(":code/deposit-calculator").name = "deposit-calculator-Model"
 // Кочетова Дарья
 // Красильников Михаил
 // Краснов Александр

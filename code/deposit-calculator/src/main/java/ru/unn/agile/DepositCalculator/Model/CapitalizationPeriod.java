@@ -1,4 +1,4 @@
-package ru.unn.agile.DepositeCalculator.Model;
+package ru.unn.agile.DepositCalculator.Model;
 
 public enum CapitalizationPeriod {
     MONTH,

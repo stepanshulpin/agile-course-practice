@@ -1,8 +1,9 @@
-package ru.unn.agile.DepositeCalculator.Model;
+package ru.unn.agile.DepositCalculator.Model;
 
 public class Calculator {
 
-    //deposit-calculator example URL: fincult.info/services/deposit-calculator
+    private final double MIN_INTEREST_RATE_FOR_TAX = 0.1825;
+    private final double DEPOSIT_TAX = 0.35;
 
     private final int MAX_PERCENT = 100;
     private final int MONTHS_IN_YEAR = 12;
@@ -28,7 +29,7 @@ public class Calculator {
         return this;
     }
 
-    public Calculator setPeriod(DepositeTimeType periodType, int count) {
+    public Calculator setPeriod(DepositTimeType periodType, int count) {
         switch (periodType) {
             case YEAR:
                 mPeriodCoeff = count;
@@ -67,8 +68,14 @@ public class Calculator {
     public double calculate() {
 
         double result = 0.0;
+
+        if (mPercent > MIN_INTEREST_RATE_FOR_TAX) {
+            mPercent -= mPercent * DEPOSIT_TAX;
+        }
+
         if (mCapitalizationCount == 0) {
-            result = mStartSum + mStartSum * mPercent * mPeriodCoeff;
+            result = mStartSum + mStartSum * mPeriodCoeff * mPercent;
+
         } else {
             int i = 0;
             result = mStartSum;
