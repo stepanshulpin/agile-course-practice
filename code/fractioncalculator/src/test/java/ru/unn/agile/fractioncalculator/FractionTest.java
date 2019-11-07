@@ -55,4 +55,10 @@ public class FractionTest {
         var fractionTwo = new Fraction(2, 1);
         assertEquals(fractionOne, fractionTwo);
     }
+
+    @Test
+    public void canEqualsWithObject() {
+        var fraction = new Fraction(1, 1);
+        assertNotEquals(fraction, new Object());
+    }
 }

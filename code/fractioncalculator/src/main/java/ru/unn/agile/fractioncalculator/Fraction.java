@@ -28,7 +28,7 @@ public class Fraction {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if (!(o instanceof Fraction)) {
             return false;
         }
         var thisReducedFraction = new FractionCalculator(this).reduce();
