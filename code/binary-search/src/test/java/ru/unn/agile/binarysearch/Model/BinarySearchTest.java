@@ -55,7 +55,17 @@ public class BinarySearchTest {
         int[] inputArray = {1, 2, 3, 4, 5, 6, 7};
         BinarySearch binarySearch = new BinarySearch(inputArray);
         int element = 9;
-        int expectedPosition = -1;
+        int expectedPosition = BinarySearch.NOT_FOUND;
+
+        assertEquals(binarySearch.search(element), expectedPosition);
+    }
+
+    @Test
+    public void canExceptionForUnsortedArray() {
+        int[] inputArray = {2, 1, 3};
+        BinarySearch binarySearch = new BinarySearch(inputArray);
+        int element = 1;
+        int expectedPosition = BinarySearch.NOT_SORTED;
 
         assertEquals(binarySearch.search(element), expectedPosition);
     }
