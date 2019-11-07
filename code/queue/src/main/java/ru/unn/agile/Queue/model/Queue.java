@@ -1,9 +1,11 @@
 package ru.unn.agile.Queue.model;
+
 import java.util.LinkedList;
+import java.util.List;
 
 public class Queue<Type> {
 
-    private LinkedList<Type> list;
+    private List<Type> list;
 
     public Queue() {
         list = new LinkedList<Type>();
