@@ -10,8 +10,7 @@ public class MortgageParameters {
     private int monthsPeriod;
 
     public MortgageParameters(double amount, double percent, PeriodType periodType, int period) {
-        Validator validator = new Validator();
-        validator.checkPositiveInteger(period);
+        validate(amount, percent, period);
         this.amount = amount;
         this.fractionPercent = convertToFractionPercent(percent);
         this.monthsPeriod = getMonths(periodType, period);
@@ -35,6 +34,13 @@ public class MortgageParameters {
 
     public int getMonthsPeriod() {
         return monthsPeriod;
+    }
+
+    private void validate(double amount, double percent, int period) {
+        Validator validator = new Validator();
+        validator.checkPositiveDouble(amount);
+        validator.checkCorrectPercent(percent);
+        validator.checkPositiveInteger(period);
     }
 
     private double convertToFractionPercent(double percent) {

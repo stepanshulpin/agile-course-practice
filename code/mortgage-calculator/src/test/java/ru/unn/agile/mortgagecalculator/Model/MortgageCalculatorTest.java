@@ -81,6 +81,30 @@ public class MortgageCalculatorTest {
         MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.MONTH, -3);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void canInitParametersForZeroAmount() {
+        MortgageParameters parameters = new MortgageParameters(0, 10, PeriodType.YEAR, 1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canInitParametersForNegativeAmount() {
+        MortgageParameters parameters = new MortgageParameters(-50000, 10, PeriodType.MONTH, 1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canInitParametersForZeroPercent() {
+        MortgageParameters parameters = new MortgageParameters(50000, 0, PeriodType.YEAR, 1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canInitParametersForNegativePercent() {
+        MortgageParameters parameters = new MortgageParameters(50000, -10, PeriodType.MONTH, 1);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canInitParametersForOverflowPercent() {
+        MortgageParameters parameters = new MortgageParameters(50000, 130, PeriodType.MONTH, 1);
+    }
 
     @Test
     public void canCalculateForOneYearWithDifferentialPayments() {
