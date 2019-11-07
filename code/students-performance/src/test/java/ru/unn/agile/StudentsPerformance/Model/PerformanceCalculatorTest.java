@@ -5,7 +5,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class PerformanceCalculatorTest {
 
@@ -18,27 +19,27 @@ public class PerformanceCalculatorTest {
         assertNotNull(calculator);
     }
 
-    @Test (expected = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void canNotCreateCalculatorIfStudentsAreNull() {
         List<Student> students = null;
         new PerformanceCalculator(students);
     }
 
-    @Test (expected = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void canNotCreateCalculatorIfStudentsAreEmpty() {
         List<Student> students = new ArrayList<>();
         new PerformanceCalculator(students);
     }
 
     @Test
-    public void canGetExcellentStudentsNumberIfExist() {
+    public void canGetExcellentStudentsCountIfExist() {
         List<Student> students = generateDefaultStudentsList();
         PerformanceCalculator calculator = new PerformanceCalculator(students);
         assertEquals(1, calculator.getExcellentStudentsCount(), COMPARE_DELTA);
     }
 
     @Test
-    public void canGetExcellentStudentsNumberIfNotExist() {
+    public void canGetExcellentStudentsCountIfNotExist() {
         List<Student> students = new ArrayList<>(
                 List.of(
                         new Student(new ArrayList<>(List.of(5, 3, 2, 5, 5, 4))),
@@ -53,14 +54,14 @@ public class PerformanceCalculatorTest {
     }
 
     @Test
-    public void canGetGoodStudentsNumberIfExist() {
+    public void canGetGoodStudentsCountIfExist() {
         List<Student> students = generateDefaultStudentsList();
         PerformanceCalculator calculator = new PerformanceCalculator(students);
         assertEquals(1, calculator.getGoodStudentsCount(), COMPARE_DELTA);
     }
 
     @Test
-    public void canGetGoodStudentsNumberIfNotExist() {
+    public void canGetGoodStudentsCountIfNotExist() {
         List<Student> students = new ArrayList<>(
                 List.of(
                         new Student(new ArrayList<>(List.of(5, 3, 2, 5, 2, 4))),
@@ -75,14 +76,14 @@ public class PerformanceCalculatorTest {
     }
 
     @Test
-    public void canGetSatisfactoryStudentsNumberIfExist() {
+    public void canGetSatisfactoryStudentsCountIfExist() {
         List<Student> students = generateDefaultStudentsList();
         PerformanceCalculator calculator = new PerformanceCalculator(students);
         assertEquals(1, calculator.getSatisfactoryStudentsCount(), COMPARE_DELTA);
     }
 
     @Test
-    public void canGetSatisfactoryStudentsNumberIfNotExist() {
+    public void canGetSatisfactoryStudentsCountIfNotExist() {
         List<Student> students = new ArrayList<>(
                 List.of(
                         new Student(new ArrayList<>(List.of(5, 5, 2, 5, 4, 4))),
@@ -97,14 +98,14 @@ public class PerformanceCalculatorTest {
     }
 
     @Test
-    public void canGetBadStudentsNumberIfExist() {
+    public void canGetBadStudentsCountIfExist() {
         List<Student> students = generateDefaultStudentsList();
         PerformanceCalculator calculator = new PerformanceCalculator(students);
         assertEquals(2, calculator.getBadStudentsCount(), COMPARE_DELTA);
     }
 
     @Test
-    public void canGetBadStudentsNumberIfNotExist() {
+    public void canGetBadStudentsCountIfNotExist() {
         List<Student> students = new ArrayList<>(
                 List.of(
                         new Student(new ArrayList<>(List.of(5, 3, 3, 4, 4, 5))),
@@ -148,7 +149,7 @@ public class PerformanceCalculatorTest {
     }
 
     @Test
-    public void canGetTotalMarksNumber() {
+    public void canGetTotalMarksCount() {
         List<Student> students = new ArrayList<>(
                 List.of(
                         new Student(new ArrayList<>(List.of(3, 3, 4, 2, 4))),
@@ -163,7 +164,7 @@ public class PerformanceCalculatorTest {
     }
 
     @Test
-    public void canGetTotalMarksNumberIfNoMarks() {
+    public void canGetTotalMarksCountIfNoMarks() {
         List<Student> students = generateEmptyStudentsList();
         PerformanceCalculator calculator = new PerformanceCalculator(students);
         assertEquals(0, calculator.getTotalMarksCount(), COMPARE_DELTA);
