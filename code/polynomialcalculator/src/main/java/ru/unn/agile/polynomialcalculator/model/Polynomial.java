@@ -92,6 +92,13 @@ public class Polynomial {
         return derivative;
     }
 
+    public double evaluate(double x) {
+        double result = 0;
+        for (int i = this.degree; i >= 0; i--)
+            result = this.coefs[i] + (x * result);
+        return result;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
