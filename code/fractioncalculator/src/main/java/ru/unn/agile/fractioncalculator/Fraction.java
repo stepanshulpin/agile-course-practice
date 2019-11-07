@@ -2,10 +2,10 @@ package ru.unn.agile.fractioncalculator;
 
 import java.util.Objects;
 
-public class Fraction {
+public final class Fraction {
 
-    private int numerator;
-    private int denominator;
+    private final int numerator;
+    private final int denominator;
 
     private static final String FRACTION_DELIMITER = "/";
 
