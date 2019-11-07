@@ -61,4 +61,19 @@ public class FractionTest {
         var fraction = new Fraction(1, 1);
         assertNotEquals(fraction, new Object());
     }
+
+    @Test
+    public void canCheckNegativeWithNegativeNumerator() {
+        assertTrue(new Fraction(-1, 2).isNegative());
+    }
+
+    @Test
+    public void canCheckNegativeWithNegativeDenominator() {
+        assertTrue(new Fraction(1, -2).isNegative());
+    }
+
+    @Test
+    public void canCheckNegativeWithNegativeNumeratorAndDenominator() {
+        assertFalse(new Fraction(-1, -2).isNegative());
+    }
 }

@@ -47,6 +47,37 @@ public class FractionCalculatorTest {
     }
 
     @Test
+    public void canMultiplePositiveAndNegative() {
+        var firstFraction = new Fraction(-2, 3);
+        var secondFraction = new Fraction(3, 2);
+        assertEquals(
+                new Fraction(6, -6),
+                FractionCalculator.multiple(firstFraction, secondFraction)
+        );
+    }
+
+    @Test
+    public void canMultipleNegatives() {
+        var firstFraction = new Fraction(-2, 3);
+        var secondFraction = new Fraction(3, -2);
+        assertEquals(
+                new Fraction(6, 6),
+                FractionCalculator.multiple(firstFraction, secondFraction)
+        );
+    }
+
+    @Test
+    public void canDivide() {
+        var firstFraction = new Fraction(14, 3);
+        var secondFraction = new Fraction(5, 9);
+
+        assertEquals(
+                new Fraction(42, 5),
+                FractionCalculator.divide(firstFraction, secondFraction)
+        );
+    }
+
+    @Test
     public void canSum() {
         var firstFraction = new Fraction(5, 3);
         var secondFraction = new Fraction(2, 5);

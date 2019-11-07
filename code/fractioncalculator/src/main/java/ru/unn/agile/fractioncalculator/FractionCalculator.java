@@ -31,6 +31,11 @@ public final class FractionCalculator {
         );
     }
 
+    public static Fraction divide(Fraction first, Fraction second) {
+        var reverseSecond = new Fraction(second.getDenominator(), second.getNumerator());
+        return multiple(first, reverseSecond);
+    }
+
     public static Fraction sum(Fraction first, Fraction second) {
         return new Fraction(
                 first.getNumerator() * second.getDenominator() + second.getNumerator() * first.getDenominator(),

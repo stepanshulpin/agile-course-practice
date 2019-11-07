@@ -25,6 +25,10 @@ public class Fraction {
         return denominator;
     }
 
+    public boolean isNegative() {
+        return numerator > 0 && denominator < 0 || numerator < 0 && denominator > 0;
+    }
+
     @Override
     public String toString() {
         return numerator + FRACTION_DELIMITER + denominator;
@@ -40,8 +44,11 @@ public class Fraction {
         }
         var thisReducedFraction = FractionCalculator.reduce(this);
         var thatReducedFraction = FractionCalculator.reduce((Fraction) o);
-        return thisReducedFraction.numerator == thatReducedFraction.numerator
-                && thisReducedFraction.denominator == thatReducedFraction.denominator;
+        if (thisReducedFraction.isNegative() && !thatReducedFraction.isNegative()) {
+            return false;
+        }
+        return Math.abs(thisReducedFraction.numerator) == Math.abs(thatReducedFraction.numerator)
+                && Math.abs(thisReducedFraction.denominator) == Math.abs(thatReducedFraction.denominator);
     }
 
     @Override
