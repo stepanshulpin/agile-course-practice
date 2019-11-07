@@ -21,4 +21,10 @@ public class Stack<T> {
         list.add(item);
     }
 
+    public T pop() {
+        int size = list.size();
+
+        return list.remove(size - 1);
+    }
+
 }

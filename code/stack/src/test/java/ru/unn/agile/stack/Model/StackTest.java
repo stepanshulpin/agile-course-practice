@@ -27,4 +27,14 @@ public class StackTest {
 
         stack.push(null);
     }
+
+    @Test
+    public void canPopItemFromStack() {
+        Stack<Integer> stack = new Stack<>();
+        Integer valueToAdd = 5;
+
+        stack.push(valueToAdd);
+        Integer actualItem = stack.pop();
+        assertEquals(valueToAdd, actualItem);
+    }
 }
