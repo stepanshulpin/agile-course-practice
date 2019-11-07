@@ -17,4 +17,8 @@ public class FractionCalculator {
     public int getDenominator() {
         return denominator;
     }
+
+    public int reduce() {
+        return 1;
+    }
 }

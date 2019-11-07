@@ -23,4 +23,16 @@ public class FractionCalculatorTest {
         var calculator = new FractionCalculator(2, 1);
         assertEquals(1, calculator.getDenominator());
     }
+
+    @Test
+    public void canReduceOneToOne() {
+        var calculator = new FractionCalculator(1, 1);
+        assertEquals(1, calculator.reduce());
+    }
+
+    @Test
+    public void canReduceTenToTen() {
+        var calculator = new FractionCalculator(10, 10);
+        assertEquals(1, calculator.reduce());
+    }
 }
