@@ -7,7 +7,10 @@ public class Fraction {
     private int numerator;
     private int denominator;
 
-    public Fraction(final int numerator, final int denominator) {
+    public Fraction(final int numerator, final int denominator) throws IllegalArgumentException {
+        if (denominator == 0) {
+            throw new IllegalArgumentException("Denominator must not be zero.");
+        }
         this.numerator = numerator;
         this.denominator = denominator;
     }

@@ -35,4 +35,18 @@ public class FractionCalculatorTest {
         var calculator = new FractionCalculator(new Fraction(2, 4));
         assertEquals(new Fraction(1, 2), calculator.reduce());
     }
+
+    @Test
+    public void canReduceMinusFour2Two() {
+        var calculator = new FractionCalculator(new Fraction(-4, 2));
+        assertEquals(new Fraction(-2, 1), calculator.reduce());
+    }
+
+    @Test
+    public void canReduceFractionWithNegativeNumbers() {
+        var calculator = new FractionCalculator(new Fraction(-2, -4));
+        assertEquals(new Fraction(1, 2), calculator.reduce());
+    }
+
+
 }

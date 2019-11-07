@@ -13,8 +13,8 @@ public class FractionCalculator {
     }
 
     public Fraction reduce() {
-        var tmpNumerator = fraction.getNumerator();
-        var tmpDenominator = fraction.getDenominator();
+        var tmpNumerator = Math.abs(fraction.getNumerator());
+        var tmpDenominator = Math.abs(fraction.getDenominator());
         while (tmpNumerator != 0 && tmpDenominator != 0) {
             if (tmpNumerator > tmpDenominator) {
                 tmpNumerator %= tmpDenominator;
@@ -23,6 +23,9 @@ public class FractionCalculator {
             }
         }
         var nod = tmpNumerator + tmpDenominator;
+        if (fraction.getDenominator() < 0 && fraction.getNumerator() < 0) {
+            nod *= -1;
+        }
         return new Fraction(
                 fraction.getNumerator() / nod,
                 fraction.getDenominator() / nod

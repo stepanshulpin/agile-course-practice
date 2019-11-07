@@ -13,6 +13,17 @@ public class FractionTest {
     }
 
     @Test
+    public void canCreateFractionWithZeroNumerator() {
+        var fraction = new Fraction(0, 1);
+        assertNotNull(fraction);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canNotCreateFractionWithZeroDenominator() {
+        new Fraction(1, 0);
+    }
+
+    @Test
     public void canGetNumerator() {
         var fraction = new Fraction(2, 1);
         assertEquals(2, fraction.getNumerator());
