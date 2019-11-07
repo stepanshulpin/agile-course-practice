@@ -47,8 +47,11 @@ public class Fraction {
         if (thisReducedFraction.isNegative() && !thatReducedFraction.isNegative()) {
             return false;
         }
-        return Math.abs(thisReducedFraction.numerator) == Math.abs(thatReducedFraction.numerator)
-                && Math.abs(thisReducedFraction.denominator) == Math.abs(thatReducedFraction.denominator);
+        return Math.abs(thisReducedFraction.numerator)
+                == Math.abs(thatReducedFraction.numerator)
+                &&
+                Math.abs(thisReducedFraction.denominator)
+                == Math.abs(thatReducedFraction.denominator);
     }
 
     @Override

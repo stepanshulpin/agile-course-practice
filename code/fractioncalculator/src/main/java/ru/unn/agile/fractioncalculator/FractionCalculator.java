@@ -4,9 +4,9 @@ import java.util.Objects;
 
 public final class FractionCalculator {
 
-    private FractionCalculator() {}
+    private FractionCalculator() { }
 
-    public static Fraction reduce(Fraction fraction) {
+    public static Fraction reduce(final Fraction fraction) {
         Objects.requireNonNull(fraction);
         var tmpNumerator = Math.abs(fraction.getNumerator());
         var tmpDenominator = Math.abs(fraction.getDenominator());
@@ -27,7 +27,7 @@ public final class FractionCalculator {
         );
     }
 
-    public static Fraction multiple(Fraction first, Fraction second) {
+    public static Fraction multiple(final Fraction first, final Fraction second) {
         Objects.requireNonNull(first);
         Objects.requireNonNull(second);
         return new Fraction(
@@ -36,23 +36,24 @@ public final class FractionCalculator {
         );
     }
 
-    public static Fraction divide(Fraction first, Fraction second) {
+    public static Fraction divide(final Fraction first, final Fraction second) {
         Objects.requireNonNull(first);
         Objects.requireNonNull(second);
         var reverseSecond = new Fraction(second.getDenominator(), second.getNumerator());
         return multiple(first, reverseSecond);
     }
 
-    public static Fraction sum(Fraction first, Fraction second) {
+    public static Fraction sum(final Fraction first, final Fraction second) {
         Objects.requireNonNull(first);
         Objects.requireNonNull(second);
         return new Fraction(
-                first.getNumerator() * second.getDenominator() + second.getNumerator() * first.getDenominator(),
+                first.getNumerator() * second.getDenominator()
+                        + second.getNumerator() * first.getDenominator(),
                 first.getDenominator() * second.getDenominator()
         );
     }
 
-    public static Fraction minus(Fraction first, Fraction second) {
+    public static Fraction minus(final Fraction first, final Fraction second) {
         Objects.requireNonNull(first);
         Objects.requireNonNull(second);
         var negativeSecond = new Fraction(-second.getNumerator(), second.getDenominator());
