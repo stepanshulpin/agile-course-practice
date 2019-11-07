@@ -18,23 +18,20 @@ public class Stack<T> {
         if (item == null) {
             throw new IllegalArgumentException("Item can't be null!");
         }
+
         list.add(item);
     }
 
     public T pop() {
         checkForEmptiness();
 
-        int size = list.size();
-
-        return list.remove(size - 1);
+        return list.remove(list.size() - 1);
     }
 
     public T peek() {
         checkForEmptiness();
 
-        int size = list.size();
-
-        return list.get(size - 1);
+        return list.get(list.size() - 1);
     }
 
     public boolean isEmpty() {
