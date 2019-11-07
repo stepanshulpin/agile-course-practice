@@ -1,6 +1,8 @@
 package ru.unn.agile.polynomialcalculator.model;
 
+import java.util.Arrays;
 import java.util.Locale;
+import java.util.Objects;
 
 public class Polynomial {
 
@@ -34,7 +36,7 @@ public class Polynomial {
         }
     }
 
-    public Polynomial plus(Polynomial that) {
+    public Polynomial plus(final Polynomial that) {
         Polynomial sum = new Polynomial(0, Math.max(this.degree, that.degree));
         for (int i = 0; i <= this.degree; i++) {
             sum.coefs[i] += this.coefs[i];
@@ -46,7 +48,7 @@ public class Polynomial {
         return sum;
     }
 
-    public Polynomial minus(Polynomial that) {
+    public Polynomial minus(final Polynomial that) {
         Polynomial minus = new Polynomial(0, Math.max(this.degree, that.degree));
         for (int i = 0; i <= this.degree; i++) {
             minus.coefs[i] += this.coefs[i];
@@ -58,7 +60,7 @@ public class Polynomial {
         return minus;
     }
 
-    public Polynomial multiply(Polynomial that) {
+    public Polynomial multiply(final Polynomial that) {
         Polynomial product = new Polynomial(0, this.degree + that.degree);
         for (int i = 0; i <= this.degree; i++) {
             for (int j = 0; j <= that.degree; j++) {
@@ -99,14 +101,33 @@ public class Polynomial {
     }
 
     @Override
-    public boolean equals(Object other) {
-        if (other == this) return true;
-        if (other == null) return false;
-        if (other.getClass() != this.getClass()) return false;
+    public boolean equals(final Object other) {
+        if (other == this) {
+            return true;
+        }
+        if (other == null) {
+            return false;
+        }
+        if (other.getClass() != this.getClass()) {
+            return false;
+        }
         Polynomial that = (Polynomial) other;
-        if (this.degree != that.degree) return false;
-        for (int i = this.degree; i >= 0; i--)
-            if (this.coefs[i] != that.coefs[i]) return false;
+        if (this.degree != that.degree) {
+            return false;
+        }
+        for (int i = this.degree; i >= 0; i--) {
+            if (this.coefs[i] != that.coefs[i]) {
+                return false;
+            }
+        }
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int magicNumber = 31; // TravisCI don't like default IntelliJ implementation of hashCode
+        int result = Objects.hash(degree);
+        result = magicNumber * result + Arrays.hashCode(coefs);
+        return result;
     }
 }
