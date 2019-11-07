@@ -14,4 +14,8 @@ public class BinarySearch {
     public int[] getArray() {
         return array;
     }
+
+    public int search(final int key) {
+        return 0;
+    }
 }

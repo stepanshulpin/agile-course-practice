@@ -19,4 +19,14 @@ public class BinarySearchTest {
         int[] inputArray = null;
         BinarySearch binarySearch = new BinarySearch(inputArray);
     }
+
+    @Test
+    public void canDoSimpleSearch() {
+        int[] inputArray = {1};
+        BinarySearch binarySearch = new BinarySearch(inputArray);
+        int key = 1;
+        int expectedPosition = 0;
+
+        assertEquals(binarySearch.search(key), expectedPosition);
+    }
 }
