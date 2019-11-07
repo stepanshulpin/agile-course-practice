@@ -10,8 +10,16 @@ public class CalculatorTest {
     @Test
     public void caclYearDepositeWithoutCapitalization() {
         Calculator calc = new Calculator();
-        double depositeRes = calc.calculate(100, 10);
+        double depositeRes = calc.calculate(100, 10, 1);
 
         assertEquals(110, depositeRes, delta);
+    }
+
+    @Test
+    public void cacl2YearDepositeWithoutCapitalization() {
+        Calculator calc = new Calculator();
+        double depositeRes = calc.calculate(100, 10, 2);
+
+        assertEquals(120, depositeRes, delta);
     }
 }
