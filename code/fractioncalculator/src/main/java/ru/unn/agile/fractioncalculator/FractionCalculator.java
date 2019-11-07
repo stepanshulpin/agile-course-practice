@@ -1,10 +1,13 @@
 package ru.unn.agile.fractioncalculator;
 
+import java.util.Objects;
+
 public final class FractionCalculator {
 
     private FractionCalculator() {}
 
     public static Fraction reduce(Fraction fraction) {
+        Objects.requireNonNull(fraction);
         var tmpNumerator = Math.abs(fraction.getNumerator());
         var tmpDenominator = Math.abs(fraction.getDenominator());
         while (tmpNumerator != 0 && tmpDenominator != 0) {
@@ -25,6 +28,8 @@ public final class FractionCalculator {
     }
 
     public static Fraction multiple(Fraction first, Fraction second) {
+        Objects.requireNonNull(first);
+        Objects.requireNonNull(second);
         return new Fraction(
                 first.getNumerator() * second.getNumerator(),
                 first.getDenominator() * second.getDenominator()
@@ -32,11 +37,15 @@ public final class FractionCalculator {
     }
 
     public static Fraction divide(Fraction first, Fraction second) {
+        Objects.requireNonNull(first);
+        Objects.requireNonNull(second);
         var reverseSecond = new Fraction(second.getDenominator(), second.getNumerator());
         return multiple(first, reverseSecond);
     }
 
     public static Fraction sum(Fraction first, Fraction second) {
+        Objects.requireNonNull(first);
+        Objects.requireNonNull(second);
         return new Fraction(
                 first.getNumerator() * second.getDenominator() + second.getNumerator() * first.getDenominator(),
                 first.getDenominator() * second.getDenominator()
@@ -44,6 +53,8 @@ public final class FractionCalculator {
     }
 
     public static Fraction minus(Fraction first, Fraction second) {
+        Objects.requireNonNull(first);
+        Objects.requireNonNull(second);
         var negativeSecond = new Fraction(-second.getNumerator(), second.getDenominator());
         return sum(first, negativeSecond);
     }

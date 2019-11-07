@@ -30,6 +30,11 @@ public class FractionCalculatorTest {
         assertEquals(new Fraction(-2, 1), reduced);
     }
 
+    @Test(expected = NullPointerException.class)
+    public void canNotReduceNull() {
+        FractionCalculator.reduce(null);
+    }
+
     @Test
     public void canReduceFractionWithNegativeNumbers() {
         var reduced = FractionCalculator.reduce(new Fraction(-2, -4));
@@ -44,6 +49,16 @@ public class FractionCalculatorTest {
                 new Fraction(6, 6),
                 FractionCalculator.multiple(firstFraction, secondFraction)
         );
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void canNotMultipleWithFirstNull() {
+        FractionCalculator.multiple(null, new Fraction(1, 1));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void canNotMultipleWithSecondNull() {
+        FractionCalculator.multiple(new Fraction(1, 1), null);
     }
 
     @Test
@@ -85,6 +100,16 @@ public class FractionCalculatorTest {
                 new Fraction(31, 15),
                 FractionCalculator.sum(firstFraction, secondFraction)
         );
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void canNotSumWithFirstNull() {
+        FractionCalculator.sum(null, new Fraction(1, 1));
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void canNotSumWithSecondNull() {
+        FractionCalculator.sum(new Fraction(1, 1), null);
     }
 
     @Test
