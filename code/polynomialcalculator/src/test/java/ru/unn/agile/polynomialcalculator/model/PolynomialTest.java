@@ -263,4 +263,44 @@ public class PolynomialTest {
 
         assertEquals(p1.plus(p2), p2.plus(p1));
     }
+
+    @Test
+    public void composeOfPolynomialsIsNotNull() {
+        var p1 = new Polynomial(2, 2);
+        var p2 = new Polynomial(3, 4);
+
+        var p3 = p1.compose(p2);
+
+        assertNotNull(p3);
+    }
+
+    @Test
+    public void composeOfPolynomialsHasCorrectDegree() {
+        var p1 = new Polynomial(2, 2);
+        var p2 = new Polynomial(3, 4);
+
+        var p3 = p1.compose(p2);
+
+        assertEquals(8, p3.getDegree());
+    }
+
+    @Test
+    public void composeOfPolynomialsHasCorrectCoef() {
+        var p1 = new Polynomial(2, 2);
+        var p2 = new Polynomial(3, 4);
+
+        var p3 = p1.compose(p2);
+        assertEquals(18., p3.getCoef(8), delta);
+    }
+
+    @Test
+    public void composeOfPolynomialsHasCorrectStringRepr() {
+        var p1 = new Polynomial(2, 2);
+        var p2 = new Polynomial(3, 4);
+        var p3 = new Polynomial(4, 0);
+
+        var composition = p1.compose(p2.plus(p3));
+
+        assertEquals("18.0x^8 + 48.0x^4 + 32.0", composition.toString());
+    }
 }

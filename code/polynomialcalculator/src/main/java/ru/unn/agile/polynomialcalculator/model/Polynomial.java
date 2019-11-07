@@ -71,6 +71,15 @@ public class Polynomial {
         return product;
     }
 
+    public Polynomial compose(final Polynomial that) {
+        Polynomial composition = new Polynomial(0, 0);
+        for (int i = this.degree; i >= 0; i--) {
+            Polynomial term = new Polynomial(this.coefs[i], 0);
+            composition = term.plus(that.multiply(composition));
+        }
+        return composition;
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
