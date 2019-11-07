@@ -222,7 +222,6 @@ public class CalculatorTest {
                 .setPeriod(DepositTimeType.MONTH, 12)
                 .calculate();
 
-
         double depositYear = calc.setStartSum(1000)
                 .setPercent(10)
                 .setPeriod(DepositTimeType.DAY, 365)
