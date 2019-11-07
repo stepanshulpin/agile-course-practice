@@ -78,7 +78,7 @@ public class MySetTest {
         Assert.assertEquals(1, mySet.size());
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void canNotAddNull() {
         MySet<String> mySet = new MySet<>();
         mySet.add("first");
@@ -212,7 +212,7 @@ public class MySetTest {
         Assert.assertTrue(mySet.addAll(testSet));
     }
 
-    @Test(expected = NullPointerException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void canNotUnionCollectionWithNull() {
         MySet<String> mySet = new MySet<>();
         mySet.add("first");

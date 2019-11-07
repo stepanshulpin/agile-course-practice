@@ -20,7 +20,7 @@ public class MySet<E> {
 
     public boolean add(final E e) {
         if (e == null) {
-            throw new NullPointerException(ERROR_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE);
         }
 
         if (!this.container.contains(e)) {
@@ -31,6 +31,10 @@ public class MySet<E> {
     }
 
     public boolean addAll(final Collection<E> e) {
+        if (e == null) {
+            throw new NullPointerException(ERROR_MESSAGE);
+        }
+
         boolean modified = false;
         for (E elem : e) {
             if (this.add(elem)) {
@@ -74,6 +78,10 @@ public class MySet<E> {
     }
 
     public boolean containsAll(final Collection<E> e) {
+        if (e == null) {
+            throw new NullPointerException(ERROR_MESSAGE);
+        }
+
         for (E elem : e) {
             if (!contains(elem)) {
                 return false;
