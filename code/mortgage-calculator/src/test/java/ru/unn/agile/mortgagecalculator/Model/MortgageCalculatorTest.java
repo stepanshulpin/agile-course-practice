@@ -219,4 +219,44 @@ public class MortgageCalculatorTest {
         assertEquals(53309.27, finalAmount, delta);
     }
 
+    @Test
+    public void canGetOverpaymentWithAnnuityPayments() {
+        MortgageCalculator calculator = new MortgageWithAnnuityPaymentsCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+
+        double overpayment = calculator.calculate(parameters).getOverpayment();
+
+        assertEquals(2791.04, overpayment, delta);
+    }
+
+    @Test
+    public void canGetPaymentAtSixMonthWithAnnuityPayments() {
+        MortgageCalculator calculator = new MortgageWithAnnuityPaymentsCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+
+        double payment = calculator.calculate(parameters).getMonthReport(6).getPayment();
+
+        assertEquals(5279.10, payment, delta);
+    }
+
+    @Test
+    public void canGetOutstandingAmountAtSevenMonthWithAnnuityPayments() {
+        MortgageCalculator calculator = new MortgageWithAnnuityPaymentsCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+
+        double outstandingAmount = calculator.calculate(parameters).getMonthReport(7).getOutstandingAmount();
+
+        assertEquals(15525.77, outstandingAmount, delta);
+    }
+
+    @Test
+    public void canGetOutstandingAmountAtNineMonthWithAnnuityPaymentsForTwoYears() {
+        MortgageCalculator calculator = new MortgageWithAnnuityPaymentsCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, PeriodType.YEAR, 2);
+
+        double outstandingAmount = calculator.calculate(parameters).getMonthReport(9).getOutstandingAmount();
+
+        assertEquals(32633.81, outstandingAmount, delta);
+    }
+
 }
