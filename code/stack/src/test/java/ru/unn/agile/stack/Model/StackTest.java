@@ -64,4 +64,11 @@ public class StackTest {
 
         stack.peek();
     }
+
+    @Test
+    public void isStackWithoutItemsEmpty() {
+        Stack<Integer> stack = new Stack<>();
+
+        assertTrue(stack.isEmpty());
+    }
 }

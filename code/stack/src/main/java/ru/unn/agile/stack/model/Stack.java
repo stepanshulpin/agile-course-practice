@@ -22,22 +22,28 @@ public class Stack<T> {
     }
 
     public T pop() {
-        int size = list.size();
+        checkForEmptiness();
 
-        if (size < 1) {
-            throw new IndexOutOfBoundsException("Stack is empty!");
-        }
+        int size = list.size();
 
         return list.remove(size - 1);
     }
 
     public T peek() {
+        checkForEmptiness();
+
         int size = list.size();
 
-        if (size < 1) {
+        return list.get(size - 1);
+    }
+
+    public boolean isEmpty() {
+        return list.isEmpty();
+    }
+
+    private void checkForEmptiness() {
+        if (isEmpty()) {
             throw new IndexOutOfBoundsException("Stack is Empty!");
         }
-
-        return list.get(size - 1);
     }
 }
