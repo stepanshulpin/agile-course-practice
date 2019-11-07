@@ -16,15 +16,16 @@ public class BinarySearch {
     }
 
     public int search(final int key) {
-        final int expectedTree = 3;
-        final int expectedFive = 5;
-
-        if (key == expectedTree) {
-            return 2;
+        int leftBorder = 0;
+        int rightBorder = array.length;
+        while (rightBorder - leftBorder > 1) {
+            int mid = (leftBorder + rightBorder) / 2;
+            if (key >= array[mid]) {
+                leftBorder = mid;
+            } else {
+                rightBorder = mid;
+            }
         }
-        if (key == expectedFive) {
-            return 2 + 2;
-        }
-        return 0;
+        return leftBorder;
     }
 }
