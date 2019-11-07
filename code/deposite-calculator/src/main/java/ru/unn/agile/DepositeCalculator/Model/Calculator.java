@@ -2,10 +2,14 @@ package ru.unn.agile.DepositeCalculator.Model;
 
 public class Calculator {
 
+    //deposit-calculator example URL: fincult.info/services/deposit-calculator
+
     private final int MAX_PERCENT = 100;
     private final int MONTHS_IN_YEAR = 12;
     private final int DAYS_IN_MONTH = 30;
     private final int DAYS_IN_YEAR = 365;
+    private final int DAYS_IN_QUARTER = 90;
+    private final int QUARTER_IN_YEAR = 4;
 
     private double mStartSum;
     private double mPercent;
@@ -42,19 +46,19 @@ public class Calculator {
         return this;
     }
 
-    public Calculator setCapitalizationPeriod(DepositeTimeType capitalizationPeriod) {
+    public Calculator setCapitalizationPeriod(CapitalizationPeriod capitalizationPeriod) {
         switch (capitalizationPeriod) {
             case YEAR:
                 mCapitalizationCount = mPeriodInDays / DAYS_IN_YEAR;
                 mCapitalizationCoeff = 1;
                 break;
+            case QUARTER:
+                mCapitalizationCount = mPeriodInDays / DAYS_IN_QUARTER;
+                mCapitalizationCoeff = (double)1 / QUARTER_IN_YEAR;
+                break;
             case MONTH:
                 mCapitalizationCount = mPeriodInDays / DAYS_IN_MONTH;
                 mCapitalizationCoeff = (double)1 / MONTHS_IN_YEAR;
-                break;
-            case DAY:
-                mCapitalizationCount = mPeriodInDays;
-                mCapitalizationCoeff = (double)1 / DAYS_IN_YEAR;
                 break;
         }
         return this;

@@ -79,7 +79,7 @@ public class CalculatorTest {
         double depositeRes = calc.setStartSum(100)
                 .setPercent(10)
                 .setPeriod(DepositeTimeType.YEAR, 1)
-                .setCapitalizationPeriod(DepositeTimeType.YEAR)
+                .setCapitalizationPeriod(CapitalizationPeriod.YEAR)
                 .calculate();
 
         assertEquals(110, depositeRes, delta);
@@ -91,7 +91,7 @@ public class CalculatorTest {
         double depositeRes = calc.setStartSum(1000)
                 .setPercent(10)
                 .setPeriod(DepositeTimeType.YEAR, 3)
-                .setCapitalizationPeriod(DepositeTimeType.YEAR)
+                .setCapitalizationPeriod(CapitalizationPeriod.YEAR)
                 .calculate();
 
         assertEquals(1331, depositeRes, delta);
@@ -103,7 +103,7 @@ public class CalculatorTest {
         double depositeRes = calc.setStartSum(1000)
                 .setPercent(60)
                 .setPeriod(DepositeTimeType.MONTH, 3)
-                .setCapitalizationPeriod(DepositeTimeType.YEAR)
+                .setCapitalizationPeriod(CapitalizationPeriod.YEAR)
                 .calculate();
 
         assertEquals(1150, depositeRes, delta);
@@ -115,9 +115,66 @@ public class CalculatorTest {
         double depositeRes = calc.setStartSum(1000)
                 .setPercent(60)
                 .setPeriod(DepositeTimeType.MONTH, 3)
-                .setCapitalizationPeriod(DepositeTimeType.MONTH)
+                .setCapitalizationPeriod(CapitalizationPeriod.MONTH)
                 .calculate();
 
         assertEquals(1157.625, depositeRes, delta);
+    }
+
+    @Test
+    public void depositeWithCapitalizationPerMonthBetterPerYear() {
+        Calculator calc = new Calculator();
+
+        double depositeYear = calc.setStartSum(1000)
+                .setPercent(10)
+                .setPeriod(DepositeTimeType.YEAR, 3)
+                .setCapitalizationPeriod(CapitalizationPeriod.YEAR)
+                .calculate();
+
+        double depositeMonth = calc.setStartSum(1000)
+                .setPercent(10)
+                .setPeriod(DepositeTimeType.YEAR, 3)
+                .setCapitalizationPeriod(CapitalizationPeriod.MONTH)
+                .calculate();
+
+        assertTrue(depositeMonth > depositeYear);
+    }
+
+    @Test
+    public void depositeWithCapitalizationPerQuarterBetterPerYear() {
+        Calculator calc = new Calculator();
+
+        double depositeYear = calc.setStartSum(1000)
+                .setPercent(10)
+                .setPeriod(DepositeTimeType.YEAR, 1)
+                .setCapitalizationPeriod(CapitalizationPeriod.YEAR)
+                .calculate();
+
+        double depositeQuarter = calc.setStartSum(1000)
+                .setPercent(10)
+                .setPeriod(DepositeTimeType.YEAR, 1)
+                .setCapitalizationPeriod(CapitalizationPeriod.QUARTER)
+                .calculate();
+
+        assertTrue(depositeQuarter >= depositeYear);
+    }
+
+    @Test
+    public void depositeWithCapitalizationPerMonthBetterPerQuarter() {
+        Calculator calc = new Calculator();
+
+        double depositeQuarter = calc.setStartSum(1000)
+                .setPercent(10)
+                .setPeriod(DepositeTimeType.YEAR, 1)
+                .setCapitalizationPeriod(CapitalizationPeriod.QUARTER)
+                .calculate();
+
+        double depositeMonth = calc.setStartSum(1000)
+                .setPercent(10)
+                .setPeriod(DepositeTimeType.YEAR, 1)
+                .setCapitalizationPeriod(CapitalizationPeriod.MONTH)
+                .calculate();
+
+        assertTrue(depositeMonth >= depositeQuarter);
     }
 }
