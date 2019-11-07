@@ -53,4 +53,15 @@ public class Polynomial {
     public double getCoef(final int degree) {
         return coefs[degree];
     }
+
+    public Polynomial plus(Polynomial that) {
+        Polynomial sum = new Polynomial(0, Math.max(this.getDegree(), that.getDegree()));
+        for (int i = 0; i <= this.degree; i++) {
+            sum.coefs[i] += this.coefs[i];
+        }
+        for (int i = 0; i <= that.degree; i++) {
+            sum.coefs[i] += that.coefs[i];
+        }
+        return sum;
+    }
 }

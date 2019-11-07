@@ -98,4 +98,24 @@ public class PolynomialTest {
         assertEquals("- 2.3x^2", polynomial.toString());
     }
 
+    @Test
+    public void sumOfPolynomialsIsNotNull() {
+        var p1 = new Polynomial(1.1, 2);
+        var p2 = new Polynomial(1.4, 3);
+
+        var p3 = p1.plus(p2);
+
+        assertNotNull(p3);
+    }
+
+    @Test
+    public void sumProducesCorrectCoefs() {
+        var p1 = new Polynomial(1.1, 1);
+        var p2 = new Polynomial(1.4, 1);
+
+        var p3 = p1.plus(p2);
+
+        assertEquals(2.5, p3.getCoef(1), delta);
+    }
+
 }
