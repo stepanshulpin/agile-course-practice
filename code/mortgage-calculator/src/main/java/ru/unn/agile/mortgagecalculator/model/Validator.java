@@ -15,8 +15,8 @@ class Validator {
     }
 
     void checkCorrectPercent(double percent) {
-        if (percent < 1 || percent > 100) {
-            throw new IllegalArgumentException("Percent from 1 to 100 is expected");
+        if (percent < 0.01 || percent > 60) {
+            throw new IllegalArgumentException("Percent from 0.01 to 60 is expected");
         }
     }
 
