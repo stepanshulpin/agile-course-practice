@@ -12,18 +12,18 @@ public class Calculator {
     private static final int DAYS_IN_QUARTER = 90;
     private static final int QUARTER_IN_YEAR = 4;
 
-    private double mStartSum;
-    private double mPercent;
-    private double mPeriodCoeff;
-    private int mPeriodInDays;
-    private int mCapitalizationCount;
-    private double mCapitalizationCoeff;
+    private double startSum;
+    private double percent;
+    private double periodCoeff;
+    private int periodInDays;
+    private int capitalizationCount;
+    private double capitalizationCoeff;
 
     public Calculator setStartSum(final double startSum) {
         if (startSum < 0) {
             throw new IllegalArgumentException("start sum on the deposit should be >= 0");
         }
-        mStartSum = startSum;
+        this.startSum = startSum;
         return this;
     }
 
@@ -31,7 +31,7 @@ public class Calculator {
         if (percent < 0 || percent > MAX_PERCENT) {
             throw new IllegalArgumentException("percent should be from 0 to " + MAX_PERCENT);
         }
-        mPercent = (double) percent / MAX_PERCENT;
+        this.percent = (double) percent / MAX_PERCENT;
         return this;
     }
 
@@ -41,20 +41,20 @@ public class Calculator {
         }
         switch (periodType) {
             case YEAR:
-                mPeriodCoeff = count;
-                mPeriodInDays = count * DAYS_IN_YEAR;
+                periodCoeff = count;
+                periodInDays = count * DAYS_IN_YEAR;
                 break;
             case MONTH:
-                mPeriodCoeff = (double) count / MONTHS_IN_YEAR;
-                mPeriodInDays = count * DAYS_IN_MONTH;
+                periodCoeff = (double) count / MONTHS_IN_YEAR;
+                periodInDays = count * DAYS_IN_MONTH;
                 break;
             case DAY:
-                mPeriodCoeff = (double) count / DAYS_IN_YEAR;
-                mPeriodInDays = count;
+                periodCoeff = (double) count / DAYS_IN_YEAR;
+                periodInDays = count;
                 break;
             default:
-                mPeriodCoeff = 0;
-                mPeriodInDays = 0;
+                periodCoeff = 0;
+                periodInDays = 0;
                 break;
         }
         return this;
@@ -63,20 +63,20 @@ public class Calculator {
     public Calculator setCapitalizationPeriod(final CapitalizationPeriod capitalizationPeriod) {
         switch (capitalizationPeriod) {
             case YEAR:
-                mCapitalizationCount = mPeriodInDays / DAYS_IN_YEAR;
-                mCapitalizationCoeff = 1;
+                capitalizationCount = periodInDays / DAYS_IN_YEAR;
+                capitalizationCoeff = 1;
                 break;
             case QUARTER:
-                mCapitalizationCount = mPeriodInDays / DAYS_IN_QUARTER;
-                mCapitalizationCoeff = (double) 1 / QUARTER_IN_YEAR;
+                capitalizationCount = periodInDays / DAYS_IN_QUARTER;
+                capitalizationCoeff = 1. / QUARTER_IN_YEAR;
                 break;
             case MONTH:
-                mCapitalizationCount = mPeriodInDays / DAYS_IN_MONTH;
-                mCapitalizationCoeff = (double) 1 / MONTHS_IN_YEAR;
+                capitalizationCount = periodInDays / DAYS_IN_MONTH;
+                capitalizationCoeff = 1. / MONTHS_IN_YEAR;
                 break;
             default:
-                mCapitalizationCoeff = 0;
-                mCapitalizationCount = 0;
+                capitalizationCoeff = 0;
+                capitalizationCount = 0;
                 break;
         }
         return this;
@@ -84,17 +84,17 @@ public class Calculator {
 
     public double calculate() {
         double result = 0.0;
-        if (mPercent > MIN_INTEREST_RATE_FOR_TAX) {
-            mPercent -= mPercent * DEPOSIT_TAX;
+        if (percent > MIN_INTEREST_RATE_FOR_TAX) {
+            percent -= percent * DEPOSIT_TAX;
         }
 
-        if (mCapitalizationCount == 0) {
-            result = mStartSum + mStartSum * mPeriodCoeff * mPercent;
+        if (capitalizationCount == 0) {
+            result = startSum + startSum * periodCoeff * percent;
         } else {
             int i = 0;
-            result = mStartSum;
-            while (i < mCapitalizationCount) {
-                double capitalizationPerPeriod = result * mPercent * mCapitalizationCoeff;
+            result = startSum;
+            while (i < capitalizationCount) {
+                double capitalizationPerPeriod = result * percent * capitalizationCoeff;
                 result += capitalizationPerPeriod;
                 i++;
             }
@@ -105,11 +105,11 @@ public class Calculator {
     }
 
     private void clear() {
-        mStartSum = 0;
-        mPercent = 0.0;
-        mPeriodCoeff = 0.0;
-        mPeriodInDays = 0;
-        mCapitalizationCount = 0;
-        mCapitalizationCoeff = 0.0;
+        startSum = 0;
+        percent = 0.0;
+        periodCoeff = 0.0;
+        periodInDays = 0;
+        capitalizationCount = 0;
+        capitalizationCoeff = 0.0;
     }
 }
