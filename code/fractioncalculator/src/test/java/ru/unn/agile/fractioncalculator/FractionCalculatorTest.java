@@ -47,12 +47,22 @@ public class FractionCalculatorTest {
     }
 
     @Test
-    public void canMultipleWithReduce() {
-        var firstFraction = new Fraction(10, 3);
-        var secondFraction = new Fraction(6, 2);
+    public void canSum() {
+        var firstFraction = new Fraction(5, 3);
+        var secondFraction = new Fraction(2, 5);
         assertEquals(
-                new Fraction(10, 1),
-                FractionCalculator.multipleWithReduce(firstFraction, secondFraction)
+                new Fraction(31, 15),
+                FractionCalculator.sum(firstFraction, secondFraction)
+        );
+    }
+
+    @Test
+    public void canMinus() {
+        var firstFraction = new Fraction(3, 4);
+        var secondFraction = new Fraction(5, 6);
+        assertEquals(
+                new Fraction(-1, 12),
+                FractionCalculator.minus(firstFraction, secondFraction)
         );
     }
 }

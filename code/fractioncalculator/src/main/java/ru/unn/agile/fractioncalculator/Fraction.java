@@ -7,6 +7,8 @@ public class Fraction {
     private int numerator;
     private int denominator;
 
+    private static final String FRACTION_DELIMITER = "/";
+
     public Fraction(final int numerator, final int denominator) throws IllegalArgumentException {
         if (denominator == 0) {
             throw new IllegalArgumentException("Denominator must not be zero.");
@@ -21,6 +23,11 @@ public class Fraction {
 
     public int getDenominator() {
         return denominator;
+    }
+
+    @Override
+    public String toString() {
+        return numerator + FRACTION_DELIMITER + denominator;
     }
 
     @Override

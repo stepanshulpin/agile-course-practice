@@ -31,8 +31,15 @@ public final class FractionCalculator {
         );
     }
 
-    public static Fraction multipleWithReduce(Fraction first, Fraction second) {
-        return reduce(multiple(first, second));
+    public static Fraction sum(Fraction first, Fraction second) {
+        return new Fraction(
+                first.getNumerator() * second.getDenominator() + second.getNumerator() * first.getDenominator(),
+                first.getDenominator() * second.getDenominator()
+        );
     }
 
+    public static Fraction minus(Fraction first, Fraction second) {
+        var negativeSecond = new Fraction(-second.getNumerator(), second.getDenominator());
+        return sum(first, negativeSecond);
+    }
 }
