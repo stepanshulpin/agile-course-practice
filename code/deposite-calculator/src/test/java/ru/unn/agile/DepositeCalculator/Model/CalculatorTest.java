@@ -10,7 +10,10 @@ public class CalculatorTest {
     @Test
     public void caclYearDepositeWithoutCapitalization() {
         Calculator calc = new Calculator();
-        double depositeRes = calc.calculate(100, 10, 12);
+        double depositeRes = calc.setStartSum(100)
+                .setPercent(10)
+                .setPeriod(DepositeTimeType.YEAR, 1)
+                .calculate();
 
         assertEquals(110, depositeRes, delta);
     }
@@ -18,7 +21,10 @@ public class CalculatorTest {
     @Test
     public void cacl2YearDepositeWithoutCapitalization() {
         Calculator calc = new Calculator();
-        double depositeRes = calc.calculate(100, 10, 24);
+        double depositeRes = calc.setStartSum(100)
+                .setPercent(10)
+                .setPeriod(DepositeTimeType.YEAR, 2)
+                .calculate();
 
         assertEquals(120, depositeRes, delta);
     }
@@ -26,7 +32,10 @@ public class CalculatorTest {
     @Test
     public void cacl6MonthDepositeWithoutCapitalization() {
         Calculator calc = new Calculator();
-        double depositeRes = calc.calculate(200, 10, 6);
+        double depositeRes = calc.setStartSum(200)
+                .setPercent(10)
+                .setPeriod(DepositeTimeType.MONTH, 6)
+                .calculate();
 
         assertEquals(210, depositeRes, delta);
     }
@@ -34,8 +43,22 @@ public class CalculatorTest {
     @Test
     public void caclMonthDepositeWithoutCapitalization() {
         Calculator calc = new Calculator();
-        double depositeRes = calc.calculate(144, 50, 1);
+        double depositeRes = calc.setStartSum(144)
+                .setPercent(50)
+                .setPeriod(DepositeTimeType.MONTH, 1)
+                .calculate();
 
         assertEquals(150, depositeRes, delta);
+    }
+
+    @Test
+    public void caclDayDepositeWithoutCapitalization() {
+        Calculator calc = new Calculator();
+        double depositeRes = calc.setStartSum(730)
+                .setPercent(50)
+                .setPeriod(DepositeTimeType.DAY, 1)
+                .calculate();
+
+        assertEquals(731, depositeRes, delta);
     }
 }
