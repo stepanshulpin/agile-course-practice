@@ -78,4 +78,13 @@ public class MortgageCalculatorTest {
     }
 
 
+    @Test
+    public void canCalculateForOneYearWithDifferentialPayments() {
+        MortgageCalculator calculator = new MortgageCalculator();
+
+        double finalAmount = calculator.calculateWithDifferentialPayments(50000, 10, 1);
+
+        assertEquals(52708.33, finalAmount, delta);
+    }
+
 }
