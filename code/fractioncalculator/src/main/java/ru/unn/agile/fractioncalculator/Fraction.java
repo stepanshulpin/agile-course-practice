@@ -31,9 +31,10 @@ public class Fraction {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Fraction that = (Fraction) o;
-        return numerator == that.numerator
-                && denominator == that.denominator;
+        var thisReducedFraction = new FractionCalculator(this).reduce();
+        var thatReducedFraction = new FractionCalculator((Fraction) o).reduce();
+        return thisReducedFraction.numerator == thatReducedFraction.numerator
+                && thisReducedFraction.denominator == thatReducedFraction.denominator;
     }
 
     @Override

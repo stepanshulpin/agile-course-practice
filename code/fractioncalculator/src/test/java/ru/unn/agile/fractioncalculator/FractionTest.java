@@ -48,4 +48,11 @@ public class FractionTest {
         var fractionTwo = new Fraction(1, 3);
         assertNotEquals(fractionOne, fractionTwo);
     }
+
+    @Test
+    public void canEqualsSameFractions() {
+        var fractionOne = new Fraction(10, 5);
+        var fractionTwo = new Fraction(2, 1);
+        assertEquals(fractionOne, fractionTwo);
+    }
 }
