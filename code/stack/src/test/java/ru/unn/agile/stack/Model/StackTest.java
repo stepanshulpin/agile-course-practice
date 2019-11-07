@@ -71,4 +71,44 @@ public class StackTest {
 
         assertTrue(stack.isEmpty());
     }
+
+    @Test
+    public void isPopMethodTakeLastAddedToStack() {
+        Stack<Integer> stack = new Stack<>();
+        Integer firstValueToAdd = 5;
+        Integer secondValueToAdd = 6;
+
+        stack.push(firstValueToAdd);
+        stack.push(secondValueToAdd);
+        Integer actualItem = stack.pop();
+
+        assertEquals(secondValueToAdd, actualItem);
+    }
+
+    @Test
+    public void isPeekMethodTakeLastAddedToStack() {
+        Stack<Integer> stack = new Stack<>();
+        Integer firstValueToAdd = 5;
+        Integer secondValueToAdd = 6;
+
+        stack.push(firstValueToAdd);
+        stack.push(secondValueToAdd);
+        Integer actualItem = stack.peek();
+
+        assertEquals(secondValueToAdd, actualItem);
+    }
+
+    @Test
+    public void isCanPopMoreThenOne() {
+        Stack<Integer> stack = new Stack<>();
+        Integer firstValueToAdd = 5;
+        Integer secondValueToAdd = 6;
+
+        stack.push(firstValueToAdd);
+        stack.push(secondValueToAdd);
+        stack.pop();
+        stack.pop();
+
+        assertTrue(stack.isEmpty());
+    }
 }
