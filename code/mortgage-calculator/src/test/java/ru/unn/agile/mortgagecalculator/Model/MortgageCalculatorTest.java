@@ -111,7 +111,7 @@ public class MortgageCalculatorTest {
         MortgageCalculator calculator = new MortgageCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 1);
 
-        double finalAmount = calculator.calculateWithDifferentialPayments(parameters);
+        double finalAmount = calculator.calculateWithDifferentialPayments(parameters).getFinalAmount();
 
         assertEquals(52708.33, finalAmount, delta);
     }
@@ -121,7 +121,7 @@ public class MortgageCalculatorTest {
         MortgageCalculator calculator = new MortgageCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 2);
 
-        double finalAmount = calculator.calculateWithDifferentialPayments(parameters);
+        double finalAmount = calculator.calculateWithDifferentialPayments(parameters).getFinalAmount();
 
         assertEquals(55208.33, finalAmount, delta);
     }
@@ -131,7 +131,7 @@ public class MortgageCalculatorTest {
         MortgageCalculator calculator = new MortgageCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 7);
 
-        double finalAmount = calculator.calculateWithDifferentialPayments(parameters);
+        double finalAmount = calculator.calculateWithDifferentialPayments(parameters).getFinalAmount();
 
         assertEquals(67708.33, finalAmount, delta);
     }
@@ -141,7 +141,7 @@ public class MortgageCalculatorTest {
         MortgageCalculator calculator = new MortgageCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 10, 7);
 
-        double finalAmount = calculator.calculateWithDifferentialPayments(parameters);
+        double finalAmount = calculator.calculateWithDifferentialPayments(parameters).getFinalAmount();
 
         assertEquals(51666.67, finalAmount, delta);
     }
@@ -151,9 +151,49 @@ public class MortgageCalculatorTest {
         MortgageCalculator calculator = new MortgageCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 10, 27);
 
-        double finalAmount = calculator.calculateWithDifferentialPayments(parameters);
+        double finalAmount = calculator.calculateWithDifferentialPayments(parameters).getFinalAmount();
 
         assertEquals(55833.33, finalAmount, delta);
+    }
+
+    @Test
+    public void canGetPaymentAtSecondMonthWithDifferentialPayments() {
+        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+
+        double payment = calculator.calculateWithDifferentialPayments(parameters).getMonthReport(2).getPayment();
+
+        assertEquals(5450.00, payment, delta);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canGetPaymentAtFourteenMonthWithDifferentialPaymentsForOneYera() {
+        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, PeriodType.YEAR, 1);
+
+        double payment = calculator.calculateWithDifferentialPayments(parameters).getMonthReport(14).getPayment();
+
+        assertEquals(5450.00, payment, delta);
+    }
+
+    @Test
+    public void canGetOutstandingAmountAtFifthMonthWithDifferentialPayments() {
+        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+
+        double outstandingAmount = calculator.calculateWithDifferentialPayments(parameters).getMonthReport(5).getOutstandingAmount();
+
+        assertEquals(25000.00, outstandingAmount, delta);
+    }
+
+    @Test
+    public void canGetPercentPaymentAtSixMonthWithDifferentialPayments() {
+        MortgageCalculator calculator = new MortgageCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+
+        double outstandingAmount = calculator.calculateWithDifferentialPayments(parameters).getMonthReport(6).getPercentPayment();
+
+        assertEquals(250, outstandingAmount, delta);
     }
 
 }

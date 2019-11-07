@@ -2,8 +2,6 @@ package ru.unn.agile.mortgagecalculator.model;
 
 public class MortgageCalculator {
 
-    private final double FRACTION_OF_HUNDRED = 0.01;
-
     public double calculateWithoutPayments(MortgageParameters parameters) {
 
         int months = parameters.getMonthsPeriod();
@@ -19,12 +17,14 @@ public class MortgageCalculator {
 
     }
 
-    public double calculateWithDifferentialPayments(MortgageParameters parameters) {
+    public MortgageReport calculateWithDifferentialPayments(MortgageParameters parameters) {
 
         int months = parameters.getMonthsPeriod();
         double monthPercent = parameters.getMonthPercent();
         double basicPayment = parameters.getAmount() / months;
         double currentAmount = parameters.getAmount();
+
+        MortgageReport report = new MortgageReport();
 
         double finalAmount = 0;
 
@@ -33,10 +33,16 @@ public class MortgageCalculator {
             double payment = basicPayment + percentPayment;
             currentAmount -= basicPayment;
             finalAmount += payment;
+
+            MortgageMonthReport monthReport = new MortgageMonthReport(payment, basicPayment, percentPayment, currentAmount);
+            report.add(monthReport);
+
             months--;
         }
 
-        return round(finalAmount);
+        report.setFinalAmount(round(finalAmount));
+
+        return report;
 
     }
 

@@ -36,6 +36,30 @@ public class MortgageParameters {
         return monthsPeriod;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MortgageParameters that = (MortgageParameters) o;
+
+        if (Double.compare(that.amount, amount) != 0) return false;
+        if (Double.compare(that.fractionPercent, fractionPercent) != 0) return false;
+        return monthsPeriod == that.monthsPeriod;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(amount);
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(fractionPercent);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + monthsPeriod;
+        return result;
+    }
+
     private void validate(double amount, double percent, int period) {
         Validator validator = new Validator();
         validator.checkPositiveDouble(amount);
@@ -54,4 +78,5 @@ public class MortgageParameters {
             return period * MONTHS_IN_YEAR;
         }
     }
+
 }

@@ -20,4 +20,10 @@ class Validator {
         }
     }
 
+    void checkReportSize(int month, int size) {
+        if (month < 1 || month > size) {
+            throw new IllegalArgumentException("Month from 1 to " + size + " is expected ");
+        }
+    }
+
 }
