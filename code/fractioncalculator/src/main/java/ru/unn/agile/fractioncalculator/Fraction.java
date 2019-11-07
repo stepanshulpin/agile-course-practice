@@ -26,7 +26,7 @@ public final class Fraction {
     }
 
     public boolean isNegative() {
-        return numerator > 0 && denominator < 0 || numerator < 0 && denominator > 0;
+        return numerator * denominator < 0;
     }
 
     @Override
@@ -47,11 +47,11 @@ public final class Fraction {
         if (thisReducedFraction.isNegative() && !thatReducedFraction.isNegative()) {
             return false;
         }
-        return Math.abs(thisReducedFraction.numerator)
-                == Math.abs(thatReducedFraction.numerator)
-                &&
-                Math.abs(thisReducedFraction.denominator)
+        var numeratorEquals = Math.abs(thisReducedFraction.numerator)
+                == Math.abs(thatReducedFraction.numerator);
+        var denominatorEquals = Math.abs(thisReducedFraction.denominator)
                 == Math.abs(thatReducedFraction.denominator);
+        return numeratorEquals && denominatorEquals;
     }
 
     @Override

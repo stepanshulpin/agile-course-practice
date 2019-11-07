@@ -1,5 +1,6 @@
 package ru.unn.agile.fractioncalculator;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public final class FractionCalculator {
@@ -7,7 +8,7 @@ public final class FractionCalculator {
     private FractionCalculator() { }
 
     public static Fraction reduce(final Fraction fraction) {
-        Objects.requireNonNull(fraction);
+        checkFractionsNotNull(fraction);
         var tmpNumerator = Math.abs(fraction.getNumerator());
         var tmpDenominator = Math.abs(fraction.getDenominator());
         while (tmpNumerator != 0 && tmpDenominator != 0) {
@@ -28,8 +29,7 @@ public final class FractionCalculator {
     }
 
     public static Fraction multiple(final Fraction first, final Fraction second) {
-        Objects.requireNonNull(first);
-        Objects.requireNonNull(second);
+        checkFractionsNotNull(first, second);
         return new Fraction(
                 first.getNumerator() * second.getNumerator(),
                 first.getDenominator() * second.getDenominator()
@@ -37,15 +37,13 @@ public final class FractionCalculator {
     }
 
     public static Fraction divide(final Fraction first, final Fraction second) {
-        Objects.requireNonNull(first);
-        Objects.requireNonNull(second);
+        checkFractionsNotNull(first, second);
         var reverseSecond = new Fraction(second.getDenominator(), second.getNumerator());
         return multiple(first, reverseSecond);
     }
 
     public static Fraction sum(final Fraction first, final Fraction second) {
-        Objects.requireNonNull(first);
-        Objects.requireNonNull(second);
+        checkFractionsNotNull(first, second);
         return new Fraction(
                 first.getNumerator() * second.getDenominator()
                         + second.getNumerator() * first.getDenominator(),
@@ -54,9 +52,12 @@ public final class FractionCalculator {
     }
 
     public static Fraction minus(final Fraction first, final Fraction second) {
-        Objects.requireNonNull(first);
-        Objects.requireNonNull(second);
+        checkFractionsNotNull(first, second);
         var negativeSecond = new Fraction(-second.getNumerator(), second.getDenominator());
         return sum(first, negativeSecond);
+    }
+
+    private static void checkFractionsNotNull(Fraction... fractions) throws NullPointerException {
+        Arrays.stream(Objects.requireNonNull(fractions)).forEach(Objects::requireNonNull);
     }
 }
