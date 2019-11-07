@@ -63,4 +63,15 @@ public class Polynomial {
         }
         return sum;
     }
+
+    public Polynomial minus(Polynomial that) {
+        Polynomial minus = new Polynomial(0, Math.max(this.getDegree(), that.getDegree()));
+        for (int i = 0; i <= this.degree; i++) {
+            minus.coefs[i] += this.coefs[i];
+        }
+        for (int i = 0; i <= that.degree; i++) {
+            minus.coefs[i] -= that.coefs[i];
+        }
+        return minus;
+    }
 }

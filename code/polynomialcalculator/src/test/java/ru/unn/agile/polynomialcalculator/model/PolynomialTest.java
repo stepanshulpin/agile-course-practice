@@ -138,4 +138,14 @@ public class PolynomialTest {
         assertEquals("1.4x^2 + 1.1x", p3.toString());
     }
 
+    @Test
+    public void minusOfPolynomialIsNotNull() {
+        var p1 = new Polynomial(2.3, 1);
+        var p2 = new Polynomial(1.8, 1);
+
+        var p3 = p1.minus(p2);
+
+        assertNotNull(p3);
+    }
+
 }
