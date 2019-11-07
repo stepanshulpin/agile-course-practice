@@ -6,7 +6,7 @@ public class PerformanceCalculator {
 
     private static final int MAX_PERCENT_VALUE = 100;
 
-    private  List<Student> students;
+    private List<Student> students;
 
     public PerformanceCalculator(final List<Student> students) {
         if (students == null || students.isEmpty()) {
@@ -15,46 +15,46 @@ public class PerformanceCalculator {
         this.students = students;
     }
 
-    public Integer getExcellentStudentsNumber() {
+    public int getExcellentStudentsCount() {
         return (int) students.stream().filter(Student::checkIsExcellent).count();
     }
 
-    public Integer getGoodStudentsNumber() {
+    public int getGoodStudentsCount() {
         return (int) students.stream().filter(Student::checkIsGood).count();
     }
 
-    public Integer getSatisfactoryStudentsNumber() {
+    public int getSatisfactoryStudentsCount() {
         return (int) students.stream().filter(Student::checkIsSatisfactory).count();
     }
 
-    public Integer getBadStudentsNumber() {
+    public int getBadStudentsCount() {
         return (int) students.stream().filter(Student::checkIsBad).count();
     }
 
-    public Double getAverageRating() {
+    public double getAverageRating() {
         double marksSum = students.stream().mapToDouble(Student::getAverageRating).sum();
-        double studentsNumber = students.stream().filter(this::checkIsCertified).count();
+        double studentsCount = students.stream().filter(this::checkIsCertified).count();
 
-        if (studentsNumber == 0) {
-            throw new IllegalArgumentException("Students don't have marks");
+        if (studentsCount == 0) {
+            return 0.0;
         }
-        return  marksSum / studentsNumber;
+        return marksSum / studentsCount;
     }
 
-    public Integer getTotalMarksNumber() {
-        return students.stream().mapToInt(Student::getMarksNumber).sum();
+    public int getTotalMarksCount() {
+        return students.stream().mapToInt(Student::getMarksCount).sum();
     }
 
-    public Double getPercentageOfTraining() {
-        int certifiedStudents = getExcellentStudentsNumber()
-                + getGoodStudentsNumber()
-                + getSatisfactoryStudentsNumber();
-        double studentsNumber = students.stream().filter(this::checkIsCertified).count();
+    public double getPercentageOfTraining() {
+        int certifiedStudents = getExcellentStudentsCount()
+                + getGoodStudentsCount()
+                + getSatisfactoryStudentsCount();
+        double studentsCount = students.stream().filter(this::checkIsCertified).count();
 
-        if (studentsNumber == 0) {
-            throw new IllegalArgumentException("Students don't have marks");
+        if (studentsCount == 0) {
+            return 0.0;
         }
-        return certifiedStudents / studentsNumber * MAX_PERCENT_VALUE;
+        return certifiedStudents / studentsCount * MAX_PERCENT_VALUE;
     }
 
     private boolean checkIsCertified(final Student student) {

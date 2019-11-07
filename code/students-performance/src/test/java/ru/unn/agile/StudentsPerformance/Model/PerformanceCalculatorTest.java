@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 
 public class PerformanceCalculatorTest {
 
-    private static final double COMPARE_DELTA = 0.001;
+    private static final double COMPARE_DELTA = 0.1;
 
     @Test
     public void canCreateCalculator() {
@@ -19,13 +19,13 @@ public class PerformanceCalculatorTest {
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void canCreateCalculatorIfStudentsAreNull() {
+    public void canNotCreateCalculatorIfStudentsAreNull() {
         List<Student> students = null;
         new PerformanceCalculator(students);
     }
 
     @Test (expected = IllegalArgumentException.class)
-    public void canCreateCalculatorIfStudentsAreEmpty() {
+    public void canNotCreateCalculatorIfStudentsAreEmpty() {
         List<Student> students = new ArrayList<>();
         new PerformanceCalculator(students);
     }
@@ -34,7 +34,7 @@ public class PerformanceCalculatorTest {
     public void canGetExcellentStudentsNumberIfExist() {
         List<Student> students = generateDefaultStudentsList();
         PerformanceCalculator calculator = new PerformanceCalculator(students);
-        assertEquals(1, calculator.getExcellentStudentsNumber(), COMPARE_DELTA);
+        assertEquals(1, calculator.getExcellentStudentsCount(), COMPARE_DELTA);
     }
 
     @Test
@@ -49,14 +49,14 @@ public class PerformanceCalculatorTest {
                 )
         );
         PerformanceCalculator calculator = new PerformanceCalculator(students);
-        assertEquals(0, calculator.getExcellentStudentsNumber(), COMPARE_DELTA);
+        assertEquals(0, calculator.getExcellentStudentsCount(), COMPARE_DELTA);
     }
 
     @Test
     public void canGetGoodStudentsNumberIfExist() {
         List<Student> students = generateDefaultStudentsList();
         PerformanceCalculator calculator = new PerformanceCalculator(students);
-        assertEquals(1, calculator.getGoodStudentsNumber(), COMPARE_DELTA);
+        assertEquals(1, calculator.getGoodStudentsCount(), COMPARE_DELTA);
     }
 
     @Test
@@ -71,14 +71,14 @@ public class PerformanceCalculatorTest {
                 )
         );
         PerformanceCalculator calculator = new PerformanceCalculator(students);
-        assertEquals(0, calculator.getGoodStudentsNumber(), COMPARE_DELTA);
+        assertEquals(0, calculator.getGoodStudentsCount(), COMPARE_DELTA);
     }
 
     @Test
     public void canGetSatisfactoryStudentsNumberIfExist() {
         List<Student> students = generateDefaultStudentsList();
         PerformanceCalculator calculator = new PerformanceCalculator(students);
-        assertEquals(1, calculator.getSatisfactoryStudentsNumber(), COMPARE_DELTA);
+        assertEquals(1, calculator.getSatisfactoryStudentsCount(), COMPARE_DELTA);
     }
 
     @Test
@@ -93,14 +93,14 @@ public class PerformanceCalculatorTest {
                 )
         );
         PerformanceCalculator calculator = new PerformanceCalculator(students);
-        assertEquals(0, calculator.getSatisfactoryStudentsNumber(), COMPARE_DELTA);
+        assertEquals(0, calculator.getSatisfactoryStudentsCount(), COMPARE_DELTA);
     }
 
     @Test
     public void canGetBadStudentsNumberIfExist() {
         List<Student> students = generateDefaultStudentsList();
         PerformanceCalculator calculator = new PerformanceCalculator(students);
-        assertEquals(2, calculator.getBadStudentsNumber(), COMPARE_DELTA);
+        assertEquals(2, calculator.getBadStudentsCount(), COMPARE_DELTA);
     }
 
     @Test
@@ -115,7 +115,7 @@ public class PerformanceCalculatorTest {
                 )
         );
         PerformanceCalculator calculator = new PerformanceCalculator(students);
-        assertEquals(0, calculator.getBadStudentsNumber(), COMPARE_DELTA);
+        assertEquals(0, calculator.getBadStudentsCount(), COMPARE_DELTA);
     }
 
     @Test
@@ -125,11 +125,11 @@ public class PerformanceCalculatorTest {
         assertEquals(4.2, calculator.getAverageRating(), COMPARE_DELTA);
     }
 
-    @Test (expected = IllegalArgumentException.class)
+    @Test
     public void canGetStudentsAverageRatingIfAllStudentsAreEmpty() {
         List<Student> students = generateEmptyStudentsList();
         PerformanceCalculator calculator = new PerformanceCalculator(students);
-        calculator.getAverageRating();
+        assertEquals(0.0, calculator.getAverageRating(), COMPARE_DELTA);
     }
 
     @Test
@@ -144,7 +144,7 @@ public class PerformanceCalculatorTest {
                 )
         );
         PerformanceCalculator calculator = new PerformanceCalculator(students);
-        assertEquals(4.042, calculator.getAverageRating(), COMPARE_DELTA);
+        assertEquals(4.04, calculator.getAverageRating(), COMPARE_DELTA);
     }
 
     @Test
@@ -159,14 +159,14 @@ public class PerformanceCalculatorTest {
                 )
         );
         PerformanceCalculator calculator = new PerformanceCalculator(students);
-        assertEquals(21, calculator.getTotalMarksNumber(), COMPARE_DELTA);
+        assertEquals(21, calculator.getTotalMarksCount(), COMPARE_DELTA);
     }
 
     @Test
     public void canGetTotalMarksNumberIfNoMarks() {
         List<Student> students = generateEmptyStudentsList();
         PerformanceCalculator calculator = new PerformanceCalculator(students);
-        assertEquals(0, calculator.getTotalMarksNumber(), COMPARE_DELTA);
+        assertEquals(0, calculator.getTotalMarksCount(), COMPARE_DELTA);
     }
 
     @Test
@@ -186,11 +186,11 @@ public class PerformanceCalculatorTest {
         assertEquals(50.0, calculator.getPercentageOfTraining(), COMPARE_DELTA);
     }
 
-    @Test (expected = IllegalArgumentException.class)
+    @Test
     public void canGetPercentageOfTrainingIfNoMarks() {
         List<Student> students = generateEmptyStudentsList();
         PerformanceCalculator calculator = new PerformanceCalculator(students);
-        calculator.getPercentageOfTraining();
+        assertEquals(0.0, calculator.getPercentageOfTraining(), COMPARE_DELTA);
     }
 
     private List<Student> generateDefaultStudentsList() {

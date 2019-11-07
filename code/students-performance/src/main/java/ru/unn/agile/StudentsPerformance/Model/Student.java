@@ -4,10 +4,10 @@ import java.util.*;
 
 public class Student {
 
-    private static final Integer EXCELLENT_MARK = 5;
-    private static final Integer GOOD_MARK = 4;
-    private static final Integer SATISFACTORY_MARK = 3;
-    private static final Integer BAD_MARK = 2;
+    private static final int EXCELLENT_MARK = 5;
+    private static final int GOOD_MARK = 4;
+    private static final int SATISFACTORY_MARK = 3;
+    private static final int BAD_MARK = 2;
 
     private List<Integer> listOfMarks;
 
@@ -25,7 +25,7 @@ public class Student {
         this.listOfMarks = listOfMarks;
     }
 
-    public Integer getMarksNumber() {
+    public int getMarksCount() {
         return listOfMarks.size();
     }
 

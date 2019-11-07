@@ -37,16 +37,16 @@ public class StudentsTest {
     }
 
     @Test
-    public void canGetMarksNumber() {
+    public void canGetMarksCount() {
         ArrayList<Integer> marks = new ArrayList<>(List.of(5, 3, 4, 2, 5));
         Student student = new Student(marks);
-        assertEquals(5, student.getMarksNumber(), COMPARE_DELTA);
+        assertEquals(5, student.getMarksCount(), COMPARE_DELTA);
     }
 
     @Test
-    public void canGetMarksNumberIfNoMarks() {
+    public void canGetMarksCountIfNoMarks() {
         Student student = new Student();
-        assertEquals(0, student.getMarksNumber(), COMPARE_DELTA);
+        assertEquals(0, student.getMarksCount(), COMPARE_DELTA);
     }
 
     @Test
