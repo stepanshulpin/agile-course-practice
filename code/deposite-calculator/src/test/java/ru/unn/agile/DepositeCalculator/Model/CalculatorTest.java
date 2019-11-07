@@ -84,4 +84,40 @@ public class CalculatorTest {
 
         assertEquals(110, depositeRes, delta);
     }
+
+    @Test
+    public void cacl3YearDepositeWithCapitalizationPerYear() {
+        Calculator calc = new Calculator();
+        double depositeRes = calc.setStartSum(1000)
+                .setPercent(10)
+                .setPeriod(DepositeTimeType.YEAR, 3)
+                .setCapitalizationPeriod(DepositeTimeType.YEAR)
+                .calculate();
+
+        assertEquals(1331, depositeRes, delta);
+    }
+
+    @Test
+    public void cacl3MonthDepositeWithCapitalizationPerYear() {
+        Calculator calc = new Calculator();
+        double depositeRes = calc.setStartSum(1000)
+                .setPercent(60)
+                .setPeriod(DepositeTimeType.MONTH, 3)
+                .setCapitalizationPeriod(DepositeTimeType.YEAR)
+                .calculate();
+
+        assertEquals(1150, depositeRes, delta);
+    }
+
+    @Test
+    public void cacl3MonthDepositeWithCapitalizationPerMonth() {
+        Calculator calc = new Calculator();
+        double depositeRes = calc.setStartSum(1000)
+                .setPercent(60)
+                .setPeriod(DepositeTimeType.MONTH, 3)
+                .setCapitalizationPeriod(DepositeTimeType.MONTH)
+                .calculate();
+
+        assertEquals(1157.625, depositeRes, delta);
+    }
 }
