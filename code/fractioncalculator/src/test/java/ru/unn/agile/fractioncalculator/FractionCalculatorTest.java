@@ -25,14 +25,20 @@ public class FractionCalculatorTest {
     }
 
     @Test
-    public void canReduceOneToOne() {
+    public void canReduceOne2One() {
         var calculator = new FractionCalculator(1, 1);
-        assertEquals(1, calculator.reduce());
+        assertEquals(new FractionCalculator(1, 1), calculator.reduce());
     }
 
     @Test
-    public void canReduceTenToTen() {
+    public void canReduceTen2Ten() {
         var calculator = new FractionCalculator(10, 10);
-        assertEquals(1, calculator.reduce());
+        assertEquals(new FractionCalculator(1, 1), calculator.reduce());
+    }
+
+    @Test
+    public void canReduceTwo2Four() {
+        var calculator = new FractionCalculator(2, 4);
+        assertEquals(new FractionCalculator(1, 2), calculator.reduce());
     }
 }

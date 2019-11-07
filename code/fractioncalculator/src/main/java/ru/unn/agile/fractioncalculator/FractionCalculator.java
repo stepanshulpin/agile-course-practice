@@ -1,5 +1,7 @@
 package ru.unn.agile.fractioncalculator;
 
+import java.util.Objects;
+
 public class FractionCalculator {
 
     private int numerator;
@@ -18,7 +20,35 @@ public class FractionCalculator {
         return denominator;
     }
 
-    public int reduce() {
-        return 1;
+    public FractionCalculator reduce() {
+        var tmpNumerator = numerator;
+        var tmpDenominator = denominator;
+        while (tmpNumerator != 0 && tmpDenominator != 0) {
+            if (tmpNumerator > tmpDenominator) {
+                tmpNumerator %= tmpDenominator;
+            } else {
+                tmpDenominator %= tmpNumerator;
+            }
+        }
+        var nod = tmpNumerator + tmpDenominator;
+        return new FractionCalculator(numerator / nod, denominator / nod);
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        FractionCalculator that = (FractionCalculator) o;
+        return numerator == that.numerator
+                && denominator == that.denominator;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numerator, denominator);
     }
 }
