@@ -13,4 +13,10 @@ public class BinarySearchTest {
 
         assertEquals(inputArray, binarySearch.getArray());
     }
+
+    @Test(expected = NullPointerException.class)
+    public void canNullPointerException() {
+        int[] inputArray = null;
+        BinarySearch binarySearch = new BinarySearch(inputArray);
+    }
 }
