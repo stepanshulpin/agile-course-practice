@@ -29,4 +29,14 @@ public class BinarySearchTest {
 
         assertEquals(binarySearch.search(key), expectedPosition);
     }
+
+    @Test
+    public void canSearchElementInSortedArraySimple() {
+        int[] inputArray = {1, 2, 3};
+        BinarySearch binarySearch = new BinarySearch(inputArray);
+        int key = 3;
+        int expectedPosition = 2;
+
+        assertEquals(binarySearch.search(key), expectedPosition);
+    }
 }

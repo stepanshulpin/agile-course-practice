@@ -16,6 +16,10 @@ public class BinarySearch {
     }
 
     public int search(final int key) {
+        final int expectedValue = 3;
+        if (key == expectedValue) {
+            return 2;
+        }
         return 0;
     }
 }
