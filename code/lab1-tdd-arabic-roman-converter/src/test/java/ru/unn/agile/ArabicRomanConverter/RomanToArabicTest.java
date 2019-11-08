@@ -8,7 +8,7 @@ public class RomanToArabicTest {
 
     private int ConvertToArabic(String roman) {
         RomanToArabicConverter converter = new RomanToArabicConverter();
-        int arabic = converter.Convert(roman);
+        int arabic = converter.convert(roman);
         return arabic;
     }
 

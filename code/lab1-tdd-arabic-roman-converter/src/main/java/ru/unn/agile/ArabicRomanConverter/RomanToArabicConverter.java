@@ -17,16 +17,17 @@ public class RomanToArabicConverter {
         ht.put('M', 1000);
     }
 
-    public int Convert(String romanNumber) {
+    public int convert(final String romanNumber) {
         int arabicNumber = 0;
-        int prev_symbol = 0;
-        for (int i = romanNumber.length()-1; i >= 0; i--) {
-            int current_symbol = ht.get(romanNumber.charAt(i));
-            if (current_symbol < prev_symbol)
-                arabicNumber -= current_symbol;
-            else
-                arabicNumber += current_symbol;
-            prev_symbol = current_symbol;
+        int prevSymbol = 0;
+        for (int i = romanNumber.length() - 1; i >= 0; i--) {
+            int currentSymbol = ht.get(romanNumber.charAt(i));
+            if (currentSymbol < prevSymbol) {
+                arabicNumber -= currentSymbol;
+            } else {
+                arabicNumber += currentSymbol;
+            }
+            prevSymbol = currentSymbol;
         }
         return arabicNumber;
     }

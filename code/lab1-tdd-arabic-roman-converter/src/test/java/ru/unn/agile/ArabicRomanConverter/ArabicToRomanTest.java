@@ -8,7 +8,7 @@ public class ArabicToRomanTest {
 
     private String convertToRoman(int arabic) {
         ArabicToRomanConverter converter = new ArabicToRomanConverter();
-        return converter.Convert(arabic);
+        return converter.convert(arabic);
     }
 
     @Test
