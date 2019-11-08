@@ -12,8 +12,9 @@ public class RomanToArabicConverter {
 
     public RomanToArabicConverter() {
         ht = new Hashtable<>();
-        for (int i = 0; i < ARABIC_NUMERALS.length; i++)
+        for (int i = 0; i < ARABIC_NUMERALS.length; i++) {
             ht.put(ROMAN_NUMERALS[i], ARABIC_NUMERALS[i]);
+        }
     }
 
     public int convert(final String romanNumber) {
