@@ -1,5 +1,7 @@
 package ru.unn.agile.sorting.api;
 
+import java.util.Objects;
+
 public abstract class Sorting<T> {
 
     private Direction direction;
@@ -28,4 +30,26 @@ public abstract class Sorting<T> {
     }
 
     public abstract T[] sort(T[] objects);
+
+    @Override
+    public String toString() {
+        return "Sorting{" +
+                "direction=" + direction +
+                ", expression=" + expression +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Sorting<?> sorting = (Sorting<?>) o;
+        return direction == sorting.direction &&
+                expression.equals(sorting.expression);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(direction, expression);
+    }
 }

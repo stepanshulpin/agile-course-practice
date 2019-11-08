@@ -23,7 +23,7 @@ public final class NumberSorting extends Sorting<Integer> {
     @Override
     public Integer[] sort(final Integer[] numbers) {
         for (int i = 1; i < numbers.length; i++) {
-            int current = numbers[i];
+            Integer current = numbers[i];
             int j = i - 1;
             while (j >= 0 && compareTwoNumbers(current, numbers[j])) {
                 numbers[j + 1] = numbers[j];
@@ -35,10 +35,11 @@ public final class NumberSorting extends Sorting<Integer> {
     }
 
     private boolean compareTwoNumbers(final int number1, final int number2) {
+        boolean comparisonResult = getExpression().compare(number1, number2);
         if (getDirection().equals(Direction.ASC)) {
-            return getExpression().compare(number1, number2);
+            return comparisonResult;
         } else {
-            return !getExpression().compare(number1, number2);
+            return !comparisonResult;
         }
     }
 }
