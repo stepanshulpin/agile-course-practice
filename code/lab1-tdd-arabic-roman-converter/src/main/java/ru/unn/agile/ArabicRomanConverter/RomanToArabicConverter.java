@@ -6,17 +6,14 @@ public class RomanToArabicConverter {
 
     private static final int[] ARABIC_NUMERALS = {1, 5, 10, 50,
             100, 500, 1000};
+    private static final Character[] ROMAN_NUMERALS = {'I', 'V', 'X',
+            'L', 'C', 'D', 'M'};
     private Hashtable<Character, Integer> ht;
 
     public RomanToArabicConverter() {
         ht = new Hashtable<>();
-        ht.put('I', ARABIC_NUMERALS[0]);
-        ht.put('V', ARABIC_NUMERALS[1]);
-        ht.put('X', ARABIC_NUMERALS[2]);
-        ht.put('L', ARABIC_NUMERALS[3]);
-        ht.put('C', ARABIC_NUMERALS[4]);
-        ht.put('D', ARABIC_NUMERALS[5]);
-        ht.put('M', ARABIC_NUMERALS[6]);
+        for (int i = 0; i < ARABIC_NUMERALS.length; i++)
+            ht.put(ROMAN_NUMERALS[i], ARABIC_NUMERALS[i]);
     }
 
     public int convert(final String romanNumber) {
