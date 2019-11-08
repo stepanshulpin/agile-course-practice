@@ -14,8 +14,9 @@ public class FiguresVolumeCalculatorTest {
         final double expectedVolume = 3;
         final double baseSquare = 3;
         final double height = 3;
-        assertEquals(expectedVolume,
-                     FiguresVolumeCalculator.pyramidVolumeCalculate(baseSquare, height), delta);
+        final double actualVolume =
+                FiguresVolumeCalculator.pyramidVolumeCalculate(baseSquare, height);
+        assertEquals(expectedVolume, actualVolume, delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -30,16 +31,17 @@ public class FiguresVolumeCalculatorTest {
         final double expectedVolume = 3;
         final double baseSquare = 3;
         final double height = -3;
-        assertEquals(expectedVolume,
-                     FiguresVolumeCalculator.pyramidVolumeCalculate(baseSquare, height), delta);
+        final double actualVolume =
+                FiguresVolumeCalculator.pyramidVolumeCalculate(baseSquare, height);
+        assertEquals(expectedVolume, actualVolume, delta);
     }
 
     @Test
     public void canCalculateSphereVolume() {
         final double expectedVolume = 113.097;
         final double radius = 3;
-        assertEquals(expectedVolume,
-                     FiguresVolumeCalculator.sphereVolumeCalculate(radius), delta);
+        final double actualVolume = FiguresVolumeCalculator.sphereVolumeCalculate(radius);
+        assertEquals(expectedVolume, actualVolume, delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -53,8 +55,9 @@ public class FiguresVolumeCalculatorTest {
         final double expectedVolume = 84.82;
         final double baseRadius = 3;
         final double height = 3;
-        assertEquals(expectedVolume,
-                     FiguresVolumeCalculator.cylinderVolumeCalculate(baseRadius, height), delta);
+        final double actualVolume =
+                FiguresVolumeCalculator.cylinderVolumeCalculate(baseRadius, height);
+        assertEquals(expectedVolume, actualVolume, delta);
     }
 
     @Test
@@ -62,8 +65,9 @@ public class FiguresVolumeCalculatorTest {
         final double expectedVolume = 84.82;
         final double baseRadius = 3;
         final double height = -3;
-        assertEquals(expectedVolume,
-                     FiguresVolumeCalculator.cylinderVolumeCalculate(baseRadius, height), delta);
+        final double actualVolume =
+                FiguresVolumeCalculator.cylinderVolumeCalculate(baseRadius, height);
+        assertEquals(expectedVolume, actualVolume, delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -78,8 +82,9 @@ public class FiguresVolumeCalculatorTest {
         final double expectedVolume = 0;
         final double baseRadius = 1;
         final double height = 0;
-        assertEquals(expectedVolume,
-                     FiguresVolumeCalculator.coneVolumeCalculate(baseRadius, height), delta);
+        final double actualVolume =
+                FiguresVolumeCalculator.coneVolumeCalculate(baseRadius, height);
+        assertEquals(expectedVolume, actualVolume, delta);
     }
 
     @Test
@@ -87,8 +92,9 @@ public class FiguresVolumeCalculatorTest {
         final double expectedVolume = 28.27;
         final double baseRadius = 3;
         final double height = 3;
-        assertEquals(expectedVolume,
-                     FiguresVolumeCalculator.coneVolumeCalculate(baseRadius, height), delta);
+        final double actualVolume =
+                FiguresVolumeCalculator.coneVolumeCalculate(baseRadius, height);
+        assertEquals(expectedVolume, actualVolume, delta);
     }
 
     @Test
@@ -96,8 +102,9 @@ public class FiguresVolumeCalculatorTest {
         final double expectedVolume = 28.27;
         final double baseRadius = 3;
         final double height = -3;
-        assertEquals(expectedVolume,
-                     FiguresVolumeCalculator.coneVolumeCalculate(baseRadius, height), delta);
+        final double actualVolume =
+                FiguresVolumeCalculator.coneVolumeCalculate(baseRadius, height);
+        assertEquals(expectedVolume, actualVolume, delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -112,9 +119,9 @@ public class FiguresVolumeCalculatorTest {
         final double expectedVolume = 0;
         final double baseSquare = 1;
         final double height = 0;
-        assertEquals(expectedVolume,
-                     FiguresVolumeCalculator.parallelepipedVolumeCalculate(baseSquare, height),
-                     delta);
+        final double actualVolume =
+                FiguresVolumeCalculator.parallelepipedVolumeCalculate(baseSquare, height);
+        assertEquals(expectedVolume, actualVolume, delta);
     }
 
     @Test
@@ -122,9 +129,9 @@ public class FiguresVolumeCalculatorTest {
         final double expectedVolume = 9;
         final double baseSquare = 3;
         final double height = 3;
-        assertEquals(expectedVolume,
-                     FiguresVolumeCalculator.parallelepipedVolumeCalculate(baseSquare, height),
-                     delta);
+        final double actualVolume =
+                FiguresVolumeCalculator.parallelepipedVolumeCalculate(baseSquare, height);
+        assertEquals(expectedVolume, actualVolume, delta);
     }
 
     @Test
@@ -132,9 +139,9 @@ public class FiguresVolumeCalculatorTest {
         final double expectedVolume = 9;
         final double baseSquare = 3;
         final double height = -3;
-        assertEquals(expectedVolume,
-                     FiguresVolumeCalculator.parallelepipedVolumeCalculate(baseSquare, height),
-                     delta);
+        final double actualVolume =
+                FiguresVolumeCalculator.parallelepipedVolumeCalculate(baseSquare, height);
+        assertEquals(expectedVolume, actualVolume, delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -148,8 +155,8 @@ public class FiguresVolumeCalculatorTest {
     public void canCalculateOctahedronVolume() {
         final double expectedVolume = 12.72;
         final double edgeLength = 3;
-        assertEquals(expectedVolume,
-                     FiguresVolumeCalculator.octahedronVolumeCalculate(edgeLength), delta);
+        final double actualVolume = FiguresVolumeCalculator.octahedronVolumeCalculate(edgeLength);
+        assertEquals(expectedVolume, actualVolume, delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
