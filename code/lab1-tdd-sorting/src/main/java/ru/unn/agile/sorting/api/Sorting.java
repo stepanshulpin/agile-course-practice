@@ -33,19 +33,25 @@ public abstract class Sorting<T> {
 
     @Override
     public String toString() {
-        return "Sorting{" +
-                "direction=" + direction +
-                ", expression=" + expression +
-                '}';
+        return "Sorting{"
+                + "direction="
+                + direction
+                + ", expression="
+                + expression
+                + '}';
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Sorting<?> sorting = (Sorting<?>) o;
-        return direction == sorting.direction &&
-                expression.equals(sorting.expression);
+        return direction == sorting.direction
+                && expression.equals(sorting.expression);
     }
 
     @Override
