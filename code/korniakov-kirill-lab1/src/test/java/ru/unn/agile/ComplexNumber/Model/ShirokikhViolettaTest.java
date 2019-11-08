@@ -10,16 +10,16 @@ public class ShirokikhViolettaTest {
     public void canMultiplyNumbersWithZeroRealPart() {
         ComplexNumber z1 = new ComplexNumber(1, 1);
         ComplexNumber z2 = new ComplexNumber(0, 1);
-        ComplexNumber sum = z1.multiply(z2);
-        assertEquals(new ComplexNumber(-1, 1), sum);
+        ComplexNumber result = z1.multiply(z2);
+        assertEquals(new ComplexNumber(-1, 1), result);
     }
 
     @Test
     public void canMultiplyNumbersWithNegativePart() {
         ComplexNumber z1 = new ComplexNumber(-1, -4);
         ComplexNumber z2 = new ComplexNumber(2, 3);
-        ComplexNumber sum = z1.multiply(z2);
-        assertEquals(new ComplexNumber(10, -11), sum);
+        ComplexNumber result = z1.multiply(z2);
+        assertEquals(new ComplexNumber(10, -11), result);
     }
 
     @Test
