@@ -19,8 +19,8 @@ public class MortgageWithDifferentialPaymentsCalculator extends MortgageCalculat
 
         while (months > 0) {
             double percentPayment = currentAmount * monthPercent;
-            double payment = basicPayment + percentPayment;
             currentAmount -= basicPayment;
+            double payment = basicPayment + percentPayment + getMonthlyCommission(parameters, currentAmount);
             finalAmount += payment;
 
             MortgageMonthReport monthReport = new MortgageMonthReport(payment, basicPayment, percentPayment, currentAmount);
@@ -29,7 +29,7 @@ public class MortgageWithDifferentialPaymentsCalculator extends MortgageCalculat
             months--;
         }
 
-        report.setFinalAmount(round(finalAmount));
+        report.setFinalAmount(round(finalAmount) + getCommission(parameters));
 
         return report;
     }

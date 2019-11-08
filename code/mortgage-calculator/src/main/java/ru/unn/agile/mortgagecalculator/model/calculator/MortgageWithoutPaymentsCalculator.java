@@ -20,7 +20,7 @@ public class MortgageWithoutPaymentsCalculator extends MortgageCalculator {
 
         finalAmount = finalAmount + round(finalAmount * monthPercent * months);
 
-        report.setFinalAmount(finalAmount);
+        report.setFinalAmount(finalAmount + getCommission(parameters));
 
         return report;
     }

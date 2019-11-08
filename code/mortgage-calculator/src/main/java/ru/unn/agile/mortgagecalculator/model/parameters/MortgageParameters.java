@@ -1,21 +1,28 @@
 package ru.unn.agile.mortgagecalculator.model.parameters;
 
-import ru.unn.agile.mortgagecalculator.model.report.PeriodType;
+import ru.unn.agile.mortgagecalculator.model.parameters.commission.Commission;
+import ru.unn.agile.mortgagecalculator.model.parameters.commission.FixedCommission;
+import ru.unn.agile.mortgagecalculator.model.parameters.monthlycommission.MonthlyCommission;
 import ru.unn.agile.mortgagecalculator.model.validation.Validator;
 
 public class MortgageParameters {
 
     private final int MONTHS_IN_YEAR = 12;
-    private final double FRACTION_OF_HUNDRED = 0.01;
 
     private double amount;
-    private double fractionPercent;
+    private Percent percent;
     private int monthsPeriod;
+    private double initialPayment;
+    private Commission commission;
+    private MonthlyCommission monthlyCommission;
+
+    private Validator validator;
 
     public MortgageParameters(double amount, double percent, PeriodType periodType, int period) {
+        validator = new Validator();
         validate(amount, percent, period);
         this.amount = amount;
-        this.fractionPercent = convertToFractionPercent(percent);
+        this.percent = new Percent(percent);
         this.monthsPeriod = getMonths(periodType, period);
     }
 
@@ -23,20 +30,43 @@ public class MortgageParameters {
         this(amount, percent, PeriodType.MONTH, period);
     }
 
+    public void setInitialPayment(double initialPayment) {
+        validator.checkPositiveDouble(initialPayment);
+        validator.checkCorrectInitialPayment(initialPayment, amount);
+        this.initialPayment = initialPayment;
+        amount -= initialPayment;
+    }
+
     public double getAmount() {
         return amount;
     }
 
     public double getFractionPercent() {
-        return fractionPercent;
+        return percent.getPercent();
     }
 
     public double getMonthPercent() {
-        return fractionPercent / MONTHS_IN_YEAR;
+        return percent.getPercent() / MONTHS_IN_YEAR;
     }
 
     public int getMonthsPeriod() {
         return monthsPeriod;
+    }
+
+    public void setCommission(Commission commission) {
+        this.commission = commission;
+    }
+
+    public Commission getCommission() {
+        return commission;
+    }
+
+    public void setMonthlyCommission(MonthlyCommission monthlyCommission) {
+        this.monthlyCommission = monthlyCommission;
+    }
+
+    public MonthlyCommission getMonthlyCommission() {
+        return monthlyCommission;
     }
 
     @Override
@@ -47,8 +77,8 @@ public class MortgageParameters {
         MortgageParameters that = (MortgageParameters) o;
 
         if (Double.compare(that.amount, amount) != 0) return false;
-        if (Double.compare(that.fractionPercent, fractionPercent) != 0) return false;
-        return monthsPeriod == that.monthsPeriod;
+        if (monthsPeriod != that.monthsPeriod) return false;
+        return percent.equals(that.percent);
     }
 
     @Override
@@ -57,8 +87,7 @@ public class MortgageParameters {
         long temp;
         temp = Double.doubleToLongBits(amount);
         result = (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(fractionPercent);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + percent.hashCode();
         result = 31 * result + monthsPeriod;
         return result;
     }
@@ -68,10 +97,6 @@ public class MortgageParameters {
         validator.checkPositiveDouble(amount);
         validator.checkCorrectPercent(percent);
         validator.checkPositiveInteger(period);
-    }
-
-    private double convertToFractionPercent(double percent) {
-        return percent * FRACTION_OF_HUNDRED;
     }
 
     private int getMonths(PeriodType periodType, int period) {

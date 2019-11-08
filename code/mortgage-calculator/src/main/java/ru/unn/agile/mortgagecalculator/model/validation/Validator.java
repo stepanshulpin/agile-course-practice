@@ -26,4 +26,9 @@ public class Validator {
         }
     }
 
+    public void checkCorrectInitialPayment(double initialPayment, double amount) {
+        if (initialPayment >= amount) {
+            throw new IllegalArgumentException("The payment cannot be more than the total amount");
+        }
+    }
 }

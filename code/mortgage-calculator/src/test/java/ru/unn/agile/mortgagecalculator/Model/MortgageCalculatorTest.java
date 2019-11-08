@@ -5,8 +5,14 @@ import ru.unn.agile.mortgagecalculator.model.calculator.MortgageCalculator;
 import ru.unn.agile.mortgagecalculator.model.calculator.MortgageWithAnnuityPaymentsCalculator;
 import ru.unn.agile.mortgagecalculator.model.calculator.MortgageWithDifferentialPaymentsCalculator;
 import ru.unn.agile.mortgagecalculator.model.calculator.MortgageWithoutPaymentsCalculator;
+import ru.unn.agile.mortgagecalculator.model.parameters.commission.Commission;
 import ru.unn.agile.mortgagecalculator.model.parameters.MortgageParameters;
-import ru.unn.agile.mortgagecalculator.model.report.PeriodType;
+import ru.unn.agile.mortgagecalculator.model.parameters.PeriodType;
+import ru.unn.agile.mortgagecalculator.model.parameters.commission.FixedCommission;
+import ru.unn.agile.mortgagecalculator.model.parameters.commission.PercentCommission;
+import ru.unn.agile.mortgagecalculator.model.parameters.monthlycommission.FixedMonthlyCommission;
+import ru.unn.agile.mortgagecalculator.model.parameters.monthlycommission.PercentAmountMonthlyCommission;
+import ru.unn.agile.mortgagecalculator.model.parameters.monthlycommission.PercentOutstandingMonthlyCommission;
 
 import static org.junit.Assert.*;
 
@@ -257,6 +263,133 @@ public class MortgageCalculatorTest {
         double outstandingAmount = calculator.calculate(parameters).getMonthReport(9).getOutstandingAmount();
 
         assertEquals(32633.81, outstandingAmount, delta);
+    }
+
+    @Test
+    public void canCalculateWithInitialPayment() {
+        MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
+        MortgageParameters parameters = new MortgageParameters(60000, 12, 10);
+        parameters.setInitialPayment(10000);
+
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
+
+        assertEquals(52750.00, finalAmount, delta);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canCalculateWithInitialPaymentMoreThenAmount() {
+        MortgageParameters parameters = new MortgageParameters(60000, 12, 10);
+        parameters.setInitialPayment(99000);
+    }
+
+    @Test
+    public void canCalculateWithCommission() {
+        MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+        parameters.setCommission(new PercentCommission(10));
+
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
+
+        assertEquals(57750.00, finalAmount, delta);
+    }
+
+    @Test
+    public void canCalculateWithFixedCommission() {
+        MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+        parameters.setCommission(new FixedCommission(10000));
+
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
+
+        assertEquals(62750.00, finalAmount, delta);
+    }
+
+    @Test
+    public void canGetOverpaymentWithCommission() {
+        MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+        parameters.setCommission(new FixedCommission(10000));
+
+        double overpayment = calculator.calculate(parameters).getOverpayment();
+
+        assertEquals(12750.00, overpayment, delta);
+    }
+
+    @Test
+    public void canCalculateWithFixedMonthlyCommissionDifferentialPayments() {
+        MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+        parameters.setMonthlyCommission(new FixedMonthlyCommission(100));
+
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
+
+        assertEquals(53750.00, finalAmount, delta);
+    }
+
+    @Test
+    public void canCalculateWithFixedMonthlyCommissionAnnuityPayments() {
+        MortgageCalculator calculator = new MortgageWithAnnuityPaymentsCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+        parameters.setMonthlyCommission(new FixedMonthlyCommission(100));
+
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
+
+        assertEquals(53791.04, finalAmount, delta);
+    }
+
+    @Test
+    public void canCalculateWithPercentAmountMonthlyCommissionDifferentialPayments() {
+        MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+        parameters.setMonthlyCommission(new PercentAmountMonthlyCommission(10));
+
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
+
+        assertEquals(102750.00, finalAmount, delta);
+    }
+
+    @Test
+    public void canCalculateWithPercentAmountMonthlyCommissionAnnuityPayments() {
+        MortgageCalculator calculator = new MortgageWithAnnuityPaymentsCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+        parameters.setMonthlyCommission(new PercentAmountMonthlyCommission(10));
+
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
+
+        assertEquals(102791.04, finalAmount, delta);
+    }
+
+    @Test
+    public void canCalculateWithPercentOutstandingMonthlyCommissionDifferentialPayments() {
+        MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+        parameters.setMonthlyCommission(new PercentOutstandingMonthlyCommission(10));
+
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
+
+        assertEquals(75250.00, finalAmount, delta);
+    }
+
+    @Test
+    public void canCalculateWithPercentOutstandingMonthlyCommissionAnnuityPayments() {
+        MortgageCalculator calculator = new MortgageWithAnnuityPaymentsCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+        parameters.setMonthlyCommission(new PercentOutstandingMonthlyCommission(10));
+
+        double finalAmount = calculator.calculate(parameters).getFinalAmount();
+
+        assertEquals(75701.42, finalAmount, delta);
+    }
+
+    @Test
+    public void canGetFourthMonthOutstandingAmountWithFixedMonthlyCommissionAnnuityPayments() {
+        MortgageCalculator calculator = new MortgageWithAnnuityPaymentsCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+        parameters.setMonthlyCommission(new FixedMonthlyCommission(10));
+
+        double outstandingAmount = calculator.calculate(parameters).getMonthReport(4).getOutstandingAmount();
+
+        assertEquals(30594.92, outstandingAmount, delta);
     }
 
 }

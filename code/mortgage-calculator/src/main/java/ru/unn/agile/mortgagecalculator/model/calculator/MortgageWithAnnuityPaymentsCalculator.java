@@ -12,6 +12,7 @@ public class MortgageWithAnnuityPaymentsCalculator extends MortgageCalculator {
         double monthPercent = parameters.getMonthPercent();
         double annuityPayment = parameters.getAmount() * (monthPercent + monthPercent / (Math.pow(1 + monthPercent, months) - 1));
         double currentAmount = parameters.getAmount();
+        double finalAmount = 0;
 
         MortgageReport report = new MortgageReport(parameters.getAmount());
 
@@ -19,13 +20,16 @@ public class MortgageWithAnnuityPaymentsCalculator extends MortgageCalculator {
             double percentPayment = currentAmount * monthPercent;
             double basicPayment = annuityPayment - percentPayment;
             currentAmount -= basicPayment;
-            MortgageMonthReport monthReport = new MortgageMonthReport(round(annuityPayment), round(basicPayment), round(percentPayment), round(currentAmount));
+            double paymentWithCommission = annuityPayment + getMonthlyCommission(parameters, currentAmount);
+            MortgageMonthReport monthReport = new MortgageMonthReport(round(paymentWithCommission), round(basicPayment), round(percentPayment), round(currentAmount));
             report.add(monthReport);
+
+            finalAmount += paymentWithCommission;
 
             months--;
         }
 
-        report.setFinalAmount(round(annuityPayment * parameters.getMonthsPeriod()));
+        report.setFinalAmount(round(finalAmount) + getCommission(parameters));
 
         return report;
     }
