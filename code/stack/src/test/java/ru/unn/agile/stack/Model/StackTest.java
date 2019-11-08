@@ -7,13 +7,6 @@ import static org.junit.Assert.*;
 
 public class StackTest {
 
-    @Test
-    public void canCreateStack() {
-        Stack stack = new Stack();
-
-        assertTrue(stack.isStackCreated());
-    }
-
     @Test(expected = Test.None.class)
     public void canPushIntegerToStack() {
         Stack<Integer> stack = new Stack<>();

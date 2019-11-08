@@ -10,10 +10,6 @@ public class Stack<T> {
         list = new ArrayList<>();
     }
 
-    public boolean isStackCreated() {
-        return list != null;
-    }
-
     public void push(final T item) {
         if (item == null) {
             throw new IllegalArgumentException("Item can't be null!");
