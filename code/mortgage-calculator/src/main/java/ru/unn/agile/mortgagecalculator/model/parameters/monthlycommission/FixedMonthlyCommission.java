@@ -7,14 +7,14 @@ public class FixedMonthlyCommission implements MonthlyCommission {
 
     private double value;
 
-    public FixedMonthlyCommission(double value) {
+    public FixedMonthlyCommission(final double value) {
         Validator validator = new Validator();
         validator.checkPositiveDouble(value);
         this.value = value;
     }
 
     @Override
-    public double calculate(MortgageParameters parameters, double currentAmount) {
+    public double calculate(final MortgageParameters parameters, final double currentAmount) {
         return value;
     }
 }

@@ -5,9 +5,11 @@ import ru.unn.agile.mortgagecalculator.model.report.MortgageReport;
 
 public abstract class MortgageCalculator {
 
+    private static final double THO_SYMBOLS_ROUND = 100.0;
+
     public abstract MortgageReport calculate(MortgageParameters parameters);
 
-    protected double getCommission(MortgageParameters parameters) {
+    protected double getCommission(final MortgageParameters parameters) {
         if (parameters.getCommission() != null) {
             return parameters.getCommission().calculate(parameters.getAmount());
         } else {
@@ -15,15 +17,16 @@ public abstract class MortgageCalculator {
         }
     }
 
-    protected double getMonthlyCommission(MortgageParameters parameters, double currentAmoun) {
+    protected double getMonthlyCommission(final MortgageParameters parameters,
+                                          final double currentAmount) {
         if (parameters.getMonthlyCommission() != null) {
-            return parameters.getMonthlyCommission().calculate(parameters, currentAmoun);
+            return parameters.getMonthlyCommission().calculate(parameters, currentAmount);
         } else {
             return 0;
         }
     }
 
-    double round(double value) {
-        return Math.round(value * 100.0) / 100.0;
+    double round(final double value) {
+        return Math.round(value * THO_SYMBOLS_ROUND) / THO_SYMBOLS_ROUND;
     }
 }

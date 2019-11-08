@@ -7,10 +7,10 @@ import ru.unn.agile.mortgagecalculator.model.report.MortgageReport;
 public class MortgageWithAnnuityPaymentsCalculator extends MortgageCalculator {
 
     @Override
-    public MortgageReport calculate(MortgageParameters parameters) {
+    public MortgageReport calculate(final MortgageParameters parameters) {
         int months = parameters.getMonthsPeriod();
         double monthPercent = parameters.getMonthPercent();
-        double annuityPayment = parameters.getAmount() * (monthPercent + monthPercent / (Math.pow(1 + monthPercent, months) - 1));
+        double annuityPayment = getAnnuityPayment(parameters.getAmount(), monthPercent, months);
         double currentAmount = parameters.getAmount();
         double finalAmount = 0;
 
@@ -20,8 +20,11 @@ public class MortgageWithAnnuityPaymentsCalculator extends MortgageCalculator {
             double percentPayment = currentAmount * monthPercent;
             double basicPayment = annuityPayment - percentPayment;
             currentAmount -= basicPayment;
-            double paymentWithCommission = annuityPayment + getMonthlyCommission(parameters, currentAmount);
-            MortgageMonthReport monthReport = new MortgageMonthReport(round(paymentWithCommission), round(basicPayment), round(percentPayment), round(currentAmount));
+            double paymentWithCommission =
+                    annuityPayment + getMonthlyCommission(parameters, currentAmount);
+            MortgageMonthReport monthReport =
+                    new MortgageMonthReport(round(paymentWithCommission), round(basicPayment),
+                            round(percentPayment), round(currentAmount));
             report.add(monthReport);
 
             finalAmount += paymentWithCommission;
@@ -32,6 +35,10 @@ public class MortgageWithAnnuityPaymentsCalculator extends MortgageCalculator {
         report.setFinalAmount(round(finalAmount) + getCommission(parameters));
 
         return report;
+    }
+
+    private double getAnnuityPayment(final double amount, final double percent, final int months) {
+        return amount * (percent + percent / (Math.pow(1 + percent, months) - 1));
     }
 
 }

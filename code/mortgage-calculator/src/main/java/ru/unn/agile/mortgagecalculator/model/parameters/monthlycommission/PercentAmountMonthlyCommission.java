@@ -4,12 +4,12 @@ import ru.unn.agile.mortgagecalculator.model.parameters.MortgageParameters;
 
 public class PercentAmountMonthlyCommission extends PercentMonthlyCommission {
 
-    public PercentAmountMonthlyCommission(double percent) {
+    public PercentAmountMonthlyCommission(final double percent) {
         super(percent);
     }
 
     @Override
-    public double calculate(MortgageParameters parameters, double currentAmount) {
-        return parameters.getAmount() * percent.getPercent();
+    public double calculate(final MortgageParameters parameters, final double currentAmount) {
+        return parameters.getAmount() * getPercent().getValue();
     }
 }

@@ -5,7 +5,6 @@ import ru.unn.agile.mortgagecalculator.model.calculator.MortgageCalculator;
 import ru.unn.agile.mortgagecalculator.model.calculator.MortgageWithAnnuityPaymentsCalculator;
 import ru.unn.agile.mortgagecalculator.model.calculator.MortgageWithDifferentialPaymentsCalculator;
 import ru.unn.agile.mortgagecalculator.model.calculator.MortgageWithoutPaymentsCalculator;
-import ru.unn.agile.mortgagecalculator.model.parameters.commission.Commission;
 import ru.unn.agile.mortgagecalculator.model.parameters.MortgageParameters;
 import ru.unn.agile.mortgagecalculator.model.parameters.PeriodType;
 import ru.unn.agile.mortgagecalculator.model.parameters.commission.FixedCommission;
@@ -190,7 +189,8 @@ public class MortgageCalculatorTest {
         MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
 
-        double outstandingAmount = calculator.calculate(parameters).getMonthReport(5).getOutstandingAmount();
+        double outstandingAmount =
+                calculator.calculate(parameters).getMonthReport(5).getOutstandingAmount();
 
         assertEquals(25000.00, outstandingAmount, delta);
     }
@@ -200,7 +200,8 @@ public class MortgageCalculatorTest {
         MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
 
-        double outstandingAmount = calculator.calculate(parameters).getMonthReport(6).getPercentPayment();
+        double outstandingAmount =
+                calculator.calculate(parameters).getMonthReport(6).getPercentPayment();
 
         assertEquals(250, outstandingAmount, delta);
     }
@@ -250,7 +251,8 @@ public class MortgageCalculatorTest {
         MortgageCalculator calculator = new MortgageWithAnnuityPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
 
-        double outstandingAmount = calculator.calculate(parameters).getMonthReport(7).getOutstandingAmount();
+        double outstandingAmount =
+                calculator.calculate(parameters).getMonthReport(7).getOutstandingAmount();
 
         assertEquals(15525.77, outstandingAmount, delta);
     }
@@ -260,7 +262,8 @@ public class MortgageCalculatorTest {
         MortgageCalculator calculator = new MortgageWithAnnuityPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 12, PeriodType.YEAR, 2);
 
-        double outstandingAmount = calculator.calculate(parameters).getMonthReport(9).getOutstandingAmount();
+        double outstandingAmount =
+                calculator.calculate(parameters).getMonthReport(9).getOutstandingAmount();
 
         assertEquals(32633.81, outstandingAmount, delta);
     }
@@ -387,7 +390,8 @@ public class MortgageCalculatorTest {
         MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
         parameters.setMonthlyCommission(new FixedMonthlyCommission(10));
 
-        double outstandingAmount = calculator.calculate(parameters).getMonthReport(4).getOutstandingAmount();
+        double outstandingAmount =
+                calculator.calculate(parameters).getMonthReport(4).getOutstandingAmount();
 
         assertEquals(30594.92, outstandingAmount, delta);
     }

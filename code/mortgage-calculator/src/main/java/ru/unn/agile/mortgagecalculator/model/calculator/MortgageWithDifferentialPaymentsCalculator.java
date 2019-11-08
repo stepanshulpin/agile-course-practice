@@ -7,7 +7,7 @@ import ru.unn.agile.mortgagecalculator.model.report.MortgageReport;
 public class MortgageWithDifferentialPaymentsCalculator extends MortgageCalculator {
 
     @Override
-    public MortgageReport calculate(MortgageParameters parameters) {
+    public MortgageReport calculate(final MortgageParameters parameters) {
         int months = parameters.getMonthsPeriod();
         double monthPercent = parameters.getMonthPercent();
         double basicPayment = parameters.getAmount() / months;
@@ -20,10 +20,12 @@ public class MortgageWithDifferentialPaymentsCalculator extends MortgageCalculat
         while (months > 0) {
             double percentPayment = currentAmount * monthPercent;
             currentAmount -= basicPayment;
-            double payment = basicPayment + percentPayment + getMonthlyCommission(parameters, currentAmount);
+            double payment = basicPayment + percentPayment;
+            payment += getMonthlyCommission(parameters, currentAmount);
             finalAmount += payment;
 
-            MortgageMonthReport monthReport = new MortgageMonthReport(payment, basicPayment, percentPayment, currentAmount);
+            MortgageMonthReport monthReport =
+                    new MortgageMonthReport(payment, basicPayment, percentPayment, currentAmount);
             report.add(monthReport);
 
             months--;

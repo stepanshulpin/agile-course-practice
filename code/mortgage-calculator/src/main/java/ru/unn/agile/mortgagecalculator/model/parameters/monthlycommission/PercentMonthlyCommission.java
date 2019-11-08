@@ -5,11 +5,16 @@ import ru.unn.agile.mortgagecalculator.model.validation.Validator;
 
 abstract class PercentMonthlyCommission implements MonthlyCommission {
 
-    protected Percent percent;
+    private Percent percent;
 
-    public PercentMonthlyCommission(double percent) {
+    PercentMonthlyCommission(final double percent) {
         Validator validator = new Validator();
         validator.checkCorrectPercent(percent);
         this.percent = new Percent(percent);
     }
+
+    public Percent getPercent() {
+        return percent;
+    }
+
 }

@@ -11,12 +11,12 @@ public class MortgageReport {
     private List<MortgageMonthReport> monthsReports;
     private double finalAmount;
 
-    public MortgageReport(double amount) {
+    public MortgageReport(final double amount) {
         this.amount = amount;
         monthsReports = new ArrayList<>();
     }
 
-    public void add(MortgageMonthReport monthReport) {
+    public void add(final MortgageMonthReport monthReport) {
         monthsReports.add(monthReport);
     }
 
@@ -24,7 +24,7 @@ public class MortgageReport {
         return finalAmount;
     }
 
-    public void setFinalAmount(double finalAmount) {
+    public void setFinalAmount(final double finalAmount) {
         this.finalAmount = finalAmount;
     }
 
@@ -36,7 +36,7 @@ public class MortgageReport {
         return monthsReports;
     }
 
-    public MortgageMonthReport getMonthReport(int month) {
+    public MortgageMonthReport getMonthReport(final int month) {
         new Validator().checkReportSize(month, monthsReports.size());
         return monthsReports.get(month - 1);
     }

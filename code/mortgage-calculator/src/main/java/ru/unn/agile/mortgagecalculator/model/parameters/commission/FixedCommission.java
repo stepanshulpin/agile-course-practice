@@ -6,7 +6,7 @@ public class FixedCommission implements Commission {
 
     private double value;
 
-    public FixedCommission(double value) {
+    public FixedCommission(final double value) {
         Validator validator = new Validator();
         validator.checkPositiveDouble(value);
         this.value = value;
@@ -14,7 +14,7 @@ public class FixedCommission implements Commission {
 
 
     @Override
-    public double calculate(double amount) {
+    public double calculate(final double amount) {
         return value;
     }
 }
