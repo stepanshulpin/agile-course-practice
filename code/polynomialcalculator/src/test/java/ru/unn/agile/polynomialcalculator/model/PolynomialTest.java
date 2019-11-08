@@ -2,8 +2,7 @@ package ru.unn.agile.polynomialcalculator.model;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class PolynomialTest {
 
@@ -257,11 +256,27 @@ public class PolynomialTest {
     }
 
     @Test
-    public void samePolynomialsAreEquals() {
+    public void samePolynomialsAreEqual() {
         var p1 = new Polynomial(3.2, 2);
         var p2 = new Polynomial(4.2, 3);
 
         assertEquals(p1.plus(p2), p2.plus(p1));
+    }
+
+    @Test
+    public void differentCoefPolynomialsAreNotEqual() {
+        var p1 = new Polynomial(2.3, 2);
+        var p2 = new Polynomial(4.3, 2);
+
+        assertNotEquals(p1, p2);
+    }
+
+    @Test
+    public void differentDegreePolynomialsAreNotEqual() {
+        var p1 = new Polynomial(2.3, 2);
+        var p2 = new Polynomial(2.3, 4);
+
+        assertNotEquals(p1, p2);
     }
 
     @Test
@@ -342,6 +357,15 @@ public class PolynomialTest {
         var derivative = p1.plus(p2).plus(p3).differentiate();
 
         assertEquals("12.0x^3 + 4.0x", derivative.toString());
+    }
+
+    @Test
+    public void differentiatesZeroDegreePolynomial() {
+        var p1 = new Polynomial(3, 0);
+
+        var derivative = p1.differentiate();
+
+        assertEquals("0", derivative.toString());
     }
 
     @Test

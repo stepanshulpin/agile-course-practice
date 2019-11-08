@@ -104,7 +104,7 @@ public class Polynomial {
     public String toString() {
         StringBuilder result = new StringBuilder();
         for (int degree = this.degree; degree >= 0; degree--) {
-            double coef = this.coefs[degree];
+            final double coef = this.coefs[degree];
             if (coef != 0.) {
                 if (coef > 0 && !result.toString().equals("")) {
                     result.append(" + ");
