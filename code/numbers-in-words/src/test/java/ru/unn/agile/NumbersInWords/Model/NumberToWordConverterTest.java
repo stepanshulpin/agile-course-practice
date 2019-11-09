@@ -121,4 +121,32 @@ public class NumberToWordConverterTest {
         String word = converter.toWord(541);
         assertEquals("five hundred and forty one", word);
     }
+
+    @Test
+    public void canConvertOneThousand() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(1000);
+        assertEquals("one thousand", word);
+    }
+
+    @Test
+    public void canConvertTwoThousand() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(2000);
+        assertEquals("two thousand", word);
+    }
+
+    @Test
+    public void canConvertElevenThousand() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(11000);
+        assertEquals("eleven thousand", word);
+    }
+
+    @Test
+    public void canConvertOneHundredAndElevenThousand() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(111000);
+        assertEquals("one hundred and eleven thousand", word);
+    }
 }

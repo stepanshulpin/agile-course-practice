@@ -3,6 +3,7 @@ package ru.unn.agile.NumbersInWords.model;
 public class NumberToWordConverter {
     private final int ten = 10;
     private final int hundred = 100;
+    private final int thousand = 1000;
 
     public NumberToWordConverter() { }
 
@@ -69,9 +70,18 @@ public class NumberToWordConverter {
 
 
     public String toWord(final int number) {
-        String firstPart = getFirstPart(number);
-        String secondPart = getSecondPart(number);
 
-        return getSpaser(firstPart, secondPart, " and ");
+        if (number >= thousand) {
+            int numberForAnalysis = number / thousand;
+            String firstPart = getFirstPart(numberForAnalysis);
+            String secondPart = getSecondPart(numberForAnalysis);
+
+            return getSpaser(firstPart, secondPart, " and ") + " " + "thousand";
+        } else {
+            String firstPart = getFirstPart(number);
+            String secondPart = getSecondPart(number);
+
+            return getSpaser(firstPart, secondPart, " and ");
+        }
     }
 }
