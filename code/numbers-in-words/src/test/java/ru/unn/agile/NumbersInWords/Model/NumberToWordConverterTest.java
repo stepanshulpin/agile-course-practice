@@ -79,4 +79,46 @@ public class NumberToWordConverterTest {
         String word = converter.toWord(15);
         assertEquals("fifteen", word);
     }
+
+    @Test
+    public void canConvertOneHundred() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(100);
+        assertEquals("one hundred", word);
+    }
+
+    @Test
+    public void canConvertTwoHundred() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(200);
+        assertEquals("two hundred", word);
+    }
+
+    @Test
+    public void canConvertFiveHundred() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(500);
+        assertEquals("five hundred", word);
+    }
+
+    @Test
+    public void canConvertFiveHundredAndFour() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(504);
+        assertEquals("five hundred and four", word);
+    }
+
+    @Test
+    public void canConvertFiveHundredAndFourteen() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(514);
+        assertEquals("five hundred and fourteen", word);
+    }
+
+    @Test
+    public void canConvertFiveHundredAndFortyOne() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(541);
+        assertEquals("five hundred and forty one", word);
+    }
 }

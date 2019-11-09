@@ -6,6 +6,16 @@ public class NumberToWordConverter {
 
     public NumberToWordConverter() { }
 
+    private String getSpaser(final String firstWord, final String lastWord,
+                             final String middleWord) {
+        if ((!firstWord.equals("")) && (!lastWord.equals(""))) {
+            return firstWord + middleWord + lastWord;
+        } else {
+            return firstWord + lastWord;
+        }
+    }
+
+
     private String getDefaultNumber() {
         return "";
     }
@@ -32,25 +42,36 @@ public class NumberToWordConverter {
     }
 
 
+    private String getFirstPart(final int number) {
+        int numberForAnalysis = number / hundred;
+        String numberOfHighOrder = getOnes(numberForAnalysis);
+
+        if (!numberOfHighOrder.equals("")) {
+            return getOnes(numberForAnalysis) + " " + "hundred";
+        } else {
+            return "";
+        }
+    }
+
     private String getSecondPart(final int number) {
         final int twenty = 20;
         int numberForAnalysis = number % hundred;
 
-        if ((number >= ten) && (number < twenty)) {
+        if ((numberForAnalysis >= ten) && (numberForAnalysis < twenty)) {
             return getTeens(numberForAnalysis);
         } else {
             String tens = getTens(numberForAnalysis);
             String ones = getOnes(numberForAnalysis);
 
-            if ((!tens.equals("")) && (!ones.equals(""))) {
-                return tens + " " + ones;
-            } else {
-                return tens + ones;
-            }
+            return getSpaser(tens, ones, " ");
         }
     }
 
+
     public String toWord(final int number) {
-        return getSecondPart(number);
+        String firstPart = getFirstPart(number);
+        String secondPart = getSecondPart(number);
+
+        return getSpaser(firstPart, secondPart, " and ");
     }
 }
