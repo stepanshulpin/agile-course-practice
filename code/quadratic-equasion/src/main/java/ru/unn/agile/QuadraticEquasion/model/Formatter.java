@@ -16,25 +16,26 @@ public final class Formatter {
         }
 
         Integer i = (int) value;
-        String buffer = i.toString();
+        StringBuilder formattedString = new StringBuilder();
+        formattedString.append(i.toString());
 
         final int ten = 10;
 
         i = getTwoDigitsAfterPoint(value);
-        buffer += ".";
+        formattedString.append(".");
         if (i == 0) {
-            buffer += "0";
+            formattedString.append("0");
         } else if (i < ten) {
-            buffer += "0";
-            buffer += i.toString();
+            formattedString.append("0");
+            formattedString.append(i.toString());
         } else {
             if (i % ten == 0) {
                 i /= ten;
             }
-            buffer += i.toString();
+            formattedString.append(i.toString());
         }
 
-        return buffer;
+        return formattedString.toString();
     }
 
     public static String getFormatted(final QuadraticEquasion qe) {
