@@ -65,4 +65,18 @@ public class NumberToWordConverterTest {
         String word = converter.toWord(36);
         assertEquals("thirty six", word);
     }
+
+    @Test
+    public void canConvertTwelve() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(12);
+        assertEquals("twelve", word);
+    }
+
+    @Test
+    public void canConvertFifteen() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(15);
+        assertEquals("fifteen", word);
+    }
 }

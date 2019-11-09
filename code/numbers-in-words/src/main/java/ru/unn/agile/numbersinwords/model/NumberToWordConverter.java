@@ -2,6 +2,7 @@ package ru.unn.agile.NumbersInWords.model;
 
 public class NumberToWordConverter {
     private final int ten = 10;
+    private final int hundred = 100;
 
     public NumberToWordConverter() { }
 
@@ -10,35 +11,46 @@ public class NumberToWordConverter {
     }
 
     private String getOnes(final int number) {
-        final String[] ones = {"one", "two", "three", "four", "five",
+        final String[] ones = {"", "one", "two", "three", "four", "five",
                                "six", "seven", "eight", "nine"};
 
-        if (number % ten != 0) {
-            return ones[number % ten - 1];
-        } else {
-            return getDefaultNumber();
-        }
+        return ones[number % ten];
     }
 
     private String getTens(final int number) {
-        final String[] tens = {"ten", "twenty", "thirty", "forty", "fifty",
+        final String[] tens = {"", "", "twenty", "thirty", "forty", "fifty",
                                "sixty", "seventy", "eighty", "ninety"};
 
-        if (number >= ten) {
-            return tens[number / ten - 1];
+        return tens[number / ten];
+    }
+
+    private String getTeens(final int number) {
+        final String[] teens = {"ten", "eleven", "twelve", "thirteen", "fourteen",
+                                "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+
+        return teens[number % ten];
+    }
+
+
+    private String getSecondPart(final int number) {
+        final int twenty = 20;
+        int numberForAnalysis = number % hundred;
+
+        if ((number >= ten) && (number < twenty)) {
+            return getTeens(numberForAnalysis);
         } else {
-            return getDefaultNumber();
+            String tens = getTens(numberForAnalysis);
+            String ones = getOnes(numberForAnalysis);
+
+            if ((!tens.equals("")) && (!ones.equals(""))) {
+                return tens + " " + ones;
+            } else {
+                return tens + ones;
+            }
         }
     }
 
     public String toWord(final int number) {
-        String tens = getTens(number);
-        String ones = getOnes(number);
-
-        if ((!tens.equals("")) && (!ones.equals(""))) {
-            return tens + " " + ones;
-        } else {
-            return tens + ones;
-        }
+        return getSecondPart(number);
     }
 }
