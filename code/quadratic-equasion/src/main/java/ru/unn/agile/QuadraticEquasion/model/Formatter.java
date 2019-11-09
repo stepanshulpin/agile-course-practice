@@ -38,21 +38,21 @@ public final class Formatter {
     }
 
     public static String getFormatted(final QuadraticEquasion qe) {
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder formattedString = new StringBuilder();
         String a = formatPositiveDouble(Math.abs(qe.getACoeff()));
         String b = formatPositiveDouble(Math.abs(qe.getBCoeff()));
         String c = formatPositiveDouble(Math.abs(qe.getCCoeff()));
-        buffer.append((qe.getACoeff() < 0) && (Math.abs(qe.getACoeff()) != 0) ? "- " : "")
+        formattedString.append((qe.getACoeff() < 0) && (Math.abs(qe.getACoeff()) != 0) ? "- " : "")
             .append((Math.abs(qe.getACoeff()) != 1) && (Math.abs(qe.getACoeff()) != 0) ? a : "")
             .append(Math.abs(qe.getACoeff()) != 0 ? "(x^2)" : "")
             .append(qe.getBCoeff() < 0  ? " - " : (Math.abs(qe.getBCoeff()) != 0)
-                    && (buffer.length() > 0) ? " + " : "")
+                    && (formattedString.length() > 0) ? " + " : "")
             .append((Math.abs(qe.getBCoeff()) != 1)  && (Math.abs(qe.getBCoeff()) != 0) ? b : "")
             .append(Math.abs(qe.getBCoeff()) != 0 ? "x" : "")
             .append(qe.getCCoeff() < 0 ? " - " : (Math.abs(qe.getCCoeff()) != 0)
-                    && (buffer.length() > 0) ? " + " : "")
+                    && (formattedString.length() > 0) ? " + " : "")
             .append(Math.abs(qe.getCCoeff()) != 0 ? c : "");
-        return buffer.toString();
+        return formattedString.toString();
     }
 
 }
