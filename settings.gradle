@@ -2,10 +2,6 @@
 include "code/bevzuk-anton"
 project(":code/bevzuk-anton").name = "bevzuk-anton-Model"
 
-// Lapin Artem
-include "code/quadratic-equasion"
-project(":code/quadratic-equasion").name = "quadratic-equasion-Model"
-
 // Korniakov Kirill, lab1
 include "code/korniakov-kirill-lab1"
 project(":code/korniakov-kirill-lab1").name = "korniakov-kirill-lab1-Model"
@@ -68,6 +64,8 @@ project(":code/korniakov-kirill-lab3/Infrastructure").name = "korniakov-kirill-l
 // Купцова Алеся
 // Кучков Иван
 // Лапин Артем
+include "code/quadratic-equasion"
+project(":code/quadratic-equasion").name = "quadratic-equasion-Model"
 // Лахтачев Ярослав
 // Миронова Анна
 // Митрохин Никита
