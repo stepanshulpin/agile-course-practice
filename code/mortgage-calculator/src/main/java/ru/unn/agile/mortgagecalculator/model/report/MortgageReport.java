@@ -28,14 +28,6 @@ public class MortgageReport {
         this.finalAmount = finalAmount;
     }
 
-    public int getMonthsCount() {
-        return monthsReports.size();
-    }
-
-    public List<MortgageMonthReport> getMonthsReports() {
-        return monthsReports;
-    }
-
     public MortgageMonthReport getMonthReport(final int month) {
         new Validator().checkReportSize(month, monthsReports.size());
         return monthsReports.get(month - 1);

@@ -4,9 +4,6 @@ import ru.unn.agile.mortgagecalculator.model.parameters.commission.Commission;
 import ru.unn.agile.mortgagecalculator.model.parameters.monthlycommission.MonthlyCommission;
 import ru.unn.agile.mortgagecalculator.model.validation.Validator;
 
-import static ru.unn.agile.mortgagecalculator.model.Constants.HASH_CODE_CONST_31;
-import static ru.unn.agile.mortgagecalculator.model.Constants.HASH_CODE_CONST_32;
-
 public class MortgageParameters {
 
     private static final int MONTHS_IN_YEAR = 12;
@@ -70,37 +67,6 @@ public class MortgageParameters {
 
     public MonthlyCommission getMonthlyCommission() {
         return monthlyCommission;
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        MortgageParameters that = (MortgageParameters) o;
-
-        if (Double.compare(that.amount, amount) != 0) {
-            return false;
-        }
-        if (monthsPeriod != that.monthsPeriod) {
-            return false;
-        }
-        return percent.equals(that.percent);
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        temp = Double.doubleToLongBits(amount);
-        result = (int) (temp ^ (temp >>> HASH_CODE_CONST_32));
-        result = HASH_CODE_CONST_31 * result + percent.hashCode();
-        result = HASH_CODE_CONST_31 * result + monthsPeriod;
-        return result;
     }
 
     private void validate(final double amount, final double percent, final int period) {

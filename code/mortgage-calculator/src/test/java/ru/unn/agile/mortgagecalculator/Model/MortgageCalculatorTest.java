@@ -12,6 +12,8 @@ import ru.unn.agile.mortgagecalculator.model.parameters.commission.PercentCommis
 import ru.unn.agile.mortgagecalculator.model.parameters.monthlycommission.FixedMonthlyCommission;
 import ru.unn.agile.mortgagecalculator.model.parameters.monthlycommission.PercentAmountMonthlyCommission;
 import ru.unn.agile.mortgagecalculator.model.parameters.monthlycommission.PercentOutstandingMonthlyCommission;
+import ru.unn.agile.mortgagecalculator.model.report.MortgageMonthReport;
+import ru.unn.agile.mortgagecalculator.model.report.MortgageReport;
 
 import static org.junit.Assert.*;
 
@@ -394,6 +396,18 @@ public class MortgageCalculatorTest {
                 calculator.calculate(parameters).getMonthReport(4).getOutstandingAmount();
 
         assertEquals(30594.92, outstandingAmount, delta);
+    }
+
+    @Test
+    public void canGetFourthMonthBasicPaymentWithFixedMonthlyCommissionAnnuityPayments() {
+        MortgageCalculator calculator = new MortgageWithAnnuityPaymentsCalculator();
+        MortgageParameters parameters = new MortgageParameters(50000, 12, 10);
+        parameters.setMonthlyCommission(new FixedMonthlyCommission(10));
+
+        double basicPayment =
+                calculator.calculate(parameters).getMonthReport(4).getBasicPayment();
+
+        assertEquals(4923.92, basicPayment, delta);
     }
 
 }
