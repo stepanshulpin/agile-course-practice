@@ -84,5 +84,7 @@ project(":code/korniakov-kirill-lab3/Infrastructure").name = "korniakov-kirill-l
 // Федотов Андрей
 // Широких Виолетта
 // Шульпин Степан
+include "code/mortgage-calculator"
+project(":code/mortgage-calculator").name = "mortgage-calculator-Model"
 // Шумихин Сергей
 // Юферев Кирилл
