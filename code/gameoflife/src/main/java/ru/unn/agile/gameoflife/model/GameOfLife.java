@@ -33,8 +33,21 @@ public class GameOfLife {
         }
     }
 
+    public GameOfLife(final GameOfLife game) {
+        this(game.height, game.width);
+
+        for (int i = 0; i < this.height; i++) {
+            for (int j = 0; j < this.width; j++) {
+                if (game.isCellLive(i, j)) {
+                    setCell(i, j);
+                }
+            }
+        }
+
+    }
+
     public boolean isPointOnGrid(final int y, final int x) {
-        return ((y >= 0) && (y < this.width) && (x >= 0) && (x < this.height));
+        return ((y >= 0) && (y < this.height) && (x >= 0) && (x < this.width));
     }
 
     public void setCell(final int y, final int x) {
@@ -69,16 +82,18 @@ public class GameOfLife {
     }
 
     public void makeTurn() {
+        GameOfLife tempGame = new GameOfLife(this);
+
         final int maxNeighbours = 3;
         final int neighboursToReproduce = 3;
         final int minNeighbours = 2;
         for (int i = 0; i < this.height; i++) {
             for (int j = 0; j < this.width; j++) {
-                if ((getNeighborsNum(i, j) < minNeighbours)
-                 || (getNeighborsNum(i, j) > maxNeighbours)) {
+                if ((tempGame.getNeighborsNum(i, j) < minNeighbours)
+                 || (tempGame.getNeighborsNum(i, j) > maxNeighbours)) {
                     deleteCell(i, j);
                 }
-                if (getNeighborsNum(i, j) == neighboursToReproduce) {
+                if (tempGame.getNeighborsNum(i, j) == neighboursToReproduce) {
                     setCell(i, j);
                 }
             }

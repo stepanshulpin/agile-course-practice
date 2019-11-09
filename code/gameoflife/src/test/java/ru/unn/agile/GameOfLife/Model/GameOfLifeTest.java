@@ -170,4 +170,25 @@ public class GameOfLifeTest {
         assertTrue(g.isCellLive(1, 1));
     }
 
+    @Test
+    public void canCopyGameState() {
+        GameOfLife g1 = new GameOfLife(3, 3);
+        g1.setCell(1, 1);
+
+        GameOfLife g2 = new GameOfLife(g1);
+
+        assertTrue(g2.isCellLive(1, 1));
+    }
+
+    @Test
+    public void isCellsCalculatesWithoutOrder() {
+        GameOfLife g = new GameOfLife("***"
+                                    + ".*."
+                                    + "*.*"
+                                    + ".*.", 4, 3);
+
+        g.makeTurn();
+
+        assertTrue(g.isCellLive(2, 0));
+    }
 }
