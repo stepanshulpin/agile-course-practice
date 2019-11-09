@@ -12,15 +12,17 @@ public class MortgageWithDifferentialPaymentsCalculator extends MortgageCalculat
         double monthPercent = parameters.getMonthPercent();
         double basicPayment = parameters.getAmount() / months;
         double currentAmount = parameters.getAmount();
+        double finalAmount = 0;
 
         MortgageReport report = new MortgageReport(parameters.getAmount());
 
-        double finalAmount = 0;
+        double percentPayment;
+        double payment;
 
         while (months > 0) {
-            double percentPayment = currentAmount * monthPercent;
+            percentPayment = currentAmount * monthPercent;
             currentAmount -= basicPayment;
-            double payment = basicPayment + percentPayment;
+            payment = basicPayment + percentPayment;
             payment += getMonthlyCommission(parameters, currentAmount);
             finalAmount += payment;
 

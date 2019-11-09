@@ -7,8 +7,7 @@ public class FixedCommission implements Commission {
     private double value;
 
     public FixedCommission(final double value) {
-        Validator validator = new Validator();
-        validator.checkPositiveDouble(value);
+        Validator.checkPositiveDouble(value);
         this.value = value;
     }
 

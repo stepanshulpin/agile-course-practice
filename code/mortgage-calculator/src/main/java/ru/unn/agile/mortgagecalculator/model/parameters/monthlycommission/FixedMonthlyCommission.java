@@ -8,8 +8,7 @@ public class FixedMonthlyCommission implements MonthlyCommission {
     private double value;
 
     public FixedMonthlyCommission(final double value) {
-        Validator validator = new Validator();
-        validator.checkPositiveDouble(value);
+        Validator.checkPositiveDouble(value);
         this.value = value;
     }
 

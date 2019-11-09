@@ -15,11 +15,8 @@ public class MortgageParameters {
     private Commission commission;
     private MonthlyCommission monthlyCommission;
 
-    private Validator validator;
-
     public MortgageParameters(final double amount, final double percent,
                               final PeriodType periodType, final int period) {
-        validator = new Validator();
         validate(amount, percent, period);
         this.amount = amount;
         this.percent = new Percent(percent);
@@ -31,8 +28,8 @@ public class MortgageParameters {
     }
 
     public void setInitialPayment(final double initialPayment) {
-        validator.checkPositiveDouble(initialPayment);
-        validator.checkCorrectInitialPayment(initialPayment, amount);
+        Validator.checkPositiveDouble(initialPayment);
+        Validator.checkCorrectInitialPayment(initialPayment, amount);
         this.initialPayment = initialPayment;
         amount -= initialPayment;
     }
@@ -69,11 +66,10 @@ public class MortgageParameters {
         return monthlyCommission;
     }
 
-    private void validate(final double amount, final double percent, final int period) {
-        Validator validator = new Validator();
-        validator.checkPositiveDouble(amount);
-        validator.checkCorrectPercent(percent);
-        validator.checkPositiveInteger(period);
+    private static void validate(final double amount, final double percent, final int period) {
+        Validator.checkPositiveDouble(amount);
+        Validator.checkCorrectPercent(percent);
+        Validator.checkPositiveInteger(period);
     }
 
     private int getMonths(final PeriodType periodType, final int period) {

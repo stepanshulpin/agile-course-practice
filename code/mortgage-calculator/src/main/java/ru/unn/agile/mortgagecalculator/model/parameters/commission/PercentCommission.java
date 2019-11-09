@@ -8,8 +8,7 @@ public class PercentCommission implements Commission {
     private Percent percent;
 
     public PercentCommission(final double percent) {
-        Validator validator = new Validator();
-        validator.checkCorrectPercent(percent);
+        Validator.checkCorrectPercent(percent);
         this.percent = new Percent(percent);
     }
 

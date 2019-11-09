@@ -16,11 +16,15 @@ public class MortgageWithAnnuityPaymentsCalculator extends MortgageCalculator {
 
         MortgageReport report = new MortgageReport(parameters.getAmount());
 
+        double percentPayment;
+        double basicPayment;
+        double paymentWithCommission;
+
         while (months > 0) {
-            double percentPayment = currentAmount * monthPercent;
-            double basicPayment = annuityPayment - percentPayment;
+            percentPayment = currentAmount * monthPercent;
+            basicPayment = annuityPayment - percentPayment;
             currentAmount -= basicPayment;
-            double paymentWithCommission =
+            paymentWithCommission =
                     annuityPayment + getMonthlyCommission(parameters, currentAmount);
             MortgageMonthReport monthReport =
                     new MortgageMonthReport(round(paymentWithCommission), round(basicPayment),

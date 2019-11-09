@@ -8,8 +8,7 @@ abstract class PercentMonthlyCommission implements MonthlyCommission {
     private Percent percent;
 
     PercentMonthlyCommission(final double percent) {
-        Validator validator = new Validator();
-        validator.checkCorrectPercent(percent);
+        Validator.checkCorrectPercent(percent);
         this.percent = new Percent(percent);
     }
 

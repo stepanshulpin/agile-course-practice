@@ -29,7 +29,7 @@ public class MortgageReport {
     }
 
     public MortgageMonthReport getMonthReport(final int month) {
-        new Validator().checkReportSize(month, monthsReports.size());
+        Validator.checkReportSize(month, monthsReports.size());
         return monthsReports.get(month - 1);
     }
 

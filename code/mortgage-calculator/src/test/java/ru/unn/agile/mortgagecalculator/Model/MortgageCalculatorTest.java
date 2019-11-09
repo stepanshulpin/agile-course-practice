@@ -12,8 +12,6 @@ import ru.unn.agile.mortgagecalculator.model.parameters.commission.PercentCommis
 import ru.unn.agile.mortgagecalculator.model.parameters.monthlycommission.FixedMonthlyCommission;
 import ru.unn.agile.mortgagecalculator.model.parameters.monthlycommission.PercentAmountMonthlyCommission;
 import ru.unn.agile.mortgagecalculator.model.parameters.monthlycommission.PercentOutstandingMonthlyCommission;
-import ru.unn.agile.mortgagecalculator.model.report.MortgageMonthReport;
-import ru.unn.agile.mortgagecalculator.model.report.MortgageReport;
 
 import static org.junit.Assert.*;
 
@@ -82,37 +80,37 @@ public class MortgageCalculatorTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void canInitParametersForZeroYear() {
+    public void canNotInitParametersForZeroYear() {
         MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.YEAR, 0);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void canInitParametersForNegativeMounts() {
+    public void canNotInitParametersForNegativeMounts() {
         MortgageParameters parameters = new MortgageParameters(50000, 10, PeriodType.MONTH, -3);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void canInitParametersForZeroAmount() {
+    public void canNotInitParametersForZeroAmount() {
         MortgageParameters parameters = new MortgageParameters(0, 10, PeriodType.YEAR, 1);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void canInitParametersForNegativeAmount() {
+    public void canNotInitParametersForNegativeAmount() {
         MortgageParameters parameters = new MortgageParameters(-50000, 10, PeriodType.MONTH, 1);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void canInitParametersForZeroPercent() {
+    public void canNotInitParametersForZeroPercent() {
         MortgageParameters parameters = new MortgageParameters(50000, 0, PeriodType.YEAR, 1);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void canInitParametersForNegativePercent() {
+    public void canNotInitParametersForNegativePercent() {
         MortgageParameters parameters = new MortgageParameters(50000, -10, PeriodType.MONTH, 1);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void canInitParametersForOverflowPercent() {
+    public void canNotInitParametersForOverflowPercent() {
         MortgageParameters parameters = new MortgageParameters(50000, 130, PeriodType.MONTH, 1);
     }
 
@@ -177,7 +175,7 @@ public class MortgageCalculatorTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void canGetPaymentAtFourteenMonthWithDifferentialPaymentsForOneYera() {
+    public void canNotGetPaymentAtFourteenMonthWithDifferentialPaymentsForOneYera() {
         MortgageCalculator calculator = new MortgageWithDifferentialPaymentsCalculator();
         MortgageParameters parameters = new MortgageParameters(50000, 12, PeriodType.YEAR, 1);
 
@@ -282,7 +280,7 @@ public class MortgageCalculatorTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void canCalculateWithInitialPaymentMoreThenAmount() {
+    public void canNotCalculateWithInitialPaymentMoreThenAmount() {
         MortgageParameters parameters = new MortgageParameters(60000, 12, 10);
         parameters.setInitialPayment(99000);
     }

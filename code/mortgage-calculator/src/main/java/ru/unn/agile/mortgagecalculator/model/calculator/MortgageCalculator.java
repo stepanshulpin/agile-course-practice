@@ -12,18 +12,16 @@ public abstract class MortgageCalculator {
     protected double getCommission(final MortgageParameters parameters) {
         if (parameters.getCommission() != null) {
             return parameters.getCommission().calculate(parameters.getAmount());
-        } else {
-            return 0;
         }
+        return 0;
     }
 
     protected double getMonthlyCommission(final MortgageParameters parameters,
                                           final double currentAmount) {
         if (parameters.getMonthlyCommission() != null) {
             return parameters.getMonthlyCommission().calculate(parameters, currentAmount);
-        } else {
-            return 0;
         }
+        return 0;
     }
 
     double round(final double value) {
