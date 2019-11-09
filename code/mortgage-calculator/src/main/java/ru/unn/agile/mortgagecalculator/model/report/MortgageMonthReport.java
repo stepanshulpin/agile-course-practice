@@ -27,6 +27,8 @@ public class MortgageMonthReport {
         return outstandingAmount;
     }
 
-    public double getBasicPayment() { return basicPayment; }
+    public double getBasicPayment() {
+        return basicPayment;
+    }
 
 }
