@@ -111,18 +111,26 @@ public class GameOfLifeTest {
 
     @Test
     public void canCreateFromString() {
-        GameOfLife g = new GameOfLife("..."
-                                    + ".*."
-                                    + "...", 3, 3);
+        int height = 3;
+        int width = 3;
+        GridString grid = new GridString(
+                "..."
+              + ".*."
+              + "...", height, width);
+        GameOfLife g = new GameOfLife(grid, height, width);
 
         assertTrue(g.isCellLive(1, 1));
     }
 
     @Test
     public void isCellWithTwoNeighboursLive() {
-        GameOfLife g = new GameOfLife(".*."
-                                    + "**."
-                                    + "...", 3, 3);
+        int height = 3;
+        int width = 3;
+        GridString grid = new GridString(
+                ".*."
+              + "**."
+              + "...", height, width);
+        GameOfLife g = new GameOfLife(grid, height, width);
 
         g.makeTurn();
 
@@ -131,9 +139,13 @@ public class GameOfLifeTest {
 
     @Test
     public void isCellWithThreeNeighboursLive() {
-        GameOfLife g = new GameOfLife("**."
-                                    + "**."
-                                    + "...", 3, 3);
+        int height = 3;
+        int width = 3;
+        GridString grid = new GridString(
+                "**."
+              + "**."
+              + "...", height, width);
+        GameOfLife g = new GameOfLife(grid, height, width);
 
         g.makeTurn();
 
@@ -142,9 +154,13 @@ public class GameOfLifeTest {
 
     @Test
     public void isCellWithThreeNeighboursRevive() {
-        GameOfLife g = new GameOfLife("**."
-                                    + "*.."
-                                    + "...", 3, 3);
+        int height = 3;
+        int width = 3;
+        GridString grid = new GridString(
+                "**."
+              + "*.."
+              + "...", height, width);
+        GameOfLife g = new GameOfLife(grid, height, width);
 
         g.makeTurn();
 
@@ -153,9 +169,13 @@ public class GameOfLifeTest {
 
     @Test
     public void isCellWithFourNeighborsDies() {
-        GameOfLife g = new GameOfLife("**."
-                                    + "***"
-                                    + "...", 3, 3);
+        int height = 3;
+        int width = 3;
+        GridString grid = new GridString(
+                "**."
+              + "***"
+              + "...", height, width);
+        GameOfLife g = new GameOfLife(grid, height, width);
 
         g.makeTurn();
 
@@ -174,10 +194,14 @@ public class GameOfLifeTest {
 
     @Test
     public void isCellsCalculatesWithoutOrder() {
-        GameOfLife g = new GameOfLife("***"
-                                    + ".*."
-                                    + "*.*"
-                                    + ".*.", 4, 3);
+        int height = 4;
+        int width = 3;
+        GridString grid = new GridString(
+                "***"
+              + ".*."
+              + "*.*"
+              + ".*.", height, width);
+        GameOfLife g = new GameOfLife(grid, height, width);
 
         g.makeTurn();
 
@@ -186,24 +210,36 @@ public class GameOfLifeTest {
 
     @Test
     public void canCreateFromUncorrectString() {
-        GameOfLife g = new GameOfLife("1234", 2, 2);
+        int height = 2;
+        int width = 2;
+        GridString grid = new GridString("1234", height, width);
+        GameOfLife g = new GameOfLife(grid, height, width);
 
-        assertFalse(g.isCellLive(0, 0));
+        assertNotNull(g);
     }
 
     @Test
     public void canCreateFromShortString() {
-        GameOfLife g = new GameOfLife("..", 3, 3);
+        int height = 3;
+        int width = 3;
+        GridString grid = new GridString("..", height, width);
+        GameOfLife g = new GameOfLife(grid, height, width);
 
-        assertFalse(g.isCellLive(0, 0));
+        assertNotNull(g);
     }
 
     @Test
     public void isGliderMove() {
-        GameOfLife g = new GameOfLife("..*."
-                                    + "*.*."
-                                    + ".**."
-                                    + "....", 4, 4);
+        int height = 4;
+        int width = 4;
+        GridString grid = new GridString(
+                "..*."
+              + "*.*."
+              + ".**."
+              + "....", height, width);
+        GameOfLife g = new GameOfLife(grid, height, width);
+
+
         g.makeTurn();
         g.makeTurn();
         g.makeTurn();
@@ -211,6 +247,75 @@ public class GameOfLifeTest {
 
         assertTrue((g.isCellLive(3, 3)));
 
+    }
+
+    @Test
+    public void canCreateFromArray() {
+        int height = 3;
+        int width = 3;
+        char[][] arr = {
+                {'.', '.', '.'},
+                {'.', '*', '.'},
+                {'.', '.', '.'},
+        };
+        GridArray grid = new GridArray(arr, height, width);
+
+        GameOfLife g = new GameOfLife(grid, height, width);
+
+        assertTrue((g.isCellLive(1, 1)));
+    }
+
+    @Test
+    public void canCreateFromSmallerArray() {
+        int height = 3;
+        int width = 3;
+        char[][] arr = {
+                {'.', '.', '.'},
+                {'.', '*', '.'},
+        };
+        GridArray grid = new GridArray(arr, height, width);
+
+        GameOfLife g = new GameOfLife(grid, height, width);
+
+        assertNotNull(g);
+    }
+
+    @Test
+    public void isMakeTurnOutputCorrect() {
+        int height = 3;
+        int width = 3;
+        char[][] stableGrid = {
+                {'.', '*', '*'},
+                {'.', '*', '*'},
+                {'.', '.', '.'},
+        };
+        GridArray grid = new GridArray(stableGrid, height, width);
+        GameOfLife g = new GameOfLife(grid, height, width);
+
+        char[][] res = g.makeTurn();
+
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                assertTrue(res[i][j] == stableGrid[i][j]);
+            }
+        }
+    }
+
+    @Test
+    public void isGridChangesByChangingArray() {
+        int height = 3;
+        int width = 4;
+        GridString grid = new GridString(
+                "..*."
+              + "*.*."
+              + ".**.", height, width);
+
+        GameOfLife g = new GameOfLife(grid, height, width);
+
+        char[][] res = g.makeTurn();
+        res[1][1] = '*';
+
+        assertFalse(g.isCellLive(1, 1));
     }
 
 }

@@ -1,5 +1,40 @@
 package ru.unn.agile.GameOfLife.model;
 
+interface IGridInput {
+
+    char get(int i, int j);
+}
+
+class GridString implements IGridInput {
+    private String str;
+    private int height;
+    private int width;
+    GridString(final String str, final int height, final int width) {
+        this.height = height;
+        this.width = width;
+        this.str = str;
+    }
+
+    public char get(final int i, final int j) {
+        return str.charAt(i * this.width + j);
+    }
+}
+
+class GridArray implements IGridInput {
+    private char[][] arr;
+    private int height;
+    private int width;
+    GridArray(final char[][] arr, final int height, final int width) {
+        this.height = height;
+        this.width = width;
+        this.arr = arr.clone();
+    }
+
+    public char get(final int i, final int j) {
+        return arr[i][j];
+    }
+}
+
 public class GameOfLife {
     private char[][] grid;
     private int height;
@@ -23,22 +58,6 @@ public class GameOfLife {
         }
     }
 
-    public GameOfLife(final String str, final int height, final int width) {
-        this(height, width);
-
-        try {
-            for (int i = 0; i < this.height; i++) {
-                for (int j = 0; j < this.width; j++) {
-                    if (str.charAt(i * this.width + j) == '*') {
-                        setCell(i, j);
-                    }
-                }
-            }
-        } catch (StringIndexOutOfBoundsException  e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
     public GameOfLife(final GameOfLife game) {
         this(game.height, game.width);
 
@@ -50,6 +69,22 @@ public class GameOfLife {
             }
         }
 
+    }
+
+    public GameOfLife(final IGridInput grid, final int height, final int width) {
+        this(height, width);
+
+        try {
+            for (int i = 0; i < this.height; i++) {
+                for (int j = 0; j < this.width; j++) {
+                    if (grid.get(i, j) == '*') {
+                        setCell(i, j);
+                    }
+                }
+            }
+        } catch (ArrayIndexOutOfBoundsException | StringIndexOutOfBoundsException  e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public boolean isPointOnGrid(final int y, final int x) {
@@ -87,12 +122,15 @@ public class GameOfLife {
         return neighborsNum;
     }
 
-    public void makeTurn() {
+    public char[][] makeTurn() {
         GameOfLife tempGame = new GameOfLife(this);
+
+        char[][] resultGrid = new char[height][width];
 
         final int maxNeighbours = 3;
         final int neighboursToReproduce = 3;
         final int minNeighbours = 2;
+
         for (int i = 0; i < this.height; i++) {
             for (int j = 0; j < this.width; j++) {
                 if ((tempGame.getNeighborsNum(i, j) < minNeighbours)
@@ -102,8 +140,10 @@ public class GameOfLife {
                 if (tempGame.getNeighborsNum(i, j) == neighboursToReproduce) {
                     setCell(i, j);
                 }
+                resultGrid[i][j] = grid[i][j];
             }
         }
+        return resultGrid;
     }
 
 }
