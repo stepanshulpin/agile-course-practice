@@ -110,11 +110,19 @@ public class GameOfLifeTest {
     }
 
     @Test
+    public void canCreateFromString() {
+        GameOfLife g = new GameOfLife("..."
+                                    + ".*."
+                                    + "...", 3, 3);
+
+        assertTrue(g.isCellLive(1, 1));
+    }
+
+    @Test
     public void isCellWithTwoNeighboursLive() {
-        GameOfLife g = new GameOfLife(3, 3);
-        g.setCell(1, 1); // .*.
-        g.setCell(1, 0); // **.
-        g.setCell(0, 1); // ...
+        GameOfLife g = new GameOfLife(".*."
+                                    + "**."
+                                    + "...", 3, 3);
 
         g.makeTurn();
 
@@ -123,12 +131,9 @@ public class GameOfLifeTest {
 
     @Test
     public void isCellWithThreeNeighboursLive() {
-        GameOfLife g = new GameOfLife(3, 3);
-        g.setCell(0, 0); // **.
-        g.setCell(0, 1); // **.
-        g.setCell(1, 0); // ...
-        g.setCell(1, 1);
-
+        GameOfLife g = new GameOfLife("**."
+                                    + "**."
+                                    + "...", 3, 3);
 
         g.makeTurn();
 
@@ -137,10 +142,9 @@ public class GameOfLifeTest {
 
     @Test
     public void isCellWithThreeNeighboursRevive() {
-        GameOfLife g = new GameOfLife(3, 3);
-        g.setCell(0, 0); // **.
-        g.setCell(0, 1); // *..
-        g.setCell(1, 0); // ...
+        GameOfLife g = new GameOfLife("**."
+                                    + "*.."
+                                    + "...", 3, 3);
 
         g.makeTurn();
 
@@ -149,25 +153,13 @@ public class GameOfLifeTest {
 
     @Test
     public void isCellWithFourNeighborsDies() {
-        GameOfLife g = new GameOfLife(3, 3);
-        g.setCell(0, 0); // **.
-        g.setCell(0, 1); // ***
-        g.setCell(1, 0); // ...
-        g.setCell(1, 1);
-        g.setCell(1, 2);
+        GameOfLife g = new GameOfLife("**."
+                                    + "***"
+                                    + "...", 3, 3);
 
         g.makeTurn();
 
         assertFalse(g.isCellLive(1, 1));
-    }
-
-    @Test
-    public void canCreateFromString() {
-        GameOfLife g = new GameOfLife("..."
-                                    + ".*."
-                                    + "...", 3, 3);
-
-        assertTrue(g.isCellLive(1, 1));
     }
 
     @Test
@@ -191,4 +183,34 @@ public class GameOfLifeTest {
 
         assertTrue(g.isCellLive(2, 0));
     }
+
+    @Test
+    public void canCreateFromUncorrectString() {
+        GameOfLife g = new GameOfLife("1234", 2, 2);
+
+        assertFalse(g.isCellLive(0, 0));
+    }
+
+    @Test
+    public void canCreateFromShortString() {
+        GameOfLife g = new GameOfLife("..", 3, 3);
+
+        assertFalse(g.isCellLive(0, 0));
+    }
+
+    @Test
+    public void isGliderMove() {
+        GameOfLife g = new GameOfLife("..*."
+                                    + "*.*."
+                                    + ".**."
+                                    + "....", 4, 4);
+        g.makeTurn();
+        g.makeTurn();
+        g.makeTurn();
+        g.makeTurn();
+
+        assertTrue((g.isCellLive(3, 3)));
+
+    }
+
 }

@@ -26,10 +26,16 @@ public class GameOfLife {
     public GameOfLife(final String str, final int height, final int width) {
         this(height, width);
 
-        for (int i = 0; i < this.height; i++) {
-            for (int j = 0; j < this.width; j++) {
-                grid[i][j] = str.charAt(i * this.width + j);
+        try {
+            for (int i = 0; i < this.height; i++) {
+                for (int j = 0; j < this.width; j++) {
+                    if (str.charAt(i * this.width + j) == '*') {
+                        setCell(i, j);
+                    }
+                }
             }
+        } catch (StringIndexOutOfBoundsException  e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -72,7 +78,7 @@ public class GameOfLife {
         int neighborsNum = 0;
         for (int i = y - 1; i <= y + 1; i++) {
             for (int j = x - 1; j <= x + 1; j++) {
-                if ((i != 0) || (j != 0)) {
+                if ((i != y) || (j != x)) {
                     neighborsNum += this.isCellLive(i, j) ? 1 : 0;
                 }
             }
