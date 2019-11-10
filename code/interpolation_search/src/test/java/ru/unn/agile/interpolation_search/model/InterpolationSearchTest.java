@@ -17,7 +17,7 @@ public class InterpolationSearchTest {
 
     @Test
     public void canSearchForOneElement() {
-        final Integer [] array = {
+        final Integer[] array = {
             1
         };
         final Integer value = 1;
@@ -30,7 +30,7 @@ public class InterpolationSearchTest {
 
     @Test
     public void canSearchForTwoElement() {
-        final Integer [] array = {
+        final Integer[] array = {
             1, 2
         };
         final Integer value = 2;
@@ -43,7 +43,7 @@ public class InterpolationSearchTest {
 
     @Test
     public void canSearchForNegativeTwoElement() {
-        final Integer [] array = {
+        final Integer[] array = {
             -12, -11
         };
         final Integer value = -11;
@@ -56,7 +56,7 @@ public class InterpolationSearchTest {
 
     @Test
     public void canSearchForMixedElements() {
-        final Integer [] array = {
+        final Integer[] array = {
             -123, -13, 567, 1024
         };
         final Integer value = 567;
@@ -69,7 +69,7 @@ public class InterpolationSearchTest {
 
     @Test
     public void canSearchForLastZeroElement() {
-        final Integer [] array = {
+        final Integer[] array = {
             -45, -44, -33, -12, -11, 0
         };
         final Integer value = 0;
@@ -82,7 +82,7 @@ public class InterpolationSearchTest {
 
     @Test
     public void canSearchForSymmetricElements() {
-        final Integer [] array = {
+        final Integer[] array = {
             -52, -51, -15, 15, 51, 52
         };
         final Integer value = 15;
@@ -95,7 +95,7 @@ public class InterpolationSearchTest {
 
     @Test
     public void canSearchForSymmetricZeroElements() {
-        final Integer [] array = {
+        final Integer[] array = {
             -7, 0, 0, 0, 7
         };
         final Integer value = 7;
