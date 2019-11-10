@@ -26,9 +26,14 @@ public class BinaryTreeCreateTests {
     }
 
     @Test
-    public void noErrorOnEmptyTree() {
+    public void noErrorOnEmptyTreeFind() {
         final String result = binaryTree_.find(simpleKey_);
 
         assertNull(result);
+    }
+
+    @Test
+    public void noErrorOnEmptyTreeRemove() {
+        assertFalse(binaryTree_.remove(simpleKey_));
     }
 }

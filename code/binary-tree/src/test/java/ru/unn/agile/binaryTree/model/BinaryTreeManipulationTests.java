@@ -45,6 +45,5 @@ public class BinaryTreeManipulationTests {
         assertFalse(binaryTree_.remove(notExistsKey));
     }
 
-    // Remove root not error
     // Can add after deleting root
 }

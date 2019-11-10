@@ -21,7 +21,7 @@ public class BinaryTree {
 
     public boolean remove(final int key) {
         if (rootNode == null) {
-            return true;
+            return false;
         } else {
             if (rootNode.getKey() == key) {
                 rootNode = rootNode.getChild();
