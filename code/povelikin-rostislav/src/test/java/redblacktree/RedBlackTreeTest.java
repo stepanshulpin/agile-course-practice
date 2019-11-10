@@ -28,7 +28,7 @@ public class RedBlackTreeTest {
 
     @Test
     public void insertionChangesSize() {
-        final int threshold = 8;
+        int threshold = 8;
         int counter = 0;
         while (counter < threshold) {
             ++counter;
@@ -36,5 +36,13 @@ public class RedBlackTreeTest {
             tree.insert(counter);
             assertEquals(tree.getSize(), newSize);
         }
+    }
+
+    @Test
+    public void canFindInserted() {
+        int expected = 42;
+        tree.insert(expected);
+
+        assertTrue(tree.find(expected));
     }
 }
