@@ -271,7 +271,8 @@ public class RedBlackTree {
                     w.color = red;
                     rotateRight(w);
                     w = x.parent.right;
-                } if (w.right.color == red) {
+                }
+                if (w.right.color == red) {
                     w.color = x.parent.color;
                     x.parent.color = black;
                     w.right.color = black;
