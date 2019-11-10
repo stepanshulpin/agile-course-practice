@@ -84,6 +84,14 @@ public class RedBlackTreeTest {
     }
 
     @Test
+    public void insertSameNumberIncrementsSize() {
+        int number = 42;
+        tree.insert(number);
+        tree.insert(number);
+        assertEquals(2, tree.getSize());
+    }
+
+    @Test
     public void canFindEachInserted() {
         int threshold = 88;
         int counter = 0;
