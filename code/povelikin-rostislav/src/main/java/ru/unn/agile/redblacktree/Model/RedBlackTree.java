@@ -32,7 +32,29 @@ public class RedBlackTree {
     }
 
     public boolean find(int expected) {
-        return true;
+        if (root == nil) {
+            return false;
+        }
+
+        Node temp = root;
+
+        while (true) {
+            if (expected == temp.key) {
+                return true;
+            } else if (expected < temp.key) {
+                if (temp.left == nil) {
+                    return false;
+                } else {
+                    temp = temp.left;
+                }
+            } else {
+                if (temp.right == nil) {
+                    return false;
+                } else {
+                    temp = temp.right;
+                }
+            }
+        }
     }
 
     public void insert(int i) {
