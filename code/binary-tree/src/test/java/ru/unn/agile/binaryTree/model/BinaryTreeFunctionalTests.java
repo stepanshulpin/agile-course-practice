@@ -49,7 +49,6 @@ public class BinaryTreeFunctionalTests {
         assertTrue(binaryTree.remove(middleKey));
 
         for (int i = 0; i < size; ++i) {
-            System.out.println(i);
             if (i != middleKey) {
                 assertEquals(Integer.toString(i), binaryTree.find(i));
             } else {
