@@ -104,6 +104,16 @@ public class RedBlackTreeTest {
     }
 
     @Test
+    public void removeRemoves() {
+        int number = 42;
+        tree.insert(number);
+
+        tree.remove(number);
+
+        assertFalse(tree.find(number));
+    }
+
+    @Test
     public void canFindEachInserted() {
         int threshold = 88;
         int counter = 0;
