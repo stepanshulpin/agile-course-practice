@@ -7,6 +7,7 @@ import static org.junit.Assert.*;
 public class BinaryTreeTests {
     private BinaryTree binaryTree_;
     private double delta_ = 0.0001;
+
     @Before
     public void setUp() {
         binaryTree_ = new BinaryTree();
@@ -21,16 +22,16 @@ public class BinaryTreeTests {
     public void canAddElement() {
         final double number = 4.2;
 
-        binaryTree_.addElement(number);
+        binaryTree_.add(number);
     }
 
     @Test
-    public void canGetElement() {
+    public void canFindElement() {
         final double number = 4.2;
-        binaryTree_.addElement(number);
 
-        final double resultNumber = binaryTree_.getElement();
+        binaryTree_.add(number);
+        final double result = binaryTree_.find(number);
 
-        assertEquals(number, resultNumber, delta_);
+        assertEquals(number, result, delta_);
     }
 }
