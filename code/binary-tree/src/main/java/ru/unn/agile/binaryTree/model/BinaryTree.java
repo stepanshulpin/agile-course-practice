@@ -24,7 +24,7 @@ public class BinaryTree {
             return true;
         } else {
             if (rootNode.getKey() == key) {
-                rootNode = null;
+                rootNode = rootNode.getChild();
                 return true;
             } else {
                 return rootNode.removeRecursive(key);

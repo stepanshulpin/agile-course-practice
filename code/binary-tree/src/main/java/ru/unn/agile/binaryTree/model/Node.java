@@ -22,11 +22,12 @@ public class Node {
         }
     }
 
-    int getKey() { return _key; };
+    int getKey()    { return _key; };
+    Node getChild() { return _childNode; }
 
     boolean removeRecursive(int key) {
         if (_childNode.getKey() == key) {
-            _childNode = null;
+            _childNode = _childNode.getChild();
             return true;
         } else {
             return removeRecursive(key);

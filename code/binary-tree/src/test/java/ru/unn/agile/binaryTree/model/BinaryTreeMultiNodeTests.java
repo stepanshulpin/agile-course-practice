@@ -36,5 +36,15 @@ public class BinaryTreeMultiNodeTests {
         assertEquals(secondResult, secondData_);
     }
 
+    @Test
+    public void canRemoveRootChildShouldSurvive() {
+        binaryTree_.add(firstKey_, firstData_);
+        binaryTree_.add(secondKey_, secondData_);
+
+        assertTrue(binaryTree_.remove(firstKey_));
+        final String  childData = binaryTree_.find(secondKey_);
+
+        assertEquals(secondData_, childData);
+    }
 
 }
