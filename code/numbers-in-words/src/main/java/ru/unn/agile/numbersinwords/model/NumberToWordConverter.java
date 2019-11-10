@@ -42,13 +42,19 @@ public class NumberToWordConverter {
         return teens[number % ten];
     }
 
+    private String getHighOrder(final int number) {
+        String[] highOrder = {"", "thousand"};
+
+        return highOrder[number];
+    }
+
 
     private String getFirstPart(final int number) {
         int numberForAnalysis = number / hundred;
         String numberOfHighOrder = getOnes(numberForAnalysis);
 
         if (!numberOfHighOrder.equals("")) {
-            return getOnes(numberForAnalysis) + " " + "hundred";
+            return getOnes(numberForAnalysis) + " hundred";
         } else {
             return "";
         }
@@ -71,17 +77,23 @@ public class NumberToWordConverter {
 
     public String toWord(final int number) {
 
-        if (number >= thousand) {
-            int numberForAnalysis = number / thousand;
-            String firstPart = getFirstPart(numberForAnalysis);
-            String secondPart = getSecondPart(numberForAnalysis);
+        String words = "";
 
-            return getSpaser(firstPart, secondPart, " and ") + " " + "thousand";
-        } else {
-            String firstPart = getFirstPart(number);
-            String secondPart = getSecondPart(number);
+        int iter = 0;
+        int numberForAnalysis = number;
+        while (numberForAnalysis > 0) {
+            int numberForAnalysisLow = numberForAnalysis % thousand;
+            String firstPartLowOrder = getFirstPart(numberForAnalysisLow);
+            String secondPartLowOrder = getSecondPart(numberForAnalysisLow);
+            String partLowOrder = getSpaser(firstPartLowOrder, secondPartLowOrder, " and ");
+            String partHighOrder = getSpaser(partLowOrder, getHighOrder(iter), " ");
 
-            return getSpaser(firstPart, secondPart, " and ");
+            words = getSpaser(partHighOrder, words, ", ");
+
+            numberForAnalysis = numberForAnalysis / thousand;
+            iter = iter + 1;
         }
+
+        return words;
     }
 }

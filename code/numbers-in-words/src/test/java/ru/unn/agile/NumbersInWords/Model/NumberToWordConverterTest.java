@@ -149,4 +149,11 @@ public class NumberToWordConverterTest {
         String word = converter.toWord(111000);
         assertEquals("one hundred and eleven thousand", word);
     }
+
+    @Test
+    public void canConvertThousandsWithHundreds() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(123456);
+        assertEquals("one hundred and twenty three thousand, four hundred and fifty six", word);
+    }
 }
