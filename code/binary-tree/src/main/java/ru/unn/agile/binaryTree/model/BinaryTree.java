@@ -43,4 +43,8 @@ public class BinaryTree {
     Node getRoot() {
         return rootNode;
     }
+
+    public int getHeight() {
+        return rootNode.getHeight();
+    }
 }

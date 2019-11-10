@@ -44,4 +44,9 @@ public class BinaryTreeManipulationTests {
 
         assertFalse(binaryTree.remove(notExistsKey));
     }
+
+    @Test
+    public void canGetHeight() {
+        assertEquals(1, binaryTree.getHeight());
+    }
 }
