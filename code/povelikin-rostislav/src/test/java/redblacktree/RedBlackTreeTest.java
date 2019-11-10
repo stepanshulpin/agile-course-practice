@@ -15,7 +15,7 @@ public class RedBlackTreeTest {
     }
 
     @Test
-    public void canConstructDefaultAndEmpty() {
+    public void defaultConstructedIsEmpty() {
         assertTrue(myTree.isEmpty());
     }
 }
