@@ -9,6 +9,9 @@ import static junit.framework.TestCase.*;
 public class RedBlackTreeTest {
     private static RedBlackTree tree;
 
+    public RedBlackTreeTest() {
+    }
+
     @Before
     public void setUp() {
         tree = new RedBlackTree();
@@ -33,6 +36,11 @@ public class RedBlackTreeTest {
         tree.remove(expected);
 
         assertTrue(tree.isEmpty());
+    }
+
+    @Test
+    public void emptyTreeSizeIsZero() {
+        assertEquals(0, tree.getSize());
     }
 
     @Test
