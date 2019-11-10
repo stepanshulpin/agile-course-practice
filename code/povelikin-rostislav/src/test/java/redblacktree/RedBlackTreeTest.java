@@ -1,5 +1,6 @@
 package redblacktree;
 
+import com.sun.source.tree.AssertTree;
 import org.junit.Before;
 import org.junit.Test;
 import ru.unn.agile.redblacktree.Model.RedBlackTree;
@@ -89,6 +90,17 @@ public class RedBlackTreeTest {
         tree.insert(number);
         tree.insert(number);
         assertEquals(2, tree.getSize());
+    }
+
+    @Test
+    public void removeDoesNotRemoveAllOccurrences() {
+        int number = 42;
+        tree.insert(number);
+        tree.insert(number);
+
+        tree.remove(number);
+
+        assertTrue(tree.find(number));
     }
 
     @Test
