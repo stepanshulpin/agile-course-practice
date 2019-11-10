@@ -34,4 +34,27 @@ public class BinaryTreeTests {
 
         assertEquals(number, result, delta_);
     }
+
+    @Test
+    public void canAddTwoElements() {
+        final double firstNumber    = 4.2;
+        final double secondNumber   = 3.14;
+
+        binaryTree_.add(firstNumber);
+        binaryTree_.add(secondNumber);
+    }
+
+    @Test
+    public void canFindTwoElements() {
+        final double firstNumber    = 4.2;
+        final double secondNumber   = 3.14;
+
+        binaryTree_.add(firstNumber);
+        binaryTree_.add(secondNumber);
+        final double firstResult  = binaryTree_.find(firstNumber);
+        final double secondResult = binaryTree_.find(secondNumber);
+
+        assertEquals(firstNumber, firstResult, delta_);
+        assertEquals(secondNumber, secondResult, delta_);
+    }
 }
