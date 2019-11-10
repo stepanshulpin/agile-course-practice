@@ -1,8 +1,6 @@
 package ru.unn.agile.PriorityQueue.model;
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import static org.junit.Assert.*;
 
 public class PriorityQueueTest {
@@ -113,7 +111,7 @@ public class PriorityQueueTest {
     }
 
     @Test
-    public void canPeekWitoutSizeChanges () {
+    public void canPeekWithoutSizeChanges() {
         var pq = new PriorityQueue<Integer>();
 
         pq.push(1);

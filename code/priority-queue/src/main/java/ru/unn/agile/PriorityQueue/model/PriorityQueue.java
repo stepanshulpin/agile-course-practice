@@ -16,9 +16,9 @@ public class PriorityQueue<E extends Comparable<? super E>> {
         return arr.size();
     }
 
-    public void push(E elem) {
+    public void push(final E elem) {
         arr.add(elem);
-        arr.sort((a,b) -> b.compareTo(a));
+        arr.sort((a, b) -> b.compareTo(a));
     }
 
     public E pop() {
