@@ -78,6 +78,8 @@ project(":code/korniakov-kirill-lab3/Infrastructure").name = "korniakov-kirill-l
 // Симонян Вагинак
 // Смирнов Андрей
 // Смирнов Егор
+include "code/priority-queue"
+project(":code/priority-queue").name = "priority-queue"
 // Тамилина Дарья
 // Тягунов Владимир
 // Федорова Дарья
