@@ -15,8 +15,20 @@ public class BinaryTree {
         if (rootNode == null) {
             return null;
         } else {
-            return rootNode.findRecursive(key);
+            return findRecursive(rootNode, key);
         }
+    }
+
+    static String findRecursive(final Node root, final int key) {
+        if (root.getKey() == key) {
+            return root.getValue();
+        }
+        if (root.getChild() != null) {
+            return findRecursive(root.getChild(), key);
+        } else {
+            return null;
+        }
+
     }
 
     public boolean remove(final int key) {

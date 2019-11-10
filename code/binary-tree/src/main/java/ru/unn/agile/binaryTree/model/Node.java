@@ -14,18 +14,6 @@ class Node {
         this.childNode = childNode;
     }
 
-    String findRecursive(final int key) {
-        if (key != this.key) {
-            if (childNode != null) {
-                return childNode.findRecursive(key);
-            } else {
-                return null;
-            }
-        } else {
-            return value;
-        }
-    }
-
     int getKey() {
         return key;
     };
