@@ -30,6 +30,9 @@ public class Node {
     Node getChild() { return _childNode; }
 
     boolean removeRecursive(int key) {
+        if (_childNode == null) {
+            return false;
+        }
         if (_childNode.getKey() == key) {
             _childNode = _childNode.getChild();
             return true;

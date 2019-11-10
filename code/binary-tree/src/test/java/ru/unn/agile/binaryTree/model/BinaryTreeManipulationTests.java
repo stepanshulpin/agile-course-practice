@@ -32,9 +32,19 @@ public class BinaryTreeManipulationTests {
     }
 
     @Test
-    public void noErrorForNotExistsKey() {
+    public void noErrorForFindNotExistsKey() {
         final int notExistsKey = 666;
 
         assertNull(binaryTree_.find(notExistsKey));
     }
+
+    @Test
+    public void noErrorForRemoveNotExistsKey() {
+        final int notExistsKey = 666;
+
+        assertFalse(binaryTree_.remove(notExistsKey));
+    }
+
+    // Remove root not error
+    // Can add after deleting root
 }
