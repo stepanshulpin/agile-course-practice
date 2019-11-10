@@ -94,4 +94,20 @@ public class RedBlackTreeTest {
             assertEquals(new_size, tree.getSize());
         }
     }
+
+    @Test
+    public void removeDoesNotChangeSizeIfNotFound() {
+        int threshold = 88;
+        int counter = 0;
+        while (counter < threshold) {
+            tree.insert(++counter);
+        }
+
+        int expectedSize = tree.getSize();
+
+        while(counter < threshold * 2) {
+            tree.remove(++counter);
+            assertEquals(tree.getSize(), expectedSize);
+        }
+    }
 }
