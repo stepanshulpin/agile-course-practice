@@ -156,4 +156,34 @@ public class NumberToWordConverterTest {
         String word = converter.toWord(123456);
         assertEquals("one hundred and twenty three thousand, four hundred and fifty six", word);
     }
+
+    @Test
+    public void canConvertOneMillion() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(1000000);
+        assertEquals("one million", word);
+    }
+
+    @Test
+    public void canConvertMillions() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(123000000);
+        assertEquals("one hundred and twenty three million", word);
+    }
+
+    @Test
+    public void canConvertMillionsWithThousands() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(123456000);
+        assertEquals("one hundred and twenty three million, "
+                + "four hundred and fifty six thousand", word);
+    }
+
+    @Test
+    public void canConvertMillionsWithThousandsAndHundreds() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(123456789);
+        assertEquals("one hundred and twenty three million, "
+                + "four hundred and fifty six thousand, seven hundred and eighty nine", word);
+    }
 }

@@ -43,7 +43,7 @@ public class NumberToWordConverter {
     }
 
     private String getHighOrder(final int number) {
-        String[] highOrder = {"", "thousand"};
+        String[] highOrder = {"", "thousand", "million"};
 
         return highOrder[number];
     }
@@ -86,7 +86,9 @@ public class NumberToWordConverter {
             String firstPartLowOrder = getFirstPart(numberForAnalysisLow);
             String secondPartLowOrder = getSecondPart(numberForAnalysisLow);
             String partLowOrder = getSpaser(firstPartLowOrder, secondPartLowOrder, " and ");
-            String partHighOrder = getSpaser(partLowOrder, getHighOrder(iter), " ");
+
+            int numOfHighOrder = partLowOrder.equals("") ? 0 : iter;
+            String partHighOrder = getSpaser(partLowOrder, getHighOrder(numOfHighOrder), " ");
 
             words = getSpaser(partHighOrder, words, ", ");
 
