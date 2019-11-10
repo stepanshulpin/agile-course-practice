@@ -78,6 +78,22 @@ public class RedBlackTreeTest {
     }
 
     @Test
+    public void removeCornerCaseMin() {
+        tree.insert(Integer.MIN_VALUE);
+        tree.remove(Integer.MIN_VALUE);
+
+        assertFalse(tree.find(Integer.MIN_VALUE));
+    }
+
+    @Test
+    public void removeCornerCaseMax() {
+        tree.insert(Integer.MAX_VALUE);
+        tree.remove(Integer.MAX_VALUE);
+
+        assertFalse(tree.find(Integer.MAX_VALUE));
+    }
+
+    @Test
     public void insertCornerCaseMin() {
         tree.insert(Integer.MIN_VALUE);
 
