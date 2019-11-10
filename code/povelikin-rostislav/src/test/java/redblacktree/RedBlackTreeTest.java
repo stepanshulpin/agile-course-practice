@@ -1,6 +1,5 @@
 package redblacktree;
 
-import com.sun.source.tree.AssertTree;
 import org.junit.Before;
 import org.junit.Test;
 import ru.unn.agile.redblacktree.Model.RedBlackTree;
@@ -171,10 +170,10 @@ public class RedBlackTreeTest {
             tree.insert(counter++);
         }
 
-        while(counter > 0) {
-            int new_size = tree.getSize() - 1;
+        while (counter > 0) {
+            int newSize = tree.getSize() - 1;
             tree.remove(--counter);
-            assertEquals(new_size, tree.getSize());
+            assertEquals(newSize, tree.getSize());
         }
     }
 
@@ -188,7 +187,7 @@ public class RedBlackTreeTest {
 
         int expectedSize = tree.getSize();
 
-        while(counter < threshold * 2) {
+        while (counter < threshold * 2) {
             tree.remove(++counter);
             assertEquals(tree.getSize(), expectedSize);
         }
