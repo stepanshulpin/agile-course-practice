@@ -17,16 +17,13 @@ public class ShumihinSergeyTest {
 
     @Test
     public void canInitFromString() {
-        ComplexNumber firstNumber = new ComplexNumber("1.0", "0.0");
-        ComplexNumber secondNumber = new ComplexNumber(0.0, -1.0);
+        ComplexNumber number = new ComplexNumber("1.0", "0.0");
 
-        ComplexNumber resultNumber = firstNumber.add(secondNumber);
-
-        assertEquals(new ComplexNumber(1.0, -1.0), resultNumber);
+        assertNotNull(number);
     }
 
     @Test
-    public void onSqrtOfImaginaryGetMinusOneInReal() {
+    public void onSqrOfImaginaryGetMinusOneInReal() {
         ComplexNumber number = new ComplexNumber(0.0, 1);
 
         ComplexNumber resultNumber = number.multiply(number);
