@@ -35,8 +35,8 @@ public class BinaryTreeTests {
 
     @Test
     public void canAddTwoElements() {
-        final double secondKey   = 3.14;
-        final String secodData   = "SecondData";
+        final int secondKey     = 3;
+        final String secodData  = "SecondData";
 
         binaryTree_.add(simpleKey_, simpleData_);
         binaryTree_.add(secondKey, secodData);
@@ -44,8 +44,8 @@ public class BinaryTreeTests {
 
     @Test
     public void canFindTwoElements() {
-        final double secondKey   = 3.14;
-        final String secondData   = "SecondData";
+        final int secondKey     = 3;
+        final String secondData = "SecondData";
 
         binaryTree_.add(simpleKey_, simpleData_);
         binaryTree_.add(secondKey, secondData);
