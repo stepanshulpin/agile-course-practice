@@ -70,4 +70,13 @@ public class RedBlackTreeTest {
     public void removeReturnsFalseIfNotFound() {
         assertFalse(tree.remove(42));
     }
+
+    @Test
+    public void removeReturnsTrueIfFound() {
+        int expected = 42;
+
+        tree.insert(expected);
+
+        assertTrue(tree.remove(expected));
+    }
 }
