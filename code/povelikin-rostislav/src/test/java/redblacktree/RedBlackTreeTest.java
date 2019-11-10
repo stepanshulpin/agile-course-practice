@@ -27,6 +27,15 @@ public class RedBlackTreeTest {
     }
 
     @Test
+    public void emptiedRedBlackTreeIsEmpty() {
+        int expected = 42;
+        tree.insert(expected);
+        tree.remove(expected);
+
+        assertTrue(tree.isEmpty());
+    }
+
+    @Test
     public void insertionChangesSize() {
         int threshold = 8;
         int counter = 0;
