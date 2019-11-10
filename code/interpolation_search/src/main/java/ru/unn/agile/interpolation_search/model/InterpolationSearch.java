@@ -4,13 +4,11 @@ import java.util.NoSuchElementException;
 
 public class InterpolationSearch {
 
-    public <T extends Comparable<T>> int find(final T[] array, final T value) {
-        final Integer[] arrayInt = (Integer[])array;
-        final Integer valueInt = (Integer)value;
-        if (!isSortedArray(arrayInt)) {
+    public <T extends Comparable<T>> int find(final Integer[] array, final Integer value) {
+        if (!isSortedArray(array)) {
             throw new IllegalArgumentException("Array is not sorted");
         }
-        return search(arrayInt, valueInt);
+        return search(array, value);
     }
     private boolean isSortedArray(final Integer[] array) {
         for (int i = 1; i < array.length; i++) {
