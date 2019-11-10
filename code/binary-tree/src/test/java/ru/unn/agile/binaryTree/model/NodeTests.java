@@ -46,7 +46,7 @@ public class NodeTests {
     }
 
     @Test
-    public void removeLastOneWithThreeNodes() {
+    public void canRemoveLastOneWithThreeNodes() {
         Node node = new Node(simpleKey, simpleData);
         rootNode.addChild(firstChild);
         rootNode.addChild(secondChild);
@@ -54,5 +54,12 @@ public class NodeTests {
         assertTrue(rootNode.removeRecursive(secondNodeKey));
 
         assertNull(rootNode.findRecursive(secondNodeKey));
+    }
+
+    @Test
+    public void canGetHeight() {
+        Node node = new Node(simpleKey, simpleData);
+        
+        assertEquals(1, node.getHeight());
     }
 }

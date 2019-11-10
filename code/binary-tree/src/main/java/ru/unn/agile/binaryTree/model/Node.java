@@ -37,6 +37,14 @@ class Node {
         return childNode;
     }
 
+    int getHeight() {
+        if (childNode == null) {
+            return 1;
+        } else {
+            return childNode.getHeight() + 1;
+        }
+    }
+
     boolean removeRecursive(final int key) {
         if (childNode == null) {
             return false;
