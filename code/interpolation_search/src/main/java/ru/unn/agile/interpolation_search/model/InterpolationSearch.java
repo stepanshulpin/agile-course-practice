@@ -12,7 +12,8 @@ public final class InterpolationSearch {
         }
         return search(array, value);
     }
-    static private boolean isSortedArray(final Integer[] array) {
+
+    private static boolean isSortedArray(final Integer[] array) {
         for (int i = 1; i < array.length; i++) {
             if (array[i] < array[i - 1]) {
                 return false;
