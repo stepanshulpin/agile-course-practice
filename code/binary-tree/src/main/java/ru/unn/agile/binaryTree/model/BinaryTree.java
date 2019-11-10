@@ -23,12 +23,24 @@ public class BinaryTree {
         if (rootNode == null) {
             return false;
         } else {
-            if (rootNode.getKey() == key) {
+                if (rootNode.getKey() == key) {
                 rootNode = rootNode.getChild();
                 return true;
             } else {
-                return rootNode.removeRecursive(key);
+                return removeRecursive(rootNode, key);
             }
+        }
+    }
+
+    private boolean removeRecursive(final Node root, final int key) {
+        if (root.getChild() == null) {
+            return false;
+        }
+        if (root.getChild().getKey() == key) {
+            root.setChild(root.getChild().getChild());
+            return true;
+        } else {
+            return removeRecursive(root.getChild(), key);
         }
     }
 

@@ -45,17 +45,4 @@ class Node {
             return childNode.getHeight() + 1;
         }
     }
-
-    boolean removeRecursive(final int key) {
-        if (childNode == null) {
-            return false;
-        }
-        if (childNode.getKey() == key) {
-            childNode = childNode.getChild();
-            return true;
-        } else {
-            return childNode.removeRecursive(key);
-        }
-    }
-
 }
