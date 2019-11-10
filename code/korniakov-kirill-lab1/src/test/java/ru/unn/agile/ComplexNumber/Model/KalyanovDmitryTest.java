@@ -18,13 +18,13 @@ public class KalyanovDmitryTest {
     @Test
     public void getIm() {
         ComplexNumber z1 = new ComplexNumber(342, 36483);
-        assertEquals(z1.getImaginary(), 36483, delta);
+        assertEquals(36483, z1.getImaginary(), delta);
     }
 
     @Test
     public void getRe() {
         ComplexNumber z1 = new ComplexNumber(342, 36483);
-        assertEquals(z1.getReal(), 342, delta);
+        assertEquals(342, z1.getReal(), delta);
     }
 
     @Test
@@ -32,7 +32,7 @@ public class KalyanovDmitryTest {
         ComplexNumber z1 = new ComplexNumber(3, 5);
         ComplexNumber z2 = new ComplexNumber(4, 6);
         ComplexNumber z3 = new ComplexNumber(7, 11);
-        assertEquals(z3, z1.add(z2));
+        assertEquals(z1.add(z2), z3);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class KalyanovDmitryTest {
         ComplexNumber z1 = new ComplexNumber(3, 5);
         ComplexNumber z2 = new ComplexNumber(4, 6);
         ComplexNumber z3 = new ComplexNumber(-18, 38);
-        assertEquals(z3, z1.multiply(z2));
+        assertEquals(z1.multiply(z2), z3);
     }
 
     @Test
@@ -56,5 +56,4 @@ public class KalyanovDmitryTest {
         ComplexNumber z2 = new ComplexNumber(4, 6);
         assertFalse(z1.equals(z2));
     }
-
 }
