@@ -70,6 +70,8 @@ project(":code/korniakov-kirill-lab3/Infrastructure").name = "korniakov-kirill-l
 // Нестеров Александр
 // Нечесанов Владимир
 // Овчарук Олег
+include "code/polynomialcalculator"
+project(":code/polynomialcalculator").name = "polynomialcalculator"
 // Петров Кирилл
 // Повеликин Ростислав
 // Попков Кирилл
