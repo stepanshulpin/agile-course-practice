@@ -83,4 +83,12 @@ public class BinaryTreeMultiNodeTests {
         assertEquals(secondData, childData);
     }
 
+    @Test
+    public void threeNodesTreeWillBeBalanced() {
+        binaryTree.add(secondKey, secondData);
+        binaryTree.add(firstKey, firstData);
+        binaryTree.add(thirdKey, thirdData);
+
+        assertEquals(2, binaryTree.getHeight());
+    }
 }

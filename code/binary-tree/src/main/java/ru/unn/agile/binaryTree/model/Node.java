@@ -15,13 +15,21 @@ class Node {
         this.leftChild  = null;
     }
 
-    public void setChild(final Node childNode) {
+    public void setRightChild(final Node childNode) {
         this.rightChild = childNode;
+    }
+
+    public void setLeftChild(final Node childNode) {
+        this.leftChild = childNode;
     }
 
     int getKey() {
         return key;
     };
+
+    void seValue(final String value) {
+        this.value = value;
+    }
 
     String getValue() {
         return value;
@@ -29,6 +37,10 @@ class Node {
 
     Node getRightChild() {
         return rightChild;
+    }
+
+    Node getLeftChild() {
+        return leftChild;
     }
 
     int getHeight() {

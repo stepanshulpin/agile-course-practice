@@ -49,4 +49,5 @@ public class BinaryTreeManipulationTests {
     public void canGetHeight() {
         assertEquals(1, binaryTree.getHeight());
     }
+
 }

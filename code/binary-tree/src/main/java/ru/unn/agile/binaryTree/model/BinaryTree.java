@@ -53,7 +53,7 @@ public class BinaryTree {
             return false;
         }
         if (root.getRightChild().getKey() == key) {
-            root.setChild(root.getRightChild().getRightChild());
+            root.setRightChild(root.getRightChild().getRightChild());
             return true;
         } else {
             return removeRecursive(root.getRightChild(), key);
@@ -61,10 +61,20 @@ public class BinaryTree {
     }
 
     static void addChild(final Node root, final Node childNode) {
-        if (root.getRightChild() != null) {
-            addChild(root.getRightChild(), childNode);
+        if (childNode.getKey() > root.getKey()) {
+            if (root.getRightChild() != null) {
+                addChild(root.getRightChild(), childNode);
+            } else {
+                root.setRightChild(childNode);
+            }
+        } else if (childNode.getKey() < root.getKey()) {
+            if (root.getLeftChild() != null) {
+                addChild(root.getLeftChild(), childNode);
+            } else {
+                root.setLeftChild(childNode);
+            }
         } else {
-            root.setChild(childNode);
+            root.seValue(childNode.getValue());
         }
     }
 
