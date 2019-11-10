@@ -98,7 +98,47 @@ public class PriorityQueueTest {
     public void canInformAboutEmptyQueue() {
         var pq = new PriorityQueue<Integer>();
         var val = pq.pop();
-        assertEquals(null, val);
+        assertNull(null, val);
     }
 
+    @Test
+    public void canPeekValues() {
+        var pq = new PriorityQueue<Integer>();
+
+        pq.push(1);
+        int val1 = pq.peek();
+        int val2 = pq.peek();
+
+        assertEquals(1, val1, val2);
+    }
+
+    @Test
+    public void canPeekWitoutSizeChanges () {
+        var pq = new PriorityQueue<Integer>();
+
+        pq.push(1);
+        int val1 = pq.peek();
+        int val2 = pq.peek();
+
+        assertEquals(1, pq.size());
+    }
+
+    @Test
+    public void canInformAboutEmptyQueueAfterPeek() {
+        var pq = new PriorityQueue<Integer>();
+        var val = pq.peek();
+        assertNull(null, val);
+    }
+
+    @Test
+    public void canPeekValuesWithRightPriority() {
+        var pq = new PriorityQueue<Integer>();
+
+        pq.push(1);
+        pq.push(2);
+        int val1 = pq.peek();
+        int val2 = pq.peek();
+
+        assertEquals(2, val1, val2);
+    }
 }

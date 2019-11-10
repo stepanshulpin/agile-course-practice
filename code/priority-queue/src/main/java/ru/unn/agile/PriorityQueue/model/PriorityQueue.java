@@ -24,7 +24,7 @@ public class PriorityQueue<E extends Comparable<? super E>> {
     }
 
     public E pop() {
-        if (isEmpty())  {
+        if (isEmpty()) {
             return null;
         }
 
@@ -32,4 +32,14 @@ public class PriorityQueue<E extends Comparable<? super E>> {
         arr.remove(0);
         return e;
     }
+
+    public E peek() {
+        if (isEmpty()) {
+            return null;
+        }
+
+        var e = arr.get(0);
+        return e;
+    }
+
 }
