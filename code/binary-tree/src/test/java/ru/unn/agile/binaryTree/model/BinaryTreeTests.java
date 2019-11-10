@@ -63,4 +63,14 @@ public class BinaryTreeTests {
 
         assertNull(result);
     }
+
+    @Test
+    public void canRemoveNode() {
+        binaryTree_.add(simpleKey_, simpleData_);
+
+        binaryTree_.remove(simpleKey_);
+        final String result = binaryTree_.find(simpleKey_);
+
+        assertNull(result);
+    }
 }

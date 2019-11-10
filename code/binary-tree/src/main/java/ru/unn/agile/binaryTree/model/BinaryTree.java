@@ -18,4 +18,17 @@ public class BinaryTree {
             return rootNode.findRecursive(key);
         }
     }
+
+    public boolean remove(final int key) {
+        if (rootNode == null) {
+            return true;
+        } else {
+            if (rootNode.getKey() == key) {
+                rootNode = null;
+                return true;
+            } else {
+                return rootNode.removeRecursive(key);
+            }
+        }
+    }
 }
