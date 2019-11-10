@@ -7,7 +7,6 @@ import static org.junit.Assert.*;
 public class BinaryTreeCreateTests {
     private BinaryTree binaryTree;
 
-    private String  simpleData = "SimpleText";
     private int     simpleKey  = 42;
 
     @Before
@@ -22,6 +21,7 @@ public class BinaryTreeCreateTests {
 
     @Test
     public void canAddElement() {
+        String simpleData = "SimpleText";
         binaryTree.add(simpleKey, simpleData);
     }
 

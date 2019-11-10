@@ -11,7 +11,11 @@ public class Node {
     }
 
     public void addChild(final Node childNode) {
-        this.childNode = childNode;
+        if (this.childNode != null) {
+            this.childNode.addChild(childNode);
+        } else {
+            this.childNode = childNode;
+        }
     }
 
     String findRecursive(final int key) {
