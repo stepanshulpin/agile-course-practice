@@ -122,10 +122,10 @@ public class RedBlackTreeTest {
         int threshold = 88;
         int counter = 0;
         while (counter < threshold) {
-            tree.insert(++counter);
+            tree.insert(counter++);
         }
 
-        while(counter >= 0) {
+        while(counter > 0) {
             int new_size = tree.getSize() - 1;
             tree.remove(--counter);
             assertEquals(new_size, tree.getSize());
