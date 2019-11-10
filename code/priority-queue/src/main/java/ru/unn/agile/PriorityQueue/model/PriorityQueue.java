@@ -4,4 +4,8 @@ public class PriorityQueue {
     public PriorityQueue() {
 
     }
+
+    public boolean isEmpty() {
+        return true;
+    }
 }
