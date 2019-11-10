@@ -4,8 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import ru.unn.agile.redblacktree.Model.RedBlackTree;
 
-import static junit.framework.TestCase.assertFalse;
-import static junit.framework.TestCase.assertTrue;
+import static junit.framework.TestCase.*;
 
 public class RedBlackTreeTest {
     private static RedBlackTree tree;
@@ -21,7 +20,7 @@ public class RedBlackTreeTest {
     }
 
     @Test
-    public void canInsert() {
+    public void insertionChangesEmptiness() {
         tree.insert(8);
 
         assertFalse(tree.isEmpty());
