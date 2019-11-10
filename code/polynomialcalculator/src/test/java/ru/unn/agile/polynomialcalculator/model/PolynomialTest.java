@@ -264,6 +264,20 @@ public class PolynomialTest {
     }
 
     @Test
+    public void polynomialEqualsWithSelf() {
+        var p1 = new Polynomial(3.3, 2);
+
+        assertEquals(p1, p1);
+    }
+
+    @Test
+    public void polynomialsAreNotEqualWithOtherClasses() {
+        var p1 = new Polynomial(3.3, 2);
+
+        assertNotEquals(p1, new Object());
+    }
+
+    @Test
     public void differentCoefPolynomialsAreNotEqual() {
         var p1 = new Polynomial(2.3, 2);
         var p2 = new Polynomial(4.3, 2);
