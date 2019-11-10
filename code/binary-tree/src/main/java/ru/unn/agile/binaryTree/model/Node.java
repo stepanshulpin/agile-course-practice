@@ -1,16 +1,16 @@
 package ru.unn.agile.binaryTree.model;
 
-public class Node {
+class Node {
     private  int    key;
     private  String value;
     private  Node   childNode = null;
 
-    public Node(final int key, final String value) {
+    Node(final int key, final String value) {
         this.value = value;
         this.key = key;
     }
 
-    public void addChild(final Node childNode) {
+    void addChild(final Node childNode) {
         if (this.childNode != null) {
             this.childNode.addChild(childNode);
         } else {
