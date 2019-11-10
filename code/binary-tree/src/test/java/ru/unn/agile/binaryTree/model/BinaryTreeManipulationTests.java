@@ -31,4 +31,10 @@ public class BinaryTreeManipulationTests {
         assertNull(result);
     }
 
+    @Test
+    public void noErrorForNotExistsKey() {
+        final int notExistsKey = 666;
+
+        assertNull(binaryTree_.find(notExistsKey));
+    }
 }

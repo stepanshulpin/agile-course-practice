@@ -16,7 +16,11 @@ public class Node {
 
     String findRecursive(int key) {
         if (key != _key) {
-            return _childNode.findRecursive(key);
+            if (_childNode != null) {
+                return _childNode.findRecursive(key);
+            } else {
+                return null;
+            }
         } else {
             return _value;
         }
