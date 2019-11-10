@@ -44,7 +44,7 @@ public class RedBlackTree {
         if (z.left == nil) {
             x = z.right;
             transplant(z, z.right);
-        } else if(z.right == nil) {
+        } else if (z.right == nil) {
             x = z.left;
             transplant(z, z.left);
         } else {
@@ -139,7 +139,8 @@ public class RedBlackTree {
         }
     }
 
-    private void fixTree(Node node) {
+    private void fixTree(final Node start) {
+        Node node = start;
         while (node.parent.color == red) {
             Node uncle;
             if (node.parent == node.parent.parent.left) {
@@ -181,14 +182,14 @@ public class RedBlackTree {
         root.color = black;
     }
 
-    private Node updateNodes(Node node, Node uncle) {
+    private Node updateNodes(final Node node, final Node uncle) {
         node.parent.color = black;
         uncle.color = black;
         node.parent.parent.color = red;
         return node.parent.parent;
     }
 
-    private void rotateLeft(Node node) {
+    private void rotateLeft(final Node node) {
         if (node.parent != nil) {
             if (node == node.parent.left) {
                 node.parent.left = node.right;
@@ -239,7 +240,7 @@ public class RedBlackTree {
         }
     }
 
-    private void transplant(final Node target, final Node with){
+    private void transplant(final Node target, final Node with) {
         if (target.parent == nil) {
             root = with;
         } else if (target == target.parent.left) {
@@ -250,8 +251,9 @@ public class RedBlackTree {
         with.parent = target.parent;
     }
 
-    private void deleteFix(Node x) {
-        while (x!=root && x.color == black) {
+    private void deleteFix(final Node start) {
+        Node x = start;
+        while (x != root && x.color == black) {
             if (x == x.parent.left) {
                 Node w = x.parent.right;
                 if (w.color == red) {
@@ -269,7 +271,7 @@ public class RedBlackTree {
                     w.color = red;
                     rotateRight(w);
                     w = x.parent.right;
-                } if(w.right.color == red) {
+                } if (w.right.color == red) {
                     w.color = x.parent.color;
                     x.parent.color = black;
                     w.right.color = black;
@@ -306,10 +308,12 @@ public class RedBlackTree {
         x.color = black;
     }
 
-    private Node treeMinimum(Node subTreeRoot) {
-        while(subTreeRoot.left != nil) {
-            subTreeRoot = subTreeRoot.left;
+    private Node treeMinimum(final Node subTreeRoot) {
+        Node temp = subTreeRoot;
+
+        while (temp.left != nil) {
+            temp = temp.left;
         }
-        return subTreeRoot;
+        return temp;
     }
 }
