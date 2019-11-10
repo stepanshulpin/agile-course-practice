@@ -1,24 +1,6 @@
 package ru.unn.agile.redblacktree.Model;
 
 public class RedBlackTree {
-    // insert
-    // find
-    // remove
-
-    private final int RED = 0;
-    private final int BLACK = 1;
-    private final Node nil = new Node(-1);
-
-    public boolean remove(int value) {
-        boolean found = find(value);
-
-        if (found) {
-            --size;
-        }
-
-        return found;
-    }
-
     private class Node {
         int key, color = BLACK;
         Node left = nil, right = nil, parent = nil;
@@ -27,6 +9,10 @@ public class RedBlackTree {
             this.key = key;
         }
     }
+
+    private final int RED = 0;
+    private final int BLACK = 1;
+    private final Node nil = new Node(-1);
 
     private Node root = nil;
     private int size = 0;
@@ -39,6 +25,16 @@ public class RedBlackTree {
 
     public int getSize() {
         return size;
+    }
+
+    public boolean remove(int value) {
+        boolean found = find(value);
+
+        if (found) {
+            --size;
+        }
+
+        return found;
     }
 
     public boolean find(int expected) {
