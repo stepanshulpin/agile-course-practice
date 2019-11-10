@@ -25,4 +25,16 @@ public class RedBlackTreeTest {
 
         assertFalse(tree.isEmpty());
     }
+
+    @Test
+    public void insertionChangesSize() {
+        final int threshold = 8;
+        int counter = 0;
+        while (counter < threshold) {
+            ++counter;
+            final int newSize = tree.getSize() + 1;
+            tree.insert(counter);
+            assertEquals(tree.getSize(), newSize);
+        }
+    }
 }

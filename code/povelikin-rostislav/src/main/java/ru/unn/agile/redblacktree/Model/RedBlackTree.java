@@ -27,6 +27,10 @@ public class RedBlackTree {
         return size == 0;
     }
 
+    public int getSize() {
+        return size;
+    }
+
     public void insert(int i) {
         ++size;
         var node = new Node(i);
