@@ -6,7 +6,9 @@ import static org.junit.Assert.*;
 
 public class BinaryTreeTests {
     private BinaryTree binaryTree_;
-    private double delta_ = 0.0001;
+
+    private String  simpleData_ = "SimpleText";
+    private int     simpleKey_  = 42;
 
     @Before
     public void setUp() {
@@ -20,41 +22,38 @@ public class BinaryTreeTests {
 
     @Test
     public void canAddElement() {
-        final double number = 4.2;
-
-        binaryTree_.add(number);
+        binaryTree_.add(simpleKey_, simpleData_);
     }
 
     @Test
     public void canFindElement() {
-        final double number = 4.2;
+        binaryTree_.add(simpleKey_, simpleData_);
+        final String result = binaryTree_.find(simpleKey_);
 
-        binaryTree_.add(number);
-        final double result = binaryTree_.find(number);
-
-        assertEquals(number, result, delta_);
+        assertEquals(simpleData_, result);
     }
 
     @Test
     public void canAddTwoElements() {
-        final double firstNumber    = 4.2;
-        final double secondNumber   = 3.14;
+        final double secondKey   = 3.14;
+        final String secodData   = "SecondData";
 
-        binaryTree_.add(firstNumber);
-        binaryTree_.add(secondNumber);
+        binaryTree_.add(simpleKey_, simpleData_);
+        binaryTree_.add(secondKey, secodData);
     }
 
     @Test
     public void canFindTwoElements() {
-        final double firstNumber    = 4.2;
-        final double secondNumber   = 3.14;
+        final double secondKey   = 3.14;
+        final String secondData   = "SecondData";
 
-        binaryTree_.add(firstNumber);
-        binaryTree_.add(secondNumber);
-        final double firstResult  = binaryTree_.find(firstNumber);
-        final double secondResult = binaryTree_.find(secondNumber);
+        binaryTree_.add(simpleKey_, simpleData_);
+        binaryTree_.add(secondKey, secondData);
 
-        assertEquals(firstNumber, firstResult, delta_);
-        assertEquals(secondNumber, secondResult, delta_);
+        final String firstResult  = binaryTree_.find(simpleKey_);
+        final String secondResult = binaryTree_.find(secondKey);
+
+        assertEquals(firstResult, simpleData_);
+        assertEquals(secondData, secondData);
     }
 }
