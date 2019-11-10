@@ -8,22 +8,39 @@ import static org.junit.Assert.assertEquals;
 
 public class FormatterTests {
 
-    @Test(expected = IllegalArgumentException.class)
-    public void throwsOnNegativeDouble() {
-        double x = -1.0;
-        Formatter.formatPositiveDouble(x);
+    @Test
+    public void canFormatCoeff() {
+        double x = 123456.123;
+        StringBuilder s = new StringBuilder();
+
+        String result = Formatter.formatCoeff(x, s).toString();
+
+        assertEquals("123456.12", result);
     }
 
     @Test
-    public void canFormatToIntegerWith6Digits() {
-        double x = 123456.123;
-        assertEquals("123456.12", Formatter.formatPositiveDouble(x));
+    public void canFormatNegativeCoeff() {
+        double x = -9876.543;
+        StringBuilder s = new StringBuilder();
+
+        String result = Formatter.formatCoeff(x, s).toString();
+
+        assertEquals(" - 9876.54", result);
+    }
+
+    @Test
+    public void canFormatZeroCoeff() {
+        StringBuilder s = new StringBuilder();
+
+        String result = Formatter.formatCoeff(0, s).toString();
+
+        assertEquals("", result);
     }
 
     @Test
     public void canConvertToString() {
         QuadraticEquasion qe = new QuadraticEquasion(2.0, 2.0, 3.0);
-        assertEquals("2.0(x^2) + 2.0x + 3.0", qe.toString());
+        assertEquals("2.00(x^2) + 2.00x + 3.00", qe.toString());
     }
 
     @Test
@@ -35,25 +52,25 @@ public class FormatterTests {
     @Test
     public void canConvertNegativeCoeffsToString() {
         QuadraticEquasion qe = new QuadraticEquasion(-1.0, -2.0, -3.0);
-        assertEquals("- (x^2) - 2.0x - 3.0", qe.toString());
+        assertEquals(" - (x^2) - 2.00x - 3.00", qe.toString());
     }
 
     @Test
     public void canConvertCoeffsEqualsToOneToString() {
         QuadraticEquasion qe = new QuadraticEquasion(1.0, -1.0, 1.0);
-        assertEquals("(x^2) - x + 1.0", qe.toString());
+        assertEquals("(x^2) - x + 1.00", qe.toString());
     }
 
     @Test
     public void canConvertWithZeroACoeffToString() {
         QuadraticEquasion qe = new QuadraticEquasion(0.0, -1.0, 1.0);
-        assertEquals(" - x + 1.0", qe.toString());
+        assertEquals(" - x + 1.00", qe.toString());
     }
 
     @Test
     public void canConvertWithZeroBCoeffToString() {
         QuadraticEquasion qe = new QuadraticEquasion(1.0, 0.0, 1.0);
-        assertEquals("(x^2) + 1.0", qe.toString());
+        assertEquals("(x^2) + 1.00", qe.toString());
     }
 
     @Test
