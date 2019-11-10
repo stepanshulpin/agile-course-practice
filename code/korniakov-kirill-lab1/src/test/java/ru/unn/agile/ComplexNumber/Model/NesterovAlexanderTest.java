@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class NesterovAlexanderTest {
-    final double delta = 1e-15;
+    final private double delta = 1e-15;
 
     @Test
     public void isRightNormComplexNumber() {
