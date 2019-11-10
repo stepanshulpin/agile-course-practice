@@ -5,6 +5,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class NesterovAlexanderTest {
+    final double delta = 1e-15;
+
     @Test
     public void isRightNormComplexNumber() {
         // Arrange
@@ -29,7 +31,7 @@ public class NesterovAlexanderTest {
         ComplexNumber z = z1.add(z1Inv);
 
         // Assert
-        assertEquals(4.44, z.getReal() + z.getImaginary(), 1e-10);
+        assertEquals(4.44, z.getReal() + z.getImaginary(), delta);
     }
 
     public double getArg(final ComplexNumber num) {
@@ -38,7 +40,7 @@ public class NesterovAlexanderTest {
     }
 
     @Test
-    public void canArgNumberHalfPI() {
+    public void argNumberIsHalfPI() {
         // Arrange
         ComplexNumber z = new ComplexNumber(0, 1);
 
@@ -46,11 +48,11 @@ public class NesterovAlexanderTest {
         double res = getArg(z);
 
         // Assert
-        assertEquals(res, Math.PI / 2, 1e-15);
+        assertEquals(res, Math.PI / 2, delta);
     }
 
     @Test
-    public void canArgNumberZero() {
+    public void argNumberIsZero() {
         // Arrange
         ComplexNumber z = new ComplexNumber(1, 0);
 
@@ -58,11 +60,11 @@ public class NesterovAlexanderTest {
         double res = getArg(z);
 
         // Assert
-        assertEquals(res, 0, 1e-15);
+        assertEquals(res, 0, delta);
     }
 
     @Test
-    public void canArgNumberQuarterPI() {
+    public void argNumberIsQuarterPI() {
         // Arrange
         ComplexNumber z = new ComplexNumber(Math.sqrt(2) / 2, Math.sqrt(2) / 2);
 
@@ -70,11 +72,11 @@ public class NesterovAlexanderTest {
         double res = getArg(z);
 
         // Assert
-        assertEquals(res, Math.PI / 4, 1e-15);
+        assertEquals(res, Math.PI / 4, delta);
     }
 
     @Test
-    public void canWorkWithManyOperations() {
+    public void isRightArgMathRelation() {
         // Arrange
         ComplexNumber z1 = new ComplexNumber(5.78, 3.87);
         ComplexNumber z2 = new ComplexNumber(9.34, -0.87);
@@ -84,6 +86,6 @@ public class NesterovAlexanderTest {
         double res2 = getArg(z1) + getArg(z2);
 
         // Assert
-        assertEquals(res1, res2, 1e-10);
+        assertEquals(res1, res2, delta);
     }
 }
