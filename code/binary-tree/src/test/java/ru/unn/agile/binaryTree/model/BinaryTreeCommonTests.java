@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class BinaryTreeTests {
+public class BinaryTreeCommonTests {
     private BinaryTree binaryTree_;
 
     private String  simpleData_ = "SimpleText";
@@ -31,30 +31,6 @@ public class BinaryTreeTests {
         final String result = binaryTree_.find(simpleKey_);
 
         assertEquals(simpleData_, result);
-    }
-
-    @Test
-    public void canAddTwoElements() {
-        final int secondKey     = 3;
-        final String secodData  = "SecondData";
-
-        binaryTree_.add(simpleKey_, simpleData_);
-        binaryTree_.add(secondKey, secodData);
-    }
-
-    @Test
-    public void canFindTwoElements() {
-        final int secondKey     = 3;
-        final String secondData = "SecondData";
-
-        binaryTree_.add(simpleKey_, simpleData_);
-        binaryTree_.add(secondKey, secondData);
-
-        final String firstResult  = binaryTree_.find(simpleKey_);
-        final String secondResult = binaryTree_.find(secondKey);
-
-        assertEquals(firstResult, simpleData_);
-        assertEquals(secondData, secondData);
     }
 
     @Test
