@@ -62,7 +62,9 @@ public class StackTest {
     public void isStackWithoutItemsEmpty() {
         Stack<Integer> stack = new Stack<>();
 
-        assertTrue(stack.isEmpty());
+        boolean isStackEmpty = stack.isEmpty();
+
+        assertTrue(isStackEmpty);
     }
 
     @Test
@@ -112,7 +114,8 @@ public class StackTest {
         stack.push(secondValueToAdd);
         stack.pop();
         stack.pop();
+        boolean isStackEmpty = stack.isEmpty();
 
-        assertTrue(stack.isEmpty());
+        assertTrue(isStackEmpty);
     }
 }
