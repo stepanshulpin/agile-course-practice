@@ -1,6 +1,5 @@
 package ru.unn.agile.interpolation_search.model;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.NoSuchElementException;
@@ -8,13 +7,6 @@ import java.util.NoSuchElementException;
 import static org.junit.Assert.*;
 
 public class InterpolationSearchTest {
-    private InterpolationSearch algorithm;
-
-    @Before
-    public void setUp() {
-        algorithm = new InterpolationSearch();
-    }
-
     @Test
     public void canSearchForOneElement() {
         final Integer[] array = {
@@ -22,7 +14,7 @@ public class InterpolationSearchTest {
         };
         final Integer value = 1;
 
-        final Integer res = algorithm.find(array, value);
+        final Integer res = InterpolationSearch.find(array, value);
 
         final Integer exp = 0;
         assertEquals(exp, res);
@@ -35,7 +27,7 @@ public class InterpolationSearchTest {
         };
         final Integer value = 2;
 
-        final Integer res = algorithm.find(array, value);
+        final Integer res = InterpolationSearch.find(array, value);
 
         final Integer exp = 1;
         assertEquals(exp, res);
@@ -48,7 +40,7 @@ public class InterpolationSearchTest {
         };
         final Integer value = -11;
 
-        final Integer res = algorithm.find(array, value);
+        final Integer res = InterpolationSearch.find(array, value);
 
         final Integer exp = 1;
         assertEquals(exp, res);
@@ -61,7 +53,7 @@ public class InterpolationSearchTest {
         };
         final Integer value = 567;
 
-        final Integer res = algorithm.find(array, value);
+        final Integer res = InterpolationSearch.find(array, value);
 
         final Integer exp = 2;
         assertEquals(exp, res);
@@ -74,7 +66,7 @@ public class InterpolationSearchTest {
         };
         final Integer value = 0;
 
-        final Integer res = algorithm.find(array, value);
+        final Integer res = InterpolationSearch.find(array, value);
 
         final Integer exp = 5;
         assertEquals(exp, res);
@@ -87,7 +79,7 @@ public class InterpolationSearchTest {
         };
         final Integer value = 15;
 
-        final Integer res = algorithm.find(array, value);
+        final Integer res = InterpolationSearch.find(array, value);
 
         final Integer exp = 3;
         assertEquals(exp, res);
@@ -100,7 +92,7 @@ public class InterpolationSearchTest {
         };
         final Integer value = 7;
 
-        final Integer res = algorithm.find(array, value);
+        final Integer res = InterpolationSearch.find(array, value);
 
         final Integer exp = 4;
         assertEquals(exp, res);
@@ -113,7 +105,7 @@ public class InterpolationSearchTest {
         };
         final Integer value = 0;
 
-        Integer res = algorithm.find(array, value);
+        Integer res = InterpolationSearch.find(array, value);
 
         final Integer exp = 0;
         assertEquals(exp, res);
@@ -126,7 +118,7 @@ public class InterpolationSearchTest {
         };
         final Integer value = 6;
 
-        algorithm.find(array, value);
+        InterpolationSearch.find(array, value);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -136,7 +128,7 @@ public class InterpolationSearchTest {
         };
         final Integer value = 6;
 
-        algorithm.find(array, value);
+        InterpolationSearch.find(array, value);
     }
 
     @Test
@@ -148,7 +140,7 @@ public class InterpolationSearchTest {
         }
         final Integer value = maxSize - 1;
 
-        final Integer res = algorithm.find(array, value);
+        final Integer res = InterpolationSearch.find(array, value);
 
         final Integer exp = value;
         assertEquals(exp, res);

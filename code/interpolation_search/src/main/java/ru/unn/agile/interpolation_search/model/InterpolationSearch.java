@@ -3,14 +3,16 @@ package ru.unn.agile.interpolation_search.model;
 import java.util.NoSuchElementException;
 
 public class InterpolationSearch {
+    private InterpolationSearch() {
+    }
 
-    public <T extends Comparable<T>> int find(final Integer[] array, final Integer value) {
+    static public <T extends Comparable<T>> int find(final Integer[] array, final Integer value) {
         if (!isSortedArray(array)) {
             throw new IllegalArgumentException("Array is not sorted");
         }
         return search(array, value);
     }
-    private boolean isSortedArray(final Integer[] array) {
+    static private boolean isSortedArray(final Integer[] array) {
         for (int i = 1; i < array.length; i++) {
             if (array[i] < array[i - 1]) {
                 return false;
@@ -19,7 +21,7 @@ public class InterpolationSearch {
         return true;
     }
 
-    private int search(final Integer[] array, final Integer value) {
+    static private int search(final Integer[] array, final Integer value) {
         int start = 0, end = array.length - 1;
         while (start <= end && value >= array[start] && value <= array[end]) {
             int offset = (start == end) ? 0 : getSearchOffset(array, start, end, value);
@@ -34,7 +36,7 @@ public class InterpolationSearch {
         throw new NoSuchElementException("Cannot find element '" + value + "' in array.");
     }
 
-    private int getSearchOffset(final Integer[] array, final int startIndex,
+    static private int getSearchOffset(final Integer[] array, final int startIndex,
                                 final int endIndex, final int findElement) {
         int range = array[endIndex] - array[startIndex];
         if (range == 0) {
