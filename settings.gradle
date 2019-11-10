@@ -71,6 +71,8 @@ project(":code/korniakov-kirill-lab3/Infrastructure").name = "korniakov-kirill-l
 // Нечесанов Владимир
 // Овчарук Олег
 // Петров Кирилл
+include "code/interpolation_search"
+project(":code/interpolation_search").name = "interpolation_search"
 // Повеликин Ростислав
 // Попков Кирилл
 // Разин Вячеслав
