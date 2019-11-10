@@ -9,31 +9,32 @@ public class NesterovAlexanderTest {
     public void isRightNormComplexNumer() {
         // Arrange
         ComplexNumber z1 = new ComplexNumber(2, 6);
-        ComplexNumber z1_inv = new ComplexNumber(2, -6);
-        double norm_z = Math.pow(2, 2) + Math.pow(6, 2);
+        ComplexNumber z1Inv = new ComplexNumber(2, -6);
+        double normZ = Math.pow(2, 2) + Math.pow(6, 2);
 
         // Act
-        ComplexNumber z = z1.multiply(z1_inv);
+        ComplexNumber z = z1.multiply(z1Inv);
 
         // Assert
-        assertEquals(new ComplexNumber(norm_z, 0), z);
+        assertEquals(new ComplexNumber(normZ, 0), z);
     }
 
     @Test
     public void isRightRelativeMathRelation() {
         // Arrange
         ComplexNumber z1 = new ComplexNumber(2.22, 4.67);
-        ComplexNumber z1_inv = new ComplexNumber(2.22, -4.67);
+        ComplexNumber z1Inv = new ComplexNumber(2.22, -4.67);
 
         // Act
-        ComplexNumber z = z1.add(z1_inv);
+        ComplexNumber z = z1.add(z1Inv);
 
         // Assert
         assertEquals(4.44, z.getReal() + z.getImaginary(), 1e-10);
     }
 
-    public double getArg(ComplexNumber num) {
-        return Math.asin(num.getImaginary() / Math.sqrt(Math.pow(num.getReal(), 2) + Math.pow(num.getImaginary(), 2)));
+    public double getArg(final ComplexNumber num) {
+        double normNum = Math.sqrt(Math.pow(num.getReal(), 2) + Math.pow(num.getImaginary(), 2));
+        return Math.asin(num.getImaginary() / normNum);
     }
 
     @Test
