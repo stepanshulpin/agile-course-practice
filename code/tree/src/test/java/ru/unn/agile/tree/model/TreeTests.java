@@ -1,21 +1,27 @@
 package ru.unn.agile.tree.model;
 
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TreeTests {
+    private Tree tree_;
+
+    @Before
+    public void setUp() {
+        tree_ = new Tree();
+    }
+
     @Test
     public void canCreate() {
-        Tree tree = new Tree();
-
-        assertNotNull(tree);
+        assertNotNull(tree_);
     }
 
     @Test
     public void canAddElement() {
-        Tree tree = new Tree();
         final float number = 0;
 
-        tree.addElement(number);
+        tree_.addElement(number);
+    }
     }
 }
