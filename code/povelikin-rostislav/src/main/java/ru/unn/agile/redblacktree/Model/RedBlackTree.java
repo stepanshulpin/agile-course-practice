@@ -2,7 +2,7 @@ package ru.unn.agile.redblacktree.Model;
 
 public class RedBlackTree {
     // insert
-    // get
+    // find
     // remove
 
     private final int RED = 0;

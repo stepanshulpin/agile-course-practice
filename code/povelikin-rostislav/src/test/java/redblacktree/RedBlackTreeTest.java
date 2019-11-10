@@ -45,4 +45,24 @@ public class RedBlackTreeTest {
 
         assertTrue(tree.find(expected));
     }
+
+    @Test
+    public void canFindEachInserted() {
+        int threshold = 88;
+        int counter = 0;
+        while (counter < threshold) {
+            ++counter;
+            tree.insert(counter);
+            assertTrue(tree.find(counter));
+        }
+    }
+
+    @Test
+    public void cannotFindNotInserted() {
+        int threshold = 88;
+        int counter = 0;
+        while (counter < threshold) {
+            assertFalse(tree.find(++counter));
+        }
+    }
 }
