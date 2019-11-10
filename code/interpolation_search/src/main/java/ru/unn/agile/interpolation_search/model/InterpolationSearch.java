@@ -29,8 +29,6 @@ public class InterpolationSearch {
             }
             if (array[pos] < value) {
                 start = pos + 1;
-            } else {
-                end = pos - 1;
             }
         }
         throw new NoSuchElementException("Cannot find element '" + value + "' in array.");
