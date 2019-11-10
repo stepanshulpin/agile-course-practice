@@ -1,35 +1,35 @@
-package ru.unn.agile.tree.model;
+package ru.unn.agile.binaryTree.model;
 
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class TreeTests {
-    private Tree tree_;
+public class BinaryTreeTests {
+    private BinaryTree binaryTree_;
     private double delta_ = 0.0001;
     @Before
     public void setUp() {
-        tree_ = new Tree();
+        binaryTree_ = new BinaryTree();
     }
 
     @Test
     public void canCreate() {
-        assertNotNull(tree_);
+        assertNotNull(binaryTree_);
     }
 
     @Test
     public void canAddElement() {
         final double number = 4.2;
 
-        tree_.addElement(number);
+        binaryTree_.addElement(number);
     }
 
     @Test
     public void canGetElement() {
         final double number = 4.2;
-        tree_.addElement(number);
+        binaryTree_.addElement(number);
 
-        final double resultNumber = tree_.getElement();
+        final double resultNumber = binaryTree_.getElement();
 
         assertEquals(number, resultNumber, delta_);
     }

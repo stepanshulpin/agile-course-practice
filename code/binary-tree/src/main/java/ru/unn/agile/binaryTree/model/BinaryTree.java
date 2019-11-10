@@ -1,6 +1,6 @@
-package ru.unn.agile.tree.model;
+package ru.unn.agile.binaryTree.model;
 
-public class Tree {
+public class BinaryTree {
     private double _value;
 
     public void addElement(final double value) {
