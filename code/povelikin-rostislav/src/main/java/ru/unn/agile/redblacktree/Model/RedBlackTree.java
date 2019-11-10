@@ -147,10 +147,7 @@ public class RedBlackTree {
                 uncle = node.parent.parent.right;
 
                 if (uncle != nil && uncle.color == RED) {
-                    node.parent.color = BLACK;
-                    uncle.color = BLACK;
-                    node.parent.parent.color = RED;
-                    node = node.parent.parent;
+                    node = updateNodes(node, uncle);
                     continue;
                 }
                 if (node == node.parent.right) {
@@ -165,11 +162,9 @@ public class RedBlackTree {
                 rotateRight(node.parent.parent);
             } else {
                 uncle = node.parent.parent.left;
+
                 if (uncle != nil && uncle.color == RED) {
-                    node.parent.color = BLACK;
-                    uncle.color = BLACK;
-                    node.parent.parent.color = RED;
-                    node = node.parent.parent;
+                    node = updateNodes(node, uncle);
                     continue;
                 }
                 if (node == node.parent.left) {
@@ -185,6 +180,13 @@ public class RedBlackTree {
             }
         }
         root.color = BLACK;
+    }
+
+    private Node updateNodes(Node node, Node uncle) {
+        node.parent.color = BLACK;
+        uncle.color = BLACK;
+        node.parent.parent.color = RED;
+        return node.parent.parent;
     }
 
     private void rotateLeft(Node node) {
