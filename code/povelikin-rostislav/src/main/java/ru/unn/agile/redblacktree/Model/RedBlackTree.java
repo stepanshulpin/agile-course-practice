@@ -5,10 +5,16 @@ public class RedBlackTree {
     // get
     // remove
 
+    private int size = 0;
+
     public RedBlackTree() {
     }
 
     public boolean isEmpty() {
-        return true;
+        return size == 0;
+    }
+
+    public void insert(int i) {
+        ++size;
     }
 }

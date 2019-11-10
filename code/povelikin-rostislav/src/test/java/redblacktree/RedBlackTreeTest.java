@@ -4,18 +4,26 @@ import org.junit.Before;
 import org.junit.Test;
 import ru.unn.agile.redblacktree.Model.RedBlackTree;
 
+import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
 
 public class RedBlackTreeTest {
-    private static RedBlackTree myTree;
+    private static RedBlackTree tree;
 
     @Before
     public void setUp() {
-        myTree = new RedBlackTree();
+        tree = new RedBlackTree();
     }
 
     @Test
     public void defaultConstructedIsEmpty() {
-        assertTrue(myTree.isEmpty());
+        assertTrue(tree.isEmpty());
+    }
+
+    @Test
+    public void canInsert() {
+        tree.insert(8);
+
+        assertFalse(tree.isEmpty());
     }
 }
