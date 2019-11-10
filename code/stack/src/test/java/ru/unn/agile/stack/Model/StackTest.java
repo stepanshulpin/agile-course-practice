@@ -16,7 +16,7 @@ public class StackTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void canThrowWhenPushNullElementToSTack() {
+    public void canThrowWhenPushNullElementToStack() {
         Stack<Integer> stack = new Stack<>();
 
         stack.push(null);
@@ -63,6 +63,17 @@ public class StackTest {
         Stack<Integer> stack = new Stack<>();
 
         assertTrue(stack.isEmpty());
+    }
+
+    @Test
+    public void isStackWithItemsNotEmpty() {
+        Stack<Integer> stack = new Stack<>();
+        Integer valueToAdd = 5;
+
+        stack.push(valueToAdd);
+        boolean isStackEmpty = stack.isEmpty();
+
+        assertFalse(isStackEmpty);
     }
 
     @Test
