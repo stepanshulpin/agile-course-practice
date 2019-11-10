@@ -43,7 +43,7 @@ public class NumberToWordConverter {
     }
 
     private String getHighOrder(final int number) {
-        String[] highOrder = {"", "thousand", "million"};
+        String[] highOrder = {"", "thousand", "million", "billion"};
 
         return highOrder[number];
     }

@@ -186,4 +186,19 @@ public class NumberToWordConverterTest {
         assertEquals("one hundred and twenty three million, "
                 + "four hundred and fifty six thousand, seven hundred and eighty nine", word);
     }
+
+    @Test
+    public void canConvertOneBillion() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(1000000000);
+        assertEquals("one billion", word);
+    }
+
+    @Test
+    public void canConvertCombinationsWithBillion() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+        String word = converter.toWord(2123456789);
+        assertEquals("two billion, one hundred and twenty three million, "
+                + "four hundred and fifty six thousand, seven hundred and eighty nine", word);
+    }
 }
