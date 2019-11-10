@@ -10,6 +10,7 @@ public class RedBlackTree {
     private final Node nil = new Node(-1);
 
     public boolean remove(int value) {
+        --size;
         return find(value);
     }
 
