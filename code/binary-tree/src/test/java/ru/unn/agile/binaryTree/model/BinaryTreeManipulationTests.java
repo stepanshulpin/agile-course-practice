@@ -7,8 +7,8 @@ import static org.junit.Assert.*;
 public class BinaryTreeManipulationTests {
     private BinaryTree binaryTree;
 
-    private String  simpleData = "SimpleText";
     private int     simpleKey  = 42;
+    private String  simpleData = "SimpleText";
 
     @Before
     public void setUp() {

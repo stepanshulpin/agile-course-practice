@@ -13,6 +13,9 @@ public class BinaryTreeMultiNodeTests {
     private int     secondKey = 2;
     private String  secondData = "SecondSimpleText";
 
+    final   int     thirdKey = 3;
+    final   String  thirdData = "ThirdSimpleText";
+
     @Before
     public void setUp() {
         binaryTree = new BinaryTree();
@@ -34,6 +37,39 @@ public class BinaryTreeMultiNodeTests {
 
         assertEquals(firstResult, firstData);
         assertEquals(secondResult, secondData);
+    }
+
+    @Test
+    public void canAddChildToChild() {
+        binaryTree.add(firstKey, firstData);
+        binaryTree.add(secondKey, secondData);
+        binaryTree.add(thirdKey, thirdData);
+
+        final String expectedData = binaryTree.getRoot().getChild().getChild().getValue();
+        assertEquals(expectedData, binaryTree.find(thirdKey));
+    }
+
+    @Test
+    public void connectTwoChildIfMiddleDeleted() {
+        binaryTree.add(firstKey, firstData);
+        binaryTree.add(secondKey, secondData);
+        binaryTree.add(thirdKey, thirdData);
+
+        assertTrue(binaryTree.remove(secondKey));
+
+        final String expectedData = binaryTree.getRoot().getChild().getValue();
+        assertEquals(expectedData, thirdData);
+    }
+
+    @Test
+    public void canRemoveLastOneWithThreeNodes() {
+        binaryTree.add(firstKey, firstData);
+        binaryTree.add(secondKey, secondData);
+        binaryTree.add(thirdKey, thirdData);
+
+        assertTrue(binaryTree.remove(secondKey));
+
+        assertNull(binaryTree.find(secondKey));
     }
 
     @Test

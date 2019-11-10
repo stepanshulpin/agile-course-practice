@@ -28,11 +28,12 @@ public class BinaryTreeFunctionalTests {
 
     @Test
     public void canAddTenValuesAndGetIt() {
-        for (int i = 0; i < 10; ++i) {
+        final int size = 4;
+        for (int i = 0; i < size; ++i) {
             binaryTree.add(i, Integer.toString(i));
         }
 
-        for (int i = 0; i < 10; ++i) {
+        for (int i = 0; i < size; ++i) {
             assertEquals(Integer.toString(i), binaryTree.find(i));
         }
     }

@@ -7,7 +7,7 @@ public class BinaryTree {
         if (rootNode == null) {
             rootNode = new Node(key, value);
         } else {
-            rootNode.addChild(new Node(key, value));
+            addChild(rootNode, new Node(key, value));
         }
     }
 
@@ -30,5 +30,17 @@ public class BinaryTree {
                 return rootNode.removeRecursive(key);
             }
         }
+    }
+
+    static void addChild(final Node root, final Node childNode) {
+        if (root.getChild() != null) {
+            addChild(root.getChild(), childNode);
+        } else {
+            root.setChild(childNode);
+        }
+    }
+
+    Node getRoot() {
+        return rootNode;
     }
 }

@@ -10,12 +10,8 @@ class Node {
         this.key = key;
     }
 
-    void addChild(final Node childNode) {
-        if (this.childNode != null) {
-            this.childNode.addChild(childNode);
-        } else {
-            this.childNode = childNode;
-        }
+    public void setChild(final Node childNode) {
+        this.childNode = childNode;
     }
 
     String findRecursive(final int key) {
@@ -33,6 +29,11 @@ class Node {
     int getKey() {
         return key;
     };
+
+    String getValue() {
+        return value;
+    }
+
     Node getChild() {
         return childNode;
     }
