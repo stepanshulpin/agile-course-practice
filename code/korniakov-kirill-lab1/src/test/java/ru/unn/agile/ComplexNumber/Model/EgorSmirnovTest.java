@@ -10,9 +10,9 @@ public class EgorSmirnovTest {
         var number1 = new ComplexNumber(5.1, 10.1);
         var number2 = new ComplexNumber(-5.1, -10.1);
 
-        var product = number1.add(number2);
+        var sum = number1.add(number2);
 
-        assertEquals(new ComplexNumber(0.0, 0.0), product);
+        assertEquals(new ComplexNumber(0.0, 0.0), sum);
     }
 
     @Test
