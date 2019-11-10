@@ -9,6 +9,10 @@ public class RedBlackTree {
     private final int BLACK = 1;
     private final Node nil = new Node(-1);
 
+    public boolean remove(int i) {
+        return false;
+    }
+
     private class Node {
         int key, color = BLACK;
         Node left = nil, right = nil, parent = nil;

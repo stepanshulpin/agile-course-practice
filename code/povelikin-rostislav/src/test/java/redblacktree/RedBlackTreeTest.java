@@ -65,4 +65,9 @@ public class RedBlackTreeTest {
             assertFalse(tree.find(++counter));
         }
     }
+
+    @Test
+    public void removeReturnsFalseIfNotFound() {
+        assertFalse(tree.remove(42));
+    }
 }
