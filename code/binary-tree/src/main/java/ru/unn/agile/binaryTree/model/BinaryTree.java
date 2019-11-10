@@ -12,6 +12,10 @@ public class BinaryTree {
     }
 
     public String find(final int key) {
-        return rootNode.findRecursive(key);
+        if (rootNode == null) {
+            return null;
+        } else {
+            return rootNode.findRecursive(key);
+        }
     }
 }

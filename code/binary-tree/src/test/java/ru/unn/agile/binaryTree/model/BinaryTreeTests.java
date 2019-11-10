@@ -56,4 +56,11 @@ public class BinaryTreeTests {
         assertEquals(firstResult, simpleData_);
         assertEquals(secondData, secondData);
     }
+
+    @Test
+    public void noErrorOnEmptyTree() {
+        final String result = binaryTree_.find(simpleKey_);
+
+        assertNull(result);
+    }
 }
