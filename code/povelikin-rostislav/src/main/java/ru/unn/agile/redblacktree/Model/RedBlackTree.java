@@ -28,13 +28,50 @@ public class RedBlackTree {
     }
 
     public boolean remove(int value) {
-        boolean found = find(value);
+        Node z = getNode(value);
 
-        if (found) {
+        if (z != nil) {
             --size;
+        } else {
+            return false;
         }
 
-        return found;
+        Node x;
+        Node y = z; // temporary reference y
+
+        int y_original_color = y.color;
+
+        if (z.left == nil) {
+            x = z.right;
+            transplant(z, z.right);
+        } else if(z.right == nil) {
+            x = z.left;
+            transplant(z, z.left);
+        } else {
+            y = treeMinimum(z.right);
+            y_original_color = y.color;
+            x = y.right;
+            if (y.parent == z) {
+                x.parent = y;
+            }
+            else {
+                transplant(y, y.right);
+                y.right = z.right;
+                y.right.parent = y;
+            }
+
+            transplant(z, y);
+
+            y.left = z.left;
+            y.left.parent = y;
+            y.color = z.color;
+        }
+
+        if(y_original_color==BLACK) {
+            deleteFix(x);
+        }
+
+        return true;
     }
 
     public boolean find(int expected) {
@@ -56,6 +93,32 @@ public class RedBlackTree {
             } else {
                 if (temp.right == nil) {
                     return false;
+                } else {
+                    temp = temp.right;
+                }
+            }
+        }
+    }
+
+    private Node getNode(int expected) {
+        if (root == nil) {
+            return nil;
+        }
+
+        Node temp = root;
+
+        while (true) {
+            if (expected == temp.key) {
+                return temp;
+            } else if (expected < temp.key) {
+                if (temp.left == nil) {
+                    return nil;
+                } else {
+                    temp = temp.left;
+                }
+            } else {
+                if (temp.right == nil) {
+                    return nil;
                 } else {
                     temp = temp.right;
                 }
@@ -194,5 +257,81 @@ public class RedBlackTree {
             left.parent = nil;
             root = left;
         }
+    }
+
+    private void transplant(Node target, Node with){
+        if(target.parent == nil){
+            root = with;
+        }else if(target == target.parent.left){
+            target.parent.left = with;
+        }else
+            target.parent.right = with;
+        with.parent = target.parent;
+    }
+
+    private void deleteFix(Node x){
+        while(x!=root && x.color == BLACK){
+            if(x == x.parent.left){
+                Node w = x.parent.right;
+                if(w.color == RED){
+                    w.color = BLACK;
+                    x.parent.color = RED;
+                    rotateLeft(x.parent);
+                    w = x.parent.right;
+                }
+                if(w.left.color == BLACK && w.right.color == BLACK){
+                    w.color = RED;
+                    x = x.parent;
+                    continue;
+                }
+                else if(w.right.color == BLACK){
+                    w.left.color = BLACK;
+                    w.color = RED;
+                    rotateRight(w);
+                    w = x.parent.right;
+                }
+                if(w.right.color == RED){
+                    w.color = x.parent.color;
+                    x.parent.color = BLACK;
+                    w.right.color = BLACK;
+                    rotateLeft(x.parent);
+                    x = root;
+                }
+            }else{
+                Node w = x.parent.left;
+                if(w.color == RED){
+                    w.color = BLACK;
+                    x.parent.color = RED;
+                    rotateRight(x.parent);
+                    w = x.parent.left;
+                }
+                if(w.right.color == BLACK && w.left.color == BLACK){
+                    w.color = RED;
+                    x = x.parent;
+                    continue;
+                }
+                else if(w.left.color == BLACK){
+                    w.right.color = BLACK;
+                    w.color = RED;
+                    rotateLeft(w);
+                    w = x.parent.left;
+                }
+                if(w.left.color == RED){
+                    w.color = x.parent.color;
+                    x.parent.color = BLACK;
+                    w.left.color = BLACK;
+                    rotateRight(x.parent);
+                    x = root;
+                }
+            }
+        }
+        x.color = BLACK;
+    }
+
+    private Node treeMinimum(Node subTreeRoot){
+        while(subTreeRoot.left != nil) {
+            subTreeRoot = subTreeRoot.left;
+        }
+        return subTreeRoot;
     }
 }
