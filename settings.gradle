@@ -135,6 +135,8 @@ project(":code/datastructure-set").name = "datastructure-set"
 include "code/mortgage-calculator"
 project(":code/mortgage-calculator").name = "mortgage-calculator-Model"
 // Шумихин Сергей
+include "code/tree"
+project(":code/tree").name = "tree"
 // Юферев Кирилл
 include "code/stack"
 project(":code/stack").name = "stack-Model"
