@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class TreeTests {
     private Tree tree_;
-
+    private double delta_ = 0.0001;
     @Before
     public void setUp() {
         tree_ = new Tree();
@@ -19,9 +19,18 @@ public class TreeTests {
 
     @Test
     public void canAddElement() {
-        final float number = 0;
+        final double number = 4.2;
 
         tree_.addElement(number);
     }
+
+    @Test
+    public void canGetElement() {
+        final double number = 4.2;
+        tree_.addElement(number);
+
+        final double resultNumber = tree_.getElement();
+
+        assertEquals(number, resultNumber, delta_);
     }
 }

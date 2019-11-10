@@ -6,4 +6,8 @@ public class Tree {
     public void addElement(final double value) {
         _value = value;
     }
+
+    public double getElement() {
+        return _value;
+    }
 }
