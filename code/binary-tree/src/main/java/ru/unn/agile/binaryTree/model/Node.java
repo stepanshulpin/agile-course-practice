@@ -3,15 +3,20 @@ package ru.unn.agile.binaryTree.model;
 class Node {
     private  int    key;
     private  String value;
-    private  Node   childNode = null;
+
+    private  Node   rightChild;
+    private  Node   leftChild;
 
     Node(final int key, final String value) {
         this.value = value;
         this.key = key;
+
+        this.rightChild = null;
+        this.leftChild  = null;
     }
 
     public void setChild(final Node childNode) {
-        this.childNode = childNode;
+        this.rightChild = childNode;
     }
 
     int getKey() {
@@ -22,15 +27,15 @@ class Node {
         return value;
     }
 
-    Node getChild() {
-        return childNode;
+    Node getRightChild() {
+        return rightChild;
     }
 
     int getHeight() {
-        if (childNode == null) {
+        if (rightChild == null) {
             return 1;
         } else {
-            return childNode.getHeight() + 1;
+            return rightChild.getHeight() + 1;
         }
     }
 }
