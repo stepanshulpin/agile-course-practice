@@ -5,46 +5,46 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class BinaryTreeMultiNodeTests {
-    private BinaryTree binaryTree_;
+    private BinaryTree binaryTree;
 
-    private int     firstKey_  = 1;
-    private String  firstData_ = "FirstSimpleText";
+    private int     firstKey = 1;
+    private String  firstData = "FirstSimpleText";
 
-    private int     secondKey_  = 2;
-    private String  secondData_ = "SecondSimpleText";
+    private int     secondKey = 2;
+    private String  secondData = "SecondSimpleText";
 
     @Before
     public void setUp() {
-        binaryTree_ = new BinaryTree();
+        binaryTree = new BinaryTree();
     }
 
     @Test
     public void canAddTwoElements() {
-        binaryTree_.add(firstKey_, firstData_);
-        binaryTree_.add(secondKey_, secondData_);
+        binaryTree.add(firstKey, firstData);
+        binaryTree.add(secondKey, secondData);
     }
 
     @Test
     public void canFindTwoElements() {
-        binaryTree_.add(firstKey_, firstData_);
-        binaryTree_.add(secondKey_, secondData_);
+        binaryTree.add(firstKey, firstData);
+        binaryTree.add(secondKey, secondData);
 
-        final String firstResult  = binaryTree_.find(firstKey_);
-        final String secondResult = binaryTree_.find(secondKey_);
+        final String firstResult  = binaryTree.find(firstKey);
+        final String secondResult = binaryTree.find(secondKey);
 
-        assertEquals(firstResult, firstData_);
-        assertEquals(secondResult, secondData_);
+        assertEquals(firstResult, firstData);
+        assertEquals(secondResult, secondData);
     }
 
     @Test
     public void canRemoveRootChildShouldSurvive() {
-        binaryTree_.add(firstKey_, firstData_);
-        binaryTree_.add(secondKey_, secondData_);
+        binaryTree.add(firstKey, firstData);
+        binaryTree.add(secondKey, secondData);
 
-        assertTrue(binaryTree_.remove(firstKey_));
-        final String  childData = binaryTree_.find(secondKey_);
+        assertTrue(binaryTree.remove(firstKey));
+        final String  childData = binaryTree.find(secondKey);
 
-        assertEquals(secondData_, childData);
+        assertEquals(secondData, childData);
     }
 
 }

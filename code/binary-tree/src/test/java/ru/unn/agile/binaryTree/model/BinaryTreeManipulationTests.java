@@ -5,28 +5,28 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class BinaryTreeManipulationTests {
-    private BinaryTree binaryTree_;
+    private BinaryTree binaryTree;
 
-    private String  simpleData_ = "SimpleText";
-    private int     simpleKey_  = 42;
+    private String  simpleData = "SimpleText";
+    private int     simpleKey  = 42;
 
     @Before
     public void setUp() {
-        binaryTree_ = new BinaryTree();
-        binaryTree_.add(simpleKey_, simpleData_);
+        binaryTree = new BinaryTree();
+        binaryTree.add(simpleKey, simpleData);
     }
 
     @Test
     public void canFindElement() {
-        final String result = binaryTree_.find(simpleKey_);
+        final String result = binaryTree.find(simpleKey);
 
-        assertEquals(simpleData_, result);
+        assertEquals(simpleData, result);
     }
 
     @Test
     public void canRemoveNode() {
-        binaryTree_.remove(simpleKey_);
-        final String result = binaryTree_.find(simpleKey_);
+        binaryTree.remove(simpleKey);
+        final String result = binaryTree.find(simpleKey);
 
         assertNull(result);
     }
@@ -35,13 +35,13 @@ public class BinaryTreeManipulationTests {
     public void noErrorForFindNotExistsKey() {
         final int notExistsKey = 666;
 
-        assertNull(binaryTree_.find(notExistsKey));
+        assertNull(binaryTree.find(notExistsKey));
     }
 
     @Test
     public void noErrorForRemoveNotExistsKey() {
         final int notExistsKey = 666;
 
-        assertFalse(binaryTree_.remove(notExistsKey));
+        assertFalse(binaryTree.remove(notExistsKey));
     }
 }

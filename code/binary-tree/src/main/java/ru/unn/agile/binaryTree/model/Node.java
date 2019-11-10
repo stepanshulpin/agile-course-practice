@@ -1,40 +1,44 @@
 package ru.unn.agile.binaryTree.model;
 
 public class Node {
-    private  int    _key;
-    private  String _value;
-    private  Node   _childNode = null;
+    private  int    key;
+    private  String value;
+    private  Node   childNode = null;
 
     public Node(final int key, final String value) {
-        _value  = value;
-        _key    = key;
+        this.value = value;
+        this.key = key;
     }
 
-    public void addChild(Node childNode) {
-        _childNode = childNode;
+    public void addChild(final Node childNode) {
+        this.childNode = childNode;
     }
 
-    String findRecursive(int key) {
-        if (key != _key) {
-            if (_childNode != null) {
-                return _childNode.findRecursive(key);
+    String findRecursive(final int key) {
+        if (key != this.key) {
+            if (childNode != null) {
+                return childNode.findRecursive(key);
             } else {
                 return null;
             }
         } else {
-            return _value;
+            return value;
         }
     }
 
-    int getKey()    { return _key; };
-    Node getChild() { return _childNode; }
+    int getKey() {
+        return key;
+    };
+    Node getChild() {
+        return childNode;
+    }
 
-    boolean removeRecursive(int key) {
-        if (_childNode == null) {
+    boolean removeRecursive(final int key) {
+        if (childNode == null) {
             return false;
         }
-        if (_childNode.getKey() == key) {
-            _childNode = _childNode.getChild();
+        if (childNode.getKey() == key) {
+            childNode = childNode.getChild();
             return true;
         } else {
             return removeRecursive(key);

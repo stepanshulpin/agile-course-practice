@@ -5,24 +5,24 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class BinaryTreeFunctionalTests {
-    private BinaryTree binaryTree_;
+    private BinaryTree binaryTree;
 
-    private int     firstKey_  = 1;
-    private String  firstData_ = "FirstSimpleText";
+    private int     firstKey = 1;
+    private String  firstData = "FirstSimpleText";
 
-    private int     secondKey_  = 2;
-    private String  secondData_ = "SecondSimpleText";
+    private int     secondKey = 2;
+    private String  secondData = "SecondSimpleText";
 
     @Before
     public void setUp() {
-        binaryTree_ = new BinaryTree();
-        binaryTree_.add(firstKey_, firstData_);
+        binaryTree = new BinaryTree();
+        binaryTree.add(firstKey, firstData);
     }
 
     @Test
     public void canAddAfterDeletingRoot() {
-        assertTrue(binaryTree_.remove(firstKey_));
+        assertTrue(binaryTree.remove(firstKey));
 
-        binaryTree_.add(secondKey_, secondData_);
+        binaryTree.add(secondKey, secondData);
     }
 }
