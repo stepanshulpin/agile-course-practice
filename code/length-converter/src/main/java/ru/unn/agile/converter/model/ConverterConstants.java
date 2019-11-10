@@ -1,4 +1,4 @@
-package ru.unn.agile.converter;
+package ru.unn.agile.converter.model;
 
 final class ConverterConstants {
     static final double METER_TO_METER = 1.0;

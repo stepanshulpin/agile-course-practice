@@ -1,9 +1,9 @@
-package ru.unn.agile.converter;
+package ru.unn.agile.converter.model;
 
 import java.util.HashMap;
 
-import static ru.unn.agile.converter.ConverterConstants.*;
-import static ru.unn.agile.converter.LengthType.*;
+import static ru.unn.agile.converter.model.ConverterConstants.*;
+import static ru.unn.agile.converter.model.LengthType.*;
 
 public class LengthConverter {
     private double value;

@@ -1,4 +1,4 @@
-package ru.unn.agile.converter;
+package ru.unn.agile.converter.model;
 
 import org.junit.Test;
 
