@@ -141,4 +141,68 @@ public class PriorityQueueTest {
 
         assertEquals(2, val1, val2);
     }
+
+    @Test
+    public void canClear() {
+        var pq = new PriorityQueue<Integer>();
+
+        pq.push(1);
+        pq.push(2);
+        pq.clear();
+
+        assertEquals(0, pq.size());
+    }
+
+    @Test
+    public void canClearWithRightPeek() {
+        var pq = new PriorityQueue<Integer>();
+
+        pq.push(1);
+        pq.push(2);
+        pq.clear();
+        var v1 = pq.peek();
+
+        assertNull(v1);
+    }
+
+    @Test
+    public void canAddSmthAfterClean() {
+        var pq = new PriorityQueue<Integer>();
+
+        pq.push(1);
+        pq.push(2);
+        pq.clear();
+        pq.push(3);
+        int elem = pq.peek();
+
+        assertEquals(3, elem);
+    }
+
+    @Test
+    public void canWorkWithFloats() {
+        var pq = new PriorityQueue<Float>();
+
+        pq.push(1.0f);
+        pq.push(4.0f);
+        pq.push(3.0f);
+        pq.push(2.0f);
+
+        float v1 = pq.pop();
+        float v2 = pq.pop();
+        float v3 = pq.pop();
+        float v4 = pq.pop();
+
+        assertEquals(4.0f, v1, 0.0f);
+        assertEquals(3.0f, v2, 0.0f);
+        assertEquals(2.0f, v3, 0.0f);
+        assertEquals(1.0f, v4, 0.0f);
+    }
+
+    @Test
+    public void canHandleNotEmptyQueue() {
+        var pq = new PriorityQueue<Integer>();
+        pq.push(1);
+        boolean empty = pq.isEmpty();
+        assertFalse(empty);
+    }
 }

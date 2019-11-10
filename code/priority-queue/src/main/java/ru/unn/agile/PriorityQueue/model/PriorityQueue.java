@@ -1,8 +1,6 @@
 package ru.unn.agile.PriorityQueue.model;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 public class PriorityQueue<E extends Comparable<? super E>> {
     private ArrayList<E> arr = new ArrayList<E>();
@@ -42,4 +40,7 @@ public class PriorityQueue<E extends Comparable<? super E>> {
         return e;
     }
 
+    public void clear() {
+        arr.clear();
+    }
 }
