@@ -6,19 +6,53 @@ import static org.junit.Assert.*;
 
 public class NodeTests {
 
-    private int     simpleKey  = 42;
+    private int     simpleKey  = 0;
     private String  simpleData = "SimpleText";
+
+    private Node rootNode;
+    private Node firstChild;
+    private Node secondChild;
+
+    private final int firstNodeKey = 1;
+    private final int secondNodeKey = 2;
+
+    private String firstChildData  = "FirstSimpleData";
+    private String secondChildData = "SecondSimpleData";
+
+    @Before
+    public void setUp() {
+        rootNode    = new Node(simpleKey, simpleData);
+        firstChild  = new Node(firstNodeKey, firstChildData);
+        secondChild = new Node(secondNodeKey, secondChildData);
+    }
 
     @Test
     public void canAddChildToChild() {
+        rootNode.addChild(firstChild);
+        rootNode.addChild(secondChild);
+
+        assertEquals(firstNodeKey, rootNode.getChild().getKey());
+    }
+
+    @Test
+    public void connectTwoChildIfMiddleDeleted() {
         Node node = new Node(simpleKey, simpleData);
-        final int firstNodeKey = 1;
-        Node firstChild  = new Node(firstNodeKey, "FirstSimpleData");
-        Node secondChild = new Node(2, "SecondSimpleData");
+        rootNode.addChild(firstChild);
+        rootNode.addChild(secondChild);
 
-        node.addChild(firstChild);
-        node.addChild(secondChild);
+        assertTrue(rootNode.removeRecursive(firstNodeKey));
 
-        assertEquals(firstNodeKey, node.getChild().getKey());
+        assertEquals(secondChildData, rootNode.findRecursive(secondNodeKey));
+    }
+
+    @Test
+    public void removeLastOneWithThreeNodes() {
+        Node node = new Node(simpleKey, simpleData);
+        rootNode.addChild(firstChild);
+        rootNode.addChild(secondChild);
+
+        assertTrue(rootNode.removeRecursive(secondNodeKey));
+
+        assertNull(rootNode.findRecursive(secondNodeKey));
     }
 }

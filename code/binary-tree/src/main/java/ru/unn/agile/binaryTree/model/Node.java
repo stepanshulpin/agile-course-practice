@@ -45,7 +45,7 @@ public class Node {
             childNode = childNode.getChild();
             return true;
         } else {
-            return removeRecursive(key);
+            return childNode.removeRecursive(key);
         }
     }
 

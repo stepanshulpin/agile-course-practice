@@ -37,4 +37,25 @@ public class BinaryTreeFunctionalTests {
         }
     }
 
+    @Test
+    public void canAddTenRemoveMiddleAndGetRest() {
+        final int middleKey = 2;
+        final int size      = 4;
+
+        for (int i = 0; i < size; ++i) {
+            binaryTree.add(i, Integer.toString(i));
+        }
+
+        assertTrue(binaryTree.remove(middleKey));
+
+        for (int i = 0; i < size; ++i) {
+            System.out.println(i);
+            if (i != middleKey) {
+                assertEquals(Integer.toString(i), binaryTree.find(i));
+            } else {
+                assertNull(binaryTree.find(i));
+            }
+        }
+    }
+
 }
