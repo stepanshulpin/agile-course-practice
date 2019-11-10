@@ -59,11 +59,6 @@ public class ComplexNumber {
         return im;
     }
 
-    public double getArg() {
-        double normNum = Math.sqrt(Math.pow(re, 2) + Math.pow(im, 2));
-        return Math.asin(im / normNum);
-    }
-
     public String toString() {
         return Formatter.getFormatted(this);
     }

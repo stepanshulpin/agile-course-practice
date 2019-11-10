@@ -32,51 +32,20 @@ public class NesterovAlexanderTest {
         assertEquals(4.44, z.getReal() + z.getImaginary(), 1e-10);
     }
 
-    @Test
-    public void canArgNumberHalfPI() {
-        // Arrange
-        ComplexNumber z = new ComplexNumber(0, 1);
-
-        // Act
-        double res = z.getArg();
-
-        // Assert
-        assertEquals(res, Math.PI / 2, 1e-15);
+    public double getArg(final ComplexNumber num) {
+        double normNum = Math.sqrt(Math.pow(num.getReal(), 2) + Math.pow(num.getImaginary(), 2));
+        return Math.asin(num.getImaginary() / normNum);
     }
 
     @Test
-    public void canArgNumberZero() {
-        // Arrange
-        ComplexNumber z = new ComplexNumber(1, 0);
-
-        // Act
-        double res = z.getArg();
-
-        // Assert
-        assertEquals(res, 0, 1e-15);
-    }
-
-    @Test
-    public void canArgNumberQuarterPI() {
-        // Arrange
-        ComplexNumber z = new ComplexNumber(Math.sqrt(2) / 2, Math.sqrt(2) / 2);
-
-        // Act
-        double res = z.getArg();
-
-        // Assert
-        assertEquals(res, Math.PI / 4, 1e-15);
-    }
-
-    @Test
-    public void canWorkWithArgMathRelations() {
+    public void canWorkWithManyOperations() {
         // Arrange
         ComplexNumber z1 = new ComplexNumber(5.78, 3.87);
         ComplexNumber z2 = new ComplexNumber(9.34, -0.87);
 
         // Act
-        double res1 = (z1.multiply(z2)).getArg();
-        double res2 = z1.getArg() + z2.getArg();
+        double res1 = getArg(z1.multiply(z2));
+        double res2 = getArg(z1) + getArg(z2);
 
         // Assert
         assertEquals(res1, res2, 1e-10);
