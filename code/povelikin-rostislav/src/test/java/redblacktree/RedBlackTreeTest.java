@@ -44,6 +44,12 @@ public class RedBlackTreeTest {
     }
 
     @Test
+    public void notEmptyTreeSizeIsNotZero() {
+        tree.insert(42);
+        assertFalse(tree.getSize() == 0);
+    }
+
+    @Test
     public void insertionChangesSize() {
         int threshold = 8;
         int counter = 0;
