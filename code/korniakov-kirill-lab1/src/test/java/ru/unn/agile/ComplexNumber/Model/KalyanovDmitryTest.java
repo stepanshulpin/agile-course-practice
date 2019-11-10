@@ -1,7 +1,7 @@
 package ru.unn.agile.ComplexNumber.Model;
 
 import org.junit.Test;
-import ru.unn.agile.complexnumber.model.ComplexNumber;
+import ru.unn.agile.ComplexNumber.model.ComplexNumber;
 
 import static org.junit.Assert.*;
 
