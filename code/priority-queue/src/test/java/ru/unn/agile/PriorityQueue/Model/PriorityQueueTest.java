@@ -14,9 +14,28 @@ public class PriorityQueueTest {
     }
 
     @Test
-    public void canCheckNullSize() {
+    public void canHandleEmptyQueue() {
         var pq = new PriorityQueue();
         boolean empty = pq.isEmpty();
         assertTrue(empty);
     }
+
+    @Test
+    public void canCheckNullSize() {
+        var pq = new PriorityQueue();
+        var size = pq.size();
+        assertEquals(size, 0);
+    }
+
+    @Test
+    public void canCheckNotNullSize() {
+        var pq = new PriorityQueue<Integer>();
+
+        pq.push(1);
+        pq.push(2);
+
+        var size = pq.size();
+        assertEquals(size, 2);
+    }
+
 }
