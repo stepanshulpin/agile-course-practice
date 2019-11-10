@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class BinaryTreeCommonTests {
+public class BinaryTreeCreateTests {
     private BinaryTree binaryTree_;
 
     private String  simpleData_ = "SimpleText";
@@ -26,25 +26,7 @@ public class BinaryTreeCommonTests {
     }
 
     @Test
-    public void canFindElement() {
-        binaryTree_.add(simpleKey_, simpleData_);
-        final String result = binaryTree_.find(simpleKey_);
-
-        assertEquals(simpleData_, result);
-    }
-
-    @Test
     public void noErrorOnEmptyTree() {
-        final String result = binaryTree_.find(simpleKey_);
-
-        assertNull(result);
-    }
-
-    @Test
-    public void canRemoveNode() {
-        binaryTree_.add(simpleKey_, simpleData_);
-
-        binaryTree_.remove(simpleKey_);
         final String result = binaryTree_.find(simpleKey_);
 
         assertNull(result);
