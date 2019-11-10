@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class NesterovAlexanderTest {
     @Test
-    public void isRightNormComplexNumer() {
+    public void isRightNormComplexNumber() {
         // Arrange
         ComplexNumber z1 = new ComplexNumber(2, 6);
         ComplexNumber z1Inv = new ComplexNumber(2, -6);
@@ -67,7 +67,7 @@ public class NesterovAlexanderTest {
         ComplexNumber z = new ComplexNumber(Math.sqrt(2) / 2, Math.sqrt(2) / 2);
 
         // Act
-        double res = getArg(z);;
+        double res = getArg(z);
 
         // Assert
         assertEquals(res, Math.PI / 4, 1e-15);
