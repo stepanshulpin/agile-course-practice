@@ -38,4 +38,26 @@ public class PriorityQueueTest {
         assertEquals(size, 2);
     }
 
+    @Test
+    public void canPushAndPopSingleElement() {
+        var pq = new PriorityQueue<Integer>();
+
+        Integer elem1 = 1;
+        pq.push(1);
+        Integer elem2 = pq.pop();
+
+        assertEquals(elem1, elem2);
+    }
+
+    @Test
+    public void canHandleDecrease() {
+        var pq = new PriorityQueue<Integer>();
+
+        pq.push(1);
+        pq.push(2);
+        pq.pop();
+
+        assertEquals(pq.size(), 1);
+    }
+
 }
