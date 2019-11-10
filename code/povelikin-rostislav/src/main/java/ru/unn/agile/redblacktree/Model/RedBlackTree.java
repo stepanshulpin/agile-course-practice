@@ -9,8 +9,8 @@ public class RedBlackTree {
     private final int BLACK = 1;
     private final Node nil = new Node(-1);
 
-    public boolean remove(int i) {
-        return false;
+    public boolean remove(int value) {
+        return find(value);
     }
 
     private class Node {
@@ -61,9 +61,9 @@ public class RedBlackTree {
         }
     }
 
-    public void insert(int i) {
+    public void insert(int value) {
         ++size;
-        var node = new Node(i);
+        var node = new Node(value);
 
         Node temp = root;
 
