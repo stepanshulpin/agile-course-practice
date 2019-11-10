@@ -2,22 +2,22 @@ package ru.unn.agile.redblacktree.Model;
 
 public class RedBlackTree {
     private class Node {
-        int key, color = BLACK;
-        Node left = nil, right = nil, parent = nil;
+        private int key, color = black;
+        private Node left = nil, right = nil, parent = nil;
 
-        Node(int key) {
+        Node(final int key) {
             this.key = key;
         }
     }
 
-    private final int RED = 0;
-    private final int BLACK = 1;
+    private final int red = 0;
+    private final int black = 1;
     private final Node nil = new Node(-1);
 
     private Node root = nil;
     private int size = 0;
 
-    public RedBlackTree() {}
+    public RedBlackTree() { }
 
     public boolean isEmpty() {
         return size == 0;
@@ -27,7 +27,7 @@ public class RedBlackTree {
         return size;
     }
 
-    public boolean remove(int value) {
+    public boolean remove(final int value) {
         Node z = getNode(value);
 
         if (z != nil) {
@@ -39,7 +39,7 @@ public class RedBlackTree {
         Node x;
         Node y = z; // temporary reference y
 
-        int y_original_color = y.color;
+        int yOriginalColor = y.color;
 
         if (z.left == nil) {
             x = z.right;
@@ -49,12 +49,11 @@ public class RedBlackTree {
             transplant(z, z.left);
         } else {
             y = treeMinimum(z.right);
-            y_original_color = y.color;
+            yOriginalColor = y.color;
             x = y.right;
             if (y.parent == z) {
                 x.parent = y;
-            }
-            else {
+            } else {
                 transplant(y, y.right);
                 y.right = z.right;
                 y.right.parent = y;
@@ -67,19 +66,19 @@ public class RedBlackTree {
             y.color = z.color;
         }
 
-        if(y_original_color==BLACK) {
+        if (yOriginalColor == black) {
             deleteFix(x);
         }
 
         return true;
     }
 
-    public boolean find(int expected) {
+    public boolean find(final int expected) {
         Node found = getNode(expected);
         return found != nil;
     }
 
-    private Node getNode(int expected) {
+    private Node getNode(final int expected) {
         if (root == nil) {
             return nil;
         }
@@ -105,7 +104,7 @@ public class RedBlackTree {
         }
     }
 
-    public void insert(int value) {
+    public void insert(final int value) {
         ++size;
         var node = new Node(value);
 
@@ -113,10 +112,10 @@ public class RedBlackTree {
 
         if (root == nil) {
             root = node;
-            node.color = BLACK;
+            node.color = black;
             node.parent = nil;
         } else {
-            node.color = RED;
+            node.color = red;
             while (true) {
                 if (node.key < temp.key) {
                     if (temp.left == nil) {
@@ -141,12 +140,12 @@ public class RedBlackTree {
     }
 
     private void fixTree(Node node) {
-        while (node.parent.color == RED) {
+        while (node.parent.color == red) {
             Node uncle;
             if (node.parent == node.parent.parent.left) {
                 uncle = node.parent.parent.right;
 
-                if (uncle != nil && uncle.color == RED) {
+                if (uncle != nil && uncle.color == red) {
                     node = updateNodes(node, uncle);
                     continue;
                 }
@@ -155,15 +154,15 @@ public class RedBlackTree {
                     node = node.parent;
                     rotateLeft(node);
                 }
-                node.parent.color = BLACK;
-                node.parent.parent.color = RED;
+                node.parent.color = black;
+                node.parent.parent.color = red;
                 //if the "else if" code hasn't executed, this
                 //is a case where we only need a single rotation
                 rotateRight(node.parent.parent);
             } else {
                 uncle = node.parent.parent.left;
 
-                if (uncle != nil && uncle.color == RED) {
+                if (uncle != nil && uncle.color == red) {
                     node = updateNodes(node, uncle);
                     continue;
                 }
@@ -172,20 +171,20 @@ public class RedBlackTree {
                     node = node.parent;
                     rotateRight(node);
                 }
-                node.parent.color = BLACK;
-                node.parent.parent.color = RED;
+                node.parent.color = black;
+                node.parent.parent.color = red;
                 //if the "else if" code hasn't executed, this
                 //is a case where we only need a single rotation
                 rotateLeft(node.parent.parent);
             }
         }
-        root.color = BLACK;
+        root.color = black;
     }
 
     private Node updateNodes(Node node, Node uncle) {
-        node.parent.color = BLACK;
-        uncle.color = BLACK;
-        node.parent.parent.color = RED;
+        node.parent.color = black;
+        uncle.color = black;
+        node.parent.parent.color = red;
         return node.parent.parent;
     }
 
@@ -203,7 +202,7 @@ public class RedBlackTree {
             }
             node.right = node.right.left;
             node.parent.left = node;
-        } else {//Need to rotate root
+        } else {
             Node right = root.right;
             root.right = right.left;
             right.left.parent = root;
@@ -214,7 +213,7 @@ public class RedBlackTree {
         }
     }
 
-    private void rotateRight(Node node) {
+    private void rotateRight(final Node node) {
         if (node.parent != nil) {
             if (node == node.parent.left) {
                 node.parent.left = node.left;
@@ -229,7 +228,7 @@ public class RedBlackTree {
             }
             node.left = node.left.right;
             node.parent.right = node;
-        } else {//Need to rotate root
+        } else {
             Node left = root.left;
             root.left = root.left.right;
             left.right.parent = root;
@@ -240,76 +239,74 @@ public class RedBlackTree {
         }
     }
 
-    private void transplant(Node target, Node with){
-        if(target.parent == nil){
+    private void transplant(final Node target, final Node with){
+        if (target.parent == nil) {
             root = with;
-        }else if(target == target.parent.left){
+        } else if (target == target.parent.left) {
             target.parent.left = with;
-        }else
+        } else {
             target.parent.right = with;
+        }
         with.parent = target.parent;
     }
 
-    private void deleteFix(Node x){
-        while(x!=root && x.color == BLACK){
-            if(x == x.parent.left){
+    private void deleteFix(Node x) {
+        while (x!=root && x.color == black) {
+            if (x == x.parent.left) {
                 Node w = x.parent.right;
-                if(w.color == RED){
-                    w.color = BLACK;
-                    x.parent.color = RED;
+                if (w.color == red) {
+                    w.color = black;
+                    x.parent.color = red;
                     rotateLeft(x.parent);
                     w = x.parent.right;
                 }
-                if(w.left.color == BLACK && w.right.color == BLACK){
-                    w.color = RED;
+                if (w.left.color == black && w.right.color == black) {
+                    w.color = red;
                     x = x.parent;
                     continue;
-                }
-                else if(w.right.color == BLACK){
-                    w.left.color = BLACK;
-                    w.color = RED;
+                } else if (w.right.color == black) {
+                    w.left.color = black;
+                    w.color = red;
                     rotateRight(w);
                     w = x.parent.right;
-                }
-                if(w.right.color == RED){
+                } if(w.right.color == red) {
                     w.color = x.parent.color;
-                    x.parent.color = BLACK;
-                    w.right.color = BLACK;
+                    x.parent.color = black;
+                    w.right.color = black;
                     rotateLeft(x.parent);
                     x = root;
                 }
-            }else{
+            } else {
                 Node w = x.parent.left;
-                if(w.color == RED){
-                    w.color = BLACK;
-                    x.parent.color = RED;
+                if (w.color == red) {
+                    w.color = black;
+                    x.parent.color = red;
                     rotateRight(x.parent);
                     w = x.parent.left;
                 }
-                if(w.right.color == BLACK && w.left.color == BLACK){
-                    w.color = RED;
+                if (w.right.color == black && w.left.color == black) {
+                    w.color = red;
                     x = x.parent;
                     continue;
-                }
-                else if(w.left.color == BLACK){
-                    w.right.color = BLACK;
-                    w.color = RED;
+                } else if (w.left.color == black) {
+                    w.right.color = black;
+                    w.color = red;
                     rotateLeft(w);
                     w = x.parent.left;
                 }
-                if(w.left.color == RED){
+                if (w.left.color == red) {
                     w.color = x.parent.color;
-                    x.parent.color = BLACK;
-                    w.left.color = BLACK;
+                    x.parent.color = black;
+                    w.left.color = black;
                     rotateRight(x.parent);
                     x = root;
                 }
             }
         }
-        x.color = BLACK;
+        x.color = black;
     }
 
-    private Node treeMinimum(Node subTreeRoot){
+    private Node treeMinimum(Node subTreeRoot) {
         while(subTreeRoot.left != nil) {
             subTreeRoot = subTreeRoot.left;
         }
