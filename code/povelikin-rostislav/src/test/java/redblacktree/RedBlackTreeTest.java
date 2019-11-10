@@ -70,6 +70,20 @@ public class RedBlackTreeTest {
     }
 
     @Test
+    public void insertCornerCaseMax() {
+        tree.insert(Integer.MAX_VALUE);
+
+        assertTrue(tree.find(Integer.MAX_VALUE));
+    }
+
+    @Test
+    public void insertCornerCaseMin() {
+        tree.insert(Integer.MIN_VALUE);
+
+        assertTrue(tree.find(Integer.MIN_VALUE));
+    }
+
+    @Test
     public void canFindEachInserted() {
         int threshold = 88;
         int counter = 0;
