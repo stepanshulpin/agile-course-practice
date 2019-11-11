@@ -6,123 +6,133 @@ import static org.junit.Assert.assertEquals;
 
 public class RomanToArabicTest {
 
-    private int convertToArabic(final String roman) {
+    private int convertToArabic(final String romanNumber) {
         RomanToArabicConverter converter = new RomanToArabicConverter();
-        int arabic = converter.convert(roman);
-        return arabic;
+        int arabicNumber = converter.convert(romanNumber);
+        return arabicNumber;
     }
 
     @Test
     public void canConvertTo1() {
-        int arabic = convertToArabic("I");
-        assertEquals(1, arabic);
+        int arabicNumber = convertToArabic("I");
+        assertEquals(1, arabicNumber);
     }
 
     @Test
     public void canConvertTo2() {
-        int arabic = convertToArabic("II");
-        assertEquals(2, arabic);
+        int arabicNumber = convertToArabic("II");
+        assertEquals(2, arabicNumber);
     }
 
     @Test
     public void canConvertTo3() {
-        int arabic = convertToArabic("III");
-        assertEquals(3, arabic);
+        int arabicNumber = convertToArabic("III");
+        assertEquals(3, arabicNumber);
     }
 
     @Test
     public void canConvertTo4() {
-        int arabic = convertToArabic("IV");
-        assertEquals(4, arabic);
+        int arabicNumber = convertToArabic("IV");
+        assertEquals(4, arabicNumber);
     }
 
     @Test
     public void canConvertTo5() {
-        int arabic = convertToArabic("V");
-        assertEquals(5, arabic);
+        int arabicNumber = convertToArabic("V");
+        assertEquals(5, arabicNumber);
     }
 
     @Test
     public void canConvertTo6() {
-        int arabic = convertToArabic("VI");
-        assertEquals(6, arabic);
+        int arabicNumber = convertToArabic("VI");
+        assertEquals(6, arabicNumber);
     }
 
     @Test
     public void canConvertTo10() {
-        int arabic = convertToArabic("X");
-        assertEquals(10, arabic);
+        int arabicNumber = convertToArabic("X");
+        assertEquals(10, arabicNumber);
     }
 
     @Test
     public void canConvertTo9() {
-        int arabic = convertToArabic("IX");
-        assertEquals(9, arabic);
+        int arabicNumber = convertToArabic("IX");
+        assertEquals(9, arabicNumber);
     }
 
     @Test
     public void canConvertTo11() {
-        int arabic = convertToArabic("XI");
-        assertEquals(11, arabic);
+        int arabicNumber = convertToArabic("XI");
+        assertEquals(11, arabicNumber);
     }
 
     @Test
     public void canConvertTo30() {
-        int arabic = convertToArabic("XXX");
-        assertEquals(30, arabic);
+        int arabicNumber = convertToArabic("XXX");
+        assertEquals(30, arabicNumber);
     }
 
     @Test
     public void canConvertTo40() {
-        int arabic = convertToArabic("XL");
-        assertEquals(40, arabic);
+        int arabicNumber = convertToArabic("XL");
+        assertEquals(40, arabicNumber);
     }
 
     @Test
     public void canConvertTo50() {
-        int arabic = convertToArabic("L");
-        assertEquals(50, arabic);
+        int arabicNumber = convertToArabic("L");
+        assertEquals(50, arabicNumber);
     }
 
     @Test
     public void canConvertTo100() {
-        int arabic = convertToArabic("C");
-        assertEquals(100, arabic);
+        int arabicNumber = convertToArabic("C");
+        assertEquals(100, arabicNumber);
     }
 
     @Test
     public void canConvertTo500() {
-        int arabic = convertToArabic("D");
-        assertEquals(500, arabic);
+        int arabicNumber = convertToArabic("D");
+        assertEquals(500, arabicNumber);
     }
 
     @Test
     public void canConvertTo1000() {
-        int arabic = convertToArabic("M");
-        assertEquals(1000, arabic);
+        int arabicNumber = convertToArabic("M");
+        assertEquals(1000, arabicNumber);
     }
 
     @Test
     public void canConvertTo99() {
-        int arabic = convertToArabic("XCIX");
-        assertEquals(99, arabic);
+        int arabicNumber = convertToArabic("XCIX");
+        assertEquals(99, arabicNumber);
     }
 
     @Test
     public void canConvertTo944() {
-        int arabic = convertToArabic("CMXLIV");
-        assertEquals(944, arabic);
+        int arabicNumber = convertToArabic("CMXLIV");
+        assertEquals(944, arabicNumber);
     }
 
     @Test
     public void canConvertTo444() {
-        int arabic = convertToArabic("CDXLIV");
-        assertEquals(444, arabic);
+        int arabicNumber = convertToArabic("CDXLIV");
+        assertEquals(444, arabicNumber);
     }
 
     @Test
     public void canConvertTo3999() {
-        int arabic = convertToArabic("MMMCMXCIX");
-        assertEquals(3999, arabic);
+        int arabicNumber = convertToArabic("MMMCMXCIX");
+        assertEquals(3999, arabicNumber);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canConvertTo4000() {
+        int arabicNumber = convertToArabic("MMMM");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canConvertIllegalValue() {
+        int arabicNumber = convertToArabic("BUGAGASHENKA");
     }
 }

@@ -6,15 +6,14 @@ import static org.junit.Assert.assertEquals;
 
 public class ArabicToRomanTest {
 
-    private String convertToRoman(final int arabic) {
+    private String convertToRoman(final int arabicNumber) {
         ArabicToRomanConverter converter = new ArabicToRomanConverter();
-        return converter.convert(arabic);
+        return converter.convert(arabicNumber);
     }
 
-    @Test
-    public void canConvertToEmptyString() {
+    @Test(expected = IllegalArgumentException.class)
+    public void canConvert0() {
         String romanNumber = convertToRoman(0);
-        assertEquals("", romanNumber);
     }
 
     @Test
@@ -36,6 +35,12 @@ public class ArabicToRomanTest {
     }
 
     @Test
+    public void canConvert4() {
+        String romanNumber = convertToRoman(4);
+        assertEquals("IV", romanNumber);
+    }
+
+    @Test
     public void canConvert5() {
         String romanNumber = convertToRoman(5);
         assertEquals("V", romanNumber);
@@ -51,12 +56,6 @@ public class ArabicToRomanTest {
     public void canConvert8() {
         String romanNumber = convertToRoman(8);
         assertEquals("VIII", romanNumber);
-    }
-
-    @Test
-    public void canConvert4() {
-        String romanNumber = convertToRoman(4);
-        assertEquals("IV", romanNumber);
     }
 
     @Test
@@ -126,15 +125,15 @@ public class ArabicToRomanTest {
     }
 
     @Test
-    public void canConvert1000() {
-        String romanNumber = convertToRoman(1000);
-        assertEquals("M", romanNumber);
-    }
-
-    @Test
     public void canConvert900() {
         String romanNumber = convertToRoman(900);
         assertEquals("CM", romanNumber);
+    }
+
+    @Test
+    public void canConvert1000() {
+        String romanNumber = convertToRoman(1000);
+        assertEquals("M", romanNumber);
     }
 
     @Test
@@ -154,4 +153,16 @@ public class ArabicToRomanTest {
         String romanNumber = convertToRoman(3999);
         assertEquals("MMMCMXCIX", romanNumber);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canConvertNegativeNumber() {
+        String romanNumber = convertToRoman(-20);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void canConvertIllegalNumber() {
+        String romanNumber = convertToRoman(4000);
+    }
+
+
 }
