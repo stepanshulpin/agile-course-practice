@@ -48,6 +48,8 @@ project(":code/korniakov-kirill-lab3/Infrastructure").name = "korniakov-kirill-l
 // Бевзюк Семен
 // Власов Антон
 // Гречухин Никита
+include "code/fractioncalculator"
+project(":code/fractioncalculator").name = "fractioncalculator"
 // Гришин Дмитрий
 // Зырина Анна
 // Кальянов Дмитрий
