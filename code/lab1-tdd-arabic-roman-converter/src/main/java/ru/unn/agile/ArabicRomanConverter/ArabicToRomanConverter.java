@@ -12,9 +12,10 @@ public class ArabicToRomanConverter {
     public ArabicToRomanConverter() { };
 
     public String convert(final int arabicNumber) {
-        if (arabicNumber < MIN_ARABIC_VALUE || arabicNumber > MAX_ARABIC_VALUE)
-            throw new IllegalArgumentException("Roman Number" +
-                    " doesn't exist for Arabic" + arabicNumber);
+        if (arabicNumber < MIN_ARABIC_VALUE || arabicNumber > MAX_ARABIC_VALUE) {
+            throw new IllegalArgumentException("Roman Number"
+                    + "doesn't exist for Arabic" + arabicNumber);
+        }
         StringBuilder romanNumber = new StringBuilder();
         int arabic = arabicNumber;
         for (int i = 0; i < ARABIC_NUMERALS.length; i++) {

@@ -20,16 +20,17 @@ public class RomanToArabicConverter {
     }
 
     private boolean validateRomanNumber(final String romanNumber) {
-        Pattern regexRoman = Pattern.compile("^M{0,3}(CM|CD|D?C{0,3})" +
-                "(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$");
+        Pattern regexRoman = Pattern.compile("^M{0,3}(CM|CD|D?C{0,3})"
+                + "(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$");
         Matcher matcher = regexRoman.matcher(romanNumber);
         return matcher.matches();
     }
 
     public int convert(final String romanNumber) {
-        if (!validateRomanNumber(romanNumber))
-            throw new IllegalArgumentException(romanNumber +
-                    "is not a Roman number");
+        if (!validateRomanNumber(romanNumber)) {
+            throw new IllegalArgumentException(romanNumber
+                    + "is not a Roman number");
+        }
         int arabicNumber = 0;
         int prevSymbol = 0;
         for (int i = romanNumber.length() - 1; i >= 0; i--) {
