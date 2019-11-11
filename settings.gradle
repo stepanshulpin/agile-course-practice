@@ -58,6 +58,8 @@ project(":code/fractioncalculator").name = "fractioncalculator"
 // Киселева Ольга
 // Конева Александра
 // Коневский Виталий
+include "code/deposit-calculator"
+project(":code/deposit-calculator").name = "deposit-calculator-Model"
 // Кочетова Дарья
 // Красильников Михаил
 // Краснов Александр
