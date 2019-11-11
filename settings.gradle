@@ -64,6 +64,8 @@ project(":code/korniakov-kirill-lab3/Infrastructure").name = "korniakov-kirill-l
 // Купцова Алеся
 // Кучков Иван
 // Лапин Артем
+include "code/quadratic-equasion"
+project(":code/quadratic-equasion").name = "quadratic-equasion-Model"
 // Лахтачев Ярослав
 // Миронова Анна
 // Митрохин Никита
