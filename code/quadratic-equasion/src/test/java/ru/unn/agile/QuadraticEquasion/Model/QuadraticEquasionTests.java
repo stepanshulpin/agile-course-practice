@@ -67,7 +67,7 @@ public class QuadraticEquasionTests {
 
         ComplexNumber[] actual = qe.solve();
 
-        assertEquals(solution.length, 1);
+        assertEquals(1, solution.length);
     }
 
     @Test public void canSolveEquasionWithZeroBCoeff() {
