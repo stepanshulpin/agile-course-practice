@@ -90,6 +90,8 @@ include "code/datastructure-set"
 project(":code/datastructure-set").name = "datastructure-set"
 // Широких Виолетта
 // Шульпин Степан
+include "code/mortgage-calculator"
+project(":code/mortgage-calculator").name = "mortgage-calculator-Model"
 // Шумихин Сергей
 // Юферев Кирилл
 include "code/stack"
