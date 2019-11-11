@@ -37,7 +37,7 @@ public class RedBlackTree {
         }
 
         Node x;
-        Node y = z; // temporary reference y
+        Node y = z;
 
         int yOriginalColor = y.color;
 
@@ -151,14 +151,11 @@ public class RedBlackTree {
                     continue;
                 }
                 if (node == node.parent.right) {
-                    //Double rotation needed
                     node = node.parent;
                     rotateLeft(node);
                 }
                 node.parent.color = black;
                 node.parent.parent.color = red;
-                //if the "else if" code hasn't executed, this
-                //is a case where we only need a single rotation
                 rotateRight(node.parent.parent);
             } else {
                 uncle = node.parent.parent.left;
@@ -168,14 +165,11 @@ public class RedBlackTree {
                     continue;
                 }
                 if (node == node.parent.left) {
-                    //Double rotation needed
                     node = node.parent;
                     rotateRight(node);
                 }
                 node.parent.color = black;
                 node.parent.parent.color = red;
-                //if the "else if" code hasn't executed, this
-                //is a case where we only need a single rotation
                 rotateLeft(node.parent.parent);
             }
         }
