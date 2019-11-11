@@ -92,3 +92,5 @@ project(":code/datastructure-set").name = "datastructure-set"
 // Шульпин Степан
 // Шумихин Сергей
 // Юферев Кирилл
+include "code/stack"
+project(":code/stack").name = "stack-Model"
