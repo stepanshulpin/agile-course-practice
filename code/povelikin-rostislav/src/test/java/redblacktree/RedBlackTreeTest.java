@@ -4,10 +4,13 @@ import org.junit.Before;
 import org.junit.Test;
 import ru.unn.agile.redblacktree.Model.RedBlackTree;
 
+import java.util.*;
+
 import static junit.framework.TestCase.*;
 
 public class RedBlackTreeTest {
     private static RedBlackTree tree;
+    private static Random random = new Random();
 
     public RedBlackTreeTest() {
     }
@@ -105,6 +108,39 @@ public class RedBlackTreeTest {
         tree.insert(number);
         tree.insert(number);
         assertEquals(2, tree.getSize());
+    }
+
+    @Test
+    public void insertRandomNumberSequence() {
+        for (int counter = 0; counter < 1000000; ++counter) {
+            int randomNumber = random.nextInt(1024);
+            tree.insert(randomNumber);
+            assertTrue(tree.find(randomNumber));
+        }
+    }
+
+    @Test
+    public void removeRandomNumberSequence() {
+        for (int counter = 0; counter < 1000000; ++counter) {
+            int insertRandomNumber = random.nextInt(1024);
+            tree.insert(insertRandomNumber);
+            int removeRandomNumber = random.nextInt(1024);
+            final boolean found = tree.find(removeRandomNumber);
+            assertEquals(found, tree.remove(removeRandomNumber));
+        }
+    }
+
+    @Test
+    public void findRandomNumberSequence() {
+        Set<Integer> set = new HashSet<>();
+
+        for (int counter = 0; counter < 1000000; ++counter) {
+            int insertRandomNumber = random.nextInt(1024);
+            set.add(insertRandomNumber);
+            tree.insert(insertRandomNumber);
+            int findRandomNumber = random.nextInt(1024);
+            assertEquals(set.contains(findRandomNumber), tree.find(findRandomNumber));
+        }
     }
 
     @Test
