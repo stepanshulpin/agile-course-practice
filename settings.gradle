@@ -2,10 +2,6 @@
 include "code/bevzuk-anton"
 project(":code/bevzuk-anton").name = "bevzuk-anton-Model"
 
-// Sizova Ksenya
-include "code/binary-search"
-project(":code/binary-search").name = "binary-search-Model"
-
 // Korniakov Kirill, lab1
 include "code/korniakov-kirill-lab1"
 project(":code/korniakov-kirill-lab1").name = "korniakov-kirill-lab1-Model"
@@ -99,6 +95,8 @@ project(":code/interpolationsearch").name = "interpolationsearch"
 // Попков Кирилл
 // Разин Вячеслав
 // Сизова Ксения
+include "code/binary-search"
+project(":code/binary-search").name = "binary-search-Model"
 // Симонян Вагинак
 include "code/students-performance"
 project(":code/students-performance").name = "students-performance-Model"
