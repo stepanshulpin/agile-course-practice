@@ -26,7 +26,7 @@ public class BinarySearchTest {
         int element = 1;
         int expectedPosition = 0;
 
-        assertEquals(binarySearch.search(element), expectedPosition);
+        assertEquals(expectedPosition, binarySearch.search(element));
     }
 
     @Test
@@ -36,7 +36,7 @@ public class BinarySearchTest {
         int element = 3;
         int expectedPosition = 2;
 
-        assertEquals(binarySearch.search(element), expectedPosition);
+        assertEquals(expectedPosition, binarySearch.search(element));
     }
 
     @Test
@@ -46,7 +46,7 @@ public class BinarySearchTest {
         int element = 5;
         int expectedPosition = 4;
 
-        assertEquals(binarySearch.search(element), expectedPosition);
+        assertEquals(expectedPosition, binarySearch.search(element));
     }
 
     @Test
@@ -56,7 +56,7 @@ public class BinarySearchTest {
         int element = 9;
         int expectedPosition = BinarySearch.NOT_FOUND;
 
-        assertEquals(binarySearch.search(element), expectedPosition);
+        assertEquals(expectedPosition, binarySearch.search(element));
     }
 
     @Test
@@ -66,6 +66,6 @@ public class BinarySearchTest {
         int element = 1;
         int expectedPosition = BinarySearch.NOT_SORTED;
 
-        assertEquals(binarySearch.search(element), expectedPosition);
+        assertEquals(expectedPosition, binarySearch.search(element));
     }
 }
