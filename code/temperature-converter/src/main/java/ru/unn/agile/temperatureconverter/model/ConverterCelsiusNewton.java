@@ -1,4 +1,4 @@
-package ru.unn.agile.TemperatureConverter.model;
+package ru.unn.agile.temperatureconverter.model;
 
 class ConverterCelsiusNewton {
     CelsiusTemperature convertToCelsius(final NewtonTemperature newton) {

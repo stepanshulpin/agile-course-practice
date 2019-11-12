@@ -1,4 +1,4 @@
-package ru.unn.agile.TemperatureConverter.model;
+package ru.unn.agile.temperatureconverter.model;
 
 public class NewtonTemperature extends Temperature {
     public NewtonTemperature(final double value) throws IllegalArgumentException {

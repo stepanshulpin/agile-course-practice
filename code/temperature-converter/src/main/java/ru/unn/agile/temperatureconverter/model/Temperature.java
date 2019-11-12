@@ -1,4 +1,4 @@
-package ru.unn.agile.TemperatureConverter.model;
+package ru.unn.agile.temperatureconverter.model;
 
 public abstract class Temperature {
     private double value;

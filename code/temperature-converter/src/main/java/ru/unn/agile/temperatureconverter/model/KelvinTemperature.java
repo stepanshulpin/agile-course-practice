@@ -1,4 +1,4 @@
-package ru.unn.agile.TemperatureConverter.model;
+package ru.unn.agile.temperatureconverter.model;
 
 public class KelvinTemperature extends Temperature {
     public KelvinTemperature(final double value) throws IllegalArgumentException {

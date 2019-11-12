@@ -1,7 +1,7 @@
-package ru.unn.agile.TemperatureConverter.Model;
+package ru.unn.agile.temperatureconverter.Model;
 
 import org.junit.Test;
-import ru.unn.agile.TemperatureConverter.model.FahrenheitTemperature;
+import ru.unn.agile.temperatureconverter.model.FahrenheitTemperature;
 
 import static org.junit.Assert.assertEquals;
 

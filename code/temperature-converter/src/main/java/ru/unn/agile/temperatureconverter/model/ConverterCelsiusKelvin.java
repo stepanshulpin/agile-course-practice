@@ -1,4 +1,4 @@
-package ru.unn.agile.TemperatureConverter.model;
+package ru.unn.agile.temperatureconverter.model;
 
 class ConverterCelsiusKelvin {
     CelsiusTemperature convertToCelsius(final KelvinTemperature kelvin) {

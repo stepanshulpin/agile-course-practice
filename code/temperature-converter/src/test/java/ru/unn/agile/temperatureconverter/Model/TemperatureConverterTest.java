@@ -1,11 +1,11 @@
-package ru.unn.agile.TemperatureConverter.Model;
+package ru.unn.agile.temperatureconverter.Model;
 
 import org.junit.Test;
-import ru.unn.agile.TemperatureConverter.model.CelsiusTemperature;
-import ru.unn.agile.TemperatureConverter.model.FahrenheitTemperature;
-import ru.unn.agile.TemperatureConverter.model.KelvinTemperature;
-import ru.unn.agile.TemperatureConverter.model.NewtonTemperature;
-import ru.unn.agile.TemperatureConverter.model.TemperatureConverter;
+import ru.unn.agile.temperatureconverter.model.CelsiusTemperature;
+import ru.unn.agile.temperatureconverter.model.FahrenheitTemperature;
+import ru.unn.agile.temperatureconverter.model.KelvinTemperature;
+import ru.unn.agile.temperatureconverter.model.NewtonTemperature;
+import ru.unn.agile.temperatureconverter.model.TemperatureConverter;
 
 import static org.junit.Assert.*;
 
