@@ -14,7 +14,7 @@ public class BinarySearchTest {
     }
 
     @Test(expected = NullPointerException.class)
-    public void canNullPointerException() {
+    public void canNotCreateBinarySearchWithNullArray() {
         int[] inputArray = null;
         BinarySearch binarySearch = new BinarySearch(inputArray);
     }
