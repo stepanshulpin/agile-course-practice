@@ -43,10 +43,13 @@ public class MatrixTest {
 
     @Test
     public void checkGetSizeWithNewInit() {
-        var matrix = new Matrix(4);
-        assertEquals(4, matrix.getSize());
-        matrix = new Matrix(12);
-        assertEquals(12, matrix.getSize());
+        int firstSize = 4;
+        int secondSize = 12;
+
+        var matrix = new Matrix(firstSize);
+        assertEquals(firstSize, matrix.getSize());
+        matrix = new Matrix(secondSize);
+        assertEquals(secondSize, matrix.getSize());
     }
 
     /*@Test
