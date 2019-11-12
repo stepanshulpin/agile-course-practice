@@ -9,7 +9,12 @@ public class MatrixTest {
     @Test
     public void canCreateSquareMatrix() {
         var squareMatrix = new Matrix(3);
-
+        assertNotNull(squareMatrix);
+    }
+    
+    @Test
+    public void canCreateSquareMatrixWithZeroSize() {
+        var squareMatrix = new Matrix(0);
         assertNotNull(squareMatrix);
     }
 }
