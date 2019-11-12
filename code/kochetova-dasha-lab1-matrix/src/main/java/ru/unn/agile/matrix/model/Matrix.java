@@ -12,4 +12,8 @@ public class Matrix {
 
         this.size = size;
     }
+
+    public int getSize() {
+        return size;
+    }
 }

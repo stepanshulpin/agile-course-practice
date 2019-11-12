@@ -13,24 +13,50 @@ public class MatrixTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void canCreateSquareMatrix() {
-        var squareMatrix = new Matrix(3);
-        assertNotNull(squareMatrix);
+    public void canCreateMatrix() {
+        var matrix = new Matrix(3);
+        assertNotNull(matrix);
     }
 
     @Test
-    public void cantCreateSquareMatrixWithZeroSize() {
+    public void cantCreateMatrixWithZeroSize() {
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Trying to create a matrix with zero size");
 
-        var squareMatrix = new Matrix(0);
+        var matrix = new Matrix(0);
     }
 
     @Test
-    public void cantCreateSquareMatrixWithNegativeSize() {
+    public void cantCreateMatrixWithNegativeSize() {
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage("Trying to create a matrix with negative zero");
 
-        var squareMatrix = new Matrix(-3);
+        var matrix = new Matrix(-3);
     }
+
+    @Test
+    public void canGetSizeFromMatrix() {
+        var matrix = new Matrix(3);
+        assertEquals(3, matrix.getSize());
+    }
+
+    /*@Test
+    public void canGetValueFromMatrix() {
+        var matrix = new Matrix(3);
+        assertEquals(3, matrix.size);
+    }
+
+    /*@Test
+    public void canInitMatrixByRandomValue() {
+        var matrix = new Matrix(3);
+        double startValue = 0.0;
+        double endValue = 10.0;
+        matrix.initByRandomValue(startValue, endValue);
+        for (int )
+    }
+
+    /*@Test
+    public void addMatricesWithSameSize() {
+        var matrix = new Matrix(4);
+    }*/
 }
