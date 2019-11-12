@@ -36,23 +36,36 @@ public class MatrixTest {
 
     @Test
     public void canGetSizeFromMatrix() {
-        var matrix = new Matrix(3);
-        assertEquals(3, matrix.getSize());
+        int matrixSize = 3;
+        var matrix = new Matrix(matrixSize);
+        assertEquals(matrixSize, matrix.getSize());
+    }
+
+    @Test
+    public void checkGetSizeWithNewInit() {
+        var matrix = new Matrix(4);
+        assertEquals(4, matrix.getSize());
+        matrix = new Matrix(12);
+        assertEquals(12, matrix.getSize());
+    }
+
+    /*@Test
+    public void canInitMatrixByArray() {
+        int matrixSize = 2;
+        var matrix = new Matrix(matrixSize);
+        double[] array = new double[] {2.5, 1.6, 4.3, 7.8};
+        matrix.initByArray(array);
+        for (int i = 0; i < matrixSize; ++i) {
+            for (int j = 0; j < matrixSize; ++j) {
+                assertEquals(array[i * matrixSize + j], matrix.getValue(i, j));
+            }
+        }
     }
 
     /*@Test
     public void canGetValueFromMatrix() {
         var matrix = new Matrix(3);
-        assertEquals(3, matrix.size);
-    }
-
-    /*@Test
-    public void canInitMatrixByRandomValue() {
-        var matrix = new Matrix(3);
-        double startValue = 0.0;
-        double endValue = 10.0;
-        matrix.initByRandomValue(startValue, endValue);
-        for (int )
+        assertEquals(3, matrix.getSize());
     }
 
     /*@Test
