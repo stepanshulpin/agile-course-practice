@@ -75,6 +75,8 @@ project(":code/quadratic-equasion").name = "quadratic-equasion-Model"
 // Лахтачев Ярослав
 // Миронова Анна
 // Митрохин Никита
+include "code/queue"
+project(":code/queue").name = "queue-Model"
 // Нестеров Александр
 // Нечесанов Владимир
 // Овчарук Олег
