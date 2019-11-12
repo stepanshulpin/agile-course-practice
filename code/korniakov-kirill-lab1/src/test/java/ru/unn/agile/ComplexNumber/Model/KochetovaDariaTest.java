@@ -23,13 +23,13 @@ public class KochetovaDariaTest {
     public void complexNumberAddComplexNumberCorrect() {
         ComplexNumber complexNumberFirst = new ComplexNumber(4, 6);
         ComplexNumber complexNumberSecond = new ComplexNumber(1, 2);
-        assertEquals(complexNumberFirst.add(complexNumberSecond), new ComplexNumber(5, 8));
+        assertEquals(new ComplexNumber(5, 8), complexNumberFirst.add(complexNumberSecond));
     }
 
     @Test
     public void complexNumberMultComplexNumberCorrect() {
         ComplexNumber complexNumberFirst = new ComplexNumber(4, 6);
         ComplexNumber complexNumberSecond = new ComplexNumber(1, 2);
-        assertEquals(complexNumberFirst.multiply(complexNumberSecond), new ComplexNumber(-8, 14));
+        assertEquals(new ComplexNumber(-8, 14), complexNumberFirst.multiply(complexNumberSecond));
     }
 }
