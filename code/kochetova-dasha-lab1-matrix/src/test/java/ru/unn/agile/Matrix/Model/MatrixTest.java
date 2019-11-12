@@ -78,6 +78,20 @@ public class MatrixTest {
         matrix.initByArray(array);
     }
 
+    @Test
+    public void canInitMatrixByArrayWithLessValues() {
+        int matrixSize = 2;
+        double delta = 0.001;
+        var matrix = new Matrix(matrixSize);
+        double[] array = new double[] {2.5, 1.6, 4.3};
+        matrix.initByArray(array);
+
+        assertEquals(array[0], matrix.getValue(0, 0), delta);
+        assertEquals(array[1], matrix.getValue(0, 1), delta);
+        assertEquals(array[2], matrix.getValue(1, 0), delta);
+        assertEquals(0, matrix.getValue(1, 1), delta);
+    }
+
     /*@Test
     public void canGetValueFromMatrix() {
         var matrix = new Matrix(3);
