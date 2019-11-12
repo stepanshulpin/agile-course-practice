@@ -14,6 +14,7 @@ public class MatrixTest {
 
     private double delta = 0.001;
 
+// # Matrix()
     @Test
     public void canCreateMatrix() {
         var matrix = new Matrix(3);
@@ -23,7 +24,8 @@ public class MatrixTest {
     @Test
     public void cantCreateMatrixWithZeroSize() {
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage("Trying to create a matrix with zero size");
+        thrown.expectMessage(
+            Matrix.ExceptionMessage.ILLEGAL_ARG_EXC_EQUAL_ZERO.toString());
 
         var matrix = new Matrix(0);
     }
@@ -31,11 +33,13 @@ public class MatrixTest {
     @Test
     public void cantCreateMatrixWithNegativeSize() {
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage("Trying to create a matrix with negative zero");
+        thrown.expectMessage(
+            Matrix.ExceptionMessage.ILLEGAL_ARG_EXC_LESS_ZERO.toString());
 
         var matrix = new Matrix(-3);
     }
 
+// # getSize()
     @Test
     public void canGetSizeFromMatrix() {
         int matrixSize = 3;
@@ -54,6 +58,7 @@ public class MatrixTest {
         assertEquals(secondSize, matrix.getSize());
     }
 
+// # initByArray()
     @Test
     public void canInitMatrixByArray() {
         int matrixSize = 2;
@@ -72,7 +77,8 @@ public class MatrixTest {
     @Test
     public void cantInitMatrixByArrayWithMoreValues() {
         thrown.expect(IndexOutOfBoundsException.class);
-        thrown.expectMessage("Array size was more then matrix size");
+        thrown.expectMessage(
+            Matrix.ExceptionMessage.INDEX_OUT_BOUNDS_INPUT_ARRAY.toString());
 
         var matrix = new Matrix(2);
         double[] array = new double[] {2.5, 1.6, 4.3, 7.8, 3.6};
@@ -92,6 +98,7 @@ public class MatrixTest {
         assertEquals(0, matrix.getValue(1, 1), delta);
     }
 
+// # getValue()
     @Test
     public void canGetValueFromMatrix() {
         var matrix = new Matrix(3);
@@ -101,8 +108,15 @@ public class MatrixTest {
         assertEquals(0.5, matrix.getValue(1, 0), delta);
     }
 
-    /*@Test
-    public void addMatricesWithSameSize() {
-        var matrix = new Matrix(4);
-    }*/
+    @Test
+    public void cantGetValueFromMatrixOutOfBounds() {
+        thrown.expect(IndexOutOfBoundsException.class);
+        thrown.expectMessage("Index out of bounds in matrix");
+
+        var matrix = new Matrix(3);
+        assertEquals(0, matrix.getValue(2, 2), delta);
+
+        matrix.initByArray(new double[] {1, 1, 1, 0.5});
+        assertEquals(0.5, matrix.getValue(1, 0), delta);
+    }
 }
