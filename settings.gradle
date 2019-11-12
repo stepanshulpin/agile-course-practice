@@ -95,6 +95,8 @@ project(":code/interpolationsearch").name = "interpolationsearch"
 // Попков Кирилл
 // Разин Вячеслав
 // Сизова Ксения
+include "code/binary-search"
+project(":code/binary-search").name = "binary-search-Model"
 // Симонян Вагинак
 include "code/students-performance"
 project(":code/students-performance").name = "students-performance-Model"
