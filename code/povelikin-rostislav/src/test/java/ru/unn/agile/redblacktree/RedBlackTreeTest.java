@@ -1,8 +1,7 @@
-package redblacktree;
+package ru.unn.agile.redblacktree;
 
 import org.junit.Before;
 import org.junit.Test;
-import ru.unn.agile.redblacktree.Model.RedBlackTree;
 
 import java.util.*;
 
