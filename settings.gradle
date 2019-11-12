@@ -83,6 +83,8 @@ project(":code/queue").name = "queue-Model"
 include "code/polynomialcalculator"
 project(":code/polynomialcalculator").name = "polynomialcalculator"
 // Петров Кирилл
+include "code/interpolationsearch"
+project(":code/interpolationsearch").name = "interpolationsearch"
 // Повеликин Ростислав
 // Попков Кирилл
 // Разин Вячеслав
