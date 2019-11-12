@@ -5,7 +5,8 @@ public class Matrix {
     public enum ExceptionMessage {
         ILLEGAL_ARG_EXC_EQUAL_ZERO("Trying to create a matrix with zero size"),
         ILLEGAL_ARG_EXC_LESS_ZERO("Trying to create a matrix with negative zero"),
-        INDEX_OUT_BOUNDS_INPUT_ARRAY("Array size was more then matrix size");
+        INDEX_OUT_BOUNDS_INPUT_ARRAY("Array size was more then matrix size"),
+        INDEX_OUT_BOUNDS_MATRIX("Index out of bounds in matrix");
 
         private final String text;
 
@@ -51,6 +52,11 @@ public class Matrix {
     }
 
     public double getValue(final int i, final int j) {
+        if (i * size + j >= size * size) {
+            throw new IndexOutOfBoundsException(
+                ExceptionMessage.INDEX_OUT_BOUNDS_MATRIX.toString());
+        }
+
         return this.matrix[i * size + j];
     }
 }

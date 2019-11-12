@@ -111,12 +111,12 @@ public class MatrixTest {
     @Test
     public void cantGetValueFromMatrixOutOfBounds() {
         thrown.expect(IndexOutOfBoundsException.class);
-        thrown.expectMessage("Index out of bounds in matrix");
+        thrown.expectMessage(
+            Matrix.ExceptionMessage.INDEX_OUT_BOUNDS_MATRIX.toString());
 
-        var matrix = new Matrix(3);
-        assertEquals(0, matrix.getValue(2, 2), delta);
+        var matrix = new Matrix(2);
 
         matrix.initByArray(new double[] {1, 1, 1, 0.5});
-        assertEquals(0.5, matrix.getValue(1, 0), delta);
+        matrix.getValue(2, 0);
     }
 }
