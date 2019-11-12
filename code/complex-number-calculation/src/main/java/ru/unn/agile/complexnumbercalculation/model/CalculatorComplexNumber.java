@@ -9,4 +9,11 @@ public class CalculatorComplexNumber {
         z2 = new ComplexNumber();
     }
 
+    public ComplexNumber getZ1() {
+        return z1;
+    }
+
+    public ComplexNumber getZ2() {
+        return z2;
+    }
 }
