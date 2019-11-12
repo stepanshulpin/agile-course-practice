@@ -1,6 +1,5 @@
-package ru.unn.agile.binarysearch.Model;
+package ru.unn.agile.binarysearch.model;
 
-import ru.unn.agile.binarysearch.model.BinarySearch;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
