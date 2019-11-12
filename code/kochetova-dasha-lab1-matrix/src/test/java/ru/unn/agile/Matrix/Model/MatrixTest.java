@@ -52,17 +52,30 @@ public class MatrixTest {
         assertEquals(secondSize, matrix.getSize());
     }
 
-    /*@Test
+    @Test
     public void canInitMatrixByArray() {
         int matrixSize = 2;
+        double delta = 0.001;
         var matrix = new Matrix(matrixSize);
         double[] array = new double[] {2.5, 1.6, 4.3, 7.8};
         matrix.initByArray(array);
         for (int i = 0; i < matrixSize; ++i) {
             for (int j = 0; j < matrixSize; ++j) {
-                assertEquals(array[i * matrixSize + j], matrix.getValue(i, j));
+                double expected = array[i * matrixSize + j];
+                double actual = matrix.getValue(i, j);
+                assertEquals(expected, actual, delta);
             }
         }
+    }
+
+    @Test
+    public void cantInitMatrixByArrayWithMoreValues() {
+        thrown.expect(IndexOutOfBoundsException.class);
+        thrown.expectMessage("Array size was more then matrix size");
+
+        var matrix = new Matrix(2);
+        double[] array = new double[] {2.5, 1.6, 4.3, 7.8, 3.6};
+        matrix.initByArray(array);
     }
 
     /*@Test

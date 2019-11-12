@@ -11,7 +11,7 @@ public class Matrix {
             throw new IllegalArgumentException("Trying to create a matrix with negative zero");
         }
 
-        matrix = new double[size];
+        matrix = new double[size * 2];
         this.size = size;
     }
 
@@ -19,13 +19,17 @@ public class Matrix {
         return size;
     }
 
-/*    public void initByArray(double[] array) {
+    public void initByArray(final double[] array) {
+        if (array.length > size * 2) {
+            throw new IndexOutOfBoundsException("Array size was more then matrix size");
+        }
+
         for (int i = 0; i < array.length; i++) {
             this.matrix[i] = array[i];
         }
     }
 
-    public double getValue(int i, int j) {
+    public double getValue(final int i, final int j) {
         return this.matrix[i * size + j];
-    }*/
+    }
 }
