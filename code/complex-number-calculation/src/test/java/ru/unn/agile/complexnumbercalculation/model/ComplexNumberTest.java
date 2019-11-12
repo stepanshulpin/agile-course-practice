@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class KulyginaJuliaTest {
+public class ComplexNumberTest {
     @Test
     public void createComplexNumberByDefaultNotNull() {
         ComplexNumber a = new ComplexNumber();
