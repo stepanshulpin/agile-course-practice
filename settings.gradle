@@ -74,6 +74,8 @@ include "code/quadratic-equasion"
 project(":code/quadratic-equasion").name = "quadratic-equasion-Model"
 // Лахтачев Ярослав
 // Миронова Анна
+include "code/statistics-calculation"
+project(":code/statistics-calculation").name = "statistics-calculation-Model"
 // Митрохин Никита
 include "code/queue"
 project(":code/queue").name = "queue-Model"
