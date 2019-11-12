@@ -12,6 +12,8 @@ public class MatrixTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
+    private double delta = 0.001;
+
     @Test
     public void canCreateMatrix() {
         var matrix = new Matrix(3);
@@ -55,7 +57,6 @@ public class MatrixTest {
     @Test
     public void canInitMatrixByArray() {
         int matrixSize = 2;
-        double delta = 0.001;
         var matrix = new Matrix(matrixSize);
         double[] array = new double[] {2.5, 1.6, 4.3, 7.8};
         matrix.initByArray(array);
@@ -81,7 +82,6 @@ public class MatrixTest {
     @Test
     public void canInitMatrixByArrayWithLessValues() {
         int matrixSize = 2;
-        double delta = 0.001;
         var matrix = new Matrix(matrixSize);
         double[] array = new double[] {2.5, 1.6, 4.3};
         matrix.initByArray(array);
@@ -92,10 +92,13 @@ public class MatrixTest {
         assertEquals(0, matrix.getValue(1, 1), delta);
     }
 
-    /*@Test
+    @Test
     public void canGetValueFromMatrix() {
         var matrix = new Matrix(3);
-        assertEquals(3, matrix.getSize());
+        assertEquals(0, matrix.getValue(2, 2), delta);
+
+        matrix.initByArray(new double[] {1, 1, 1, 0.5});
+        assertEquals(0.5, matrix.getValue(1, 0), delta);
     }
 
     /*@Test

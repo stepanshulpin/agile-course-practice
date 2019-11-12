@@ -11,7 +11,7 @@ public class Matrix {
             throw new IllegalArgumentException("Trying to create a matrix with negative zero");
         }
 
-        matrix = new double[size * 2];
+        matrix = new double[size * size];
         this.size = size;
     }
 
@@ -20,7 +20,7 @@ public class Matrix {
     }
 
     public void initByArray(final double[] array) {
-        if (array.length > size * 2) {
+        if (array.length > size * size) {
             throw new IndexOutOfBoundsException("Array size was more then matrix size");
         }
 
