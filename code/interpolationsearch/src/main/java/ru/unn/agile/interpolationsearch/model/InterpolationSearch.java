@@ -1,4 +1,4 @@
-package ru.unn.agile.interpolation_search.model;
+package ru.unn.agile.interpolationsearch.model;
 
 import java.util.NoSuchElementException;
 
