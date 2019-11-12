@@ -1,6 +1,6 @@
 // Shirokikh Violetta
-include "code/lab1-tdd-arabic-roman-converter"
-project(":code/lab1-tdd-arabic-roman-converter").name = "lab1-tdd-arabic-roman-converter-Model"
+include "code/lab1-tdd-arabic-roman-arabicromanconverter"
+project(":code/lab1-tdd-arabic-roman-arabicromanconverter").name = "lab1-tdd-arabic-roman-arabicromanconverter-Model"
 
 // Bevzuk Anton
 include "code/bevzuk-anton"

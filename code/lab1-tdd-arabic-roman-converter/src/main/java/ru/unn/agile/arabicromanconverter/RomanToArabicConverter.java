@@ -1,4 +1,4 @@
-package ru.unn.agile.ArabicRomanConverter;
+package ru.unn.agile.arabicromanconverter;
 
 import java.util.Hashtable;
 import java.util.regex.Matcher;
