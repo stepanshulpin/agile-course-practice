@@ -57,6 +57,8 @@ project(":code/korniakov-kirill-lab3/Infrastructure").name = "korniakov-kirill-l
 // Конева Александра
 // Коневский Виталий
 // Кочетова Дарья
+include "code/kochetova-dasha-lab1-matrix"
+project(":code/kochetova-dasha-lab1-matrix").name = "kochetova-dasha-lab1-matrix"
 // Красильников Михаил
 // Краснов Александр
 // Куликов Александр
