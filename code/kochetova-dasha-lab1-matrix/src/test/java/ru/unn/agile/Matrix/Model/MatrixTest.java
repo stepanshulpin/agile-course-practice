@@ -21,8 +21,16 @@ public class MatrixTest {
     @Test
     public void cantCreateSquareMatrixWithZeroSize() {
         thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage("Trying to create a matrix with size zero");
+        thrown.expectMessage("Trying to create a matrix with zero size");
 
         var squareMatrix = new Matrix(0);
+    }
+
+    @Test
+    public void cantCreateSquareMatrixWithNegativeSize() {
+        thrown.expect(IllegalArgumentException.class);
+        thrown.expectMessage("Trying to create a matrix with negative zero");
+
+        var squareMatrix = new Matrix(-3);
     }
 }

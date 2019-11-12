@@ -5,7 +5,9 @@ public class Matrix {
 
     public Matrix(final int size) {
         if (size == 0) {
-            throw new IllegalArgumentException("Trying to create a matrix with size zero");
+            throw new IllegalArgumentException("Trying to create a matrix with zero size");
+        } else if (size < 0) {
+            throw new IllegalArgumentException("Trying to create a matrix with negative zero");
         }
 
         this.size = size;
