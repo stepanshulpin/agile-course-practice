@@ -23,4 +23,8 @@ public class CalculatorComplexNumber {
         return z2;
     }
 
+    public ComplexNumber addition() {
+        return new ComplexNumber(z1.getRe() + z2.getRe(), z1.getIm() + z2.getIm());
+    }
+
 }
