@@ -175,6 +175,16 @@ public class MatrixTest {
         assertFalse(matrixFirst.equals(matrixSecond));
     }
 
+    @Test
+    public void checkEqualsWithDeltaError() {
+        var matrixFirst = new Matrix(1);
+        matrixFirst.initByArray(new double[] {1.8});
+        var matrixSecond = new Matrix(1);
+        matrixSecond.initByArray(new double[] {1.7999999999999998});
+
+        assertTrue(matrixFirst.equals(matrixSecond));
+    }
+
 // # add()
     /*@Test
     public void canAddTwoMatrix() {

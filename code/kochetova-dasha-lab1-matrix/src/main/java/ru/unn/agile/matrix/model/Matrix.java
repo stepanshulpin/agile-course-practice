@@ -22,6 +22,7 @@ public class Matrix {
 
     private final int size;
     private double[] matrix;
+    private final double delta = 0.001;
 
     public Matrix(final int size) {
         if (size == 0) {
@@ -72,7 +73,7 @@ public class Matrix {
             result = (shift - i) * result + (int) (temp ^ (temp >>> shift));
         }
 
-        return result + size;
+        return (int) (result * delta) + size;
     }
 
     public boolean equals(final Object object) {
