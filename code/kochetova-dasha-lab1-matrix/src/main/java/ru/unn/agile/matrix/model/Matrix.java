@@ -59,4 +59,29 @@ public class Matrix {
 
         return this.matrix[i * size + j];
     }
+
+    @Override
+    public int hashCode() {
+        final int shift = 32;
+
+        long temp = 0;
+        int result = 0;
+
+        for (int i = 0; i < size * size; i++) {
+            temp = Double.doubleToLongBits(this.matrix[i]);
+            result = (shift - i) * result + (int) (temp ^ (temp >>> shift));
+        }
+
+        return result;
+    }
+
+    public boolean equals(final Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof Matrix)) {
+            return false;
+        }
+        return hashCode() == object.hashCode();
+    }
 }

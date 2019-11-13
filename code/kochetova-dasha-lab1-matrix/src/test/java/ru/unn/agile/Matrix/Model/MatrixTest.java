@@ -120,9 +120,28 @@ public class MatrixTest {
         matrix.getValue(2, 0);
     }
 
-// # add()
+// # equals()
     @Test
-    public void cantAddTwoMatrix() {
+    public void checkEqualsWithOneObj() {
+        var matrix = new Matrix(2);
+        matrix.initByArray(new double[] {1, 1, 1, 0.5});
+
+        assertTrue(matrix.equals(matrix));
+    }
+
+    @Test
+    public void checkEqualsWithSameMatrix() {
+        var matrixFirst = new Matrix(2);
+        matrixFirst.initByArray(new double[] {1, 1, 1, 0.5});
+        var matrixSecond = new Matrix(2);
+        matrixSecond.initByArray(new double[] {1, 1, 1, 0.5});
+
+        assertTrue(matrixFirst.equals(matrixSecond));
+    }
+
+// # add()
+    /*@Test
+    public void canAddTwoMatrix() {
         var matrixFirst = new Matrix(2);
         matrixFirst.initByArray(new double[] {1, 1, 1, 0.5});
         var matrixSecond = new Matrix(2);
@@ -135,5 +154,5 @@ public class MatrixTest {
         assertEquals(3.8, matrixAddResult.getValue(0, 1), delta);
         assertEquals(-1.8, matrixAddResult.getValue(1, 0), delta);
         assertEquals(0, matrixAddResult.getValue(1, 1), delta);
-    }
+    }*/
 }
