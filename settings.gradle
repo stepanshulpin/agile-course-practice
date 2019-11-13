@@ -2,10 +2,6 @@
 include "code/bevzuk-anton"
 project(":code/bevzuk-anton").name = "bevzuk-anton-Model"
 
-// Kildishev Maksim, lab1
-include "code/figures-volume-calculator"
-project(":code/figures-volume-calculator").name = "figures-volume-calculator-Model"
-
 // Korniakov Kirill, lab1
 include "code/korniakov-kirill-lab1"
 project(":code/korniakov-kirill-lab1").name = "korniakov-kirill-lab1-Model"
@@ -65,6 +61,8 @@ project(":code/fractioncalculator").name = "fractioncalculator"
 include "code/length-converter"
 project(":code/length-converter").name = "length-converter-Model"
 // Кильдишев Максим
+include "code/figures-volume-calculator"
+project(":code/figures-volume-calculator").name = "figures-volume-calculator-Model"
 // Киселева Ольга
 // Конева Александра
 // Коневский Виталий
