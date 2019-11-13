@@ -245,4 +245,29 @@ public class MatrixTest {
 
         assertTrue(matrixAddResultExpected.equals(matrixTranspos));
     }
+
+    @Test
+    public void canTransposSimetricMatrix() {
+        var matrix = new Matrix(3);
+        matrix.initByArray(new double[] {1, 1, -1, 1, 0.58, 5.87, -1, 5.87, -8.58});
+
+        var matrixTranspos = matrix.transpos();
+
+        assertTrue(matrix.equals(matrixTranspos));
+    }
+
+    @Test
+    public void canTransposMatrixTwice() {
+        var matrix = new Matrix(3);
+        double[] array = new double[] {1, 1, -1,
+                                       0.5, 0.58, 5.87,
+                                       -2.8, 8, -8.5};
+        matrix.initByArray(array);
+
+        var matrixTranspos = matrix.transpos();
+        assertFalse(matrix.equals(matrixTranspos));
+
+        matrixTranspos = matrixTranspos.transpos();
+        assertTrue(matrix.equals(matrixTranspos));
+    }
 }
