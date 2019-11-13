@@ -139,20 +139,36 @@ public class MatrixTest {
         assertTrue(matrixFirst.equals(matrixSecond));
     }
 
+    @Test
+    public void checkEqualsWithNotSameMatrix() {
+        var matrixFirst = new Matrix(2);
+        matrixFirst.initByArray(new double[] {1, 1, 1, 0.5});
+        var matrixSecond = new Matrix(2);
+        matrixSecond.initByArray(new double[] {2, 1, 1, 0.5});
+
+        assertFalse(matrixFirst.equals(matrixSecond));
+    }
+
+    @Test
+    public void checkEqualsWithMatrixAndString() {
+        var matrixFirst = new Matrix(2);
+        matrixFirst.initByArray(new double[] {1, 1, 1, 0.5});
+
+        assertFalse(matrixFirst.equals("Matrix"));
+    }
+
 // # add()
-    /*@Test
+    @Test
     public void canAddTwoMatrix() {
         var matrixFirst = new Matrix(2);
         matrixFirst.initByArray(new double[] {1, 1, 1, 0.5});
         var matrixSecond = new Matrix(2);
         matrixSecond.initByArray(new double[] {1.4, 2.8, -2.8, -0.5});
-
+        var matrixAddResultExpected = new Matrix(2);
+        matrixSecond.initByArray(new double[] {2.4, 3.8, -1.8, 0});
         var matrixAddResult = new Matrix(2);
         matrixAddResult = matrixFirst.add(matrixSecond);
 
-        assertEquals(2.4, matrixAddResult.getValue(0, 0), delta);
-        assertEquals(3.8, matrixAddResult.getValue(0, 1), delta);
-        assertEquals(-1.8, matrixAddResult.getValue(1, 0), delta);
-        assertEquals(0, matrixAddResult.getValue(1, 1), delta);
-    }*/
+        assertTrue(matrixAddResultExpected.equals(matrixAddResult));
+    }
 }
