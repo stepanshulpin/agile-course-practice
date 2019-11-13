@@ -52,6 +52,7 @@ public class ComplexNumber {
         }
         return object.hashCode() == hashCode();
     }
+
     @Override
     public String toString() {
 

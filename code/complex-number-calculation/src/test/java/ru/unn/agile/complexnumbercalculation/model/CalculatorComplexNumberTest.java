@@ -162,4 +162,38 @@ public class CalculatorComplexNumberTest {
 
         assertEquals(expectedResult, result);
     }
+
+    @Test
+    public void operationDivisionCalculatorComplexNumber() {
+        ComplexNumber z1 = new ComplexNumber(5.0, 5.0);
+        ComplexNumber z2 = new ComplexNumber(4.0, 6.0);
+        ComplexNumber expectedResult = new ComplexNumber(0.9615384615384616, -0.19230769230769232);
+        CalculatorComplexNumber a = new CalculatorComplexNumber(z1, z2);
+
+        ComplexNumber result = a.division();
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void operationDivisionCalculatorComplexNumberWithNegative() {
+        ComplexNumber z1 = new ComplexNumber(5.0, 5.0);
+        ComplexNumber z2 = new ComplexNumber(4.0, -6.0);
+        ComplexNumber expectedResult = new ComplexNumber(-0.19230769230769232, 0.9615384615384616);
+        CalculatorComplexNumber a = new CalculatorComplexNumber(z1, z2);
+
+        ComplexNumber result = a.division();
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test(expected = ArithmeticException.class)
+    public void operationDivisionCalculatorComplexNumberWithNull() throws ArithmeticException {
+        ComplexNumber z1 = new ComplexNumber(5.0, 5.0);
+        ComplexNumber z2 = new ComplexNumber();
+
+        CalculatorComplexNumber a = new CalculatorComplexNumber(z1, z2);
+
+        ComplexNumber result = a.division();
+    }
 }

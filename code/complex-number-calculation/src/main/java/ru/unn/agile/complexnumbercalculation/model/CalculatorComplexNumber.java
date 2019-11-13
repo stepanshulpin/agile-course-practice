@@ -35,4 +35,15 @@ public class CalculatorComplexNumber {
         return new ComplexNumber(z2.getRe() * z1.getRe() - z2.getIm() * z1.getIm(),
                 z2.getRe() * z1.getIm() + z2.getIm() * z1.getRe());
     }
+
+    public ComplexNumber division() {
+        if (z2.equals(new ComplexNumber())) {
+            throw new ArithmeticException("Can`t to be divided on zero");
+        }
+
+        double norma = z2.getIm() * z2.getIm() + z2.getRe() * z2.getRe();
+        double rePart = z1.getRe() * z2.getRe() + z1.getIm() * z2.getIm();
+        double imPart = z2.getRe() * z1.getIm() - z1.getRe() * z2.getIm();
+        return new ComplexNumber(rePart / norma, imPart / norma);
+    }
 }
