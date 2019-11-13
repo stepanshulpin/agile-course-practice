@@ -2,7 +2,8 @@ package ru.unn.agile.ComplexNumber.Model;
 
 import org.junit.Test;
 import ru.unn.agile.ComplexNumber.model.ComplexNumber;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SmirnovAndrewTest {
 
@@ -43,7 +44,7 @@ public class SmirnovAndrewTest {
         ComplexNumber z1 = new ComplexNumber(1, 0);
         ComplexNumber z2 = new ComplexNumber(0, 0);
 
-        assertEquals(z1.hashCode() != z2.hashCode(), true);
+        assertTrue(z1.hashCode() != z2.hashCode());
     }
 
 }
