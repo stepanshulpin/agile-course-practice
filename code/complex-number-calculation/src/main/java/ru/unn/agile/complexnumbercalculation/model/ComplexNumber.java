@@ -14,6 +14,11 @@ public class ComplexNumber {
         im = userIm;
     }
 
+    public ComplexNumber(final ComplexNumber a) {
+        re = a.getRe();
+        im = a.getIm();
+    }
+
     public double getRe() {
         return re;
     }

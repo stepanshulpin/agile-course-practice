@@ -9,6 +9,12 @@ public class CalculatorComplexNumber {
         z2 = new ComplexNumber();
     }
 
+
+    public CalculatorComplexNumber(final ComplexNumber userZ1, final ComplexNumber userZ2) {
+       z1 = userZ1;
+       z2 = userZ2;
+    }
+
     public ComplexNumber getZ1() {
         return z1;
     }
@@ -16,4 +22,5 @@ public class CalculatorComplexNumber {
     public ComplexNumber getZ2() {
         return z2;
     }
+
 }

@@ -60,4 +60,36 @@ public class ComplexNumberTest {
         assertEquals(-6.0, a.getIm(), 0.0);
     }
 
+    @Test
+    public void equalTwoComplexNumbers() {
+        ComplexNumber a = new ComplexNumber(5.0, -6.0);
+        ComplexNumber b = new ComplexNumber(5.0, -6.0);
+
+        assertEquals(a, b);
+    }
+
+    @Test
+    public void notEqualTwoComplexNumbers() {
+        ComplexNumber a = new ComplexNumber(5.0, -6.0);
+        ComplexNumber b = new ComplexNumber(-5.0, -6.0);
+
+        assertNotEquals(a, b);
+    }
+
+    @Test
+    public void equalTwoComplexNumbersWithOperand() {
+        ComplexNumber a = new ComplexNumber(5.0, -6.0);
+        ComplexNumber b = new ComplexNumber(a);
+
+        assertTrue(a.equals(b));
+    }
+
+    @Test
+    public void equalHashCodeOfTwoComplexNumbers() {
+        ComplexNumber a = new ComplexNumber(5.0, -6.0);
+        ComplexNumber b = new ComplexNumber(5.0, -6.0);
+
+        assertEquals(a.hashCode(), b.hashCode());
+    }
+
 }
