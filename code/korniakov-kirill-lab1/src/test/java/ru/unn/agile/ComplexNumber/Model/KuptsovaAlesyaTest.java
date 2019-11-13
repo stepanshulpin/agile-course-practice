@@ -25,8 +25,8 @@ public class KuptsovaAlesyaTest {
         String im = "-13.0";
         ComplexNumber z = new ComplexNumber(re, im);
         double num = z.getReal();
-        String num_str = valueOf(num);
-        assertEquals(re, num_str);
+        String numstr = valueOf(num);
+        assertEquals(re, numstr);
     }
     @Test
     public void canGetImaginaryFromComplexNumberWithImaginaryPart() {
@@ -34,8 +34,8 @@ public class KuptsovaAlesyaTest {
         String im = "-13.0";
         ComplexNumber z = new ComplexNumber(re, im);
         double num = z.getImaginary();
-        String num_str = valueOf(num);
-        assertEquals(im, num_str);
+        String numstr = valueOf(num);
+        assertEquals(im, numstr);
     }
 
     @Test
