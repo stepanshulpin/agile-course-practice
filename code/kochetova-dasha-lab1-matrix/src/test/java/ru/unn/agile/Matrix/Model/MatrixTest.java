@@ -132,9 +132,9 @@ public class MatrixTest {
     @Test
     public void checkEqualsWithSameMatrix() {
         var matrixFirst = new Matrix(2);
-        matrixFirst.initByArray(new double[] {1, 1, 1, 0.5});
+        matrixFirst.initByArray(new double[] {0.31, 1, 1, 0.5});
         var matrixSecond = new Matrix(2);
-        matrixSecond.initByArray(new double[] {1, 1, 1, 0.5});
+        matrixSecond.initByArray(new double[] {0.31, 1, 1, 0.5});
 
         assertTrue(matrixFirst.equals(matrixSecond));
     }
@@ -157,18 +157,42 @@ public class MatrixTest {
         assertFalse(matrixFirst.equals("Matrix"));
     }
 
-// # add()
     @Test
+    public void checkEqualsMatrixsWithDifferentSizeInitByZero() {
+        var matrixFirst = new Matrix(2);
+        var matrixSecond = new Matrix(3);
+
+        assertFalse(matrixFirst.equals(matrixSecond));
+    }
+
+    @Test
+    public void checkEqualsMatrixsWithDifferentSize() {
+        var matrixFirst = new Matrix(2);
+        matrixFirst.initByArray(new double[] {0.31, 1, 1, 0.5});
+        var matrixSecond = new Matrix(3);
+        matrixSecond.initByArray(new double[] {0.31, 1, 1, 0.5, 1, 1});
+
+        assertFalse(matrixFirst.equals(matrixSecond));
+    }
+
+// # add()
+    /*@Test
     public void canAddTwoMatrix() {
         var matrixFirst = new Matrix(2);
         matrixFirst.initByArray(new double[] {1, 1, 1, 0.5});
         var matrixSecond = new Matrix(2);
         matrixSecond.initByArray(new double[] {1.4, 2.8, -2.8, -0.5});
         var matrixAddResultExpected = new Matrix(2);
-        matrixSecond.initByArray(new double[] {2.4, 3.8, -1.8, 0});
-        var matrixAddResult = new Matrix(2);
-        matrixAddResult = matrixFirst.add(matrixSecond);
+        matrixAddResultExpected.initByArray(new double[] {2.4, 3.8, -1.8, 0});
+
+        var matrixAddResult = matrixFirst.add(matrixSecond);
+
+
+        assertEquals(matrixAddResultExpected.getValue(0, 0), matrixAddResult.getValue(0, 0), delta);
+        assertEquals(matrixAddResultExpected.getValue(0, 1), matrixAddResult.getValue(0, 1), delta);
+        assertEquals(matrixAddResultExpected.getValue(1, 0), matrixAddResult.getValue(1, 0), delta);
+        assertEquals(matrixAddResultExpected.getValue(1, 1), matrixAddResult.getValue(1, 1), delta);
 
         assertTrue(matrixAddResultExpected.equals(matrixAddResult));
-    }
+    }*/
 }

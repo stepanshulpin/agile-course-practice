@@ -72,7 +72,7 @@ public class Matrix {
             result = (shift - i) * result + (int) (temp ^ (temp >>> shift));
         }
 
-        return result;
+        return result + size;
     }
 
     public boolean equals(final Object object) {
@@ -83,5 +83,18 @@ public class Matrix {
             return false;
         }
         return hashCode() == object.hashCode();
+    }
+
+    public Matrix add(final Matrix matrix) {
+        double[] array = new double[size * size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                array[i * size + j] = matrix.getValue(i, j) + this.matrix[i * size + j];
+            }
+        }
+
+        var matrixResult = new Matrix(size);
+        matrixResult.initByArray(array);
+        return matrixResult;
     }
 }
