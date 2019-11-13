@@ -127,4 +127,39 @@ public class CalculatorComplexNumberTest {
         assertEquals(expectedResult, result);
     }
 
+    @Test
+    public void operationMultiplicationCalculatorComplexNumber() {
+        ComplexNumber z1 = new ComplexNumber(5.0, 5.0);
+        ComplexNumber z2 = new ComplexNumber(4.0, 6.0);
+        ComplexNumber expectedResult = new ComplexNumber(-10.0, 50.0);
+        CalculatorComplexNumber a = new CalculatorComplexNumber(z1, z2);
+
+        ComplexNumber result = a.multiplication();
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void operationMultiplicationCalculatorComplexNumberWithNegative() {
+        ComplexNumber z1 = new ComplexNumber(-5.0, 5.0);
+        ComplexNumber z2 = new ComplexNumber(4.0, 6.0);
+        ComplexNumber expectedResult = new ComplexNumber(-50.0, -10.0);
+        CalculatorComplexNumber a = new CalculatorComplexNumber(z1, z2);
+
+        ComplexNumber result = a.multiplication();
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void operationMultiplicationCalculatorComplexNumberWithOneNull() {
+        ComplexNumber z1 = new ComplexNumber(-5.0, 6.0);
+        ComplexNumber z2 = new ComplexNumber();
+        ComplexNumber expectedResult = new ComplexNumber();
+        CalculatorComplexNumber a = new CalculatorComplexNumber(z1, z2);
+
+        ComplexNumber result = a.multiplication();
+
+        assertEquals(expectedResult, result);
+    }
 }

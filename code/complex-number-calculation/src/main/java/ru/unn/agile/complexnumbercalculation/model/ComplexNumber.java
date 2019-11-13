@@ -52,4 +52,15 @@ public class ComplexNumber {
         }
         return object.hashCode() == hashCode();
     }
+    @Override
+    public String toString() {
+
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(getRe() < 0 ? "-" : "");
+        buffer.append(Math.abs(re))
+                .append(getIm() < 0 ? " - " : " + ")
+                .append(Math.abs(im))
+                .append("i");
+        return buffer.toString();
+    }
 }

@@ -92,4 +92,31 @@ public class ComplexNumberTest {
         assertEquals(a.hashCode(), b.hashCode());
     }
 
+    @Test
+    public void convertComplexNumberToString() {
+        ComplexNumber a = new ComplexNumber(5.0, 2.0);
+
+        String string = a.toString();
+
+        assertEquals("5.0 + 2.0i", string);
+    }
+
+    @Test
+    public void convertComplexNumberToStringWithNegative() {
+        ComplexNumber a = new ComplexNumber(5.0, -2.0);
+
+        String string = a.toString();
+
+        assertEquals("5.0 - 2.0i", string);
+    }
+
+    @Test
+    public void convertComplexNumberToStringWithNull() {
+        ComplexNumber a = new ComplexNumber(0.0, -2.0);
+
+        String string = a.toString();
+
+        assertEquals("0.0 - 2.0i", string);
+    }
+
 }
