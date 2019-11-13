@@ -2,13 +2,13 @@
 include "code/bevzuk-anton"
 project(":code/bevzuk-anton").name = "bevzuk-anton-Model"
 
+// Kildishev Maksim, lab1
+include "code/figures-volume-calculator"
+project(":code/figures-volume-calculator").name = "figures-volume-calculator-Model"
+
 // Korniakov Kirill, lab1
 include "code/korniakov-kirill-lab1"
 project(":code/korniakov-kirill-lab1").name = "korniakov-kirill-lab1-Model"
-
-// Zyrina Anna, lab1
-include "code/lab1-tdd-sorting"
-project(":code/lab1-tdd-sorting").name = "lab1-tdd-Sorting"
 
 // Korniakov Kirill, lab2-legacy
 include "code/korniakov-kirill-lab2-legacy/Model"
@@ -45,76 +45,3 @@ include "code/korniakov-kirill-lab3/View"
 project(":code/korniakov-kirill-lab3/View").name = "korniakov-kirill-lab3-View"
 include "code/korniakov-kirill-lab3/Infrastructure"
 project(":code/korniakov-kirill-lab3/Infrastructure").name = "korniakov-kirill-lab3-Infrastructure"
-
-// Алексеев Сергей
-// Антипин Никита
-// Ахмедов Саркар
-// Бевзюк Семен
-// Власов Антон
-// Гречухин Никита
-include "code/fractioncalculator"
-project(":code/fractioncalculator").name = "fractioncalculator"
-// Гришин Дмитрий
-// Зырина Анна
-// Кальянов Дмитрий
-// Карев Борис
-include "code/length-converter"
-project(":code/length-converter").name = "length-converter-Model"
-// Кильдишев Максим
-include "code/figures-volume-calculator"
-project(":code/figures-volume-calculator").name = "figures-volume-calculator-Model"
-// Киселева Ольга
-// Конева Александра
-// Коневский Виталий
-include "code/deposit-calculator"
-project(":code/deposit-calculator").name = "deposit-calculator-Model"
-// Кочетова Дарья
-// Красильников Михаил
-// Краснов Александр
-// Куликов Александр
-// Кулыгина Юлия
-// Купцова Алеся
-// Кучков Иван
-// Лапин Артем
-include "code/quadratic-equasion"
-project(":code/quadratic-equasion").name = "quadratic-equasion-Model"
-// Лахтачев Ярослав
-// Миронова Анна
-include "code/statistics-calculation"
-project(":code/statistics-calculation").name = "statistics-calculation-Model"
-// Митрохин Никита
-include "code/queue"
-project(":code/queue").name = "queue-Model"
-// Нестеров Александр
-// Нечесанов Владимир
-// Овчарук Олег
-include "code/polynomialcalculator"
-project(":code/polynomialcalculator").name = "polynomialcalculator"
-// Петров Кирилл
-include "code/interpolationsearch"
-project(":code/interpolationsearch").name = "interpolationsearch"
-// Повеликин Ростислав
-// Попков Кирилл
-// Разин Вячеслав
-// Сизова Ксения
-include "code/binary-search"
-project(":code/binary-search").name = "binary-search-Model"
-// Симонян Вагинак
-include "code/students-performance"
-project(":code/students-performance").name = "students-performance-Model"
-// Смирнов Андрей
-// Смирнов Егор
-// Тамилина Дарья
-// Тягунов Владимир
-// Федорова Дарья
-// Федотов Андрей
-include "code/datastructure-set"
-project(":code/datastructure-set").name = "datastructure-set"
-// Широких Виолетта
-// Шульпин Степан
-include "code/mortgage-calculator"
-project(":code/mortgage-calculator").name = "mortgage-calculator-Model"
-// Шумихин Сергей
-// Юферев Кирилл
-include "code/stack"
-project(":code/stack").name = "stack-Model"
