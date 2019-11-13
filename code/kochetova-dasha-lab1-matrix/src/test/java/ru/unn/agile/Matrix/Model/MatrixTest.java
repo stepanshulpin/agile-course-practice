@@ -232,4 +232,17 @@ public class MatrixTest {
 
         matrixSecond.add(matrixFirst);
     }
+
+// # transpos()
+    @Test
+    public void canTransposMatrix() {
+        var matrix = new Matrix(2);
+        matrix.initByArray(new double[] {1, 1, -1, 0.5});
+        var matrixAddResultExpected = new Matrix(2);
+        matrixAddResultExpected.initByArray(new double[] {1, -1, 1, 0.5});
+
+        var matrixTranspos = matrix.transpos();
+
+        assertTrue(matrixAddResultExpected.equals(matrixTranspos));
+    }
 }
