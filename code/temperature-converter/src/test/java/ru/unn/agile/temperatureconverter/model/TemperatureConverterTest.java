@@ -1,11 +1,6 @@
-package ru.unn.agile.temperatureconverter.Model;
+package ru.unn.agile.temperatureconverter.model;
 
 import org.junit.Test;
-import ru.unn.agile.temperatureconverter.model.CelsiusTemperature;
-import ru.unn.agile.temperatureconverter.model.FahrenheitTemperature;
-import ru.unn.agile.temperatureconverter.model.KelvinTemperature;
-import ru.unn.agile.temperatureconverter.model.NewtonTemperature;
-import ru.unn.agile.temperatureconverter.model.TemperatureConverter;
 
 import static org.junit.Assert.*;
 
