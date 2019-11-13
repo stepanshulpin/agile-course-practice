@@ -87,6 +87,11 @@ public class Matrix {
     }
 
     public Matrix add(final Matrix matrix) {
+        if (this.size != matrix.getSize()) {
+            throw new IndexOutOfBoundsException(
+                ExceptionMessage.INDEX_OUT_BOUNDS_MATRIX.toString());
+        }
+
         double[] array = new double[size * size];
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {

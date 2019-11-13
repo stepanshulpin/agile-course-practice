@@ -186,7 +186,7 @@ public class MatrixTest {
     }
 
 // # add()
-    /*@Test
+    @Test
     public void canAddTwoMatrix() {
         var matrixFirst = new Matrix(2);
         matrixFirst.initByArray(new double[] {1, 1, 1, 0.5});
@@ -197,12 +197,39 @@ public class MatrixTest {
 
         var matrixAddResult = matrixFirst.add(matrixSecond);
 
-
-        assertEquals(matrixAddResultExpected.getValue(0, 0), matrixAddResult.getValue(0, 0), delta);
-        assertEquals(matrixAddResultExpected.getValue(0, 1), matrixAddResult.getValue(0, 1), delta);
-        assertEquals(matrixAddResultExpected.getValue(1, 0), matrixAddResult.getValue(1, 0), delta);
-        assertEquals(matrixAddResultExpected.getValue(1, 1), matrixAddResult.getValue(1, 1), delta);
-
         assertTrue(matrixAddResultExpected.equals(matrixAddResult));
-    }*/
+    }
+
+    @Test
+    public void canAddMatrixAndZeroMatrix() {
+        var matrixFirst = new Matrix(3);
+        matrixFirst.initByArray(new double[] {1, 1, 1, 0.5, 69, -85.254, 87.2, 1.5, -98.4});
+        var matrixSecond = new Matrix(3);
+        matrixSecond.initByArray(new double[] {0, 0, 0, 0, 0, 0, 0, 0, 0});
+
+        var matrixAddResult = matrixFirst.add(matrixSecond);
+
+        assertTrue(matrixFirst.equals(matrixAddResult));
+    }
+
+    @Test
+    public void canAddMatrixsWithDifferentSizeFirst() {
+        thrown.expect(IndexOutOfBoundsException.class);
+        thrown.expectMessage(
+            Matrix.ExceptionMessage.INDEX_OUT_BOUNDS_MATRIX.toString());
+
+        var matrixFirst = new Matrix(2);
+        matrixFirst.initByArray(new double[] {1, 1, 1, 0.5});
+        var matrixSecond = new Matrix(1);
+        matrixSecond.initByArray(new double[] {12});
+
+        matrixFirst.add(matrixSecond);
+
+        thrown = ExpectedException.none();
+        thrown.expect(IndexOutOfBoundsException.class);
+        thrown.expectMessage(
+            Matrix.ExceptionMessage.INDEX_OUT_BOUNDS_MATRIX.toString());
+
+        matrixSecond.add(matrixFirst);
+    }
 }
