@@ -9,14 +9,14 @@ public class TyagunovVladimirTest {
     @Test
     public void canConvertComplexNumberWithInitialValuesToString() {
         ComplexNumber number = new ComplexNumber();
-        assertEquals(number.toString(), "0.0 + 0.0i");
+        assertEquals("0.0 + 0.0i", number.toString());
     }
 
     @Test
     public void canConvertComplexNumberToString() {
         ComplexNumber number = new ComplexNumber(7, 10);
         System.out.println(number.toString());
-        assertEquals(number.toString(), "7.0 + 10.0i");
+        assertEquals("7.0 + 10.0i", number.toString());
     }
 
     @Test
