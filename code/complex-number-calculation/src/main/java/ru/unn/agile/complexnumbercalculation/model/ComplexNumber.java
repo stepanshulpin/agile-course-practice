@@ -3,20 +3,35 @@ package ru.unn.agile.complexnumbercalculation.model;
 public class ComplexNumber {
     private double re;
     private double im;
+    private final double delta = 0.001;
+    private double radius;
+    private double angle;
+
+    public ComplexNumber getComplexNumberFromTrigonomForm() {
+        double rePart = radius * Math.cos(angle);
+        double imPart = radius * Math.sin(angle);
+        return new ComplexNumber(rePart, imPart);
+    }
 
     public ComplexNumber() {
         re = 0.0;
         im = 0.0;
+        radius = 0.0;
+        angle = 0.0;
     }
 
     public ComplexNumber(final double userRe, final double userIm) {
         re = userRe;
         im = userIm;
+        radius = 0.0;
+        angle = 0.0;
     }
 
     public ComplexNumber(final ComplexNumber a) {
         re = a.getRe();
         im = a.getIm();
+        radius = 0.0;
+        angle = 0.0;
     }
 
     public double getRe() {
@@ -47,7 +62,8 @@ public class ComplexNumber {
             return false;
         }
 
-        if ((((ComplexNumber) object).getIm() == im) && (((ComplexNumber) object).getRe() == re)) {
+        if ((Math.abs((((ComplexNumber) object).getIm() - im)) < delta)
+                && (Math.abs((((ComplexNumber) object).getRe() - re)) < delta)) {
             return true;
         }
         return object.hashCode() == hashCode();
@@ -63,5 +79,25 @@ public class ComplexNumber {
                 .append(Math.abs(im))
                 .append("i");
         return buffer.toString();
+    }
+
+    public void convertToTrigonomForm() {
+        radius = Math.sqrt(re * re + im * im);
+        angle = Math.atan(im / re);
+    }
+
+    public double getAngle() {
+        return angle;
+    }
+
+    public double getRadius() {
+        return radius;
+    }
+
+    public void setAngle(final double angle) {
+        this.angle = angle;
+    }
+    public void setRadius(final double radius) {
+        this.radius = radius;
     }
 }

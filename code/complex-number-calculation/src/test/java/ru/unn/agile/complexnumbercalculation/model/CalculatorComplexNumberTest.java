@@ -19,7 +19,7 @@ public class CalculatorComplexNumberTest {
         ComplexNumber expectedResult = new ComplexNumber(9.0, 12.0);
         CalculatorComplexNumber a = new CalculatorComplexNumber();
 
-        ComplexNumber result = a.addition(z1, z2);
+        ComplexNumber result = a.add(z1, z2);
 
         assertEquals(expectedResult, result);
     }
@@ -31,7 +31,7 @@ public class CalculatorComplexNumberTest {
         ComplexNumber expectedResult = new ComplexNumber(-1.0, 12.0);
         CalculatorComplexNumber a = new CalculatorComplexNumber();
 
-        ComplexNumber result = a.addition(z1, z2);
+        ComplexNumber result = a.add(z1, z2);
 
         assertEquals(expectedResult, result);
     }
@@ -43,7 +43,7 @@ public class CalculatorComplexNumberTest {
         ComplexNumber expectedResult = new ComplexNumber(-5.0, 6.0);
         CalculatorComplexNumber a = new CalculatorComplexNumber();
 
-        ComplexNumber result = a.addition(z1, z2);
+        ComplexNumber result = a.add(z1, z2);
 
         assertEquals(expectedResult, result);
     }
@@ -55,7 +55,7 @@ public class CalculatorComplexNumberTest {
         ComplexNumber expectedResult = new ComplexNumber(1.0, -1.0);
         CalculatorComplexNumber a = new CalculatorComplexNumber();
 
-        ComplexNumber result = a.subtraction(z1, z2);
+        ComplexNumber result = a.subtract(z1, z2);
 
         assertEquals(expectedResult, result);
     }
@@ -67,7 +67,7 @@ public class CalculatorComplexNumberTest {
         ComplexNumber expectedResult = new ComplexNumber(-9.0, 0.0);
         CalculatorComplexNumber a = new CalculatorComplexNumber();
 
-        ComplexNumber result = a.subtraction(z1, z2);
+        ComplexNumber result = a.subtract(z1, z2);
 
         assertEquals(expectedResult, result);
     }
@@ -79,7 +79,7 @@ public class CalculatorComplexNumberTest {
         ComplexNumber expectedResult = new ComplexNumber(-5.0, 6.0);
         CalculatorComplexNumber a = new CalculatorComplexNumber();
 
-        ComplexNumber result = a.subtraction(z1, z2);
+        ComplexNumber result = a.subtract(z1, z2);
 
         assertEquals(expectedResult, result);
     }
@@ -91,7 +91,7 @@ public class CalculatorComplexNumberTest {
         ComplexNumber expectedResult = new ComplexNumber(-10.0, 50.0);
         CalculatorComplexNumber a = new CalculatorComplexNumber();
 
-        ComplexNumber result = a.multiplication(z1, z2);
+        ComplexNumber result = a.multiply(z1, z2);
 
         assertEquals(expectedResult, result);
     }
@@ -103,7 +103,7 @@ public class CalculatorComplexNumberTest {
         ComplexNumber expectedResult = new ComplexNumber(-50.0, -10.0);
         CalculatorComplexNumber a = new CalculatorComplexNumber();
 
-        ComplexNumber result = a.multiplication(z1, z2);
+        ComplexNumber result = a.multiply(z1, z2);
 
         assertEquals(expectedResult, result);
     }
@@ -115,7 +115,7 @@ public class CalculatorComplexNumberTest {
         ComplexNumber expectedResult = new ComplexNumber();
         CalculatorComplexNumber a = new CalculatorComplexNumber();
 
-        ComplexNumber result = a.multiplication(z1, z2);
+        ComplexNumber result = a.multiply(z1, z2);
 
         assertEquals(expectedResult, result);
     }
@@ -127,7 +127,7 @@ public class CalculatorComplexNumberTest {
         ComplexNumber expectedResult = new ComplexNumber(0.9615384615384616, -0.19230769230769232);
         CalculatorComplexNumber a = new CalculatorComplexNumber();
 
-        ComplexNumber result = a.division(z1, z2);
+        ComplexNumber result = a.divide(z1, z2);
 
         assertEquals(expectedResult, result);
     }
@@ -139,7 +139,7 @@ public class CalculatorComplexNumberTest {
         ComplexNumber expectedResult = new ComplexNumber(-0.19230769230769232, 0.9615384615384616);
         CalculatorComplexNumber a = new CalculatorComplexNumber();
 
-        ComplexNumber result = a.division(z1, z2);
+        ComplexNumber result = a.divide(z1, z2);
 
         assertEquals(expectedResult, result);
     }
@@ -151,6 +151,17 @@ public class CalculatorComplexNumberTest {
 
         CalculatorComplexNumber a = new CalculatorComplexNumber();
 
-        ComplexNumber result = a.division(z1, z2);
+        ComplexNumber result = a.divide(z1, z2);
+    }
+
+    @Test
+    public void operationPowCalculatorComplexNumber() {
+        ComplexNumber z = new ComplexNumber(1, -Math.sqrt(3));
+        ComplexNumber expectedResult = new ComplexNumber(-8, 8 * Math.sqrt(3));
+        CalculatorComplexNumber a = new CalculatorComplexNumber();
+
+        ComplexNumber result = a.pow(z, 4);
+
+        assertEquals(expectedResult, result);
     }
 }

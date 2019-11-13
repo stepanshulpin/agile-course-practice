@@ -119,4 +119,22 @@ public class ComplexNumberTest {
         assertEquals("0.0 - 2.0i", string);
     }
 
+    @Test
+    public void convertComplexNumberToTrigonomFormCheckRadius() {
+        ComplexNumber a = new ComplexNumber(1.0, -Math.sqrt(3));
+
+        a.convertToTrigonomForm();
+
+        assertEquals(2, a.getRadius(), 0.001);
+    }
+
+    @Test
+    public void convertComplexNumberToTrigonomFormCheckAngle() {
+        ComplexNumber a = new ComplexNumber(1.0, -Math.sqrt(3));
+
+        a.convertToTrigonomForm();
+
+        assertEquals(-Math.PI / 3, a.getAngle(), 0.001);
+    }
+
 }
