@@ -1,10 +1,9 @@
 package ru.unn.agile.ComplexNumber.model;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
-
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 public class TyagunovVladimirTest {
     @Test
@@ -23,13 +22,13 @@ public class TyagunovVladimirTest {
     @Test
     public void isNumberEqualsToItself() {
         ComplexNumber number = new ComplexNumber(7, 10);
-        assertEquals(number.equals(number), true);
+        assertTrue(number.equals(number));
     }
 
     @Test
     public void canCompareWithEmptyObject() {
         ComplexNumber number = new ComplexNumber(7, 10);
         Object object = new Object();
-        assertEquals(number.equals(object), false);
+        assertFalse(number.equals(object));
     }
 }
