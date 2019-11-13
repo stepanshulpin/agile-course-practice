@@ -27,4 +27,9 @@ public class CalculatorComplexNumber {
         return new ComplexNumber(z1.getRe() + z2.getRe(), z1.getIm() + z2.getIm());
     }
 
+    public ComplexNumber subtraction() {
+        return new ComplexNumber(z1.getRe() - z2.getRe(), z1.getIm() - z2.getIm());
+    }
+
+
 }

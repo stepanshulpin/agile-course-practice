@@ -91,4 +91,40 @@ public class CalculatorComplexNumberTest {
         assertEquals(expectedResult, result);
     }
 
+    @Test
+    public void operationSubtractionCalculatorComplexNumber() {
+        ComplexNumber z1 = new ComplexNumber(5.0, 5.0);
+        ComplexNumber z2 = new ComplexNumber(4.0, 6.0);
+        ComplexNumber expectedResult = new ComplexNumber(1.0, -1.0);
+        CalculatorComplexNumber a = new CalculatorComplexNumber(z1, z2);
+
+        ComplexNumber result = a.subtraction();
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void operationSubtractionCalculatorComplexNumberWithNegative() {
+        ComplexNumber z1 = new ComplexNumber(-5.0, 6.0);
+        ComplexNumber z2 = new ComplexNumber(4.0, 6.0);
+        ComplexNumber expectedResult = new ComplexNumber(-9.0, 0.0);
+        CalculatorComplexNumber a = new CalculatorComplexNumber(z1, z2);
+
+        ComplexNumber result = a.subtraction();
+
+        assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void operationSubtractionCalculatorComplexNumberWithOneNull() {
+        ComplexNumber z1 = new ComplexNumber(-5.0, 6.0);
+        ComplexNumber z2 = new ComplexNumber();
+        ComplexNumber expectedResult = new ComplexNumber(-5.0, 6.0);
+        CalculatorComplexNumber a = new CalculatorComplexNumber(z1, z2);
+
+        ComplexNumber result = a.subtraction();
+
+        assertEquals(expectedResult, result);
+    }
+
 }
