@@ -103,4 +103,17 @@ public class Matrix {
         matrixResult.initByArray(array);
         return matrixResult;
     }
+
+    public Matrix transpos() {
+        double[] array = new double[size * size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                array[i * size + j] = this.matrix[j * size + i];
+            }
+        }
+
+        var matrixResult = new Matrix(size);
+        matrixResult.initByArray(array);
+        return matrixResult;
+    }
 }
