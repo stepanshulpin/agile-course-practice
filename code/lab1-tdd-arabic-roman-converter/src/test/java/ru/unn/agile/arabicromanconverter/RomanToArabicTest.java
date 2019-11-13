@@ -132,6 +132,11 @@ public class RomanToArabicTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
+    public void canConvertWrongRomanValue() {
+        int arabicNumber = convertToArabic("IIII");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
     public void canConvertIllegalValue() {
         int arabicNumber = convertToArabic("BUGAGASHENKA");
     }
