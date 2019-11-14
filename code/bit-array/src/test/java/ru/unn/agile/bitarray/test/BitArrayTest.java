@@ -8,8 +8,14 @@ import static org.junit.Assert.*;
 public class BitArrayTest {
 
     @Test
-    public void check() {
-        BitArray btr;
-        assertEquals(1, 1);
+    public void canInitBitArray() {
+        // arrange
+        BitArray btr = new BitArray(10);
+
+        // act
+        byte[] raw_array = btr.getRawArray();
+
+        // assert
+        assertEquals(raw_array.length, 2);
     }
 }
