@@ -46,8 +46,13 @@ public class TemperatureConverter {
         return (KelvinTemperature) converterToKelvin.convertFromCelsius(celsius);
     }
 
-    public NewtonTemperature convertToNewton(final CelsiusTemperature celsius) {
-        return (NewtonTemperature) converterCelsiusNewton.convertFromCelsius(celsius);
+    public NewtonTemperature convertToNewton(final Temperature temperature) {
+        Converter converterToCelsius = converterDictionary.get(temperature.getClass().getName());
+        CelsiusTemperature celsius = converterToCelsius.convertToCelsius(temperature);
+
+        Converter convertToNewton = converterDictionary.get(
+                "ru.unn.agile.temperatureconverter.model.NewtonTemperature");
+        return (NewtonTemperature) convertToNewton.convertFromCelsius(celsius);
     }
 
     public CelsiusTemperature convertToCelsius(final FahrenheitTemperature fahrenheit) {
