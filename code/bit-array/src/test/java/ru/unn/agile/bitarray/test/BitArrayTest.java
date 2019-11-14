@@ -42,13 +42,14 @@ public class BitArrayTest {
         // arrange
         BitArray btr = new BitArray(41);
 
-        // act
         btr.setBit(4);
         btr.setBit(13);
         btr.setBit(19);
         btr.setBit(25);
         btr.setBit(34);
         btr.setBit(41);
+
+        // act
         byte[]actual = btr.getRawArray();
 
         // assert
@@ -61,7 +62,6 @@ public class BitArrayTest {
         // arrange
         BitArray btr = new BitArray(41);
 
-        // act
         btr.setBit(4);
 
         btr.setBit(13);
@@ -77,6 +77,7 @@ public class BitArrayTest {
         btr.setBit(41);
         btr.unsetBit(41);
 
+        // act
         byte[]actual = btr.getRawArray();
 
         // assert
@@ -84,4 +85,20 @@ public class BitArrayTest {
         assertArrayEquals(reference, actual);
     }
 
+    @Test
+    public void isEqualBitArrays() {
+        // arrange
+        BitArray btr_1 = new BitArray(41);
+        BitArray btr_2 = new BitArray(41);
+
+        btr_1.setBit(7);   btr_2.setBit(7);
+        btr_1.setBit(11);  btr_2.setBit(11);
+        btr_1.setBit(19);  btr_2.setBit(19);
+        btr_1.setBit(26);  btr_2.setBit(26);
+        btr_1.setBit(34);  btr_2.setBit(34);
+        btr_1.setBit(40);  btr_2.setBit(40);
+
+        // act && assert
+        assertEquals(btr_1, btr_2);
+    }
 }

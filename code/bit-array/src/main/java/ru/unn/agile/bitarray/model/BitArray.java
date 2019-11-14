@@ -1,6 +1,8 @@
 package ru.unn.agile.bitarray.model;
 
 
+import java.util.Arrays;
+
 public class BitArray {
     private byte[] raw_array;
 
@@ -32,4 +34,13 @@ public class BitArray {
     public void unsetBit(int bit) {
         raw_array[getNumElem(bit) - 1] &= ~(1 << (bit % 8));
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof BitArray)) return false;
+        BitArray bitArray = (BitArray) o;
+        return Arrays.equals(raw_array, bitArray.raw_array);
+    }
+
 }
