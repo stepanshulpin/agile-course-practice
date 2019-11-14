@@ -92,6 +92,15 @@ public class BitArrayTest {
         assertArrayEquals(reference, actual);
     }
 
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void canUnsetNegativeBitInBitArray() {
+        // arrange
+        BitArray btr = new BitArray(41);
+
+        // act & assert
+        btr.unsetBit(-31);
+    }
+
     @Test
     public void isEqualBitArrays() {
         // arrange
