@@ -7,9 +7,11 @@ import static org.junit.Assert.fail;
 
 public class PolygonTest {
 
+    private final double delta = 0.001;
+
     private final Point pointA = new Point();
     private final Point pointB = new Point(0, 2);
-    private final Point pointC = new Point(2, 0);
+    private final Point pointC = new Point(2, 2);
     private final Point pointD = new Point(2, 0);
 
     @Test
@@ -44,5 +46,12 @@ public class PolygonTest {
         Polygon polygon = new Polygon(pointA, pointB, pointC, pointD);
 
         assertEquals(4, polygon.getSize());
+    }
+
+    @Test
+    public void canGetPolygonArea() {
+        Polygon polygon = new Polygon(pointA, pointB, pointC, pointD);
+
+        assertEquals(4, polygon.getArea(), delta);
     }
 }
