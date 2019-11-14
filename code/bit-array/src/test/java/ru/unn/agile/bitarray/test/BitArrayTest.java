@@ -1,4 +1,4 @@
-package ru.unn.agile.bitarray.Model;
+package ru.unn.agile.bitarray.test;
 
 import org.junit.Test;
 import ru.unn.agile.bitarray.model.BitArray;
@@ -10,6 +10,6 @@ public class BitArrayTest {
     @Test
     public void check() {
         BitArray btr;
-        assertEquals(0, 0);
+        assertEquals(1, 1);
     }
 }
