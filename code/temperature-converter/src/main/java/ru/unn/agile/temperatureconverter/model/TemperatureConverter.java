@@ -9,58 +9,53 @@ public class TemperatureConverter {
     private ConverterCelsiusKelvin converterCelsiusKelvin;
     private ConverterCelsiusNewton converterCelsiusNewton;
     private ConverterCelsiusFahrenheit converterCelsiusFahrenheit;
-    private Map<String, Converter> converterDictionary;
 
     public TemperatureConverter() {
         converterCelsiusCelsius = new ConverterCelsiusCelsius();
         converterCelsiusKelvin = new ConverterCelsiusKelvin();
         converterCelsiusNewton = new ConverterCelsiusNewton();
         converterCelsiusFahrenheit = new ConverterCelsiusFahrenheit();
-
-        converterDictionary = new HashMap<>();
-        converterDictionary.put("ru.unn.agile.temperatureconverter.model.CelsiusTemperature",
-                                converterCelsiusCelsius);
-        converterDictionary.put("ru.unn.agile.temperatureconverter.model.KelvinTemperature",
-                                converterCelsiusKelvin);
-        converterDictionary.put("ru.unn.agile.temperatureconverter.model.NewtonTemperature",
-                                converterCelsiusNewton);
-        converterDictionary.put("ru.unn.agile.temperatureconverter.model.FahrenheitTemperature",
-                                converterCelsiusFahrenheit);
     }
 
     public FahrenheitTemperature convertToFahrenheit(final Temperature temperature) {
-        Converter converterToCelsius = converterDictionary.get(temperature.getClass().getName());
+        Converter converterToCelsius = getConvertor(temperature.getClass().getName());
         CelsiusTemperature celsius = converterToCelsius.convertToCelsius(temperature);
-
-        Converter converterFromCelsius = converterDictionary.get(
-                "ru.unn.agile.temperatureconverter.model.FahrenheitTemperature");
+        Converter converterFromCelsius = getConvertor(FahrenheitTemperature.class.getName());
         return (FahrenheitTemperature) converterFromCelsius.convertFromCelsius(celsius);
     }
 
     public KelvinTemperature convertToKelvin(final Temperature temperature) {
-        Converter converterToCelsius = converterDictionary.get(temperature.getClass().getName());
+        Converter converterToCelsius = getConvertor(temperature.getClass().getName());
         CelsiusTemperature celsius = converterToCelsius.convertToCelsius(temperature);
-
-        Converter converterFromCelsius = converterDictionary.get(
-                "ru.unn.agile.temperatureconverter.model.KelvinTemperature");
+        Converter converterFromCelsius = getConvertor(KelvinTemperature.class.getName());
         return (KelvinTemperature) converterFromCelsius.convertFromCelsius(celsius);
     }
 
     public NewtonTemperature convertToNewton(final Temperature temperature) {
-        Converter converterToCelsius = converterDictionary.get(temperature.getClass().getName());
+        Converter converterToCelsius = getConvertor(temperature.getClass().getName());
         CelsiusTemperature celsius = converterToCelsius.convertToCelsius(temperature);
-
-        Converter converterFromCelsius = converterDictionary.get(
-                "ru.unn.agile.temperatureconverter.model.NewtonTemperature");
+        Converter converterFromCelsius = getConvertor(NewtonTemperature.class.getName());
         return (NewtonTemperature) converterFromCelsius.convertFromCelsius(celsius);
     }
 
     public CelsiusTemperature convertToCelsius(final Temperature temperature) {
-        Converter converterToCelsius = converterDictionary.get(temperature.getClass().getName());
+        Converter converterToCelsius = getConvertor(temperature.getClass().getName());
         CelsiusTemperature celsius = converterToCelsius.convertToCelsius(temperature);
-
-        Converter converterFromCelsius = converterDictionary.get(
-                "ru.unn.agile.temperatureconverter.model.CelsiusTemperature");
+        Converter converterFromCelsius = getConvertor(CelsiusTemperature.class.getName());
         return (CelsiusTemperature) converterFromCelsius.convertFromCelsius(celsius);
+    }
+
+    private Converter getConvertor(final String className) throws IllegalStateException {
+        if (className.equals(CelsiusTemperature.class.getName())) {
+            return converterCelsiusCelsius;
+        } else if (className.equals(KelvinTemperature.class.getName())) {
+            return converterCelsiusKelvin;
+        } else if (className.equals(NewtonTemperature.class.getName())) {
+            return converterCelsiusNewton;
+        } else if (className.equals(FahrenheitTemperature.class.getName())) {
+            return converterCelsiusFahrenheit;
+        } else {
+            throw new IllegalStateException("Unexpected value: " + className);
+        }
     }
 }
