@@ -50,30 +50,13 @@ public class TemperatureConverter {
         Converter converterToCelsius = converterDictionary.get(temperature.getClass().getName());
         CelsiusTemperature celsius = converterToCelsius.convertToCelsius(temperature);
 
-        Converter convertToNewton = converterDictionary.get(
+        Converter converterToNewton = converterDictionary.get(
                 "ru.unn.agile.temperatureconverter.model.NewtonTemperature");
-        return (NewtonTemperature) convertToNewton.convertFromCelsius(celsius);
+        return (NewtonTemperature) converterToNewton.convertFromCelsius(celsius);
     }
 
-    public CelsiusTemperature convertToCelsius(final FahrenheitTemperature fahrenheit) {
-        return converterCelsiusFahrenheit.convertToCelsius(fahrenheit);
-    }
-
-    public CelsiusTemperature convertToCelsius(final KelvinTemperature kelvin) {
-        return converterCelsiusKelvin.convertToCelsius(kelvin);
-    }
-
-    public CelsiusTemperature convertToCelsius(final NewtonTemperature newton) {
-        return converterCelsiusNewton.convertToCelsius(newton);
-    }
-
-    public NewtonTemperature convertToNewton(final FahrenheitTemperature fahrenheit) {
-        CelsiusTemperature celsius = converterCelsiusFahrenheit.convertToCelsius(fahrenheit);
-        return (NewtonTemperature) converterCelsiusNewton.convertFromCelsius(celsius);
-    }
-
-    public NewtonTemperature convertToNewton(final KelvinTemperature kelvin) {
-        CelsiusTemperature celsius = converterCelsiusKelvin.convertToCelsius(kelvin);
-        return (NewtonTemperature) converterCelsiusNewton.convertFromCelsius(celsius);
+    public CelsiusTemperature convertToCelsius(final Temperature temperature) {
+        Converter converterToCelsius = converterDictionary.get(temperature.getClass().getName());
+        return (CelsiusTemperature) converterToCelsius.convertToCelsius(temperature);
     }
 }
