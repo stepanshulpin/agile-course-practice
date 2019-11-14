@@ -32,31 +32,35 @@ public class TemperatureConverter {
         Converter converterToCelsius = converterDictionary.get(temperature.getClass().getName());
         CelsiusTemperature celsius = converterToCelsius.convertToCelsius(temperature);
 
-        Converter converterToFahrenheit = converterDictionary.get(
+        Converter converterFromCelsius = converterDictionary.get(
                 "ru.unn.agile.temperatureconverter.model.FahrenheitTemperature");
-        return (FahrenheitTemperature) converterToFahrenheit.convertFromCelsius(celsius);
+        return (FahrenheitTemperature) converterFromCelsius.convertFromCelsius(celsius);
     }
 
     public KelvinTemperature convertToKelvin(final Temperature temperature) {
         Converter converterToCelsius = converterDictionary.get(temperature.getClass().getName());
         CelsiusTemperature celsius = converterToCelsius.convertToCelsius(temperature);
 
-        Converter converterToKelvin = converterDictionary.get(
+        Converter converterFromCelsius = converterDictionary.get(
                 "ru.unn.agile.temperatureconverter.model.KelvinTemperature");
-        return (KelvinTemperature) converterToKelvin.convertFromCelsius(celsius);
+        return (KelvinTemperature) converterFromCelsius.convertFromCelsius(celsius);
     }
 
     public NewtonTemperature convertToNewton(final Temperature temperature) {
         Converter converterToCelsius = converterDictionary.get(temperature.getClass().getName());
         CelsiusTemperature celsius = converterToCelsius.convertToCelsius(temperature);
 
-        Converter converterToNewton = converterDictionary.get(
+        Converter converterFromCelsius = converterDictionary.get(
                 "ru.unn.agile.temperatureconverter.model.NewtonTemperature");
-        return (NewtonTemperature) converterToNewton.convertFromCelsius(celsius);
+        return (NewtonTemperature) converterFromCelsius.convertFromCelsius(celsius);
     }
 
     public CelsiusTemperature convertToCelsius(final Temperature temperature) {
         Converter converterToCelsius = converterDictionary.get(temperature.getClass().getName());
-        return (CelsiusTemperature) converterToCelsius.convertToCelsius(temperature);
+        CelsiusTemperature celsius = converterToCelsius.convertToCelsius(temperature);
+
+        Converter converterFromCelsius = converterDictionary.get(
+                "ru.unn.agile.temperatureconverter.model.CelsiusTemperature");
+        return (CelsiusTemperature) converterFromCelsius.convertFromCelsius(celsius);
     }
 }
