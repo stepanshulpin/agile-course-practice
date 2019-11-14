@@ -18,4 +18,9 @@ public class BitArrayTest {
         // assert
         assertEquals(raw_array.length, 2);
     }
+
+    @Test(expected = NegativeArraySizeException.class)
+    public void canInitBitArrayWithNegative() {
+        new BitArray(-10);
+    }
 }
