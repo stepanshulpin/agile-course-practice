@@ -13,15 +13,15 @@ public class TemperatureConverter {
     }
 
     public FahrenheitTemperature convertToFahrenheit(final CelsiusTemperature celsius) {
-        return converterCelsiusFahrenheit.convertToFahrenheit(celsius);
+        return (FahrenheitTemperature) converterCelsiusFahrenheit.convertFromCelsius(celsius);
     }
 
     public KelvinTemperature convertToKelvin(final CelsiusTemperature celsius) {
-        return converterCelsiusKelvin.convertToKelvin(celsius);
+        return (KelvinTemperature) converterCelsiusKelvin.convertFromCelsius(celsius);
     }
 
     public NewtonTemperature convertToNewton(final CelsiusTemperature celsius) {
-        return converterCelsiusNewton.convertToNewton(celsius);
+        return (NewtonTemperature) converterCelsiusNewton.convertFromCelsius(celsius);
     }
 
     public CelsiusTemperature convertToCelsius(final FahrenheitTemperature fahrenheit) {
@@ -38,31 +38,31 @@ public class TemperatureConverter {
 
     public KelvinTemperature convertToKelvin(final FahrenheitTemperature fahrenheit) {
         CelsiusTemperature celsius = converterCelsiusFahrenheit.convertToCelsius(fahrenheit);
-        return converterCelsiusKelvin.convertToKelvin(celsius);
+        return (KelvinTemperature) converterCelsiusKelvin.convertFromCelsius(celsius);
     }
 
     public NewtonTemperature convertToNewton(final FahrenheitTemperature fahrenheit) {
         CelsiusTemperature celsius = converterCelsiusFahrenheit.convertToCelsius(fahrenheit);
-        return converterCelsiusNewton.convertToNewton(celsius);
+        return (NewtonTemperature) converterCelsiusNewton.convertFromCelsius(celsius);
     }
 
     public FahrenheitTemperature convertToFahrenheit(final KelvinTemperature kelvin) {
         CelsiusTemperature celsius = converterCelsiusKelvin.convertToCelsius(kelvin);
-        return converterCelsiusFahrenheit.convertToFahrenheit(celsius);
+        return (FahrenheitTemperature) converterCelsiusFahrenheit.convertFromCelsius(celsius);
     }
 
     public NewtonTemperature convertToNewton(final KelvinTemperature kelvin) {
         CelsiusTemperature celsius = converterCelsiusKelvin.convertToCelsius(kelvin);
-        return converterCelsiusNewton.convertToNewton(celsius);
+        return (NewtonTemperature) converterCelsiusNewton.convertFromCelsius(celsius);
     }
 
     public FahrenheitTemperature convertToFahrenheit(final NewtonTemperature newton) {
         CelsiusTemperature celsius = converterCelsiusNewton.convertToCelsius(newton);
-        return converterCelsiusFahrenheit.convertToFahrenheit(celsius);
+        return (FahrenheitTemperature) converterCelsiusFahrenheit.convertFromCelsius(celsius);
     }
 
     public KelvinTemperature convertToKelvin(final NewtonTemperature newton) {
         CelsiusTemperature celsius = converterCelsiusNewton.convertToCelsius(newton);
-        return converterCelsiusKelvin.convertToKelvin(celsius);
+        return (KelvinTemperature) converterCelsiusKelvin.convertFromCelsius(celsius);
     }
 }

@@ -1,13 +1,15 @@
 package ru.unn.agile.temperatureconverter.model;
 
-class ConverterCelsiusKelvin {
-    CelsiusTemperature convertToCelsius(final KelvinTemperature kelvin) {
+class ConverterCelsiusKelvin implements Converter {
+    @Override
+    public CelsiusTemperature convertToCelsius(final Temperature temperature) {
         final double shift = 273.15;
-        return new CelsiusTemperature(kelvin.getValue() - shift);
+        return new CelsiusTemperature(temperature.getValue() - shift);
     }
 
-    KelvinTemperature convertToKelvin(final CelsiusTemperature celsius) {
+    @Override
+    public Temperature convertFromCelsius(final CelsiusTemperature temperature) {
         final double shift = 273.15;
-        return new KelvinTemperature(celsius.getValue() + shift);
+        return new KelvinTemperature(temperature.getValue() + shift);
     }
 }
