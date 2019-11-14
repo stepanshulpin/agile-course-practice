@@ -31,6 +31,16 @@ public class BitArray {
         return num_raw_array;
     }
 
+    public boolean isBit(int bit) {
+        int num_elem = -1;
+        if (bit > 0) num_elem = getNumElem(bit);
+
+        byte mask = 0;
+        mask |= 1 << (bit % 8);
+        byte answer = (byte) (raw_array[num_elem - 1] & mask);
+        return answer > 0;
+    }
+
     public void setBit(int bit) {
         int num_elem = -1;
         if (bit > 0) num_elem = getNumElem(bit);

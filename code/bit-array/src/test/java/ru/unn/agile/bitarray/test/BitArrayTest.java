@@ -102,6 +102,39 @@ public class BitArrayTest {
     }
 
     @Test
+    public void isSetBitInBitArray() {
+        // arrange
+        BitArray btr = new BitArray(41);
+
+        // act
+        btr.setBit(29);
+
+        // assert
+        assertTrue(btr.isBit(29));
+    }
+
+    @Test
+    public void isUnsetBitInBitArray() {
+        // arrange
+        BitArray btr = new BitArray(41);
+
+        // act
+        btr.setBit(29);
+
+        // assert
+        assertFalse(btr.isBit(28));
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void isSetNegativeBitInBitArray() {
+        // arrange
+        BitArray btr = new BitArray(41);
+
+        // act & assert
+        btr.unsetBit(-31);
+    }
+
+    @Test
     public void isEqualBitArrays() {
         // arrange
         BitArray btr_1 = new BitArray(41);
