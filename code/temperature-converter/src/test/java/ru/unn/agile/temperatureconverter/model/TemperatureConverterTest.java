@@ -166,4 +166,14 @@ public class TemperatureConverterTest {
 
         assertEquals(457.998, kelvin.getValue(), delta);
     }
+
+    @Test
+    public void canConvert() {
+        TemperatureConverter converter = new TemperatureConverter();
+        NewtonTemperature newton = new NewtonTemperature(61.0);
+
+        KelvinTemperature kelvin = converter.convert(newton, KelvinTemperature.class);
+
+        assertEquals(457.998, kelvin.getValue(), delta);
+    }
 }

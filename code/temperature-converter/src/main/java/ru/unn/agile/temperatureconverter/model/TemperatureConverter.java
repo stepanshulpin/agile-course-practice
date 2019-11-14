@@ -1,8 +1,5 @@
 package ru.unn.agile.temperatureconverter.model;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class TemperatureConverter {
 
     private ConverterCelsiusCelsius converterCelsiusCelsius;
@@ -17,35 +14,49 @@ public class TemperatureConverter {
         converterCelsiusFahrenheit = new ConverterCelsiusFahrenheit();
     }
 
-    public FahrenheitTemperature convertToFahrenheit(final Temperature temperature) {
-        Converter converterToCelsius = getConvertor(temperature.getClass().getName());
+    @SuppressWarnings("unchecked")
+    public <Template extends Temperature> Template convert(
+            final Temperature temperature, final Class<Template> target) {
+        Converter converterToCelsius = getConverter(temperature.getClass().getName());
         CelsiusTemperature celsius = converterToCelsius.convertToCelsius(temperature);
-        Converter converterFromCelsius = getConvertor(FahrenheitTemperature.class.getName());
+        Converter converterFromCelsius = getConverter(target.getName());
+        return (Template) converterFromCelsius.convertFromCelsius(celsius);
+    }
+
+    public void ejsdkj() {
+        var a = this.convert(new CelsiusTemperature(1), KelvinTemperature.class);
+
+    }
+
+    public FahrenheitTemperature convertToFahrenheit(final Temperature temperature) {
+        Converter converterToCelsius = getConverter(temperature.getClass().getName());
+        CelsiusTemperature celsius = converterToCelsius.convertToCelsius(temperature);
+        Converter converterFromCelsius = getConverter(FahrenheitTemperature.class.getName());
         return (FahrenheitTemperature) converterFromCelsius.convertFromCelsius(celsius);
     }
 
     public KelvinTemperature convertToKelvin(final Temperature temperature) {
-        Converter converterToCelsius = getConvertor(temperature.getClass().getName());
+        Converter converterToCelsius = getConverter(temperature.getClass().getName());
         CelsiusTemperature celsius = converterToCelsius.convertToCelsius(temperature);
-        Converter converterFromCelsius = getConvertor(KelvinTemperature.class.getName());
+        Converter converterFromCelsius = getConverter(KelvinTemperature.class.getName());
         return (KelvinTemperature) converterFromCelsius.convertFromCelsius(celsius);
     }
 
     public NewtonTemperature convertToNewton(final Temperature temperature) {
-        Converter converterToCelsius = getConvertor(temperature.getClass().getName());
+        Converter converterToCelsius = getConverter(temperature.getClass().getName());
         CelsiusTemperature celsius = converterToCelsius.convertToCelsius(temperature);
-        Converter converterFromCelsius = getConvertor(NewtonTemperature.class.getName());
+        Converter converterFromCelsius = getConverter(NewtonTemperature.class.getName());
         return (NewtonTemperature) converterFromCelsius.convertFromCelsius(celsius);
     }
 
     public CelsiusTemperature convertToCelsius(final Temperature temperature) {
-        Converter converterToCelsius = getConvertor(temperature.getClass().getName());
+        Converter converterToCelsius = getConverter(temperature.getClass().getName());
         CelsiusTemperature celsius = converterToCelsius.convertToCelsius(temperature);
-        Converter converterFromCelsius = getConvertor(CelsiusTemperature.class.getName());
+        Converter converterFromCelsius = getConverter(CelsiusTemperature.class.getName());
         return (CelsiusTemperature) converterFromCelsius.convertFromCelsius(celsius);
     }
 
-    private Converter getConvertor(final String className) throws IllegalStateException {
+    private Converter getConverter(final String className) throws IllegalStateException {
         if (className.equals(CelsiusTemperature.class.getName())) {
             return converterCelsiusCelsius;
         } else if (className.equals(KelvinTemperature.class.getName())) {
