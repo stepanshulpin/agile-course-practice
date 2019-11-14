@@ -172,17 +172,17 @@ public class TemperatureConverterTest {
         TemperatureConverter converter = new TemperatureConverter();
         CelsiusTemperature celsius = new CelsiusTemperature(0.0);
 
-        CelsiusTemperature celsius_target = converter.convert(celsius, CelsiusTemperature.class);
+        CelsiusTemperature celsiusTarget = converter.convert(celsius, CelsiusTemperature.class);
 
-        assertEquals(0.0, celsius_target.getValue(), delta);
+        assertEquals(0.0, celsiusTarget.getValue(), delta);
     }
     @Test
     public void canConvertCelsius100ToCelsius100() {
         TemperatureConverter converter = new TemperatureConverter();
         CelsiusTemperature celsius = new CelsiusTemperature(100.1);
 
-        CelsiusTemperature celsius_target = converter.convert(celsius, CelsiusTemperature.class);
+        CelsiusTemperature celsiusTarget = converter.convert(celsius, CelsiusTemperature.class);
 
-        assertEquals(100.1, celsius_target.getValue(), delta);
+        assertEquals(100.1, celsiusTarget.getValue(), delta);
     }
 }
