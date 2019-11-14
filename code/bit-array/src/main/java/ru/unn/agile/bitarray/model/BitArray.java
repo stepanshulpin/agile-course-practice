@@ -28,4 +28,8 @@ public class BitArray {
     public void setBit(int bit) {
         raw_array[getNumElem(bit) - 1] |= 1 << (bit % 8);
     }
+
+    public void unsetBit(int bit) {
+        raw_array[getNumElem(bit) - 1] &= ~(1 << (bit % 8));
+    }
 }

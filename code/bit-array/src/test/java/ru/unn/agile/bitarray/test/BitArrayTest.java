@@ -53,8 +53,35 @@ public class BitArrayTest {
 
         // assert
         byte[] reference = {16, 32, 8, 2, 4, 2};
-        for(int i = 0; i < actual.length; i++)
-            assertEquals(reference[i], actual[i]);
+        assertArrayEquals(reference, actual);
+    }
+
+    @Test
+    public void canUnsetBitInBitArray() {
+        // arrange
+        BitArray btr = new BitArray(41);
+
+        // act
+        btr.setBit(4);
+
+        btr.setBit(13);
+        btr.unsetBit(13);
+
+        btr.setBit(19);
+
+        btr.setBit(25);
+        btr.unsetBit(25);
+
+        btr.setBit(34);
+
+        btr.setBit(41);
+        btr.unsetBit(41);
+
+        byte[]actual = btr.getRawArray();
+
+        // assert
+        byte[] reference = {16, 0, 8, 0, 4, 0};
+        assertArrayEquals(reference, actual);
     }
 
 }
