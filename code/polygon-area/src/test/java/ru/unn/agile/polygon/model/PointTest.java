@@ -9,19 +9,18 @@ public class PointTest {
     private final double delta = 0.001;
 
     @Test
-    public void canGetXValueFromPointZero() {
+    public void canGetPointСoordinates() {
         Point pointA = new Point();
-        Point pointB = new Point(0, 0);
-        assertEquals(0, pointA.getX(), delta);
-        assertEquals(0, pointB.getX(), delta);
-    }
+        Point pointB = new Point(2, 2.5);
+        Point pointC = new Point(pointA);
 
-    @Test
-    public void canGetYValueFromPointZero() {
-        Point pointA = new Point();
-        Point pointB = new Point(0, 0);
+        assertEquals(0, pointA.getX(), delta);
         assertEquals(0, pointA.getY(), delta);
-        assertEquals(0, pointB.getY(), delta);
+
+        assertEquals(2, pointB.getX(), delta);
+        assertEquals(2.5, pointB.getY(), delta);
+
+        assertEquals(pointA.getX(), pointC.getX(), delta);
+        assertEquals(pointA.getY(), pointC.getY(), delta);
     }
-}
 }
