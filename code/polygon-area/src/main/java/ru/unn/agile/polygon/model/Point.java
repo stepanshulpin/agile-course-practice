@@ -26,4 +26,8 @@ public class Point {
     public double getY() {
         return y;
     }
+
+    public double distanceTo(Point pointB) {
+        return Math.sqrt(Math.pow(this.x - pointB.x, 2) + Math.pow(this.y - pointB.y, 2));
+    }
 }

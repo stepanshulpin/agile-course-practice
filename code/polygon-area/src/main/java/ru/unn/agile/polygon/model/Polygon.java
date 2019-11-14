@@ -6,11 +6,9 @@ public class Polygon {
     private final Point[] vertices;
 
     public Polygon(Point... points) {
-        if (points.length < 3) try {
-            throw new Exception("A polygon must have at least three vertices");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        if (points.length < 3)
+            throw new IllegalArgumentException("A polygon must have at least three vertices");
+
         this.vertices = points;
     }
 

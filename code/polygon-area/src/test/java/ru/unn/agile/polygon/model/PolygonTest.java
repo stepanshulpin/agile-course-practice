@@ -32,7 +32,7 @@ public class PolygonTest {
         }
     }
 
-    @Test(expected = Exception.class)
+    @Test(expected = IllegalArgumentException.class)
     public void cantCreatePolygonWithLessThanThreePoints() {
         Polygon pol1 = new Polygon();
         Polygon pol2 = new Polygon(pointA);
