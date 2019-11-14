@@ -6,12 +6,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 public class PolygonTest {
+
+    private final Point pointA = new Point();
+    private final Point pointB = new Point(0, 2);
+    private final Point pointC = new Point(2, 0);
+    private final Point pointD = new Point(2, 0);
+
     @Test
     public void canCreateTriangle() {
-        Point pointA = new Point();
-        Point pointB = new Point(0, 2);
-        Point pointC = new Point(2, 0);
-
         try{
             Polygon triangle = new Polygon(pointA, pointB, pointC);
         }
@@ -22,11 +24,6 @@ public class PolygonTest {
 
     @Test
     public void canCreateSquare() {
-        Point pointA = new Point();
-        Point pointB = new Point(0, 2);
-        Point pointC = new Point(2, 2);
-        Point pointD = new Point(2, 0);
-
         try{
             Polygon square = new Polygon(pointA, pointB, pointC, pointD);
         }
@@ -36,12 +33,16 @@ public class PolygonTest {
     }
 
     @Test(expected = Exception.class)
-    public void cantCreatePolygonWithLessThanThreePoints() throws Exception {
-        Point pointA = new Point();
-        Point pointB = new Point(0, 2);
-
+    public void cantCreatePolygonWithLessThanThreePoints() {
         Polygon pol1 = new Polygon();
         Polygon pol2 = new Polygon(pointA);
         Polygon pol3 = new Polygon(pointA, pointB);
+    }
+
+    @Test
+    public void canGetNumbersOfPolygonVertices() {
+        Polygon polygon = new Polygon(pointA, pointB, pointC, pointD);
+
+        assertEquals(4, polygon.getSize());
     }
 }

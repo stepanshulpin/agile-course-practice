@@ -5,8 +5,16 @@ import java.util.List;
 public class Polygon {
     private final Point[] vertices;
 
-    public Polygon(Point... points) throws Exception {
-        if (points.length < 3) throw new Exception("A polygon must have at least three vertices");
+    public Polygon(Point... points) {
+        if (points.length < 3) try {
+            throw new Exception("A polygon must have at least three vertices");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         this.vertices = points;
+    }
+
+    public int getSize() {
+        return vertices.length;
     }
 }
