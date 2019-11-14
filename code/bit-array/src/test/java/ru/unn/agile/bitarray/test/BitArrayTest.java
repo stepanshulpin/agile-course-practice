@@ -137,18 +137,18 @@ public class BitArrayTest {
     @Test
     public void isEqualBitArrays() {
         // arrange
-        BitArray btr_1 = new BitArray(41);
-        BitArray btr_2 = new BitArray(41);
+        BitArray bit_array_1 = new BitArray(41);
+        BitArray bit_array_2 = new BitArray(41);
 
-        btr_1.setBit(7);   btr_2.setBit(7);
-        btr_1.setBit(11);  btr_2.setBit(11);
-        btr_1.setBit(19);  btr_2.setBit(19);
-        btr_1.setBit(26);  btr_2.setBit(26);
-        btr_1.setBit(34);  btr_2.setBit(34);
-        btr_1.setBit(40);  btr_2.setBit(40);
+        bit_array_1.setBit(7);   bit_array_2.setBit(7);
+        bit_array_1.setBit(11);  bit_array_2.setBit(11);
+        bit_array_1.setBit(19);  bit_array_2.setBit(19);
+        bit_array_1.setBit(26);  bit_array_2.setBit(26);
+        bit_array_1.setBit(34);  bit_array_2.setBit(34);
+        bit_array_1.setBit(40);  bit_array_2.setBit(40);
 
         // act && assert
-        assertEquals(btr_1, btr_2);
+        assertEquals(bit_array_1, bit_array_2);
     }
 
     @Test
