@@ -192,4 +192,40 @@ public class ComplexNumberTest {
         assertEquals(-2, a.getRadius(), 0.001);
     }
 
+    @Test
+    public void convertComplexNumberToTrigonomFormWithoutIm() {
+        ComplexNumber a = new ComplexNumber(1.0, 0.0);
+
+        a.convertToTrigonomForm();
+
+        assertEquals(0.0, a.getAngle(), 0.001);
+    }
+
+    @Test
+    public void convertComplexNumberToTrigonomFormWithoutImNegRe() {
+        ComplexNumber a = new ComplexNumber(-1.0, 0.0);
+
+        a.convertToTrigonomForm();
+
+        assertEquals(Math.PI, a.getAngle(), 0.001);
+    }
+
+    @Test
+    public void convertComplexNumberToTrigonomFormWithoutRe() {
+        ComplexNumber a = new ComplexNumber(0.0, 1.0);
+
+        a.convertToTrigonomForm();
+
+        assertEquals(Math.PI / 2, a.getAngle(), 0.001);
+    }
+
+    @Test
+    public void convertComplexNumberToTrigonomFormWithoutReNegIm() {
+        ComplexNumber a = new ComplexNumber(0.0, -1.0);
+
+        a.convertToTrigonomForm();
+
+        assertEquals(-Math.PI / 2, a.getAngle(), 0.001);
+    }
+
 }
