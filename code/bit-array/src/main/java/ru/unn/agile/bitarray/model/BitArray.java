@@ -42,5 +42,4 @@ public class BitArray {
         BitArray bitArray = (BitArray) o;
         return Arrays.equals(raw_array, bitArray.raw_array);
     }
-
 }

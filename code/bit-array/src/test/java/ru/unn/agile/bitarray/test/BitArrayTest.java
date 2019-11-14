@@ -101,4 +101,21 @@ public class BitArrayTest {
         // act && assert
         assertEquals(btr_1, btr_2);
     }
+
+    @Test
+    public void isNotEqualBitArrays() {
+        // arrange
+        BitArray btr_1 = new BitArray(41);
+        BitArray btr_2 = new BitArray(41);
+
+        btr_1.setBit(7);   btr_2.setBit(7);
+        btr_1.setBit(11);  btr_2.setBit(11);
+        btr_1.setBit(19);  btr_2.setBit(19);
+        btr_1.setBit(26);  btr_2.setBit(27);
+        btr_1.setBit(34);  btr_2.setBit(34);
+        btr_1.setBit(40);  btr_2.setBit(40);
+
+        // act && assert
+        assertNotEquals(btr_1, btr_2);
+    }
 }
