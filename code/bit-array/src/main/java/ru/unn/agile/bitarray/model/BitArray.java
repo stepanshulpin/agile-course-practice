@@ -32,7 +32,9 @@ public class BitArray {
     }
 
     public void setBit(int bit) {
-        raw_array[getNumElem(bit) - 1] |= 1 << (bit % 8);
+        int num_elem = -1;
+        if (bit > 0) num_elem = getNumElem(bit);
+        raw_array[num_elem - 1] |= 1 << (bit % 8);
     }
 
     public void unsetBit(int bit) {

@@ -42,6 +42,7 @@ public class BitArrayTest {
         // arrange
         BitArray btr = new BitArray(41);
 
+        // act
         btr.setBit(4);
         btr.setBit(13);
         btr.setBit(19);
@@ -49,12 +50,19 @@ public class BitArrayTest {
         btr.setBit(34);
         btr.setBit(41);
 
-        // act
-        byte[]actual = btr.getRawArray();
-
         // assert
+        byte[] actual = btr.getRawArray();
         byte[] reference = {16, 32, 8, 2, 4, 2};
         assertArrayEquals(reference, actual);
+    }
+
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    public void canSetNegativeBitInBitArray() {
+        // arrange
+        BitArray btr = new BitArray(41);
+
+        // act & assert
+        btr.setBit(-31);
     }
 
     @Test
@@ -62,6 +70,7 @@ public class BitArrayTest {
         // arrange
         BitArray btr = new BitArray(41);
 
+        // act
         btr.setBit(4);
 
         btr.setBit(13);
@@ -77,10 +86,8 @@ public class BitArrayTest {
         btr.setBit(41);
         btr.unsetBit(41);
 
-        // act
-        byte[]actual = btr.getRawArray();
-
         // assert
+        byte[]actual = btr.getRawArray();
         byte[] reference = {16, 0, 8, 0, 4, 0};
         assertArrayEquals(reference, actual);
     }
