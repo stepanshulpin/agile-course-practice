@@ -164,4 +164,18 @@ public class CalculatorComplexNumberTest {
 
         assertEquals(expectedResult, result);
     }
+
+    @Test
+    public void operationExtractCalculatorComplexNumber() {
+        ComplexNumber z = new ComplexNumber(-1, 0);
+        ComplexNumber[] expectedResult = new ComplexNumber[3];
+        expectedResult[0] = new ComplexNumber(0.5, Math.sqrt(3) / 2.0);
+        expectedResult[1] = new ComplexNumber(-1.0, 0.0);
+        expectedResult[2] = new ComplexNumber(0.5, -Math.sqrt(3) / 2.0);
+        CalculatorComplexNumber a = new CalculatorComplexNumber();
+
+        ComplexNumber[] result = a.extractRoot(z, 3);
+
+        assertArrayEquals(expectedResult, result);
+    }
 }

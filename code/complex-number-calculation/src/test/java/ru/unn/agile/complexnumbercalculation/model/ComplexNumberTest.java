@@ -13,14 +13,14 @@ public class ComplexNumberTest {
     }
 
     @Test
-    public void emptyCreateComplexNumberCheckRealPart() {
+    public void canCreateComplexNumberCheckRealPart() {
         ComplexNumber a = new ComplexNumber();
 
         assertEquals(0.0, a.getRe(), 0.0);
     }
 
     @Test
-    public void emptyCreateComplexNumberCheckImaginePart() {
+    public void createEmptyComplexNumberCheckImaginePart() {
         ComplexNumber a = new ComplexNumber();
 
         assertEquals(0.0, a.getIm(), 0.0);
@@ -61,7 +61,7 @@ public class ComplexNumberTest {
     }
 
     @Test
-    public void equalTwoComplexNumbers() {
+    public void canEqualTwoComplexNumbers() {
         ComplexNumber a = new ComplexNumber(5.0, -6.0);
         ComplexNumber b = new ComplexNumber(5.0, -6.0);
 
@@ -69,7 +69,7 @@ public class ComplexNumberTest {
     }
 
     @Test
-    public void notEqualTwoComplexNumbers() {
+    public void cantEqualTwoComplexNumbers() {
         ComplexNumber a = new ComplexNumber(5.0, -6.0);
         ComplexNumber b = new ComplexNumber(-5.0, -6.0);
 
@@ -77,7 +77,7 @@ public class ComplexNumberTest {
     }
 
     @Test
-    public void equalTwoComplexNumbersWithOperand() {
+    public void canEqualTwoComplexNumbersWithOperand() {
         ComplexNumber a = new ComplexNumber(5.0, -6.0);
         ComplexNumber b = new ComplexNumber(a);
 
@@ -85,7 +85,7 @@ public class ComplexNumberTest {
     }
 
     @Test
-    public void equalHashCodeOfTwoComplexNumbers() {
+    public void canEqualHashCodeOfTwoComplexNumbers() {
         ComplexNumber a = new ComplexNumber(5.0, -6.0);
         ComplexNumber b = new ComplexNumber(5.0, -6.0);
 
@@ -135,6 +135,61 @@ public class ComplexNumberTest {
         a.convertToTrigonomForm();
 
         assertEquals(-Math.PI / 3, a.getAngle(), 0.001);
+    }
+
+    @Test
+    public void convertComplexNumberToTrigonomForm() {
+        ComplexNumber a = new ComplexNumber(-1.0, 0.0);
+
+        a.convertToTrigonomForm();
+
+        assertEquals(Math.PI, a.getAngle(), 0.001);
+    }
+
+    @Test
+    public void canSetAngle() {
+        ComplexNumber a = new ComplexNumber();
+
+        a.setAngle(Math.PI / 2);
+
+        assertEquals(Math.PI / 2, a.getAngle(), 0.001);
+    }
+
+    @Test
+    public void canSetNegativeAngle() {
+        ComplexNumber a = new ComplexNumber();
+
+        a.setAngle(-Math.PI / 2);
+
+        assertEquals(-Math.PI / 2, a.getAngle(), 0.001);
+    }
+
+    @Test
+    public void canSetNullAngle() {
+        ComplexNumber a = new ComplexNumber();
+
+        a.setAngle(0);
+
+        assertEquals(0.0, a.getAngle(), 0.001);
+    }
+
+
+    @Test
+    public void canSetRadius() {
+        ComplexNumber a = new ComplexNumber();
+
+        a.setRadius(2.0);
+
+        assertEquals(2.0, a.getRadius(), 0.001);
+    }
+
+    @Test
+    public void canSetNegativeRadius() {
+        ComplexNumber a = new ComplexNumber();
+
+        a.setRadius(-2);
+
+        assertEquals(-2, a.getRadius(), 0.001);
     }
 
 }

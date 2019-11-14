@@ -37,4 +37,18 @@ public class CalculatorComplexNumber {
         z.setRadius(tempRadius);
         return z.getComplexNumberFromTrigonomForm();
     }
+
+    public ComplexNumber[] extractRoot(final ComplexNumber z, final int degree) {
+        z.convertToTrigonomForm();
+        double phi0 = z.getAngle();
+        ComplexNumber[] result = new ComplexNumber[degree];
+        double tempRadius = Math.pow(z.getRadius(), 1 / degree);
+        for (int k = 0; k < degree; k++) {
+            ComplexNumber zTmp = new ComplexNumber();
+            zTmp.setRadius(tempRadius);
+            zTmp.setAngle((phi0 + 2 * Math.PI * k) / degree);
+            result[k] = zTmp.getComplexNumberFromTrigonomForm();
+        }
+        return result;
+    }
 }

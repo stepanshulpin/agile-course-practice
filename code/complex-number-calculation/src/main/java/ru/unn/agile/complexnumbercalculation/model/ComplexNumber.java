@@ -82,6 +82,23 @@ public class ComplexNumber {
     }
 
     public void convertToTrigonomForm() {
+        // Boundary value
+        if ((re == 0) && (im == 0)) {
+            radius = 0.0;
+            angle = 0.0;
+            return;
+        }
+        if (im == 0) {
+            radius = Math.abs(re);
+            angle = re > 0.0 ? 0.0 : Math.PI;
+            return;
+        }
+        if (re == 0) {
+            radius = Math.abs(im);
+            angle = im > 0.0 ? Math.PI / 2.0 : -Math.PI / 2.0;
+            return;
+        }
+
         radius = Math.sqrt(re * re + im * im);
         angle = Math.atan(im / re);
     }
