@@ -12,9 +12,7 @@ public class PointTest {
     private final Point pointC = new Point(pointA);
 
     @Test
-    public void canGetPointСoordinates() {
-
-
+    public void canGetPointCoordinates() {
         assertEquals(0, pointA.getX(), delta);
         assertEquals(0, pointA.getY(), delta);
 
