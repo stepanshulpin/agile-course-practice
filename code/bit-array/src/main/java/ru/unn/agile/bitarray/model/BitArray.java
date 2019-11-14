@@ -17,6 +17,10 @@ public class BitArray {
         }
     }
 
+    public BitArray(BitArray bit_array) {
+        raw_array = bit_array.getRawArray();
+    }
+
     public byte[] getRawArray() {
         return raw_array;
     }

@@ -118,4 +118,23 @@ public class BitArrayTest {
         // act && assert
         assertNotEquals(btr_1, btr_2);
     }
+
+    @Test
+    public void canCopyBitArray() {
+        // arrange
+        BitArray btr = new BitArray(41);
+
+        btr.setBit(4);
+        btr.setBit(13);
+        btr.setBit(19);
+        btr.setBit(25);
+        btr.setBit(34);
+        btr.setBit(41);
+
+        // act
+        BitArray actual_btr = new BitArray(btr);
+
+        // assert
+        assertEquals(btr, actual_btr);
+    }
 }
