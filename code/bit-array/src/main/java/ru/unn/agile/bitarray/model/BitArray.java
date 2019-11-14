@@ -12,6 +12,10 @@ public class BitArray {
             if (count_bit % 8 != 0) length_raw_array++;
         }
         this.raw_array = new byte[length_raw_array];
+
+        for (int i=0; i<this.raw_array.length; i++)  {
+            this.raw_array[i] = 0;
+        }
     }
 
     public byte[] getRawArray() {

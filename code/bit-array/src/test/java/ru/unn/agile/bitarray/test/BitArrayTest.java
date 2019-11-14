@@ -23,4 +23,17 @@ public class BitArrayTest {
     public void canInitBitArrayWithNegative() {
         new BitArray(-10);
     }
+
+    @Test
+    public void isZeroAfterInitBitArray() {
+        // arrange
+        BitArray btr = new BitArray(101);
+
+        // act
+        byte[] raw_array = btr.getRawArray();
+
+        // assert
+        for (int elem : raw_array)
+            assertEquals(elem, 0);
+    }
 }
