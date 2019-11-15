@@ -18,7 +18,7 @@ public class CalendarService {
         return vacationDuration;
     }
 
-    public CalendarService setVacationDuration(int vacationDuration) {
+    public CalendarService setVacationDuration(final int vacationDuration) {
         if (vacationDuration < 0) {
             throw new NumberFormatException("Wrong duration");
         }
@@ -30,7 +30,7 @@ public class CalendarService {
         return vacationStartDate;
     }
 
-    public CalendarService setVacationStartDate(LocalDate vacationStartDate) {
+    public CalendarService setVacationStartDate(final LocalDate vacationStartDate) {
         this.vacationStartDate = vacationStartDate;
         return this;
     }
@@ -39,7 +39,7 @@ public class CalendarService {
         return month;
     }
 
-    public CalendarService setMonth(LocalDate month) {
+    public CalendarService setMonth(final LocalDate month) {
         this.month = month;
         return this;
     }

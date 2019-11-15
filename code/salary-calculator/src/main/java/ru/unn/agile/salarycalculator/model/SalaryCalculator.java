@@ -51,7 +51,7 @@ public class SalaryCalculator {
             throw new NumberFormatException("Worked hours can't be less than zero");
         }
         if (workedHoursPerMonth > MAX_HOURS_PER_MONTH) {
-            throw new NumberFormatException("Something strange. Hours per month went out of maximum");
+            throw new NumberFormatException("Hours per month went out of maximum");
         }
         this.workedHoursPerMonth = workedHoursPerMonth;
     }
@@ -71,7 +71,7 @@ public class SalaryCalculator {
         return vacationStartDate;
     }
 
-    public void setVacationStartDate(LocalDate vacationStartDate) {
+    public void setVacationStartDate(final LocalDate vacationStartDate) {
         this.vacationStartDate = vacationStartDate;
     }
 
@@ -102,8 +102,8 @@ public class SalaryCalculator {
     }
 
     private double calculateOvertime() {
-        return (this.calculateSalaryForOneWorkHour() * 2) *
-                (this.getWorkedHoursPerMonth() - this.getDefaultSumOfWorkedHours());
+        return (this.calculateSalaryForOneWorkHour() * 2)
+                * (this.getWorkedHoursPerMonth() - this.getDefaultSumOfWorkedHours());
     }
 
     private double calculateSalaryForOneWorkHour() {
