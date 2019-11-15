@@ -13,7 +13,7 @@ public class AlekseevSergeiTest {
 
         ComplexNumber sum = z.add(zero);
 
-        assertTrue(sum.equals(z));
+        assertEquals(sum, z);
     }
 
     @Test
@@ -23,7 +23,7 @@ public class AlekseevSergeiTest {
 
         ComplexNumber mult = z.multiply(zero);
 
-        assertTrue(mult.equals(zero));
+        assertEquals(mult, zero);
     }
 
     @Test
@@ -40,14 +40,20 @@ public class AlekseevSergeiTest {
     public void canGetRealPart() {
         ComplexNumber z = new ComplexNumber(1.1, 2.3);
 
-        assertEquals(1.1, z.getReal(), delta);
+        var realPart = z.getReal();
+        var expectedValue = 1.1;
+
+        assertEquals(expectedValue, realPart, delta);
     }
 
     @Test
     public void canGetImaginaryPart() {
         ComplexNumber z = new ComplexNumber(1.1, 2.3);
 
-        assertEquals(2.3, z.getImaginary(), delta);
+        var imaginaryPart = z.getImaginary();
+        var expectedValue = 2.3;
+
+        assertEquals(expectedValue, imaginaryPart, delta);
     }
 
     @Test
@@ -55,9 +61,11 @@ public class AlekseevSergeiTest {
         ComplexNumber z1 = new ComplexNumber(1, 1);
         ComplexNumber z2 = new ComplexNumber(2, 3);
 
-        ComplexNumber z = z1.add(z2);
 
-        assertEquals(new ComplexNumber(3, 4), z);
+        ComplexNumber z = z1.add(z2);
+        ComplexNumber expectedNumber = new ComplexNumber(3, 4);
+
+        assertEquals(expectedNumber, z);
     }
 
     @Test
@@ -66,13 +74,17 @@ public class AlekseevSergeiTest {
         ComplexNumber z2 = new ComplexNumber(2, 3);
 
         ComplexNumber z = z1.multiply(z2);
+        ComplexNumber expectedNumber = new ComplexNumber(-1, 5);
 
-        assertEquals(new ComplexNumber(-1, 5), z);
+        assertEquals(expectedNumber, z);
     }
     @Test
     public void canFormatNumbers() {
         ComplexNumber z = new ComplexNumber(1.1, 2.35);
 
-        assertEquals("1.1 + 2.35i", z.toString());
+        String complexToString =  z.toString();
+        var expectedString = "1.1 + 2.35i";
+
+        assertEquals(expectedString, complexToString);
     }
 }
