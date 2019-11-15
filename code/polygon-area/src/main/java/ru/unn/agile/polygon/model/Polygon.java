@@ -28,12 +28,14 @@ public class Polygon {
         double area = 0;
 
         for (int i = 0; i < this.size - 1; i++) {
-            area += Math.abs((vertices[i].getX() + vertices[i+1].getX()) *
-                    (vertices[i].getY() - vertices[i+1].getY()));
+            area += vertices[i].getX() * vertices[i+1].getY();
+
+            area -= vertices[i].getY() * vertices[i+1].getX();
         }
 
-        area += Math.abs((vertices[this.size - 1].getX() + vertices[0].getX()) *
-                (vertices[this.size - 1].getY() - vertices[0].getY()));
+        area += vertices[this.size-1].getX() * vertices[0].getY();
+
+        area -= vertices[this.size-1].getY() * vertices[0].getX();
 
         area = area / 2;
 
