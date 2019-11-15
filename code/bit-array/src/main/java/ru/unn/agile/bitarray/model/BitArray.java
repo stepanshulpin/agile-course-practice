@@ -4,53 +4,53 @@ package ru.unn.agile.bitarray.model;
 import java.util.Arrays;
 
 public class BitArray {
-    private byte[] raw_array;
+    private byte[] rawArray;
 
-    public BitArray(int count_bit) {
-        int length_raw_array = -1;
-        if (count_bit > 0)
-            length_raw_array = getNumElem(count_bit);
-        raw_array = new byte[length_raw_array];
+    public BitArray(int countBit) {
+        int lengthRawArray = -1;
+        if (countBit > 0)
+            lengthRawArray = getNumElem(countBit);
+        rawArray = new byte[lengthRawArray];
 
-        for (int i=0; i<raw_array.length; i++)  {
-            raw_array[i] = 0;
+        for (int i = 0; i< rawArray.length; i++)  {
+            rawArray[i] = 0;
         }
     }
 
-    public BitArray(BitArray bit_array) {
-        raw_array = bit_array.getRawArray();
+    public BitArray(BitArray rawArray) {
+        this.rawArray = rawArray.getRawArray();
     }
 
     public byte[] getRawArray() {
-        return raw_array;
+        return rawArray;
     }
     
     private int getNumElem(int bit) {
-        int num_raw_array = bit / 8;
-        if (bit % 8 != 0) num_raw_array++;
-        return num_raw_array;
+        int numRawArray = bit / 8;
+        if (bit % 8 != 0) numRawArray++;
+        return numRawArray;
     }
 
     public boolean isBit(int bit) {
-        int num_elem = -1;
-        if (bit > 0) num_elem = getNumElem(bit);
+        int numElem = -1;
+        if (bit > 0) numElem = getNumElem(bit);
 
         byte mask = 0;
         mask |= 1 << (bit % 8);
-        byte answer = (byte) (raw_array[num_elem - 1] & mask);
+        byte answer = (byte) (rawArray[numElem - 1] & mask);
         return answer > 0;
     }
 
     public void setBit(int bit) {
-        int num_elem = -1;
-        if (bit > 0) num_elem = getNumElem(bit);
-        raw_array[num_elem - 1] |= 1 << (bit % 8);
+        int numElem = -1;
+        if (bit > 0) numElem = getNumElem(bit);
+        rawArray[numElem - 1] |= 1 << (bit % 8);
     }
 
     public void unsetBit(int bit) {
-        int num_elem = -1;
-        if (bit > 0) num_elem = getNumElem(bit);
-        raw_array[num_elem - 1] &= ~(1 << (bit % 8));
+        int numElem = -1;
+        if (bit > 0) numElem = getNumElem(bit);
+        rawArray[numElem - 1] &= ~(1 << (bit % 8));
     }
 
     @Override
@@ -58,6 +58,6 @@ public class BitArray {
         if (this == o) return true;
         if (!(o instanceof BitArray)) return false;
         BitArray bitArray = (BitArray) o;
-        return Arrays.equals(raw_array, bitArray.raw_array);
+        return Arrays.equals(rawArray, bitArray.rawArray);
     }
 }

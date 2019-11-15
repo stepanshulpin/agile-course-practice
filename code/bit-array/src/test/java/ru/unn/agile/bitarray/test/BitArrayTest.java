@@ -13,10 +13,10 @@ public class BitArrayTest {
         BitArray btr = new BitArray(10);
 
         // act
-        byte[] raw_array = btr.getRawArray();
+        byte[] btrRawArray = btr.getRawArray();
 
         // assert
-        assertEquals(raw_array.length, 2);
+        assertEquals(btrRawArray.length, 2);
     }
 
     @Test(expected = NegativeArraySizeException.class)
@@ -30,10 +30,10 @@ public class BitArrayTest {
         BitArray btr = new BitArray(101);
 
         // act
-        byte[] raw_array = btr.getRawArray();
+        byte[] btrRawArray = btr.getRawArray();
 
         // assert
-        for (int elem : raw_array)
+        for (int elem : btrRawArray)
             assertEquals(elem, 0);
     }
 
@@ -137,35 +137,35 @@ public class BitArrayTest {
     @Test
     public void isEqualBitArrays() {
         // arrange
-        BitArray bit_array_1 = new BitArray(41);
-        BitArray bit_array_2 = new BitArray(41);
+        BitArray bitArray1 = new BitArray(41);
+        BitArray bitArray2 = new BitArray(41);
 
-        bit_array_1.setBit(7);   bit_array_2.setBit(7);
-        bit_array_1.setBit(11);  bit_array_2.setBit(11);
-        bit_array_1.setBit(19);  bit_array_2.setBit(19);
-        bit_array_1.setBit(26);  bit_array_2.setBit(26);
-        bit_array_1.setBit(34);  bit_array_2.setBit(34);
-        bit_array_1.setBit(40);  bit_array_2.setBit(40);
+        bitArray1.setBit(7);   bitArray2.setBit(7);
+        bitArray1.setBit(11);  bitArray2.setBit(11);
+        bitArray1.setBit(19);  bitArray2.setBit(19);
+        bitArray1.setBit(26);  bitArray2.setBit(26);
+        bitArray1.setBit(34);  bitArray2.setBit(34);
+        bitArray1.setBit(40);  bitArray2.setBit(40);
 
         // act && assert
-        assertEquals(bit_array_1, bit_array_2);
+        assertEquals(bitArray1, bitArray2);
     }
 
     @Test
     public void isNotEqualBitArrays() {
         // arrange
-        BitArray btr_1 = new BitArray(41);
-        BitArray btr_2 = new BitArray(41);
+        BitArray btr1 = new BitArray(41);
+        BitArray btr2 = new BitArray(41);
 
-        btr_1.setBit(7);   btr_2.setBit(7);
-        btr_1.setBit(11);  btr_2.setBit(11);
-        btr_1.setBit(19);  btr_2.setBit(19);
-        btr_1.setBit(26);  btr_2.setBit(27);
-        btr_1.setBit(34);  btr_2.setBit(34);
-        btr_1.setBit(40);  btr_2.setBit(40);
+        btr1.setBit(7);   btr2.setBit(7);
+        btr1.setBit(11);  btr2.setBit(11);
+        btr1.setBit(19);  btr2.setBit(19);
+        btr1.setBit(26);  btr2.setBit(27);
+        btr1.setBit(34);  btr2.setBit(34);
+        btr1.setBit(40);  btr2.setBit(40);
 
         // act && assert
-        assertNotEquals(btr_1, btr_2);
+        assertNotEquals(btr1, btr2);
     }
 
     @Test
@@ -181,9 +181,9 @@ public class BitArrayTest {
         btr.setBit(41);
 
         // act
-        BitArray actual_btr = new BitArray(btr);
+        BitArray actualBtr = new BitArray(btr);
 
         // assert
-        assertEquals(btr, actual_btr);
+        assertEquals(btr, actualBtr);
     }
 }
