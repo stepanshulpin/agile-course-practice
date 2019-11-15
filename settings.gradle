@@ -69,6 +69,8 @@ include "code/figures-volume-calculator"
 project(":code/figures-volume-calculator").name = "figures-volume-calculator-Model"
 // Киселева Ольга
 // Конева Александра
+include "code/numbers-in-words"
+project(":code/numbers-in-words").name = "numbers-in-words-Model"
 // Коневский Виталий
 include "code/deposit-calculator"
 project(":code/deposit-calculator").name = "deposit-calculator-Model"
