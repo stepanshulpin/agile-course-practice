@@ -30,9 +30,7 @@ public class RedBlackTree {
     public boolean remove(final int value) {
         Node z = getNode(value);
 
-        if (z != nil) {
-            --size;
-        } else {
+        if (z == nil) {
             return false;
         }
 
@@ -70,6 +68,7 @@ public class RedBlackTree {
             deleteFix(x);
         }
 
+        --size;
         return true;
     }
 
@@ -105,7 +104,6 @@ public class RedBlackTree {
     }
 
     public void insert(final int value) {
-        ++size;
         var node = new Node(value);
 
         Node temp = root;
@@ -137,6 +135,7 @@ public class RedBlackTree {
             }
             fixTree(node);
         }
+        ++size;
     }
 
     private void fixTree(final Node start) {

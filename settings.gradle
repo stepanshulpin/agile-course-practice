@@ -98,8 +98,8 @@ project(":code/polynomialcalculator").name = "polynomialcalculator"
 include "code/interpolationsearch"
 project(":code/interpolationsearch").name = "interpolationsearch"
 // Повеликин Ростислав
-include "code/povelikin-rostislav"
-project(":code/povelikin-rostislav").name = "povelikin-rostislav-Model"
+include "code/red-black-tree"
+project(":code/red-black-tree").name = "red-black-tree-Model"
 // Попков Кирилл
 // Разин Вячеслав
 // Сизова Ксения
