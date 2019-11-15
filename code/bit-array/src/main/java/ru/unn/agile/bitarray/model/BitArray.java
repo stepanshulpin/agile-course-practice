@@ -2,6 +2,7 @@ package ru.unn.agile.bitarray.model;
 
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class BitArray {
     private byte[] rawArray;
@@ -35,6 +36,21 @@ public class BitArray {
         return numRawArray;
     }
 
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (!(o instanceof BitArray)) return false;
+        BitArray bitArray = (BitArray) o;
+        return Arrays.equals(getRawArray(), bitArray.getRawArray());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(sizeByte);
+        result = 31 * result + Arrays.hashCode(getRawArray());
+        return result;
+    }
+
     public boolean isBit(final int bit) {
         int numElem = -1;
         if (bit > 0) {
@@ -61,17 +77,5 @@ public class BitArray {
             numElem = getNumElem(bit);
         }
         rawArray[numElem - 1] &= ~(1 << (bit % sizeByte));
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof BitArray)) {
-            return false;
-        }
-        BitArray bitArray = (BitArray) o;
-        return Arrays.equals(rawArray, bitArray.rawArray);
     }
 }
