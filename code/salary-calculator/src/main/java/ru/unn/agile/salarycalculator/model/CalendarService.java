@@ -4,12 +4,13 @@ import java.time.LocalDate;
 
 public class CalendarService {
     private int vacationDuration;
+    private static final int VACATION_DEFAULT_YEAR = 1970;
     private LocalDate vacationStartDate;
     private LocalDate month;
 
     public CalendarService() {
         this.vacationDuration = 0;
-        this.vacationStartDate = LocalDate.of(2010, 1, 1);
+        this.vacationStartDate = LocalDate.of(VACATION_DEFAULT_YEAR, 1, 1);
         this.month = LocalDate.now();
     }
 
@@ -43,4 +44,35 @@ public class CalendarService {
         return this;
     }
 
+    public int countWorkingDaysInMonth() {
+        SubtractHolidays checkingPeriod = new SubtractHolidays();
+
+        checkingPeriod.setMonth(this.getMonth());
+
+        int workingDaysInMonth = 0;
+        for (int i = 1; i <= this.getMonth().lengthOfMonth(); i++) {
+            if (checkingPeriod.isNotDayOff(i)) {
+                workingDaysInMonth++;
+            }
+        }
+        return workingDaysInMonth;
+    }
+
+    public int getPayableDaysInMonth() {
+        SubtractHolidays checkingPeriod = new SubtractHolidays();
+
+        checkingPeriod.setMonth(this.getMonth());
+        checkingPeriod.setVacationStartDate(this.getVacationStartDate());
+        checkingPeriod.setVacationDuration(this.getVacationDuration());
+
+        int payableDaysInMonth = this.countWorkingDaysInMonth();
+        if (!this.isCountYearNotVacationYear()) {
+            return payableDaysInMonth - checkingPeriod.getHolidaysInVacation();
+        }
+        return payableDaysInMonth;
+    }
+
+    private boolean isCountYearNotVacationYear() {
+        return this.getMonth().getYear() != this.getVacationStartDate().getYear();
+    }
 }

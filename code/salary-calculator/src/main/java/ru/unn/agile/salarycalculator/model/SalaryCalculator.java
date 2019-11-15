@@ -24,7 +24,7 @@ public class SalaryCalculator {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(final double salary) {
         if (salary < 0) {
             throw new NumberFormatException("Negative salary");
         }
@@ -38,7 +38,7 @@ public class SalaryCalculator {
         return countingMonth;
     }
 
-    public void setCountingMonth(LocalDate countingMonth) {
+    public void setCountingMonth(final LocalDate countingMonth) {
         this.countingMonth = countingMonth;
     }
 
@@ -46,7 +46,7 @@ public class SalaryCalculator {
         return workedHoursPerMonth;
     }
 
-    public void setWorkedHoursPerMonth(int workedHoursPerMonth) {
+    public void setWorkedHoursPerMonth(final int workedHoursPerMonth) {
         if (workedHoursPerMonth < 0) {
             throw new NumberFormatException("Worked hours can't be less than zero");
         }
@@ -60,7 +60,7 @@ public class SalaryCalculator {
         return vacationDuration;
     }
 
-    public void setVacationDuration(int vacationDuration) {
+    public void setVacationDuration(final int vacationDuration) {
         if (vacationDuration < 0) {
             throw new NumberFormatException("Vacation can't be less than zero");
         }
@@ -109,7 +109,7 @@ public class SalaryCalculator {
     private double calculateSalaryForOneWorkHour() {
         CalendarService calendarService = new CalendarService();
         calendarService.setMonth(this.getCountingMonth());
-        int workingDaysPerCountedMonth = 22;
+        int workingDaysPerCountedMonth = calendarService.countWorkingDaysInMonth();
         return salary / workingDaysPerCountedMonth * WORK_HOURS_PER_DAY;
     }
 
@@ -119,7 +119,7 @@ public class SalaryCalculator {
                 .setVacationStartDate(this.getVacationStartDate())
                 .setVacationDuration(this.getVacationDuration());
 
-        int payableDaysInMonth = 22;
+        int payableDaysInMonth = calendarService.getPayableDaysInMonth();
         return payableDaysInMonth * WORK_HOURS_PER_DAY;
     }
 
