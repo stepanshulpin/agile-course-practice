@@ -74,6 +74,8 @@ include "code/deposit-calculator"
 project(":code/deposit-calculator").name = "deposit-calculator-Model"
 // Кочетова Дарья
 // Красильников Михаил
+include "code/salary-calculator"
+project(":code/salary-calculator").name = "salary-calculator"
 // Краснов Александр
 // Куликов Александр
 // Кулыгина Юлия
