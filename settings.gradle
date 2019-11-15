@@ -1,10 +1,14 @@
-﻿// Shirokikh Violetta
+// Shirokikh Violetta
 include "code/lab1-tdd-arabic-roman-arabicromanconverter"
 project(":code/lab1-tdd-arabic-roman-arabicromanconverter").name = "lab1-tdd-arabic-roman-arabicromanconverter-Model"
 
 // Bevzuk Anton
 include "code/bevzuk-anton"
 project(":code/bevzuk-anton").name = "bevzuk-anton-Model"
+
+// Koneva Aleksandra, numbers-in-words
+include "code/numbers-in-words"
+project(":code/numbers-in-words").name = "numbers-in-words-Model"
 
 // Korniakov Kirill, lab1
 include "code/korniakov-kirill-lab1"
@@ -69,8 +73,6 @@ include "code/figures-volume-calculator"
 project(":code/figures-volume-calculator").name = "figures-volume-calculator-Model"
 // Киселева Ольга
 // Конева Александра
-include "code/numbers-in-words"
-project(":code/numbers-in-words").name = "numbers-in-words-Model"
 // Коневский Виталий
 include "code/deposit-calculator"
 project(":code/deposit-calculator").name = "deposit-calculator-Model"
