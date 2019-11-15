@@ -30,7 +30,6 @@ public class KorniakovKirillTest {
     public void canSetInitialRealValue() {
         ComplexNumber number = new ComplexNumber(1, 2);
         assertEquals(1.0, number.getReal(), delta);
-        asse
     }
 
     @Test

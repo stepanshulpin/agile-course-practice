@@ -18,20 +18,18 @@ public class PolygonTest {
 
     @Test
     public void canCreateTriangle() {
-        try{
+        try {
             Polygon triangle = new Polygon(pointA, pointB, pointC);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             fail("Should not have thrown any exception");
         }
     }
 
     @Test
     public void canCreateSquare() {
-        try{
+        try {
             Polygon square = new Polygon(pointA, pointB, pointC, pointD);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             fail("Should not have thrown any exception");
         }
     }
