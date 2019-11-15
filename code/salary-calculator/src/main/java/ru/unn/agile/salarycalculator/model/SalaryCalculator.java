@@ -18,6 +18,7 @@ public class SalaryCalculator {
         this.workedHoursPerMonth = 0;
         this.vacationDuration = 0;
         this.countingMonth = LocalDate.now();
+        this.vacationStartDate = LocalDate.now();
     }
 
     public double getSalary() {
@@ -34,7 +35,7 @@ public class SalaryCalculator {
         this.salary = salary;
     }
 
-    public LocalDate getCountingMonth() {
+    private LocalDate getCountingMonth() {
         return countingMonth;
     }
 
@@ -67,7 +68,7 @@ public class SalaryCalculator {
         this.vacationDuration = vacationDuration;
     }
 
-    public LocalDate getVacationStartDate() {
+    private LocalDate getVacationStartDate() {
         return vacationStartDate;
     }
 
@@ -79,7 +80,7 @@ public class SalaryCalculator {
         return this.calculateSalaryWithoutNDS() * NDS;
     }
 
-    public double calculateSalaryWithoutNDS() {
+    private double calculateSalaryWithoutNDS() {
         if (this.isEmployeeWorkedMoreThanNormalHoursPerDay()) {
             return this.calculateSalaryWithOvertime();
         }
@@ -110,7 +111,7 @@ public class SalaryCalculator {
         CalendarService calendarService = new CalendarService();
         calendarService.setMonth(this.getCountingMonth());
         int workingDaysPerCountedMonth = calendarService.countWorkingDaysInMonth();
-        return salary / workingDaysPerCountedMonth * WORK_HOURS_PER_DAY;
+        return this.getSalary() / (workingDaysPerCountedMonth * WORK_HOURS_PER_DAY);
     }
 
     private int getDefaultSumOfWorkedHours() {
@@ -118,7 +119,6 @@ public class SalaryCalculator {
                 .setMonth(this.getCountingMonth())
                 .setVacationStartDate(this.getVacationStartDate())
                 .setVacationDuration(this.getVacationDuration());
-
         int payableDaysInMonth = calendarService.getPayableDaysInMonth();
         return payableDaysInMonth * WORK_HOURS_PER_DAY;
     }

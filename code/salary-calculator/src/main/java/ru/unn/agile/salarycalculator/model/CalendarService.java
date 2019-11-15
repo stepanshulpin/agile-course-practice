@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class CalendarService {
     private int vacationDuration;
-    private static final int VACATION_DEFAULT_YEAR = 1970;
+    private static final int VACATION_DEFAULT_YEAR = 1972;
     private LocalDate vacationStartDate;
     private LocalDate month;
 
@@ -26,7 +26,7 @@ public class CalendarService {
         return this;
     }
 
-    public LocalDate getVacationStartDate() {
+    private LocalDate getVacationStartDate() {
         return vacationStartDate;
     }
 
@@ -45,7 +45,7 @@ public class CalendarService {
     }
 
     public int countWorkingDaysInMonth() {
-        SubtractHolidays checkingPeriod = new SubtractHolidays();
+        VacationService checkingPeriod = new VacationService();
 
         checkingPeriod.setMonth(this.getMonth());
 
@@ -59,12 +59,12 @@ public class CalendarService {
     }
 
     public int getPayableDaysInMonth() {
-        SubtractHolidays checkingPeriod = new SubtractHolidays();
+        VacationService checkingPeriod = new VacationService();
 
         checkingPeriod.setMonth(this.getMonth());
         checkingPeriod.setVacationStartDate(this.getVacationStartDate());
         checkingPeriod.setVacationDuration(this.getVacationDuration());
-
+        System.out.println(checkingPeriod);
         int payableDaysInMonth = this.countWorkingDaysInMonth();
         if (!this.isCountYearNotVacationYear()) {
             return payableDaysInMonth - checkingPeriod.getHolidaysInVacation();

@@ -2,7 +2,7 @@ package ru.unn.agile.salarycalculator.model;
 
 import java.time.LocalDate;
 
-public class SubtractHolidays {
+public class VacationService {
     private static final int VACATION_DEFAULT_YEAR = 2010;
     private static final int SUNDAY_NUMBER_DAY_OF_WEEK = 7;
     private static final int SATURDAY_NUMBER_DAY_OF_WEEK = 6;
@@ -14,30 +14,30 @@ public class SubtractHolidays {
     private int dayEndSubtract;
 
     public int getHolidaysInVacation() {
-        endVacation = startVacation.plusDays(lengthOfVacation);
-        dayStartSubtract = getStartDay();
-        dayEndSubtract = getEndDay();
+        endVacation = this.startVacation.plusDays(lengthOfVacation);
+        dayStartSubtract = this.getStartDay();
+        dayEndSubtract = this.getEndDay();
         return sumVacationDaysToSubtract();
     }
 
     public boolean isNotDayOff(final int checkDayNumber) {
-        LocalDate checkDate = LocalDate.of(checkMonth.getYear(),
+        LocalDate checkDate = LocalDate.of(this.checkMonth.getYear(),
                 checkMonth.getMonth(),
                 checkDayNumber);
         return isDayNotWeekend(checkDate) && isDayNotSunday(checkDate);
     }
 
-    public SubtractHolidays setMonth(final LocalDate inCheckMonth) {
+    public VacationService setMonth(final LocalDate inCheckMonth) {
         this.checkMonth = inCheckMonth;
         return this;
     }
 
-    public SubtractHolidays setVacationStartDate(final LocalDate inStartVacation) {
+    public VacationService setVacationStartDate(final LocalDate inStartVacation) {
         startVacation = inStartVacation;
         return this;
     }
 
-    public SubtractHolidays setVacationDuration(final int inLengthOfVacation) {
+    public VacationService setVacationDuration(final int inLengthOfVacation) {
         lengthOfVacation = inLengthOfVacation;
         return this;
     }
