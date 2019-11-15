@@ -51,8 +51,8 @@ public class BitArray {
     @Override
     public int hashCode() {
         int result = Objects.hash(sizeByte);
-        final int hash_const = 31;
-        result = hash_const * result + Arrays.hashCode(getRawArray());
+        final int hashConst = 31;
+        result = hashConst * result + Arrays.hashCode(getRawArray());
         return result;
     }
 
