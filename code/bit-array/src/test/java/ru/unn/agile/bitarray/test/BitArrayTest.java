@@ -33,8 +33,9 @@ public class BitArrayTest {
         byte[] btrRawArray = btr.getRawArray();
 
         // assert
-        for (int elem : btrRawArray)
+        for (int elem : btrRawArray) {
             assertEquals(elem, 0);
+        }
     }
 
     @Test
@@ -72,19 +73,11 @@ public class BitArrayTest {
 
         // act
         btr.setBit(4);
-
-        btr.setBit(13);
-        btr.unsetBit(13);
-
+        btr.setBit(13); btr.unsetBit(13);
         btr.setBit(19);
-
-        btr.setBit(25);
-        btr.unsetBit(25);
-
+        btr.setBit(25); btr.unsetBit(25);
         btr.setBit(34);
-
-        btr.setBit(41);
-        btr.unsetBit(41);
+        btr.setBit(41); btr.unsetBit(41);
 
         // assert
         byte[]actual = btr.getRawArray();
