@@ -98,10 +98,6 @@ public class BinaryTree {
         }
     }
 
-    private Node getRoot() {
-        return rootNode;
-    }
-
     public int getHeight() {
         return rootNode.getHeight();
     }
