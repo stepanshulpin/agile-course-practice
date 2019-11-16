@@ -234,7 +234,7 @@ public class BitArrayTest {
     }
 
     @Test
-    public void canUseUninonBitArrays() {
+    public void canUseUnionBitArrays() {
         // arrange
         BitArray btr = new BitArray(8);
         BitArray invBtr = new BitArray(btr.getCountBit());
