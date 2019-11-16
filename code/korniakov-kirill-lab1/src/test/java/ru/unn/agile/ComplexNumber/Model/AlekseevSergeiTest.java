@@ -6,8 +6,10 @@ import static org.junit.Assert.*;
 
 public class AlekseevSergeiTest {
 
+    private final double delta = 0.0001;
+
     @Test
-    public void areAddingZeroDoesntChangeNumber() {
+    public void addingZeroDoesntChangeNumber() {
         ComplexNumber z = new ComplexNumber(1.1, 2.3);
         ComplexNumber zero = new ComplexNumber(0.0, 0.0);
 
@@ -17,7 +19,7 @@ public class AlekseevSergeiTest {
     }
 
     @Test
-    public void areMultiplicationByZeroChangeNumber() {
+    public void multiplicationByZeroChangeNumber() {
         ComplexNumber z = new ComplexNumber(1.1, 2.3);
         ComplexNumber zero = new ComplexNumber(0.0, 0.0);
 
@@ -27,14 +29,12 @@ public class AlekseevSergeiTest {
     }
 
     @Test
-    public void areDifferentNumbersEqual() {
+    public void differentNumbersNotEqual() {
         ComplexNumber z1 = new ComplexNumber(1.1, 2.3);
         ComplexNumber z2 = new ComplexNumber(5.8, 13.21);
 
         assertFalse(z1.equals(z2));
     }
-
-    private final double delta = 0.00000001;
 
     @Test
     public void canGetRealPart() {
