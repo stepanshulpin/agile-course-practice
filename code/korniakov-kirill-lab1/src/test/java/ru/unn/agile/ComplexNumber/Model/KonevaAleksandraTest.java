@@ -26,7 +26,7 @@ public class KonevaAleksandraTest {
     }
 
     @Test
-    public void isAddCommutative() {
+    public void addIsCommutative() {
         ComplexNumber z1 = new ComplexNumber(1, 2);
         ComplexNumber z2 = new ComplexNumber(3, 4);
 
@@ -55,7 +55,7 @@ public class KonevaAleksandraTest {
     }
 
     @Test
-    public void isMultiplyCommutative() {
+    public void multiplyIsCommutative() {
         ComplexNumber z1 = new ComplexNumber(1, 2);
         ComplexNumber z2 = new ComplexNumber(3, 4);
 
