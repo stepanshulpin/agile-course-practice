@@ -15,7 +15,7 @@ public class BinaryTreeFunctionalTests {
     private String  simpleData  = "FirstSimpleText";
 
     private int bound = 1000;
-    private int arrSize = 100;
+    private int arrSize = 10;
     private static Random randomGen = new Random();
 
     @Before
@@ -98,6 +98,7 @@ public class BinaryTreeFunctionalTests {
             int randInt = randomGen.nextInt(bound);
             if (i == arrSize/2) {
                 elemToRemove = randInt;
+                System.out.println(elemToRemove);
             } else {
                 storage[i] = randInt;
             }

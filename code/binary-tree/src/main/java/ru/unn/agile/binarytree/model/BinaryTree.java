@@ -28,10 +28,13 @@ public class BinaryTree {
         if (root.getKey() == key) {
             return root;
         }
-        if (root.getRightChild() != null) {
+        if (root.getRightChild() == null && root.getLeftChild() == null) {
+            return null;
+        }
+        if (key > root.getKey()) {
             return findNode(root.getRightChild(), key);
         } else {
-            return null;
+            return findNode(root.getLeftChild(), key);
         }
     }
 
