@@ -1,6 +1,7 @@
-package ru.unn.agile.GameOfLife.model;
+package ru.unn.agile.gameoflife.model;
 
 import org.junit.Test;
+
 
 import static org.junit.Assert.*;
 
@@ -13,6 +14,24 @@ public class GameOfLifeTest {
     }
 
     @Test
+    public void heightIsCorrect() {
+        GameOfLife g = new GameOfLife(3, 4);
+
+        int gameHeight = g.getHeight();
+
+        assertEquals(3, gameHeight);
+    }
+
+    @Test
+    public void widthIsCorrect() {
+        GameOfLife g = new GameOfLife(3, 4);
+
+        int gameWidth = g.getWidth();
+
+        assertEquals(4, gameWidth);
+    }
+
+    @Test
     public void canSetCell() {
         GameOfLife g = new GameOfLife(3, 3);
         g.setCell(1, 1);
@@ -21,7 +40,7 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void areAllStartCellsDead() {
+    public void allStartCellsAreDead() {
         int size = 4;
         GameOfLife g = new GameOfLife(size, size);
 
@@ -51,40 +70,36 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void isOneLivingCellDies() {
-        GameOfLife g = new GameOfLife(3, 3);
-        g.setCell(1, 1);
-
-        g.makeTurn();
-
-        assertFalse(g.isCellLive(1, 1));
-    }
-
-    @Test
-    public void isNeighborsNumCorrect() {
+    public void neighborsNumIsCorrect() {
         GameOfLife g = new GameOfLife(3, 3);
         g.setCell(0, 1);
         g.setCell(1, 0);
 
-        assertEquals(2, g.getNeighborsNum(1, 1));
+        var neighboursNum = g.getNeighborsNum(1, 1);
+
+        assertEquals(2, neighboursNum);
     }
 
     @Test
-    public void isNeighborsNumCorrectOnLeftBorder() {
+    public void neighborsNumIsCorrectOnLeftBorder() {
         GameOfLife g = new GameOfLife(3, 3);
         g.setCell(0, 1);
         g.setCell(1, 0);
 
-        assertEquals(2, g.getNeighborsNum(0, 0));
+        var neighboursNum = g.getNeighborsNum(0, 0);
+
+        assertEquals(2, neighboursNum);
     }
 
     @Test
-    public void isNeighborsNumCorrectOnRightBorder() {
+    public void neighborsNumIsCorrectOnRightBorder() {
         GameOfLife g = new GameOfLife(3, 3);
         g.setCell(1, 1);
         g.setCell(1, 2);
 
-        assertEquals(2, g.getNeighborsNum(2, 2));
+        var neighboursNum = g.getNeighborsNum(2, 2);
+
+        assertEquals(2, neighboursNum);
     }
 
     @Test
@@ -104,9 +119,12 @@ public class GameOfLifeTest {
 
     @Test
     public void canCreateNegativeGrid() {
-        GameOfLife g = new GameOfLife(-3, -3);
-
-        assertNotNull(g);
+        try {
+            GameOfLife g = new GameOfLife(-3, -3);
+            fail("Expected NegativeArraySizeException");
+        } catch (NegativeArraySizeException thrown) {
+            assertNotEquals("", thrown.getMessage());
+        }
     }
 
     @Test
@@ -123,7 +141,17 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void isCellWithTwoNeighboursLive() {
+    public void oneLivingCellDies() {
+        GameOfLife g = new GameOfLife(3, 3);
+        g.setCell(1, 1);
+
+        g.makeTurn();
+
+        assertFalse(g.isCellLive(1, 1));
+    }
+
+    @Test
+    public void cellWithTwoNeighboursLive() {
         int height = 3;
         int width = 3;
         GridString grid = new GridString(
@@ -138,7 +166,7 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void isCellWithThreeNeighboursLive() {
+    public void cellWithThreeNeighboursLive() {
         int height = 3;
         int width = 3;
         GridString grid = new GridString(
@@ -153,7 +181,7 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void isCellWithThreeNeighboursRevive() {
+    public void cellWithThreeNeighboursRevive() {
         int height = 3;
         int width = 3;
         GridString grid = new GridString(
@@ -168,7 +196,7 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void isCellWithFourNeighborsDies() {
+    public void cellWithFourNeighborsDies() {
         int height = 3;
         int width = 3;
         GridString grid = new GridString(
@@ -193,7 +221,7 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void isCellsCalculatesWithoutOrder() {
+    public void cellsCalculatesWithoutOrder() {
         int height = 4;
         int width = 3;
         GridString grid = new GridString(
@@ -223,13 +251,17 @@ public class GameOfLifeTest {
         int height = 3;
         int width = 3;
         GridString grid = new GridString("..", height, width);
-        GameOfLife g = new GameOfLife(grid, height, width);
 
-        assertNotNull(g);
+        try {
+            GameOfLife g = new GameOfLife(grid, height, width);
+            fail("Expected IndexOutOfBoundsException");
+        } catch (IndexOutOfBoundsException thrown) {
+            assertNotEquals("", thrown.getMessage());
+        }
     }
 
     @Test
-    public void isGliderMove() {
+    public void gliderMove() {
         int height = 4;
         int width = 4;
         GridString grid = new GridString(
@@ -275,13 +307,16 @@ public class GameOfLifeTest {
         };
         GridArray grid = new GridArray(arr, height, width);
 
-        GameOfLife g = new GameOfLife(grid, height, width);
-
-        assertNotNull(g);
+        try {
+            GameOfLife g = new GameOfLife(grid, height, width);
+            fail("Expected IndexOutOfBoundsException");
+        } catch (IndexOutOfBoundsException thrown) {
+            assertNotEquals("", thrown.getMessage());
+        }
     }
 
     @Test
-    public void isMakeTurnOutputCorrect() {
+    public void makeTurnOutputIsCorrect() {
         int height = 3;
         int width = 3;
         char[][] stableGrid = {
@@ -302,7 +337,7 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void isGridChangesByChangingArray() {
+    public void gridNotChangesByChangingArray() {
         int height = 3;
         int width = 4;
         GridString grid = new GridString(
