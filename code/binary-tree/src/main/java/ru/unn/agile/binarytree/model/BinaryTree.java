@@ -60,20 +60,22 @@ public class BinaryTree {
             return null;
         }
         if (key > root.getKey()) {
-            return removeRecursive(root.getRightChild(), key);
+            Node newRight = removeRecursive(root.getRightChild(), key);
+            root.setRightChild(newRight);
         } else if (key < root.getKey()) {
-            return removeRecursive(root.getLeftChild(), key);
-        }
-
-        if (root.getLeftChild() == null) {
-            return root.getRightChild();
-        } else if (root.getRightChild() == null) {
-            return root.getLeftChild();
+            Node newLeft = removeRecursive(root.getLeftChild(), key);
+            root.setLeftChild(newLeft);
         } else {
-            Node minNode = rootNode.getMinNode();
-            root.set(minNode.getKey(), minNode.getValue());
+            if (root.getLeftChild() == null) {
+                return root.getRightChild();
+            } else if (root.getRightChild() == null) {
+                return root.getLeftChild();
+            } else {
+                Node minNode = rootNode.getRightChild().getMinNode();
+                root.set(minNode.getKey(), minNode.getValue());
 
-            removeRecursive(root.getRightChild(), minNode.getKey());
+                removeRecursive(root.getRightChild(), minNode.getKey());
+            }
         }
         return root;
     }
