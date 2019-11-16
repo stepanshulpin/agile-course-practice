@@ -7,11 +7,13 @@ import java.util.Objects;
 public class BitArray {
     private byte[] rawArray;
     private final int sizeByte = 8;
+    private int countBit;
 
-    public BitArray(final int countBit) {
+    public BitArray(final int countBitCurr) {
+        countBit = countBitCurr;
         int lengthRawArray = -1;
-        if (countBit > 0) {
-            lengthRawArray = getNumElem(countBit);
+        if (countBitCurr > 0) {
+            lengthRawArray = getNumElem(countBitCurr);
         }
         rawArray = new byte[lengthRawArray];
 
@@ -22,10 +24,15 @@ public class BitArray {
 
     public BitArray(final BitArray rawArray) {
         this.rawArray = rawArray.getRawArray();
+        this.countBit = rawArray.getCountBit();
     }
 
     public byte[] getRawArray() {
         return rawArray;
+    }
+
+    public int getCountBit() {
+        return countBit;
     }
 
     private int getNumElem(final int bit) {
@@ -58,7 +65,7 @@ public class BitArray {
 
     public boolean isBit(final int bit) {
         if (bit == 0) {
-            return (byte)(rawArray[0] & 1) > 0;
+            return (byte) (rawArray[0] & 1) > 0;
         }
 
         int numElem = -1;
@@ -88,5 +95,13 @@ public class BitArray {
         } else {
             rawArray[0] &= ~1;
         }
+    }
+
+    public BitArray union(final BitArray invBtr) {
+        BitArray res = new BitArray(countBit);
+        for(int i = 0; i < getNumElem(countBit); i++) {
+            res.rawArray[i] = (byte) (rawArray[i] + invBtr.rawArray[i]);
+        }
+        return res;
     }
 }

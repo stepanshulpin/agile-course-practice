@@ -39,6 +39,18 @@ public class BitArrayTest {
     }
 
     @Test
+    public void canUseGetCountBitFunc() {
+        // arrange
+        BitArray btr = new BitArray(279);
+
+        // act
+        int countBit = btr.getCountBit();
+
+        // assert
+        assertEquals(countBit, 279);
+    }
+
+    @Test
     public void canSetBitInBitArray() {
         // arrange
         BitArray btr = new BitArray(41);
@@ -219,5 +231,27 @@ public class BitArrayTest {
 
         // assert
         assertEquals(btr, actualBtr);
+    }
+
+    @Test
+    public void canUseUninonBitArrays() {
+        // arrange
+        BitArray btr = new BitArray(8);
+        BitArray invBtr = new BitArray(btr.getCountBit());
+        btr.setBit(0); invBtr.setBit(1);
+        btr.setBit(2); invBtr.setBit(3);
+        btr.setBit(4); invBtr.setBit(5);
+        btr.setBit(6); invBtr.setBit(7);
+        btr.setBit(8);
+
+        // act
+        BitArray actualBtr = btr.union(invBtr);
+
+        // assert
+        BitArray ref = new BitArray(btr.getCountBit());
+        for (int i = 0; i < ref.getCountBit(); i++) {
+            ref.setBit(i);
+        }
+        assertEquals(ref, actualBtr);
     }
 }
