@@ -25,6 +25,9 @@ public class BinaryTree {
     }
 
     private static Node findNode(final Node root, final int key) {
+        if (root == null) {
+            return null;
+        }
         if (root.getKey() == key) {
             return root;
         }
@@ -42,25 +45,37 @@ public class BinaryTree {
         if (rootNode == null) {
             return false;
         } else {
-                if (rootNode.getKey() == key) {
-                rootNode = rootNode.getRightChild();
-                return true;
+            Node temp = findNode(rootNode, key);
+            if (temp == null) {
+                return false;
             } else {
-                return removeRecursive(rootNode, key);
+                rootNode = removeRecursive(rootNode, key);
+                return true;
             }
         }
     }
 
-    private boolean removeRecursive(final Node root, final int key) {
-        if (root.getRightChild() == null) {
-            return false;
+    private Node removeRecursive(final Node root, final int key) {
+        if (root == null) {
+            return null;
         }
-        if (root.getRightChild().getKey() == key) {
-            root.setRightChild(root.getRightChild().getRightChild());
-            return true;
-        } else {
+        if (key > root.getKey()) {
             return removeRecursive(root.getRightChild(), key);
+        } else if (key < root.getKey()) {
+            return removeRecursive(root.getLeftChild(), key);
         }
+
+        if (root.getLeftChild() == null) {
+            return root.getRightChild();
+        } else if (root.getRightChild() == null) {
+            return root.getLeftChild();
+        } else {
+            Node minNode = rootNode.getMinNode();
+            root.set(minNode.getKey(), minNode.getValue());
+
+            removeRecursive(root.getRightChild(), minNode.getKey());
+        }
+        return root;
     }
 
     private static void addChild(final Node root, final Node childNode) {
@@ -77,7 +92,7 @@ public class BinaryTree {
                 root.setLeftChild(childNode);
             }
         } else {
-            root.seValue(childNode.getValue());
+            root.set(childNode.getKey(), childNode.getValue());
         }
     }
 

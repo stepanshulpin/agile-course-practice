@@ -27,7 +27,8 @@ class Node {
         return key;
     };
 
-    void seValue(final String value) {
+    void set(final int key, final String value) {
+        this.key = key;
         this.value = value;
     }
 
@@ -48,6 +49,14 @@ class Node {
             return 1;
         } else {
             return rightChild.getHeight() + 1;
+        }
+    }
+
+    Node getMinNode() {
+        if (this.getLeftChild() != null) {
+            return this.getLeftChild().getMinNode();
+        } else {
+            return this;
         }
     }
 }
