@@ -2,6 +2,10 @@ package ru.unn.agile.binarytree.model;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import java.lang.reflect.Array;
+import java.util.Random;
+
 import static org.junit.Assert.*;
 
 public class BinaryTreeFunctionalTests {
@@ -9,6 +13,10 @@ public class BinaryTreeFunctionalTests {
 
     private int     simpleKey   = 1;
     private String  simpleData  = "FirstSimpleText";
+
+    private int bound = 1000;
+    private int arrSize = 100;
+    private static Random randomGen = new Random();
 
     @Before
     public void setUp() {
@@ -28,7 +36,7 @@ public class BinaryTreeFunctionalTests {
 
     @Test
     public void canAddTenValuesAndGetIt() {
-        final int size = 4;
+        final int size = 10;
         for (int i = 0; i < size; ++i) {
             binaryTree.add(i, Integer.toString(i));
         }
@@ -40,8 +48,8 @@ public class BinaryTreeFunctionalTests {
 
     @Test
     public void canAddTenRemoveMiddleAndGetRest() {
-        final int middleKey = 2;
-        final int size      = 4;
+        final int middleKey = 5;
+        final int size      = 10;
 
         for (int i = 0; i < size; ++i) {
             binaryTree.add(i, Integer.toString(i));
@@ -55,6 +63,51 @@ public class BinaryTreeFunctionalTests {
             } else {
                 assertNull(binaryTree.find(i));
             }
+        }
+    }
+
+    @Test
+    public void canFillWithRandom() {
+        for (int i = 0; i < arrSize; ++i) {
+            int randInt = randomGen.nextInt(bound);
+            binaryTree.add(randInt, Integer.toString(randInt));
+        }
+    }
+
+    @Test
+    public void canFillWithRandomAndFind() {
+        int[] storage = new int[arrSize];
+
+        for (int i = 0; i < arrSize; ++i) {
+            int randInt = randomGen.nextInt(bound);
+            storage[i] = randInt;
+            binaryTree.add(randInt, Integer.toString(randInt));
+        }
+
+        for (int i = 0; i < arrSize; ++i) {
+            assertEquals(Integer.toString(storage[i]), binaryTree.find(storage[i]));
+        }
+    }
+
+    @Test
+    public void canRemoveRandomAndFindRest() {
+        int[] storage = new int[arrSize];
+        int elemToRemove = 0;
+
+        for (int i = 0; i < arrSize; ++i) {
+            int randInt = randomGen.nextInt(bound);
+            if (i == arrSize/2) {
+                elemToRemove = randInt;
+            } else {
+                storage[i] = randInt;
+            }
+            binaryTree.add(randInt, Integer.toString(randInt));
+        }
+
+        assertTrue(binaryTree.remove(elemToRemove));
+
+        for (int i = 0; i < arrSize - 1; ++i) {
+            assertEquals(Integer.toString(storage[i]), binaryTree.find(storage[i]));
         }
     }
 

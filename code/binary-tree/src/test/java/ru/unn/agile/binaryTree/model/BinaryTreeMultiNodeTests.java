@@ -89,4 +89,5 @@ public class BinaryTreeMultiNodeTests {
 
         assertEquals(2, binaryTree.getHeight());
     }
+
 }
