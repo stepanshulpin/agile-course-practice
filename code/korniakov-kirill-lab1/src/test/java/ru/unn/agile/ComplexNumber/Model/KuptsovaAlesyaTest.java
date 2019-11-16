@@ -1,11 +1,8 @@
 package ru.unn.agile.ComplexNumber.Model;
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import ru.unn.agile.ComplexNumber.model.ComplexNumber;
 
-import static java.lang.String.valueOf;
 import static junit.framework.TestCase.assertEquals;
 
 public class KuptsovaAlesyaTest {
