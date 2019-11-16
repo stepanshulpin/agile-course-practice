@@ -94,20 +94,24 @@ public class BinaryTreeFunctionalTests {
         int[] storage = new int[arrSize];
         int elemToRemove = 0;
 
-        for (int i = 0; i < arrSize; ++i) {
+        // Add
+        for (int i = 0; i < arrSize/2; ++i) {
             int randInt = randomGen.nextInt(bound);
-            if (i == arrSize/2) {
-                elemToRemove = randInt;
-                System.out.println(elemToRemove);
-            } else {
-                storage[i] = randInt;
-            }
+            storage[i] = randInt;
             binaryTree.add(randInt, Integer.toString(randInt));
         }
-
+        elemToRemove = randomGen.nextInt(bound);
+        binaryTree.add(elemToRemove, Integer.toString(elemToRemove));
+        for (int i = arrSize/2; i < arrSize; ++i) {
+            int randInt = randomGen.nextInt(bound);
+            storage[i] = randInt;
+            binaryTree.add(randInt, Integer.toString(randInt));
+        }
+        // Remove
         assertTrue(binaryTree.remove(elemToRemove));
 
-        for (int i = 0; i < arrSize - 1; ++i) {
+        // Check
+        for (int i = 0; i < arrSize; ++i) {
             assertEquals(Integer.toString(storage[i]), binaryTree.find(storage[i]));
         }
     }
