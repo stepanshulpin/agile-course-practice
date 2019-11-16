@@ -1,4 +1,4 @@
-package ru.unn.agile.binaryTree.model;
+package ru.unn.agile.binarytree.model;
 
 public class BinaryTree {
     private Node rootNode = null;

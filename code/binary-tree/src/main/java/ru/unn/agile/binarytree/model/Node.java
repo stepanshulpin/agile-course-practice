@@ -1,4 +1,4 @@
-package ru.unn.agile.binaryTree.model;
+package ru.unn.agile.binarytree.model;
 
 class Node {
     private  int    key;
