@@ -57,6 +57,20 @@ public class BitArrayTest {
         assertArrayEquals(reference, actual);
     }
 
+    @Test
+    public void canSetZeroBit() {
+        // arrange
+        BitArray btr = new BitArray(8);
+
+        // act
+        btr.setBit(0);
+
+        // assert
+        byte[] actual = btr.getRawArray();
+        byte[] reference = {1};
+        assertArrayEquals(reference, actual);
+    }
+
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void canSetNegativeBitInBitArray() {
         // arrange
@@ -85,6 +99,21 @@ public class BitArrayTest {
         assertArrayEquals(reference, actual);
     }
 
+    @Test
+    public void canUnsetZeroBit() {
+        // arrange
+        BitArray btr = new BitArray(8);
+
+        // act
+        btr.setBit(0);
+        btr.unsetBit(0);
+
+        // assert
+        byte[] actual = btr.getRawArray();
+        byte[] reference = {0};
+        assertArrayEquals(reference, actual);
+    }
+
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void canUnsetNegativeBitInBitArray() {
         // arrange
@@ -104,6 +133,18 @@ public class BitArrayTest {
 
         // assert
         assertTrue(btr.isBit(29));
+    }
+
+    @Test
+    public void isSetBitEqualZeroInBitArray() {
+        // arrange
+        BitArray btr = new BitArray(41);
+
+        // act
+        btr.setBit(0);
+
+        // assert
+        assertTrue(btr.isBit(0));
     }
 
     @Test

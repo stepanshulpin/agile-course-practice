@@ -57,6 +57,10 @@ public class BitArray {
     }
 
     public boolean isBit(final int bit) {
+        if (bit == 0) {
+            return (byte)(rawArray[0] & 1) > 0;
+        }
+
         int numElem = -1;
         if (bit > 0) {
             numElem = getNumElem(bit);
@@ -69,18 +73,20 @@ public class BitArray {
     }
 
     public void setBit(final int bit) {
-        int numElem = -1;
-        if (bit > 0) {
-            numElem = getNumElem(bit);
+        if (bit != 0) {
+            int numElem = getNumElem(bit);
+            rawArray[numElem - 1] |= 1 << (bit % sizeByte);
+        } else {
+            rawArray[0] |= 1;
         }
-        rawArray[numElem - 1] |= 1 << (bit % sizeByte);
     }
 
     public void unsetBit(final int bit) {
-        int numElem = -1;
-        if (bit > 0) {
-            numElem = getNumElem(bit);
+        if (bit != 0) {
+            int numElem = getNumElem(bit);
+            rawArray[numElem - 1] &= ~(1 << (bit % sizeByte));
+        } else {
+            rawArray[0] &= ~1;
         }
-        rawArray[numElem - 1] &= ~(1 << (bit % sizeByte));
     }
 }
