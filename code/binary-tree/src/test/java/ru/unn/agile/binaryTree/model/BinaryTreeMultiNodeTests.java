@@ -45,8 +45,7 @@ public class BinaryTreeMultiNodeTests {
         binaryTree.add(secondKey, secondData);
         binaryTree.add(thirdKey, thirdData);
 
-        final String expectedData = binaryTree.getRoot().getRightChild().getRightChild().getValue();
-        assertEquals(expectedData, binaryTree.find(thirdKey));
+        assertEquals(thirdData, binaryTree.find(thirdKey));
     }
 
     @Test
@@ -57,8 +56,7 @@ public class BinaryTreeMultiNodeTests {
 
         assertTrue(binaryTree.remove(secondKey));
 
-        final String expectedData = binaryTree.getRoot().getRightChild().getValue();
-        assertEquals(expectedData, thirdData);
+        assertEquals(thirdData, binaryTree.find(thirdKey));
     }
 
     @Test

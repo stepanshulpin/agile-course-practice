@@ -17,14 +17,14 @@ public class BinaryTreeManipulationTests {
     }
 
     @Test
-    public void canFindElement() {
+    public void canFind() {
         final String result = binaryTree.find(simpleKey);
 
         assertEquals(simpleData, result);
     }
 
     @Test
-    public void canRemoveNode() {
+    public void canRemove() {
         binaryTree.remove(simpleKey);
         final String result = binaryTree.find(simpleKey);
 

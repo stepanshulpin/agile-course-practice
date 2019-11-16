@@ -20,7 +20,7 @@ public class BinaryTreeCreateTests {
     }
 
     @Test
-    public void canAddElement() {
+    public void canAdd() {
         String simpleData = "SimpleText";
         binaryTree.add(simpleKey, simpleData);
     }

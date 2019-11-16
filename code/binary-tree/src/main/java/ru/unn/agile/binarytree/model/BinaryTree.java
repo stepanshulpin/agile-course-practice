@@ -60,7 +60,7 @@ public class BinaryTree {
         }
     }
 
-    static void addChild(final Node root, final Node childNode) {
+    private static void addChild(final Node root, final Node childNode) {
         if (childNode.getKey() > root.getKey()) {
             if (root.getRightChild() != null) {
                 addChild(root.getRightChild(), childNode);
@@ -78,7 +78,7 @@ public class BinaryTree {
         }
     }
 
-    Node getRoot() {
+    private Node getRoot() {
         return rootNode;
     }
 
