@@ -7,14 +7,14 @@ import static org.junit.Assert.*;
 public class BinaryTreeMultiNodeTests {
     private BinaryTree binaryTree;
 
-    private int     firstKey = 1;
-    private String  firstData = "FirstSimpleText";
+    private final int     firstKey = 1;
+    private final String  firstData = "FirstSimpleText";
 
-    private int     secondKey = 2;
-    private String  secondData = "SecondSimpleText";
+    private final int     secondKey = 2;
+    private final String  secondData = "SecondSimpleText";
 
-    final   int     thirdKey = 3;
-    final   String  thirdData = "ThirdSimpleText";
+    private final int     thirdKey = 3;
+    private final String  thirdData = "ThirdSimpleText";
 
     @Before
     public void setUp() {

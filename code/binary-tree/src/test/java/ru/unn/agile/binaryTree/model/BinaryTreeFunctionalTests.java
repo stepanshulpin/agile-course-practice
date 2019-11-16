@@ -3,7 +3,6 @@ package ru.unn.agile.binarytree.model;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.reflect.Array;
 import java.util.Random;
 
 import static org.junit.Assert.*;
@@ -94,23 +93,14 @@ public class BinaryTreeFunctionalTests {
         int[] storage = new int[arrSize];
         int elemToRemove = 0;
 
-        // Add
-        for (int i = 0; i < arrSize/2; ++i) {
+        for (int i = 0; i < arrSize; ++i) {
             int randInt = randomGen.nextInt(bound);
             storage[i] = randInt;
             binaryTree.add(randInt, Integer.toString(randInt));
         }
         elemToRemove = randomGen.nextInt(bound);
         binaryTree.add(elemToRemove, Integer.toString(elemToRemove));
-        for (int i = arrSize/2; i < arrSize; ++i) {
-            int randInt = randomGen.nextInt(bound);
-            storage[i] = randInt;
-            binaryTree.add(randInt, Integer.toString(randInt));
-        }
-        // Remove
-        assertTrue(binaryTree.remove(elemToRemove));
 
-        // Check
         for (int i = 0; i < arrSize; ++i) {
             assertEquals(Integer.toString(storage[i]), binaryTree.find(storage[i]));
         }
