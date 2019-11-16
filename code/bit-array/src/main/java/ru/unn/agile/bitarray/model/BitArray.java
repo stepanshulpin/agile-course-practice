@@ -99,7 +99,7 @@ public class BitArray {
 
     public BitArray union(final BitArray invBtr) {
         BitArray res = new BitArray(countBit);
-        for(int i = 0; i < getNumElem(countBit); i++) {
+        for (int i = 0; i < getNumElem(countBit); i++) {
             res.rawArray[i] = (byte) (rawArray[i] + invBtr.rawArray[i]);
         }
         return res;
