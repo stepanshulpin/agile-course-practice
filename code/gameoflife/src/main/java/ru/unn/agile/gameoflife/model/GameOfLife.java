@@ -1,4 +1,6 @@
-package ru.unn.agile.GameOfLife.model;
+package ru.unn.agile.gameoflife.model;
+
+import java.util.Arrays;
 
 interface IGridInput {
 
@@ -41,9 +43,8 @@ public class GameOfLife {
     private int width;
 
     public GameOfLife(final int height, final int width) {
-        if ((height < 0) && (width < 0)) {
-            this.height = 0;
-            this.width = 0;
+        if ((height <= 0) || (width <= 0)) {
+            throw new NegativeArraySizeException("array size is negative");
         } else {
             this.height = height;
             this.width = width;
@@ -51,10 +52,8 @@ public class GameOfLife {
 
         grid = new char[this.height][this.width];
 
-        for (int i = 0; i < this.height; i++) {
-            for (int j = 0; j < this.width; j++) {
-                grid[i][j] = '.';
-            }
+        for (char[] row: grid) {
+            Arrays.fill(row, '.');
         }
     }
 
@@ -83,8 +82,16 @@ public class GameOfLife {
                 }
             }
         } catch (ArrayIndexOutOfBoundsException | StringIndexOutOfBoundsException  e) {
-            System.out.println(e.getMessage());
+            throw new IndexOutOfBoundsException("input grid smaller than required");
         }
+    }
+
+    public int getHeight() {
+        return this.height;
+    }
+
+    public int getWidth() {
+        return this.width;
     }
 
     public boolean isPointOnGrid(final int y, final int x) {
