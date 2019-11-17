@@ -5,7 +5,9 @@ public class StringCalc {
 
     }
 
-    public int result(String string) {
-        return 1;
+    public double result(String string) {
+        double foo;
+        foo = Double.parseDouble(string);
+        return foo;
     }
 }
