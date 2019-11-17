@@ -32,7 +32,6 @@ public final class ComplexNumberCalculator {
     static ComplexNumber pow(final ComplexNumber z, final int degree) {
         double tempModule = Math.pow(z.getModule(), degree);
         double tempArgument = degree * z.getArgument();
-     //   ComplexNumber zResult = ComplexNumber.createTrigonometricForm(tempRadius, tempAngle);
         return ComplexNumber.createTrigonometricForm(tempModule, tempArgument);
     }
 

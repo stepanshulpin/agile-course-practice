@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class ComplexNumberCalculatorTest {
     @Test
-    public void operationAdditionalCalculatorComplexNumber() {
+    public void canAddTwoComplexNumbers() {
         ComplexNumber z1 = ComplexNumber.createAlgebraicForm(5.0, 6.0);
         ComplexNumber z2 = ComplexNumber.createAlgebraicForm(4.0, 6.0);
         ComplexNumber expectedResult = ComplexNumber.createAlgebraicForm(9.0, 12.0);
@@ -16,7 +16,7 @@ public class ComplexNumberCalculatorTest {
     }
 
     @Test
-    public void operationAdditionalCalculatorComplexNumberWithNegative() {
+    public void canAddTwoComplexNumbersWithNegativePart() {
         ComplexNumber z1 = ComplexNumber.createAlgebraicForm(-5.0, 6.0);
         ComplexNumber z2 = ComplexNumber.createAlgebraicForm(4.0, 6.0);
         ComplexNumber expectedResult = ComplexNumber.createAlgebraicForm(-1.0, 12.0);
@@ -27,7 +27,7 @@ public class ComplexNumberCalculatorTest {
     }
 
     @Test
-    public void operationAdditionalCalculatorComplexNumberWithOneNull() {
+    public void canAddTwoComplexNumbersWithOneNull() {
         ComplexNumber z1 = ComplexNumber.createAlgebraicForm(-5.0, 6.0);
         ComplexNumber z2 = ComplexNumber.createAlgebraicForm(0.0, 0.0);
         ComplexNumber expectedResult = ComplexNumber.createAlgebraicForm(-5.0, 6.0);
@@ -38,7 +38,7 @@ public class ComplexNumberCalculatorTest {
     }
 
     @Test
-    public void operationSubtractionCalculatorComplexNumber() {
+    public void canSubtractTwoComplexNumbers() {
         ComplexNumber z1 = ComplexNumber.createAlgebraicForm(5.0, 5.0);
         ComplexNumber z2 = ComplexNumber.createAlgebraicForm(4.0, 6.0);
         ComplexNumber expectedResult = ComplexNumber.createAlgebraicForm(1.0, -1.0);
@@ -49,7 +49,7 @@ public class ComplexNumberCalculatorTest {
     }
 
     @Test
-    public void operationSubtractionCalculatorComplexNumberWithNegative() {
+    public void canSubtractTwoComplexNumbersWithNegativePart() {
         ComplexNumber z1 = ComplexNumber.createAlgebraicForm(-5.0, 6.0);
         ComplexNumber z2 = ComplexNumber.createAlgebraicForm(4.0, 6.0);
         ComplexNumber expectedResult = ComplexNumber.createAlgebraicForm(-9.0, 0.0);
@@ -60,7 +60,7 @@ public class ComplexNumberCalculatorTest {
     }
 
     @Test
-    public void operationSubtractionCalculatorComplexNumberWithOneNull() {
+    public void canSubtractComplexNumbersWithOneNull() {
         ComplexNumber z1 = ComplexNumber.createAlgebraicForm(-5.0, 6.0);
         ComplexNumber z2 = ComplexNumber.createAlgebraicForm(0.0, 0.0);
         ComplexNumber expectedResult = ComplexNumber.createAlgebraicForm(-5.0, 6.0);
@@ -71,7 +71,7 @@ public class ComplexNumberCalculatorTest {
     }
 
     @Test
-    public void operationMultiplicationCalculatorComplexNumber() {
+    public void canMultiplyTwoComplexNumbers() {
         ComplexNumber z1 = ComplexNumber.createAlgebraicForm(5.0, 5.0);
         ComplexNumber z2 = ComplexNumber.createAlgebraicForm(4.0, 6.0);
         ComplexNumber expectedResult = ComplexNumber.createAlgebraicForm(-10.0, 50.0);
@@ -82,7 +82,7 @@ public class ComplexNumberCalculatorTest {
     }
 
     @Test
-    public void operationMultiplicationCalculatorComplexNumberWithNegative() {
+    public void canMultiplyTwoComplexNumbersWithNegative() {
         ComplexNumber z1 = ComplexNumber.createAlgebraicForm(-5.0, 5.0);
         ComplexNumber z2 = ComplexNumber.createAlgebraicForm(4.0, 6.0);
         ComplexNumber expectedResult = ComplexNumber.createAlgebraicForm(-50.0, -10.0);
@@ -93,7 +93,7 @@ public class ComplexNumberCalculatorTest {
     }
 
     @Test
-    public void operationMultiplicationCalculatorComplexNumberWithOneNull() {
+    public void canMultiplyTwoComplexNumbersWithOneNull() {
         ComplexNumber z1 = ComplexNumber.createAlgebraicForm(-5.0, 6.0);
         ComplexNumber z2 = ComplexNumber.createAlgebraicForm(0.0, 0.0);
         ComplexNumber expectedResult = ComplexNumber.createAlgebraicForm(0.0, 0.0);
@@ -104,7 +104,7 @@ public class ComplexNumberCalculatorTest {
     }
 
     @Test
-    public void operationDivisionCalculatorComplexNumber() {
+    public void canDivideTwoComplexNumbers() {
         ComplexNumber z1 = ComplexNumber.createAlgebraicForm(5.0, 5.0);
         ComplexNumber z2 = ComplexNumber.createAlgebraicForm(4.0, 6.0);
         ComplexNumber expectedResult = ComplexNumber.createAlgebraicForm(
@@ -116,7 +116,7 @@ public class ComplexNumberCalculatorTest {
     }
 
     @Test
-    public void operationDivisionCalculatorComplexNumberWithNegative() {
+    public void canDivideTwoComplexNumbersWithNegativePart() {
         ComplexNumber z1 = ComplexNumber.createAlgebraicForm(5.0, 5.0);
         ComplexNumber z2 = ComplexNumber.createAlgebraicForm(4.0, -6.0);
         ComplexNumber expectedResult = ComplexNumber.createAlgebraicForm(
@@ -128,7 +128,7 @@ public class ComplexNumberCalculatorTest {
     }
 
     @Test(expected = ArithmeticException.class)
-    public void operationDivisionCalculatorComplexNumberWithNull() throws ArithmeticException {
+    public void cantDivideTwoComplexNumbersWithNull() throws ArithmeticException {
         ComplexNumber z1 = ComplexNumber.createAlgebraicForm(5.0, 5.0);
         ComplexNumber z2 = ComplexNumber.createAlgebraicForm(0.0, 0.0);
 
@@ -136,7 +136,7 @@ public class ComplexNumberCalculatorTest {
     }
 
     @Test
-    public void operationPowCalculatorComplexNumber() {
+    public void canPowComplexNumber() {
         ComplexNumber z = ComplexNumber.createAlgebraicForm(1, -Math.sqrt(3));
         ComplexNumber expectedResult = ComplexNumber.createAlgebraicForm(-8.0, 8.0 * Math.sqrt(3));
 
@@ -146,7 +146,7 @@ public class ComplexNumberCalculatorTest {
     }
 
     @Test
-    public void operationExtractCalculatorComplexNumber() {
+    public void canExtractRootsOfComplexNumber() {
         ComplexNumber z = ComplexNumber.createAlgebraicForm(-1, 0);
         ComplexNumber[] expectedResult = new ComplexNumber[3];
         expectedResult[0] = ComplexNumber.createAlgebraicForm(0.5, Math.sqrt(3) / 2.0);
@@ -159,7 +159,7 @@ public class ComplexNumberCalculatorTest {
     }
 
     @Test
-    public void operationConjugationCalculatorComplexNumber() {
+    public void canConjugationOfComplexNumber() {
         ComplexNumber z = ComplexNumber.createAlgebraicForm(1, -Math.sqrt(3));
         ComplexNumber expectedResult = ComplexNumber.createAlgebraicForm(1, Math.sqrt(3));
 

@@ -6,35 +6,35 @@ import static org.junit.Assert.*;
 
 public class ComplexNumberTest {
     @Test
-    public void createComplexNumberWithParametersNotNull() {
+    public void canCreateComplexNumberWithParametersNotNull() {
         ComplexNumber a = ComplexNumber.createAlgebraicForm(5.0, 6.0);
 
         assertNotNull(a);
     }
 
     @Test
-    public void createComplexNumberWithParametersCheckRe() {
+    public void canCreateComplexNumberWithParametersCheckRe() {
         ComplexNumber a = ComplexNumber.createAlgebraicForm(5.0, 6.0);
 
         assertEquals(5.0, a.getRe(), 0.0);
     }
 
     @Test
-    public void createComplexNumberWithParametersCheckIm() {
+    public void canCreateComplexNumberWithParametersCheckIm() {
         ComplexNumber a = ComplexNumber.createAlgebraicForm(5.0, 6.0);
 
         assertEquals(6.0, a.getIm(), 0.0);
     }
 
     @Test
-    public void createComplexNumberWithNegativeParametersCheckRe() {
+    public void canCreateComplexNumberWithNegativeParametersCheckRe() {
         ComplexNumber a = ComplexNumber.createAlgebraicForm(-5.0, 6.0);
 
         assertEquals(-5.0, a.getRe(), 0.0);
     }
 
     @Test
-    public void createComplexNumberWithNegativeParametersCheckIm() {
+    public void canCreateComplexNumberWithNegativeParametersCheckIm() {
         ComplexNumber a = ComplexNumber.createAlgebraicForm(5.0, -6.0);
 
         assertEquals(-6.0, a.getIm(), 0.0);
@@ -73,7 +73,7 @@ public class ComplexNumberTest {
     }
 
     @Test
-    public void convertComplexNumberToString() {
+    public void canConvertComplexNumberToString() {
         ComplexNumber a = ComplexNumber.createAlgebraicForm(5.0, 2.0);
 
         String string = a.toString();
@@ -82,7 +82,7 @@ public class ComplexNumberTest {
     }
 
     @Test
-    public void convertComplexNumberToStringWithNegative() {
+    public void canConvertComplexNumberToStringWithNegative() {
         ComplexNumber a = ComplexNumber.createAlgebraicForm(5.0, -2.0);
 
         String string = a.toString();
@@ -91,7 +91,7 @@ public class ComplexNumberTest {
     }
 
     @Test
-    public void convertComplexNumberToStringWithNull() {
+    public void canConvertComplexNumberToStringWithNull() {
         ComplexNumber a = ComplexNumber.createAlgebraicForm(0.0, -2.0);
 
         String string = a.toString();
@@ -100,49 +100,49 @@ public class ComplexNumberTest {
     }
 
     @Test
-    public void convertComplexNumberToTrigonometricFormCheckModule() {
+    public void canConvertComplexNumberToTrigonometricFormCheckModule() {
         ComplexNumber a = ComplexNumber.createAlgebraicForm(1.0, -Math.sqrt(3));
 
         assertEquals(2, a.getModule(), a.getAccuracy());
     }
 
     @Test
-    public void convertComplexNumberToTrigonometricFormCheckArgument() {
+    public void canConvertComplexNumberToTrigonometricFormCheckArgument() {
         ComplexNumber a = ComplexNumber.createAlgebraicForm(1.0, -Math.sqrt(3));
 
         assertEquals(-Math.PI / 3, a.getArgument(), a.getAccuracy());
     }
 
     @Test
-    public void convertComplexNumberToTrigonometricForm() {
+    public void canConvertComplexNumberToTrigonometricFormInBoundary() {
         ComplexNumber a = ComplexNumber.createAlgebraicForm(-1.0, 0.0);
 
         assertEquals(Math.PI, a.getArgument(), a.getAccuracy());
     }
 
     @Test
-    public void convertComplexNumberToTrigonometricFormWithoutIm() {
+    public void canConvertComplexNumberToTrigonometricFormWithoutIm() {
         ComplexNumber a = ComplexNumber.createAlgebraicForm(1.0, 0.0);
 
         assertEquals(0.0, a.getArgument(), a.getAccuracy());
     }
 
     @Test
-    public void convertComplexNumberToTrigonometricFormWithoutImNegRe() {
+    public void canConvertComplexNumberToTrigonometricFormWithoutImNegRe() {
         ComplexNumber a = ComplexNumber.createAlgebraicForm(-1.0, 0.0);
 
         assertEquals(Math.PI, a.getArgument(), a.getAccuracy());
     }
 
     @Test
-    public void convertComplexNumberToTrigonometricFormWithoutRe() {
+    public void canConvertComplexNumberToTrigonometricFormWithoutRe() {
         ComplexNumber a = ComplexNumber.createAlgebraicForm(0.0, 1.0);
 
         assertEquals(Math.PI / 2, a.getArgument(), a.getAccuracy());
     }
 
     @Test
-    public void convertComplexNumberToTrigonometricFormWithoutReNegIm() {
+    public void canConvertComplexNumberToTrigonometricFormWithoutReNegIm() {
         ComplexNumber a = ComplexNumber.createAlgebraicForm(0.0, -1.0);
 
         assertEquals(-Math.PI / 2, a.getArgument(), a.getAccuracy());
