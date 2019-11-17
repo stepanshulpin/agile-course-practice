@@ -5,11 +5,11 @@ public class StringCalc {
 
     }
 
-    public double result(String string) {
+    public double result(final String string) {
         return parseString(string);
     }
 
-    private double parseString(String string) {
+    private double parseString(final String string) {
         try
         {
             double foo = Double.parseDouble(string);
@@ -17,7 +17,7 @@ public class StringCalc {
         } catch (NumberFormatException e) {}
         try {
             char firstSymbol = string.charAt(0);
-            String[] parsedNumbers = string.split("\\+|\\-");
+            String[] parsedNumbers = string.split("\\+|\\-|\\*|\\/");
             String[] parsedOperators = string.split("[1234567890\\.a-z]*");
             int index = 0;
             if (firstSymbol == '-') {
@@ -39,9 +39,19 @@ public class StringCalc {
                     result -= Double.parseDouble(parsedNumbers[index]);
                     index++;
                 }
+                else if (operator.equals("/") && flag) {
+                    result /= Double.parseDouble(parsedNumbers[index]);
+                    index++;
+                }
+                else if (operator.equals("*") && flag) {
+                    result *= Double.parseDouble(parsedNumbers[index]);
+                    index++;
+                }
                 flag = true;
             }
             return result;
-        } catch (NumberFormatException e) {throw new NumberFormatException("String can't contain letters");}
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("String can't contain letters");
+        }
     }
 }

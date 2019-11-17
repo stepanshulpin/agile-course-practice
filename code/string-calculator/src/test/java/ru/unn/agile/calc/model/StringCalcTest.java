@@ -81,4 +81,11 @@ public class StringCalcTest {
         var number = calc.result("-1+1-1");
         assertEquals(-1 + 1 - 1, number, delta);
     }
+
+    @Test
+    public void canParseMultiplication() {
+        StringCalc calc = new StringCalc();
+        var number = calc.result("5*6");
+        assertEquals(5 * 6, number, delta);
+    }
 }
