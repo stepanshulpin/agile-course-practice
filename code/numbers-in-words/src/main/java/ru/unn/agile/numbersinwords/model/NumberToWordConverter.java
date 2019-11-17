@@ -1,9 +1,9 @@
 package ru.unn.agile.numbersinwords.model;
 
 public class NumberToWordConverter {
-    private final int ten = 10;
-    private final int hundred = 100;
-    private final int thousand = 1000;
+    private static final int TEN = 10;
+    private static final int HUNDRED = 100;
+    private static final int THOUSAND = 1000;
 
     public NumberToWordConverter() { }
 
@@ -21,21 +21,21 @@ public class NumberToWordConverter {
         final String[] ones = {"", "one", "two", "three", "four", "five",
                                "six", "seven", "eight", "nine"};
 
-        return ones[number % ten];
+        return ones[number % TEN];
     }
 
     private String getTens(final int number) {
         final String[] tens = {"", "", "twenty", "thirty", "forty", "fifty",
                                "sixty", "seventy", "eighty", "ninety"};
 
-        return tens[number / ten];
+        return tens[number / TEN];
     }
 
     private String getTeens(final int number) {
         final String[] teens = {"ten", "eleven", "twelve", "thirteen", "fourteen",
                                 "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
 
-        return teens[number % ten];
+        return teens[number % TEN];
     }
 
     private String getHighOrder(final int number) {
@@ -46,7 +46,7 @@ public class NumberToWordConverter {
 
 
     private String getFirstPart(final int number) {
-        int numberForAnalysis = number / hundred;
+        int numberForAnalysis = number / HUNDRED;
         String numberOfHighOrder = getOnes(numberForAnalysis);
 
         if (!numberOfHighOrder.equals("")) {
@@ -58,9 +58,9 @@ public class NumberToWordConverter {
 
     private String getSecondPart(final int number) {
         final int twenty = 20;
-        int numberForAnalysis = number % hundred;
+        int numberForAnalysis = number % HUNDRED;
 
-        if ((numberForAnalysis >= ten) && (numberForAnalysis < twenty)) {
+        if ((numberForAnalysis >= TEN) && (numberForAnalysis < twenty)) {
             return getTeens(numberForAnalysis);
         } else {
             String tens = getTens(numberForAnalysis);
@@ -78,7 +78,7 @@ public class NumberToWordConverter {
         int iter = 0;
         int numberForAnalysis = number;
         while (numberForAnalysis > 0) {
-            int numberForAnalysisLow = numberForAnalysis % thousand;
+            int numberForAnalysisLow = numberForAnalysis % THOUSAND;
             String firstPartLowOrder = getFirstPart(numberForAnalysisLow);
             String secondPartLowOrder = getSecondPart(numberForAnalysisLow);
             String partLowOrder = getSpaser(firstPartLowOrder, secondPartLowOrder, " and ");
@@ -88,7 +88,7 @@ public class NumberToWordConverter {
 
             words = getSpaser(partHighOrder, words, ", ");
 
-            numberForAnalysis = numberForAnalysis / thousand;
+            numberForAnalysis = numberForAnalysis / THOUSAND;
             iter = iter + 1;
         }
 
