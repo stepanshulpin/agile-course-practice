@@ -40,4 +40,30 @@ public class StringCalcTest {
         var number = calc.result("143.26");
         assertEquals(143.26, number, delta);
     }
+
+    @Test
+    public void canParseSumOfTwoNumbers() {
+        StringCalc calc = new StringCalc();
+        var number = calc.result("143.26+2352.549");
+        assertEquals(143.26 + 2352.549, number, delta);
+    }
+
+    @Test
+    public void canParseSumOfThreeNumbers() {
+        StringCalc calc = new StringCalc();
+        var number = calc.result("143.26+2352.549+25436.25");
+        assertEquals(143.26 + 2352.549 + 25436.25, number, delta);
+    }
+
+    @Test
+    public void cantParseSumOfNumbersAndStrings() {
+        StringCalc calc = new StringCalc();
+        String message = "";
+        try {
+            var number = calc.result("143.26+2352.549+ewffwfe");
+        } catch (NumberFormatException e) {
+            message = e.getMessage();
+        }
+        assertEquals("String can't contain letters", message);
+    }
 }

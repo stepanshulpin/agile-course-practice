@@ -6,8 +6,22 @@ public class StringCalc {
     }
 
     public double result(String string) {
-        double foo;
-        foo = Double.parseDouble(string);
-        return foo;
+        return parseString(string);
+    }
+
+    private double parseString(String string) {
+        try
+        {
+            double foo = Double.parseDouble(string);
+            return foo;
+        } catch (NumberFormatException e) {}
+        try {
+            String[] parsedNumbers = string.split("\\+");
+            double result = 0;
+            for (String number : parsedNumbers) {
+                result += Double.parseDouble(number);
+            }
+            return result;
+        } catch (NumberFormatException e) {throw new NumberFormatException("String can't contain letters");}
     }
 }
