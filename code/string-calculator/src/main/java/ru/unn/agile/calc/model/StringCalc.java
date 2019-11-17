@@ -16,10 +16,30 @@ public class StringCalc {
             return foo;
         } catch (NumberFormatException e) {}
         try {
-            String[] parsedNumbers = string.split("\\+");
-            double result = 0;
-            for (String number : parsedNumbers) {
-                result += Double.parseDouble(number);
+            char firstSymbol = string.charAt(0);
+            String[] parsedNumbers = string.split("\\+|\\-");
+            String[] parsedOperators = string.split("[1234567890\\.a-z]*");
+            int index = 0;
+            if (firstSymbol == '-') {
+                index++;
+                parsedNumbers[index] = "-" + parsedNumbers[index];
+            }
+            double result = Double.parseDouble(parsedNumbers[index]);
+            index++;
+            boolean flag = false;
+            if (firstSymbol != '-') {
+                flag = true;
+            }
+            for (String operator : parsedOperators) {
+                if (operator.equals("+") && flag) {
+                    result += Double.parseDouble(parsedNumbers[index]);
+                    index++;
+                }
+                else if (operator.equals("-") && flag) {
+                    result -= Double.parseDouble(parsedNumbers[index]);
+                    index++;
+                }
+                flag = true;
             }
             return result;
         } catch (NumberFormatException e) {throw new NumberFormatException("String can't contain letters");}

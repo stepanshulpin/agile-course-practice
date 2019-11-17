@@ -66,4 +66,19 @@ public class StringCalcTest {
         }
         assertEquals("String can't contain letters", message);
     }
+
+    @Test
+    public void canParseSumAndResidualOfThreeNumbers() {
+        StringCalc calc = new StringCalc();
+        var number = calc.result("1+1-1");
+        assertEquals(1 + 1 - 1, number, delta);
+    }
+
+
+    @Test
+    public void canParseSumAndResidualOfThreeNumbers2() {
+        StringCalc calc = new StringCalc();
+        var number = calc.result("-1+1-1");
+        assertEquals(-1 + 1 - 1, number, delta);
+    }
 }
