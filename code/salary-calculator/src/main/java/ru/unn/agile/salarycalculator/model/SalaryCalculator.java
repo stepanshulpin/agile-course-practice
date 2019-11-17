@@ -108,9 +108,8 @@ public class SalaryCalculator {
     }
 
     private double calculateSalaryForOneWorkHour() {
-        CalendarService calendarService = new CalendarService();
-        calendarService.setMonth(this.getCountingMonth());
-        int workingDaysPerCountedMonth = calendarService.countWorkingDaysInMonth();
+        int workingDaysPerCountedMonth = new CalendarService()
+                .setMonth(this.getCountingMonth()).countWorkingDaysInMonth();
         return this.getSalary() / (workingDaysPerCountedMonth * WORK_HOURS_PER_DAY);
     }
 

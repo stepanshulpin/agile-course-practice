@@ -61,10 +61,10 @@ public class CalendarService {
     public int getPayableDaysInMonth() {
         VacationService checkingPeriod = new VacationService();
 
-        checkingPeriod.setMonth(this.getMonth());
-        checkingPeriod.setVacationStartDate(this.getVacationStartDate());
-        checkingPeriod.setVacationDuration(this.getVacationDuration());
-        System.out.println(checkingPeriod);
+        checkingPeriod
+                .setMonth(this.getMonth())
+                .setVacationStartDate(this.getVacationStartDate())
+                .setVacationDuration(this.getVacationDuration());
         int payableDaysInMonth = this.countWorkingDaysInMonth();
         if (!this.isCountYearNotVacationYear()) {
             return payableDaysInMonth - checkingPeriod.getHolidaysInVacation();
