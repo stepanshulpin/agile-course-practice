@@ -17,10 +17,6 @@ public class NumberToWordConverter {
     }
 
 
-    private String getDefaultNumber() {
-        return "";
-    }
-
     private String getOnes(final int number) {
         final String[] ones = {"", "one", "two", "three", "four", "five",
                                "six", "seven", "eight", "nine"};
