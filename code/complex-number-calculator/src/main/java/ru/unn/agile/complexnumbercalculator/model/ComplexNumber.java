@@ -7,11 +7,13 @@ public class ComplexNumber {
     private double module;
     private double phase;
 
-    public ComplexNumber getComplexNumberFromTrigonomForm() {
+  /*  public ComplexNumber getComplexNumberFromTrigonomForm() {
         double rePart = module * Math.cos(phase);
         double imPart = module * Math.sin(phase);
         return new ComplexNumber(rePart, imPart);
     }
+
+*/
 
     public ComplexNumber() {
         re = 0.0;
@@ -23,8 +25,7 @@ public class ComplexNumber {
     public ComplexNumber(final double userRe, final double userIm) {
         re = userRe;
         im = userIm;
-        module = 0.0;
-        phase = 0.0;
+        convertToTrigonometricForm();
     }
 
     public ComplexNumber(final ComplexNumber a) {
@@ -33,6 +34,13 @@ public class ComplexNumber {
         module = 0.0;
         phase = 0.0;
     }
+
+   public void setTrigonometricForm(final double userModule, final double userPhase) {
+        module = userModule;
+        phase = userPhase;
+        convertToAlgebraicForm();
+    }
+
 
     public double getRe() {
         return re;
@@ -81,19 +89,19 @@ public class ComplexNumber {
         return buffer.toString();
     }
 
-    public void convertToTrigonomForm() {
+    public void convertToTrigonometricForm() {
         // Boundary value
-        if ((re == 0) && (im == 0)) {
+        if ((Math.abs(re) < delta) && (Math.abs(im) < delta)) {
             module = 0.0;
             phase = 0.0;
             return;
         }
-        if (im == 0) {
+        if (Math.abs(im) < delta) {
             module = Math.abs(re);
             phase = re > 0.0 ? 0.0 : Math.PI;
             return;
         }
-        if (re == 0) {
+        if (Math.abs(re) < delta) {
             module = Math.abs(im);
             phase = im > 0.0 ? Math.PI / 2.0 : -Math.PI / 2.0;
             return;
@@ -103,7 +111,12 @@ public class ComplexNumber {
         phase = Math.atan(im / re);
     }
 
-    public double getAngle() {
+    public void convertToAlgebraicForm() {
+        re = module * Math.cos(phase);
+        im = module * Math.sin(phase);
+    }
+
+    public double getPhase() {
         return phase;
     }
 
@@ -111,10 +124,7 @@ public class ComplexNumber {
         return module;
     }
 
-    public void setAngle(final double phase) {
-        this.phase = phase;
-    }
-    public void setRadius(final double module) {
-        this.module = module;
+    public double getAccuracy() {
+        return delta;
     }
 }
