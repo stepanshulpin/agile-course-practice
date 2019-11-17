@@ -28,27 +28,25 @@ public class StringCalc {
             List<String> operationsList = new ArrayList<String>();
 
             for (String operator : parsedOperators) {
-                if (operator.equals("+")){
+                if (operator.equals("+")) {
                     priorityList.add(0);
                     operationsList.add("+");
-                }
-                else if (operator.equals("-")) {
+                } else if (operator.equals("-")) {
                     priorityList.add(0);
                     operationsList.add("-");
-                }
-                else if (operator.equals("*")) {
+                } else if (operator.equals("*")) {
                     priorityList.add(1);
                     operationsList.add("*");
-                }
-                else if (operator.equals("/")) {
+                } else if (operator.equals("/")) {
                     priorityList.add(1);
                     operationsList.add("/");
                 }
             }
 
             double[] numbers = new double[parsedNumbers.length - index];
-            for(int i = 0; i < parsedNumbers.length - index; i++) numbers[i] =
-                    Double.parseDouble(parsedNumbers[i + index]);
+            for(int i = 0; i < parsedNumbers.length - index; i++) {
+                numbers[i] = Double.parseDouble(parsedNumbers[i + index]);
+            }
 
             String[] operationsArray = new String[operationsList.size()];
             operationsList.toArray(operationsArray);
