@@ -1,4 +1,4 @@
-package ru.unn.agile.PriorityQueue.model;
+package ru.unn.agile.priority_queue.model;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -8,7 +8,7 @@ public class PriorityQueueTest {
     @Test
     public void canBeConstructed() {
         var pq = new PriorityQueue<Integer>();
-        assertNotEquals(null, pq);
+        assertNotNull(pq);
     }
 
     @Test
@@ -75,28 +75,24 @@ public class PriorityQueueTest {
     @Test
     public void canHandleCorrectPriority() {
         var pq = new PriorityQueue<Integer>();
+        var arr = new int[4];
 
-        pq.push(1);
-        pq.push(4);
-        pq.push(3);
-        pq.push(2);
+        for (int i = 0; i < 4; ++i) {
+            pq.push(i + 1);
+        }
 
-        int v1 = pq.pop();
-        int v2 = pq.pop();
-        int v3 = pq.pop();
-        int v4 = pq.pop();
+        for (int i = 0; i < 4; ++i) {
+            arr[i] = pq.pop();
+        }
 
-        assertEquals(4, v1);
-        assertEquals(3, v2);
-        assertEquals(2, v3);
-        assertEquals(1, v4);
+        assertArrayEquals(new int[]{4, 3, 2, 1}, arr);
     }
 
     @Test
     public void canInformAboutEmptyQueue() {
         var pq = new PriorityQueue<Integer>();
         var val = pq.pop();
-        assertNull(null, val);
+        assertNull(val);
     }
 
     @Test
@@ -105,9 +101,8 @@ public class PriorityQueueTest {
 
         pq.push(1);
         int val1 = pq.peek();
-        int val2 = pq.peek();
 
-        assertEquals(1, val1, val2);
+        assertEquals(1, val1);
     }
 
     @Test
@@ -125,7 +120,7 @@ public class PriorityQueueTest {
     public void canInformAboutEmptyQueueAfterPeek() {
         var pq = new PriorityQueue<Integer>();
         var val = pq.peek();
-        assertNull(null, val);
+        assertNull(val);
     }
 
     @Test
@@ -179,21 +174,17 @@ public class PriorityQueueTest {
     @Test
     public void canWorkWithFloats() {
         var pq = new PriorityQueue<Float>();
+        var arr = new float[4];
 
-        pq.push(1.0f);
-        pq.push(4.0f);
-        pq.push(3.0f);
-        pq.push(2.0f);
+        for (int i = 0; i < 4; ++i) {
+            pq.push(i + 1.0f);
+        }
 
-        float v1 = pq.pop();
-        float v2 = pq.pop();
-        float v3 = pq.pop();
-        float v4 = pq.pop();
+        for (int i = 0; i < 4; ++i) {
+            arr[i] = pq.pop();
+        }
 
-        assertEquals(4.0f, v1, 0.0f);
-        assertEquals(3.0f, v2, 0.0f);
-        assertEquals(2.0f, v3, 0.0f);
-        assertEquals(1.0f, v4, 0.0f);
+        assertArrayEquals(arr, new float[]{4, 3, 2, 1}, 0);
     }
 
     @Test
