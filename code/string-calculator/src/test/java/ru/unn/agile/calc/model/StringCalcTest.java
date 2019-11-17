@@ -88,4 +88,18 @@ public class StringCalcTest {
         var number = calc.result("5*6");
         assertEquals(5 * 6, number, delta);
     }
+
+    @Test
+    public void canParseMultiplicationWithSum() {
+        StringCalc calc = new StringCalc();
+        var number = calc.result("-7+5*6");
+        assertEquals(-7 + 5 * 6, number, delta);
+    }
+
+    @Test
+    public void canParseMultiplicationWithSum2() {
+        StringCalc calc = new StringCalc();
+        var number = calc.result("-7*5+1+5*6");
+        assertEquals(-7 * 5 + 1 + 5 * 6, number, delta);
+    }
 }
