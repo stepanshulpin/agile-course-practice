@@ -44,7 +44,7 @@ public class StringCalc {
             }
 
             double[] numbers = new double[parsedNumbers.length - index];
-            for(int i = 0; i < parsedNumbers.length - index; i++) {
+            for (int i = 0; i < parsedNumbers.length - index; i++) {
                 numbers[i] = Double.parseDouble(parsedNumbers[i + index]);
             }
 
