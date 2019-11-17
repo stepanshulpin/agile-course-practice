@@ -265,4 +265,13 @@ public class NumberToWordConverterTest {
 
         assertEquals("", word);
     }
+
+    @Test
+    public void returnEmptyStringWhenConvertNegativeNumber() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+
+        String word = converter.toWord(-1);
+
+        assertEquals("", word);
+    }
 }
