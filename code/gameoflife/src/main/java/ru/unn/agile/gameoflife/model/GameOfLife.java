@@ -42,6 +42,10 @@ public class GameOfLife {
     private int height;
     private int width;
 
+    private static final int MAX_NEIGHBOURS = 3;
+    private static final int NEIGHBOURS_TO_REPRODUCE = 3;
+    private static final int MIN_NEIGHBOURS = 2;
+
     public GameOfLife(final int height, final int width) {
         if ((height <= 0) || (width <= 0)) {
             throw new NegativeArraySizeException("array size is negative");
@@ -134,17 +138,13 @@ public class GameOfLife {
 
         char[][] resultGrid = new char[height][width];
 
-        final int maxNeighbours = 3;
-        final int neighboursToReproduce = 3;
-        final int minNeighbours = 2;
-
         for (int i = 0; i < this.height; i++) {
             for (int j = 0; j < this.width; j++) {
-                if ((tempGame.getNeighborsNum(i, j) < minNeighbours)
-                 || (tempGame.getNeighborsNum(i, j) > maxNeighbours)) {
+                if ((tempGame.getNeighborsNum(i, j) < MIN_NEIGHBOURS)
+                 || (tempGame.getNeighborsNum(i, j) > MAX_NEIGHBOURS)) {
                     deleteCell(i, j);
                 }
-                if (tempGame.getNeighborsNum(i, j) == neighboursToReproduce) {
+                if (tempGame.getNeighborsNum(i, j) == NEIGHBOURS_TO_REPRODUCE) {
                     setCell(i, j);
                 }
                 resultGrid[i][j] = grid[i][j];

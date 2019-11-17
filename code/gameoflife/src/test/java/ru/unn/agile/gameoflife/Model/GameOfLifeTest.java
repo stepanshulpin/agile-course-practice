@@ -117,14 +117,14 @@ public class GameOfLifeTest {
         assertFalse(g.isCellLive(4, 4));
     }
 
-    @Test
-    public void canCreateNegativeGrid() {
-        try {
-            GameOfLife g = new GameOfLife(-3, -3);
-            fail("Expected NegativeArraySizeException");
-        } catch (NegativeArraySizeException thrown) {
-            assertNotEquals("", thrown.getMessage());
-        }
+    @Test(expected = NegativeArraySizeException.class)
+    public void throwsOnNegativeHeight() {
+        GameOfLife g = new GameOfLife(-3, 5);
+    }
+
+    @Test(expected = NegativeArraySizeException.class)
+    public void throwsOnNegativeWidth() {
+        GameOfLife g = new GameOfLife(5, -3);
     }
 
     @Test
@@ -246,19 +246,15 @@ public class GameOfLifeTest {
         assertNotNull(g);
     }
 
-    @Test
-    public void canCreateFromShortString() {
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void throwsOnCreationFromShortString() {
         int height = 3;
         int width = 3;
         GridString grid = new GridString("..", height, width);
 
-        try {
-            GameOfLife g = new GameOfLife(grid, height, width);
-            fail("Expected IndexOutOfBoundsException");
-        } catch (IndexOutOfBoundsException thrown) {
-            assertNotEquals("", thrown.getMessage());
-        }
+        GameOfLife g = new GameOfLife(grid, height, width);
     }
+
 
     @Test
     public void gliderMove() {
@@ -297,8 +293,8 @@ public class GameOfLifeTest {
         assertTrue((g.isCellLive(1, 1)));
     }
 
-    @Test
-    public void canCreateFromSmallerArray() {
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void throwsOnCreationFromSmallerArray() {
         int height = 3;
         int width = 3;
         char[][] arr = {
@@ -307,12 +303,7 @@ public class GameOfLifeTest {
         };
         GridArray grid = new GridArray(arr, height, width);
 
-        try {
-            GameOfLife g = new GameOfLife(grid, height, width);
-            fail("Expected IndexOutOfBoundsException");
-        } catch (IndexOutOfBoundsException thrown) {
-            assertNotEquals("", thrown.getMessage());
-        }
+        GameOfLife g = new GameOfLife(grid, height, width);
     }
 
     @Test
