@@ -1,23 +1,23 @@
 package ru.unn.agile.complexnumbercalculator.model;
 
-public class ComplexNumberCalculator {
-    public ComplexNumberCalculator() {
-    }
+public final class ComplexNumberCalculator {
 
-    public static ComplexNumber add(final ComplexNumber z1, final ComplexNumber z2) {
+    private ComplexNumberCalculator() { }
+
+    static ComplexNumber add(final ComplexNumber z1, final ComplexNumber z2) {
         return new ComplexNumber(z1.getRe() + z2.getRe(), z1.getIm() + z2.getIm());
     }
 
-    public static ComplexNumber subtract(final ComplexNumber z1, final ComplexNumber z2) {
+    static ComplexNumber subtract(final ComplexNumber z1, final ComplexNumber z2) {
         return new ComplexNumber(z1.getRe() - z2.getRe(), z1.getIm() - z2.getIm());
     }
 
-    public static ComplexNumber multiply(final ComplexNumber z1, final ComplexNumber z2) {
+    static ComplexNumber multiply(final ComplexNumber z1, final ComplexNumber z2) {
         return new ComplexNumber(z2.getRe() * z1.getRe() - z2.getIm() * z1.getIm(),
                 z2.getRe() * z1.getIm() + z2.getIm() * z1.getRe());
     }
 
-    public static ComplexNumber divide(final ComplexNumber z1, final ComplexNumber z2)
+    static ComplexNumber divide(final ComplexNumber z1, final ComplexNumber z2)
             throws ArithmeticException {
         if ((z2.getIm() == 0) && (z2.getRe() == 0)) {
             throw new ArithmeticException("Can`t to be divided on zero");
@@ -29,7 +29,7 @@ public class ComplexNumberCalculator {
         return new ComplexNumber(rePart / norma, imPart / norma);
     }
 
-    public static ComplexNumber pow(final ComplexNumber z, final int degree) {
+    static ComplexNumber pow(final ComplexNumber z, final int degree) {
         double tempRadius = Math.pow(z.getModule(), degree);
         double tempAngle = degree * z.getArgument();
         z.setTrigonometricForm(tempRadius, tempAngle);
@@ -48,7 +48,7 @@ public class ComplexNumberCalculator {
         return result;
     }
 
-    public static ComplexNumber conjugation(final ComplexNumber z) {
+    static ComplexNumber conjugation(final ComplexNumber z) {
         return new ComplexNumber(z.getRe(), -z.getIm());
     }
 }
