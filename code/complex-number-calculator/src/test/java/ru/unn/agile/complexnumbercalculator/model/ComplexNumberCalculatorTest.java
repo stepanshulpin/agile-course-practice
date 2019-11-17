@@ -157,7 +157,7 @@ public class ComplexNumberCalculatorTest {
     @Test
     public void operationPowCalculatorComplexNumber() {
         ComplexNumber z = new ComplexNumber(1, -Math.sqrt(3));
-        ComplexNumber expectedResult = new ComplexNumber(-8, 8 * Math.sqrt(3));
+        ComplexNumber expectedResult = new ComplexNumber(-8.0, 8.0 * Math.sqrt(3));
         ComplexNumberCalculator a = new ComplexNumberCalculator();
 
         ComplexNumber result = a.pow(z, 4);

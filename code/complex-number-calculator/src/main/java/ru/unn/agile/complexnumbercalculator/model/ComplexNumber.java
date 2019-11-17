@@ -3,15 +3,15 @@ package ru.unn.agile.complexnumbercalculator.model;
 public class ComplexNumber {
     private double re;
     private double im;
-    private final double delta = 0.001;
+    private final double delta = 0.0001;
     private double module;
-    private double phase;
+    private double argument;
 
     public ComplexNumber() {
         re = 0.0;
         im = 0.0;
         module = 0.0;
-        phase = 0.0;
+        argument = 0.0;
     }
 
     public ComplexNumber(final double userRe, final double userIm) {
@@ -23,13 +23,13 @@ public class ComplexNumber {
     public ComplexNumber(final ComplexNumber a) {
         re = a.getRe();
         im = a.getIm();
-        module = 0.0;
-        phase = 0.0;
+        module = a.getModule();
+        argument = a.getArgument();
     }
 
    public void setTrigonometricForm(final double userModule, final double userPhase) {
         module = userModule;
-        phase = userPhase;
+       argument = userPhase;
         convertToAlgebraicForm();
     }
 
@@ -63,7 +63,8 @@ public class ComplexNumber {
         }
 
         if ((Math.abs((((ComplexNumber) object).getIm() - im)) < delta)
-                && (Math.abs((((ComplexNumber) object).getRe() - re)) < delta)) {
+                && (Math.abs((((ComplexNumber) object).getRe() - re)) < delta)
+                && (Math.abs((((ComplexNumber) object).getModule() - module)) < delta)) {
             return true;
         }
         return object.hashCode() == hashCode();
@@ -81,35 +82,35 @@ public class ComplexNumber {
         return buffer.toString();
     }
 
-    public void convertToTrigonometricForm() {
+    private void convertToTrigonometricForm() {
         // Boundary value
         if ((Math.abs(re) < delta) && (Math.abs(im) < delta)) {
             module = 0.0;
-            phase = 0.0;
+            argument = 0.0;
             return;
         }
         if (Math.abs(im) < delta) {
             module = Math.abs(re);
-            phase = re > 0.0 ? 0.0 : Math.PI;
+            argument = re > 0.0 ? 0.0 : Math.PI;
             return;
         }
         if (Math.abs(re) < delta) {
             module = Math.abs(im);
-            phase = im > 0.0 ? Math.PI / 2.0 : -Math.PI / 2.0;
+            argument = im > 0.0 ? Math.PI / 2.0 : -Math.PI / 2.0;
             return;
         }
 
         module = Math.sqrt(re * re + im * im);
-        phase = Math.atan(im / re);
+        argument = Math.atan(im / re);
     }
 
     public void convertToAlgebraicForm() {
-        re = module * Math.cos(phase);
-        im = module * Math.sin(phase);
+        re = module * Math.cos(argument);
+        im = module * Math.sin(argument);
     }
 
-    public double getPhase() {
-        return phase;
+    public double getArgument() {
+        return argument;
     }
 
     public double getModule() {

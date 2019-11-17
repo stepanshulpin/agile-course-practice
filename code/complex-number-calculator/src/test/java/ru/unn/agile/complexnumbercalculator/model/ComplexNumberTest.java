@@ -120,70 +120,56 @@ public class ComplexNumberTest {
     }
 
     @Test
-    public void convertComplexNumberToTrigonomFormCheckRadius() {
+    public void convertComplexNumberToTrigonometricFormCheckRadius() {
         ComplexNumber a = new ComplexNumber(1.0, -Math.sqrt(3));
-
-        a.convertToTrigonometricForm();
 
         assertEquals(2, a.getModule(), a.getAccuracy());
     }
 
     @Test
-    public void convertComplexNumberToTrigonomFormCheckAngle() {
+    public void convertComplexNumberToTrigonometricFormCheckAngle() {
         ComplexNumber a = new ComplexNumber(1.0, -Math.sqrt(3));
 
-        a.convertToTrigonometricForm();
-
-        assertEquals(-Math.PI / 3, a.getPhase(), a.getAccuracy());
+        assertEquals(-Math.PI / 3, a.getArgument(), a.getAccuracy());
     }
 
     @Test
-    public void convertComplexNumberToTrigonomForm() {
+    public void convertComplexNumberToTrigonometricForm() {
         ComplexNumber a = new ComplexNumber(-1.0, 0.0);
 
-        a.convertToTrigonometricForm();
-
-        assertEquals(Math.PI, a.getPhase(), a.getAccuracy());
+        assertEquals(Math.PI, a.getArgument(), a.getAccuracy());
     }
 
     @Test
-    public void convertComplexNumberToTrigonomFormWithoutIm() {
+    public void convertComplexNumberToTrigonometricFormWithoutIm() {
         ComplexNumber a = new ComplexNumber(1.0, 0.0);
 
-        a.convertToTrigonometricForm();
-
-        assertEquals(0.0, a.getPhase(), a.getAccuracy());
+        assertEquals(0.0, a.getArgument(), a.getAccuracy());
     }
 
     @Test
-    public void convertComplexNumberToTrigonomFormWithoutImNegRe() {
+    public void convertComplexNumberToTrigonometricFormWithoutImNegRe() {
         ComplexNumber a = new ComplexNumber(-1.0, 0.0);
 
-        a.convertToTrigonometricForm();
-
-        assertEquals(Math.PI, a.getPhase(), a.getAccuracy());
+        assertEquals(Math.PI, a.getArgument(), a.getAccuracy());
     }
 
     @Test
-    public void convertComplexNumberToTrigonomFormWithoutRe() {
+    public void convertComplexNumberToTrigonometricFormWithoutRe() {
         ComplexNumber a = new ComplexNumber(0.0, 1.0);
 
-        a.convertToTrigonometricForm();
-
-        assertEquals(Math.PI / 2, a.getPhase(), a.getAccuracy());
+        assertEquals(Math.PI / 2, a.getArgument(), a.getAccuracy());
     }
 
     @Test
-    public void convertComplexNumberToTrigonomFormWithoutReNegIm() {
+    public void convertComplexNumberToTrigonometricFormWithoutReNegIm() {
         ComplexNumber a = new ComplexNumber(0.0, -1.0);
 
-        a.convertToTrigonometricForm();
-
-        assertEquals(-Math.PI / 2, a.getPhase(), a.getAccuracy());
+        assertEquals(-Math.PI / 2, a.getArgument(), a.getAccuracy());
     }
 
     @Test
-    public void canGetRadiusNot0() {
+    public void canGetModuleNot0() {
         ComplexNumber a = new ComplexNumber(1, 1);
 
         assertEquals(Math.sqrt(2), a.getModule(), a.getAccuracy());
@@ -191,10 +177,19 @@ public class ComplexNumberTest {
 
 
     @Test
-    public void canGetAngleNot0() {
+    public void canGetArgumentNot0() {
         ComplexNumber a = new ComplexNumber(1, 1);
 
-        assertEquals(Math.PI / 4, a.getPhase(), a.getAccuracy());
+        assertEquals(Math.PI / 4, a.getArgument(), a.getAccuracy());
     }
+
+    @Test
+    public void canSetTrigonometricForm() {
+        ComplexNumber a = new ComplexNumber(0.0, -1.0);
+        a.setTrigonometricForm(-8.0,  Math.PI / 2);
+
+        assertEquals(0.0, a.getRe(), a.getAccuracy());
+    }
+
 
 }
