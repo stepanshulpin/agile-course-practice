@@ -73,25 +73,29 @@ public class NumberToWordConverter {
 
     public String toWord(final int number) {
 
-        String words = "";
+        if (number < 0) {
+            throw new IllegalArgumentException("The value can not be negative.");
+        } else {
+            String words = "";
 
-        int iter = 0;
-        int numberForAnalysis = number;
-        while (numberForAnalysis > 0) {
-            int numberForAnalysisLow = numberForAnalysis % THOUSAND;
-            String firstPartLowOrder = getFirstPart(numberForAnalysisLow);
-            String secondPartLowOrder = getSecondPart(numberForAnalysisLow);
-            String partLowOrder = getSpaser(firstPartLowOrder, secondPartLowOrder, " and ");
+            int iter = 0;
+            int numberForAnalysis = number;
+            while (numberForAnalysis > 0) {
+                int numberForAnalysisLow = numberForAnalysis % THOUSAND;
+                String firstPartLowOrder = getFirstPart(numberForAnalysisLow);
+                String secondPartLowOrder = getSecondPart(numberForAnalysisLow);
+                String partLowOrder = getSpaser(firstPartLowOrder, secondPartLowOrder, " and ");
 
-            int numOfHighOrder = partLowOrder.equals("") ? 0 : iter;
-            String partHighOrder = getSpaser(partLowOrder, getHighOrder(numOfHighOrder), " ");
+                int numOfHighOrder = partLowOrder.equals("") ? 0 : iter;
+                String partHighOrder = getSpaser(partLowOrder, getHighOrder(numOfHighOrder), " ");
 
-            words = getSpaser(partHighOrder, words, ", ");
+                words = getSpaser(partHighOrder, words, ", ");
 
-            numberForAnalysis = numberForAnalysis / THOUSAND;
-            iter = iter + 1;
+                numberForAnalysis = numberForAnalysis / THOUSAND;
+                iter = iter + 1;
+            }
+
+            return words;
         }
-
-        return words;
     }
 }

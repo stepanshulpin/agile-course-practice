@@ -266,12 +266,10 @@ public class NumberToWordConverterTest {
         assertEquals("", word);
     }
 
-    @Test
-    public void returnEmptyStringWhenConvertNegativeNumber() {
+    @Test(expected = IllegalArgumentException.class)
+    public void throwsOnNegativeHeight() {
         NumberToWordConverter converter = new NumberToWordConverter();
 
         String word = converter.toWord(-1);
-
-        assertEquals("", word);
     }
 }
