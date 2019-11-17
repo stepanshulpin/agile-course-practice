@@ -10,4 +10,11 @@ public class StringCalcTest {
     public void canBeBuilt() {
         assertTrue(true);
     }
+
+    @Test
+    public void canParseNumber1() {
+        StringCalc calc = new StringCalc();
+        var number = calc.result("1");
+        assertEquals(1, number);
+    }
 }
