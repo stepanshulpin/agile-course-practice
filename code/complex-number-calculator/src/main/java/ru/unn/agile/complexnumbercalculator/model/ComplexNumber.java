@@ -3,21 +3,23 @@ package ru.unn.agile.complexnumbercalculator.model;
 public class ComplexNumber {
     private double re;
     private double im;
-    private final double delta = 0.0001;
+    private static final double DELTA = 0.0001;
     private double module;
     private double argument;
 
-    public ComplexNumber() {
-        re = 0.0;
-        im = 0.0;
-        module = 0.0;
-        argument = 0.0;
+    private ComplexNumber(final double re, final double im,
+                          final double module, final double argument) {
+        this.re = re;
+        this.im = im;
+        this.module = module;
+        this.argument = argument;
     }
 
-    public ComplexNumber(final double userRe, final double userIm) {
-        re = userRe;
-        im = userIm;
-        convertToTrigonometricForm();
+    public static ComplexNumber createAlgebraicForm(final double re, final double im) {
+        double argument = calcArgument(re, im);
+        double module = calcModule(re, im);
+
+        return new ComplexNumber(re, im, module, argument);
     }
 
     public ComplexNumber(final ComplexNumber a) {
@@ -27,12 +29,46 @@ public class ComplexNumber {
         argument = a.getArgument();
     }
 
-   public void setTrigonometricForm(final double userModule, final double userPhase) {
-        module = userModule;
-       argument = userPhase;
-        convertToAlgebraicForm();
+   public static ComplexNumber createTrigonometricForm(final double module, final double argument) {
+       double re = calcRe(module, argument);
+       double im = calcIm(module, argument);
+       return new ComplexNumber(re, im, module, argument);
+   }
+
+    private static double calcArgument(final double re, final double im) {
+        if ((Math.abs(re) < DELTA) && (Math.abs(im) < DELTA)) {
+            return 0.0;
+        } else if (Math.abs(im) < DELTA) {
+            return re > 0.0 ? 0.0 : Math.PI;
+        } else if (Math.abs(re) < DELTA) {
+            return im > 0.0 ? Math.PI / 2.0 : -Math.PI / 2.0;
+        }
+
+        return Math.atan(im / re);
     }
 
+    private static double calcModule(final double re, final double im) {
+        // Boundary value
+        if ((Math.abs(re) < DELTA) && (Math.abs(im) < DELTA)) {
+            return 0.0;
+        }
+        if (Math.abs(im) < DELTA) {
+            return Math.abs(re);
+        }
+        if (Math.abs(re) < DELTA) {
+            return Math.abs(im);
+        }
+
+        return Math.sqrt(re * re + im * im);
+    }
+
+    private static double calcRe(final double module, final double argument) {
+        return module * Math.cos(argument);
+    }
+
+    private static double calcIm(final double module, final double argument) {
+        return module * Math.sin(argument);
+    }
 
     public double getRe() {
         return re;
@@ -62,9 +98,9 @@ public class ComplexNumber {
             return false;
         }
 
-        if ((Math.abs((((ComplexNumber) object).getIm() - im)) < delta)
-                && (Math.abs((((ComplexNumber) object).getRe() - re)) < delta)
-                && (Math.abs((((ComplexNumber) object).getModule() - module)) < delta)) {
+        if ((Math.abs((((ComplexNumber) object).getIm() - im)) < DELTA)
+                && (Math.abs((((ComplexNumber) object).getRe() - re)) < DELTA)
+                && (Math.abs((((ComplexNumber) object).getModule() - module)) < DELTA)) {
             return true;
         }
         return object.hashCode() == hashCode();
@@ -82,33 +118,6 @@ public class ComplexNumber {
         return buffer.toString();
     }
 
-    private void convertToTrigonometricForm() {
-        // Boundary value
-        if ((Math.abs(re) < delta) && (Math.abs(im) < delta)) {
-            module = 0.0;
-            argument = 0.0;
-            return;
-        }
-        if (Math.abs(im) < delta) {
-            module = Math.abs(re);
-            argument = re > 0.0 ? 0.0 : Math.PI;
-            return;
-        }
-        if (Math.abs(re) < delta) {
-            module = Math.abs(im);
-            argument = im > 0.0 ? Math.PI / 2.0 : -Math.PI / 2.0;
-            return;
-        }
-
-        module = Math.sqrt(re * re + im * im);
-        argument = Math.atan(im / re);
-    }
-
-    public void convertToAlgebraicForm() {
-        re = module * Math.cos(argument);
-        im = module * Math.sin(argument);
-    }
-
     public double getArgument() {
         return argument;
     }
@@ -118,6 +127,6 @@ public class ComplexNumber {
     }
 
     public double getAccuracy() {
-        return delta;
+        return DELTA;
     }
 }
