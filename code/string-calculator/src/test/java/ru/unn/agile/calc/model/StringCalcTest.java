@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class StringCalcTest {
-    final double delta = 0.00000001;
+    private final double delta = 0.00000001;
     @Test
     public void canBeBuilt() {
         assertTrue(true);
