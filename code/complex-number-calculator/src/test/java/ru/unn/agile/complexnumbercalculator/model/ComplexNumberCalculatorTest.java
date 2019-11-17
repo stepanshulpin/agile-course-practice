@@ -178,4 +178,15 @@ public class ComplexNumberCalculatorTest {
 
         assertArrayEquals(expectedResult, result);
     }
+
+    @Test
+    public void operationConjugationCalculatorComplexNumber() {
+        ComplexNumber z = new ComplexNumber(1, -Math.sqrt(3));
+        ComplexNumber expectedResult = new ComplexNumber(1, Math.sqrt(3));
+        ComplexNumberCalculator a = new ComplexNumberCalculator();
+
+        ComplexNumber result = a.conjugation(z);
+
+        assertEquals(expectedResult, result);
+    }
 }

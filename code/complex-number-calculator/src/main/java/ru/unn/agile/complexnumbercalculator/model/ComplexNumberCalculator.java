@@ -47,4 +47,8 @@ public class ComplexNumberCalculator {
         }
         return result;
     }
+
+    public ComplexNumber conjugation(final ComplexNumber z) {
+        return new ComplexNumber(z.getRe(), -z.getIm());
+    }
 }
