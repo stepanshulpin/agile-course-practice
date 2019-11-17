@@ -256,4 +256,13 @@ public class NumberToWordConverterTest {
         assertEquals("two billion, one hundred and twenty three million, "
                 + "four hundred and fifty six thousand, seven hundred and eighty nine", word);
     }
+
+    @Test
+    public void canConvertZero() {
+        NumberToWordConverter converter = new NumberToWordConverter();
+
+        String word = converter.toWord(0);
+
+        assertEquals("", word);
+    }
 }
