@@ -1,4 +1,4 @@
-package ru.unn.agile.complexnumbercalculation.model;
+package ru.unn.agile.complexnumbercalculator.model;
 
 import org.junit.Test;
 
@@ -125,7 +125,7 @@ public class ComplexNumberTest {
 
         a.convertToTrigonomForm();
 
-        assertEquals(2, a.getRadius(), 0.001);
+        assertEquals(2, a.getModule(), 0.001);
     }
 
     @Test
@@ -180,7 +180,7 @@ public class ComplexNumberTest {
 
         a.setRadius(2.0);
 
-        assertEquals(2.0, a.getRadius(), 0.001);
+        assertEquals(2.0, a.getModule(), 0.001);
     }
 
     @Test
@@ -189,7 +189,7 @@ public class ComplexNumberTest {
 
         a.setRadius(-2);
 
-        assertEquals(-2, a.getRadius(), 0.001);
+        assertEquals(-2, a.getModule(), 0.001);
     }
 
     @Test

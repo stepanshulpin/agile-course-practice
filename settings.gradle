@@ -67,8 +67,8 @@ project(":code/deposit-calculator").name = "deposit-calculator-Model"
 // Краснов Александр
 // Куликов Александр
 // Кулыгина Юлия
-include "code/complex-number-calculation"
-project(":code/complex-number-calculation").name = "complex-number-calculation-model" 
+include "code/complex-number-calculator"
+project(":code/complex-number-calculator").name = "complex-number-calculator-model" 
 // Купцова Алеся
 // Кучков Иван
 // Лапин Артем

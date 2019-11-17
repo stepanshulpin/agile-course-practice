@@ -1,7 +1,7 @@
-package ru.unn.agile.complexnumbercalculation.model;
+package ru.unn.agile.complexnumbercalculator.model;
 
-public class CalculatorComplexNumber {
-    public CalculatorComplexNumber() {
+public class ComplexNumberCalculator {
+    public ComplexNumberCalculator() {
     }
 
     public ComplexNumber add(final ComplexNumber z1, final ComplexNumber z2) {
@@ -31,7 +31,7 @@ public class CalculatorComplexNumber {
 
     public ComplexNumber pow(final ComplexNumber z, final int degree) {
         z.convertToTrigonomForm();
-        double tempRadius = Math.pow(z.getRadius(), degree);
+        double tempRadius = Math.pow(z.getModule(), degree);
         double tempAngle = degree * z.getAngle();
         z.setAngle(tempAngle);
         z.setRadius(tempRadius);
@@ -42,7 +42,7 @@ public class CalculatorComplexNumber {
         z.convertToTrigonomForm();
         double phi0 = z.getAngle();
         ComplexNumber[] result = new ComplexNumber[degree];
-        double tempRadius = Math.pow(z.getRadius(), 1 / degree);
+        double tempRadius = Math.pow(z.getModule(), 1 / degree);
         for (int k = 0; k < degree; k++) {
             ComplexNumber zTmp = new ComplexNumber();
             zTmp.setRadius(tempRadius);

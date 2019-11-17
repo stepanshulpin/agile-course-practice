@@ -1,37 +1,37 @@
-package ru.unn.agile.complexnumbercalculation.model;
+package ru.unn.agile.complexnumbercalculator.model;
 
 public class ComplexNumber {
     private double re;
     private double im;
     private final double delta = 0.001;
-    private double radius;
-    private double angle;
+    private double module;
+    private double phase;
 
     public ComplexNumber getComplexNumberFromTrigonomForm() {
-        double rePart = radius * Math.cos(angle);
-        double imPart = radius * Math.sin(angle);
+        double rePart = module * Math.cos(phase);
+        double imPart = module * Math.sin(phase);
         return new ComplexNumber(rePart, imPart);
     }
 
     public ComplexNumber() {
         re = 0.0;
         im = 0.0;
-        radius = 0.0;
-        angle = 0.0;
+        module = 0.0;
+        phase = 0.0;
     }
 
     public ComplexNumber(final double userRe, final double userIm) {
         re = userRe;
         im = userIm;
-        radius = 0.0;
-        angle = 0.0;
+        module = 0.0;
+        phase = 0.0;
     }
 
     public ComplexNumber(final ComplexNumber a) {
         re = a.getRe();
         im = a.getIm();
-        radius = 0.0;
-        angle = 0.0;
+        module = 0.0;
+        phase = 0.0;
     }
 
     public double getRe() {
@@ -84,37 +84,37 @@ public class ComplexNumber {
     public void convertToTrigonomForm() {
         // Boundary value
         if ((re == 0) && (im == 0)) {
-            radius = 0.0;
-            angle = 0.0;
+            module = 0.0;
+            phase = 0.0;
             return;
         }
         if (im == 0) {
-            radius = Math.abs(re);
-            angle = re > 0.0 ? 0.0 : Math.PI;
+            module = Math.abs(re);
+            phase = re > 0.0 ? 0.0 : Math.PI;
             return;
         }
         if (re == 0) {
-            radius = Math.abs(im);
-            angle = im > 0.0 ? Math.PI / 2.0 : -Math.PI / 2.0;
+            module = Math.abs(im);
+            phase = im > 0.0 ? Math.PI / 2.0 : -Math.PI / 2.0;
             return;
         }
 
-        radius = Math.sqrt(re * re + im * im);
-        angle = Math.atan(im / re);
+        module = Math.sqrt(re * re + im * im);
+        phase = Math.atan(im / re);
     }
 
     public double getAngle() {
-        return angle;
+        return phase;
     }
 
-    public double getRadius() {
-        return radius;
+    public double getModule() {
+        return module;
     }
 
-    public void setAngle(final double angle) {
-        this.angle = angle;
+    public void setAngle(final double phase) {
+        this.phase = phase;
     }
-    public void setRadius(final double radius) {
-        this.radius = radius;
+    public void setRadius(final double module) {
+        this.module = module;
     }
 }
