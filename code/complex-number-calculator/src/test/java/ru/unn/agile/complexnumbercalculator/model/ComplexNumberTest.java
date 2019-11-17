@@ -125,7 +125,7 @@ public class ComplexNumberTest {
 
         a.convertToTrigonometricForm();
 
-        assertEquals(2, a.getModule(), 0.001);
+        assertEquals(2, a.getModule(), a.getAccuracy());
     }
 
     @Test
@@ -134,7 +134,7 @@ public class ComplexNumberTest {
 
         a.convertToTrigonometricForm();
 
-        assertEquals(-Math.PI / 3, a.getPhase(), 0.001);
+        assertEquals(-Math.PI / 3, a.getPhase(), a.getAccuracy());
     }
 
     @Test
@@ -143,7 +143,7 @@ public class ComplexNumberTest {
 
         a.convertToTrigonometricForm();
 
-        assertEquals(Math.PI, a.getPhase(), 0.001);
+        assertEquals(Math.PI, a.getPhase(), a.getAccuracy());
     }
 
     @Test
@@ -152,7 +152,7 @@ public class ComplexNumberTest {
 
         a.convertToTrigonometricForm();
 
-        assertEquals(0.0, a.getPhase(), 0.001);
+        assertEquals(0.0, a.getPhase(), a.getAccuracy());
     }
 
     @Test
@@ -161,7 +161,7 @@ public class ComplexNumberTest {
 
         a.convertToTrigonometricForm();
 
-        assertEquals(Math.PI, a.getPhase(), 0.001);
+        assertEquals(Math.PI, a.getPhase(), a.getAccuracy());
     }
 
     @Test
@@ -170,7 +170,7 @@ public class ComplexNumberTest {
 
         a.convertToTrigonometricForm();
 
-        assertEquals(Math.PI / 2, a.getPhase(), 0.001);
+        assertEquals(Math.PI / 2, a.getPhase(), a.getAccuracy());
     }
 
     @Test
@@ -179,7 +179,22 @@ public class ComplexNumberTest {
 
         a.convertToTrigonometricForm();
 
-        assertEquals(-Math.PI / 2, a.getPhase(), 0.001);
+        assertEquals(-Math.PI / 2, a.getPhase(), a.getAccuracy());
+    }
+
+    @Test
+    public void canGetRadiusNot0() {
+        ComplexNumber a = new ComplexNumber(1, 1);
+
+        assertEquals(Math.sqrt(2), a.getModule(), a.getAccuracy());
+    }
+
+
+    @Test
+    public void canGetAngleNot0() {
+        ComplexNumber a = new ComplexNumber(1, 1);
+
+        assertEquals(Math.PI / 4, a.getPhase(), a.getAccuracy());
     }
 
 }

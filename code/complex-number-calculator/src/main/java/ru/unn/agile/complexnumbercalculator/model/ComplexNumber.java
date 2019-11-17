@@ -7,14 +7,6 @@ public class ComplexNumber {
     private double module;
     private double phase;
 
-  /*  public ComplexNumber getComplexNumberFromTrigonomForm() {
-        double rePart = module * Math.cos(phase);
-        double imPart = module * Math.sin(phase);
-        return new ComplexNumber(rePart, imPart);
-    }
-
-*/
-
     public ComplexNumber() {
         re = 0.0;
         im = 0.0;
