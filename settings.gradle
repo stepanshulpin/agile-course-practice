@@ -118,6 +118,8 @@ include "code/students-performance"
 project(":code/students-performance").name = "students-performance-Model"
 // Смирнов Андрей
 // Смирнов Егор
+include "code/priority-queue"
+project(":code/priority-queue").name = "priority-queue"
 // Тамилина Дарья
 // Тягунов Владимир
 // Федорова Дарья
