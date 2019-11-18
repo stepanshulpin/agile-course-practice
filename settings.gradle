@@ -77,6 +77,8 @@ project(":code/numbers-in-words").name = "numbers-in-words-Model"
 include "code/deposit-calculator"
 project(":code/deposit-calculator").name = "deposit-calculator-Model"
 // Кочетова Дарья
+include "code/kochetova-dasha-lab1-matrix"
+project(":code/kochetova-dasha-lab1-matrix").name = "kochetova-dasha-lab1-matrix"
 // Красильников Михаил
 include "code/salary-calculator"
 project(":code/salary-calculator").name = "salary-calculator"
