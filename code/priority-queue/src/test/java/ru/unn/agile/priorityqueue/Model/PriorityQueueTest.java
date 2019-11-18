@@ -1,6 +1,8 @@
-package ru.unn.agile.priority_queue.model;
+package ru.unn.agile.priorityqueue.Model;
 
 import org.junit.Test;
+import ru.unn.agile.priorityqueue.model.PriorityQueue;
+
 import static org.junit.Assert.*;
 
 public class PriorityQueueTest {
@@ -68,8 +70,7 @@ public class PriorityQueueTest {
         int v1 = pq.pop();
         int v2 = pq.pop();
 
-        assertEquals(1, v1);
-        assertEquals(1, v2);
+        assertEquals(v1, v2);
     }
 
     @Test
@@ -132,7 +133,7 @@ public class PriorityQueueTest {
         int val1 = pq.peek();
         int val2 = pq.peek();
 
-        assertEquals(2, val1, val2);
+        assertEquals(val1, val2);
     }
 
     @Test
@@ -184,7 +185,7 @@ public class PriorityQueueTest {
             arr[i] = pq.pop();
         }
 
-        assertArrayEquals(arr, new float[]{4, 3, 2, 1}, 0);
+        assertArrayEquals(new float[]{4, 3, 2, 1}, arr, 0);
     }
 
     @Test

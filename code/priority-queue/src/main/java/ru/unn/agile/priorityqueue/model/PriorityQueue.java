@@ -1,4 +1,4 @@
-package ru.unn.agile.priority_queue.model;
+package ru.unn.agile.priorityqueue.model;
 
 import java.util.ArrayList;
 
