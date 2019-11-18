@@ -1,13 +1,13 @@
 package ru.unn.agile.numbersinwords.model;
 
-public class NumberToWordConverter {
+public final class NumberToWordConverter {
     private static final int TEN = 10;
     private static final int HUNDRED = 100;
     private static final int THOUSAND = 1000;
 
-    public NumberToWordConverter() { }
+    private NumberToWordConverter() { }
 
-    private String getSpaser(final String firstWord, final String lastWord,
+    private static String getSpaser(final String firstWord, final String lastWord,
                              final String middleWord) {
         if ((!firstWord.equals("")) && (!lastWord.equals(""))) {
             return firstWord + middleWord + lastWord;
@@ -17,35 +17,35 @@ public class NumberToWordConverter {
     }
 
 
-    private String getOnes(final int number) {
+    private static String getOnes(final int number) {
         final String[] ones = {"", "one", "two", "three", "four", "five",
                                "six", "seven", "eight", "nine"};
 
         return ones[number % TEN];
     }
 
-    private String getTens(final int number) {
+    private static String getTens(final int number) {
         final String[] tens = {"", "", "twenty", "thirty", "forty", "fifty",
                                "sixty", "seventy", "eighty", "ninety"};
 
         return tens[number / TEN];
     }
 
-    private String getTeens(final int number) {
+    private static String getTeens(final int number) {
         final String[] teens = {"ten", "eleven", "twelve", "thirteen", "fourteen",
                                 "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
 
         return teens[number % TEN];
     }
 
-    private String getHighOrder(final int number) {
+    private static String getHighOrder(final int number) {
         String[] highOrder = {"", "thousand", "million", "billion"};
 
         return highOrder[number];
     }
 
 
-    private String getFirstPart(final int number) {
+    private static String getFirstPart(final int number) {
         int numberForAnalysis = number / HUNDRED;
         String numberOfHighOrder = getOnes(numberForAnalysis);
 
@@ -56,7 +56,7 @@ public class NumberToWordConverter {
         }
     }
 
-    private String getSecondPart(final int number) {
+    private static String getSecondPart(final int number) {
         final int twenty = 20;
         int numberForAnalysis = number % HUNDRED;
 
@@ -71,7 +71,7 @@ public class NumberToWordConverter {
     }
 
 
-    public String toWord(final int number) {
+    public static String toWord(final int number) {
 
         if (number < 0) {
             throw new IllegalArgumentException("The value can not be negative.");
