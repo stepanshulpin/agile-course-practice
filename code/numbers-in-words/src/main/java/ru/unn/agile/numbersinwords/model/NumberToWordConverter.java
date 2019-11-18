@@ -2,6 +2,7 @@ package ru.unn.agile.numbersinwords.model;
 
 public final class NumberToWordConverter {
     private static final int TEN = 10;
+    private static final int TWENTY = 20;
     private static final int HUNDRED = 100;
     private static final int THOUSAND = 1000;
 
@@ -57,10 +58,9 @@ public final class NumberToWordConverter {
     }
 
     private static String getSecondPart(final int number) {
-        final int twenty = 20;
         int numberForAnalysis = number % HUNDRED;
 
-        if ((numberForAnalysis >= TEN) && (numberForAnalysis < twenty)) {
+        if ((numberForAnalysis >= TEN) && (numberForAnalysis < TWENTY)) {
             return getTeens(numberForAnalysis);
         } else {
             String tens = getTens(numberForAnalysis);
