@@ -16,7 +16,9 @@ public class Polygon {
         this.size = points.length;
         this.area = this.calculateArea();
         this.sides = this.createSides();
-        if (this.isSelfIntersecting()) throw new IllegalArgumentException("Sides of polygon must not intersect");
+        if (this.isSelfIntersecting()) {
+            throw new IllegalArgumentException("Sides of polygon must not intersect");
+        }
     }
 
     public int getSize() {
@@ -46,8 +48,7 @@ public class Polygon {
         Line[] lines = new Line[this.size];
 
         for (int i = 0; i < this.size - 1; i++) {
-//            System.out.println("CREATING LINE: " + i + " and " + (i+1));
-            lines[i] = new Line(this.vertices[i], this.vertices[i+1]);
+            lines[i] = new Line(this.vertices[i], this.vertices[i + 1]);
         }
         lines[this.size - 1] = new Line(this.vertices[this.size - 1], this.vertices[0]);
 
@@ -60,11 +61,15 @@ public class Polygon {
             int next = i + 1;
 
             for (int j = 0; j < prev; j++) {
-                if (this.sides[i].intersectsLine(this.sides[j])) return true;
+                if (this.sides[i].intersectsLine(this.sides[j])) {
+                    return true;
+                }
             }
 
             for (int j = next; j < this.size; j++) {
-                if (this.sides[i].intersectsLine(this.sides[j])) return true;
+                if (this.sides[i].intersectsLine(this.sides[j])) {
+                    return true;
+                }
             }
         }
         return false;

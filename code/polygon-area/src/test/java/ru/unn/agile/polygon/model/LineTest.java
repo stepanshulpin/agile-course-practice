@@ -6,11 +6,11 @@ import static org.junit.Assert.*;
 
 public class LineTest {
     private double delta = 0.0001;
-    Point p1 = new Point(0, 0);
-    Point p2 = new Point(1, 0);
-    Point p3 = new Point(1, 1);
-    Point p4 = new Point(0, 1);
-    Point p5 = new Point(5, 1);
+    private final Point p1 = new Point(0, 0);
+    private final Point p2 = new Point(1, 0);
+    private final Point p3 = new Point(1, 1);
+    private final Point p4 = new Point(0, 1);
+    private final Point p5 = new Point(5, 1);
 
     @Test
     public void canGetLinePoints() {
@@ -25,8 +25,8 @@ public class LineTest {
     public void canGetLineCoordinates() {
         Line line = new Line(p1, p2);
 
-        assertEquals(p2.getX()-p1.getX(), line.getX(), delta);
-        assertEquals(p2.getY()-p1.getY(), line.getY(), delta);
+        assertEquals(p2.getX() - p1.getX(), line.getX(), delta);
+        assertEquals(p2.getY() - p1.getY(), line.getY(), delta);
 
         assertEquals(p1.getX(), line.getXPoint1(), delta);
         assertEquals(p1.getY(), line.getYPoint1(), delta);
@@ -36,7 +36,7 @@ public class LineTest {
     }
 
     @Test
-    public void DoesIntersectedLinesIntercept() {
+    public void doesIntersectedLinesIntercept() {
         Line line1 = new Line(p1, p3);
         Line line2 = new Line(p2, p4);
 
@@ -45,7 +45,7 @@ public class LineTest {
     }
 
     @Test
-    public void AreLinesIntecptingEachOther() {
+    public void areLinesIntecptingEachOther() {
         Line line1 = new Line(p1, p2);
         Line line2 = new Line(p2, p3);
         Line line3 = new Line(p3, p5);
