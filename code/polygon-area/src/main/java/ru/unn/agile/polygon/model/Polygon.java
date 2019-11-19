@@ -3,6 +3,7 @@ package ru.unn.agile.polygon.model;
 public class Polygon {
     private static final int MINIMAL_NUMBER_OF_VERTICES = 3;
     private final Point[] vertices;
+    private final Line[] sides;
     private final int size;
     private final double area;
 
@@ -14,6 +15,8 @@ public class Polygon {
         this.vertices = points;
         this.size = points.length;
         this.area = this.calculateArea();
+        this.sides = this.createSides();
+        if (this.isSelfIntersecting()) throw new IllegalArgumentException("Sides of polygon must not intersect");
     }
 
     public int getSize() {
@@ -29,16 +32,41 @@ public class Polygon {
 
         for (int i = 0; i < this.size - 1; i++) {
             area += vertices[i].getX() * vertices[i + 1].getY();
-
             area -= vertices[i].getY() * vertices[i + 1].getX();
         }
 
         area += vertices[this.size - 1].getX() * vertices[0].getY();
-
         area -= vertices[this.size - 1].getY() * vertices[0].getX();
-
         area = area / 2;
 
         return area;
+    }
+
+    private Line[] createSides() {
+        Line[] lines = new Line[this.size];
+
+        for (int i = 0; i < this.size - 1; i++) {
+//            System.out.println("CREATING LINE: " + i + " and " + (i+1));
+            lines[i] = new Line(this.vertices[i], this.vertices[i+1]);
+        }
+        lines[this.size - 1] = new Line(this.vertices[this.size - 1], this.vertices[0]);
+
+        return lines;
+    }
+
+    private boolean isSelfIntersecting() {
+        for (int i = 0; i < this.size; i++) {
+            int prev = i - 1;
+            int next = i + 1;
+
+            for (int j = 0; j < prev; j++) {
+                if (this.sides[i].intersectsLine(this.sides[j])) return true;
+            }
+
+            for (int j = next; j < this.size; j++) {
+                if (this.sides[i].intersectsLine(this.sides[j])) return true;
+            }
+        }
+        return false;
     }
 }
