@@ -23,18 +23,19 @@ class DijkstraGraph {
      * One vertex of the graph, complete with mappings to neighbouring vertices
      */
     private static class Vertex implements Comparable<Vertex> {
-        final String name;
-        int dist = Integer.MAX_VALUE; // MAX_VALUE assumed to be infinity
-        Vertex previous = null;
-        final Map<Vertex, Integer> neighbours = new HashMap<>();
+        private final String name;
+        private int dist = Integer.MAX_VALUE; // MAX_VALUE assumed to be infinity
+        private Vertex previous = null;
+        private final Map<Vertex, Integer> neighbours = new HashMap<>();
 
-        Vertex(String name) {
+        Vertex(final String name) {
             this.name = name;
         }
 
-        public int compareTo(Vertex other) {
-            if (dist == other.dist)
+        public int compareTo(final Vertex other) {
+            if (dist == other.dist) {
                 return name.compareTo(other.name);
+            }
 
             return Integer.compare(dist, other.dist);
         }
@@ -44,15 +45,19 @@ class DijkstraGraph {
     /**
      * Builds a graph from a set of edges
      */
-    public DijkstraGraph(List<Edge> edges) {
+    DijkstraGraph(final List<Edge> edges) {
         validateEdges(edges);
 
         graph = new HashMap<>(edges.size());
 
         //one pass to find all vertices
         for (Edge e : edges) {
-            if (!graph.containsKey(e.v1)) graph.put(e.v1, new Vertex(e.v1));
-            if (!graph.containsKey(e.v2)) graph.put(e.v2, new Vertex(e.v2));
+            if (!graph.containsKey(e.v1)) {
+                graph.put(e.v1, new Vertex(e.v1));
+            }
+            if (!graph.containsKey(e.v2)) {
+                graph.put(e.v2, new Vertex(e.v2));
+            }
         }
 
         //another pass to set neighbouring vertices
@@ -64,7 +69,7 @@ class DijkstraGraph {
     /**
      * Validates set of edges
      */
-    private void validateEdges(List<Edge> edges) {
+    private void validateEdges(final List<Edge> edges) {
         if (edges == null || edges.isEmpty()) {
             throw new RuntimeException("Array of edges can not be null or empty");
         }
@@ -81,7 +86,7 @@ class DijkstraGraph {
     /**
      * Calculates distances to all vertices relatively to specified source
      */
-    public void calculate(String startName) {
+    public void calculate(final String startName) {
         if (!graph.containsKey(startName)) {
             throw new RuntimeException("Graph doesn't contain start vertex \"" + startName + "\"");
         }
@@ -105,9 +110,10 @@ class DijkstraGraph {
         Vertex u, v;
         while (!q.isEmpty()) {
 
-            u = q.pollFirst(); // vertex with shortest distance (first iteration will return source)
-            if (u.dist == Integer.MAX_VALUE)
-                break; // we can ignore u (and any other remaining vertices) since they are unreachable
+            u = q.pollFirst();
+            if (u.dist == Integer.MAX_VALUE) {
+                break; // ignoring remaining vertices since they are unreachable
+            }
 
             //look at distances to each neighbour
             for (Map.Entry<Vertex, Integer> a : u.neighbours.entrySet()) {

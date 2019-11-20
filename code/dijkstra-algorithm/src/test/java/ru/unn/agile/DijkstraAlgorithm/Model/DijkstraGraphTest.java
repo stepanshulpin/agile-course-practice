@@ -170,17 +170,18 @@ public class DijkstraGraphTest {
     }
 
     // since JUnit4 doesn't have assertThrows  for now we can use self-developed stub
-    private <T extends Throwable> void assertThrows(Runnable codeSnippet, Class<T> expectedType) {
+    private <T extends Throwable> void assertThrows(final Runnable codeSnippet,
+                                                    final Class<T> expectedType) {
         try {
             codeSnippet.run();
         } catch (Throwable actualException) {
-            if(!expectedType.isInstance(actualException)) {
+            if (!expectedType.isInstance(actualException)) {
                 throw new AssertionFailedError("Expected exception is not caught");
             }
         }
     }
 
-    private <T extends Throwable> void assertNotThrows(Runnable codeSnippet) {
+    private <T extends Throwable> void assertNotThrows(final Runnable codeSnippet) {
         try {
             codeSnippet.run();
         } catch (Throwable e) {
