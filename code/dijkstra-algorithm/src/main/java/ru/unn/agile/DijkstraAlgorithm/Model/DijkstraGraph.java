@@ -44,11 +44,10 @@ class DijkstraGraph {
     /**
      * Builds a graph from a set of edges
      */
-    public DijkstraGraph(Edge[] edges) {
-        if (edges == null) {
-            throw new RuntimeException("Array of edges is null");
-        }
-        graph = new HashMap<>(edges.length);
+    public DijkstraGraph(List<Edge> edges) {
+        validateEdges(edges);
+
+        graph = new HashMap<>(edges.size());
 
         //one pass to find all vertices
         for (Edge e : edges) {
@@ -59,6 +58,23 @@ class DijkstraGraph {
         //another pass to set neighbouring vertices
         for (Edge e : edges) {
             graph.get(e.v1).neighbours.put(graph.get(e.v2), e.dist);
+        }
+    }
+
+    /**
+     * Validates set of edges
+     */
+    private void validateEdges(List<Edge> edges) {
+        if (edges == null || edges.isEmpty()) {
+            throw new RuntimeException("Array of edges can not be null or empty");
+        }
+        for (Edge e : edges) {
+            if (e.dist <= 0) {
+                throw new RuntimeException("Edge's weight can not be negative or equal to 0");
+            }
+            if (e.v1.equals(e.v2)) {
+                throw new RuntimeException("Edge's can not link vertex to itself");
+            }
         }
     }
 
