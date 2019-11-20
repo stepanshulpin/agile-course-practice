@@ -9,13 +9,13 @@ public class DijkstraGraphTest {
     @Test
     public void canBuildGraph() {
 
-        final DijkstraGraph.Edge[] graph = {
+        final DijkstraGraph.Edge[] edges = {
                 new DijkstraGraph.Edge("a", "b", 7)
         };
 
         boolean isExceptionThrown = false;
         try {
-            new DijkstraGraph(graph);
+            new DijkstraGraph(edges);
         } catch (Exception e) {
             isExceptionThrown = true;
         }
@@ -43,19 +43,30 @@ public class DijkstraGraphTest {
     }
 
     @Test
+    public void canReturnVertexNumber() {
+
+        DijkstraGraph.Edge[] edges = {
+                new DijkstraGraph.Edge("a", "b", 7),
+        };
+        DijkstraGraph g = new DijkstraGraph(edges);
+
+        assertEquals(2, g.getVertexNumber());
+    }
+
+    @Test
     public void canCalculatePathStub() {
 
-        DijkstraGraph.Edge[] graph = {
+        DijkstraGraph.Edge[] edges = {
                 new DijkstraGraph.Edge("a", "b", 7),
         };
         String start = "a";
-        String end = "e";
+        String end = "b";
 
-        DijkstraGraph g = new DijkstraGraph(graph);
+        DijkstraGraph g = new DijkstraGraph(edges);
         g.calculate(start);
-        int pathFromAtoE = g.getPath(end);
+        int pathFromAtoB = g.getPath(end);
 
-        assertEquals(pathFromAtoE, -1);
+        assertEquals(-1, pathFromAtoB);
     }
 
 }
