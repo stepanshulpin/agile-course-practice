@@ -22,7 +22,7 @@ class DijkstraGraph {
     /**
      * One vertex of the graph, complete with mappings to neighbouring vertices
      */
-    private static class Vertex {
+    private static class Vertex implements Comparable<Vertex> {
         final String name;
         int dist = Integer.MAX_VALUE; // MAX_VALUE assumed to be infinity
         Vertex previous = null;
@@ -30,6 +30,13 @@ class DijkstraGraph {
 
         Vertex(String name) {
             this.name = name;
+        }
+
+        public int compareTo(Vertex other) {
+            if (dist == other.dist)
+                return name.compareTo(other.name);
+
+            return Integer.compare(dist, other.dist);
         }
 
     }
@@ -58,13 +65,51 @@ class DijkstraGraph {
     /**
      * Calculates distances to all vertices relatively to specified source
      */
-    public void calculate(String startName) { }
+    public void calculate(String startName) {
+        final Vertex source = graph.get(startName);
+        NavigableSet<Vertex> q = new TreeSet<>();
+
+        // set-up vertices
+        for (Vertex v : graph.values()) {
+            v.previous = v == source ? source : null;
+            v.dist = v == source ? 0 : Integer.MAX_VALUE;
+            q.add(v);
+        }
+
+        dijkstra(q);
+    }
+
+    /**
+     * Implementation of dijkstra's algorithm using a binary heap.
+     */
+    private void dijkstra(final NavigableSet<Vertex> q) {
+        Vertex u, v;
+        while (!q.isEmpty()) {
+
+            u = q.pollFirst(); // vertex with shortest distance (first iteration will return source)
+            if (u.dist == Integer.MAX_VALUE)
+                break; // we can ignore u (and any other remaining vertices) since they are unreachable
+
+            //look at distances to each neighbour
+            for (Map.Entry<Vertex, Integer> a : u.neighbours.entrySet()) {
+                v = a.getKey(); //the neighbour in this iteration
+
+                final int alternateDist = u.dist + a.getValue();
+                if (alternateDist < v.dist) { // shorter path to neighbour found
+                    q.remove(v);
+                    v.dist = alternateDist;
+                    v.previous = u;
+                    q.add(v);
+                }
+            }
+        }
+    }
 
     /**
      * Returns distance to specified vertex relatively to source one
      */
     public int getPath(final String endName) {
-        return -1;
+        return graph.get(endName).dist;
     }
 
     /**

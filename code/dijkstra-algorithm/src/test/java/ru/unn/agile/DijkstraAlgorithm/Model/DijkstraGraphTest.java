@@ -83,4 +83,21 @@ public class DijkstraGraphTest {
         assertEquals(2, g.getVertexNumber());
     }
 
+    @Test
+    public void canCalculatePathFor2ElementGraph() {
+
+        DijkstraGraph.Edge[] edges = {
+                new DijkstraGraph.Edge("a", "b", 7),
+        };
+        String start = "a";
+        String end = "b";
+
+        DijkstraGraph g = new DijkstraGraph(edges);
+        g.calculate(start);
+        int pathFromAtoB = g.getPath(end);
+
+        assertEquals(7, pathFromAtoB);
+    }
+
+
 }
