@@ -43,6 +43,36 @@ public class DijkstraGraphTest {
     }
 
     @Test
+    public void canNotCreateGraphFromNullEdgesArray() {
+
+        DijkstraGraph.Edge[] edges = null;
+
+        boolean isExceptionThrown = false;
+        try {
+            new DijkstraGraph(edges);
+        } catch (Exception e) {
+            isExceptionThrown = true;
+        }
+
+        assertTrue(isExceptionThrown);
+    }
+
+    @Test
+    public void canCreateGraphFromEmptyEdgesArray() {
+
+        DijkstraGraph.Edge[] edges = new DijkstraGraph.Edge[0];
+
+        boolean isExceptionThrown = false;
+        try {
+            new DijkstraGraph(edges);
+        } catch (Exception e) {
+            isExceptionThrown = true;
+        }
+
+        assertFalse(isExceptionThrown);
+    }
+
+    @Test
     public void canReturnVertexNumber() {
 
         DijkstraGraph.Edge[] edges = {
@@ -51,22 +81,6 @@ public class DijkstraGraphTest {
         DijkstraGraph g = new DijkstraGraph(edges);
 
         assertEquals(2, g.getVertexNumber());
-    }
-
-    @Test
-    public void canCalculatePathStub() {
-
-        DijkstraGraph.Edge[] edges = {
-                new DijkstraGraph.Edge("a", "b", 7),
-        };
-        String start = "a";
-        String end = "b";
-
-        DijkstraGraph g = new DijkstraGraph(edges);
-        g.calculate(start);
-        int pathFromAtoB = g.getPath(end);
-
-        assertEquals(-1, pathFromAtoB);
     }
 
 }

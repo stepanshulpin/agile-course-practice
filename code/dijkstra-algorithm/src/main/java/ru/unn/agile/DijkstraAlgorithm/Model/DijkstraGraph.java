@@ -38,6 +38,9 @@ class DijkstraGraph {
      * Builds a graph from a set of edges
      */
     public DijkstraGraph(Edge[] edges) {
+        if (edges == null) {
+            throw new RuntimeException("Array of edges is null");
+        }
         graph = new HashMap<>(edges.length);
 
         //one pass to find all vertices
@@ -52,12 +55,21 @@ class DijkstraGraph {
         }
     }
 
-    public void calculate(final String startName) { }
+    /**
+     * Calculates distances to all vertices relatively to specified source
+     */
+    public void calculate(String startName) { }
 
+    /**
+     * Returns distance to specified vertex relatively to source one
+     */
     public int getPath(final String endName) {
         return -1;
     }
 
+    /**
+     * Returns a quantity of vertices in the graph
+     */
     public int getVertexNumber() {
         return graph.size();
     }
