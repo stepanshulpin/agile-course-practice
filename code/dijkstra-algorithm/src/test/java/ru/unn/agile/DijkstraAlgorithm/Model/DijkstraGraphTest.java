@@ -99,5 +99,46 @@ public class DijkstraGraphTest {
         assertEquals(7, pathFromAtoB);
     }
 
+    @Test
+    public void canNotCalculateGraphForNonExistingVertex() {
+
+        DijkstraGraph.Edge[] edges = {
+                new DijkstraGraph.Edge("a", "b", 7),
+        };
+        String start = "This vertex doesn't exist";
+
+        DijkstraGraph g = new DijkstraGraph(edges);
+
+        boolean isExceptionThrown = false;
+        try {
+            g.calculate(start);
+        } catch (Exception e) {
+            isExceptionThrown = true;
+        }
+
+        assertTrue(isExceptionThrown);
+    }
+
+    @Test
+    public void canNotCalculatePath2NonExistingVertex() {
+
+        DijkstraGraph.Edge[] edges = {
+                new DijkstraGraph.Edge("a", "b", 7),
+        };
+        String start = "a";
+        String end = "This vertex doesn't exist";
+
+        DijkstraGraph g = new DijkstraGraph(edges);
+        g.calculate(start);
+
+        boolean isExceptionThrown = false;
+        try {
+            g.getPath(end);
+        } catch (Exception e) {
+            isExceptionThrown = true;
+        }
+
+        assertTrue(isExceptionThrown);
+    }
 
 }

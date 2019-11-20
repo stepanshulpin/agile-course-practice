@@ -66,6 +66,9 @@ class DijkstraGraph {
      * Calculates distances to all vertices relatively to specified source
      */
     public void calculate(String startName) {
+        if (!graph.containsKey(startName)) {
+            throw new RuntimeException("Graph doesn't contain start vertex \"" + startName + "\"");
+        }
         final Vertex source = graph.get(startName);
         NavigableSet<Vertex> q = new TreeSet<>();
 
@@ -109,6 +112,9 @@ class DijkstraGraph {
      * Returns distance to specified vertex relatively to source one
      */
     public int getPath(final String endName) {
+        if (!graph.containsKey(endName)) {
+            throw new RuntimeException("Graph doesn't contain start vertex \"" + endName + "\"");
+        }
         return graph.get(endName).dist;
     }
 
