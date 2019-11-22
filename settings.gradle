@@ -1,3 +1,7 @@
+// Shirokikh Violetta
+include "code/lab1-tdd-arabic-roman-arabicromanconverter"
+project(":code/lab1-tdd-arabic-roman-arabicromanconverter").name = "lab1-tdd-arabic-roman-arabicromanconverter-Model"
+
 // Bevzuk Anton
 include "code/bevzuk-anton"
 project(":code/bevzuk-anton").name = "bevzuk-anton-Model"
@@ -50,6 +54,8 @@ project(":code/korniakov-kirill-lab3/Infrastructure").name = "korniakov-kirill-l
 // Антипин Никита
 // Ахмедов Саркар
 // Бевзюк Семен
+include "code/temperature-converter"
+project(":code/temperature-converter").name = "temperature-converter-Model"
 // Власов Антон
 // Гречухин Никита
 include "code/fractioncalculator"
@@ -61,16 +67,26 @@ project(":code/fractioncalculator").name = "fractioncalculator"
 include "code/length-converter"
 project(":code/length-converter").name = "length-converter-Model"
 // Кильдишев Максим
+include "code/figures-volume-calculator"
+project(":code/figures-volume-calculator").name = "figures-volume-calculator-Model"
 // Киселева Ольга
 // Конева Александра
+include "code/numbers-in-words"
+project(":code/numbers-in-words").name = "numbers-in-words-Model"
 // Коневский Виталий
 include "code/deposit-calculator"
 project(":code/deposit-calculator").name = "deposit-calculator-Model"
 // Кочетова Дарья
+include "code/kochetova-dasha-lab1-matrix"
+project(":code/kochetova-dasha-lab1-matrix").name = "kochetova-dasha-lab1-matrix"
 // Красильников Михаил
+include "code/salary-calculator"
+project(":code/salary-calculator").name = "salary-calculator"
 // Краснов Александр
 // Куликов Александр
 // Кулыгина Юлия
+include "code/complex-number-calculator"
+project(":code/complex-number-calculator").name = "complex-number-calculator-model" 
 // Купцова Алеся
 // Кучков Иван
 // Лапин Артем
@@ -92,6 +108,8 @@ project(":code/polynomialcalculator").name = "polynomialcalculator"
 include "code/interpolationsearch"
 project(":code/interpolationsearch").name = "interpolationsearch"
 // Повеликин Ростислав
+include "code/red-black-tree"
+project(":code/red-black-tree").name = "red-black-tree-Model"
 // Попков Кирилл
 // Разин Вячеслав
 // Сизова Ксения
@@ -102,6 +120,8 @@ include "code/students-performance"
 project(":code/students-performance").name = "students-performance-Model"
 // Смирнов Андрей
 // Смирнов Егор
+include "code/priority-queue"
+project(":code/priority-queue").name = "priority-queue"
 // Тамилина Дарья
 // Тягунов Владимир
 include "code/polygon-area"
