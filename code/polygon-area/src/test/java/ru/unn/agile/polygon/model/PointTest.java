@@ -2,6 +2,7 @@ package ru.unn.agile.polygon.model;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class PointTest {
 
@@ -10,6 +11,18 @@ public class PointTest {
     private final Point pointA = new Point();
     private final Point pointB = new Point(2, 2.5);
     private final Point pointC = new Point(pointA);
+
+    @Test
+    public void canCreatePoint() {
+        try {
+            Point p1 = new Point();
+            Point p2 = new Point(3,  2.5);
+            Point p3 = new Point(-10, -0.11);
+            Point p4 = new Point(p1);
+        } catch (Exception e) {
+            fail("Should not have thrown any exception");
+        }
+    }
 
     @Test
     public void canGetPointCoordinates() {

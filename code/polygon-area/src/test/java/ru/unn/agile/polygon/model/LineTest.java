@@ -13,6 +13,15 @@ public class LineTest {
     private final Point p5 = new Point(5, 1);
 
     @Test
+    public void canCreateLine() {
+        try {
+            Line line = new Line(p1, p2);
+        } catch (Exception e) {
+            fail("Should not have thrown any exception");
+        }
+    }
+
+    @Test
     public void canGetLinePoints() {
         Line line = new Line(p1, p2);
 

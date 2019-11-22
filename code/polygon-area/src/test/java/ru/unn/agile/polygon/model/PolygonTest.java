@@ -34,11 +34,25 @@ public class PolygonTest {
         }
     }
 
+    @Test
+    public void canCreatePolygon() {
+        try {
+            Polygon polygon = new Polygon(pointA, pointB, pointC, pointD, pointE);
+        } catch (Exception e) {
+            fail("Should not have thrown any exception");
+        }
+    }
+
     @Test(expected = IllegalArgumentException.class)
     public void cantCreatePolygonWithLessThanThreePoints() {
         Polygon pol1 = new Polygon();
         Polygon pol2 = new Polygon(pointA);
         Polygon pol3 = new Polygon(pointA, pointB);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void cantCreatePolygonWithIntersectingSides() {
+        Polygon pol1 = new Polygon(pointA, pointD, pointB, pointE);
     }
 
     @Test
@@ -49,14 +63,14 @@ public class PolygonTest {
     }
 
     @Test
-    public void canGetPolygonArea() {
+    public void canGetAreaOfRegularPolygon() {
         Polygon polygon = new Polygon(pointA, pointB, pointD, pointE);
 
         assertEquals(24, polygon.getArea(), delta);
     }
 
     @Test
-    public void canGetPolygonAreaOfIrregularPolygon() {
+    public void canGetAreaOfIrregularPolygon() {
         Polygon pol4 = new Polygon(pointA, pointB, pointC, pointD);
         Polygon pol5 = new Polygon(pointA, pointB, pointC, pointD, pointE);
         Polygon pol6 = new Polygon(pointA, pointB, pointC, pointD, pointE, pointF);
@@ -64,5 +78,14 @@ public class PolygonTest {
         assertEquals(8, pol4.getArea(), delta);
         assertEquals(20, pol5.getArea(), delta);
         assertEquals(16, pol6.getArea(), delta);
+    }
+
+    @Test
+    public void canRunCreateSidesMethod() {
+        try {
+            Polygon polygon = new Polygon(pointA, pointB, pointC, pointD, pointE, pointF);
+        } catch (Exception e) {
+            fail("Should not have thrown any exception");
+        }
     }
 }
