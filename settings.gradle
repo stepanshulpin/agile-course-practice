@@ -135,6 +135,9 @@ project(":code/mortgage-calculator").name = "mortgage-calculator-Model"
 
 include "code/length-converter/View"
 project(":code/length-converter/View").name = "length-converter-View"
+
+include "code/length-converter/ViewModel"
+project(":code/length-converter/ViewModel").name = "length-converter-ViewModel"
 // Шумихин Сергей
 // Юферев Кирилл
 include "code/stack"

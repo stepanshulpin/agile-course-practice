@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="136.0" prefWidth="343.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.converter.view.LengthConverter">
+<AnchorPane prefHeight="136.0" prefWidth="343.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.converter.view.LengthConverter">
    <children>
       <TextField fx:id="txtInput" layoutX="13.0" layoutY="14.0" prefHeight="35.0" prefWidth="149.0" />
       <TextField fx:id="txtOutput" editable="false" layoutX="180.0" layoutY="14.0" prefHeight="35.0" prefWidth="149.0" />
