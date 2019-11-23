@@ -60,7 +60,7 @@ public class ViewModel {
 
     private void onInput(String newValue) {
         boolean isNumeric = isNumeric(newValue);
-        error.set(isNumeric ? "" : "invalid");
+        error.set(isNumeric || newValue.isEmpty() ? "" : "invalid");
         btnDisabled.set(newValue.isEmpty() || !isNumeric);
     }
 

@@ -3,9 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import ru.unn.agile.converter.viewmodel.ViewModel?>
 
-<AnchorPane prefHeight="136.0" prefWidth="343.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.converter.view.LengthConverter">
+<?import ru.unn.agile.converter.viewmodel.ViewModel?>
+<AnchorPane prefHeight="136.0" prefWidth="343.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.converter.view.LengthConverter">
    <fx:define>
         <ViewModel fx:id="viewModel" />
    </fx:define>
@@ -17,9 +17,9 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cbFromType" items="${viewModel.lengthTypes}" layoutX="13.0" layoutY="62.0"
-                prefWidth="149.0" />
+      <ComboBox fx:id="cbFromType" items="${viewModel.lengthTypes}" layoutX="13.0" layoutY="62.0" prefWidth="149.0" />
       <ComboBox fx:id="cbToType" items="${viewModel.lengthTypes}" layoutX="180.0" layoutY="62.0" prefWidth="149.0" />
       <Button fx:id="btnConvert" layoutX="13.0" layoutY="97.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="316.0" text="Конвертировать" />
+      <Label fx:id="lblError" layoutX="14.0" text="Label" textFill="RED" />
    </children>
 </AnchorPane>
