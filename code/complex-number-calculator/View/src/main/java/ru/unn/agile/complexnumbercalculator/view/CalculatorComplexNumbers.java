@@ -47,6 +47,15 @@ public class CalculatorComplexNumbers {
         this.viewModel = viewModel;
         backBind();
         loadOperations();
+        calculateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                bind();
+                CalculatorComplexNumbers.this.viewModel.calculate();
+                backBind();
+            }
+        });
+
         KeyAdapter keyListener = new KeyAdapter() {
             public void keyReleased(final KeyEvent e) {
                 bind();
@@ -67,6 +76,7 @@ public class CalculatorComplexNumbers {
 
     private void backBind(){
         calculateButton.setEnabled(viewModel.isCalculateBottonEnabled());
+        resultTextField.setText(viewModel.getResult());
     }
 
     private void bind(){
@@ -74,6 +84,8 @@ public class CalculatorComplexNumbers {
         viewModel.setFirstIm(firstImTextField.getText());
         viewModel.setSecondRe(secondReTextField.getText());
         viewModel.setSecondIm(secondImTextField.getText());
+
+
     }
 
 }
