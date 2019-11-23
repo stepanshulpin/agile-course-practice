@@ -3,6 +3,8 @@ package ru.unn.agile.complexnumbercalculator.view;
 import ru.unn.agile.complexnumbercalculator.viewmodel.ViewModel;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CalculatorComplexNumbers {
     private JPanel mainPanel;
@@ -41,11 +43,23 @@ public class CalculatorComplexNumbers {
 
     private CalculatorComplexNumbers(final ViewModel viewModel){
         this.viewModel = viewModel;
+        backBind();
         loadOperations();
+
+        calculateButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
     private void loadOperations(){
         ViewModel.Operations[] operations = ViewModel.Operations.values();
         operationsComboBox.setModel(new JComboBox<>(operations).getModel());
+    }
+
+    private void backBind(){
+        calculateButton.setEnabled(viewModel.isCalculateBottonEnabled());
     }
 }
