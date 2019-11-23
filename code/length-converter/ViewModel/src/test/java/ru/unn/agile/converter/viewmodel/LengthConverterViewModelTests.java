@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class LengthConverterViewModelTests {
 
@@ -24,6 +24,11 @@ public class LengthConverterViewModelTests {
     public void canSetEmptyStringInTextFieldsByDefault() {
         assertEquals("", viewModel.getInput().get());
         assertEquals("", viewModel.getOutput().get());
+    }
+
+    @Test
+    public void canSetConvertButtonDisabledByDefault() {
+        assertTrue(viewModel.isConvertButtonDisabled().get());
     }
 
 
