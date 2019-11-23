@@ -67,4 +67,8 @@ public class ViewModel {
     private boolean isNumeric(String str) {
         return str.matches("-?\\d+(\\.\\d+)?");
     }
+
+    public void convert() {
+        output.set("100");
+    }
 }

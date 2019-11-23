@@ -90,5 +90,29 @@ public class LengthConverterViewModelTests {
         viewModel.getInput().set("");
 
         assertEquals("", viewModel.getError().get());
-    } 
+    }
+
+    @Test
+    public void canSetMileInFromType() {
+        viewModel.getFromType().set(LengthType.MILE);
+
+        assertEquals(LengthType.MILE, viewModel.getFromType().get());
+    }
+
+    @Test
+    public void canSetFootInToType() {
+        viewModel.getToType().set(LengthType.FOOT);
+
+        assertEquals(LengthType.FOOT, viewModel.getToType().get());
+    }
+
+    @Test
+    public void canConvert() {
+        viewModel.getInput().set("1");
+
+        viewModel.convert();
+
+        assertEquals("100", viewModel.getOutput().get());
+
+    }
 }
