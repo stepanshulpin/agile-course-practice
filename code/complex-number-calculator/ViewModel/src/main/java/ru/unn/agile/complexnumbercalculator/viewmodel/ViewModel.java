@@ -14,6 +14,7 @@ public class ViewModel {
     private String errorText;
 
     private boolean isCalculateButtonEnabled;
+    private boolean isDegreeVisible;
 
     private int ENTER = 10;
     private int ANY = 000000;
@@ -47,7 +48,7 @@ public class ViewModel {
         operations = operations.ADD;
         errorText = "";
         isCalculateButtonEnabled = false;
-
+        isDegreeVisible = false;
     }
 
     public String getResult(){
@@ -123,5 +124,9 @@ public class ViewModel {
             ComplexNumber z2 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
             result = ComplexNumberCalculator.add(z1,z2).toString();
         }
+    }
+
+    public boolean isDegreeVisible() {
+        return isDegreeVisible;
     }
 }

@@ -58,4 +58,9 @@ public class ViewModelTests {
 
         assertEquals("4.0 + 6.0i", viewModel.getResult());
     }
+
+    @Test
+    public void checkDegreeTextBoxIsHiddenOnAddOperation(){
+        assertEquals(false, viewModel.isDegreeVisible());
+    }
 }
