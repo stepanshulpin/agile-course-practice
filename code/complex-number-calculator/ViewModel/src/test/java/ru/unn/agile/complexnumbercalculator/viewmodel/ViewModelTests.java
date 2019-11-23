@@ -70,4 +70,12 @@ public class ViewModelTests {
         viewModel.processFields(0);
         assertEquals(true, viewModel.isDegreeVisible());
     }
+
+    @Test
+    public void checkDegreeTextBoxChangeVisibleState(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.setOperations(Operations.ADD);
+        viewModel.processFields(0);
+        assertEquals(false, viewModel.isDegreeVisible());
+    }
 }
