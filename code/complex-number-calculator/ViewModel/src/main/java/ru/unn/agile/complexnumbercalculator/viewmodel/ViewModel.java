@@ -13,7 +13,10 @@ public class ViewModel {
     private String degree;
     private String errorText;
 
-    private boolean isCalculateBottonEnabled;
+    private boolean isCalculateButtonEnabled;
+
+    private int ENTER = 10;
+    private int ANY = 000000;
 
     public enum Operations {
         ADD ("Сложить"),
@@ -43,7 +46,7 @@ public class ViewModel {
         degree = "";
         operations = operations.ADD;
         errorText = "";
-        isCalculateBottonEnabled = false;
+        isCalculateButtonEnabled = false;
 
     }
 
@@ -79,8 +82,8 @@ public class ViewModel {
         return errorText;
     }
 
-    public boolean isCalculateBottonEnabled() {
-        return isCalculateBottonEnabled;
+    public boolean isCalculateButtonEnabled() {
+        return isCalculateButtonEnabled;
     }
 
     public void setFirstRe(String firstRe){
@@ -104,15 +107,18 @@ public class ViewModel {
         return (!getFirstRe().isEmpty() && !getFirstIm().isEmpty() && !getSecondRe().isEmpty() && !getSecondIm().isEmpty());
     }
 
-    public void processTextFieldFilling() {
+    public void processTextFieldFilling(final int keyCode) {
         if (isAllDataFilled()){
-            isCalculateBottonEnabled = true;
+            isCalculateButtonEnabled = true;
+        }
+        if (keyCode == ENTER) {
+            calculate();
         }
     }
 
     public void calculate(){
-        processTextFieldFilling();
-        if (isCalculateBottonEnabled()){
+        processTextFieldFilling(ANY);
+        if (isCalculateButtonEnabled()){
             ComplexNumber z1 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
             ComplexNumber z2 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
             result = ComplexNumberCalculator.add(z1,z2).toString();

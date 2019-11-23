@@ -34,7 +34,7 @@ public class ViewModelTests {
 
     @Test
     public void checkButtonIsDisabledByDefault(){
-        assertEquals(false, viewModel.isCalculateBottonEnabled());
+        assertEquals(false, viewModel.isCalculateButtonEnabled());
     }
 
     @Test
@@ -43,9 +43,9 @@ public class ViewModelTests {
         viewModel.setFirstIm("2");
         viewModel.setSecondRe("3");
         viewModel.setSecondIm("4");
-        viewModel.processTextFieldFilling();
+        viewModel.processTextFieldFilling(0);
 
-        assertEquals(true, viewModel.isCalculateBottonEnabled());
+        assertEquals(true, viewModel.isCalculateButtonEnabled());
     }
 
     @Test

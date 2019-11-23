@@ -59,7 +59,7 @@ public class CalculatorComplexNumbers {
         KeyAdapter keyListener = new KeyAdapter() {
             public void keyReleased(final KeyEvent e) {
                 bind();
-                CalculatorComplexNumbers.this.viewModel.processTextFieldFilling();
+                CalculatorComplexNumbers.this.viewModel.processTextFieldFilling(e.getKeyCode());
                 backBind();
             }
         };
@@ -75,7 +75,7 @@ public class CalculatorComplexNumbers {
     }
 
     private void backBind(){
-        calculateButton.setEnabled(viewModel.isCalculateBottonEnabled());
+        calculateButton.setEnabled(viewModel.isCalculateButtonEnabled());
         resultTextField.setText(viewModel.getResult());
     }
 
