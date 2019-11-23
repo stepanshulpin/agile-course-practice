@@ -64,8 +64,8 @@ project(":code/fractioncalculator").name = "fractioncalculator"
 // Зырина Анна
 // Кальянов Дмитрий
 // Карев Борис
-include "code/length-converter"
-project(":code/length-converter").name = "length-converter-Model"
+include "code/length-converter/Model"
+project(":code/length-converter/Model").name = "length-converter-Model"
 // Кильдишев Максим
 include "code/figures-volume-calculator"
 project(":code/figures-volume-calculator").name = "figures-volume-calculator-Model"
@@ -132,6 +132,9 @@ project(":code/datastructure-set").name = "datastructure-set"
 // Шульпин Степан
 include "code/mortgage-calculator"
 project(":code/mortgage-calculator").name = "mortgage-calculator-Model"
+
+include "code/length-converter/View"
+project(":code/length-converter/View").name = "length-converter-View"
 // Шумихин Сергей
 // Юферев Кирилл
 include "code/stack"
