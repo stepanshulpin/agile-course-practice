@@ -1,18 +1,14 @@
 package ru.unn.agile.converter.viewmodel;
 
 import javafx.beans.property.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import ru.unn.agile.converter.model.LengthType;
 
-import java.util.List;
-import java.util.Objects;
-
 public class ViewModel {
 
     private StringProperty input = new SimpleStringProperty();
+    private StringProperty error = new SimpleStringProperty();
     private StringProperty output = new SimpleStringProperty();
     private BooleanProperty btnDisabled = new SimpleBooleanProperty();
     private ObjectProperty<LengthType> fromType = new SimpleObjectProperty<>();
@@ -23,13 +19,14 @@ public class ViewModel {
 
     public ViewModel() {
         input.set("");
+        error.set("");
         output.set("");
         btnDisabled.set(true);
         fromType.set(LengthType.METER);
         toType.set(LengthType.CENTIMETER);
 
         input.addListener((observable, oldValue, newValue) -> {
-            btnDisabled.set(newValue.isEmpty());
+            onInput(newValue);
         });
     }
 
@@ -55,5 +52,19 @@ public class ViewModel {
 
     public ObservableList<LengthType> getLengthTypes() {
         return lengthTypes.get();
+    }
+
+    public StringProperty getError() {
+        return error;
+    }
+
+    private void onInput(String newValue) {
+        boolean isNumeric = isNumeric(newValue);
+        error.set(isNumeric ? "" : "invalid");
+        btnDisabled.set(newValue.isEmpty() || !isNumeric);
+    }
+
+    private boolean isNumeric(String str) {
+        return str.matches("-?\\d+(\\.\\d+)?");
     }
 }

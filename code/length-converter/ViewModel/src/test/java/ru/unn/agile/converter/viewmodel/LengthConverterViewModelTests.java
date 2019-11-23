@@ -57,4 +57,26 @@ public class LengthConverterViewModelTests {
         assertTrue(viewModel.isConvertButtonDisabled().get());
     }
 
+    @Test
+    public void canShowErrorAfterInvalidInput() {
+        viewModel.getInput().set("one");
+
+        assertEquals("invalid", viewModel.getError().get());
+    }
+
+    @Test
+    public void canClearErrorAfterValidInput() {
+        viewModel.getInput().set("one");
+        viewModel.getInput().set("3");
+
+        assertEquals("", viewModel.getError().get());
+    }
+
+    @Test
+    public void canSetConvertButtonDisabledInvalidInput() {
+        viewModel.getInput().set("one");
+
+        assertTrue(viewModel.isConvertButtonDisabled().get());
+    }
+
 }
