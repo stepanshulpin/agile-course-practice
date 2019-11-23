@@ -57,10 +57,17 @@ public class CalculatorComplexNumbers {
             }
         });
 
+        operationsComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                bind();
+            }
+        });
+
         KeyAdapter keyListener = new KeyAdapter() {
             public void keyReleased(final KeyEvent e) {
                 bind();
-                CalculatorComplexNumbers.this.viewModel.processTextFieldFilling(e.getKeyCode());
+                CalculatorComplexNumbers.this.viewModel.processFields(e.getKeyCode());
                 backBind();
             }
         };
@@ -81,6 +88,10 @@ public class CalculatorComplexNumbers {
             degeeTextField.setVisible(false);
             degreeLabel.setVisible(false);
         }
+        else{
+            degeeTextField.setVisible(true);
+            degreeLabel.setVisible(true);
+        }
     }
 
     private void backBind(){
@@ -93,6 +104,10 @@ public class CalculatorComplexNumbers {
         viewModel.setFirstIm(firstImTextField.getText());
         viewModel.setSecondRe(secondReTextField.getText());
         viewModel.setSecondIm(secondImTextField.getText());
+
+        viewModel.setOperations((ViewModel.Operations)operationsComboBox.getSelectedItem());
+        CalculatorComplexNumbers.this.viewModel.processFields(0);
+        hideUnneedElements();
     }
 
 }
