@@ -17,8 +17,9 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cbFromType" layoutX="13.0" layoutY="62.0" prefWidth="149.0" />
-      <ComboBox fx:id="cbToType" layoutX="180.0" layoutY="62.0" prefWidth="149.0" />
+      <ComboBox fx:id="cbFromType" items="${viewModel.lengthTypes}" layoutX="13.0" layoutY="62.0"
+                prefWidth="149.0" />
+      <ComboBox fx:id="cbToType" items="${viewModel.lengthTypes}" layoutX="180.0" layoutY="62.0" prefWidth="149.0" />
       <Button fx:id="btnConvert" layoutX="13.0" layoutY="97.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="316.0" text="Конвертировать" />
    </children>
 </AnchorPane>

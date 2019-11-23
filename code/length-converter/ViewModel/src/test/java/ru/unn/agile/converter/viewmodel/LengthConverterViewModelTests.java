@@ -3,6 +3,7 @@ package ru.unn.agile.converter.viewmodel;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import ru.unn.agile.converter.model.LengthType;
 
 import static org.junit.Assert.*;
 
@@ -31,5 +32,21 @@ public class LengthConverterViewModelTests {
         assertTrue(viewModel.isConvertButtonDisabled().get());
     }
 
+    @Test
+    public void canSetListFromTypesByDefault() {
+        assertEquals(LengthType.METER, viewModel.getFromType().get());
+    }
+
+    @Test
+    public void canSetListToTypesByDefault() {
+        assertEquals(LengthType.CENTIMETER, viewModel.getToType().get());
+    }
+
+    @Test
+    public void canSetConvertButtonEnabledAfterInput() {
+        viewModel.getInput().set("1");
+
+        assertFalse(viewModel.isConvertButtonDisabled().get());
+    }
 
 }
