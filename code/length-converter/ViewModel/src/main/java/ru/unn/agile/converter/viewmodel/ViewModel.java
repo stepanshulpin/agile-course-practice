@@ -29,9 +29,7 @@ public class ViewModel {
         toType.set(LengthType.CENTIMETER);
 
         input.addListener((observable, oldValue, newValue) -> {
-            if(!newValue.isEmpty()) {
-                btnDisabled.set(false);
-            }
+            btnDisabled.set(newValue.isEmpty());
         });
     }
 
