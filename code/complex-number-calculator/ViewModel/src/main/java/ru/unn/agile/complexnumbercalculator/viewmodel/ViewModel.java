@@ -1,5 +1,8 @@
 package ru.unn.agile.complexnumbercalculator.viewmodel;
 
+import ru.unn.agile.complexnumbercalculator.model.ComplexNumber;
+import ru.unn.agile.complexnumbercalculator.model.ComplexNumberCalculator;
+
 public class ViewModel {
     private Operations operations;
     private String result;
@@ -104,6 +107,15 @@ public class ViewModel {
     public void processTextFieldFilling() {
         if (isAllDataFilled()){
             isCalculateBottonEnabled = true;
+        }
+    }
+
+    public void calculate(){
+        processTextFieldFilling();
+        if (isCalculateBottonEnabled()){
+            ComplexNumber z1 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
+            ComplexNumber z2 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
+            result = ComplexNumberCalculator.add(z1,z2).toString();
         }
     }
 }

@@ -47,4 +47,15 @@ public class ViewModelTests {
 
         assertEquals(true, viewModel.isCalculateBottonEnabled());
     }
+
+    @Test
+    public void checkResultIsShownAfterButtonIsPressed() {
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("2");
+        viewModel.setSecondRe("3");
+        viewModel.setSecondIm("4");
+        viewModel.calculate();
+
+        assertEquals("4.0 + 6.0i", viewModel.getResult());
+    }
 }
