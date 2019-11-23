@@ -47,6 +47,7 @@ public class CalculatorComplexNumbers {
         this.viewModel = viewModel;
         backBind();
         loadOperations();
+        hideUnneedElements();
         calculateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -74,6 +75,14 @@ public class CalculatorComplexNumbers {
         operationsComboBox.setModel(new JComboBox<>(operations).getModel());
     }
 
+    private void hideUnneedElements(){
+        if (!viewModel.isDegreeVisible())
+        {
+            degeeTextField.setVisible(false);
+            degreeLabel.setVisible(false);
+        }
+    }
+
     private void backBind(){
         calculateButton.setEnabled(viewModel.isCalculateButtonEnabled());
         resultTextField.setText(viewModel.getResult());
@@ -84,8 +93,6 @@ public class CalculatorComplexNumbers {
         viewModel.setFirstIm(firstImTextField.getText());
         viewModel.setSecondRe(secondReTextField.getText());
         viewModel.setSecondIm(secondImTextField.getText());
-
-
     }
 
 }
