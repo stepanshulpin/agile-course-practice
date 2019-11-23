@@ -31,4 +31,9 @@ public class ViewModelTests {
         assertEquals("", viewModel.getError());
         assertEquals("", viewModel.getResult());
     }
+
+    @Test
+    public void checkButtonIsDisabledByDefault(){
+        assertEquals(false, viewModel.isCalculateBottonEnabled());
+    }
 }

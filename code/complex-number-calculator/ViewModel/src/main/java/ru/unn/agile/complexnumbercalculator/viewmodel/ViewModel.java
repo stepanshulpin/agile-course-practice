@@ -10,6 +10,8 @@ public class ViewModel {
     private String degree;
     private String errorText;
 
+    private boolean isCalculateBottonEnabled;
+
     public enum Operations {
         ADD ("Сложить"),
         SUBTRACT ("Вычесть"),
@@ -38,6 +40,7 @@ public class ViewModel {
         degree = "";
         operations = operations.ADD;
         errorText = "";
+        isCalculateBottonEnabled = false;
     }
 
     public String getResult(){
@@ -70,5 +73,9 @@ public class ViewModel {
 
     public String getError(){
         return errorText;
+    }
+
+    public boolean isCalculateBottonEnabled() {
+        return isCalculateBottonEnabled;
     }
 }
