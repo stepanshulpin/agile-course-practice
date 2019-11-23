@@ -5,6 +5,8 @@ import ru.unn.agile.complexnumbercalculator.viewmodel.ViewModel;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class CalculatorComplexNumbers {
     private JPanel mainPanel;
@@ -45,13 +47,17 @@ public class CalculatorComplexNumbers {
         this.viewModel = viewModel;
         backBind();
         loadOperations();
-
-        calculateButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
+        KeyAdapter keyListener = new KeyAdapter() {
+            public void keyReleased(final KeyEvent e) {
+                bind();
+                CalculatorComplexNumbers.this.viewModel.processTextFieldFilling();
+                backBind();
             }
-        });
+        };
+        firstReTextField.addKeyListener(keyListener);
+        firstImTextField.addKeyListener(keyListener);
+        secondReTextField.addKeyListener(keyListener);
+        secondImTextField.addKeyListener(keyListener);
     }
 
     private void loadOperations(){
@@ -62,4 +68,12 @@ public class CalculatorComplexNumbers {
     private void backBind(){
         calculateButton.setEnabled(viewModel.isCalculateBottonEnabled());
     }
+
+    private void bind(){
+        viewModel.setFirstRe(firstReTextField.getText());
+        viewModel.setFirstIm(firstImTextField.getText());
+        viewModel.setSecondRe(secondReTextField.getText());
+        viewModel.setSecondIm(secondImTextField.getText());
+    }
+
 }
