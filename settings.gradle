@@ -84,9 +84,11 @@ include "code/salary-calculator"
 project(":code/salary-calculator").name = "salary-calculator"
 // Краснов Александр
 // Куликов Александр
-// Кулыгина Юлия
-include "code/complex-number-calculator"
-project(":code/complex-number-calculator").name = "complex-number-calculator-model" 
+// Кулыгина Юлия, Миронова Анна
+include "code/complex-number-calculator/Model"
+project(":code/complex-number-calculator/Model").name = "complex-number-calculator-Model"
+include "code/complex-number-calculator/View"
+project(":code/complex-number-calculator/View").name = "complex-number-calculator-View"
 // Купцова Алеся
 // Кучков Иван
 // Лапин Артем
