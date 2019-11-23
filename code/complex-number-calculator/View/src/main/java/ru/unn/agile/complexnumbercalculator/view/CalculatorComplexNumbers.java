@@ -8,7 +8,7 @@ public class CalculatorComplexNumbers {
     private JPanel enterDataPanel;
     private JPanel calculationPanel;
     private JLabel chooseLabel;
-    private JComboBox operationsСomboBox;
+    private JComboBox operationsComboBox;
     private JLabel enterDataLabel;
     private JLabel resultLabel;
     private JButton calculateButton;
@@ -26,16 +26,12 @@ public class CalculatorComplexNumbers {
     private JPanel errorPanel;
     private JLabel errorLabel;
 
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         JFrame frame = new JFrame("CalculatorComplexNumbers");
         frame.setContentPane(new CalculatorComplexNumbers().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
         frame.setResizable(false);
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
     }
 }
