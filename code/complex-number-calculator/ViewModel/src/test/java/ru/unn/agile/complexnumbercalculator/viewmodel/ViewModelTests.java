@@ -43,7 +43,7 @@ public class ViewModelTests {
         viewModel.setFirstIm("2");
         viewModel.setSecondRe("3");
         viewModel.setSecondIm("4");
-        viewModel.processTextFieldFilling(0);
+        viewModel.processFields(0);
 
         assertEquals(true, viewModel.isCalculateButtonEnabled());
     }
@@ -62,5 +62,12 @@ public class ViewModelTests {
     @Test
     public void checkDegreeTextBoxIsHiddenOnAddOperation(){
         assertEquals(false, viewModel.isDegreeVisible());
+    }
+
+    @Test
+    public void checkDegreeTextBoxIsVisibleOnPowOperation(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.processFields(0);
+        assertEquals(true, viewModel.isDegreeVisible());
     }
 }

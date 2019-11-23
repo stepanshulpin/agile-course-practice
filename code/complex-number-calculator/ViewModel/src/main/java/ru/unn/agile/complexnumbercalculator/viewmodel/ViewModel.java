@@ -104,11 +104,16 @@ public class ViewModel {
         this.secondIm = secondIm;
     }
 
+    public void setOperations(Operations operation){
+        this.operations = operation;
+    }
+
     private boolean isAllDataFilled (){
         return (!getFirstRe().isEmpty() && !getFirstIm().isEmpty() && !getSecondRe().isEmpty() && !getSecondIm().isEmpty());
     }
 
-    public void processTextFieldFilling(final int keyCode) {
+    public void processFields(final int keyCode) {
+        hideDegree();
         if (isAllDataFilled()){
             isCalculateButtonEnabled = true;
         }
@@ -118,7 +123,7 @@ public class ViewModel {
     }
 
     public void calculate(){
-        processTextFieldFilling(ANY);
+        processFields(ANY);
         if (isCalculateButtonEnabled()){
             ComplexNumber z1 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
             ComplexNumber z2 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
@@ -128,5 +133,14 @@ public class ViewModel {
 
     public boolean isDegreeVisible() {
         return isDegreeVisible;
+    }
+
+    private void hideDegree(){
+        if(getOperations().equals(Operations.ADD)){
+            isDegreeVisible = false;
+        }
+        if(getOperations().equals(Operations.POW)){
+            isDegreeVisible = true;
+        }
     }
 }
