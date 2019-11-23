@@ -36,4 +36,15 @@ public class ViewModelTests {
     public void checkButtonIsDisabledByDefault(){
         assertEquals(false, viewModel.isCalculateBottonEnabled());
     }
+
+    @Test
+    public void checkButtonIsEnabledIfDataFieldsAreFilled() {
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("2");
+        viewModel.setSecondRe("3");
+        viewModel.setSecondIm("4");
+        viewModel.processTextFieldFilling();
+
+        assertEquals(true, viewModel.isCalculateBottonEnabled());
+    }
 }

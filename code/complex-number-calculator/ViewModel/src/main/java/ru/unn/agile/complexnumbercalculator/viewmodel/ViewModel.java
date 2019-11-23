@@ -41,6 +41,7 @@ public class ViewModel {
         operations = operations.ADD;
         errorText = "";
         isCalculateBottonEnabled = false;
+
     }
 
     public String getResult(){
@@ -77,5 +78,32 @@ public class ViewModel {
 
     public boolean isCalculateBottonEnabled() {
         return isCalculateBottonEnabled;
+    }
+
+    public void setFirstRe(String firstRe){
+        this.firstRe = firstRe;
+    }
+
+    public void setFirstIm(String firstIm){
+
+        this.firstIm = firstIm;
+    }
+
+    public void setSecondRe(String secondRe){
+        this.secondRe = secondRe;
+    }
+
+    public void setSecondIm(String secondIm){
+        this.secondIm = secondIm;
+    }
+
+    private boolean isAllDataFilled (){
+        return (!getFirstRe().isEmpty() && !getFirstIm().isEmpty() && !getSecondRe().isEmpty() && !getSecondIm().isEmpty());
+    }
+
+    public void processTextFieldFilling() {
+        if (isAllDataFilled()){
+            isCalculateBottonEnabled = true;
+        }
     }
 }
