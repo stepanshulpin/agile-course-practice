@@ -140,13 +140,6 @@ public class ViewModel {
         return isSecondNumberVisible;
     }
 
-    private boolean isAllDataFilled (){
-        if (getOperations().equals(Operations.POW)){
-            return (!getFirstRe().isEmpty() && !getFirstIm().isEmpty() && !getDegree().isEmpty());
-        }
-        return (!getFirstRe().isEmpty() && !getFirstIm().isEmpty() && !getSecondRe().isEmpty() && !getSecondIm().isEmpty());
-    }
-
     public void processEnterPress(final int keyCode) {
         if (keyCode == ENTER) {
             calculate();

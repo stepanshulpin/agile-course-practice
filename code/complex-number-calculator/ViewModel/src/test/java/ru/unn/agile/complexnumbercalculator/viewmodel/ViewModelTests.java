@@ -381,4 +381,29 @@ public class ViewModelTests {
         viewModel.hideUnnecessaryFields();
         assertEquals(true, viewModel.isSecondNumberVisible());
     }
+
+    @Test
+    public void checkCalculateButtonDisabledAfterPressInCaseIncorrectInput(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("1");
+        viewModel.setDegree("");
+
+        viewModel.calculate();
+
+        assertEquals(false, viewModel.isCalculateButtonEnabled());
+    }
+
+    @Test
+    public void checkErrorMessageDisplayedAfterPressInCaseIncorrectInput(){
+        viewModel.setOperations(Operations.ADD);
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("1");
+        viewModel.setSecondRe("1");
+        viewModel.setSecondIm("");
+
+        viewModel.calculate();
+
+        assertEquals(true, viewModel.isErrorMessageDisplayed());
+    }
 }
