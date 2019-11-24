@@ -17,7 +17,7 @@ public class ViewModel {
     private boolean isDegreeVisible;
 
     private int ENTER = 10;
-    private int ANY = 000000;
+    private int ANY = 1111;
 
     public enum Operations {
         ADD ("Сложить"),
@@ -59,16 +59,33 @@ public class ViewModel {
         return firstRe;
     }
 
+    public void setFirstRe(String firstRe){
+        this.firstRe = firstRe;
+    }
+
     public String getFirstIm(){
         return firstIm;
+    }
+
+    public void setFirstIm(String firstIm){
+
+        this.firstIm = firstIm;
     }
 
     public String getSecondRe(){
         return secondRe;
     }
 
+    public void setSecondRe(String secondRe){
+        this.secondRe = secondRe;
+    }
+
     public String getSecondIm(){
         return secondIm;
+    }
+
+    public void setSecondIm(String secondIm){
+        this.secondIm = secondIm;
     }
 
     public String getDegree(){
@@ -79,6 +96,10 @@ public class ViewModel {
         return operations;
     }
 
+    public void setOperations(Operations operation){
+        this.operations = operation;
+    }
+
     public String getError(){
         return errorText;
     }
@@ -87,25 +108,8 @@ public class ViewModel {
         return isCalculateButtonEnabled;
     }
 
-    public void setFirstRe(String firstRe){
-        this.firstRe = firstRe;
-    }
-
-    public void setFirstIm(String firstIm){
-
-        this.firstIm = firstIm;
-    }
-
-    public void setSecondRe(String secondRe){
-        this.secondRe = secondRe;
-    }
-
-    public void setSecondIm(String secondIm){
-        this.secondIm = secondIm;
-    }
-
-    public void setOperations(Operations operation){
-        this.operations = operation;
+    public boolean isDegreeVisible() {
+        return isDegreeVisible;
     }
 
     private boolean isAllDataFilled (){
@@ -129,10 +133,6 @@ public class ViewModel {
             ComplexNumber z2 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
             result = ComplexNumberCalculator.add(z1,z2).toString();
         }
-    }
-
-    public boolean isDegreeVisible() {
-        return isDegreeVisible;
     }
 
     private void hideDegree(){
