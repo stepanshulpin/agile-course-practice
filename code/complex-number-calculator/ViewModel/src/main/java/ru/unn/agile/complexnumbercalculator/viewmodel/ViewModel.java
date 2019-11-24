@@ -3,6 +3,10 @@ package ru.unn.agile.complexnumbercalculator.viewmodel;
 import ru.unn.agile.complexnumbercalculator.model.ComplexNumber;
 import ru.unn.agile.complexnumbercalculator.model.ComplexNumberCalculator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
 public class ViewModel {
     private Operations operations;
     private String result;
@@ -15,6 +19,7 @@ public class ViewModel {
 
     private boolean isCalculateButtonEnabled;
     private boolean isDegreeVisible;
+    private boolean isErrorMessageDisplayed;
 
     private int ENTER = 10;
     private int ANY = 1111;
@@ -112,6 +117,10 @@ public class ViewModel {
         return isDegreeVisible;
     }
 
+    public boolean isErrorMessageDisplayed() {
+        return isErrorMessageDisplayed;
+    }
+
     private boolean isAllDataFilled (){
         return (!getFirstRe().isEmpty() && !getFirstIm().isEmpty() && !getSecondRe().isEmpty() && !getSecondIm().isEmpty());
     }
@@ -141,6 +150,43 @@ public class ViewModel {
         }
         if(getOperations().equals(Operations.POW)){
             isDegreeVisible = true;
+        }
+    }
+
+    private boolean matchNumberInput(String line){
+        boolean result = false;
+        String pattern = "-?(\\d+)(\\.(\\d+))?";
+        Pattern p  = Pattern.compile(pattern);
+        if (!line.isEmpty()) {
+            Matcher m = p.matcher(line);
+            result = m.matches();
+        }
+        return result;
+    }
+
+    private boolean matchDegreeInput(String line){
+        boolean result = false;
+        String pattern = "-?(\\d+)";
+        Pattern p  = Pattern.compile(pattern);
+        if (!line.isEmpty()) {
+            Matcher m = p.matcher(line);
+            result = m.matches();
+        }
+        return result;
+    }
+
+    public void processInput(){
+        boolean matchRe1 = matchNumberInput(getFirstRe());
+        boolean matchIm1 = matchNumberInput(getFirstIm());
+        boolean matchRe2 = matchNumberInput(getSecondRe());
+        boolean matchIm2 = matchNumberInput(getSecondIm());
+        if (matchRe1 && matchIm1 && matchRe2 && matchIm2) {
+            isCalculateButtonEnabled = true;
+            isErrorMessageDisplayed = false;
+        }
+        else {
+            isCalculateButtonEnabled = false;
+            isErrorMessageDisplayed = true;
         }
     }
 }

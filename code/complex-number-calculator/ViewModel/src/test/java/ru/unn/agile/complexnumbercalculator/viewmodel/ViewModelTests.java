@@ -78,4 +78,18 @@ public class ViewModelTests {
         viewModel.processFields(0);
         assertEquals(false, viewModel.isDegreeVisible());
     }
+
+    @Test
+    public void checkCalculateButtonIsDisabledWhenInputIncorrect(){
+        viewModel.setFirstRe("abc");
+        viewModel.processInput();
+        assertEquals(false, viewModel.isCalculateButtonEnabled());
+    }
+
+    @Test
+    public void checkErrorMessageIsDisplayedWhenInputIncorrect(){
+        viewModel.setFirstRe("abc");
+        viewModel.processInput();
+        assertEquals(true, viewModel.isErrorMessageDisplayed());
+    }
 }
