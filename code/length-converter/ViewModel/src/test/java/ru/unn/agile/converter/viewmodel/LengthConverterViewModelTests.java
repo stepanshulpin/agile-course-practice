@@ -43,6 +43,11 @@ public class LengthConverterViewModelTests {
     }
 
     @Test
+    public void isLengthTypesListHasCorrectValues() {
+        assertEquals(LengthType.values()[3], viewModel.getLengthTypes().get(3));
+    }
+
+    @Test
     public void canSetConvertButtonEnabledAfterInput() {
         viewModel.getInput().set("1");
 
