@@ -1,8 +1,6 @@
 package ru.unn.agile.converter.viewmodel;
 
 import javafx.beans.property.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import ru.unn.agile.converter.model.LengthConverter;
@@ -81,22 +79,23 @@ public class ViewModel {
         toType.set(tmp);
     }
 
-    private void onInput(String newValue) {
+    private void onInput(final String newValue) {
         boolean isNumeric = isNumeric(newValue);
         error.set(isNumeric || newValue.isEmpty() ? "" : "invalid");
         btnDisabled.set(newValue.isEmpty() || !isNumeric);
         output.set("");
     }
 
-    private boolean isNumeric(String str) {
+    private boolean isNumeric(final String str) {
         return str.matches("-?\\d+(\\.\\d+)?");
     }
 
-    private static String format(double d) {
-        if (d == (long) d)
+    private static String format(final double d) {
+        if (d == (long) d) {
             return String.format("%d", (long) d);
-        else
+        } else {
             return String.format("%s", d);
+        }
     }
 
     private void onTypeChange() {
