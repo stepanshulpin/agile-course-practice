@@ -98,6 +98,10 @@ public class ViewModel {
         return degree;
     }
 
+    public void setDegree(String degree){
+        this.degree = degree;
+    }
+
     public Operations getOperations() {
         return operations;
     }
@@ -132,6 +136,9 @@ public class ViewModel {
     }
 
     private boolean isAllDataFilled (){
+        if (getOperations().equals(Operations.POW)){
+            return (!getFirstRe().isEmpty() && !getFirstIm().isEmpty() && !getDegree().isEmpty());
+        }
         return (!getFirstRe().isEmpty() && !getFirstIm().isEmpty() && !getSecondRe().isEmpty() && !getSecondIm().isEmpty());
     }
 
@@ -167,6 +174,10 @@ public class ViewModel {
                 ComplexNumber z1 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
                 ComplexNumber z2 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
                 result = ComplexNumberCalculator.divide(z1, z2).toString();
+            }
+            else if (getOperations().equals(Operations.POW)){
+                ComplexNumber z = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
+                result = ComplexNumberCalculator.pow(z, Integer.parseInt(getDegree())).toString();
             }
         }
     }
@@ -207,6 +218,21 @@ public class ViewModel {
     }
 
     public void processInput(){
+        if (getOperations().equals(Operations.POW)){
+            boolean matchRe1 = matchNumberInput(getFirstRe());
+            boolean matchIm1 = matchNumberInput(getFirstIm());
+            boolean matchDegree = matchDegreeInput(getDegree());
+            if (matchRe1 && matchIm1 && matchDegree) {
+                isCalculateButtonEnabled = true;
+                isErrorMessageDisplayed = false;
+            }
+            else {
+                isCalculateButtonEnabled = false;
+                isErrorMessageDisplayed = true;
+            }
+            setError();
+            return;
+        }
         boolean matchRe1 = matchNumberInput(getFirstRe());
         boolean matchIm1 = matchNumberInput(getFirstIm());
         boolean matchRe2 = matchNumberInput(getSecondRe());

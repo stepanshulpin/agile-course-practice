@@ -229,4 +229,14 @@ public class ViewModelTests {
         assertEquals(false, viewModel.isCalculateButtonEnabled());
     }
 
+    @Test
+    public void checkCorrectResultIsShownForPowOperation(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("3");
+        viewModel.setDegree("1");
+
+        viewModel.calculate();
+        assertEquals("1.0 + 3.0i", viewModel.getResult());
+    }
 }
