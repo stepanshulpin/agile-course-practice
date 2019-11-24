@@ -156,35 +156,32 @@ public class ViewModel {
         processInput();
         if (isCalculateButtonEnabled()){
             result = "";
-            if(getOperations().equals(Operations.ADD)) {
+            if(isFirstGroupOperation(getOperations())){
                 ComplexNumber z1 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
                 ComplexNumber z2 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
-                result = ComplexNumberCalculator.add(z1, z2).toString();
+                if(getOperations().equals(Operations.ADD)) {
+                    result = ComplexNumberCalculator.add(z1, z2).toString();
+                }
+                else if (getOperations().equals(Operations.SUBTRACT)){
+                    result = ComplexNumberCalculator.subtract(z1, z2).toString();
+                }
+                else if (getOperations().equals(Operations.MULTIPLY)){
+                    result = ComplexNumberCalculator.multiply(z1, z2).toString();
+                }
+                else if (getOperations().equals(Operations.DIVIDE)){
+                    result = ComplexNumberCalculator.divide(z1, z2).toString();
+                }
             }
-            else if (getOperations().equals(Operations.SUBTRACT)){
-                ComplexNumber z1 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
-                ComplexNumber z2 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
-                result = ComplexNumberCalculator.subtract(z1, z2).toString();
-            }
-            else if (getOperations().equals(Operations.MULTIPLY)){
-                ComplexNumber z1 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
-                ComplexNumber z2 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
-                result = ComplexNumberCalculator.multiply(z1, z2).toString();
-            }
-            else if (getOperations().equals(Operations.DIVIDE)){
-                ComplexNumber z1 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
-                ComplexNumber z2 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
-                result = ComplexNumberCalculator.divide(z1, z2).toString();
-            }
-            else if (getOperations().equals(Operations.POW)){
+            else if (isSecondGroupOperation(getOperations())){
                 ComplexNumber z = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
-                result = ComplexNumberCalculator.pow(z, Integer.parseInt(getDegree())).toString();
-            }
-            else if (getOperations().equals(Operations.ROOT)){
-                ComplexNumber z = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
-                ComplexNumber [] result_list = ComplexNumberCalculator.extractRoot(z, Integer.parseInt(getDegree()));
-                for (int i=0; i<result_list.length;i++){
-                    result += result_list[i].toString() + "; ";
+                if (getOperations().equals(Operations.POW)){
+                    result = ComplexNumberCalculator.pow(z, Integer.parseInt(getDegree())).toString();
+                }
+                else if (getOperations().equals(Operations.ROOT)){
+                    ComplexNumber [] result_list = ComplexNumberCalculator.extractRoot(z, Integer.parseInt(getDegree()));
+                    for (int i=0; i<result_list.length;i++){
+                        result += result_list[i].toString() + "; ";
+                    }
                 }
             }
             else if (getOperations().equals(Operations.CONJUGATION)){
@@ -195,19 +192,19 @@ public class ViewModel {
     }
 
     private void hideDegree(){
-        if(getOperations().equals(Operations.ADD)|| getOperations().equals(Operations.CONJUGATION) || getOperations().equals(Operations.SUBTRACT)||getOperations().equals(Operations.MULTIPLY)||getOperations().equals(Operations.DIVIDE)){
+        if(isFirstGroupOperation(getOperations())|| getOperations().equals(Operations.CONJUGATION)){
             isDegreeVisible = false;
         }
-        if(getOperations().equals(Operations.POW)|| getOperations().equals(Operations.ROOT)){
+        else if(isSecondGroupOperation(getOperations())){
             isDegreeVisible = true;
         }
     }
 
     private void hideSecondNumber(){
-        if(getOperations().equals(Operations.POW)|| getOperations().equals(Operations.ROOT) || getOperations().equals(Operations.CONJUGATION)){
+        if(isSecondGroupOperation(getOperations()) || getOperations().equals(Operations.CONJUGATION)){
             isSecondNumberVisible = false;
         }
-        if(getOperations().equals(Operations.ADD)|| getOperations().equals(Operations.SUBTRACT)||getOperations().equals(Operations.MULTIPLY)||getOperations().equals(Operations.DIVIDE)){
+        else if(isFirstGroupOperation(getOperations())){
             isSecondNumberVisible = true;
         }
     }

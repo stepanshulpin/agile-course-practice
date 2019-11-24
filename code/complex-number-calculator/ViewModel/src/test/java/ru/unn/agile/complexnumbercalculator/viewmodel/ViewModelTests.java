@@ -232,6 +232,31 @@ public class ViewModelTests {
     }
 
     @Test
+    public void checkCalculateButtonEnabledForDivideWithZeroInRe(){
+        viewModel.setOperations(Operations.DIVIDE);
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("1");
+        viewModel.setSecondRe("0");
+        viewModel.setSecondIm("1");
+
+        viewModel.processInput();
+
+        assertTrue(viewModel.isCalculateButtonEnabled());
+    }
+
+    @Test
+    public void checkCalculateButtonDisabledForDivideWithZeroInIm(){
+        viewModel.setOperations(Operations.DIVIDE);
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("1");
+        viewModel.setSecondRe("1");
+        viewModel.setSecondIm("0");
+
+        viewModel.processInput();
+
+        assertTrue(viewModel.isCalculateButtonEnabled());
+    }
+    @Test
     public void checkCorrectResultIsShownForPowOperation(){
         viewModel.setOperations(Operations.POW);
         viewModel.setFirstRe("1");

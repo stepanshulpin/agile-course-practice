@@ -3,7 +3,6 @@ package ru.unn.agile.complexnumbercalculator.view;
 import ru.unn.agile.complexnumbercalculator.viewmodel.ViewModel;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -126,7 +125,6 @@ public class CalculatorComplexNumbers {
         viewModel.setSecondRe(secondReTextField.getText());
         viewModel.setSecondIm(secondImTextField.getText());
         viewModel.setDegree(degreeTextField.getText());
-
         viewModel.setOperations((ViewModel.Operations)operationsComboBox.getSelectedItem());
     }
 }
