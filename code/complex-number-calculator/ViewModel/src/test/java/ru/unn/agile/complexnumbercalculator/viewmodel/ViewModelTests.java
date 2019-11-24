@@ -406,4 +406,31 @@ public class ViewModelTests {
 
         assertEquals(true, viewModel.isErrorMessageDisplayed());
     }
+
+    @Test
+    public void checkCorrectResultIsShownForRootOperationWithDegreeOne(){
+        viewModel.setOperations(Operations.ROOT);
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("3");
+        viewModel.setDegree("1");
+
+        viewModel.calculate();
+        assertEquals("1.0 + 3.0i", viewModel.getResult());
+    }
+
+    @Test
+    public void checkSecondNumberFieldsAreHiddenForRoot(){
+        viewModel.setOperations(Operations.ROOT);
+
+        viewModel.hideUnnecessaryFields();
+        assertEquals(false, viewModel.isSecondNumberVisible());
+    }
+
+    @Test
+    public void checkDegreeFieldIsDisplayedForRoot(){
+        viewModel.setOperations(Operations.ROOT);
+
+        viewModel.hideUnnecessaryFields();
+        assertEquals(true, viewModel.isDegreeVisible());
+    }
 }

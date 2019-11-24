@@ -149,6 +149,7 @@ public class ViewModel {
     public void calculate(){
         processInput();
         if (isCalculateButtonEnabled()){
+            result = "";
             if(getOperations().equals(Operations.ADD)) {
                 ComplexNumber z1 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
                 ComplexNumber z2 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
@@ -173,6 +174,13 @@ public class ViewModel {
                 ComplexNumber z = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
                 result = ComplexNumberCalculator.pow(z, Integer.parseInt(getDegree())).toString();
             }
+            else if (getOperations().equals(Operations.ROOT)){
+                ComplexNumber z = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
+                ComplexNumber [] result_list = ComplexNumberCalculator.extractRoot(z, Integer.parseInt(getDegree()));
+                for (int i=0; i<result_list.length;i++){
+                    result += result_list[i].toString();
+                }
+            }
         }
     }
 
@@ -180,13 +188,13 @@ public class ViewModel {
         if(getOperations().equals(Operations.ADD)|| getOperations().equals(Operations.SUBTRACT)||getOperations().equals(Operations.MULTIPLY)||getOperations().equals(Operations.DIVIDE)){
             isDegreeVisible = false;
         }
-        if(getOperations().equals(Operations.POW)){
+        if(getOperations().equals(Operations.POW)|| getOperations().equals(Operations.ROOT)){
             isDegreeVisible = true;
         }
     }
 
     private void hideSecondNumber(){
-        if(getOperations().equals(Operations.POW)){
+        if(getOperations().equals(Operations.POW)|| getOperations().equals(Operations.ROOT)){
             isSecondNumberVisible = false;
         }
         if(getOperations().equals(Operations.ADD)|| getOperations().equals(Operations.SUBTRACT)||getOperations().equals(Operations.MULTIPLY)||getOperations().equals(Operations.DIVIDE)){
@@ -222,7 +230,7 @@ public class ViewModel {
     }
 
     public void processInput(){
-        if (getOperations().equals(Operations.POW)){
+        if (getOperations().equals(Operations.POW) || getOperations().equals(Operations.ROOT)){
             boolean matchRe1 = matchNumberInput(getFirstRe());
             boolean matchIm1 = matchNumberInput(getFirstIm());
             boolean matchDegree = matchDegreeInput(getDegree());
