@@ -1,6 +1,8 @@
 package ru.unn.agile.converter.viewmodel;
 
 import javafx.beans.property.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import ru.unn.agile.converter.model.LengthConverter;
@@ -29,6 +31,13 @@ public class ViewModel {
         input.addListener((observable, oldValue, newValue) -> {
             onInput(newValue);
         });
+        fromType.addListener((observable, oldValue, newValue) -> {
+            onTypeChange();
+        });
+        toType.addListener((observable, oldValue, newValue) -> {
+            onTypeChange();
+        });
+
     }
 
     public StringProperty getInput() {
@@ -83,5 +92,9 @@ public class ViewModel {
             return String.format("%d",(long)d);
         else
             return String.format("%s",d);
+    }
+
+    private void onTypeChange() {
+        output.set("");
     }
 }

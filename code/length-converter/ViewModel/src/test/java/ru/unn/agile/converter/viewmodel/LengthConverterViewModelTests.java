@@ -146,7 +146,7 @@ public class LengthConverterViewModelTests {
     }
 
     @Test
-    public void canConvert_1Inch_to_0_050799972568014815Meters() {
+    public void canConvert_2Inches_to_0_050799972568014815Meters() {
         viewModel.getInput().set("2");
         viewModel.getFromType().set(LengthType.INCH);
         viewModel.getToType().set(LengthType.METER);
@@ -154,6 +154,26 @@ public class LengthConverterViewModelTests {
         viewModel.convert();
 
         assertEquals("0.050799972568014815", viewModel.getOutput().get());
+    }
+
+    @Test
+    public void canClearOutputAfterChangeFromType() {
+        viewModel.getInput().set("2");
+
+        viewModel.convert();
+        viewModel.getFromType().set(LengthType.INCH);
+
+        assertEquals("", viewModel.getOutput().get());
+    }
+
+    @Test
+    public void canClearOutputAfterChangeToType() {
+        viewModel.getInput().set("2");
+
+        viewModel.convert();
+        viewModel.getToType().set(LengthType.INCH);
+
+        assertEquals("", viewModel.getOutput().get());
     }
 
 }
