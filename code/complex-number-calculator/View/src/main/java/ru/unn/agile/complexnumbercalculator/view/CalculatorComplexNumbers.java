@@ -22,7 +22,7 @@ public class CalculatorComplexNumbers {
     private JTextField firstImTextField;
     private JTextField secondReTextField;
     private JTextField secondImTextField;
-    private JTextField degeeTextField;
+    private JTextField degreeTextField;
     private JLabel fisrtReLabel;
     private JLabel fisrtImLabel;
     private JLabel secondReLabel;
@@ -65,6 +65,7 @@ public class CalculatorComplexNumbers {
                 bind();
                 CalculatorComplexNumbers.this.viewModel.hideUnnecessaryFields();
                 hideUnnecessaryElements();
+                backBind();
             }
         });
 
@@ -80,6 +81,7 @@ public class CalculatorComplexNumbers {
         firstImTextField.addKeyListener(keyListener);
         secondReTextField.addKeyListener(keyListener);
         secondImTextField.addKeyListener(keyListener);
+        degreeTextField.addKeyListener(keyListener);
     }
 
     private void loadOperations(){
@@ -90,11 +92,11 @@ public class CalculatorComplexNumbers {
     private void hideUnnecessaryElements(){
         if (!viewModel.isDegreeVisible())
         {
-            degeeTextField.setVisible(false);
+            degreeTextField.setVisible(false);
             degreeLabel.setVisible(false);
         }
         else{
-            degeeTextField.setVisible(true);
+            degreeTextField.setVisible(true);
             degreeLabel.setVisible(true);
         }
     }
@@ -111,8 +113,8 @@ public class CalculatorComplexNumbers {
         viewModel.setFirstIm(firstImTextField.getText());
         viewModel.setSecondRe(secondReTextField.getText());
         viewModel.setSecondIm(secondImTextField.getText());
+        viewModel.setDegree(degreeTextField.getText());
 
         viewModel.setOperations((ViewModel.Operations)operationsComboBox.getSelectedItem());
     }
-
 }
