@@ -216,4 +216,17 @@ public class ViewModelTests {
         assertEquals(false, viewModel.isDegreeVisible());
     }
 
+    @Test
+    public void checkCalculateButtonDisabledForDivideWithZero(){
+        viewModel.setOperations(Operations.DIVIDE);
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("1");
+        viewModel.setSecondRe("0");
+        viewModel.setSecondIm("0");
+
+        viewModel.processInput();
+
+        assertEquals(false, viewModel.isCalculateButtonEnabled());
+    }
+
 }

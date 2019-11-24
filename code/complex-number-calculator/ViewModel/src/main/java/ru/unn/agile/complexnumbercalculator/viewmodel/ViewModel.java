@@ -210,6 +210,14 @@ public class ViewModel {
         if (matchRe1 && matchIm1 && matchRe2 && matchIm2) {
             isCalculateButtonEnabled = true;
             isErrorMessageDisplayed = false;
+            if(getOperations().equals(Operations.DIVIDE)){
+                ComplexNumber z = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
+                ComplexNumber zero = ComplexNumber.createAlgebraicForm(0.0, 0.0);
+                if(z.equals(zero)){
+                    isCalculateButtonEnabled = false;
+                    isErrorMessageDisplayed = true;
+                }
+            }
         }
         else {
             isCalculateButtonEnabled = false;
