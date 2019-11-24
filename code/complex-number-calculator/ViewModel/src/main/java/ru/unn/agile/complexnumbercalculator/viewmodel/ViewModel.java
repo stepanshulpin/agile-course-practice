@@ -109,6 +109,15 @@ public class ViewModel {
         return errorText;
     }
 
+    private void setError(){
+        if(isErrorMessageDisplayed) {
+            errorText = "Ошибка: нужно ввести корректные значения!";
+        }
+        else{
+            errorText ="";
+        }
+    }
+
     public boolean isCalculateButtonEnabled() {
         return isCalculateButtonEnabled;
     }
@@ -188,5 +197,6 @@ public class ViewModel {
             isCalculateButtonEnabled = false;
             isErrorMessageDisplayed = true;
         }
+        setError();
     }
 }
