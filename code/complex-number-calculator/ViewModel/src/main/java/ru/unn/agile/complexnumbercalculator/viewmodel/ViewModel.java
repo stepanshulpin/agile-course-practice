@@ -23,7 +23,7 @@ public class ViewModel {
     private boolean isSecondNumberVisible;
 
     private String patternInput = "-?(\\d+)(\\.(\\d+))?";
-    private String patternInputDivide = "-?(\\d+)(\\.(\\d+))?";
+    private String patternInputSecondDivide = "(-?([1-9]+)(\\.(\\d+))?)|(-?(\\d+)(\\.[1-9]+))";
     private String patternDegreePow = "-?(\\d+)";
     private String patternDegreeRoot = "(\\d+)";
 
@@ -227,10 +227,75 @@ public class ViewModel {
         return result;
     }
 
-    public void processInput(){
+    private boolean isFirstGroupOperation (Operations operations){
+        if (operations.equals(Operations.ADD)|| operations.equals(Operations.SUBTRACT) || operations.equals(Operations.MULTIPLY)|| operations.equals(Operations.DIVIDE)){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    private boolean isSecondGroupOperation (Operations operations){
+        if (operations.equals(Operations.POW)|| operations.equals(Operations.ROOT)){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    private void processInputForFirstGroupOperation(){
+        if (isFirstGroupOperation(getOperations())){
+            boolean matchRe1 = matchInput(getFirstRe(),patternInput);
+            boolean matchIm1 = matchInput(getFirstIm(),patternInput);
+            boolean matchRe2 = false;
+            boolean matchIm2 = false;
+            if(getOperations().equals(Operations.DIVIDE)){
+                matchRe2 = matchInput(getSecondRe(),patternInputSecondDivide);
+                matchIm2 = matchInput(getSecondIm(),patternInputSecondDivide);
+            }
+            else{
+                matchRe2 = matchInput(getSecondRe(),patternInput);
+                matchIm2 = matchInput(getSecondIm(),patternInput);
+            }
+            if (matchRe1 && matchIm1 && matchRe2 && matchIm2) {
+                isCalculateButtonEnabled = true;
+                isErrorMessageDisplayed = false;
+            }
+            else {
+                isCalculateButtonEnabled = false;
+                isErrorMessageDisplayed = true;
+            }
+        }
+    }
+
+    private void processInputForSecondGroupOperation(){
+        if (isSecondGroupOperation(getOperations())){
+            boolean matchRe1 = matchInput(getFirstRe(),patternInput);
+            boolean matchIm1 = matchInput(getFirstIm(),patternInput);
+            boolean matchDegree = false;
+            if(getOperations().equals(Operations.ROOT)){
+                matchDegree = matchInput(getDegree(),patternDegreeRoot);
+            }
+            else{
+                matchDegree = matchInput(getDegree(),patternDegreePow);
+            }
+            if (matchRe1 && matchIm1 && matchDegree) {
+                isCalculateButtonEnabled = true;
+                isErrorMessageDisplayed = false;
+            }
+            else {
+                isCalculateButtonEnabled = false;
+                isErrorMessageDisplayed = true;
+            }
+        }
+    }
+
+    private void processInputForConjugationOperation(){
         if (getOperations().equals(Operations.CONJUGATION)){
-            boolean matchRe1 = matchInput(getFirstRe(), patternInput);
-            boolean matchIm1 = matchInput(getFirstIm(), patternInput);
+            boolean matchRe1 = matchInput(getFirstRe(),patternInput);
+            boolean matchIm1 = matchInput(getFirstIm(),patternInput);
             if (matchRe1 && matchIm1) {
                 isCalculateButtonEnabled = true;
                 isErrorMessageDisplayed = false;
@@ -239,50 +304,13 @@ public class ViewModel {
                 isCalculateButtonEnabled = false;
                 isErrorMessageDisplayed = true;
             }
-            setError();
-            return;
         }
-        if (getOperations().equals(Operations.POW) || getOperations().equals(Operations.ROOT)){
-            boolean matchRe1 = matchInput(getFirstRe(),patternInput);
-            boolean matchIm1 = matchInput(getFirstIm(), patternInput);
-            boolean matchDegree = matchInput(getDegree(), patternDegreePow);
-            if (matchRe1 && matchIm1 && matchDegree) {
-                isCalculateButtonEnabled = true;
-                isErrorMessageDisplayed = false;
-                if(getOperations().equals(Operations.ROOT)){
-                    if(Integer.parseInt(getDegree()) < 0){
-                        isCalculateButtonEnabled = false;
-                        isErrorMessageDisplayed = true;
-                    }
-                }
-            }
-            else {
-                isCalculateButtonEnabled = false;
-                isErrorMessageDisplayed = true;
-            }
-            setError();
-            return;
-        }
-        boolean matchRe1 = matchInput(getFirstRe(),patternInput);
-        boolean matchIm1 = matchInput(getFirstIm(),patternInput);
-        boolean matchRe2 = matchInput(getSecondRe(),patternInput);
-        boolean matchIm2 = matchInput(getSecondIm(),patternInput);
-        if (matchRe1 && matchIm1 && matchRe2 && matchIm2) {
-            isCalculateButtonEnabled = true;
-            isErrorMessageDisplayed = false;
-            if(getOperations().equals(Operations.DIVIDE)){
-                ComplexNumber z = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
-                ComplexNumber zero = ComplexNumber.createAlgebraicForm(0.0, 0.0);
-                if(z.equals(zero)){
-                    isCalculateButtonEnabled = false;
-                    isErrorMessageDisplayed = true;
-                }
-            }
-        }
-        else {
-            isCalculateButtonEnabled = false;
-            isErrorMessageDisplayed = true;
-        }
+    }
+
+    public void processInput(){
+        processInputForFirstGroupOperation();
+        processInputForSecondGroupOperation();
+        processInputForConjugationOperation();
         setError();
     }
 }
