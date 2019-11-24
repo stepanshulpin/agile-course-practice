@@ -74,6 +74,7 @@ public class ViewModelTests {
     @Test
     public void checkDegreeTextBoxChangeVisibleState(){
         viewModel.setOperations(Operations.POW);
+        viewModel.hideUnnecessaryFields();
         viewModel.setOperations(Operations.ADD);
         viewModel.hideUnnecessaryFields();
         assertEquals(false, viewModel.isDegreeVisible());
@@ -246,5 +247,137 @@ public class ViewModelTests {
 
         viewModel.hideUnnecessaryFields();
         assertEquals(false, viewModel.isSecondNumberVisible());
+    }
+
+    @Test
+    public void checkCalculateButtonIsDisabledWhenDegreeIsDouble(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.setDegree("1.0");
+        viewModel.processInput();
+        assertEquals(false, viewModel.isCalculateButtonEnabled());
+    }
+
+    @Test
+    public void checkErrorMessageIsDisplayedWhenDegreeIsDouble(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.setDegree("1.0");
+        viewModel.processInput();
+        assertEquals(true, viewModel.isErrorMessageDisplayed());
+    }
+
+    @Test
+    public void checkCalculateButtonIsDisabledWhenDegreeIsNotNumber(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.setDegree("abc");
+        viewModel.processInput();
+        assertEquals(false, viewModel.isCalculateButtonEnabled());
+    }
+
+    @Test
+    public void checkErrorMessageIsDisplayedWhenDegreeIsNotNumber(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.setDegree("abc");
+        viewModel.processInput();
+        assertEquals(true, viewModel.isErrorMessageDisplayed());
+    }
+
+    @Test
+    public void checkCalculateButtonDisabledWhenInputWithDegreeNotFull(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.setDegree("1");
+        viewModel.processInput();
+        assertEquals(false, viewModel.isCalculateButtonEnabled());
+    }
+
+    @Test
+    public void checkErrorMessageIsDisplayedWhenInputWithDegreeNotFull(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.setDegree("1");
+        viewModel.processInput();
+        assertEquals(true, viewModel.isErrorMessageDisplayed());
+    }
+
+    @Test
+    public void checkCalculateButtonDisabledWhenDegreeInputEmpty(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("1");
+        viewModel.setDegree("");
+
+        viewModel.processInput();
+
+        assertEquals(false, viewModel.isCalculateButtonEnabled());
+    }
+
+    @Test
+    public void checkErrorMessageIsDisplayedWhenDegreeInputEmpty(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("1");
+        viewModel.setDegree("");
+
+        viewModel.processInput();
+        assertEquals(true, viewModel.isErrorMessageDisplayed());
+    }
+
+    @Test
+    public void checkCalculateButtonEnabledWhenInputWithDegreeOK(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("1");
+        viewModel.setDegree("1");
+
+        viewModel.processInput();
+
+        assertEquals(true, viewModel.isCalculateButtonEnabled());
+    }
+
+    @Test
+    public void checkErrorMessageIsHiddenWhenInputWithDegreeOK(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("1");
+        viewModel.setDegree("1");
+
+        viewModel.processInput();
+
+        assertEquals(false, viewModel.isErrorMessageDisplayed());
+    }
+
+    @Test
+    public void checkSecondNumberTextBoxIsVisibleOnAddOperation(){
+        viewModel.setOperations(Operations.ADD);
+        viewModel.hideUnnecessaryFields();
+        assertEquals(true, viewModel.isSecondNumberVisible());
+    }
+
+    @Test
+    public void checkSecondNumberTextBoxIsVisibleOnSubtractOperation(){
+        viewModel.setOperations(Operations.SUBTRACT);
+        viewModel.hideUnnecessaryFields();
+        assertEquals(true, viewModel.isSecondNumberVisible());
+    }
+
+    @Test
+    public void checkSecondNumberTextBoxIsVisibleOnMultiplyOperation(){
+        viewModel.setOperations(Operations.MULTIPLY);
+        viewModel.hideUnnecessaryFields();
+        assertEquals(true, viewModel.isSecondNumberVisible());
+    }
+
+    @Test
+    public void checkSecondNumberTextBoxIsVisibleOnDivideOperation(){
+        viewModel.setOperations(Operations.DIVIDE);
+        viewModel.hideUnnecessaryFields();
+        assertEquals(true, viewModel.isSecondNumberVisible());
+    }
+
+    @Test
+    public void checkSecondNumberTextBoxChangeVisibleState(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.hideUnnecessaryFields();
+        viewModel.setOperations(Operations.MULTIPLY);
+        viewModel.hideUnnecessaryFields();
+        assertEquals(true, viewModel.isSecondNumberVisible());
     }
 }
