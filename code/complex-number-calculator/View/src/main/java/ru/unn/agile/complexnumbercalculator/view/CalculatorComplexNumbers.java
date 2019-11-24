@@ -69,6 +69,7 @@ public class CalculatorComplexNumbers {
             public void keyReleased(final KeyEvent e) {
                 bind();
                 CalculatorComplexNumbers.this.viewModel.processFields(e.getKeyCode());
+                CalculatorComplexNumbers.this.viewModel.processInput();
                 backBind();
             }
         };
@@ -98,6 +99,7 @@ public class CalculatorComplexNumbers {
     private void backBind(){
         calculateButton.setEnabled(viewModel.isCalculateButtonEnabled());
         resultLabel.setText(viewModel.getResult());
+        errorLabel.setText(viewModel.getError());
     }
 
     private void bind(){
