@@ -54,6 +54,7 @@ public class ViewModel {
         errorText = "";
         isCalculateButtonEnabled = false;
         isDegreeVisible = false;
+        isErrorMessageDisplayed = false;
     }
 
     public String getResult(){
@@ -147,9 +148,16 @@ public class ViewModel {
     public void calculate(){
         processFields(ANY);
         if (isCalculateButtonEnabled()){
-            ComplexNumber z1 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
-            ComplexNumber z2 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
-            result = ComplexNumberCalculator.add(z1,z2).toString();
+            if(getOperations().equals(Operations.ADD)) {
+                ComplexNumber z1 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
+                ComplexNumber z2 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
+                result = ComplexNumberCalculator.add(z1, z2).toString();
+            }
+            else if (getOperations().equals(Operations.SUBTRACT)){
+                ComplexNumber z1 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
+                ComplexNumber z2 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
+                result = ComplexNumberCalculator.subtract(z1, z2).toString();
+            }
         }
     }
 

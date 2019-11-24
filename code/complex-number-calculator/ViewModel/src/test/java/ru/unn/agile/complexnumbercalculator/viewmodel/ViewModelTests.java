@@ -153,4 +153,16 @@ public class ViewModelTests {
         assertEquals(false, viewModel.isErrorMessageDisplayed());
     }
 
+    @Test
+    public void checkCorrectResultIsShownForSubtractOperation(){
+        viewModel.setOperations(Operations.SUBTRACT);
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("1");
+        viewModel.setSecondRe("1");
+        viewModel.setSecondIm("1");
+
+        viewModel.calculate();
+        assertEquals("0.0 + 0.0i", viewModel.getResult());
+    }
+
 }
