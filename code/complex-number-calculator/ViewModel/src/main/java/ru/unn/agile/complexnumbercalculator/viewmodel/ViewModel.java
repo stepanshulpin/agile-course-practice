@@ -20,6 +20,8 @@ public class ViewModel {
     private boolean isCalculateButtonEnabled;
     private boolean isDegreeVisible;
     private boolean isErrorMessageDisplayed;
+    private boolean isSecondReVisible;
+    private boolean isSecondImVisible;
 
     private int ENTER = 10;
     private int ANY = 1111;
@@ -55,6 +57,8 @@ public class ViewModel {
         isCalculateButtonEnabled = false;
         isDegreeVisible = false;
         isErrorMessageDisplayed = false;
+        isSecondReVisible = true;
+        isSecondImVisible = true;
     }
 
     public String getResult(){
@@ -135,6 +139,14 @@ public class ViewModel {
         return isErrorMessageDisplayed;
     }
 
+    public boolean isSecondReVisible() {
+        return isSecondReVisible;
+    }
+
+    public boolean isSecondImVisible() {
+        return isSecondImVisible;
+    }
+
     private boolean isAllDataFilled (){
         if (getOperations().equals(Operations.POW)){
             return (!getFirstRe().isEmpty() && !getFirstIm().isEmpty() && !getDegree().isEmpty());
@@ -191,8 +203,20 @@ public class ViewModel {
         }
     }
 
+    private void hideSecondNumber(){
+        if(getOperations().equals(Operations.POW)){
+            isSecondReVisible = false;
+            isSecondImVisible = false;
+        }
+        if(getOperations().equals(Operations.ADD)|| getOperations().equals(Operations.SUBTRACT)||getOperations().equals(Operations.MULTIPLY)||getOperations().equals(Operations.DIVIDE)){
+            isSecondReVisible = true;
+            isSecondImVisible = true;
+        }
+    }
+
     public void hideUnnecessaryFields(){
         hideDegree();
+        hideSecondNumber();
     }
 
     private boolean matchNumberInput(String line){

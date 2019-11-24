@@ -239,4 +239,13 @@ public class ViewModelTests {
         viewModel.calculate();
         assertEquals("1.0 + 3.0i", viewModel.getResult());
     }
+
+    @Test
+    public void checkSecondNumberFieldsAreHiddenForPow(){
+        viewModel.setOperations(Operations.POW);
+
+        viewModel.hideUnnecessaryFields();
+        assertEquals(false, viewModel.isSecondReVisible());
+        assertEquals(false, viewModel.isSecondImVisible());
+    }
 }
