@@ -75,6 +75,12 @@ public class ViewModel {
         output.set(format(value));
     }
 
+    public void swap() {
+        LengthType tmp = fromType.get();
+        fromType.set(toType.get());
+        toType.set(tmp);
+    }
+
     private void onInput(String newValue) {
         boolean isNumeric = isNumeric(newValue);
         error.set(isNumeric || newValue.isEmpty() ? "" : "invalid");
@@ -86,15 +92,15 @@ public class ViewModel {
         return str.matches("-?\\d+(\\.\\d+)?");
     }
 
-    private static String format(double d)
-    {
-        if(d == (long) d)
-            return String.format("%d",(long)d);
+    private static String format(double d) {
+        if (d == (long) d)
+            return String.format("%d", (long) d);
         else
-            return String.format("%s",d);
+            return String.format("%s", d);
     }
 
     private void onTypeChange() {
         output.set("");
     }
+
 }

@@ -176,4 +176,24 @@ public class LengthConverterViewModelTests {
         assertEquals("", viewModel.getOutput().get());
     }
 
+    @Test
+    public void canSwapFromAndToTypes() {
+        viewModel.getFromType().set(LengthType.KILOMETER);
+        viewModel.getToType().set(LengthType.MILE);
+
+        viewModel.swap();
+
+        assertEquals(LengthType.KILOMETER, viewModel.getToType().get());
+        assertEquals(LengthType.MILE, viewModel.getFromType().get());
+    }
+
+    @Test
+    public void canClearOutputAfterSwap() {
+        viewModel.getInput().set("1");
+
+        viewModel.convert();
+        viewModel.swap();
+
+        assertEquals("", viewModel.getOutput().get());
+    }
 }
