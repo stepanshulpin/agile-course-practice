@@ -23,7 +23,6 @@ public class ViewModel {
     private boolean isSecondNumberVisible;
 
     private int ENTER = 10;
-    private int ANY = 1111;
 
     public enum Operations {
         ADD ("Сложить"),
@@ -148,17 +147,13 @@ public class ViewModel {
         return (!getFirstRe().isEmpty() && !getFirstIm().isEmpty() && !getSecondRe().isEmpty() && !getSecondIm().isEmpty());
     }
 
-    public void processFields(final int keyCode) {
-        if (isAllDataFilled()){
-            isCalculateButtonEnabled = true;
-        }
+    public void processEnterPress(final int keyCode) {
         if (keyCode == ENTER) {
             calculate();
         }
     }
 
     public void calculate(){
-        processFields(ANY);
         processInput();
         if (isCalculateButtonEnabled()){
             if(getOperations().equals(Operations.ADD)) {

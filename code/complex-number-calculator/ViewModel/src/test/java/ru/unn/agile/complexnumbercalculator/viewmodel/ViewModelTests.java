@@ -9,6 +9,7 @@ import ru.unn.agile.complexnumbercalculator.viewmodel.ViewModel.Operations;
 
 public class ViewModelTests {
     private ViewModel viewModel;
+    private int ENTER = 10;
 
     @Before
     public void setUp() {
@@ -38,14 +39,14 @@ public class ViewModelTests {
     }
 
     @Test
-    public void checkButtonIsEnabledIfDataFieldsAreFilled() {
+    public void checkResultIsShownAfterEnterIsPressed() {
         viewModel.setFirstRe("1");
         viewModel.setFirstIm("2");
         viewModel.setSecondRe("3");
         viewModel.setSecondIm("4");
-        viewModel.processFields(0);
+        viewModel.processEnterPress(ENTER);
 
-        assertEquals(true, viewModel.isCalculateButtonEnabled());
+        assertEquals("4.0 + 6.0i", viewModel.getResult());
     }
 
     @Test

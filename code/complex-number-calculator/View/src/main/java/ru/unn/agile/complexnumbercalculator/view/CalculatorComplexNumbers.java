@@ -72,7 +72,7 @@ public class CalculatorComplexNumbers {
         KeyAdapter keyListener = new KeyAdapter() {
             public void keyReleased(final KeyEvent e) {
                 bind();
-                CalculatorComplexNumbers.this.viewModel.processFields(e.getKeyCode());
+                CalculatorComplexNumbers.this.viewModel.processEnterPress(e.getKeyCode());
                 CalculatorComplexNumbers.this.viewModel.processInput();
                 backBind();
             }
