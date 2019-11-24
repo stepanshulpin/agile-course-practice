@@ -90,7 +90,7 @@ class DijkstraGraph {
         }
         for (Edge e : edges) {
             if (e.dist <= 0) {
-                throw new IllegalArgumentException("Edge's weight can not be negative or equal to 0");
+                throw new IllegalArgumentException("Edge's weight can not be <= 0");
             }
             if (e.v1.equals(e.v2)) {
                 throw new IllegalArgumentException("Edge can not link vertex to itself");
