@@ -163,11 +163,16 @@ public class ViewModel {
                 ComplexNumber z2 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
                 result = ComplexNumberCalculator.multiply(z1, z2).toString();
             }
+            else if (getOperations().equals(Operations.DIVIDE)){
+                ComplexNumber z1 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
+                ComplexNumber z2 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getSecondRe()), Double.parseDouble(getSecondIm()));
+                result = ComplexNumberCalculator.divide(z1, z2).toString();
+            }
         }
     }
 
     private void hideDegree(){
-        if(getOperations().equals(Operations.ADD)|| getOperations().equals(Operations.SUBTRACT)||getOperations().equals(Operations.MULTIPLY)){
+        if(getOperations().equals(Operations.ADD)|| getOperations().equals(Operations.SUBTRACT)||getOperations().equals(Operations.MULTIPLY)||getOperations().equals(Operations.DIVIDE)){
             isDegreeVisible = false;
         }
         if(getOperations().equals(Operations.POW)){

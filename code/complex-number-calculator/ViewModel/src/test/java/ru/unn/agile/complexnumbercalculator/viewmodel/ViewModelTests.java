@@ -195,4 +195,25 @@ public class ViewModelTests {
         assertEquals(false, viewModel.isDegreeVisible());
     }
 
+    @Test
+    public void checkCorrectResultIsShownForDivideOperation(){
+        viewModel.setOperations(Operations.DIVIDE);
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("3");
+        viewModel.setSecondRe("1");
+        viewModel.setSecondIm("3");
+
+        viewModel.calculate();
+        assertEquals("1.0 + 0.0i", viewModel.getResult());
+    }
+
+    @Test
+    public void checkDegreeTextBoxIsHiddenOnDivideOperation(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.processFields(0);
+        viewModel.setOperations(Operations.DIVIDE);
+        viewModel.processFields(0);
+        assertEquals(false, viewModel.isDegreeVisible());
+    }
+
 }
