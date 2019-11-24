@@ -1,6 +1,5 @@
 package ru.unn.agile.DijkstraAlgorithm.Model;
 
-import junit.framework.AssertionFailedError;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -48,19 +47,19 @@ public class DijkstraGraphTest {
             new DijkstraGraph.Edge("g", "k", 7),
             new DijkstraGraph.Edge("h", "k", 10)
     );
-    private static final String EDGES2_A_TO_K_PATH = "a(0) -> c(5) -> e(8) -> g(13) -> k(20)";
+    private static final String EDGES_2_A_TO_K_PATH = "a(0) -> c(5) -> e(8) -> g(13) -> k(20)";
 
     private static final List<DijkstraGraph.Edge> EDGE_AB_NEGATIVE =
             Collections.singletonList(new DijkstraGraph.Edge("a", "b", -7));
 
     @Test
     public void canBuildGraph() {
-        assertNotThrows(() -> new DijkstraGraph(EDGE_AB));
+        new DijkstraGraph(EDGE_AB);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void canNotBuildGraphWithNegativeWeightEdge() {
-        assertThrows(() -> new DijkstraGraph(EDGE_AB_NEGATIVE), RuntimeException.class);
+       new DijkstraGraph(EDGE_AB_NEGATIVE);
     }
 
     @Test
@@ -68,18 +67,17 @@ public class DijkstraGraphTest {
 
         DijkstraGraph g = new DijkstraGraph(EDGE_AB);
         final String start = "a";
-
-        assertNotThrows(() -> g.calculate(start));
+        g.calculate(start);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void canNotCreateGraphFromNullEdgesList() {
-        assertThrows(() -> new DijkstraGraph(null), RuntimeException.class);
+        new DijkstraGraph(null);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void canNotCreateGraphFromEmptyEdgesArray() {
-        assertThrows(() -> new DijkstraGraph(EMPTY_EDGES), RuntimeException.class);
+        new DijkstraGraph(EMPTY_EDGES);
     }
 
     @Test
@@ -88,14 +86,13 @@ public class DijkstraGraphTest {
         assertEquals(2, g.getVertexNumber());
     }
 
-    @Test
+    @Test(expected = RuntimeException.class)
     public void canNotCalculateGraphForNonExistingVertex() {
 
         DijkstraGraph g = new DijkstraGraph(EDGE_AB);
         String start = "This vertex doesn't exist";
 
-        Runnable calculateGraphSnippet = () ->  g.calculate(start);
-        assertThrows(calculateGraphSnippet, RuntimeException.class);
+        g.calculate(start);
     }
 
     @Test
@@ -134,10 +131,10 @@ public class DijkstraGraphTest {
         g.calculate(start);
         String pathFromAtoK = g.getPath(end);
 
-        assertEquals(EDGES2_A_TO_K_PATH, pathFromAtoK);
+        assertEquals(EDGES_2_A_TO_K_PATH, pathFromAtoK);
     }
 
-    @Test
+    @Test(expected = RuntimeException.class)
     public void canNotCalculatePath2NonExistingVertex() {
 
         DijkstraGraph g = new DijkstraGraph(EDGE_AB);
@@ -145,7 +142,7 @@ public class DijkstraGraphTest {
         String end = "This vertex doesn't exist";
 
         g.calculate(start);
-        assertThrows(() -> g.getPath(end), RuntimeException.class);
+        g.getPath(end);
     }
 
     @Test
@@ -169,26 +166,6 @@ public class DijkstraGraphTest {
         String pathFromAtoD = g.getPath(end);
 
         assertEquals(CAN_NOT_REACH_D_VERTEX, pathFromAtoD);
-    }
-
-    // since JUnit4 doesn't have assertThrows  for now we can use self-developed stub
-    private <T extends Throwable> void assertThrows(final Runnable codeSnippet,
-                                                    final Class<T> expectedType) {
-        try {
-            codeSnippet.run();
-        } catch (Throwable actualException) {
-            if (!expectedType.isInstance(actualException)) {
-                throw new AssertionFailedError("Expected exception is not caught");
-            }
-        }
-    }
-
-    private <T extends Throwable> void assertNotThrows(final Runnable codeSnippet) {
-        try {
-            codeSnippet.run();
-        } catch (Throwable e) {
-            throw new AssertionFailedError("Some exception is caught");
-        }
     }
 
 }
