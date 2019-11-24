@@ -3,6 +3,7 @@ package ru.unn.agile.converter.viewmodel;
 import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import ru.unn.agile.converter.model.LengthConverter;
 import ru.unn.agile.converter.model.LengthType;
 
 public class ViewModel {
@@ -58,17 +59,29 @@ public class ViewModel {
         return error;
     }
 
+    public void convert() {
+        double value = Double.parseDouble(input.get());
+        LengthConverter converter = new LengthConverter(value, LengthType.METER);
+        value = converter.convert(LengthType.CENTIMETER);
+        output.set(format(value));
+    }
+
     private void onInput(String newValue) {
         boolean isNumeric = isNumeric(newValue);
         error.set(isNumeric || newValue.isEmpty() ? "" : "invalid");
         btnDisabled.set(newValue.isEmpty() || !isNumeric);
+        output.set("");
     }
 
     private boolean isNumeric(String str) {
         return str.matches("-?\\d+(\\.\\d+)?");
     }
 
-    public void convert() {
-        output.set("100");
+    private static String format(double d)
+    {
+        if(d == (long) d)
+            return String.format("%d",(long)d);
+        else
+            return String.format("%s",d);
     }
 }

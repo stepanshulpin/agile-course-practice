@@ -113,6 +113,24 @@ public class LengthConverterViewModelTests {
         viewModel.convert();
 
         assertEquals("100", viewModel.getOutput().get());
+    }
 
+    @Test
+    public void canClearOutputAfterChangeInput() {
+        viewModel.getInput().set("1");
+
+        viewModel.convert();
+        viewModel.getInput().set("2");
+
+        assertEquals("", viewModel.getOutput().get());
+    }
+
+    @Test
+    public void canConvert_2Meters_to_200Centimeters() {
+        viewModel.getInput().set("2");
+
+        viewModel.convert();
+
+        assertEquals("200", viewModel.getOutput().get());
     }
 }

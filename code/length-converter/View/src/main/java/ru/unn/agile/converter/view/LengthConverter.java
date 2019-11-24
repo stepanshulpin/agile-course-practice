@@ -1,5 +1,7 @@
 package ru.unn.agile.converter.view;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -29,9 +31,11 @@ public class LengthConverter {
 
         txtInput.textProperty().bindBidirectional(viewModel.getInput());
         lblError.textProperty().bindBidirectional(viewModel.getError());
+        txtOutput.textProperty().bindBidirectional(viewModel.getOutput());
         cbFromType.valueProperty().bindBidirectional(viewModel.getFromType());
         cbToType.valueProperty().bindBidirectional(viewModel.getToType());
         btnConvert.disableProperty().bindBidirectional(viewModel.isConvertButtonDisabled());
+        btnConvert.setOnAction(event -> viewModel.convert());
 
     }
 
