@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="513.0" prefWidth="552.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.MortgageCalculator.view.Calculator">
+   <children>
+      <Button layoutX="55.0" layoutY="427.0" mnemonicParsing="false" text="Calculate" />
+      <TextField layoutX="157.0" layoutY="82.0" />
+      <TextField layoutX="157.0" layoutY="115.0" />
+      <TextField layoutX="157.0" layoutY="150.0" />
+      <TextField layoutX="157.0" layoutY="183.0" />
+      <ChoiceBox layoutX="317.0" layoutY="150.0" prefWidth="150.0" />
+      <ChoiceBox layoutX="317.0" layoutY="183.0" prefWidth="150.0" />
+      <Text layoutX="56.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apartment Price" />
+      <Text layoutX="52.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First payment" />
+      <Text layoutX="56.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loan Period" />
+      <Text layoutX="56.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interest rate" />
+      <Text layoutX="27.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="One-time commissions" />
+      <ChoiceBox layoutX="317.0" layoutY="283.0" prefWidth="150.0" />
+      <ChoiceBox layoutX="317.0" layoutY="250.0" prefWidth="150.0" />
+      <TextField layoutX="157.0" layoutY="283.0" />
+      <TextField layoutX="157.0" layoutY="250.0" />
+      <Text layoutX="32.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly commission" />
+      <Text layoutX="43.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type of payment" />
+      <ChoiceBox layoutX="157.0" layoutY="319.0" prefWidth="150.0" />
+      <Text layoutX="43.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type of payment" />
+      <DatePicker layoutX="157.0" layoutY="358.0" />
+      <TextArea layoutX="147.0" layoutY="408.0" prefHeight="63.0" prefWidth="194.0" promptText="Result" />
+   </children>
+</AnchorPane>
