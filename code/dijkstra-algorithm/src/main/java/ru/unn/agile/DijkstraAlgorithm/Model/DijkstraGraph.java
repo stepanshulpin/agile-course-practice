@@ -86,14 +86,14 @@ class DijkstraGraph {
      */
     private void validateEdges(final List<Edge> edges) {
         if (edges == null || edges.isEmpty()) {
-            throw new RuntimeException("Array of edges can not be null or empty");
+            throw new IllegalArgumentException("Array of edges can not be null or empty");
         }
         for (Edge e : edges) {
             if (e.dist <= 0) {
-                throw new RuntimeException("Edge's weight can not be negative or equal to 0");
+                throw new IllegalArgumentException("Edge's weight can not be negative or equal to 0");
             }
             if (e.v1.equals(e.v2)) {
-                throw new RuntimeException("Edge's can not link vertex to itself");
+                throw new IllegalArgumentException("Edge can not link vertex to itself");
             }
         }
     }
