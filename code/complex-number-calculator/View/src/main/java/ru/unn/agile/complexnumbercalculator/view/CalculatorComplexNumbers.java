@@ -16,9 +16,7 @@ public class CalculatorComplexNumbers {
     private JLabel chooseLabel;
     private JComboBox operationsComboBox;
     private JLabel enterDataLabel;
-    private JLabel resultLabel;
     private JButton calculateButton;
-    private JTextField resultTextField;
     private JTextField firstReTextField;
     private JTextField firstImTextField;
     private JTextField secondReTextField;
@@ -31,6 +29,9 @@ public class CalculatorComplexNumbers {
     private JLabel degreeLabel;
     private JPanel errorPanel;
     private JLabel errorLabel;
+    private JPanel calculatePanel;
+    private JLabel resultTextLabel;
+    private JLabel resultLabel;
 
     private ViewModel viewModel;
 
@@ -96,7 +97,7 @@ public class CalculatorComplexNumbers {
 
     private void backBind(){
         calculateButton.setEnabled(viewModel.isCalculateButtonEnabled());
-        resultTextField.setText(viewModel.getResult());
+        resultLabel.setText(viewModel.getResult());
     }
 
     private void bind(){
