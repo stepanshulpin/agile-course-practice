@@ -92,4 +92,65 @@ public class ViewModelTests {
         viewModel.processInput();
         assertEquals(true, viewModel.isErrorMessageDisplayed());
     }
+
+    @Test
+    public void checkCalculateButtonDisabledWhenInputNotFull(){
+        viewModel.setFirstRe("1");
+        viewModel.processInput();
+        assertEquals(false, viewModel.isCalculateButtonEnabled());
+    }
+
+    @Test
+    public void checkErrorMessageIsDisplayedWhenInputNotFull(){
+        viewModel.setFirstRe("1");
+        viewModel.processInput();
+        assertEquals(true, viewModel.isErrorMessageDisplayed());
+    }
+
+    @Test
+    public void checkCalculateButtonDisabledWhenInputEmpty(){
+        viewModel.setFirstRe("");
+        viewModel.setFirstIm("1");
+        viewModel.setSecondRe("1");
+        viewModel.setSecondIm("1");
+
+        viewModel.processInput();
+
+        assertEquals(false, viewModel.isCalculateButtonEnabled());
+    }
+
+    @Test
+    public void checkErrorMessageIsDisplayedWhenInputEmpty(){
+        viewModel.setFirstRe("");
+        viewModel.setFirstIm("1");
+        viewModel.setSecondRe("1");
+        viewModel.setSecondIm("1");
+
+        viewModel.processInput();
+        assertEquals(true, viewModel.isErrorMessageDisplayed());
+    }
+
+    @Test
+    public void checkCalculateButtonEnabledWhenInputOK(){
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("1");
+        viewModel.setSecondRe("1");
+        viewModel.setSecondIm("1");
+
+        viewModel.processInput();
+
+        assertEquals(true, viewModel.isCalculateButtonEnabled());
+    }
+
+    @Test
+    public void checkErrorMessageIsHiddenWhenInputOK(){
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("1");
+        viewModel.setSecondRe("1");
+        viewModel.setSecondIm("1");
+
+        viewModel.processInput();
+        assertEquals(false, viewModel.isErrorMessageDisplayed());
+    }
+
 }
