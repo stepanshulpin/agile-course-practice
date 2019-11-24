@@ -168,7 +168,29 @@ public class ViewModelTests {
     @Test
     public void checkDegreeTextBoxIsHiddenOnSubtractOperation(){
         viewModel.setOperations(Operations.POW);
+        viewModel.processFields(0);
         viewModel.setOperations(Operations.SUBTRACT);
+        viewModel.processFields(0);
+        assertEquals(false, viewModel.isDegreeVisible());
+    }
+
+    @Test
+    public void checkCorrectResultIsShownForMultiplyOperation(){
+        viewModel.setOperations(Operations.MULTIPLY);
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("2");
+        viewModel.setSecondRe("1");
+        viewModel.setSecondIm("4");
+
+        viewModel.calculate();
+        assertEquals("-7.0 + 6.0i", viewModel.getResult());
+    }
+
+    @Test
+    public void checkDegreeTextBoxIsHiddenOnMultiplyOperation(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.processFields(0);
+        viewModel.setOperations(Operations.MULTIPLY);
         viewModel.processFields(0);
         assertEquals(false, viewModel.isDegreeVisible());
     }
