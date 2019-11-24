@@ -67,7 +67,7 @@ public class ViewModelTests {
     @Test
     public void checkDegreeTextBoxIsVisibleOnPowOperation(){
         viewModel.setOperations(Operations.POW);
-        viewModel.processFields(0);
+        viewModel.hideUnnecessaryFields();
         assertEquals(true, viewModel.isDegreeVisible());
     }
 
@@ -75,7 +75,7 @@ public class ViewModelTests {
     public void checkDegreeTextBoxChangeVisibleState(){
         viewModel.setOperations(Operations.POW);
         viewModel.setOperations(Operations.ADD);
-        viewModel.processFields(0);
+        viewModel.hideUnnecessaryFields();
         assertEquals(false, viewModel.isDegreeVisible());
     }
 
@@ -168,9 +168,9 @@ public class ViewModelTests {
     @Test
     public void checkDegreeTextBoxIsHiddenOnSubtractOperation(){
         viewModel.setOperations(Operations.POW);
-        viewModel.processFields(0);
+        viewModel.hideUnnecessaryFields();
         viewModel.setOperations(Operations.SUBTRACT);
-        viewModel.processFields(0);
+        viewModel.hideUnnecessaryFields();
         assertEquals(false, viewModel.isDegreeVisible());
     }
 
@@ -189,9 +189,9 @@ public class ViewModelTests {
     @Test
     public void checkDegreeTextBoxIsHiddenOnMultiplyOperation(){
         viewModel.setOperations(Operations.POW);
-        viewModel.processFields(0);
+        viewModel.hideUnnecessaryFields();
         viewModel.setOperations(Operations.MULTIPLY);
-        viewModel.processFields(0);
+        viewModel.hideUnnecessaryFields();
         assertEquals(false, viewModel.isDegreeVisible());
     }
 
@@ -210,9 +210,9 @@ public class ViewModelTests {
     @Test
     public void checkDegreeTextBoxIsHiddenOnDivideOperation(){
         viewModel.setOperations(Operations.POW);
-        viewModel.processFields(0);
+        viewModel.hideUnnecessaryFields();
         viewModel.setOperations(Operations.DIVIDE);
-        viewModel.processFields(0);
+        viewModel.hideUnnecessaryFields();
         assertEquals(false, viewModel.isDegreeVisible());
     }
 

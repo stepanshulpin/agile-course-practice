@@ -3,6 +3,7 @@ package ru.unn.agile.complexnumbercalculator.view;
 import ru.unn.agile.complexnumbercalculator.viewmodel.ViewModel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -48,7 +49,7 @@ public class CalculatorComplexNumbers {
         this.viewModel = viewModel;
         backBind();
         loadOperations();
-        hideUnneedElements();
+        hideUnnecessaryElements();
         calculateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -62,6 +63,8 @@ public class CalculatorComplexNumbers {
             @Override
             public void actionPerformed(ActionEvent e) {
                 bind();
+                CalculatorComplexNumbers.this.viewModel.hideUnnecessaryFields();
+                hideUnnecessaryElements();
             }
         });
 
@@ -84,7 +87,7 @@ public class CalculatorComplexNumbers {
         operationsComboBox.setModel(new JComboBox<>(operations).getModel());
     }
 
-    private void hideUnneedElements(){
+    private void hideUnnecessaryElements(){
         if (!viewModel.isDegreeVisible())
         {
             degeeTextField.setVisible(false);
@@ -100,6 +103,7 @@ public class CalculatorComplexNumbers {
         calculateButton.setEnabled(viewModel.isCalculateButtonEnabled());
         resultLabel.setText(viewModel.getResult());
         errorLabel.setText(viewModel.getError());
+
     }
 
     private void bind(){
@@ -109,8 +113,6 @@ public class CalculatorComplexNumbers {
         viewModel.setSecondIm(secondImTextField.getText());
 
         viewModel.setOperations((ViewModel.Operations)operationsComboBox.getSelectedItem());
-        CalculatorComplexNumbers.this.viewModel.processFields(0);
-        hideUnneedElements();
     }
 
 }

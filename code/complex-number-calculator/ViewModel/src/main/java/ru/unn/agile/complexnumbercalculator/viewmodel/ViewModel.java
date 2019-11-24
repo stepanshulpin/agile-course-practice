@@ -136,7 +136,6 @@ public class ViewModel {
     }
 
     public void processFields(final int keyCode) {
-        hideDegree();
         if (isAllDataFilled()){
             isCalculateButtonEnabled = true;
         }
@@ -179,6 +178,10 @@ public class ViewModel {
         if(getOperations().equals(Operations.POW)){
             isDegreeVisible = true;
         }
+    }
+
+    public void hideUnnecessaryFields(){
+        hideDegree();
     }
 
     private boolean matchNumberInput(String line){
