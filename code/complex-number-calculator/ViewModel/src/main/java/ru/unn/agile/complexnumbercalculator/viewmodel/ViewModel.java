@@ -147,6 +147,7 @@ public class ViewModel {
 
     public void calculate(){
         processFields(ANY);
+        processInput();
         if (isCalculateButtonEnabled()){
             if(getOperations().equals(Operations.ADD)) {
                 ComplexNumber z1 = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
