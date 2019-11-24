@@ -12,76 +12,48 @@ public class StringCalc {
         return calcImpl(string);
     }
 
-    private static final String SUM_OPERATOR = "+";
-    private static final String SUB_OPERATOR = "-";
-    private static final String MUL_OPERATOR = "*";
-    private static final String DIV_OPERATOR = "/";
-
-    private enum Operations {
-        SUMMARY {
-            public double action(final double x, final double y) {
-                return x + y;
-            }
-        },
-        SUBTRACT {
-            public double action(final double x, final double y) {
-                return x - y;
-            }
-        },
-        MULTIPLY {
-            public double action(final double x, final double y) {
-                return x * y;
-            }
-        },
-        DIVIDE {
-            public double action(final double x, final double y) {
-                return x / y;
-            }
-        };
-        public abstract double action(double x, double y);
-    }
-
     private double calcImpl(final String string) {
         try {
             char firstSymbol = string.charAt(0);
             String[] parsedNumbers = string.split("\\+|\\-|\\*|\\/");
-            String[] parsedOperators = string.split("[1234567890\\.a-z]*");
+            String[] parsedOperators = string.split("[0-9\\.]*");
             int index = 0;
-            char subSymbol = SUB_OPERATOR.charAt(0);
+            char subSymbol = Operation.SUBTRACT.value().charAt(0);
             if (firstSymbol == subSymbol) {
                 index++;
                 parsedNumbers[index] = subSymbol + parsedNumbers[index];
                 parsedOperators[0] = "";
             }
 
-            List<Operations> operationsList = new ArrayList<Operations>();
+            List<Operation> operationsList = new ArrayList<Operation>();
+
             for (String operator : parsedOperators) {
-                filterOperationSymbolsFromNonNumberSymbols(operationsList, operator);
+                if (Operation.getOperationBySymbol(operator) != null) {
+                    operationsList.add(Operation.getOperationBySymbol(operator));
+                }
             }
 
             double[] numbersArray = new double[parsedNumbers.length - index];
             parseNumbersFromStringToDouble(parsedNumbers, index, numbersArray);
 
-            Operations[] operationsArray = new Operations[operationsList.size()];
+            Operation[] operationsArray = new Operation[operationsList.size()];
             operationsList.toArray(operationsArray);
 
-            double result = calcKernel(numbersArray, operationsArray);
-
-            return result;
+            return calcKernel(numbersArray, operationsArray);
         } catch (NumberFormatException e) {
             throw new NumberFormatException("String can't contain letters");
         }
     }
 
-    private double calcKernel(final double[] numbersArray, final Operations[] operationsArray) {
+    private double calcKernel(final double[] numbersArray, final Operation[] operationsArray) {
         if (operationsArray.length == 0) {
             return numbersArray[0];
         }
 
-        boolean isOnlyFirstPriorityOperationsInExpression = true;
-        double resultFirstPriorityOperations = 0;
+        boolean isOnlyFirstPriorityOperationInExpression = true;
+        double resultFirstPriorityOperation = 0;
         int i = 0;
-        for (Operations operation : operationsArray) {
+        for (Operation operation : operationsArray) {
             double resultTmp = 0;
             switch (operation) {
                 case DIVIDE:
@@ -90,22 +62,22 @@ public class StringCalc {
                     break;
                 case SUMMARY:
                 case SUBTRACT:
-                    isOnlyFirstPriorityOperationsInExpression = false;
+                    isOnlyFirstPriorityOperationInExpression = false;
                     break;
                 default:
                     break;
             }
-            resultFirstPriorityOperations = resultTmp;
+            resultFirstPriorityOperation = resultTmp;
             i++;
         }
 
-        if (isOnlyFirstPriorityOperationsInExpression) {
-            return resultFirstPriorityOperations;
+        if (isOnlyFirstPriorityOperationInExpression) {
+            return resultFirstPriorityOperation;
         }
 
         i = 0;
         double result = 0;
-        for (Operations operation : operationsArray) {
+        for (Operation operation : operationsArray) {
             switch (operation) {
                 case SUMMARY:
                 case SUBTRACT:
@@ -122,7 +94,7 @@ public class StringCalc {
     private double secondPriorityAction(
             final double[] numbers,
             final int i,
-            final Operations operation) {
+            final Operation operation) {
         double resultTmp;
         double result;
         resultTmp = operation.action(numbers[i], numbers[i + 1]);
@@ -134,7 +106,7 @@ public class StringCalc {
     private double firstPriorityAction(
             final double[] numbers,
             final int i,
-            final Operations operation) {
+            final Operation operation) {
         double resultTmp;
         resultTmp = operation.action(numbers[i], numbers[i + 1]);
         numbers[i] = resultTmp;
@@ -148,27 +120,6 @@ public class StringCalc {
             final double[] numbers) {
         for (int i = 0; i < parsedNumbers.length - index; i++) {
             numbers[i] = Double.parseDouble(parsedNumbers[i + index]);
-        }
-    }
-
-    private void filterOperationSymbolsFromNonNumberSymbols(
-            final List<Operations> operationsList,
-            final String operator) {
-        switch (operator) {
-            case SUM_OPERATOR:
-                operationsList.add(Operations.SUMMARY);
-                break;
-            case SUB_OPERATOR:
-                operationsList.add(Operations.SUBTRACT);
-                break;
-            case MUL_OPERATOR:
-                operationsList.add(Operations.MULTIPLY);
-                break;
-            case DIV_OPERATOR:
-                operationsList.add(Operations.DIVIDE);
-                break;
-            default:
-                break;
         }
     }
 }
