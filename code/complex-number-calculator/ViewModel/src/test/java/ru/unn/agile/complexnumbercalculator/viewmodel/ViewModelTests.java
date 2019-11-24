@@ -444,4 +444,30 @@ public class ViewModelTests {
         viewModel.processInput();
         assertFalse(viewModel.isCalculateButtonEnabled());
     }
+
+    @Test
+    public void checkCorrectResultIsShownForConjugationOperation(){
+        viewModel.setOperations(Operations.CONJUGATION);
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("3");
+
+        viewModel.calculate();
+        assertEquals("1.0 - 3.0i", viewModel.getResult());
+    }
+
+    @Test
+    public void checkSecondNumberFieldsAreHiddenForConjugation(){
+        viewModel.setOperations(Operations.CONJUGATION);
+
+        viewModel.hideUnnecessaryFields();
+        assertFalse(viewModel.isSecondNumberVisible());
+    }
+
+    @Test
+    public void checkDegreeFieldIsHiddenForConjugation(){
+        viewModel.setOperations(Operations.CONJUGATION);
+
+        viewModel.hideUnnecessaryFields();
+        assertFalse(viewModel.isDegreeVisible());
+    }
 }

@@ -181,11 +181,15 @@ public class ViewModel {
                     result += result_list[i].toString() + "; ";
                 }
             }
+            else if (getOperations().equals(Operations.CONJUGATION)){
+                ComplexNumber z = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
+                result = ComplexNumberCalculator.conjugation(z).toString();
+            }
         }
     }
 
     private void hideDegree(){
-        if(getOperations().equals(Operations.ADD)|| getOperations().equals(Operations.SUBTRACT)||getOperations().equals(Operations.MULTIPLY)||getOperations().equals(Operations.DIVIDE)){
+        if(getOperations().equals(Operations.ADD)|| getOperations().equals(Operations.ROOT) || getOperations().equals(Operations.SUBTRACT)||getOperations().equals(Operations.MULTIPLY)||getOperations().equals(Operations.DIVIDE)){
             isDegreeVisible = false;
         }
         if(getOperations().equals(Operations.POW)|| getOperations().equals(Operations.ROOT)){
@@ -194,7 +198,7 @@ public class ViewModel {
     }
 
     private void hideSecondNumber(){
-        if(getOperations().equals(Operations.POW)|| getOperations().equals(Operations.ROOT)){
+        if(getOperations().equals(Operations.POW)|| getOperations().equals(Operations.ROOT) || getOperations().equals(Operations.CONJUGATION)){
             isSecondNumberVisible = false;
         }
         if(getOperations().equals(Operations.ADD)|| getOperations().equals(Operations.SUBTRACT)||getOperations().equals(Operations.MULTIPLY)||getOperations().equals(Operations.DIVIDE)){
@@ -230,6 +234,20 @@ public class ViewModel {
     }
 
     public void processInput(){
+        if (getOperations().equals(Operations.CONJUGATION)){
+            boolean matchRe1 = matchNumberInput(getFirstRe());
+            boolean matchIm1 = matchNumberInput(getFirstIm());
+            if (matchRe1 && matchIm1) {
+                isCalculateButtonEnabled = true;
+                isErrorMessageDisplayed = false;
+            }
+            else {
+                isCalculateButtonEnabled = false;
+                isErrorMessageDisplayed = true;
+            }
+            setError();
+            return;
+        }
         if (getOperations().equals(Operations.POW) || getOperations().equals(Operations.ROOT)){
             boolean matchRe1 = matchNumberInput(getFirstRe());
             boolean matchIm1 = matchNumberInput(getFirstIm());
