@@ -12,10 +12,10 @@ public class StringCalc {
         return calcImpl(string);
     }
 
-    private static final String SUMOPERATOR = "+";
-    private static final String SUBOPERATOR = "-";
-    private static final String MULOPERATOR = "*";
-    private static final String DIVOPERATOR = "/";
+    private static final String SUM_OPERATOR = "+";
+    private static final String SUB_OPERATOR = "-";
+    private static final String MUL_OPERATOR = "*";
+    private static final String DIV_OPERATOR = "/";
 
     private enum Operations {
         SUMMARY {
@@ -47,7 +47,7 @@ public class StringCalc {
             String[] parsedNumbers = string.split("\\+|\\-|\\*|\\/");
             String[] parsedOperators = string.split("[1234567890\\.a-z]*");
             int index = 0;
-            char subSymbol = SUBOPERATOR.charAt(0);
+            char subSymbol = SUB_OPERATOR.charAt(0);
             if (firstSymbol == subSymbol) {
                 index++;
                 parsedNumbers[index] = subSymbol + parsedNumbers[index];
@@ -85,14 +85,10 @@ public class StringCalc {
             double resultTmp = 0;
             switch (operation) {
                 case DIVIDE:
-                    resultTmp = firstPriorityAction(numbersArray, i, operation);
-                    break;
                 case MULTIPLY:
                     resultTmp = firstPriorityAction(numbersArray, i, operation);
                     break;
                 case SUMMARY:
-                    isOnlyFirstPriorityOperationsInExpression = false;
-                    break;
                 case SUBTRACT:
                     isOnlyFirstPriorityOperationsInExpression = false;
                     break;
@@ -110,11 +106,8 @@ public class StringCalc {
         i = 0;
         double result = 0;
         for (Operations operation : operationsArray) {
-            double resultTmp = 0;
             switch (operation) {
                 case SUMMARY:
-                    result = secondPriorityAction(numbersArray, i, operation);
-                    break;
                 case SUBTRACT:
                     result = secondPriorityAction(numbersArray, i, operation);
                     break;
@@ -162,16 +155,16 @@ public class StringCalc {
             final List<Operations> operationsList,
             final String operator) {
         switch (operator) {
-            case SUMOPERATOR:
+            case SUM_OPERATOR:
                 operationsList.add(Operations.SUMMARY);
                 break;
-            case SUBOPERATOR:
+            case SUB_OPERATOR:
                 operationsList.add(Operations.SUBTRACT);
                 break;
-            case MULOPERATOR:
+            case MUL_OPERATOR:
                 operationsList.add(Operations.MULTIPLY);
                 break;
-            case DIVOPERATOR:
+            case DIV_OPERATOR:
                 operationsList.add(Operations.DIVIDE);
                 break;
             default:
