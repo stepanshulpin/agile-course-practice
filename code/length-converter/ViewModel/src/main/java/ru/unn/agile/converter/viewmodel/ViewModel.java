@@ -61,8 +61,8 @@ public class ViewModel {
 
     public void convert() {
         double value = Double.parseDouble(input.get());
-        LengthConverter converter = new LengthConverter(value, LengthType.METER);
-        value = converter.convert(LengthType.CENTIMETER);
+        LengthConverter converter = new LengthConverter(value, getFromType().get());
+        value = converter.convert(getToType().get());
         output.set(format(value));
     }
 

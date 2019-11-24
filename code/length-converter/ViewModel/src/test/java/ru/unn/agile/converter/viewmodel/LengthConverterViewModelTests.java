@@ -133,4 +133,27 @@ public class LengthConverterViewModelTests {
 
         assertEquals("200", viewModel.getOutput().get());
     }
+
+    @Test
+    public void canConvert_2Kilometers_to_2000Meters() {
+        viewModel.getInput().set("2");
+        viewModel.getFromType().set(LengthType.KILOMETER);
+        viewModel.getToType().set(LengthType.METER);
+
+        viewModel.convert();
+
+        assertEquals("2000", viewModel.getOutput().get());
+    }
+
+    @Test
+    public void canConvert_1Inch_to_0_050799972568014815Meters() {
+        viewModel.getInput().set("2");
+        viewModel.getFromType().set(LengthType.INCH);
+        viewModel.getToType().set(LengthType.METER);
+
+        viewModel.convert();
+
+        assertEquals("0.050799972568014815", viewModel.getOutput().get());
+    }
+
 }
