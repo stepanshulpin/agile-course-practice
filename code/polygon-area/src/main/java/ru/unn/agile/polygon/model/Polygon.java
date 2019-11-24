@@ -14,19 +14,13 @@ public class Polygon {
 
         this.vertices = points;
         this.size = points.length;
-        this.area = this.calculateArea();
         this.sides = this.createSides();
+
         if (this.isSelfIntersecting()) {
             throw new IllegalArgumentException("Sides of polygon must not intersect");
         }
-    }
 
-    public int getSize() {
-        return size;
-    }
-
-    public double getArea() {
-        return this.area;
+        this.area = this.calculateArea();
     }
 
     private double calculateArea() {
@@ -73,5 +67,13 @@ public class Polygon {
             }
         }
         return false;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public double getArea() {
+        return this.area;
     }
 }

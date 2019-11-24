@@ -19,15 +19,15 @@ public class Point {
         this.y = point.getY();
     }
 
+    public double distanceTo(final Point pointB) {
+        return Math.sqrt(Math.pow(this.x - pointB.x, 2) + Math.pow(this.y - pointB.y, 2));
+    }
+
     public double getX() {
         return x;
     }
 
     public double getY() {
         return y;
-    }
-
-    public double distanceTo(final Point pointB) {
-        return Math.sqrt(Math.pow(this.x - pointB.x, 2) + Math.pow(this.y - pointB.y, 2));
     }
 }

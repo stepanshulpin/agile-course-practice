@@ -13,6 +13,19 @@ public class Line {
         this.y = point2.getY() - point1.getY();
     }
 
+    public boolean intersectsLine(final Line comparedLine) {
+        double s, t;
+        s = (-this.y * (this.getXPoint1() - comparedLine.getXPoint1())
+                + this.x * (getYPoint1() - comparedLine.getYPoint1()))
+                / (-comparedLine.getX() * this.y + this.x * comparedLine.getY());
+
+        t = (comparedLine.getX() * (getYPoint1() - comparedLine.getYPoint1())
+                - comparedLine.getY() * (getXPoint1() - comparedLine.getXPoint1()))
+                / (-comparedLine.getX() * this.y + this.x * comparedLine.getY());
+
+        return s > 0 && s < 1 && t > 0 && t < 1;
+    }
+
     public Point getPoint1() {
         return this.point1;
     }
@@ -43,19 +56,5 @@ public class Line {
 
     public double getY() {
         return y;
-    }
-
-
-    public boolean intersectsLine(final Line comparedLine) {
-        double s, t;
-        s = (-this.y * (this.getXPoint1() - comparedLine.getXPoint1())
-                + this.x * (getYPoint1() - comparedLine.getYPoint1()))
-                / (-comparedLine.getX() * this.y + this.x * comparedLine.getY());
-
-        t = (comparedLine.getX() * (getYPoint1() - comparedLine.getYPoint1())
-                - comparedLine.getY() * (getXPoint1() - comparedLine.getXPoint1()))
-                / (-comparedLine.getX() * this.y + this.x * comparedLine.getY());
-
-        return s > 0 && s < 1 && t > 0 && t < 1;
     }
 }
