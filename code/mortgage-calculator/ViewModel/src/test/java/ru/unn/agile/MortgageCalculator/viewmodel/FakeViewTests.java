@@ -1,4 +1,4 @@
-package ru.unn.agile.ComplexNumber.view;
+package ru.unn.agile.MortgageCalculator.viewmodel;
 
 import org.junit.Ignore;
 import org.junit.Test;
