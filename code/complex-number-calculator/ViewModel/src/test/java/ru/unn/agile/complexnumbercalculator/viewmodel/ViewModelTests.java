@@ -35,7 +35,7 @@ public class ViewModelTests {
 
     @Test
     public void checkButtonIsDisabledByDefault(){
-        assertEquals(false, viewModel.isCalculateButtonEnabled());
+        assertFalse(viewModel.isCalculateButtonEnabled());
     }
 
     @Test
@@ -62,14 +62,14 @@ public class ViewModelTests {
 
     @Test
     public void checkDegreeTextBoxIsHiddenOnAddOperation(){
-        assertEquals(false, viewModel.isDegreeVisible());
+        assertFalse(viewModel.isDegreeVisible());
     }
 
     @Test
     public void checkDegreeTextBoxIsVisibleOnPowOperation(){
         viewModel.setOperations(Operations.POW);
         viewModel.hideUnnecessaryFields();
-        assertEquals(true, viewModel.isDegreeVisible());
+        assertTrue(viewModel.isDegreeVisible());
     }
 
     @Test
@@ -78,35 +78,35 @@ public class ViewModelTests {
         viewModel.hideUnnecessaryFields();
         viewModel.setOperations(Operations.ADD);
         viewModel.hideUnnecessaryFields();
-        assertEquals(false, viewModel.isDegreeVisible());
+        assertFalse(viewModel.isDegreeVisible());
     }
 
     @Test
     public void checkCalculateButtonIsDisabledWhenInputIncorrect(){
         viewModel.setFirstRe("abc");
         viewModel.processInput();
-        assertEquals(false, viewModel.isCalculateButtonEnabled());
+        assertFalse(viewModel.isCalculateButtonEnabled());
     }
 
     @Test
     public void checkErrorMessageIsDisplayedWhenInputIncorrect(){
         viewModel.setFirstRe("abc");
         viewModel.processInput();
-        assertEquals(true, viewModel.isErrorMessageDisplayed());
+        assertTrue(viewModel.isErrorMessageDisplayed());
     }
 
     @Test
     public void checkCalculateButtonDisabledWhenInputNotFull(){
         viewModel.setFirstRe("1");
         viewModel.processInput();
-        assertEquals(false, viewModel.isCalculateButtonEnabled());
+        assertFalse(viewModel.isCalculateButtonEnabled());
     }
 
     @Test
     public void checkErrorMessageIsDisplayedWhenInputNotFull(){
         viewModel.setFirstRe("1");
         viewModel.processInput();
-        assertEquals(true, viewModel.isErrorMessageDisplayed());
+        assertTrue(viewModel.isErrorMessageDisplayed());
     }
 
     @Test
@@ -118,7 +118,7 @@ public class ViewModelTests {
 
         viewModel.processInput();
 
-        assertEquals(false, viewModel.isCalculateButtonEnabled());
+        assertFalse(viewModel.isCalculateButtonEnabled());
     }
 
     @Test
@@ -129,7 +129,7 @@ public class ViewModelTests {
         viewModel.setSecondIm("1");
 
         viewModel.processInput();
-        assertEquals(true, viewModel.isErrorMessageDisplayed());
+        assertTrue(viewModel.isErrorMessageDisplayed());
     }
 
     @Test
@@ -141,7 +141,7 @@ public class ViewModelTests {
 
         viewModel.processInput();
 
-        assertEquals(true, viewModel.isCalculateButtonEnabled());
+        assertTrue(viewModel.isCalculateButtonEnabled());
     }
 
     @Test
@@ -152,7 +152,7 @@ public class ViewModelTests {
         viewModel.setSecondIm("1");
 
         viewModel.processInput();
-        assertEquals(false, viewModel.isErrorMessageDisplayed());
+        assertFalse(viewModel.isErrorMessageDisplayed());
     }
 
     @Test
@@ -173,7 +173,7 @@ public class ViewModelTests {
         viewModel.hideUnnecessaryFields();
         viewModel.setOperations(Operations.SUBTRACT);
         viewModel.hideUnnecessaryFields();
-        assertEquals(false, viewModel.isDegreeVisible());
+        assertFalse(viewModel.isDegreeVisible());
     }
 
     @Test
@@ -194,7 +194,7 @@ public class ViewModelTests {
         viewModel.hideUnnecessaryFields();
         viewModel.setOperations(Operations.MULTIPLY);
         viewModel.hideUnnecessaryFields();
-        assertEquals(false, viewModel.isDegreeVisible());
+        assertFalse(viewModel.isDegreeVisible());
     }
 
     @Test
@@ -215,7 +215,7 @@ public class ViewModelTests {
         viewModel.hideUnnecessaryFields();
         viewModel.setOperations(Operations.DIVIDE);
         viewModel.hideUnnecessaryFields();
-        assertEquals(false, viewModel.isDegreeVisible());
+        assertFalse(viewModel.isDegreeVisible());
     }
 
     @Test
@@ -228,7 +228,7 @@ public class ViewModelTests {
 
         viewModel.processInput();
 
-        assertEquals(false, viewModel.isCalculateButtonEnabled());
+        assertFalse(viewModel.isCalculateButtonEnabled());
     }
 
     @Test
@@ -247,7 +247,7 @@ public class ViewModelTests {
         viewModel.setOperations(Operations.POW);
 
         viewModel.hideUnnecessaryFields();
-        assertEquals(false, viewModel.isSecondNumberVisible());
+        assertFalse(viewModel.isSecondNumberVisible());
     }
 
     @Test
@@ -255,7 +255,7 @@ public class ViewModelTests {
         viewModel.setOperations(Operations.POW);
         viewModel.setDegree("1.0");
         viewModel.processInput();
-        assertEquals(false, viewModel.isCalculateButtonEnabled());
+        assertFalse(viewModel.isCalculateButtonEnabled());
     }
 
     @Test
@@ -263,7 +263,7 @@ public class ViewModelTests {
         viewModel.setOperations(Operations.POW);
         viewModel.setDegree("1.0");
         viewModel.processInput();
-        assertEquals(true, viewModel.isErrorMessageDisplayed());
+        assertTrue(viewModel.isErrorMessageDisplayed());
     }
 
     @Test
@@ -271,7 +271,7 @@ public class ViewModelTests {
         viewModel.setOperations(Operations.POW);
         viewModel.setDegree("abc");
         viewModel.processInput();
-        assertEquals(false, viewModel.isCalculateButtonEnabled());
+        assertFalse(viewModel.isCalculateButtonEnabled());
     }
 
     @Test
@@ -279,7 +279,7 @@ public class ViewModelTests {
         viewModel.setOperations(Operations.POW);
         viewModel.setDegree("abc");
         viewModel.processInput();
-        assertEquals(true, viewModel.isErrorMessageDisplayed());
+        assertTrue(viewModel.isErrorMessageDisplayed());
     }
 
     @Test
@@ -287,7 +287,7 @@ public class ViewModelTests {
         viewModel.setOperations(Operations.POW);
         viewModel.setDegree("1");
         viewModel.processInput();
-        assertEquals(false, viewModel.isCalculateButtonEnabled());
+        assertFalse(viewModel.isCalculateButtonEnabled());
     }
 
     @Test
@@ -295,7 +295,7 @@ public class ViewModelTests {
         viewModel.setOperations(Operations.POW);
         viewModel.setDegree("1");
         viewModel.processInput();
-        assertEquals(true, viewModel.isErrorMessageDisplayed());
+        assertTrue(viewModel.isErrorMessageDisplayed());
     }
 
     @Test
@@ -307,7 +307,7 @@ public class ViewModelTests {
 
         viewModel.processInput();
 
-        assertEquals(false, viewModel.isCalculateButtonEnabled());
+        assertFalse(viewModel.isCalculateButtonEnabled());
     }
 
     @Test
@@ -318,7 +318,7 @@ public class ViewModelTests {
         viewModel.setDegree("");
 
         viewModel.processInput();
-        assertEquals(true, viewModel.isErrorMessageDisplayed());
+        assertTrue(viewModel.isErrorMessageDisplayed());
     }
 
     @Test
@@ -330,7 +330,7 @@ public class ViewModelTests {
 
         viewModel.processInput();
 
-        assertEquals(true, viewModel.isCalculateButtonEnabled());
+        assertTrue(viewModel.isCalculateButtonEnabled());
     }
 
     @Test
@@ -342,35 +342,35 @@ public class ViewModelTests {
 
         viewModel.processInput();
 
-        assertEquals(false, viewModel.isErrorMessageDisplayed());
+        assertFalse(viewModel.isErrorMessageDisplayed());
     }
 
     @Test
     public void checkSecondNumberTextBoxIsVisibleOnAddOperation(){
         viewModel.setOperations(Operations.ADD);
         viewModel.hideUnnecessaryFields();
-        assertEquals(true, viewModel.isSecondNumberVisible());
+        assertTrue(viewModel.isSecondNumberVisible());
     }
 
     @Test
     public void checkSecondNumberTextBoxIsVisibleOnSubtractOperation(){
         viewModel.setOperations(Operations.SUBTRACT);
         viewModel.hideUnnecessaryFields();
-        assertEquals(true, viewModel.isSecondNumberVisible());
+        assertTrue(viewModel.isSecondNumberVisible());
     }
 
     @Test
     public void checkSecondNumberTextBoxIsVisibleOnMultiplyOperation(){
         viewModel.setOperations(Operations.MULTIPLY);
         viewModel.hideUnnecessaryFields();
-        assertEquals(true, viewModel.isSecondNumberVisible());
+        assertTrue(viewModel.isSecondNumberVisible());
     }
 
     @Test
     public void checkSecondNumberTextBoxIsVisibleOnDivideOperation(){
         viewModel.setOperations(Operations.DIVIDE);
         viewModel.hideUnnecessaryFields();
-        assertEquals(true, viewModel.isSecondNumberVisible());
+        assertTrue(viewModel.isSecondNumberVisible());
     }
 
     @Test
@@ -379,7 +379,7 @@ public class ViewModelTests {
         viewModel.hideUnnecessaryFields();
         viewModel.setOperations(Operations.MULTIPLY);
         viewModel.hideUnnecessaryFields();
-        assertEquals(true, viewModel.isSecondNumberVisible());
+        assertTrue(viewModel.isSecondNumberVisible());
     }
 
     @Test
@@ -391,7 +391,7 @@ public class ViewModelTests {
 
         viewModel.calculate();
 
-        assertEquals(false, viewModel.isCalculateButtonEnabled());
+        assertFalse(viewModel.isCalculateButtonEnabled());
     }
 
     @Test
@@ -404,7 +404,7 @@ public class ViewModelTests {
 
         viewModel.calculate();
 
-        assertEquals(true, viewModel.isErrorMessageDisplayed());
+        assertTrue(viewModel.isErrorMessageDisplayed());
     }
 
     @Test
@@ -423,7 +423,7 @@ public class ViewModelTests {
         viewModel.setOperations(Operations.ROOT);
 
         viewModel.hideUnnecessaryFields();
-        assertEquals(false, viewModel.isSecondNumberVisible());
+        assertFalse(viewModel.isSecondNumberVisible());
     }
 
     @Test
@@ -431,7 +431,7 @@ public class ViewModelTests {
         viewModel.setOperations(Operations.ROOT);
 
         viewModel.hideUnnecessaryFields();
-        assertEquals(true, viewModel.isDegreeVisible());
+        assertTrue(viewModel.isDegreeVisible());
     }
 
     @Test
@@ -442,6 +442,6 @@ public class ViewModelTests {
         viewModel.setFirstIm("1");
 
         viewModel.processInput();
-        assertEquals(false, viewModel.isCalculateButtonEnabled());
+        assertFalse(viewModel.isCalculateButtonEnabled());
     }
 }
