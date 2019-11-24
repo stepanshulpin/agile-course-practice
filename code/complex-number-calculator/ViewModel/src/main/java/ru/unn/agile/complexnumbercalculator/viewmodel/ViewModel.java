@@ -245,7 +245,7 @@ public class ViewModel {
         }
     }
 
-    private void processInputForFirstGroupOperation(){
+    private boolean isCorrectInputForFirstGroupOperation(){
         if (isFirstGroupOperation(getOperations())){
             boolean matchRe1 = matchInput(getFirstRe(),patternInput);
             boolean matchIm1 = matchInput(getFirstIm(),patternInput);
@@ -260,17 +260,13 @@ public class ViewModel {
                 matchIm2 = matchInput(getSecondIm(),patternInput);
             }
             if (matchRe1 && matchIm1 && matchRe2 && matchIm2) {
-                isCalculateButtonEnabled = true;
-                isErrorMessageDisplayed = false;
-            }
-            else {
-                isCalculateButtonEnabled = false;
-                isErrorMessageDisplayed = true;
+                return true;
             }
         }
+        return false;
     }
 
-    private void processInputForSecondGroupOperation(){
+    private boolean isCorrectInputForSecondGroupOperation(){
         if (isSecondGroupOperation(getOperations())){
             boolean matchRe1 = matchInput(getFirstRe(),patternInput);
             boolean matchIm1 = matchInput(getFirstIm(),patternInput);
@@ -282,35 +278,35 @@ public class ViewModel {
                 matchDegree = matchInput(getDegree(),patternDegreePow);
             }
             if (matchRe1 && matchIm1 && matchDegree) {
-                isCalculateButtonEnabled = true;
-                isErrorMessageDisplayed = false;
-            }
-            else {
-                isCalculateButtonEnabled = false;
-                isErrorMessageDisplayed = true;
+                return true;
             }
         }
+        return false;
     }
 
-    private void processInputForConjugationOperation(){
+    private boolean isCorrectInputForConjugationOperation(){
         if (getOperations().equals(Operations.CONJUGATION)){
             boolean matchRe1 = matchInput(getFirstRe(),patternInput);
             boolean matchIm1 = matchInput(getFirstIm(),patternInput);
             if (matchRe1 && matchIm1) {
-                isCalculateButtonEnabled = true;
-                isErrorMessageDisplayed = false;
-            }
-            else {
-                isCalculateButtonEnabled = false;
-                isErrorMessageDisplayed = true;
+                return true;
             }
         }
+        return false;
     }
 
     public void processInput(){
-        processInputForFirstGroupOperation();
-        processInputForSecondGroupOperation();
-        processInputForConjugationOperation();
+        boolean validation1 = isCorrectInputForFirstGroupOperation();
+        boolean validation2 = isCorrectInputForSecondGroupOperation();
+        boolean validation3 = isCorrectInputForConjugationOperation();
+        if (validation1 || validation2 || validation3){
+            isCalculateButtonEnabled = true;
+            isErrorMessageDisplayed = false;
+        }
+        else {
+            isCalculateButtonEnabled = false;
+            isErrorMessageDisplayed = true;
+        }
         setError();
     }
 }
