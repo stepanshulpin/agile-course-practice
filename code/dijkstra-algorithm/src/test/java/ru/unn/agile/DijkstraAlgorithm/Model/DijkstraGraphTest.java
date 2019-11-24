@@ -7,32 +7,34 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class DijkstraGraphTest {
 
-    private final List<DijkstraGraph.Edge> nullEdges = null;
+    private static final List<DijkstraGraph.Edge> EMPTY_EDGES = Collections.emptyList();
 
-    private final List<DijkstraGraph.Edge> emptyEdges = Collections.emptyList();
-
-    private final List<DijkstraGraph.Edge> edgeAB =
+    private static final List<DijkstraGraph.Edge> EDGE_AB =
             Collections.singletonList(new DijkstraGraph.Edge("a", "b", 7));
+    private static final String EDGE_AB_A_TO_B_PATH = "a(0) -> b(7)";
+    private static final String EDGE_AB_A_TO_A_PATH = "a(0)";
 
-    private final List<DijkstraGraph.Edge> edgesABCD = Arrays.asList(
+    private static final List<DijkstraGraph.Edge> EDGES_ABCD = Arrays.asList(
             new DijkstraGraph.Edge("a", "b", 4),
             new DijkstraGraph.Edge("с", "d", 5)
     );
+    private static final String CAN_NOT_REACH_D_VERTEX = "Can not reach d vertex";
 
-    private final List<DijkstraGraph.Edge> edges1 = Arrays.asList(
-                 new DijkstraGraph.Edge("a", "b", 4),
-                new DijkstraGraph.Edge("a", "c", 5),
-                new DijkstraGraph.Edge("a", "d", 6),
-                new DijkstraGraph.Edge("b", "e", 8),
-                new DijkstraGraph.Edge("c", "e", 7),
-                new DijkstraGraph.Edge("d", "e", 4)
+    private static final List<DijkstraGraph.Edge> EDGES_1 = Arrays.asList(
+            new DijkstraGraph.Edge("a", "b", 4),
+            new DijkstraGraph.Edge("a", "c", 5),
+            new DijkstraGraph.Edge("a", "d", 6),
+            new DijkstraGraph.Edge("b", "e", 8),
+            new DijkstraGraph.Edge("c", "e", 7),
+            new DijkstraGraph.Edge("d", "e", 4)
     );
+    private static final String EDGES_1_A_TO_E_PATH = "a(0) -> d(6) -> e(10)";
 
-    private final List<DijkstraGraph.Edge> edges2 = Arrays.asList(
+    private static final List<DijkstraGraph.Edge> EDGES_2 = Arrays.asList(
             new DijkstraGraph.Edge("a", "b", 4),
             new DijkstraGraph.Edge("a", "c", 5),
             new DijkstraGraph.Edge("a", "d", 6),
@@ -46,50 +48,50 @@ public class DijkstraGraphTest {
             new DijkstraGraph.Edge("g", "k", 7),
             new DijkstraGraph.Edge("h", "k", 10)
     );
+    private static final String EDGES2_A_TO_K_PATH = "a(0) -> c(5) -> e(8) -> g(13) -> k(20)";
 
-    private final List<DijkstraGraph.Edge> edgeAbNegative =
+    private static final List<DijkstraGraph.Edge> EDGE_AB_NEGATIVE =
             Collections.singletonList(new DijkstraGraph.Edge("a", "b", -7));
-
 
     @Test
     public void canBuildGraph() {
-        assertNotThrows(() -> new DijkstraGraph(edgeAB));
+        assertNotThrows(() -> new DijkstraGraph(EDGE_AB));
     }
 
     @Test
-    public void canNotBuildGraphForWithNegativeWeightEdge() {
-        assertThrows(() -> new DijkstraGraph(edgeAbNegative), RuntimeException.class);
+    public void canNotBuildGraphWithNegativeWeightEdge() {
+        assertThrows(() -> new DijkstraGraph(EDGE_AB_NEGATIVE), RuntimeException.class);
     }
 
     @Test
     public void canRunDijkstraAlgorithmOnGraph() {
 
-        DijkstraGraph g = new DijkstraGraph(edgeAB);
+        DijkstraGraph g = new DijkstraGraph(EDGE_AB);
         final String start = "a";
 
         assertNotThrows(() -> g.calculate(start));
     }
 
     @Test
-    public void canNotCreateGraphFromNullEdgesArray() {
-        assertThrows(() -> new DijkstraGraph(nullEdges), RuntimeException.class);
+    public void canNotCreateGraphFromNullEdgesList() {
+        assertThrows(() -> new DijkstraGraph(null), RuntimeException.class);
     }
 
     @Test
     public void canNotCreateGraphFromEmptyEdgesArray() {
-        assertThrows(() -> new DijkstraGraph(emptyEdges), RuntimeException.class);
+        assertThrows(() -> new DijkstraGraph(EMPTY_EDGES), RuntimeException.class);
     }
 
     @Test
     public void canReturnVertexNumber() {
-        DijkstraGraph g = new DijkstraGraph(edgeAB);
+        DijkstraGraph g = new DijkstraGraph(EDGE_AB);
         assertEquals(2, g.getVertexNumber());
     }
 
     @Test
     public void canNotCalculateGraphForNonExistingVertex() {
 
-        DijkstraGraph g = new DijkstraGraph(edgeAB);
+        DijkstraGraph g = new DijkstraGraph(EDGE_AB);
         String start = "This vertex doesn't exist";
 
         Runnable calculateGraphSnippet = () ->  g.calculate(start);
@@ -99,14 +101,14 @@ public class DijkstraGraphTest {
     @Test
     public void canCalculatePathFor2ElementGraph() {
 
-        DijkstraGraph g = new DijkstraGraph(edgeAB);
+        DijkstraGraph g = new DijkstraGraph(EDGE_AB);
         String start = "a";
         String end = "b";
 
         g.calculate(start);
-        int pathFromAtoB = g.getPath(end);
+        String pathFromAtoB = g.getPath(end);
 
-        assertEquals(7, pathFromAtoB);
+        assertEquals(EDGE_AB_A_TO_B_PATH, pathFromAtoB);
     }
 
     @Test
@@ -115,30 +117,30 @@ public class DijkstraGraphTest {
         String start = "a";
         String end = "e";
 
-        DijkstraGraph g = new DijkstraGraph(edges1);
+        DijkstraGraph g = new DijkstraGraph(EDGES_1);
         g.calculate(start);
-        int pathFromAtoE = g.getPath(end);
+        String pathFromAtoE = g.getPath(end);
 
-        assertEquals(10, pathFromAtoE);
+        assertEquals(EDGES_1_A_TO_E_PATH, pathFromAtoE);
     }
 
     @Test
     public void canCalculatePathForBiggerGraph() {
 
-        DijkstraGraph g = new DijkstraGraph(edges2);
+        DijkstraGraph g = new DijkstraGraph(EDGES_2);
         String start = "a";
         String end = "k";
 
         g.calculate(start);
-        int pathFromAtoK = g.getPath(end);
+        String pathFromAtoK = g.getPath(end);
 
-        assertEquals(20, pathFromAtoK);
+        assertEquals(EDGES2_A_TO_K_PATH, pathFromAtoK);
     }
 
     @Test
     public void canNotCalculatePath2NonExistingVertex() {
 
-        DijkstraGraph g = new DijkstraGraph(edgeAB);
+        DijkstraGraph g = new DijkstraGraph(EDGE_AB);
         String start = "a";
         String end = "This vertex doesn't exist";
 
@@ -149,24 +151,24 @@ public class DijkstraGraphTest {
     @Test
     public void canCalculatePathToStartPoint() {
 
-        DijkstraGraph g = new DijkstraGraph(edgeAB);
+        DijkstraGraph g = new DijkstraGraph(EDGE_AB);
         String start = "a";
         g.calculate(start);
 
-        assertEquals(0, g.getPath(start));
+        assertEquals(EDGE_AB_A_TO_A_PATH, g.getPath(start));
     }
 
     @Test
     public void canNotCalculatePathToUnreachablePoint() {
 
-        DijkstraGraph g = new DijkstraGraph(edgesABCD);
+        DijkstraGraph g = new DijkstraGraph(EDGES_ABCD);
         String start = "a";
         String end = "d";
 
         g.calculate(start);
-        int pathFromAtoD = g.getPath(end);
+        String pathFromAtoD = g.getPath(end);
 
-        assertEquals(Integer.MAX_VALUE, pathFromAtoD);
+        assertEquals(CAN_NOT_REACH_D_VERTEX, pathFromAtoD);
     }
 
     // since JUnit4 doesn't have assertThrows  for now we can use self-developed stub

@@ -1,6 +1,10 @@
 package ru.unn.agile.DijkstraAlgorithm.Model;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.NavigableSet;
+import java.util.TreeSet;
 
 class DijkstraGraph {
 
@@ -30,6 +34,17 @@ class DijkstraGraph {
 
         Vertex(final String name) {
             this.name = name;
+        }
+
+        private String getPath() {
+            if (this == this.previous) {
+                return String.format("%s(0)", this.name);
+            } else if (this.previous == null) {
+                return String.format("Can not reach %s vertex", this.name);
+            } else {
+                return this.previous.getPath()
+                        .concat(String.format(" -> %s(%d)", this.name, this.dist));
+            }
         }
 
         public int compareTo(final Vertex other) {
@@ -131,13 +146,15 @@ class DijkstraGraph {
     }
 
     /**
-     * Returns distance to specified vertex relatively to source one
+     * Returns a string path to specified vertex relatively to source one
+     * Path format :  source vertex name-> next vertex's name(distance to next vertex)
+     * Path example : a -> b(7)
      */
-    public int getPath(final String endName) {
+    public String getPath(final String endName) {
         if (!graph.containsKey(endName)) {
             throw new RuntimeException("Graph doesn't contain start vertex \"" + endName + "\"");
         }
-        return graph.get(endName).dist;
+        return graph.get(endName).getPath();
     }
 
     /**
