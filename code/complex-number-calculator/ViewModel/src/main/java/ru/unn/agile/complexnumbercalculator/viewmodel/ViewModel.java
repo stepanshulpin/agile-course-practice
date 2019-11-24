@@ -22,6 +22,11 @@ public class ViewModel {
     private boolean isErrorMessageDisplayed;
     private boolean isSecondNumberVisible;
 
+    private String patternInput = "-?(\\d+)(\\.(\\d+))?";
+    private String patternInputDivide = "-?(\\d+)(\\.(\\d+))?";
+    private String patternDegreePow = "-?(\\d+)";
+    private String patternDegreeRoot = "(\\d+)";
+
     private int ENTER = 10;
 
     public enum Operations {
@@ -212,20 +217,8 @@ public class ViewModel {
         hideSecondNumber();
     }
 
-    private boolean matchNumberInput(String line){
+    private boolean matchInput(String line, String pattern){
         boolean result = false;
-        String pattern = "-?(\\d+)(\\.(\\d+))?";
-        Pattern p  = Pattern.compile(pattern);
-        if (!line.isEmpty()) {
-            Matcher m = p.matcher(line);
-            result = m.matches();
-        }
-        return result;
-    }
-
-    private boolean matchDegreeInput(String line){
-        boolean result = false;
-        String pattern = "-?(\\d+)";
         Pattern p  = Pattern.compile(pattern);
         if (!line.isEmpty()) {
             Matcher m = p.matcher(line);
@@ -236,8 +229,8 @@ public class ViewModel {
 
     public void processInput(){
         if (getOperations().equals(Operations.CONJUGATION)){
-            boolean matchRe1 = matchNumberInput(getFirstRe());
-            boolean matchIm1 = matchNumberInput(getFirstIm());
+            boolean matchRe1 = matchInput(getFirstRe(), patternInput);
+            boolean matchIm1 = matchInput(getFirstIm(), patternInput);
             if (matchRe1 && matchIm1) {
                 isCalculateButtonEnabled = true;
                 isErrorMessageDisplayed = false;
@@ -250,9 +243,9 @@ public class ViewModel {
             return;
         }
         if (getOperations().equals(Operations.POW) || getOperations().equals(Operations.ROOT)){
-            boolean matchRe1 = matchNumberInput(getFirstRe());
-            boolean matchIm1 = matchNumberInput(getFirstIm());
-            boolean matchDegree = matchDegreeInput(getDegree());
+            boolean matchRe1 = matchInput(getFirstRe(),patternInput);
+            boolean matchIm1 = matchInput(getFirstIm(), patternInput);
+            boolean matchDegree = matchInput(getDegree(), patternDegreePow);
             if (matchRe1 && matchIm1 && matchDegree) {
                 isCalculateButtonEnabled = true;
                 isErrorMessageDisplayed = false;
@@ -270,10 +263,10 @@ public class ViewModel {
             setError();
             return;
         }
-        boolean matchRe1 = matchNumberInput(getFirstRe());
-        boolean matchIm1 = matchNumberInput(getFirstIm());
-        boolean matchRe2 = matchNumberInput(getSecondRe());
-        boolean matchIm2 = matchNumberInput(getSecondIm());
+        boolean matchRe1 = matchInput(getFirstRe(),patternInput);
+        boolean matchIm1 = matchInput(getFirstIm(),patternInput);
+        boolean matchRe2 = matchInput(getSecondRe(),patternInput);
+        boolean matchIm2 = matchInput(getSecondIm(),patternInput);
         if (matchRe1 && matchIm1 && matchRe2 && matchIm2) {
             isCalculateButtonEnabled = true;
             isErrorMessageDisplayed = false;
