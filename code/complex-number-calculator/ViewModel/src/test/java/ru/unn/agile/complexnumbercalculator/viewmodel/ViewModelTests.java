@@ -245,7 +245,6 @@ public class ViewModelTests {
         viewModel.setOperations(Operations.POW);
 
         viewModel.hideUnnecessaryFields();
-        assertEquals(false, viewModel.isSecondReVisible());
-        assertEquals(false, viewModel.isSecondImVisible());
+        assertEquals(false, viewModel.isSecondNumberVisible());
     }
 }

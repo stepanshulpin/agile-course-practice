@@ -99,25 +99,19 @@ public class CalculatorComplexNumbers {
             degreeTextField.setVisible(true);
             degreeLabel.setVisible(true);
         }
-        if (!viewModel.isSecondReVisible())
+        if (!viewModel.isSecondNumberVisible())
         {
             secondReTextField.setVisible(false);
             secondReLabel.setVisible(false);
-        }
-        else{
-            secondReTextField.setVisible(true);
-            secondReLabel.setVisible(true);
-        }
-        if (!viewModel.isSecondImVisible())
-        {
             secondImTextField.setVisible(false);
             secondImLabel.setVisible(false);
         }
         else{
+            secondReTextField.setVisible(true);
+            secondReLabel.setVisible(true);
             secondImTextField.setVisible(true);
             secondImLabel.setVisible(true);
         }
-
     }
 
     private void backBind(){
