@@ -178,7 +178,7 @@ public class ViewModel {
                 ComplexNumber z = ComplexNumber.createAlgebraicForm(Double.parseDouble(getFirstRe()), Double.parseDouble(getFirstIm()));
                 ComplexNumber [] result_list = ComplexNumberCalculator.extractRoot(z, Integer.parseInt(getDegree()));
                 for (int i=0; i<result_list.length;i++){
-                    result += result_list[i].toString();
+                    result += result_list[i].toString() + "; ";
                 }
             }
         }
@@ -237,6 +237,12 @@ public class ViewModel {
             if (matchRe1 && matchIm1 && matchDegree) {
                 isCalculateButtonEnabled = true;
                 isErrorMessageDisplayed = false;
+                if(getOperations().equals(Operations.ROOT)){
+                    if(Integer.parseInt(getDegree()) < 0){
+                        isCalculateButtonEnabled = false;
+                        isErrorMessageDisplayed = true;
+                    }
+                }
             }
             else {
                 isCalculateButtonEnabled = false;

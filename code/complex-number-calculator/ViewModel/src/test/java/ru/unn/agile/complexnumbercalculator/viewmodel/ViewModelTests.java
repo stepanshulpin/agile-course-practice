@@ -408,14 +408,14 @@ public class ViewModelTests {
     }
 
     @Test
-    public void checkCorrectResultIsShownForRootOperationWithDegreeOne(){
+    public void checkCorrectResultIsShownForRootOperation(){
         viewModel.setOperations(Operations.ROOT);
         viewModel.setFirstRe("1");
         viewModel.setFirstIm("3");
         viewModel.setDegree("1");
 
         viewModel.calculate();
-        assertEquals("1.0 + 3.0i", viewModel.getResult());
+        assertEquals("1.0 + 3.0i; ", viewModel.getResult());
     }
 
     @Test
@@ -432,5 +432,16 @@ public class ViewModelTests {
 
         viewModel.hideUnnecessaryFields();
         assertEquals(true, viewModel.isDegreeVisible());
+    }
+
+    @Test
+    public void checkButtonIsDisabledOnNegativeDegreeForRoot(){
+        viewModel.setOperations(Operations.ROOT);
+        viewModel.setDegree("-1");
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("1");
+
+        viewModel.processInput();
+        assertEquals(false, viewModel.isCalculateButtonEnabled());
     }
 }
