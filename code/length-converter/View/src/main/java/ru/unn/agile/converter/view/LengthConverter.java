@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import ru.unn.agile.converter.model.LengthType;
 import ru.unn.agile.converter.viewmodel.ViewModel;
 
@@ -16,7 +17,7 @@ public class LengthConverter {
     @FXML
     private TextField txtInput;
     @FXML
-    public Label lblError;
+    private Label lblError;
     @FXML
     private TextField txtOutput;
     @FXML
@@ -25,6 +26,8 @@ public class LengthConverter {
     private ComboBox<LengthType> cbToType;
     @FXML
     private Button btnConvert;
+    @FXML
+    private Button btnSwap;
 
     @FXML
     void initialize() {
@@ -36,6 +39,7 @@ public class LengthConverter {
         cbToType.valueProperty().bindBidirectional(viewModel.getToType());
         btnConvert.disableProperty().bindBidirectional(viewModel.isConvertButtonDisabled());
         btnConvert.setOnAction(event -> viewModel.convert());
+        btnSwap.setOnAction(event -> viewModel.swap());
 
     }
 
