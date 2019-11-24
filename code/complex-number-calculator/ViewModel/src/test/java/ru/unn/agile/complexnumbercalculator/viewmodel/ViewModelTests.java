@@ -165,4 +165,12 @@ public class ViewModelTests {
         assertEquals("0.0 + 0.0i", viewModel.getResult());
     }
 
+    @Test
+    public void checkDegreeTextBoxIsHiddenOnSubtractOperation(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.setOperations(Operations.SUBTRACT);
+        viewModel.processFields(0);
+        assertEquals(false, viewModel.isDegreeVisible());
+    }
+
 }

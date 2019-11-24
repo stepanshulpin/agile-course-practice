@@ -162,7 +162,7 @@ public class ViewModel {
     }
 
     private void hideDegree(){
-        if(getOperations().equals(Operations.ADD)){
+        if(getOperations().equals(Operations.ADD)|| getOperations().equals(Operations.SUBTRACT)){
             isDegreeVisible = false;
         }
         if(getOperations().equals(Operations.POW)){
