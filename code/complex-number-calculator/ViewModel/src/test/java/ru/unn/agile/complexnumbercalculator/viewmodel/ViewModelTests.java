@@ -470,4 +470,25 @@ public class ViewModelTests {
         viewModel.hideUnnecessaryFields();
         assertFalse(viewModel.isDegreeVisible());
     }
+
+    @Test
+    public void checkDegreeFieldIsHiddenForConjugationAfterPow(){
+        viewModel.setOperations(Operations.POW);
+        viewModel.hideUnnecessaryFields();
+        viewModel.setOperations(Operations.CONJUGATION);
+
+        viewModel.hideUnnecessaryFields();
+        assertFalse(viewModel.isDegreeVisible());
+    }
+
+    @Test
+    public void checkResultEmptyAfterChangeOperation(){
+        viewModel.setOperations(Operations.CONJUGATION);
+        viewModel.setFirstRe("1");
+        viewModel.setFirstIm("1");
+        viewModel.calculate();
+        viewModel.setOperations(Operations.ADD);
+
+        assertEquals("", viewModel.getResult());
+    }
 }

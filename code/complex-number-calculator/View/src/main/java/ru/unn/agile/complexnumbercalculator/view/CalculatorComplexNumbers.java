@@ -118,7 +118,6 @@ public class CalculatorComplexNumbers {
         calculateButton.setEnabled(viewModel.isCalculateButtonEnabled());
         resultLabel.setText(viewModel.getResult());
         errorLabel.setText(viewModel.getError());
-
     }
 
     private void bind(){

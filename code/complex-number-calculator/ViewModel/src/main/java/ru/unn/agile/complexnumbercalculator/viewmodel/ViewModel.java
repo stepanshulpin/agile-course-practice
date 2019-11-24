@@ -108,6 +108,7 @@ public class ViewModel {
     }
 
     public void setOperations(Operations operation){
+        this.result = "";
         this.operations = operation;
     }
 
@@ -189,7 +190,7 @@ public class ViewModel {
     }
 
     private void hideDegree(){
-        if(getOperations().equals(Operations.ADD)|| getOperations().equals(Operations.ROOT) || getOperations().equals(Operations.SUBTRACT)||getOperations().equals(Operations.MULTIPLY)||getOperations().equals(Operations.DIVIDE)){
+        if(getOperations().equals(Operations.ADD)|| getOperations().equals(Operations.CONJUGATION) || getOperations().equals(Operations.SUBTRACT)||getOperations().equals(Operations.MULTIPLY)||getOperations().equals(Operations.DIVIDE)){
             isDegreeVisible = false;
         }
         if(getOperations().equals(Operations.POW)|| getOperations().equals(Operations.ROOT)){
