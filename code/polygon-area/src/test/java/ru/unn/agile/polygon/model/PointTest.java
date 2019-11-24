@@ -25,14 +25,22 @@ public class PointTest {
     }
 
     @Test
-    public void canGetPointCoordinates() {
-        assertEquals(0, pointA.getX(), delta);
-        assertEquals(0, pointA.getY(), delta);
-
+    public void canGetXCoordinate() {
         assertEquals(2, pointB.getX(), delta);
-        assertEquals(2.5, pointB.getY(), delta);
+    }
 
+    @Test
+    public void canGetYCoordinate() {
+        assertEquals(2.5, pointB.getY(), delta);
+    }
+
+    @Test
+    public void areXCoordinatesOfEqualPointsEqual() {
         assertEquals(pointA.getX(), pointC.getX(), delta);
+    }
+
+    @Test
+    public void areYCoordinatesOfEqualPointsEqual() {
         assertEquals(pointA.getY(), pointC.getY(), delta);
     }
 

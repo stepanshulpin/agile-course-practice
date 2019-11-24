@@ -71,12 +71,8 @@ public class PolygonTest {
 
     @Test
     public void canGetAreaOfIrregularPolygon() {
-        Polygon pol4 = new Polygon(pointA, pointB, pointC, pointD);
-        Polygon pol5 = new Polygon(pointA, pointB, pointC, pointD, pointE);
         Polygon pol6 = new Polygon(pointA, pointB, pointC, pointD, pointE, pointF);
 
-        assertEquals(8, pol4.getArea(), delta);
-        assertEquals(20, pol5.getArea(), delta);
         assertEquals(16, pol6.getArea(), delta);
     }
 
