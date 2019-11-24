@@ -1,4 +1,4 @@
-package ru.unn.agile.MortgageCalculator.view;
+package ru.unn.agile.mortgagecalculator.view;
 
 import org.junit.Ignore;
 import org.junit.Test;
