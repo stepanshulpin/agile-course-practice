@@ -23,7 +23,7 @@ public class ViewModel {
     private boolean isSecondNumberVisible;
 
     private String patternInput = "-?(\\d+)(\\.(\\d+))?";
-    private String patternInputSecondDivide = "(-?([1-9]+)(\\.(\\d+))?)|(-?(\\d+)(\\.[1-9]+))";
+    private String patternZero = "-?0(\\.0)?";
     private String patternDegreePow = "-?(\\d+)";
     private String patternDegreeRoot = "(\\d+)";
 
@@ -249,15 +249,15 @@ public class ViewModel {
         if (isFirstGroupOperation(getOperations())){
             boolean matchRe1 = matchInput(getFirstRe(),patternInput);
             boolean matchIm1 = matchInput(getFirstIm(),patternInput);
-            boolean matchRe2 = false;
-            boolean matchIm2 = false;
+            boolean matchRe2 = matchInput(getSecondRe(),patternInput);
+            boolean matchIm2 = matchInput(getSecondIm(),patternInput);
             if(getOperations().equals(Operations.DIVIDE)){
-                matchRe2 = matchInput(getSecondRe(),patternInputSecondDivide);
-                matchIm2 = matchInput(getSecondIm(),patternInputSecondDivide);
-            }
-            else{
-                matchRe2 = matchInput(getSecondRe(),patternInput);
-                matchIm2 = matchInput(getSecondIm(),patternInput);
+                boolean isRe2Zero =  matchInput(getSecondRe(),patternZero);
+                boolean isIm2Zero = matchInput(getSecondIm(), patternZero);
+                if (isRe2Zero && isIm2Zero){
+                    matchRe2 = false;
+                    matchIm2 = false;
+                }
             }
             if (matchRe1 && matchIm1 && matchRe2 && matchIm2) {
                 return true;
