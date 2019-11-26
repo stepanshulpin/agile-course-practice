@@ -118,14 +118,14 @@ public class QuadraticEquasionViewModelTest {
 
     @Test
     public void canParseAndCalculateWithDoubleValue() {
-        viewModel.getTxtCoeffAProperty().setValue("0.2");
+        viewModel.getTxtCoeffAProperty().setValue("-0.2");
         viewModel.getTxtCoeffBProperty().setValue("0.2");
-        viewModel.getTxtCoeffCProperty().setValue("-0.4");
+        viewModel.getTxtCoeffCProperty().setValue("0.4");
 
         viewModel.calculate();
         ComplexNumber[] solution = new ComplexNumber[2];
-        solution[0] = new ComplexNumber(1, 0);
-        solution[1] = new ComplexNumber(-2, 0);
+        solution[0] = new ComplexNumber(-1, 0);
+        solution[1] = new ComplexNumber(2, 0);
         assertEquals(
                 "X1 = " + solution[0] + "; X2 = " + solution[1],
                 viewModel.getTxtResultProperty().get()
