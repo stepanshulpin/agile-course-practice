@@ -52,22 +52,9 @@ public class DijkstraGraphTest {
     private static final List<DijkstraGraph.Edge> EDGE_AB_NEGATIVE =
             Collections.singletonList(new DijkstraGraph.Edge("a", "b", -7));
 
-    @Test
-    public void canBuildGraph() {
-        new DijkstraGraph(EDGE_AB);
-    }
-
     @Test(expected = IllegalArgumentException.class)
     public void canNotBuildGraphWithNegativeWeightEdge() {
         new DijkstraGraph(EDGE_AB_NEGATIVE);
-    }
-
-    @Test
-    public void canRunDijkstraAlgorithmOnGraph() {
-
-        DijkstraGraph g = new DijkstraGraph(EDGE_AB);
-        final String start = "a";
-        g.calculate(start);
     }
 
     @Test(expected = IllegalArgumentException.class)
