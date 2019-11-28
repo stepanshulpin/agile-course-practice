@@ -9,10 +9,6 @@ public class StringCalc {
     }
 
     public double result(final String string) {
-        return calcImpl(string);
-    }
-
-    private double calcImpl(final String string) {
         try {
             char firstSymbol = string.charAt(0);
             String[] parsedNumbers = string.split("\\+|\\-|\\*|\\/");
