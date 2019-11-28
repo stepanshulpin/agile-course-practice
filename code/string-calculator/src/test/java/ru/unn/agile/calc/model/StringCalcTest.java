@@ -8,11 +8,6 @@ import static org.junit.Assert.*;
 public class StringCalcTest {
     private final double delta = 0.00000001;
     @Test
-    public void canBeBuilt() {
-        assertTrue(true);
-    }
-
-    @Test
     public void canParseNumber1() {
         StringCalc calc = new StringCalc();
         var number = calc.result("1");
