@@ -119,6 +119,8 @@ project(":code/binary-search").name = "binary-search-Model"
 include "code/students-performance"
 project(":code/students-performance").name = "students-performance-Model"
 // Смирнов Андрей
+include "code/dijkstra-algorithm"
+project(":code/dijkstra-algorithm").name = "dijkstra-algorithm-Model"
 // Смирнов Егор
 include "code/priority-queue"
 project(":code/priority-queue").name = "priority-queue"
