@@ -1,4 +1,4 @@
-package ru.unn.agile.DijkstraAlgorithm.Model;
+package ru.unn.agile.dijkstraalgorithm.model;
 
 import org.junit.Test;
 
@@ -59,7 +59,7 @@ public class DijkstraGraphTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void canNotBuildGraphWithNegativeWeightEdge() {
-       new DijkstraGraph(EDGE_AB_NEGATIVE);
+        new DijkstraGraph(EDGE_AB_NEGATIVE);
     }
 
     @Test

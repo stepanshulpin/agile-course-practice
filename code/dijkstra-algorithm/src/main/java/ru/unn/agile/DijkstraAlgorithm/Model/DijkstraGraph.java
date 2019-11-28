@@ -1,4 +1,4 @@
-package ru.unn.agile.DijkstraAlgorithm.Model;
+package ru.unn.agile.dijkstraalgorithm.model;
 
 import java.util.List;
 import java.util.Map;
