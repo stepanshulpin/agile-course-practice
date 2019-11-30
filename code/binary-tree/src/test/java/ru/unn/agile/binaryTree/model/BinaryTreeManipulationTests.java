@@ -25,6 +25,11 @@ public class BinaryTreeManipulationTests {
 
     @Test
     public void canRemove() {
+        assertTrue(binaryTree.remove(simpleKey));
+    }
+
+    @Test
+    public void cannotFindRemoved() {
         binaryTree.remove(simpleKey);
         final String result = binaryTree.find(simpleKey);
 
@@ -32,14 +37,14 @@ public class BinaryTreeManipulationTests {
     }
 
     @Test
-    public void noErrorForFindNotExistsKey() {
+    public void cannotFindNotExistsKey() {
         final int notExistsKey = 666;
 
         assertNull(binaryTree.find(notExistsKey));
     }
 
     @Test
-    public void noErrorForRemoveNotExistsKey() {
+    public void cannotRemoveNotExistsKey() {
         final int notExistsKey = 666;
 
         assertFalse(binaryTree.remove(notExistsKey));

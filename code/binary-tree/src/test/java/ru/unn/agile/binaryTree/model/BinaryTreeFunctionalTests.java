@@ -28,9 +28,10 @@ public class BinaryTreeFunctionalTests {
         final int    secondKey  = 2;
         final String secondData = "SecondSimpleText";
 
-        assertTrue(binaryTree.remove(simpleKey));
-
+        binaryTree.remove(simpleKey);
         binaryTree.add(secondKey, secondData);
+
+        assertEquals(secondData, binaryTree.find(secondKey));
     }
 
     @Test
@@ -54,22 +55,12 @@ public class BinaryTreeFunctionalTests {
             binaryTree.add(i, Integer.toString(i));
         }
 
-        assertTrue(binaryTree.remove(middleKey));
+        binaryTree.remove(middleKey);
 
         for (int i = 0; i < size; ++i) {
             if (i != middleKey) {
                 assertEquals(Integer.toString(i), binaryTree.find(i));
-            } else {
-                assertNull(binaryTree.find(i));
             }
-        }
-    }
-
-    @Test
-    public void canFillWithRandom() {
-        for (int i = 0; i < arrSize; ++i) {
-            int randInt = randomGen.nextInt(bound);
-            binaryTree.add(randInt, Integer.toString(randInt));
         }
     }
 

@@ -20,12 +20,6 @@ public class BinaryTreeCreateTests {
     }
 
     @Test
-    public void canAdd() {
-        String simpleData = "SimpleText";
-        binaryTree.add(simpleKey, simpleData);
-    }
-
-    @Test
     public void noErrorOnEmptyTreeFind() {
         final String result = binaryTree.find(simpleKey);
 

@@ -22,13 +22,7 @@ public class BinaryTreeMultiNodeTests {
     }
 
     @Test
-    public void canAddTwoElements() {
-        binaryTree.add(firstKey, firstData);
-        binaryTree.add(secondKey, secondData);
-    }
-
-    @Test
-    public void canFindTwoElements() {
+    public void canFindAddedElements() {
         binaryTree.add(firstKey, firstData);
         binaryTree.add(secondKey, secondData);
 
