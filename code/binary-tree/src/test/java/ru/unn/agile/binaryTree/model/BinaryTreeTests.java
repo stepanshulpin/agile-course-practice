@@ -8,7 +8,7 @@ public class BinaryTreeTests {
     private BinaryTree binaryTree;
     private int     simpleKey  = 42;
     private String  simpleData = "SimpleText";
-    
+
     @Before
     public void setUp() {
         binaryTree = new BinaryTree();
@@ -88,6 +88,11 @@ public class BinaryTreeTests {
     /**
      *  getHeight tests
      */
+
+    @Test
+    public void getHeight_InEmptyTree_Return0() {
+        assertEquals(0, binaryTree.getHeight());
+    }
 
     @Test
     public void getHeight_InTreeWithOneData_Return1() {

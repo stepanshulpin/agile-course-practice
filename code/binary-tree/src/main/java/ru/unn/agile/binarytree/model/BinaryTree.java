@@ -90,7 +90,15 @@ public class BinaryTree {
         }
     }
 
+    Node getRootNode() {
+        return rootNode;
+    }
+
     public int getHeight() {
-        return rootNode.getHeight();
+        if (rootNode != null) {
+            return rootNode.getHeight();
+        } else {
+            return 0;
+        }
     }
 }
