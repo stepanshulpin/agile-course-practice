@@ -50,16 +50,22 @@ public class StringCalcTest {
         assertEquals(143.26 + 2352.549 + 25436.25, number, delta);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void cantParseSumOfNumbersAndStrings() {
         StringCalc calc = new StringCalc();
-        String message = "";
-        try {
-            var number = calc.result("143.26+2352.549+ewffwfe");
-        } catch (NumberFormatException e) {
-            message = e.getMessage();
-        }
-        assertEquals("String can't contain letters", message);
+        var number = calc.result("143.26+2352.549+ewffwfe");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void cantParseNullStrings() {
+        StringCalc calc = new StringCalc();
+        var number = calc.result(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void cantParseEmptyStrings() {
+        StringCalc calc = new StringCalc();
+        var number = calc.result("");
     }
 
     @Test
