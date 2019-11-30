@@ -17,14 +17,6 @@ public class BinaryTreeTests {
     private int arraySize;
     private int randBound;
 
-    private void prepareRandomArrays(int[] randomKeys, String[] randomData, final int in_arraySize) {
-        for (int i = 0; i < in_arraySize; ++i) {
-            int randInt = randomGen.nextInt(randBound);
-            randomKeys[i] = randInt;
-            randomData[i] = Integer.toString(randInt);
-        }
-    }
-
     @Before
     public void setUp() {
         binaryTree  = new BinaryTree();
@@ -42,50 +34,54 @@ public class BinaryTreeTests {
      * add tests
      */
 
-    @Test
-    public void add_NewData_NotNullRoot() {
+    @Test       // add_NewData_NotNullRoot
+    public void addNewDataNotNullRoot() {
         binaryTree.add(simpleKey, simpleData);
 
         assertNotEquals(null, binaryTree.getRootNode());
     }
 
-    @Test
-    public void add_SmallerDataToRoot_NotNullLeftChild() {
+    @Test       // add_SmallerDataToRoot_NotNullLeftChild
+    public void addSmallerDataToRootNotNullLeftChild() {
         final int value = 10;
-        final int smaller_value = 5;
+        final int smallerValue = 5;
         binaryTree.add(value, Integer.toString(value));
 
-        binaryTree.add(smaller_value, Integer.toString(smaller_value));
+        binaryTree.add(smallerValue, Integer.toString(smallerValue));
 
         Node leftChild = binaryTree.getRootNode().getLeftChild();
         assertNotEquals(null, leftChild);
     }
 
-    @Test
-    public void add_GreaterDataToRoot_NotNullRightChild() {
+    @Test       // add_GreaterDataToRoot_NotNullRightChild
+    public void addGreaterDataToRootNotNullRightChild() {
         final int value = 10;
-        final int greater_value = 15;
+        final int greaterValue = 15;
         binaryTree.add(value, Integer.toString(value));
 
-        binaryTree.add(greater_value, Integer.toString(greater_value));
+        binaryTree.add(greaterValue, Integer.toString(greaterValue));
 
         Node rightChild = binaryTree.getRootNode().getRightChild();
         assertNotEquals(null, rightChild);
     }
 
-    @Test
-    public void add_NewData_StoreCorrectRootValue() {
+    @Test       // add_NewData_StoreCorrectRootValue
+    public void addNewDataStoreCorrectRootValue() {
         binaryTree.add(simpleKey, simpleData);
 
         String rootValue = binaryTree.getRootNode().getValue();
         assertEquals(simpleData, rootValue);
     }
 
-    @Test
-    public void add_RandomValues_StoreAll() {
+    @Test       // add_RandomValues_StoreAll
+    public void addRandomValuesStoreAll() {
         int[]    inputKeys = new int[arraySize];
         String[] inputData = new String[arraySize];
-        prepareRandomArrays(inputKeys, inputData, arraySize);
+        for (int i = 0; i < arraySize; ++i) {
+            final int randInt = randomGen.nextInt(randBound);
+            inputKeys[i] = randInt;
+            inputData[i] = Integer.toString(randInt);
+        }
 
         for (int i = 0; i < arraySize; ++i) {
             binaryTree.add(inputKeys[i], inputData[i]);
@@ -95,12 +91,11 @@ public class BinaryTreeTests {
         for (int i = 0; i < arraySize; ++i) {
             resultData[i] = binaryTree.find(inputKeys[i]);
         }
-
         assertArrayEquals(inputData, resultData);
     }
 
-    @Test
-    public void add_AfterRootDelete_StoreData() {
+    @Test       // add_AfterRootDelete_StoreData
+    public void addAfterRootDeleteStoreData() {
         binaryTree.add(simpleKey, simpleData);
         final int    secondKey  = 2;
         final String secondData = "SecondSimpleText";
@@ -116,23 +111,23 @@ public class BinaryTreeTests {
      * Find tests
      */
 
-    @Test
-    public void find_InEmptyTree_ReturnNull() {
+    @Test       // find_InEmptyTree_ReturnNull
+    public void findInEmptyTreeReturnNull() {
         final String result = binaryTree.find(simpleKey);
 
         assertNull(result);
     }
 
-    @Test
-    public void find_InTreeWithData_ReturnData() {
+    @Test       // find_InTreeWithData_ReturnData
+    public void findInTreeWithDataReturnData() {
         binaryTree.add(simpleKey, simpleData);
         final String result = binaryTree.find(simpleKey);
 
         assertEquals(simpleData, result);
     }
 
-    @Test
-    public void find_AfterRemove_ReturnNull() {
+    @Test       // find_AfterRemove_ReturnNull
+    public void findAfterRemoveReturnNull() {
         binaryTree.add(simpleKey, simpleData);
 
         binaryTree.remove(simpleKey);
@@ -140,8 +135,9 @@ public class BinaryTreeTests {
 
         assertNull(result);
     }
-    @Test
-    public void find_NotExistingKey_ReturnNull() {
+
+    @Test       // find_NotExistingKey_ReturnNull
+    public void findNotExistingKeyReturnNull() {
         final int notExistsKey = 666;
 
         final String result = binaryTree.find(notExistsKey);
@@ -153,20 +149,20 @@ public class BinaryTreeTests {
      * Remove tests
      */
 
-    @Test
-    public void remove_NotExistsKey_ReturnFalse() {
+    @Test       // remove_NotExistsKey_ReturnFalse
+    public void removeNotExistsKeyReturnFalse() {
         assertFalse(binaryTree.remove(simpleKey));
     }
 
-    @Test
-    public void remove_ExistingKey_ReturnTrue() {
+    @Test       // remove_ExistingKey_ReturnTrue
+    public void removeExistingKeyReturnTrue() {
         binaryTree.add(simpleKey, simpleData);
 
         assertTrue(binaryTree.remove(simpleKey));
     }
 
-    @Test
-    public void remove_InTreeWithRootAndChild_RootNotNull() {
+    @Test       // remove_InTreeWithRootAndChild_RootNotNull
+    public void removeInTreeWithRootAndChildRootNotNull() {
         final int rootKey   = 1;
         final int childKey  = 2;
         binaryTree.add(rootKey, Integer.toString(rootKey));
@@ -177,8 +173,8 @@ public class BinaryTreeTests {
         assertNotEquals(null, binaryTree.getRootNode());
     }
 
-    @Test
-    public void remove_MiddleKey_RestConnected() {
+    @Test       // remove_MiddleKey_RestConnected
+    public void removeMiddleKeyRestConnected() {
         final int valueOne  = 1;
         final int valueTwo  = 2;
         final int valueTree = 3;
@@ -192,24 +188,23 @@ public class BinaryTreeTests {
         assertNotEquals(null, childOfTheFirst);
     }
 
-
     /**
      *  getHeight tests
      */
 
-    @Test
-    public void getHeight_InEmptyTree_Return0() {
+    @Test       // getHeight_InEmptyTree_ReturnZero
+    public void getHeightInEmptyTreeReturnZero() {
         assertEquals(0, binaryTree.getHeight());
     }
 
-    @Test
-    public void getHeight_InTreeWithOneData_Return1() {
+    @Test       // getHeight_InTreeWithOneData_ReturnOne
+    public void getHeightInTreeWithOneDataReturnOne() {
         binaryTree.add(simpleKey, simpleData);
         assertEquals(1, binaryTree.getHeight());
     }
 
-    @Test
-    public void getHeight_InTwoValuesRightBranch_Return2() {
+    @Test       // getHeight_InTwoValuesRightBranch_ReturnTwo
+    public void getHeightInTwoValuesRightBranchReturnTwo() {
         final int amountOfValues = 2;
         final int valueOne  = 1;
         final int valueTwo  = 2;
@@ -221,8 +216,8 @@ public class BinaryTreeTests {
         assertEquals(amountOfValues, height);
     }
 
-    @Test
-    public void getHeight_InTwoValuesLeftBranch_Return2() {
+    @Test       // getHeight_InTwoValuesLeftBranch_ReturnTwo
+    public void getHeightInTwoValuesLeftBranchReturnTwo() {
         final int amountOfValues = 2;
         final int valueOne  = 10;
         final int valueTwo  = 5;
@@ -234,8 +229,8 @@ public class BinaryTreeTests {
         assertEquals(amountOfValues, height);
     }
 
-    @Test
-    public void getHeight_InWithRightHighest_ReturnRightHeight() {
+    @Test       // getHeight_InWithRightHighest_ReturnRightHeight
+    public void getHeightInWithRightHighestReturnRightHeight() {
         final int valueRoot         = 10;
         final int valueRightFirst   = 20;
         final int valueRightSecond  = 30;
