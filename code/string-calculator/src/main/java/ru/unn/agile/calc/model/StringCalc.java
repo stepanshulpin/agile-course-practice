@@ -13,36 +13,44 @@ public class StringCalc {
     }
 
     private double calcImpl(final String string) {
-        try {
-            char firstSymbol = string.charAt(0);
-            String[] parsedNumbers = string.split("\\+|\\-|\\*|\\/");
-            String[] parsedOperators = string.split("[0-9\\.]*");
-            int index = 0;
-            char subSymbol = Operation.SUBTRACT.value().charAt(0);
-            if (firstSymbol == subSymbol) {
-                index++;
-                parsedNumbers[index] = subSymbol + parsedNumbers[index];
-                parsedOperators[0] = "";
-            }
-
-            List<Operation> operationsList = new ArrayList<Operation>();
-
-            for (String operator : parsedOperators) {
-                if (Operation.getOperationBySymbol(operator) != null) {
-                    operationsList.add(Operation.getOperationBySymbol(operator));
-                }
-            }
-
-            double[] numbersArray = new double[parsedNumbers.length - index];
-            parseNumbersFromStringToDouble(parsedNumbers, index, numbersArray);
-
-            Operation[] operationsArray = new Operation[operationsList.size()];
-            operationsList.toArray(operationsArray);
-
-            return calcKernel(numbersArray, operationsArray);
-        } catch (NumberFormatException e) {
-            throw new NumberFormatException("String can't contain letters");
+        if (string == null) {
+            throw new IllegalArgumentException("String can't be NULL");
         }
+        if (string.equals("")) {
+            throw new IllegalArgumentException("String can't be empty");
+        }
+        char firstSymbol = string.charAt(0);
+        String[] parsedNumbers;
+        String[] parsedOperators;
+        try {
+            parsedNumbers = string.split("\\+|\\-|\\*|\\/");
+            parsedOperators = string.split("[0-9\\.]*");
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("String can't contain letters");
+        }
+        int index = 0;
+        char subSymbol = Operation.SUBTRACT.value().charAt(0);
+        if (firstSymbol == subSymbol) {
+            index++;
+            parsedNumbers[index] = subSymbol + parsedNumbers[index];
+            parsedOperators[0] = "";
+        }
+
+        List<Operation> operationsList = new ArrayList<Operation>();
+
+        for (String operator : parsedOperators) {
+            if (Operation.getOperationBySymbol(operator) != null) {
+                operationsList.add(Operation.getOperationBySymbol(operator));
+            }
+        }
+
+        double[] numbersArray = new double[parsedNumbers.length - index];
+        parseNumbersFromStringToDouble(parsedNumbers, index, numbersArray);
+
+        Operation[] operationsArray = new Operation[operationsList.size()];
+        operationsList.toArray(operationsArray);
+
+        return calcKernel(numbersArray, operationsArray);
     }
 
     private double calcKernel(final double[] numbersArray, final Operation[] operationsArray) {
