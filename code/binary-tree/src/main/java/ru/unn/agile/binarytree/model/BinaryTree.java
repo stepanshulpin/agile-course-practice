@@ -12,15 +12,11 @@ public class BinaryTree {
     }
 
     public String find(final int key) {
-        if (rootNode == null) {
+        Node foundNode = findNode(rootNode, key);
+        if (foundNode == null) {
             return null;
         } else {
-            Node foundNode = findNode(rootNode, key);
-            if (foundNode == null) {
-                return null;
-            } else {
-                return foundNode.getValue();
-            }
+            return foundNode.getValue();
         }
     }
 
@@ -42,16 +38,12 @@ public class BinaryTree {
     }
 
     public boolean remove(final int key) {
-        if (rootNode == null) {
+        Node temp = findNode(rootNode, key);
+        if (temp == null) {
             return false;
         } else {
-            Node temp = findNode(rootNode, key);
-            if (temp == null) {
-                return false;
-            } else {
-                rootNode = removeRecursive(rootNode, key);
-                return true;
-            }
+            rootNode = removeRecursive(rootNode, key);
+            return true;
         }
     }
 
