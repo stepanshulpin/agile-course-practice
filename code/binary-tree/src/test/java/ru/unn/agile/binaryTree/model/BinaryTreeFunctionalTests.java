@@ -97,4 +97,22 @@ public class BinaryTreeFunctionalTests {
         }
     }
 
+    @Test
+    public void decreasingValuesWillCreateList() {
+        for (int i = arrSize; i > 0; --i) {
+            binaryTree.add(i, Integer.toString(i));
+        }
+
+        assertEquals(arrSize, binaryTree.getHeight());
+    }
+
+    @Test
+    public void increasingValuesWillCreateList() {
+        for (int i = 0; i < arrSize; ++i) {
+            binaryTree.add(i, Integer.toString(i));
+        }
+
+        assertEquals(arrSize, binaryTree.getHeight());
+    }
+
 }

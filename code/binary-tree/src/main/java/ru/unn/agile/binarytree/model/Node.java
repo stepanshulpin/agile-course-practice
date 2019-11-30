@@ -45,10 +45,15 @@ class Node {
     }
 
     int getHeight() {
-        if (rightChild == null) {
+        if (rightChild == null && leftChild == null) {
             return 1;
-        } else {
+        }
+        if (rightChild == null) {
+            return leftChild.getHeight() + 1;
+        } else if (leftChild == null) {
             return rightChild.getHeight() + 1;
+        } else {
+            return Math.max(leftChild.getHeight(), rightChild.getHeight()) + 1;
         }
     }
 
