@@ -15,9 +15,8 @@ public class BinaryTree {
         Node foundNode = findNode(rootNode, key);
         if (foundNode == null) {
             return null;
-        } else {
-            return foundNode.getValue();
         }
+        return foundNode.getValue();
     }
 
     private static Node findNode(final Node root, final int key) {

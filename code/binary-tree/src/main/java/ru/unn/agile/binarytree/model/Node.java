@@ -52,16 +52,14 @@ class Node {
             return leftChild.getHeight() + 1;
         } else if (leftChild == null) {
             return rightChild.getHeight() + 1;
-        } else {
-            return Math.max(leftChild.getHeight(), rightChild.getHeight()) + 1;
         }
+        return Math.max(leftChild.getHeight(), rightChild.getHeight()) + 1;
     }
 
     Node getMinNode() {
         if (this.getLeftChild() != null) {
             return this.getLeftChild().getMinNode();
-        } else {
-            return this;
         }
+        return this;
     }
 }
