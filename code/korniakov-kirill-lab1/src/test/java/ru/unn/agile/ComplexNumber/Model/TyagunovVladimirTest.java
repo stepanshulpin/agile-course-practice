@@ -1,8 +1,6 @@
-package ru.unn.agile.ComplexNumber.Model;
+package ru.unn.agile.ComplexNumber.model;
 
 import org.junit.Test;
-import ru.unn.agile.ComplexNumber.model.ComplexNumber;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
