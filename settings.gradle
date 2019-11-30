@@ -53,9 +53,11 @@ project(":code/korniakov-kirill-lab3/Infrastructure").name = "korniakov-kirill-l
 // Алексеев Сергей
 // Антипин Никита
 // Ахмедов Саркар
-// Бевзюк Семен
-include "code/temperature-converter"
-project(":code/temperature-converter").name = "temperature-converter-Model"
+// temperature-converter
+include "code/temperature-converter/Model"
+project(":code/temperature-converter/Model").name = "temperature-converter-Model"
+include "code/temperature-converter/View"
+project(":code/temperature-converter/View").name = "temperature-converter-View"
 // Власов Антон
 // Гречухин Никита
 include "code/fractioncalculator"
