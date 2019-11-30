@@ -13,19 +13,11 @@
       <ViewModel fx:id="viewModel" />
    </fx:define>
       <Button fx:id="calculate" layoutX="55.0" layoutY="427.0" mnemonicParsing="false" text="Calculate" />
-      <TextField fx:id="ApartmentPrice" layoutX="157.0" layoutY="82.0" />
-      <TextField fx:id="FirstPayment" layoutX="157.0" layoutY="115.0" />
-      <TextField fx:id="LoanPeriod" layoutX="157.0" layoutY="150.0" />
-      <TextField fx:id="InterestRate" layoutX="157.0" layoutY="183.0" />
-      <ChoiceBox fx:id="LoanPeriodType" layoutX="317.0" layoutY="150.0" prefWidth="150.0" >
-         <items>
-            <FXCollections fx:factory="observableArrayList">
-               <String fx:value="Year"/>
-               <String fx:value="Month"/>
-            </FXCollections>
-         </items>
-      </ChoiceBox>
-      <ChoiceBox fx:id="InterestRateType" layoutX="317.0" layoutY="183.0" prefWidth="150.0" >
+      <TextField fx:id="apartmentPrice" layoutX="157.0" layoutY="82.0" />
+      <TextField fx:id="firstPayment" layoutX="157.0" layoutY="115.0" />
+      <TextField fx:id="loanPeriod" layoutX="157.0" layoutY="150.0" />
+      <TextField fx:id="interestRate" layoutX="157.0" layoutY="183.0" />
+      <ChoiceBox fx:id="loanPeriodType" layoutX="317.0" layoutY="150.0" prefWidth="150.0" >
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Year"/>
@@ -36,9 +28,9 @@
       <Text layoutX="56.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apartment Price" />
       <Text layoutX="52.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First payment" />
       <Text layoutX="56.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Loan Period" />
-      <Text layoutX="56.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interest rate" />
+      <Text layoutX="56.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Interest rate 60 max" />
       <Text layoutX="27.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="One-time commissions" />
-      <ChoiceBox fx:id="MothlyComissionType" layoutX="317.0" layoutY="283.0" prefWidth="150.0">
+      <ChoiceBox fx:id="mothlyComissionType" layoutX="317.0" layoutY="283.0" prefWidth="150.0">
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Percent"/>
@@ -46,7 +38,7 @@
             </FXCollections>
          </items>
       </ChoiceBox>
-      <ChoiceBox fx:id="OneTimeComissionType" layoutX="317.0" layoutY="250.0" prefWidth="150.0" >
+      <ChoiceBox fx:id="oneTimeComissionType" layoutX="317.0" layoutY="250.0" prefWidth="150.0" >
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Percent"/>
@@ -54,11 +46,11 @@
             </FXCollections>
          </items>
       </ChoiceBox>
-      <TextField fx:id="MothlyComissions" layoutX="157.0" layoutY="283.0" />
-      <TextField fx:id="OneTimeComissions" layoutX="157.0" layoutY="250.0" />
+      <TextField fx:id="mothlyComissions" layoutX="157.0" layoutY="283.0" />
+      <TextField fx:id="oneTimeComissions" layoutX="157.0" layoutY="250.0" />
       <Text layoutX="32.0" layoutY="300.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly commission" />
       <Text layoutX="43.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type of payment" />
-      <ChoiceBox fx:id="TypeOfPayment" layoutX="157.0" layoutY="319.0" prefWidth="150.0" >
+      <ChoiceBox fx:id="typeOfPayment" layoutX="157.0" layoutY="319.0" prefWidth="150.0" >
          <items>
             <FXCollections fx:factory="observableArrayList">
                <String fx:value="Annuity"/>
@@ -66,7 +58,5 @@
             </FXCollections>
          </items>
       </ChoiceBox>
-      <Text layoutX="61.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start date" />
-      <DatePicker fx:id="StartDate" layoutX="157.0" layoutY="358.0" />
-      <TextArea fx:id="Result" layoutX="147.0" layoutY="408.0" prefHeight="63.0" prefWidth="194.0" promptText="Result" />
+      <TextArea fx:id="result" layoutX="147.0" layoutY="408.0" prefHeight="63.0" prefWidth="194.0" promptText="Result" />
 </AnchorPane>

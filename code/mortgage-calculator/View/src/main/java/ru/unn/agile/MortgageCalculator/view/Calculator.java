@@ -9,49 +9,45 @@ public class Calculator {
     @FXML
     private ViewModel viewModel;
     @FXML
-    private TextField ApartmentPrice;
+    private TextField apartmentPrice;
     @FXML
-    private TextField FirstPayment;
+    private TextField firstPayment;
     @FXML
-    private TextField LoanPeriod;
+    private TextField loanPeriod;
     @FXML
-    private TextField InterestRate;
+    private TextField interestRate;
     @FXML
-    private TextField MothlyComissions;
+    private TextField mothlyComissions;
     @FXML
-    private TextField OneTimeComissions;
+    private TextField oneTimeComissions;
     @FXML
-    private TextArea Result;
+    private TextArea result;
     @FXML
-    private ChoiceBox<String> LoanPeriodType;
+    private ChoiceBox<String> loanPeriodType;
     @FXML
-    private ChoiceBox<String> InterestRateType;
+    private ChoiceBox<String> mothlyComissionType;
     @FXML
-    private ChoiceBox<String> MothlyComissionType;
+    private ChoiceBox<String> oneTimeComissionType;
     @FXML
-    private ChoiceBox<String> OneTimeComissionType;
-    @FXML
-    private ChoiceBox<String> TypeOfPayment;
-    @FXML
-    private DatePicker StartDate;
+    private ChoiceBox<String> typeOfPayment;
     @FXML
     private Button calculate;
 
     @FXML
     void initialize() {
-        ApartmentPrice.textProperty().bindBidirectional(viewModel.apartmentPriceProperty());
-        FirstPayment.textProperty().bindBidirectional(viewModel.firstPaymentProperty());
-        LoanPeriod.textProperty().bindBidirectional(viewModel.loanPeriodProperty());
-        InterestRate.textProperty().bindBidirectional(viewModel.interestRateProperty());
-        MothlyComissions.textProperty().bindBidirectional(viewModel.monthlyComissionsProperty());
-        OneTimeComissions.textProperty().bindBidirectional(viewModel.oneTimeComisionsProperty());
-        Result.textProperty().bindBidirectional(viewModel.resultProperty());
-        LoanPeriodType.valueProperty().bindBidirectional(viewModel.loanPeriodTypeProperty());
-        InterestRateType.valueProperty().bindBidirectional(viewModel.interestRateTypeProperty());
-        MothlyComissionType.valueProperty().bindBidirectional(viewModel.monthlyComissionsTypeProperty());
-        OneTimeComissionType.valueProperty().bindBidirectional(viewModel.oneTimeComisionsTypeProperty());
-        TypeOfPayment.valueProperty().bindBidirectional(viewModel.typeOfPaymentProperty());
-        //StartDate.converterProperty().bindBidirectional(viewModel.startDateProperty());
+        apartmentPrice.textProperty().bindBidirectional(viewModel.apartmentPriceProperty());
+        firstPayment.textProperty().bindBidirectional(viewModel.firstPaymentProperty());
+        loanPeriod.textProperty().bindBidirectional(viewModel.loanPeriodProperty());
+        interestRate.textProperty().bindBidirectional(viewModel.interestRateProperty());
+        mothlyComissions.textProperty().bindBidirectional(viewModel.monthlyComissionsProperty());
+        oneTimeComissions.textProperty().bindBidirectional(viewModel.oneTimeComisionsProperty());
+        result.textProperty().bindBidirectional(viewModel.resultProperty());
+        loanPeriodType.valueProperty().bindBidirectional(viewModel.loanPeriodTypeProperty());
+        mothlyComissionType.valueProperty().bindBidirectional(
+                viewModel.monthlyComissionsTypeProperty());
+        oneTimeComissionType.valueProperty().bindBidirectional(
+                viewModel.oneTimeComisionsTypeProperty());
+        typeOfPayment.valueProperty().bindBidirectional(viewModel.typeOfPaymentProperty());
         calculate.setOnAction(event -> viewModel.calculate());
     }
 }
