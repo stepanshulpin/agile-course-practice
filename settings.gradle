@@ -51,6 +51,8 @@ include "code/korniakov-kirill-lab3/Infrastructure"
 project(":code/korniakov-kirill-lab3/Infrastructure").name = "korniakov-kirill-lab3-Infrastructure"
 
 // Алексеев Сергей
+include "code/gameoflife"
+project(":code/gameoflife").name = "GameOfLife-Model"
 // Антипин Никита
 // Ахмедов Саркар
 // Бевзюк Семен
