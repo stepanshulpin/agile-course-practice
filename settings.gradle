@@ -140,9 +140,13 @@ include "code/red-black-tree"
 project(":code/red-black-tree").name = "red-black-tree-Model"
 // Попков Кирилл
 // Разин Вячеслав
-// Сизова Ксения
-include "code/binary-search"
-project(":code/binary-search").name = "binary-search-Model"
+// binary-search
+include "code/binary-search/Model"
+project(":code/binary-search/Model").name = "binary-search-Model"
+include "code/binary-search/View"
+project(":code/binary-search/View").name = "binary-search-View"
+include "code/binary-search/ViewModel"
+project(":code/binary-search/ViewModel").name = "binary-search-ViewModel"
 // Students Performance
 include "code/students-performance/model"
 project(":code/students-performance/model").name = "students-performance-model"
