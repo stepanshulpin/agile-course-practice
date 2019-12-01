@@ -6,7 +6,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import ru.unn.agile.StatisticsCalculation.model.StatisticsCalculation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +23,6 @@ public class ViewModel {
     private final BooleanProperty deleteDisabled = new SimpleBooleanProperty();
     private final BooleanProperty updateDisabled = new SimpleBooleanProperty();
 
-    private final IntegerProperty focusedIndexData = new SimpleIntegerProperty();
-
     private final ObservableList<TableElement> listData = FXCollections.observableArrayList();
 
     private final List<UpdateDataChangeListener> updateDataChangedListeners = new ArrayList<>();
@@ -37,7 +34,6 @@ public class ViewModel {
         operationStatus.set(OperationStatus.WAITING.toString());
         dataStatus.set(DataStatus.WAITING.toString());
         inputDataStatus.set(InputDataStatus.WAITING.toString());
-        focusedIndexData.set(-1);
 
         BooleanBinding couldUpdateData = new BooleanBinding() {
             {
@@ -49,8 +45,6 @@ public class ViewModel {
             }
         };
         updateDisabled.bind(couldUpdateData.not());
-
-
 
         final List<StringProperty> fields = new ArrayList<StringProperty>() { {
             add(newValue);
@@ -118,8 +112,18 @@ public class ViewModel {
     public void updateTableElement() {
         inputDataStatus.set(updateInputDataStatus().toString());
         if(updateInputDataStatus() ==  InputDataStatus.READY) {
-            if(focusedIndexData.get() >= 0) {
-                listData.set(focusedIndexData.get(), new TableElement(newValue.getValue(), newProbabilitie.getValue()));
+            listData.add(new TableElement(newValue.getValue(), newProbabilitie.getValue()));
+            newValue.set("");
+            newProbabilitie.set("");
+            inputDataStatus.set(updateInputDataStatus().toString());
+        }
+    }
+
+    public void updateTableElement(int focusedIndex) {
+        inputDataStatus.set(updateInputDataStatus().toString());
+        if(updateInputDataStatus() ==  InputDataStatus.READY) {
+            if(focusedIndex >= 0) {
+                listData.set(focusedIndex, new TableElement(newValue.getValue(), newProbabilitie.getValue()));
             }
             else {
                 listData.add(new TableElement(newValue.getValue(), newProbabilitie.getValue()));
@@ -127,19 +131,22 @@ public class ViewModel {
             newValue.set("");
             newProbabilitie.set("");
             inputDataStatus.set(updateInputDataStatus().toString());
-            focusedIndexData.set(-1);
         }
     }
 
-    public void deleteTableElement() {
-
+    public void deleteTableElement(int focusedIndex) {
+        if(focusedIndex >= 0) {
+            listData.remove(focusedIndex);
+        }
+        newValue.set("");
+        newProbabilitie.set("");
+        inputDataStatus.set(updateInputDataStatus().toString());
     }
 
     public void selectElement(int focusedIndex) {
         newValue.set(listData.get(focusedIndex).getValue());
         newProbabilitie.set(listData.get(focusedIndex).getProbabilitie());
         inputDataStatus.set(updateInputDataStatus().toString());
-        focusedIndexData.set(focusedIndex);
     }
 
     private InputDataStatus updateInputDataStatus() {

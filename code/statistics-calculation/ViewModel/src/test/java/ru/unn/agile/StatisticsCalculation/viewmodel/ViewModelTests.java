@@ -130,11 +130,37 @@ public class ViewModelTests {
         viewModel.newProbabilitieProperty().set("0.1");
         viewModel.updateTableElement();
 
-        viewModel.selectElement(0);
+        viewModel.newValueProperty().set("20");
+        viewModel.newProbabilitieProperty().set("0.2");
+        viewModel.updateTableElement(0);
+
+        assertEquals("20", viewModel.getListData().get(0).getValue());
+        assertEquals("0.2", viewModel.getListData().get(0).getProbabilitie());
+    }
+    @Test
+    public void canDeleteInputData() {
+        viewModel.newValueProperty().set("10");
+        viewModel.newProbabilitieProperty().set("0.1");
+
+        viewModel.deleteTableElement(-1);
+
+        assertEquals(true, viewModel.getListData().isEmpty());
+        assertEquals("", viewModel.newValueProperty().get());
+        assertEquals("", viewModel.newProbabilitieProperty().get());
+    }
+    @Test
+    public void canDeleteSelectedElement() {
+        viewModel.newValueProperty().set("10");
+        viewModel.newProbabilitieProperty().set("0.1");
+        viewModel.updateTableElement();
+        viewModel.newValueProperty().set("20");
         viewModel.newProbabilitieProperty().set("0.2");
         viewModel.updateTableElement();
 
+        viewModel.deleteTableElement(1);
+
+        assertEquals(1, viewModel.getListData().size());
         assertEquals("10", viewModel.getListData().get(0).getValue());
-        assertEquals("0.2", viewModel.getListData().get(0).getProbabilitie());
+        assertEquals("0.1", viewModel.getListData().get(0).getProbabilitie());
     }
 }

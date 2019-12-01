@@ -50,7 +50,7 @@ public class Calculator {
         buttonUpdate.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                viewModel.updateTableElement();
+                viewModel.updateTableElement(tableViewData.getSelectionModel().getFocusedIndex());
                 tableViewData.setItems(viewModel.getListData());
                 tableViewData.getSelectionModel().clearSelection();
             }
@@ -59,7 +59,7 @@ public class Calculator {
         buttonDelete.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                viewModel.deleteTableElement();
+                viewModel.deleteTableElement(tableViewData.getSelectionModel().getFocusedIndex());
                 tableViewData.setItems(viewModel.getListData());
                 tableViewData.getSelectionModel().clearSelection();
             }
