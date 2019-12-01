@@ -1,9 +1,11 @@
 package ru.unn.agile.salarycalculator.model;
 
 import java.time.LocalDate;
+import java.time.Month;
 
 public class SalaryCalculator {
     private static final double NDS = 0.87;
+    private static final LocalDate DEFAULT_DATE = LocalDate.of(2019, Month.NOVEMBER, 1);
     private static final int WORK_HOURS_PER_DAY = 8;
     private static final int MAX_SALARY = 100000000;
     private static final int MAX_HOURS_PER_MONTH = 400;
@@ -17,8 +19,8 @@ public class SalaryCalculator {
         this.salary = 0;
         this.workedHoursPerMonth = 0;
         this.vacationDuration = 0;
-        this.countingMonth = LocalDate.now();
-        this.vacationStartDate = LocalDate.now();
+        this.countingMonth = DEFAULT_DATE;
+        this.vacationStartDate = DEFAULT_DATE;
     }
 
     public double getSalary() {
