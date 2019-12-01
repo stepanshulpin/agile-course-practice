@@ -30,7 +30,6 @@ public class Calculator {
     @FXML
     private Button buttonCalculate;
 
-    private ObservableList<TableElement> listData = FXCollections.observableArrayList();
     @FXML
     private TableView<TableElement> tableViewData;
     @FXML
@@ -40,44 +39,16 @@ public class Calculator {
 
     @FXML
     void initialize() {
-        columnValue.setCellValueFactory(
-                new PropertyValueFactory<TableElement, String>("value"));
-        columnValue.setCellFactory(TextFieldTableCell.forTableColumn());
-        columnValue.setOnEditCommit(
-                new EventHandler<TableColumn.CellEditEvent<TableElement, String>>() {
-                    @Override
-                    public void handle(TableColumn.CellEditEvent<TableElement, String> t) {
-                        ((TableElement) t.getTableView().getItems().get(
-                                t.getTablePosition().getRow())
-                        ).setValue(t.getNewValue());
-                    }
-                }
-        );
+        textfieldNewValue.textProperty().bindBidirectional(viewModel.newValueProperty());
+        textfieldNewProbabilitie.textProperty().bindBidirectional(viewModel.newProbabilitieProperty());
 
-        columnProbabilitie.setCellValueFactory(
-                new PropertyValueFactory<TableElement, String>("probabilitie"));
-        columnProbabilitie.setCellFactory(TextFieldTableCell.forTableColumn());
-        columnProbabilitie.setOnEditCommit(
-                new EventHandler<TableColumn.CellEditEvent<TableElement, String>>() {
-                    @Override
-                    public void handle(TableColumn.CellEditEvent<TableElement, String> t) {
-                        ((TableElement) t.getTableView().getItems().get(
-                                t.getTablePosition().getRow())
-                        ).setProbabilitie(t.getNewValue());
-                    }
-                }
-        );
+        columnValue.setCellValueFactory(new PropertyValueFactory<TableElement, String>("value"));
 
-        buttonAdd.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                listData.add(new TableElement(
-                        textfieldNewValue.getText(),
-                        textfieldNewProbabilitie.getText()));
-                textfieldNewValue.clear();
-                textfieldNewProbabilitie.clear();
-                tableViewData.setItems(listData);
-            }
+        columnProbabilitie.setCellValueFactory(new PropertyValueFactory<TableElement, String>("probabilitie"));
+
+        buttonAdd.setOnAction(event -> {
+            viewModel.addNewTableElement();
+            tableViewData.setItems(viewModel.getListData());
         });
 
         //listData.add(new TableElement("1", "0.2"));

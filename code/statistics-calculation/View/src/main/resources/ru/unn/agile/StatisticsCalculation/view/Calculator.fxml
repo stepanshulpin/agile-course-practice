@@ -51,8 +51,8 @@
                         <Label fx:id="labelDataStatus" layoutX="135.0" layoutY="149.0" text="${viewModel.dataStatus}" />
                         <Label fx:id="labelOperationStatus" layoutX="160.0" layoutY="289.0" text="${viewModel.operationStatus}" />
                         <Label fx:id="labelResult" layoutX="160.0" layoutY="413.0" text="${viewModel.result}" />
-                        <Button fx:id="buttonAdd" layoutX="37.0" layoutY="32.0" mnemonicParsing="false" text="Add" />
-                        <Button fx:id="buttonDelete" disable="${viewModel.deleteDisabled}" layoutX="37.0" layoutY="77.0" mnemonicParsing="false" text="Delete" />
+                        <Button fx:id="buttonAdd" defaultButton="true" disable="${viewModel.addDisabled}" layoutX="37.0" layoutY="32.0" mnemonicParsing="false" text="Add" />
+                        <Button fx:id="buttonDelete" disable="${viewModel.deleteDisabled}" layoutX="38.0" layoutY="100.0" mnemonicParsing="false" text="Delete" />
                   <TextField fx:id="textfieldNewValue" layoutX="99.0" layoutY="32.0" prefHeight="27.0" prefWidth="87.0" />
                   <TextField fx:id="textfieldNewProbabilitie" layoutX="207.0" layoutY="32.0" prefHeight="27.0" prefWidth="96.0" />
                     </children>
