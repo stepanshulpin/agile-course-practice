@@ -50,7 +50,7 @@ public class StringCalcTest {
         assertEquals(143.26 + 2352.549 + 25436.25, number, delta);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = NumberFormatException.class)
     public void cantParseSumOfNumbersAndStrings() {
         StringCalc calc = new StringCalc();
         var number = calc.result("143.26+2352.549+ewffwfe");

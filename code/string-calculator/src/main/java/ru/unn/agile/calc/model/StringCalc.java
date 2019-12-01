@@ -22,7 +22,7 @@ public class StringCalc {
             parsedNumbers = string.split("\\+|\\-|\\*|\\/");
             parsedOperators = string.split("[0-9\\.]*");
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("String can't contain letters");
+            throw new NumberFormatException("String can't contain letters");
         }
         int index = 0;
         char subSymbol = Operation.SUBTRACT.value().charAt(0);
