@@ -24,9 +24,11 @@ public class ViewModel {
     private final BooleanProperty deleteDisabled = new SimpleBooleanProperty();
     private final BooleanProperty updateDisabled = new SimpleBooleanProperty();
 
+    private final IntegerProperty focusedIndexData = new SimpleIntegerProperty();
+
     private final ObservableList<TableElement> listData = FXCollections.observableArrayList();
 
-    private final List<ValueChangeListener> valueChangedListeners = new ArrayList<>();
+    private final List<UpdateDataChangeListener> updateDataChangedListeners = new ArrayList<>();
     // FXML needs default c-tor for binding
     public ViewModel() {
         newValue.set("");
@@ -35,6 +37,7 @@ public class ViewModel {
         operationStatus.set(OperationStatus.WAITING.toString());
         dataStatus.set(DataStatus.WAITING.toString());
         inputDataStatus.set(InputDataStatus.WAITING.toString());
+        focusedIndexData.set(-1);
 
         BooleanBinding couldUpdateData = new BooleanBinding() {
             {
@@ -47,15 +50,17 @@ public class ViewModel {
         };
         updateDisabled.bind(couldUpdateData.not());
 
+
+
         final List<StringProperty> fields = new ArrayList<StringProperty>() { {
             add(newValue);
             add(newProbabilitie);
         } };
 
         for (StringProperty field : fields) {
-            final ValueChangeListener listener = new ValueChangeListener();
+            final UpdateDataChangeListener listener = new UpdateDataChangeListener();
             field.addListener(listener);
-            valueChangedListeners.add(listener);
+            updateDataChangedListeners.add(listener);
         }
     }
 
@@ -110,14 +115,31 @@ public class ViewModel {
         return updateDisabled.get();
     }
 
-    public void addNewTableElement() {
+    public void updateTableElement() {
         inputDataStatus.set(updateInputDataStatus().toString());
         if(updateInputDataStatus() ==  InputDataStatus.READY) {
-            listData.add(new TableElement(newValue.getValue(), newProbabilitie.getValue()));
+            if(focusedIndexData.get() >= 0) {
+                listData.set(focusedIndexData.get(), new TableElement(newValue.getValue(), newProbabilitie.getValue()));
+            }
+            else {
+                listData.add(new TableElement(newValue.getValue(), newProbabilitie.getValue()));
+            }
             newValue.set("");
             newProbabilitie.set("");
             inputDataStatus.set(updateInputDataStatus().toString());
+            focusedIndexData.set(-1);
         }
+    }
+
+    public void deleteTableElement() {
+
+    }
+
+    public void selectElement(int focusedIndex) {
+        newValue.set(listData.get(focusedIndex).getValue());
+        newProbabilitie.set(listData.get(focusedIndex).getProbabilitie());
+        inputDataStatus.set(updateInputDataStatus().toString());
+        focusedIndexData.set(focusedIndex);
     }
 
     private InputDataStatus updateInputDataStatus() {
@@ -142,7 +164,7 @@ public class ViewModel {
         return inputDataStatus;
     }
 
-    private class ValueChangeListener implements ChangeListener<String> {
+    private class UpdateDataChangeListener implements ChangeListener<String> {
         @Override
         public void changed(final ObservableValue<? extends String> observable,
                             final String oldValue, final String newValue) {

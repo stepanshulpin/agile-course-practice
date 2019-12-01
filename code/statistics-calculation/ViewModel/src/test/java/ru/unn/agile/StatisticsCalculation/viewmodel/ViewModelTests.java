@@ -42,7 +42,7 @@ public class ViewModelTests {
         viewModel.newValueProperty().set("1");
         viewModel.newProbabilitieProperty().set("0.2");
 
-        viewModel.addNewTableElement();
+        viewModel.updateTableElement();
 
         assertEquals("1", viewModel.getListData().get(0).getValue());
         assertEquals("0.2", viewModel.getListData().get(0).getProbabilitie());
@@ -52,7 +52,7 @@ public class ViewModelTests {
         viewModel.newValueProperty().set("1");
         viewModel.newProbabilitieProperty().set("0.2");
 
-        viewModel.addNewTableElement();
+        viewModel.updateTableElement();
 
         assertEquals(InputDataStatus.WAITING.toString(), viewModel.inputDataStatusProperty().get());
     }
@@ -61,7 +61,7 @@ public class ViewModelTests {
         viewModel.newValueProperty().set("1");
         viewModel.newProbabilitieProperty().set("1.1");
 
-        viewModel.addNewTableElement();
+        viewModel.updateTableElement();
 
         assertEquals(true, viewModel.getListData().isEmpty());
         assertEquals(InputDataStatus.BAD_FORMAT.toString(), viewModel.inputDataStatusProperty().get());
@@ -71,7 +71,7 @@ public class ViewModelTests {
         viewModel.newValueProperty().set("1");
         viewModel.newProbabilitieProperty().set("1.1");
 
-        viewModel.addNewTableElement();
+        viewModel.updateTableElement();
 
         assertEquals(InputDataStatus.BAD_FORMAT.toString(), viewModel.inputDataStatusProperty().get());
     }
@@ -123,5 +123,18 @@ public class ViewModelTests {
         viewModel.newProbabilitieProperty().set("0.4");
 
         assertEquals(InputDataStatus.READY.toString(), viewModel.getInputDataStatus());
+    }
+    @Test
+    public void canUpdateSelectedElement() {
+        viewModel.newValueProperty().set("10");
+        viewModel.newProbabilitieProperty().set("0.1");
+        viewModel.updateTableElement();
+
+        viewModel.selectElement(0);
+        viewModel.newProbabilitieProperty().set("0.2");
+        viewModel.updateTableElement();
+
+        assertEquals("10", viewModel.getListData().get(0).getValue());
+        assertEquals("0.2", viewModel.getListData().get(0).getProbabilitie());
     }
 }
