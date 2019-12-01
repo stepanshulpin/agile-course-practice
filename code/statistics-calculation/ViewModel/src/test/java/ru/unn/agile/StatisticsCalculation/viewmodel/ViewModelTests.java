@@ -21,10 +21,19 @@ public class ViewModelTests {
     }
 
     @Test
-    public void canSetDefaultValues() {
-        assertEquals("", viewModel.newValueProperty().get());
+    public void canSetDefaultValuesTextFields() {
         assertEquals("", viewModel.newProbabilitieProperty().get());
+        assertEquals("", viewModel.newValueProperty().get());
+    }
+    @Test
+    public void canSetDefaultValuesLabels() {
         assertEquals("", viewModel.resultProperty().get());
-        assertEquals(Status.WAITING.toString(), viewModel.statusProperty().get());
+        assertEquals(OperationStatus.WAITING.toString(), viewModel.operationStatusProperty().get());
+        assertEquals(DataStatus.WAITING.toString(), viewModel.dataStatusProperty().get());
+    }
+    @Test
+    public void canSetDefaultButtons() {
+        assertEquals(true, viewModel.calculationDisabledProperty().get());
+        assertEquals(true, viewModel.deleteDisabledProperty().get());
     }
 }

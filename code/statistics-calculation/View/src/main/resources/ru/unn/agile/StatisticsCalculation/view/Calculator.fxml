@@ -6,56 +6,58 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import ru.unn.agile.StatisticsCalculation.viewmodel.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.StatisticsCalculation.view.Calculator">
-   <fx:define>
-      <ViewModel fx:id="viewModel" />
-   </fx:define>
-   <children>
-      <SplitPane dividerPositions="0.3422818791946309" prefHeight="500.0" prefWidth="600.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <SplitPane dividerPositions="0.08299595141700405" orientation="VERTICAL" prefHeight="496.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                           <children>
-                              <Label alignment="CENTER" text="Data" textAlignment="JUSTIFY" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="83.0" AnchorPane.topAnchor="6.0" />
-                           </children>
-                        </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
-                           <children>
-                              <TableView fx:id="tableViewData" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
-                                <columns>
-                                  <TableColumn fx:id="columnValue" prefWidth="100.0" text="C1" />
-                                  <TableColumn fx:id="columnProbabilitie" prefWidth="100.0" text="C2" />
-                                </columns>
-                              </TableView>
-                           </children>
-                        </AnchorPane>
-                    </items>
-                  </SplitPane>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="285.0">
-               <children>
-                  <Label layoutX="35.0" layoutY="38.0" text="Data status:" />
-                  <Label layoutX="35.0" layoutY="178.0" text="Operation status:" />
-                  <ComboBox fx:id="comboBoxOperation" layoutX="34.0" layoutY="131.0" prefWidth="150.0" />
-                  <Button fx:id="buttonCalculate" layoutX="34.0" layoutY="235.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="150.0" text="Calculate" />
-                  <Label layoutX="35.0" layoutY="302.0" text="Result:" />
-                  <Label layoutX="35.0" layoutY="55.0" text="Error data:" />
-                  <Label layoutX="35.0" layoutY="195.0" text="Error operation:" />
-                  <Label layoutX="34.0" layoutY="114.0" text="Operation:" />
-                  <Label fx:id="labelDataStatus" layoutX="125.0" layoutY="38.0" text="Label" />
-                  <Label fx:id="labelErrorData" layoutX="125.0" layoutY="55.0" text="Label" />
-                  <Label fx:id="labelOperationStatus" layoutX="150.0" layoutY="178.0" text="Label" />
-                  <Label fx:id="labelErrorStatus" layoutX="150.0" layoutY="195.0" text="Label" />
-                  <Label fx:id="labelResult" layoutX="150.0" layoutY="302.0" text="Label" />
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-   </children>
+    <fx:define>
+        <ViewModel fx:id="viewModel" />
+    </fx:define>
+    <children>
+        <SplitPane dividerPositions="0.3422818791946309" prefHeight="500.0" prefWidth="600.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <SplitPane dividerPositions="0.08299595141700405" orientation="VERTICAL" prefHeight="496.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <items>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                    <children>
+                                        <Label alignment="CENTER" text="Data" textAlignment="JUSTIFY" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="83.0" AnchorPane.topAnchor="6.0" />
+                                    </children>
+                                </AnchorPane>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
+                                    <children>
+                                        <TableView fx:id="tableViewData" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
+                                            <columns>
+                                                <TableColumn fx:id="columnValue" prefWidth="100.0" sortable="false" text="A" />
+                                                <TableColumn fx:id="columnProbabilitie" prefWidth="100.0" sortable="false" text="B" />
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </AnchorPane>
+                            </items>
+                        </SplitPane>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="285.0">
+                    <children>
+                        <Label layoutX="45.0" layoutY="149.0" text="Data status:" />
+                        <Label layoutX="45.0" layoutY="289.0" text="Operation status:" />
+                        <ComboBox fx:id="comboBoxOperation" layoutX="44.0" layoutY="242.0" prefWidth="150.0" />
+                        <Button fx:id="buttonCalculate" disable="${viewModel.calculationDisabled}" layoutX="44.0" layoutY="346.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="150.0" text="Calculate" />
+                        <Label layoutX="45.0" layoutY="413.0" text="Result:" />
+                        <Label layoutX="44.0" layoutY="225.0" text="Operation:" />
+                        <Label fx:id="labelDataStatus" layoutX="135.0" layoutY="149.0" text="${viewModel.dataStatus}" />
+                        <Label fx:id="labelOperationStatus" layoutX="160.0" layoutY="289.0" text="${viewModel.operationStatus}" />
+                        <Label fx:id="labelResult" layoutX="160.0" layoutY="413.0" text="${viewModel.result}" />
+                        <Button fx:id="buttonAdd" layoutX="37.0" layoutY="32.0" mnemonicParsing="false" text="Add" />
+                        <Button fx:id="buttonDelete" disable="${viewModel.deleteDisabled}" layoutX="37.0" layoutY="77.0" mnemonicParsing="false" text="Delete" />
+                  <TextField fx:id="textfieldNewValue" layoutX="99.0" layoutY="32.0" prefHeight="27.0" prefWidth="87.0" />
+                  <TextField fx:id="textfieldNewProbabilitie" layoutX="207.0" layoutY="32.0" prefHeight="27.0" prefWidth="96.0" />
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
 </AnchorPane>
