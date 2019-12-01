@@ -1,19 +1,17 @@
 package ru.unn.agile.salarycalculator.model;
 
 import java.time.LocalDate;
-import java.time.Month;
 
 public class CalendarService {
     private int vacationDuration;
     private static final int VACATION_DEFAULT_YEAR = 1972;
-    public static final LocalDate DEFAULT_DATE = LocalDate.of(2019, Month.NOVEMBER, 1);
     private LocalDate vacationStartDate;
     private LocalDate month;
 
     public CalendarService() {
         this.vacationDuration = 0;
         this.vacationStartDate = LocalDate.of(VACATION_DEFAULT_YEAR, 1, 1);
-        this.month = DEFAULT_DATE;
+        this.month = LocalDate.now();
     }
 
     public int getVacationDuration() {
