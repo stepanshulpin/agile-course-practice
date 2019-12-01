@@ -30,7 +30,7 @@ public class ViewModelTests {
         assertEquals("", viewModel.resultProperty().get());
         assertEquals(OperationStatus.WAITING.toString(), viewModel.operationStatusProperty().get());
         assertEquals(DataStatus.WAITING.toString(), viewModel.dataStatusProperty().get());
-        assertEquals(InputDataStatus.WAITING.toString(), viewModel.imputDataStatusProperty().get());
+        assertEquals(InputDataStatus.WAITING.toString(), viewModel.inputDataStatusProperty().get());
     }
     @Test
     public void canSetDefaultButtons() {
@@ -54,7 +54,7 @@ public class ViewModelTests {
 
         viewModel.addNewTableElement();
 
-        assertEquals(InputDataStatus.WAITING.toString(), viewModel.imputDataStatusProperty().get());
+        assertEquals(InputDataStatus.WAITING.toString(), viewModel.inputDataStatusProperty().get());
     }
     @Test
     public void canNotAddTableElementWithProbabilitieMoreThen1() {
@@ -64,7 +64,7 @@ public class ViewModelTests {
         viewModel.addNewTableElement();
 
         assertEquals(true, viewModel.getListData().isEmpty());
-        assertEquals(InputDataStatus.BAD_FORMAT.toString(), viewModel.imputDataStatusProperty().get());
+        assertEquals(InputDataStatus.BAD_FORMAT.toString(), viewModel.inputDataStatusProperty().get());
     }
     @Test
     public void canNotAddTableElementWithProbabilitieMoreThen1AndStatusBad() {
@@ -73,20 +73,20 @@ public class ViewModelTests {
 
         viewModel.addNewTableElement();
 
-        assertEquals(InputDataStatus.BAD_FORMAT.toString(), viewModel.imputDataStatusProperty().get());
+        assertEquals(InputDataStatus.BAD_FORMAT.toString(), viewModel.inputDataStatusProperty().get());
     }
     @Test
     public void canPushAddButtonWithCorrectInput() {
         viewModel.newValueProperty().set("2");
         viewModel.newProbabilitieProperty().set("0.5");
 
-        assertEquals(false, viewModel.isAddDisabled());
+        assertEquals(false, viewModel.isUpdateDisabled());
     }
     @Test
     public void canNotPushAddButtonWithUncorrectInput() {
         viewModel.newValueProperty().set("2");
         viewModel.newProbabilitieProperty().set("1.5");
 
-        assertEquals(true, viewModel.isAddDisabled());
+        assertEquals(true, viewModel.isUpdateDisabled());
     }
 }

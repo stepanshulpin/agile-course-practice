@@ -18,11 +18,11 @@ public class ViewModel {
     private final StringProperty result = new SimpleStringProperty();
     private final StringProperty operationStatus = new SimpleStringProperty();
     private final StringProperty dataStatus = new SimpleStringProperty();
-    private final StringProperty imputDataStatus = new SimpleStringProperty();
+    private final StringProperty inputDataStatus = new SimpleStringProperty();
 
     private final BooleanProperty calculationDisabled = new SimpleBooleanProperty();
     private final BooleanProperty deleteDisabled = new SimpleBooleanProperty();
-    private final BooleanProperty addDisabled = new SimpleBooleanProperty();
+    private final BooleanProperty updateDisabled = new SimpleBooleanProperty();
 
     private final ObservableList<TableElement> listData = FXCollections.observableArrayList();
 
@@ -34,18 +34,18 @@ public class ViewModel {
         result.set("");
         operationStatus.set(OperationStatus.WAITING.toString());
         dataStatus.set(DataStatus.WAITING.toString());
-        imputDataStatus.set(InputDataStatus.WAITING.toString());
+        inputDataStatus.set(InputDataStatus.WAITING.toString());
 
-        BooleanBinding couldAddNewData = new BooleanBinding() {
+        BooleanBinding couldUpdateData = new BooleanBinding() {
             {
                 super.bind(newValue, newProbabilitie);
             }
             @Override
             protected boolean computeValue() {
-                return getInputDataStatus() == InputDataStatus.READY;
+                return updateInputDataStatus() == InputDataStatus.READY;
             }
         };
-        addDisabled.bind(couldAddNewData.not());
+        updateDisabled.bind(couldUpdateData.not());
 
         final List<StringProperty> fields = new ArrayList<StringProperty>() { {
             add(newValue);
@@ -84,10 +84,10 @@ public class ViewModel {
     public final String getDataStatus() {
         return dataStatus.get();
     }
-    public StringProperty imputDataStatusProperty() {
-        return imputDataStatus;
+    public StringProperty inputDataStatusProperty() {
+        return inputDataStatus;
     }
-    public final String getImputDataStatus() { return imputDataStatus.get(); }
+    public final String getInputDataStatus() { return inputDataStatus.get(); }
 
     public ObservableList<TableElement> getListData() {return listData;}
 
@@ -104,23 +104,23 @@ public class ViewModel {
         return deleteDisabled.get();
     }
     public BooleanProperty addDisabledProperty() {
-        return addDisabled;
+        return updateDisabled;
     }
-    public final boolean isAddDisabled() {
-        return addDisabled.get();
+    public final boolean isUpdateDisabled() {
+        return updateDisabled.get();
     }
 
     public void addNewTableElement() {
-        imputDataStatus.set(getInputDataStatus().toString());
-        if(getInputDataStatus() ==  InputDataStatus.READY) {
+        inputDataStatus.set(updateInputDataStatus().toString());
+        if(updateInputDataStatus() ==  InputDataStatus.READY) {
             listData.add(new TableElement(newValue.getValue(), newProbabilitie.getValue()));
             newValue.set("");
             newProbabilitie.set("");
-            imputDataStatus.set(getImputDataStatus());
+            inputDataStatus.set(updateInputDataStatus().toString());
         }
     }
 
-    private InputDataStatus getInputDataStatus() {
+    private InputDataStatus updateInputDataStatus() {
         InputDataStatus inputDataStatus = InputDataStatus.READY;
         if (newValueProperty().get().isEmpty() || newProbabilitieProperty().get().isEmpty()) {
             inputDataStatus = InputDataStatus.WAITING;
@@ -146,7 +146,7 @@ public class ViewModel {
         @Override
         public void changed(final ObservableValue<? extends String> observable,
                             final String oldValue, final String newValue) {
-            imputDataStatus.set(getInputDataStatus().toString());
+            inputDataStatus.set(updateInputDataStatus().toString());
         }
     }
 }
