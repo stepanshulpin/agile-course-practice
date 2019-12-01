@@ -80,7 +80,7 @@ public class ViewModelTests {
     }
 
     @Test
-    public void canRetainItemsFormSet() {
+    public void canRetainItemsFromSet() {
         viewModel.getTxtEnteredItemsProp().setValue("5 96 35 21");
         viewModel.addEnteredItems();
         viewModel.getTxtEnteredItemsProp().setValue("21 96 3");
