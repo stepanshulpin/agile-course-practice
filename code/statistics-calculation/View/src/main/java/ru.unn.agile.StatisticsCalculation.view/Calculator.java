@@ -24,7 +24,7 @@ public class Calculator {
     private TextField textfieldNewProbabilitie;
 
     @FXML
-    private Button buttonAdd;
+    private Button buttonUpdate;
     @FXML
     private Button buttonDelete;
     @FXML
@@ -46,7 +46,7 @@ public class Calculator {
 
         columnProbabilitie.setCellValueFactory(new PropertyValueFactory<TableElement, String>("probabilitie"));
 
-        buttonAdd.setOnAction(event -> {
+        buttonUpdate.setOnAction(event -> {
             viewModel.addNewTableElement();
             tableViewData.setItems(viewModel.getListData());
         });

@@ -103,7 +103,7 @@ public class ViewModel {
     public final boolean isDeleteDisabled() {
         return deleteDisabled.get();
     }
-    public BooleanProperty addDisabledProperty() {
+    public BooleanProperty updateDisabledProperty() {
         return updateDisabled;
     }
     public final boolean isUpdateDisabled() {

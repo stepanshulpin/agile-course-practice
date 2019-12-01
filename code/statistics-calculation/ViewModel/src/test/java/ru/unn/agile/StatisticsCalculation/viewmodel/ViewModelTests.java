@@ -89,4 +89,39 @@ public class ViewModelTests {
 
         assertEquals(true, viewModel.isUpdateDisabled());
     }
+    @Test
+    public void canSetInputDataWaitingWithEmptyProperty() {
+        viewModel.newValueProperty().set("2");
+        viewModel.newProbabilitieProperty().set("");
+
+        assertEquals(InputDataStatus.WAITING.toString(), viewModel.getInputDataStatus());
+    }
+    @Test
+    public void canNotSetInputDataWithErrorProbabilitie() {
+        viewModel.newValueProperty().set("2");
+        viewModel.newProbabilitieProperty().set("10");
+
+        assertEquals(InputDataStatus.BAD_FORMAT.toString(), viewModel.getInputDataStatus());
+    }
+    @Test
+    public void canNotSetInputData() {
+        viewModel.newValueProperty().set("hello");
+        viewModel.newProbabilitieProperty().set("!");
+
+        assertEquals(InputDataStatus.BAD_FORMAT.toString(), viewModel.getInputDataStatus());
+    }
+    @Test
+    public void canNotSetInputDataWithOneError() {
+        viewModel.newValueProperty().set("hello");
+        viewModel.newProbabilitieProperty().set("0.1");
+
+        assertEquals(InputDataStatus.BAD_FORMAT.toString(), viewModel.getInputDataStatus());
+    }
+    @Test
+    public void canSetInputDataReady() {
+        viewModel.newValueProperty().set("2");
+        viewModel.newProbabilitieProperty().set("0.4");
+
+        assertEquals(InputDataStatus.READY.toString(), viewModel.getInputDataStatus());
+    }
 }
