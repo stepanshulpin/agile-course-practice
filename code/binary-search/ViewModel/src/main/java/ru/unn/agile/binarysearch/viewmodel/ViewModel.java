@@ -126,7 +126,6 @@ enum Status {
     WAITING("Waiting for input"),
     READY("Press Search"),
     BAD_ARRAY_FORMAT("Bad array format, please enter \n array of ints, comma separated"),
-    BAD_ARRAY_SORT("Array not sorted, but array \n must be sorted"),
     BAD_ELEMENT_FORMAT("Bad element format, please enter \n the key to search");
 
     private final String name;
