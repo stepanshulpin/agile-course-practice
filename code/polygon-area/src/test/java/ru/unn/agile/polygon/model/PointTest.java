@@ -12,16 +12,12 @@ public class PointTest {
     private final Point pointB = new Point(2, 2.5);
     private final Point pointC = new Point(pointA);
 
-    @Test
+    @Test(expected = Test.None.class)
     public void canCreatePoint() {
-        try {
-            Point p1 = new Point();
-            Point p2 = new Point(3,  2.5);
-            Point p3 = new Point(-10, -0.11);
-            Point p4 = new Point(p1);
-        } catch (Exception e) {
-            fail("Should not have thrown any exception");
-        }
+        Point p1 = new Point();
+        Point p2 = new Point(3,  2.5);
+        Point p3 = new Point(-10, -0.11);
+        Point p4 = new Point(p1);
     }
 
     @Test

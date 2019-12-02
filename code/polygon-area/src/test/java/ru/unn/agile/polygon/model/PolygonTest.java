@@ -16,31 +16,19 @@ public class PolygonTest {
     private final Point pointE = new Point(0, 4);
     private final Point pointF = new Point(2, 2);
 
-    @Test
+    @Test(expected = Test.None.class)
     public void canCreateTriangle() {
-        try {
-            Polygon triangle = new Polygon(pointA, pointB, pointC);
-        } catch (Exception e) {
-            fail("Should not have thrown any exception");
-        }
+        Polygon triangle = new Polygon(pointA, pointB, pointC);
     }
 
-    @Test
+    @Test(expected = Test.None.class)
     public void canCreateSquare() {
-        try {
-            Polygon square = new Polygon(pointA, pointB, pointC, pointD);
-        } catch (Exception e) {
-            fail("Should not have thrown any exception");
-        }
+        Polygon square = new Polygon(pointA, pointB, pointC, pointD);
     }
 
-    @Test
+    @Test(expected = Test.None.class)
     public void canCreatePolygon() {
-        try {
-            Polygon polygon = new Polygon(pointA, pointB, pointC, pointD, pointE);
-        } catch (Exception e) {
-            fail("Should not have thrown any exception");
-        }
+        Polygon polygon = new Polygon(pointA, pointB, pointC, pointD, pointE);
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -74,14 +62,5 @@ public class PolygonTest {
         Polygon pol6 = new Polygon(pointA, pointB, pointC, pointD, pointE, pointF);
 
         assertEquals(16, pol6.getArea(), delta);
-    }
-
-    @Test
-    public void canRunCreateSidesMethod() {
-        try {
-            Polygon polygon = new Polygon(pointA, pointB, pointC, pointD, pointE, pointF);
-        } catch (Exception e) {
-            fail("Should not have thrown any exception");
-        }
     }
 }

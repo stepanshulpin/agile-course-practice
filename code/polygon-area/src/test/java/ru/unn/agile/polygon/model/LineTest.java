@@ -16,13 +16,9 @@ public class LineTest {
     private final Line line3 = new Line(p3, p4);
     private final Line line4 = new Line(p1, p4);
 
-    @Test
+    @Test(expected = Test.None.class)
     public void canCreateLine() {
-        try {
-            Line line = new Line(p1, p2);
-        } catch (Exception e) {
-            fail("Should not have thrown any exception");
-        }
+        Line line = new Line(p1, p2);
     }
 
     @Test
