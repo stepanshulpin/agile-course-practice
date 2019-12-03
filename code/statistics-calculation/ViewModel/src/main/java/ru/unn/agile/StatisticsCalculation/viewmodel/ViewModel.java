@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ViewModel {
@@ -159,7 +160,7 @@ public class ViewModel {
         }
         try {
             if (!newValueProperty().get().isEmpty()) {
-                Double.parseDouble(newValueProperty().get());
+                Integer.parseInt(newValueProperty().get());
             }
             if (!newProbabilitieProperty().get().isEmpty()) {
                 Double.parseDouble(newProbabilitieProperty().get());
@@ -179,8 +180,18 @@ public class ViewModel {
         if (listData.isEmpty()) {
             dataStatus = DataStatus.WAITING;
         }
-
+        Number[] values = createArrayValuesFromList();
         return dataStatus;
+    }
+
+    private Number[] createArrayValuesFromList(){
+        Number[] values = new Number[listData.size()];
+        int i = 0;
+        for (TableElement element : listData) {
+            values[i++] = Integer.parseInt(element.getValue());
+        }
+
+        return values;
     }
 
     private class UpdateDataChangeListener implements ChangeListener<String> {

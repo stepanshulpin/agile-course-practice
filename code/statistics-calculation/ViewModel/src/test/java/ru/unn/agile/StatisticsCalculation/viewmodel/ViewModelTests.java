@@ -83,6 +83,13 @@ public class ViewModelTests {
         assertEquals(false, viewModel.isUpdateDisabled());
     }
     @Test
+    public void canNotPushAddButtonWithDoubleInputInValue() {
+        viewModel.newValueProperty().set("2.1");
+        viewModel.newProbabilitieProperty().set("0.2");
+
+        assertEquals(true, viewModel.isUpdateDisabled());
+    }
+    @Test
     public void canNotPushAddButtonWithUncorrectInput() {
         viewModel.newValueProperty().set("2");
         viewModel.newProbabilitieProperty().set("1.5");
@@ -97,22 +104,29 @@ public class ViewModelTests {
         assertEquals(InputDataStatus.WAITING.toString(), viewModel.getInputDataStatus());
     }
     @Test
-    public void canNotSetInputDataWithErrorProbabilitie() {
+    public void canSetInputDataBadFormatWithErrorProbabilitie() {
         viewModel.newValueProperty().set("2");
         viewModel.newProbabilitieProperty().set("10");
 
         assertEquals(InputDataStatus.BAD_FORMAT.toString(), viewModel.getInputDataStatus());
     }
     @Test
-    public void canNotSetInputData() {
+    public void canSetInputDataBadFormatWithString() {
         viewModel.newValueProperty().set("hello");
         viewModel.newProbabilitieProperty().set("!");
 
         assertEquals(InputDataStatus.BAD_FORMAT.toString(), viewModel.getInputDataStatus());
     }
     @Test
-    public void canNotSetInputDataWithOneError() {
+    public void canSetInputDataBadFormatWithOneError() {
         viewModel.newValueProperty().set("hello");
+        viewModel.newProbabilitieProperty().set("0.1");
+
+        assertEquals(InputDataStatus.BAD_FORMAT.toString(), viewModel.getInputDataStatus());
+    }
+    @Test
+    public void canSetInputDataBadFormatWithDoubleInValue() {
+        viewModel.newValueProperty().set("1.1");
         viewModel.newProbabilitieProperty().set("0.1");
 
         assertEquals(InputDataStatus.BAD_FORMAT.toString(), viewModel.getInputDataStatus());
