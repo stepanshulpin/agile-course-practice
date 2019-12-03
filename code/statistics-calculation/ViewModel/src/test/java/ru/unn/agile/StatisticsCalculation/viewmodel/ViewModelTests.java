@@ -28,9 +28,9 @@ public class ViewModelTests {
     @Test
     public void canSetDefaultValuesLabels() {
         assertEquals("", viewModel.resultProperty().get());
-        assertEquals(OperationStatus.WAITING.toString(), viewModel.operationStatusProperty().get());
-        assertEquals(DataStatus.WAITING.toString(), viewModel.dataStatusProperty().get());
-        assertEquals(InputDataStatus.WAITING.toString(), viewModel.inputDataStatusProperty().get());
+        assertEquals(OperationStatus.WAITING_OPERATION.toString(), viewModel.getOperationStatus());
+        assertEquals(DataStatus.WAITING.toString(), viewModel.getDataStatus());
+        assertEquals(InputDataStatus.WAITING.toString(), viewModel.getInputDataStatus());
     }
     @Test
     public void canSetDefaultButtons() {
@@ -162,5 +162,31 @@ public class ViewModelTests {
         assertEquals(1, viewModel.getListData().size());
         assertEquals("10", viewModel.getListData().get(0).getValue());
         assertEquals("0.1", viewModel.getListData().get(0).getProbabilitie());
+    }
+    @Test
+    public void canHandleDeleteWithInvalidIndex() {
+        viewModel.newValueProperty().set("10");
+        viewModel.newProbabilitieProperty().set("0.1");
+        viewModel.updateTableElement();
+
+        viewModel.deleteTableElement(2);
+
+        assertEquals(1, viewModel.getListData().size());
+        assertEquals("10", viewModel.getListData().get(0).getValue());
+        assertEquals("0.1", viewModel.getListData().get(0).getProbabilitie());
+    }
+    @Test
+    public void canSetDataStatusEnterDataByDefolt(){
+        assertEquals(DataStatus.WAITING.toString(), viewModel.getDataStatus());
+    }
+    @Test
+    public void canSetDataStatusEnterDataWithEmptyData(){
+        viewModel.newValueProperty().set("10");
+        viewModel.newProbabilitieProperty().set("0.1");
+        viewModel.updateTableElement();
+
+        viewModel.deleteTableElement(0);
+
+        assertEquals(DataStatus.WAITING.toString(), viewModel.getDataStatus());
     }
 }

@@ -71,6 +71,7 @@ public class Calculator {
                 viewModel.selectElement(tableViewData.getSelectionModel().getFocusedIndex());
             }
         });
+
         //listData.add(new TableElement("1", "0.2"));
         //listData.add(new TableElement("2", "0.2"));
         //tableViewData.setItems(listData);

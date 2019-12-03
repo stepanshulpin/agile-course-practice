@@ -31,7 +31,7 @@ public class ViewModel {
         newValue.set("");
         newProbabilitie.set("");
         result.set("");
-        operationStatus.set(OperationStatus.WAITING.toString());
+        operationStatus.set(OperationStatus.WAITING_OPERATION.toString());
         dataStatus.set(DataStatus.WAITING.toString());
         inputDataStatus.set(InputDataStatus.WAITING.toString());
 
@@ -117,6 +117,7 @@ public class ViewModel {
             newProbabilitie.set("");
             inputDataStatus.set(updateInputDataStatus().toString());
         }
+        dataStatus.set(updateDataStatus().toString());
     }
 
     public void updateTableElement(int focusedIndex) {
@@ -132,15 +133,17 @@ public class ViewModel {
             newProbabilitie.set("");
             inputDataStatus.set(updateInputDataStatus().toString());
         }
+        dataStatus.set(updateDataStatus().toString());
     }
 
     public void deleteTableElement(int focusedIndex) {
-        if(focusedIndex >= 0) {
+        if(focusedIndex >= 0 && focusedIndex < listData.size()) {
             listData.remove(focusedIndex);
         }
         newValue.set("");
         newProbabilitie.set("");
         inputDataStatus.set(updateInputDataStatus().toString());
+        dataStatus.set(updateDataStatus().toString());
     }
 
     public void selectElement(int focusedIndex) {
@@ -171,6 +174,15 @@ public class ViewModel {
         return inputDataStatus;
     }
 
+    private DataStatus updateDataStatus(){
+        DataStatus dataStatus = DataStatus.READY;
+        if (listData.isEmpty()) {
+            dataStatus = DataStatus.WAITING;
+        }
+
+        return dataStatus;
+    }
+
     private class UpdateDataChangeListener implements ChangeListener<String> {
         @Override
         public void changed(final ObservableValue<? extends String> observable,
@@ -197,7 +209,7 @@ enum InputDataStatus {
 enum DataStatus {
     WAITING("Enter data"),
     READY("Data is correct"),
-    BAD_FORMAT("Data error");
+    BAD_FORMAT("Data normalization error");
 
     private final String name;
     DataStatus(final String name) {
@@ -209,9 +221,10 @@ enum DataStatus {
 }
 
 enum OperationStatus {
-    WAITING("Choose an operation"),
+    WAITING_OPERATION("Choose an operation"),
     READY("Press 'Calculate'"),
-    BAD_FORMAT("Enter parameter"),
+    WAITING_PARAMETR("Enter parametr"),
+    BAD_FORMAT("Error in parameter"),
     SUCCESS("Success");
 
     private final String name;
