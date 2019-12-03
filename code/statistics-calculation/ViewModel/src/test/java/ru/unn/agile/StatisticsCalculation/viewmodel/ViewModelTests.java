@@ -203,4 +203,49 @@ public class ViewModelTests {
 
         assertEquals(DataStatus.WAITING.toString(), viewModel.getDataStatus());
     }
+    @Test
+    public void canSetDataStatusBadFormat(){
+        viewModel.newValueProperty().set("10");
+        viewModel.newProbabilitieProperty().set("0.1");
+        viewModel.updateTableElement();
+
+        assertEquals(DataStatus.BAD_FORMAT.toString(), viewModel.getDataStatus());
+    }
+    @Test
+    public void canSetDataStatusBadFormatAfterDelete(){
+        viewModel.newValueProperty().set("10");
+        viewModel.newProbabilitieProperty().set("0.9");
+        viewModel.updateTableElement();
+        viewModel.newValueProperty().set("20");
+        viewModel.newProbabilitieProperty().set("0.1");
+        viewModel.updateTableElement();
+
+        viewModel.deleteTableElement(1);
+
+        assertEquals(DataStatus.BAD_FORMAT.toString(), viewModel.getDataStatus());
+    }
+    @Test
+    public void canSetDataStatusReady(){
+        viewModel.newValueProperty().set("10");
+        viewModel.newProbabilitieProperty().set("1");
+        viewModel.updateTableElement();
+
+        assertEquals(DataStatus.READY.toString(), viewModel.getDataStatus());
+    }
+    @Test
+    public void canSetDataStatusReadyAfterDelete(){
+        viewModel.newValueProperty().set("10");
+        viewModel.newProbabilitieProperty().set("0.8");
+        viewModel.updateTableElement();
+        viewModel.newValueProperty().set("20");
+        viewModel.newProbabilitieProperty().set("0.2");
+        viewModel.updateTableElement();
+        viewModel.newValueProperty().set("30");
+        viewModel.newProbabilitieProperty().set("0.3");
+        viewModel.updateTableElement();
+
+        viewModel.deleteTableElement(2);
+
+        assertEquals(DataStatus.READY.toString(), viewModel.getDataStatus());
+    }
 }

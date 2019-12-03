@@ -6,6 +6,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import ru.unn.agile.StatisticsCalculation.model.DiscreteRandomVariable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,6 +26,7 @@ public class ViewModel {
     private final BooleanProperty updateDisabled = new SimpleBooleanProperty();
 
     private final ObservableList<TableElement> listData = FXCollections.observableArrayList();
+    private DiscreteRandomVariable discreteRandomVariable = null;
 
     private final List<UpdateDataChangeListener> updateDataChangedListeners = new ArrayList<>();
     // FXML needs default c-tor for binding
@@ -180,7 +182,16 @@ public class ViewModel {
         if (listData.isEmpty()) {
             dataStatus = DataStatus.WAITING;
         }
-        Number[] values = createArrayValuesFromList();
+        else {
+            Number[] values = createArrayValuesFromList();
+            Double[] probabilities = createArrayProbabilitiesFromList();
+            try {
+                discreteRandomVariable = new DiscreteRandomVariable(values, probabilities);
+            } catch (IllegalArgumentException exception) {
+                dataStatus = DataStatus.BAD_FORMAT;
+            }
+        }
+
         return dataStatus;
     }
 
@@ -192,6 +203,16 @@ public class ViewModel {
         }
 
         return values;
+    }
+
+    private Double[] createArrayProbabilitiesFromList(){
+        Double[] probabilities = new Double[listData.size()];
+        int i = 0;
+        for (TableElement element : listData) {
+            probabilities[i++] = Double.parseDouble(element.getProbabilitie());
+        }
+
+        return probabilities;
     }
 
     private class UpdateDataChangeListener implements ChangeListener<String> {
