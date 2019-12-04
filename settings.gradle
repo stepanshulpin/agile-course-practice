@@ -99,8 +99,12 @@ project(":code/lab1-tdd-triangle").name = "lab1-tdd-triangle-Model"
 include "code/statistics-calculation"
 project(":code/statistics-calculation").name = "statistics-calculation-Model"
 // Митрохин Никита
-include "code/queue"
-project(":code/queue").name = "queue-Model"
+include "code/queue/Model"
+project(":code/queue/Model").name = "queue-Model"
+include "code/queue/View"
+project(":code/queue/View").name = "queue-View"
+include "code/queue/ViewModel"
+project(":code/queue/ViewModel").name = "queue-ViewModel"
 // Нестеров Александр
 // Нечесанов Владимир
 // Овчарук Олег
