@@ -44,7 +44,7 @@
                     <children>
                         <Label layoutX="40.0" layoutY="149.0" text="Data status:" />
                         <Label layoutX="45.0" layoutY="289.0" text="Operation status:" />
-                        <ComboBox fx:id="comboBoxOperation" layoutX="44.0" layoutY="242.0" prefWidth="150.0" />
+                        <ComboBox fx:id="comboBoxOperation" items="${viewModel.operations}" layoutX="44.0" layoutY="242.0" prefWidth="225.0" />
                         <Button fx:id="buttonCalculate" disable="${viewModel.calculationDisabled}" layoutX="44.0" layoutY="346.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="150.0" text="Calculate" />
                         <Label layoutX="45.0" layoutY="413.0" text="Result:" />
                         <Label layoutX="45.0" layoutY="225.0" text="Operation:" />

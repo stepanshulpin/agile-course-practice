@@ -9,7 +9,6 @@ import javafx.collections.ObservableList;
 import ru.unn.agile.StatisticsCalculation.model.DiscreteRandomVariable;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class ViewModel {
@@ -25,6 +24,10 @@ public class ViewModel {
     private final BooleanProperty deleteDisabled = new SimpleBooleanProperty();
     private final BooleanProperty updateDisabled = new SimpleBooleanProperty();
 
+    private final ObjectProperty<ObservableList<Operation>> operations =
+            new SimpleObjectProperty<>(FXCollections.observableArrayList(Operation.values()));
+    private final ObjectProperty<Operation> operation = new SimpleObjectProperty<>();
+
     private final ObservableList<TableElement> listData = FXCollections.observableArrayList();
     private DiscreteRandomVariable discreteRandomVariable = null;
 
@@ -34,9 +37,10 @@ public class ViewModel {
         newValue.set("");
         newProbabilitie.set("");
         result.set("");
-        operationStatus.set(OperationStatus.WAITING_OPERATION.toString());
+        operationStatus.set(OperationStatus.WAITING_DATA.toString());
         dataStatus.set(DataStatus.WAITING.toString());
         inputDataStatus.set(InputDataStatus.WAITING.toString());
+        operation.set(null);
 
         BooleanBinding couldUpdateData = new BooleanBinding() {
             {
@@ -48,6 +52,18 @@ public class ViewModel {
             }
         };
         updateDisabled.bind(couldUpdateData.not());
+
+        BooleanBinding couldCalculate = new BooleanBinding() {
+            {
+                super.bind(operationStatus, dataStatus);
+            }
+            @Override
+            protected boolean computeValue() {
+
+                return updateDataStatus() == DataStatus.READY;
+            }
+        };
+        calculationDisabled.bind(couldCalculate.not());
 
         final List<StringProperty> fields = new ArrayList<StringProperty>() { {
             add(newValue);
@@ -89,9 +105,13 @@ public class ViewModel {
     public StringProperty inputDataStatusProperty() {
         return inputDataStatus;
     }
-    public final String getInputDataStatus() { return inputDataStatus.get(); }
+    public final String getInputDataStatus() {
+        return inputDataStatus.get();
+    }
 
-    public ObservableList<TableElement> getListData() {return listData;}
+    public ObservableList<TableElement> getListData() {
+        return listData;
+    }
 
     public BooleanProperty calculationDisabledProperty() {
         return calculationDisabled;
@@ -111,6 +131,15 @@ public class ViewModel {
     public final boolean isUpdateDisabled() {
         return updateDisabled.get();
     }
+    public ObjectProperty<ObservableList<Operation>> operationsProperty() {
+        return operations;
+    }
+    public final ObservableList<Operation> getOperations() {
+        return operations.get();
+    }
+    public ObjectProperty<Operation> operationProperty() {
+        return operation;
+    }
 
     public void updateTableElement() {
         inputDataStatus.set(updateInputDataStatus().toString());
@@ -121,6 +150,7 @@ public class ViewModel {
             inputDataStatus.set(updateInputDataStatus().toString());
         }
         dataStatus.set(updateDataStatus().toString());
+        operationStatus.set(updateOperationStatus().toString());
     }
 
     public void updateTableElement(int focusedIndex) {
@@ -137,6 +167,7 @@ public class ViewModel {
             inputDataStatus.set(updateInputDataStatus().toString());
         }
         dataStatus.set(updateDataStatus().toString());
+        operationStatus.set(updateOperationStatus().toString());
     }
 
     public void deleteTableElement(int focusedIndex) {
@@ -147,12 +178,17 @@ public class ViewModel {
         newProbabilitie.set("");
         inputDataStatus.set(updateInputDataStatus().toString());
         dataStatus.set(updateDataStatus().toString());
+        operationStatus.set(updateOperationStatus().toString());
     }
 
     public void selectElement(int focusedIndex) {
         newValue.set(listData.get(focusedIndex).getValue());
         newProbabilitie.set(listData.get(focusedIndex).getProbabilitie());
         inputDataStatus.set(updateInputDataStatus().toString());
+    }
+
+    public void selectOperation() {
+        operationStatus.set(updateOperationStatus().toString());
     }
 
     private InputDataStatus updateInputDataStatus() {
@@ -193,6 +229,28 @@ public class ViewModel {
         }
 
         return dataStatus;
+    }
+
+    private OperationStatus updateOperationStatus(){
+        OperationStatus operationStatus = OperationStatus.SUCCESS;
+        if (updateDataStatus() != DataStatus.READY) {
+            operationStatus = OperationStatus.WAITING_DATA;
+        }
+        else{
+            if (updateDataStatus() == DataStatus.READY) {
+                operationStatus = OperationStatus.WAITING_OPERATION;
+            }
+            if (operation.get() == Operation.EXPECTED_VALUE ||
+                    operation.get() == Operation.DISPERSION) {
+                operationStatus = OperationStatus.READY;
+            }
+            if (operation.get() == Operation.CENTRAL_MOMENT ||
+                    operation.get() == Operation.RAW_MOMENT) {
+                operationStatus = OperationStatus.WAITING_PARAMETER;
+            }
+        }
+
+        return operationStatus;
     }
 
     private Number[] createArrayValuesFromList(){
@@ -254,8 +312,9 @@ enum DataStatus {
 
 enum OperationStatus {
     WAITING_OPERATION("Choose an operation"),
+    WAITING_DATA("Waiting correct data"),
     READY("Press 'Calculate'"),
-    WAITING_PARAMETR("Enter parametr"),
+    WAITING_PARAMETER("Enter parameter"),
     BAD_FORMAT("Error in parameter"),
     SUCCESS("Success");
 
@@ -267,3 +326,4 @@ enum OperationStatus {
         return name;
     }
 }
+

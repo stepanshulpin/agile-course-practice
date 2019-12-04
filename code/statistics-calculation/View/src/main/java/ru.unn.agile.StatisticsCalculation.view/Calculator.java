@@ -1,16 +1,12 @@
 package ru.unn.agile.StatisticsCalculation.view;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
-import javafx.util.Callback;
+import ru.unn.agile.StatisticsCalculation.viewmodel.Operation;
 import ru.unn.agile.StatisticsCalculation.viewmodel.TableElement;
 import ru.unn.agile.StatisticsCalculation.viewmodel.ViewModel;
 
@@ -23,6 +19,9 @@ public class Calculator {
     private TextField textfieldNewValue;
     @FXML
     private TextField textfieldNewProbabilitie;
+
+    @FXML
+    private ComboBox<Operation> comboBoxOperation;
 
     @FXML
     private Button buttonUpdate;
@@ -43,8 +42,9 @@ public class Calculator {
         textfieldNewValue.textProperty().bindBidirectional(viewModel.newValueProperty());
         textfieldNewProbabilitie.textProperty().bindBidirectional(viewModel.newProbabilitieProperty());
 
-        columnValue.setCellValueFactory(new PropertyValueFactory<TableElement, String>("value"));
+        comboBoxOperation.valueProperty().bindBidirectional(viewModel.operationProperty());
 
+        columnValue.setCellValueFactory(new PropertyValueFactory<TableElement, String>("value"));
         columnProbabilitie.setCellValueFactory(new PropertyValueFactory<TableElement, String>("probabilitie"));
 
         buttonUpdate.setOnAction(new EventHandler<ActionEvent>() {
@@ -72,8 +72,11 @@ public class Calculator {
             }
         });
 
-        //listData.add(new TableElement("1", "0.2"));
-        //listData.add(new TableElement("2", "0.2"));
-        //tableViewData.setItems(listData);
+        comboBoxOperation.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(final ActionEvent event) {
+                viewModel.selectOperation();
+            }
+        });
     }
 }
