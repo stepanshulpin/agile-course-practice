@@ -92,12 +92,6 @@ project(":code/complex-number-calculator").name = "complex-number-calculator-mod
 // Лапин Артем
 include "code/quadratic-equasion"
 project(":code/quadratic-equasion").name = "quadratic-equasion-Model"
-
-include "code/mortgage-calculator/View"
-project(":code/mortgage-calculator/View").name = "mortgage-calculator-View"
-
-include "code/mortgage-calculator/ViewModel"
-project(":code/mortgage-calculator/ViewModel").name = "mortgage-calculator-ViewModel"
 // Лахтачев Ярослав
 // Миронова Анна
 include "code/statistics-calculation"
@@ -138,6 +132,12 @@ project(":code/datastructure-set").name = "datastructure-set"
 // Шульпин Степан
 include "code/mortgage-calculator/Model"
 project(":code/mortgage-calculator/Model").name = "mortgage-calculator-Model"
+
+include "code/mortgage-calculator/View"
+project(":code/mortgage-calculator/View").name = "mortgage-calculator-View"
+
+include "code/mortgage-calculator/ViewModel"
+project(":code/mortgage-calculator/ViewModel").name = "mortgage-calculator-ViewModel"
 // Шумихин Сергей
 // Юферев Кирилл
 include "code/stack"

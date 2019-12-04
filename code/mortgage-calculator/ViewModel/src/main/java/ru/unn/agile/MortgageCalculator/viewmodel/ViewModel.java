@@ -43,27 +43,51 @@ public class ViewModel {
         result.set("");
 
         apartmentPrice.addListener((observable, oldValue, newValue) -> {
-            onInput(newValue);
+            if (checkInput()) {
+                result.set("");
+            } else {
+                result.set("Incorrect input");
+            }
         });
 
         firstPayment.addListener((observable, oldValue, newValue) -> {
-            onInput(newValue);
+            if (checkInput()) {
+                result.set("");
+            } else {
+                result.set("Incorrect input");
+            }
         });
 
         loanPeriod.addListener((observable, oldValue, newValue) -> {
-            onIntInput(newValue);
+            if (checkInput()) {
+                result.set("");
+            } else {
+                result.set("Incorrect input");
+            }
         });
 
         interestRate.addListener((observable, oldValue, newValue) -> {
-            onInput(newValue);
+            if (checkInput()) {
+                result.set("");
+            } else {
+                result.set("Incorrect input");
+            }
         });
 
         oneTimeComisions.addListener((observable, oldValue, newValue) -> {
-            onInput(newValue);
+            if (checkInput()) {
+                result.set("");
+            } else {
+                result.set("Incorrect input");
+            }
         });
 
         monthlyComissions.addListener((observable, oldValue, newValue) -> {
-            onInput(newValue);
+            if (checkInput()) {
+                result.set("");
+            } else {
+                result.set("Incorrect input");
+            }
         });
 
         loanPeriodType.addListener((observable, oldValue, newValue) -> {
@@ -84,40 +108,34 @@ public class ViewModel {
 
     }
 
-    private void onInput(final String newValue) {
-        if (newValue == null) {
-            result.set("");
-            return;
+    private boolean checkDoubleInput(final String newValue) {
+        if (newValue.equals("")) {
+            return false;
         }
         try {
             double val = Double.parseDouble(newValue);
             if (val < 0) {
-                result.set("Incorrect input");
-                return;
+                return false;
             }
         } catch (Exception e) {
-            result.set("Incorrect input");
-            return;
+            return false;
         }
-        result.set("");
+        return true;
     }
 
-    private void onIntInput(final String newValue) {
-        if (newValue == null) {
-            result.set("");
-            return;
+    private boolean checkIntInput(final String newValue) {
+        if (newValue.equals("")) {
+            return false;
         }
         try {
             int val = Integer.parseInt(newValue);
             if (val < 0) {
-                result.set("Incorrect input");
-                return;
+                return false;
             }
         } catch (Exception e) {
-            result.set("Incorrect input");
-            return;
+            return false;
         }
-        result.set("");
+        return true;
     }
 
     private void onTypeChange() {
@@ -213,60 +231,53 @@ public class ViewModel {
     }
 
     private boolean checkInput() {
-        boolean res = true;
-        if (apartmentPrice.get().equals("")) {
-            res = false;
+        if (!checkDoubleInput(apartmentPrice.get())) {
+            return false;
         }
-        if (interestRate.get().equals("")) {
-            res = false;
+        if (!checkDoubleInput(interestRate.get())) {
+            return false;
         }
-        if (loanPeriod.get().equals("")) {
-            res = false;
+        if (!checkIntInput(loanPeriod.get())) {
+            return false;
         }
         if (loanPeriodType.get().equals("")) {
-            res = false;
+            return false;
         }
-        if (firstPayment.get().equals("")) {
-            res = false;
+        if (!checkDoubleInput(firstPayment.get())) {
+            return false;
         }
-        if (oneTimeComisions.get().equals("")) {
-            res = false;
+        if (!checkDoubleInput(oneTimeComisions.get())) {
+            return false;
         }
-        if (monthlyComissions.get().equals("")) {
-            res = false;
+        if (!checkDoubleInput(monthlyComissions.get())) {
+            return false;
         }
         if (monthlyComissionsType.get().equals("")) {
-            res = false;
+            return false;
         }
         if (oneTimeComisionsType.get().equals("")) {
-            res = false;
+            return false;
         }
-        if (typeOfPayment.get().equals("")) {
-            res = false;
-        }
-        return res;
+        return !typeOfPayment.get().equals("");
     }
 
-    public void calculate() {
-        if (result.get().equals("Incorrect input")) {
-            return;
-        }
-
-        if (!checkInput()) {
-            result.set("Incorrect input");
-            return;
-        }
+    private MortgageParameters createMortgageParametersCalculator() {
+        MortgageParameters mortgageParameters = null;
 
         double amount = Double.parseDouble(apartmentPrice.get());
         double percent = Double.parseDouble(interestRate.get());
         int period = Integer.parseInt(loanPeriod.get());
+
         PeriodType periodType = loanPeriodType.get().equals("Year")
                 ? PeriodType.YEAR : PeriodType.MONTH;
+
         double initialPayment = Double.parseDouble((firstPayment.get()));
         double fixedComissionAmount = Double.parseDouble((oneTimeComisions.get()));
         double monthlyComissionAmount = Double.parseDouble((monthlyComissions.get()));
+
         Commission fixedCommission = null;
         MonthlyCommission monthlyCommission = null;
+
         try {
             fixedCommission = oneTimeComisionsType.get().equals("Percent")
                     ? new PercentCommission(fixedComissionAmount)
@@ -274,29 +285,28 @@ public class ViewModel {
             monthlyCommission = monthlyComissionsType.get().equals("Percent")
                     ? new PercentAmountMonthlyCommission(monthlyComissionAmount)
                     : new FixedMonthlyCommission(monthlyComissionAmount);
-        } catch (Exception e) {
-            result.set("Incorrect input");
-            return;
-        }
 
-        MortgageParameters mortgageParameters = null;
-        try {
-            mortgageParameters = new MortgageParameters(
-                    amount, percent, periodType, period);
-        } catch (Exception e) {
-            result.set("Incorrect input");
-            return;
-        }
-
-        try {
+            mortgageParameters = new MortgageParameters(amount, percent, periodType, period);
             mortgageParameters.setInitialPayment(initialPayment);
         } catch (Exception e) {
             result.set("Incorrect input");
+            return null;
+        }
+        mortgageParameters.setCommission(fixedCommission);
+        mortgageParameters.setMonthlyCommission(monthlyCommission);
+        return mortgageParameters;
+    }
+
+    public void calculate() {
+        if (!checkInput()) {
+            result.set("Incorrect input");
             return;
         }
 
-        mortgageParameters.setCommission(fixedCommission);
-        mortgageParameters.setMonthlyCommission(monthlyCommission);
+        MortgageParameters mortgageParameters = createMortgageParametersCalculator();
+        if (mortgageParameters == null) {
+            return;
+        }
 
         MortgageCalculator calculator;
         if (typeOfPayment.get().equals("Annuity")) {
@@ -307,10 +317,10 @@ public class ViewModel {
 
         MortgageReport report = calculator.calculate(mortgageParameters);
         MortgageMonthReport monthReport = report.getMonthReport(1);
-        String result = "Final amount " + report.getFinalAmount() + "; "
+        String resultString = "Final amount " + report.getFinalAmount() + "; "
                 + "Overpayment " + report.getOverpayment()
                 + "; With month payment " + monthReport.getPayment() + " for "
                 + "" + mortgageParameters.getMonthsPeriod() + " months.";
-        this.result.set(result);
+        this.result.set(resultString);
     }
 }

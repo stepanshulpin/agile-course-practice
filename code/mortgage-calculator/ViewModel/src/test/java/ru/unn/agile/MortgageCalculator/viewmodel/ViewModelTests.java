@@ -61,7 +61,7 @@ public class ViewModelTests {
     @Test
     public void canClearErrorAfterValidInput() {
         viewModel.apartmentPriceProperty().set("ee");
-        viewModel.apartmentPriceProperty().set("3.3");
+        setCorrectInputs();
         assertEquals("", viewModel.getResult());
     }
 
