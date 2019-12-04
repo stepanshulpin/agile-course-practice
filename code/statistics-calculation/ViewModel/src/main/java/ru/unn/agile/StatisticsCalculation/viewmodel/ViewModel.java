@@ -143,7 +143,7 @@ public class ViewModel {
 
     public void updateTableElement() {
         inputDataStatus.set(updateInputDataStatus().toString());
-        if(updateInputDataStatus() ==  InputDataStatus.READY) {
+        if (updateInputDataStatus() ==  InputDataStatus.READY) {
             listData.add(new TableElement(newValue.getValue(), newProbabilitie.getValue()));
             newValue.set("");
             newProbabilitie.set("");
@@ -153,13 +153,13 @@ public class ViewModel {
         operationStatus.set(updateOperationStatus().toString());
     }
 
-    public void updateTableElement(int focusedIndex) {
+    public void updateTableElement(final int focusedIndex) {
         inputDataStatus.set(updateInputDataStatus().toString());
-        if(updateInputDataStatus() ==  InputDataStatus.READY) {
-            if(focusedIndex >= 0) {
-                listData.set(focusedIndex, new TableElement(newValue.getValue(), newProbabilitie.getValue()));
-            }
-            else {
+        if (updateInputDataStatus() ==  InputDataStatus.READY) {
+            if (focusedIndex >= 0) {
+                listData.set(focusedIndex,
+                        new TableElement(newValue.getValue(), newProbabilitie.getValue()));
+            } else {
                 listData.add(new TableElement(newValue.getValue(), newProbabilitie.getValue()));
             }
             newValue.set("");
@@ -170,8 +170,8 @@ public class ViewModel {
         operationStatus.set(updateOperationStatus().toString());
     }
 
-    public void deleteTableElement(int focusedIndex) {
-        if(focusedIndex >= 0 && focusedIndex < listData.size()) {
+    public void deleteTableElement(final int focusedIndex) {
+        if (focusedIndex >= 0 && focusedIndex < listData.size()) {
             listData.remove(focusedIndex);
         }
         newValue.set("");
@@ -181,7 +181,7 @@ public class ViewModel {
         operationStatus.set(updateOperationStatus().toString());
     }
 
-    public void selectElement(int focusedIndex) {
+    public void selectElement(final int focusedIndex) {
         newValue.set(listData.get(focusedIndex).getValue());
         newProbabilitie.set(listData.get(focusedIndex).getProbabilitie());
         inputDataStatus.set(updateInputDataStatus().toString());
@@ -202,7 +202,7 @@ public class ViewModel {
             }
             if (!newProbabilitieProperty().get().isEmpty()) {
                 Double.parseDouble(newProbabilitieProperty().get());
-                if (Double.parseDouble(newProbabilitieProperty().get()) > 1.0){
+                if (Double.parseDouble(newProbabilitieProperty().get()) > 1.0) {
                     inputDataStatus = InputDataStatus.BAD_FORMAT;
                 }
             }
@@ -213,12 +213,11 @@ public class ViewModel {
         return inputDataStatus;
     }
 
-    private DataStatus updateDataStatus(){
+    private DataStatus updateDataStatus() {
         DataStatus dataStatus = DataStatus.READY;
         if (listData.isEmpty()) {
             dataStatus = DataStatus.WAITING;
-        }
-        else {
+        } else {
             Number[] values = createArrayValuesFromList();
             Double[] probabilities = createArrayProbabilitiesFromList();
             try {
@@ -231,21 +230,20 @@ public class ViewModel {
         return dataStatus;
     }
 
-    private OperationStatus updateOperationStatus(){
+    private OperationStatus updateOperationStatus() {
         OperationStatus operationStatus = OperationStatus.SUCCESS;
         if (updateDataStatus() != DataStatus.READY) {
             operationStatus = OperationStatus.WAITING_DATA;
-        }
-        else{
+        } else {
             if (updateDataStatus() == DataStatus.READY) {
                 operationStatus = OperationStatus.WAITING_OPERATION;
             }
-            if (operation.get() == Operation.EXPECTED_VALUE ||
-                    operation.get() == Operation.DISPERSION) {
+            if (operation.get() == Operation.EXPECTED_VALUE
+                    || operation.get() == Operation.DISPERSION) {
                 operationStatus = OperationStatus.READY;
             }
-            if (operation.get() == Operation.CENTRAL_MOMENT ||
-                    operation.get() == Operation.RAW_MOMENT) {
+            if (operation.get() == Operation.CENTRAL_MOMENT
+                    || operation.get() == Operation.RAW_MOMENT) {
                 operationStatus = OperationStatus.WAITING_PARAMETER;
             }
         }
@@ -253,7 +251,7 @@ public class ViewModel {
         return operationStatus;
     }
 
-    private Number[] createArrayValuesFromList(){
+    private Number[] createArrayValuesFromList() {
         Number[] values = new Number[listData.size()];
         int i = 0;
         for (TableElement element : listData) {
@@ -263,7 +261,7 @@ public class ViewModel {
         return values;
     }
 
-    private Double[] createArrayProbabilitiesFromList(){
+    private Double[] createArrayProbabilitiesFromList() {
         Double[] probabilities = new Double[listData.size()];
         int i = 0;
         for (TableElement element : listData) {

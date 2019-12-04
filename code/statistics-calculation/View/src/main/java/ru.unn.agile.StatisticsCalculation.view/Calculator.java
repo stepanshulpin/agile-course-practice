@@ -40,16 +40,19 @@ public class Calculator {
     @FXML
     void initialize() {
         textfieldNewValue.textProperty().bindBidirectional(viewModel.newValueProperty());
-        textfieldNewProbabilitie.textProperty().bindBidirectional(viewModel.newProbabilitieProperty());
+        textfieldNewProbabilitie.textProperty().bindBidirectional(
+                viewModel.newProbabilitieProperty());
 
         comboBoxOperation.valueProperty().bindBidirectional(viewModel.operationProperty());
 
-        columnValue.setCellValueFactory(new PropertyValueFactory<TableElement, String>("value"));
-        columnProbabilitie.setCellValueFactory(new PropertyValueFactory<TableElement, String>("probabilitie"));
+        columnValue.setCellValueFactory(
+                new PropertyValueFactory<TableElement, String>("value"));
+        columnProbabilitie.setCellValueFactory(
+                new PropertyValueFactory<TableElement, String>("probabilitie"));
 
         buttonUpdate.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {
+            public void handle(final ActionEvent event) {
                 viewModel.updateTableElement(tableViewData.getSelectionModel().getFocusedIndex());
                 tableViewData.setItems(viewModel.getListData());
                 tableViewData.getSelectionModel().clearSelection();
@@ -58,16 +61,16 @@ public class Calculator {
 
         buttonDelete.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent event) {
+            public void handle(final ActionEvent event) {
                 viewModel.deleteTableElement(tableViewData.getSelectionModel().getFocusedIndex());
                 tableViewData.setItems(viewModel.getListData());
                 tableViewData.getSelectionModel().clearSelection();
             }
         });
 
-        tableViewData.setOnMousePressed(new EventHandler<MouseEvent>(){
+        tableViewData.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
-            public void handle(MouseEvent event){
+            public void handle(final MouseEvent event) {
                 viewModel.selectElement(tableViewData.getSelectionModel().getFocusedIndex());
             }
         });

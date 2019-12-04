@@ -63,7 +63,8 @@ public class ViewModelTests {
         viewModel.updateTableElement();
 
         assertEquals(true, viewModel.getListData().isEmpty());
-        assertEquals(InputDataStatus.BAD_FORMAT.toString(), viewModel.inputDataStatusProperty().get());
+        assertEquals(InputDataStatus.BAD_FORMAT.toString(),
+                viewModel.inputDataStatusProperty().get());
     }
     @Test
     public void canNotAddTableElementWithProbabilitieMoreThen1AndStatusBad() {
@@ -72,7 +73,8 @@ public class ViewModelTests {
 
         viewModel.updateTableElement();
 
-        assertEquals(InputDataStatus.BAD_FORMAT.toString(), viewModel.inputDataStatusProperty().get());
+        assertEquals(InputDataStatus.BAD_FORMAT.toString(),
+                viewModel.inputDataStatusProperty().get());
     }
     @Test
     public void canPushAddButtonWithCorrectInput() {
@@ -189,11 +191,11 @@ public class ViewModelTests {
         assertEquals("0.1", viewModel.getListData().get(0).getProbabilitie());
     }
     @Test
-    public void canSetDataStatusEnterDataByDefolt(){
+    public void canSetDataStatusEnterDataByDefolt() {
         assertEquals(DataStatus.WAITING.toString(), viewModel.getDataStatus());
     }
     @Test
-    public void canSetDataStatusEnterDataWithEmptyData(){
+    public void canSetDataStatusEnterDataWithEmptyData() {
         viewModel.newValueProperty().set("10");
         viewModel.newProbabilitieProperty().set("0.1");
         viewModel.updateTableElement();
@@ -203,7 +205,7 @@ public class ViewModelTests {
         assertEquals(DataStatus.WAITING.toString(), viewModel.getDataStatus());
     }
     @Test
-    public void canSetDataStatusBadFormat(){
+    public void canSetDataStatusBadFormat() {
         viewModel.newValueProperty().set("10");
         viewModel.newProbabilitieProperty().set("0.1");
         viewModel.updateTableElement();
@@ -211,7 +213,7 @@ public class ViewModelTests {
         assertEquals(DataStatus.BAD_FORMAT.toString(), viewModel.getDataStatus());
     }
     @Test
-    public void canSetDataStatusBadFormatAfterDelete(){
+    public void canSetDataStatusBadFormatAfterDelete() {
         viewModel.newValueProperty().set("10");
         viewModel.newProbabilitieProperty().set("0.9");
         viewModel.updateTableElement();
@@ -224,7 +226,7 @@ public class ViewModelTests {
         assertEquals(DataStatus.BAD_FORMAT.toString(), viewModel.getDataStatus());
     }
     @Test
-    public void canSetDataStatusReady(){
+    public void canSetDataStatusReady() {
         viewModel.newValueProperty().set("10");
         viewModel.newProbabilitieProperty().set("1");
         viewModel.updateTableElement();
@@ -232,7 +234,7 @@ public class ViewModelTests {
         assertEquals(DataStatus.READY.toString(), viewModel.getDataStatus());
     }
     @Test
-    public void canSetDataStatusReadyAfterDelete(){
+    public void canSetDataStatusReadyAfterDelete() {
         viewModel.newValueProperty().set("10");
         viewModel.newProbabilitieProperty().set("0.8");
         viewModel.updateTableElement();
@@ -248,11 +250,11 @@ public class ViewModelTests {
         assertEquals(DataStatus.READY.toString(), viewModel.getDataStatus());
     }
     @Test
-    public void canSetOperationStatusWaitingDataByDefolt(){
+    public void canSetOperationStatusWaitingDataByDefolt() {
         assertEquals(OperationStatus.WAITING_DATA.toString(), viewModel.getOperationStatus());
     }
     @Test
-    public void canSetOperationStatusWaitingOperationAfterEnteringCorrectData(){
+    public void canSetOperationStatusWaitingOperationAfterEnteringCorrectData() {
         viewModel.newValueProperty().set("10");
         viewModel.newProbabilitieProperty().set("1.0");
         viewModel.updateTableElement();
@@ -260,7 +262,7 @@ public class ViewModelTests {
         assertEquals(OperationStatus.WAITING_OPERATION.toString(), viewModel.getOperationStatus());
     }
     @Test
-    public void canSetOperationStatusReadyAfterChoosingDispersion(){
+    public void canSetOperationStatusReadyAfterChoosingDispersion() {
         viewModel.newValueProperty().set("10");
         viewModel.newProbabilitieProperty().set("1.0");
         viewModel.updateTableElement();
@@ -271,7 +273,7 @@ public class ViewModelTests {
         assertEquals(OperationStatus.READY.toString(), viewModel.getOperationStatus());
     }
     @Test
-    public void canSetOperationStatusReadyAfterChoosingExpectedValue(){
+    public void canSetOperationStatusReadyAfterChoosingExpectedValue() {
         viewModel.newValueProperty().set("10");
         viewModel.newProbabilitieProperty().set("1.0");
         viewModel.updateTableElement();
@@ -282,7 +284,7 @@ public class ViewModelTests {
         assertEquals(OperationStatus.READY.toString(), viewModel.getOperationStatus());
     }
     @Test
-    public void canSetOperationStatusWaitingDataAfterDelete(){
+    public void canSetOperationStatusWaitingDataAfterDelete() {
         viewModel.newValueProperty().set("10");
         viewModel.newProbabilitieProperty().set("0.2");
         viewModel.updateTableElement();
@@ -295,7 +297,7 @@ public class ViewModelTests {
         assertEquals(OperationStatus.WAITING_DATA.toString(), viewModel.getOperationStatus());
     }
     @Test
-    public void canSetOperationStatusWaitingDataAfterAdd(){
+    public void canSetOperationStatusWaitingDataAfterAdd() {
         viewModel.newValueProperty().set("10");
         viewModel.newProbabilitieProperty().set("1.0");
         viewModel.updateTableElement();
@@ -307,7 +309,7 @@ public class ViewModelTests {
         assertEquals(OperationStatus.WAITING_DATA.toString(), viewModel.getOperationStatus());
     }
     @Test
-    public void canSetOperationStatusWaitingDataAfterUpdate(){
+    public void canSetOperationStatusWaitingDataAfterUpdate() {
         viewModel.newValueProperty().set("10");
         viewModel.newProbabilitieProperty().set("1.0");
         viewModel.updateTableElement();
@@ -319,7 +321,7 @@ public class ViewModelTests {
         assertEquals(OperationStatus.WAITING_DATA.toString(), viewModel.getOperationStatus());
     }
     @Test
-    public void canSetOperationStatusWaitingDataAfterSetOperationAndUpdate(){
+    public void canSetOperationStatusWaitingDataAfterSetOperationAndUpdate() {
         viewModel.newValueProperty().set("10");
         viewModel.newProbabilitieProperty().set("1.0");
         viewModel.updateTableElement();
@@ -333,7 +335,7 @@ public class ViewModelTests {
         assertEquals(OperationStatus.WAITING_DATA.toString(), viewModel.getOperationStatus());
     }
     @Test
-    public void canSetOperationStatusWaitingParametrAfterChoosingRawMoment(){
+    public void canSetOperationStatusWaitingParametrAfterChoosingRawMoment() {
         viewModel.newValueProperty().set("10");
         viewModel.newProbabilitieProperty().set("1.0");
         viewModel.updateTableElement();
@@ -344,7 +346,7 @@ public class ViewModelTests {
         assertEquals(OperationStatus.WAITING_PARAMETER.toString(), viewModel.getOperationStatus());
     }
     @Test
-    public void canSetOperationStatusWaitingParameterAfterChoosingCentralMoment(){
+    public void canSetOperationStatusWaitingParameterAfterChoosingCentralMoment() {
         viewModel.newValueProperty().set("10");
         viewModel.newProbabilitieProperty().set("1.0");
         viewModel.updateTableElement();

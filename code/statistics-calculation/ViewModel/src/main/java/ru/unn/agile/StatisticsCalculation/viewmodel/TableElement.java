@@ -4,7 +4,7 @@ public class TableElement {
     private String value;
     private String probabilitie;
 
-    public TableElement(String value, String probabilitie) {
+    public TableElement(final String value, final String probabilitie) {
         this.value = value;
         this.probabilitie = probabilitie;
     }
@@ -13,7 +13,7 @@ public class TableElement {
         return value;
     }
 
-    public void setValue(String value) {
+    public void setValue(final String value) {
         this.value = value;
     }
 
@@ -21,7 +21,7 @@ public class TableElement {
         return probabilitie;
     }
 
-    public void setProbabilitie(String probabilitie) {
+    public void setProbabilitie(final String probabilitie) {
         this.probabilitie = probabilitie;
     }
 }
