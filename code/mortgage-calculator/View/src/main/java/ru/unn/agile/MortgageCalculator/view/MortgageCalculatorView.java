@@ -2,12 +2,12 @@ package ru.unn.agile.mortgagecalculator.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import ru.unn.agile.mortgagecalculator.viewmodel.ViewModel;
+import ru.unn.agile.mortgagecalculator.viewmodel.MortgageCalculatorViewModel;
 
-public class Calculator {
+public class MortgageCalculatorView {
 
     @FXML
-    private ViewModel viewModel;
+    private MortgageCalculatorViewModel viewModel;
     @FXML
     private TextField apartmentPrice;
     @FXML

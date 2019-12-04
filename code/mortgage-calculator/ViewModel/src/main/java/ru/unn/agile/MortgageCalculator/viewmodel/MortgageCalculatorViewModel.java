@@ -16,7 +16,7 @@ import ru.unn.agile.mortgagecalculator.model.report.MortgageMonthReport;
 import ru.unn.agile.mortgagecalculator.model.report.MortgageReport;
 
 
-public class ViewModel {
+public class MortgageCalculatorViewModel {
     private StringProperty apartmentPrice = new SimpleStringProperty();
     private StringProperty firstPayment = new SimpleStringProperty();
     private StringProperty loanPeriod = new SimpleStringProperty();
@@ -29,7 +29,7 @@ public class ViewModel {
     private StringProperty typeOfPayment = new SimpleStringProperty();
     private StringProperty result = new SimpleStringProperty();
 
-    public ViewModel() {
+    public MortgageCalculatorViewModel() {
         apartmentPrice.set("");
         firstPayment.set("");
         loanPeriod.set("");

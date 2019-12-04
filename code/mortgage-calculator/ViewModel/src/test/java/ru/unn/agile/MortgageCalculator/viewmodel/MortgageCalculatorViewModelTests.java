@@ -6,8 +6,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class ViewModelTests {
-    private ViewModel viewModel;
+public class MortgageCalculatorViewModelTests {
+    private MortgageCalculatorViewModel viewModel;
 
     private void setCorrectInputs() {
         viewModel.loanPeriodProperty().set("12");
@@ -24,7 +24,7 @@ public class ViewModelTests {
 
     @Before
     public void setUp() {
-        viewModel = new ViewModel();
+        viewModel = new MortgageCalculatorViewModel();
     }
 
     @After
