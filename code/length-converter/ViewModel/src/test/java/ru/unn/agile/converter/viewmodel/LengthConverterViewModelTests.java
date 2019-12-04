@@ -7,7 +7,7 @@ import ru.unn.agile.converter.model.LengthType;
 
 import static org.junit.Assert.*;
 
-public class LengthConverterLengthConverterViewModelTests {
+public class LengthConverterViewModelTests {
 
     private LengthConverterViewModel viewModel;
 
