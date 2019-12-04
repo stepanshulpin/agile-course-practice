@@ -3,10 +3,7 @@ package ru.unn.agile.triangle.viewmodel;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.unn.agile.triangle.*;
 import ru.unn.agile.triangle.Triangle.*;
-import ru.unn.agile.triangle.viewmodel.Status;
-import ru.unn.agile.triangle.viewmodel.ViewModel;
 
 import static org.junit.Assert.*;
 
