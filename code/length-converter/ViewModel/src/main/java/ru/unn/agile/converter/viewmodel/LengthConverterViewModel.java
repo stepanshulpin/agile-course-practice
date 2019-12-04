@@ -6,7 +6,7 @@ import javafx.collections.ObservableList;
 import ru.unn.agile.converter.model.LengthConverter;
 import ru.unn.agile.converter.model.LengthType;
 
-public class ViewModel {
+public class LengthConverterViewModel {
 
     private StringProperty input = new SimpleStringProperty();
     private StringProperty error = new SimpleStringProperty();
@@ -18,7 +18,7 @@ public class ViewModel {
     private final ObjectProperty<ObservableList<LengthType>> lengthTypes =
             new SimpleObjectProperty<>(FXCollections.observableArrayList(LengthType.values()));
 
-    public ViewModel() {
+    public LengthConverterViewModel() {
         input.set("");
         error.set("");
         output.set("");

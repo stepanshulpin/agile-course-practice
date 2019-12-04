@@ -6,11 +6,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import ru.unn.agile.converter.model.LengthType;
-import ru.unn.agile.converter.viewmodel.ViewModel;
+import ru.unn.agile.converter.viewmodel.LengthConverterViewModel;
 
-public class LengthConverter {
+public class LengthConverterView {
     @FXML
-    private ViewModel viewModel;
+    private LengthConverterViewModel viewModel;
     @FXML
     private TextField txtInput;
     @FXML
