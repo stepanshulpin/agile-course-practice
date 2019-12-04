@@ -63,7 +63,7 @@ project(":code/fractioncalculator").name = "fractioncalculator"
 // Гришин Дмитрий
 // Зырина Анна
 // Кальянов Дмитрий
-// Length converter
+// Карев Борис
 include "code/length-converter/Model"
 project(":code/length-converter/Model").name = "length-converter-Model"
 
