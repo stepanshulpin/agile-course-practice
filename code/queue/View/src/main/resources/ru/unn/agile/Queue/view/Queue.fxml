@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -8,20 +10,23 @@
    <children>
       <Pane prefHeight="274.0" prefWidth="393.0">
          <children>
-            <Label layoutX="15.0" layoutY="192.0" prefHeight="24.0" prefWidth="53.0" text="Queue:">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
             <Label layoutX="15.0" layoutY="14.0" prefHeight="25.0" prefWidth="117.0" text="Element to add:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField layoutX="153.0" layoutY="12.0" prefHeight="25.0" prefWidth="117.0" />
-            <Button layoutX="294.0" layoutY="12.0" mnemonicParsing="false" text="Add element" />
-            <Button layoutX="294.0" layoutY="39.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="Get head" />
-            <Label layoutX="88.0" layoutY="192.0" prefHeight="70.0" prefWidth="262.0" />
+            <TextField id="queueNewElement" layoutX="153.0" layoutY="12.0" prefHeight="25.0" prefWidth="117.0" />
+            <Button id="addElement" layoutX="294.0" layoutY="12.0" mnemonicParsing="false" text="Add element" />
+            <Button id="getHead" layoutX="294.0" layoutY="39.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="Get head" />
+            <Label layoutX="15.0" layoutY="192.0" prefHeight="24.0" prefWidth="53.0" text="Queue:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label id="queueResult" layoutX="88.0" layoutY="192.0" prefHeight="70.0" prefWidth="262.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></Label>
          </children>
       </Pane>
    </children>
