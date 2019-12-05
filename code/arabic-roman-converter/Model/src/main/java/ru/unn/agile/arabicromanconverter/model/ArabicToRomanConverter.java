@@ -12,14 +12,14 @@ public class ArabicToRomanConverter implements NumConverter {
     public ArabicToRomanConverter() {
     }
 
-    public boolean validate(final String num) {
-        return num.matches("-?\\d+(\\.\\d+)?")
-                && Integer.parseInt(num) <= MAX_ARABIC_VALUE
-                && Integer.parseInt(num) >= MIN_ARABIC_VALUE;
+    public boolean validate(final String number) {
+        return number.matches("-?\\d+(\\.\\d+)?")
+                && Integer.parseInt(number) <= MAX_ARABIC_VALUE
+                && Integer.parseInt(number) >= MIN_ARABIC_VALUE;
     }
 
-    public String convert(final String num) {
-        int arabicNumber = Integer.parseInt(num);
+    public String convert(final String number) {
+        int arabicNumber = Integer.parseInt(number);
         if (arabicNumber < MIN_ARABIC_VALUE || arabicNumber > MAX_ARABIC_VALUE) {
             throw new IllegalArgumentException("Roman Number"
                     + "doesn't exist for Arabic" + arabicNumber);

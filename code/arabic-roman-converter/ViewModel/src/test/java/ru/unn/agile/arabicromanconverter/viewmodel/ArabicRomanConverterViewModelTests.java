@@ -52,7 +52,7 @@ public class ArabicRomanConverterViewModelTests {
 
     @Test
     public void isConvertLabelArabicByDefault() {
-        assertEquals("Arabic to Romain", viewModel.getConvert().get());
+        assertEquals("Arabic to Roman", viewModel.getConvert().get());
     }
 
     @Test
@@ -91,7 +91,7 @@ public class ArabicRomanConverterViewModelTests {
     @Test
     public void isConvertLabelRomanAfterSwap() {
         viewModel.swap();
-        assertEquals("Romain to Arabic", viewModel.getConvert().get());
+        assertEquals("Roman to Arabic", viewModel.getConvert().get());
     }
 
     @Test
@@ -99,6 +99,18 @@ public class ArabicRomanConverterViewModelTests {
         viewModel.swap();
         viewModel.getInput().set("1");
         assertEquals("Insert correct roman number", viewModel.getError().get());
+    }
+
+    @Test
+    public void cantEnterNegativeWhileArabicSelected() {
+        viewModel.getInput().set("-1");
+        assertEquals("Insert correct arabic number", viewModel.getError().get());
+    }
+
+    @Test
+    public void cantEnterNumberMoreThanMaxWhileArabicSelected() {
+        viewModel.getInput().set("4000");
+        assertEquals("Insert correct arabic number", viewModel.getError().get());
     }
 
     @Test

@@ -19,8 +19,8 @@ public class RomanToArabicConverter implements NumConverter {
         }
     }
 
-    public boolean validate(final String num) {
-        return this.validateRomanNumber(num);
+    public boolean validate(final String number) {
+        return this.validateRomanNumber(number);
     }
 
     private boolean validateRomanNumber(final String romanNumber) {

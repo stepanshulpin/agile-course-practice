@@ -3,9 +3,6 @@ package ru.unn.agile.arabicromanconverter.viewmodel;
 import javafx.beans.property.*;
 import ru.unn.agile.arabicromanconverter.model.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ViewModel {
 
     private StringProperty input = new SimpleStringProperty();
@@ -13,21 +10,12 @@ public class ViewModel {
     private StringProperty error = new SimpleStringProperty();
     private StringProperty convert = new SimpleStringProperty();
     private BooleanProperty btnDisabled = new SimpleBooleanProperty();
-    private List<NumConverter> converters = new ArrayList<NumConverter>();
-    private int selector = 0;
-
-    private void prepareConverters() {
-        ArabicToRomanConverter converterA = new ArabicToRomanConverter();
-        RomanToArabicConverter converterB = new RomanToArabicConverter();
-        converters.add(converterA);
-        converters.add(converterB);
-    }
+    private ConverterType selector = ConverterType.ARABICTOROMAN;
 
     public ViewModel() {
         refresh();
-        convert.set("Arabic to Romain");
+        convert.set("Arabic to Roman");
         btnDisabled.set(true);
-        prepareConverters();
 
         input.addListener((observable, oldValue, newValue) -> {
             onInput(newValue);
@@ -36,27 +24,25 @@ public class ViewModel {
 
     public void convert() {
         String value = input.get();
-        NumConverter converter = converters.get(selector);
+        NumConverter converter = selector.getConverter();
         String result = converter.convert(value);
         output.set(result);
     }
 
     public void swap() {
-        if (selector == 0) {
-            selector = 1;
-            convert.set("Romain to Arabic");
-            refresh();
+        if (selector == ConverterType.ARABICTOROMAN) {
+            selector = ConverterType.ROMANTOARABIC;
         } else {
-            selector = 0;
-            convert.set("Arabic to Romain");
-            refresh();
+            selector = ConverterType.ARABICTOROMAN;
         }
+        refresh();
     }
 
     public void refresh() {
         input.set("");
         output.set("");
         error.set("");
+        convert.set(selector.toString());
     }
 
     public StringProperty getInput() {
@@ -81,15 +67,40 @@ public class ViewModel {
     }
 
     private void onInput(final String newValue) {
-        boolean isValid = converters.get(selector).validate(newValue);
+        boolean isValid = selector.getConverter().validate(newValue);
         if (isValid || newValue.isEmpty()) {
             error.set("");
-        } else if (selector == 0) {
-            error.set("Insert correct arabic number");
         } else {
-            error.set("Insert correct roman number");
+            error.set(selector.getErrorMessage());
         }
         btnDisabled.set(newValue.isEmpty() || !isValid);
         output.set("");
+    }
+}
+
+enum ConverterType {
+    ARABICTOROMAN("Arabic to Roman", new ArabicToRomanConverter(), "Insert correct arabic number"),
+    ROMANTOARABIC("Roman to Arabic", new RomanToArabicConverter(), "Insert correct roman number");
+
+    private final String label;
+    private final NumConverter converter;
+    private final String errorMessage;
+
+    ConverterType(final String label, final NumConverter converter, final String errorMessage) {
+        this.label = label;
+        this.converter = converter;
+        this.errorMessage = errorMessage;
+    }
+
+    public String toString() {
+        return label;
+    }
+
+    public NumConverter getConverter() {
+        return converter;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
     }
 }
