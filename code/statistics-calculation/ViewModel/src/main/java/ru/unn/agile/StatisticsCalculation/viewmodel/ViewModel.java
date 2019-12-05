@@ -51,8 +51,9 @@ public class ViewModel {
                 (observable, oldValue, newValue) -> {
                     operationParameter.set(newValue);
                     try {
-                        Integer.parseInt(operationParameterProperty().get());
-                        isOperationParameterCorrect.set(true);
+                        if (Integer.parseInt(operationParameterProperty().get()) > 0){
+                            isOperationParameterCorrect.set(true);
+                        }
                     } catch (NumberFormatException nfe) {
                         isOperationParameterCorrect.set(false);
                     }
@@ -231,6 +232,10 @@ public class ViewModel {
 
     public void updateOperation() {
         operationStatus.set(updateOperationStatus().toString());
+    }
+
+    public void calculate() {
+
     }
 
     private InputDataStatus updateInputDataStatus() {

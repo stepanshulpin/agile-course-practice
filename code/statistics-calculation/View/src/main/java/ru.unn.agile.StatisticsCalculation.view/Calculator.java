@@ -85,5 +85,12 @@ public class Calculator {
                 viewModel.updateOperation();
             }
         });
+
+        buttonCalculate.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(final ActionEvent event) {
+                viewModel.calculate();
+            }
+        });
     }
 }
