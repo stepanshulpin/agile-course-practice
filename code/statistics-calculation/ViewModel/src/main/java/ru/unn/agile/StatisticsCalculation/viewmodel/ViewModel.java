@@ -59,8 +59,8 @@ public class ViewModel {
             }
             @Override
             protected boolean computeValue() {
-
-                return updateDataStatus() == DataStatus.READY;
+                return updateDataStatus() == DataStatus.READY
+                        && updateOperationStatus() == OperationStatus.READY;
             }
         };
         calculationDisabled.bind(couldCalculate.not());

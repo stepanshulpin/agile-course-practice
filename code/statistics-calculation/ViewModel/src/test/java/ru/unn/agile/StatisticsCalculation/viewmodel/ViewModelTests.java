@@ -356,4 +356,34 @@ public class ViewModelTests {
 
         assertEquals(OperationStatus.WAITING_PARAMETER.toString(), viewModel.getOperationStatus());
     }
+    @Test
+    public void canPushCalculateButtonWithCorrectInputAndOperation() {
+        viewModel.newValueProperty().set("1");
+        viewModel.newProbabilitieProperty().set("1.0");
+        viewModel.updateTableElement();
+        viewModel.operationProperty().set(Operation.DISPERSION);
+        viewModel.selectOperation();
+
+        assertEquals(false, viewModel.isCalculationDisabled());
+    }
+    @Test
+    public void canNotPushCalculateButtonWithUncorrectInput() {
+        viewModel.newValueProperty().set("1");
+        viewModel.newProbabilitieProperty().set("0.2");
+        viewModel.updateTableElement();
+        viewModel.operationProperty().set(Operation.DISPERSION);
+        viewModel.selectOperation();
+
+        assertEquals(true, viewModel.isCalculationDisabled());
+    }
+    @Test
+    public void canNotPushCalculateButtonWithoutOperationParameter() {
+        viewModel.newValueProperty().set("1");
+        viewModel.newProbabilitieProperty().set("0.2");
+        viewModel.updateTableElement();
+        viewModel.operationProperty().set(Operation.CENTRAL_MOMENT);
+        viewModel.selectOperation();
+
+        assertEquals(true, viewModel.isCalculationDisabled());
+    }
 }
