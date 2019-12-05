@@ -18,7 +18,9 @@ public class Calculator {
     @FXML
     private TextField textfieldNewValue;
     @FXML
-    private TextField textfieldNewProbabilitie;
+    private TextField textfieldNewProbability;
+    @FXML
+    private TextField textfieldParameter;
 
     @FXML
     private ComboBox<Operation> comboBoxOperation;
@@ -35,20 +37,22 @@ public class Calculator {
     @FXML
     private TableColumn<TableElement, String> columnValue;
     @FXML
-    private TableColumn<TableElement, String> columnProbabilitie;
+    private TableColumn<TableElement, String> columnProbability;
 
     @FXML
     void initialize() {
         textfieldNewValue.textProperty().bindBidirectional(viewModel.newValueProperty());
-        textfieldNewProbabilitie.textProperty().bindBidirectional(
-                viewModel.newProbabilitieProperty());
+        textfieldNewProbability.textProperty().bindBidirectional(
+                viewModel.newProbabilityProperty());
+        textfieldParameter.textProperty().bindBidirectional(
+                viewModel.operationParameterProperty());
 
         comboBoxOperation.valueProperty().bindBidirectional(viewModel.operationProperty());
 
         columnValue.setCellValueFactory(
                 new PropertyValueFactory<TableElement, String>("value"));
-        columnProbabilitie.setCellValueFactory(
-                new PropertyValueFactory<TableElement, String>("probabilitie"));
+        columnProbability.setCellValueFactory(
+                new PropertyValueFactory<TableElement, String>("probability"));
 
         buttonUpdate.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -78,7 +82,7 @@ public class Calculator {
         comboBoxOperation.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(final ActionEvent event) {
-                viewModel.selectOperation();
+                viewModel.updateOperation();
             }
         });
     }

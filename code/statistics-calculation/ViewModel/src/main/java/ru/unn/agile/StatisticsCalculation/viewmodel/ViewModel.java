@@ -13,7 +13,8 @@ import java.util.List;
 
 public class ViewModel {
     private final StringProperty newValue = new SimpleStringProperty();
-    private final StringProperty newProbabilitie = new SimpleStringProperty();
+    private final StringProperty newProbability  = new SimpleStringProperty();
+    private final StringProperty operationParameter  = new SimpleStringProperty();
 
     private final StringProperty result = new SimpleStringProperty();
     private final StringProperty operationStatus = new SimpleStringProperty();
@@ -24,6 +25,7 @@ public class ViewModel {
     private final BooleanProperty deleteDisabled = new SimpleBooleanProperty();
     private final BooleanProperty updateDisabled = new SimpleBooleanProperty();
     private final BooleanProperty enterParameterDisabled = new SimpleBooleanProperty();
+    private final BooleanProperty isOperationParameterCorrect = new SimpleBooleanProperty();
 
     private final ObjectProperty<ObservableList<Operation>> operations =
             new SimpleObjectProperty<>(FXCollections.observableArrayList(Operation.values()));
@@ -36,16 +38,30 @@ public class ViewModel {
     // FXML needs default c-tor for binding
     public ViewModel() {
         newValue.set("");
-        newProbabilitie.set("");
+        newProbability.set("");
+        operationParameter.set("");
+
         result.set("");
         operationStatus.set(OperationStatus.WAITING_DATA.toString());
         dataStatus.set(DataStatus.WAITING.toString());
         inputDataStatus.set(InputDataStatus.WAITING.toString());
         operation.set(null);
 
+        operationParameter.addListener(
+                (observable, oldValue, newValue) -> {
+                    operationParameter.set(newValue);
+                    try {
+                        Integer.parseInt(operationParameterProperty().get());
+                        isOperationParameterCorrect.set(true);
+                    } catch (NumberFormatException nfe) {
+                        isOperationParameterCorrect.set(false);
+                    }
+                    operationStatus.set(updateOperationStatus().toString());
+                });
+
         BooleanBinding couldUpdateData = new BooleanBinding() {
             {
-                super.bind(newValue, newProbabilitie);
+                super.bind(newValue, newProbability);
             }
             @Override
             protected boolean computeValue() {
@@ -68,18 +84,22 @@ public class ViewModel {
 
         BooleanBinding couldEnterParameter = new BooleanBinding() {
             {
-                super.bind(operationStatus);
+                super.bind(operation, operationStatus);
             }
             @Override
             protected boolean computeValue() {
-                return updateOperationStatus() == OperationStatus.WAITING_PARAMETER;
+                return updateDataStatus() == DataStatus.READY
+                        && (operation.get() == Operation.RAW_MOMENT
+                        || operation.get() == Operation.CENTRAL_MOMENT);
             }
         };
         enterParameterDisabled.bind(couldEnterParameter);
 
+
         final List<StringProperty> fields = new ArrayList<StringProperty>() { {
             add(newValue);
-            add(newProbabilitie);
+            add(newProbability);
+            add(operationParameter);
         } };
 
         for (StringProperty field : fields) {
@@ -92,9 +112,15 @@ public class ViewModel {
     public StringProperty newValueProperty() {
         return newValue;
     }
-    public StringProperty newProbabilitieProperty() {
-        return newProbabilitie;
+
+    public StringProperty newProbabilityProperty() {
+        return newProbability;
     }
+
+    public StringProperty operationParameterProperty() {
+        return operationParameter;
+    }
+
 
     public StringProperty resultProperty() {
         return result;
@@ -120,11 +146,9 @@ public class ViewModel {
     public final String getInputDataStatus() {
         return inputDataStatus.get();
     }
-
     public ObservableList<TableElement> getListData() {
         return listData;
     }
-
     public BooleanProperty calculationDisabledProperty() {
         return calculationDisabled;
     }
@@ -162,9 +186,9 @@ public class ViewModel {
     public void updateTableElement() {
         inputDataStatus.set(updateInputDataStatus().toString());
         if (updateInputDataStatus() ==  InputDataStatus.READY) {
-            listData.add(new TableElement(newValue.getValue(), newProbabilitie.getValue()));
+            listData.add(new TableElement(newValue.getValue(), newProbability.getValue()));
+            newProbability.set("");
             newValue.set("");
-            newProbabilitie.set("");
             inputDataStatus.set(updateInputDataStatus().toString());
         }
         dataStatus.set(updateDataStatus().toString());
@@ -176,12 +200,12 @@ public class ViewModel {
         if (updateInputDataStatus() ==  InputDataStatus.READY) {
             if (focusedIndex >= 0) {
                 listData.set(focusedIndex,
-                        new TableElement(newValue.getValue(), newProbabilitie.getValue()));
+                        new TableElement(newValue.getValue(), newProbability.getValue()));
             } else {
-                listData.add(new TableElement(newValue.getValue(), newProbabilitie.getValue()));
+                listData.add(new TableElement(newValue.getValue(), newProbability.getValue()));
             }
             newValue.set("");
-            newProbabilitie.set("");
+            newProbability.set("");
             inputDataStatus.set(updateInputDataStatus().toString());
         }
         dataStatus.set(updateDataStatus().toString());
@@ -193,7 +217,7 @@ public class ViewModel {
             listData.remove(focusedIndex);
         }
         newValue.set("");
-        newProbabilitie.set("");
+        newProbability.set("");
         inputDataStatus.set(updateInputDataStatus().toString());
         dataStatus.set(updateDataStatus().toString());
         operationStatus.set(updateOperationStatus().toString());
@@ -201,26 +225,26 @@ public class ViewModel {
 
     public void selectElement(final int focusedIndex) {
         newValue.set(listData.get(focusedIndex).getValue());
-        newProbabilitie.set(listData.get(focusedIndex).getProbabilitie());
+        newProbability.set(listData.get(focusedIndex).getProbability());
         inputDataStatus.set(updateInputDataStatus().toString());
     }
 
-    public void selectOperation() {
+    public void updateOperation() {
         operationStatus.set(updateOperationStatus().toString());
     }
 
     private InputDataStatus updateInputDataStatus() {
         InputDataStatus inputDataStatus = InputDataStatus.READY;
-        if (newValueProperty().get().isEmpty() || newProbabilitieProperty().get().isEmpty()) {
+        if (newValueProperty().get().isEmpty() || newProbabilityProperty().get().isEmpty()) {
             inputDataStatus = InputDataStatus.WAITING;
         }
         try {
             if (!newValueProperty().get().isEmpty()) {
                 Integer.parseInt(newValueProperty().get());
             }
-            if (!newProbabilitieProperty().get().isEmpty()) {
-                Double.parseDouble(newProbabilitieProperty().get());
-                if (Double.parseDouble(newProbabilitieProperty().get()) > 1.0) {
+            if (!newProbabilityProperty().get().isEmpty()) {
+                Double.parseDouble(newProbabilityProperty().get());
+                if (Double.parseDouble(newProbabilityProperty().get()) > 1.0) {
                     inputDataStatus = InputDataStatus.BAD_FORMAT;
                 }
             }
@@ -253,16 +277,25 @@ public class ViewModel {
         if (updateDataStatus() != DataStatus.READY) {
             operationStatus = OperationStatus.WAITING_DATA;
         } else {
-            if (updateDataStatus() == DataStatus.READY) {
+            if (updateDataStatus() == DataStatus.READY && operation.get() == null) {
                 operationStatus = OperationStatus.WAITING_OPERATION;
-            }
-            if (operation.get() == Operation.EXPECTED_VALUE
-                    || operation.get() == Operation.DISPERSION) {
-                operationStatus = OperationStatus.READY;
-            }
-            if (operation.get() == Operation.CENTRAL_MOMENT
-                    || operation.get() == Operation.RAW_MOMENT) {
-                operationStatus = OperationStatus.WAITING_PARAMETER;
+            } else {
+                if (operation.get() == Operation.EXPECTED_VALUE
+                        || operation.get() == Operation.DISPERSION) {
+                    operationStatus = OperationStatus.READY;
+                } else {
+                    if ((operation.get() == Operation.CENTRAL_MOMENT
+                            || operation.get() == Operation.RAW_MOMENT)
+                            && operationParameter.get() == "") {
+                        operationStatus = OperationStatus.WAITING_PARAMETER;
+                    } else {
+                        if (!isOperationParameterCorrect.get()) {
+                            operationStatus = OperationStatus.BAD_FORMAT;
+                        } else {
+                            operationStatus = OperationStatus.READY;
+                        }
+                    }
+                }
             }
         }
 
@@ -283,7 +316,7 @@ public class ViewModel {
         Double[] probabilities = new Double[listData.size()];
         int i = 0;
         for (TableElement element : listData) {
-            probabilities[i++] = Double.parseDouble(element.getProbabilitie());
+            probabilities[i++] = Double.parseDouble(element.getProbability());
         }
 
         return probabilities;
