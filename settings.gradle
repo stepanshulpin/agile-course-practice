@@ -56,10 +56,6 @@ project(":code/korniakov-kirill-lab3/Infrastructure").name = "korniakov-kirill-l
 // Бевзюк Семен
 include "code/temperature-converter"
 project(":code/temperature-converter").name = "temperature-converter-Model"
-include "code/statistics-calculation/ViewModel"
-project(":code/statistics-calculation/ViewModel").name = "statistics-calculation-ViewModel"
-include "code/statistics-calculation/View"
-project(":code/statistics-calculation/View").name = "statistics-calculation-View"
 // Власов Антон
 // Гречухин Никита
 include "code/fractioncalculator"
@@ -97,9 +93,14 @@ project(":code/complex-number-calculator").name = "complex-number-calculator-mod
 include "code/quadratic-equasion"
 project(":code/quadratic-equasion").name = "quadratic-equasion-Model"
 // Лахтачев Ярослав
-// Миронова Анна
+// statistics-calculation
 include "code/statistics-calculation/Model"
 project(":code/statistics-calculation/Model").name = "statistics-calculation-Model"// Митрохин Никита
+include "code/statistics-calculation/ViewModel"
+project(":code/statistics-calculation/ViewModel").name = "statistics-calculation-ViewModel"
+include "code/statistics-calculation/View"
+project(":code/statistics-calculation/View").name = "statistics-calculation-View"
+// Митрохин Никита
 include "code/queue"
 project(":code/queue").name = "queue-Model"
 // Нестеров Александр
