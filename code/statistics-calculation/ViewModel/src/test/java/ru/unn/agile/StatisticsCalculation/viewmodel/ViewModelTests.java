@@ -464,7 +464,7 @@ public class ViewModelTests {
     }
     @Test
     public void canNotSetOperationParameterLess0() {
-        viewModel.newValueProperty().set("1");
+        viewModel.newValueProperty().set("2");
         viewModel.newProbabilityProperty().set("1.0");
         viewModel.updateTableElement();
         viewModel.operationProperty().set(Operation.RAW_MOMENT);

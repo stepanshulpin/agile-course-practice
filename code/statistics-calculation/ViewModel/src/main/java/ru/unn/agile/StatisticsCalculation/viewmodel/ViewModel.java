@@ -51,7 +51,7 @@ public class ViewModel {
                 (observable, oldValue, newValue) -> {
                     operationParameter.set(newValue);
                     try {
-                        if (Integer.parseInt(operationParameterProperty().get()) > 0){
+                        if (Integer.parseInt(operationParameterProperty().get()) > 0) {
                             isOperationParameterCorrect.set(true);
                         }
                     } catch (NumberFormatException nfe) {
@@ -235,8 +235,9 @@ public class ViewModel {
     }
 
     public void calculate() {
-        try{
-            Double operationResult = operation.get().apply(discreteRandomVariable, operationParameter.get());
+        try {
+            Double operationResult = operation.get().apply(
+                    discreteRandomVariable, operationParameter.get());
             operationStatus.set(OperationStatus.SUCCESS.toString());
             result.set(operationResult.toString());
         } catch (IllegalArgumentException exception) {
