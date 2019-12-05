@@ -41,6 +41,10 @@ public class Queue<Type> {
         return list.isEmpty();
     }
 
+    public void clear() {
+        list.clear();
+    }
+
     private void checkIsNotEmpty() {
         if (isEmpty()) {
             throw new NullPointerException("Queue is empty");

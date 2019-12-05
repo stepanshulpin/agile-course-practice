@@ -132,6 +132,17 @@ public class QueueTest {
     }
 
     @Test
+    public void canClearQueue() {
+        Queue<String> newQueue = new Queue<>();
+        String firstElement = "Test string number one";
+        newQueue.push(firstElement);
+
+        newQueue.clear();
+
+        assertTrue(newQueue.isEmpty());
+    }
+
+    @Test
     public void canPopIntegerElementFromQueue() {
         Queue<Integer> newQueue = new Queue<>();
         Integer expectedElement = 1;
