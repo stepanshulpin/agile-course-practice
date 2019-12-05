@@ -23,13 +23,14 @@ public class ViewModel {
     private final BooleanProperty calculationDisabled = new SimpleBooleanProperty();
     private final BooleanProperty deleteDisabled = new SimpleBooleanProperty();
     private final BooleanProperty updateDisabled = new SimpleBooleanProperty();
+    private final BooleanProperty enterParameterDisabled = new SimpleBooleanProperty();
 
     private final ObjectProperty<ObservableList<Operation>> operations =
             new SimpleObjectProperty<>(FXCollections.observableArrayList(Operation.values()));
     private final ObjectProperty<Operation> operation = new SimpleObjectProperty<>();
 
     private final ObservableList<TableElement> listData = FXCollections.observableArrayList();
-    private DiscreteRandomVariable discreteRandomVariable = null;
+    private DiscreteRandomVariable discreteRandomVariable;
 
     private final List<UpdateDataChangeListener> updateDataChangedListeners = new ArrayList<>();
     // FXML needs default c-tor for binding
@@ -64,6 +65,17 @@ public class ViewModel {
             }
         };
         calculationDisabled.bind(couldCalculate.not());
+
+        BooleanBinding couldEnterParameter = new BooleanBinding() {
+            {
+                super.bind(operationStatus);
+            }
+            @Override
+            protected boolean computeValue() {
+                return updateOperationStatus() == OperationStatus.WAITING_PARAMETER;
+            }
+        };
+        enterParameterDisabled.bind(couldEnterParameter);
 
         final List<StringProperty> fields = new ArrayList<StringProperty>() { {
             add(newValue);
@@ -130,6 +142,12 @@ public class ViewModel {
     }
     public final boolean isUpdateDisabled() {
         return updateDisabled.get();
+    }
+    public BooleanProperty enterParameterDisabledProperty() {
+        return enterParameterDisabled;
+    }
+    public final boolean isEnterParameterDisabled() {
+        return enterParameterDisabled.get();
     }
     public ObjectProperty<ObservableList<Operation>> operationsProperty() {
         return operations;

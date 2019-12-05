@@ -37,6 +37,10 @@ public class ViewModelTests {
         assertEquals(false, viewModel.deleteDisabledProperty().get());
     }
     @Test
+    public void canSetParametersPartInvisibleByDefault() {
+        assertEquals(false, viewModel.enterParameterDisabledProperty().get());
+    }
+    @Test
     public void canAddCorrectTableElement() {
         viewModel.newValueProperty().set("1");
         viewModel.newProbabilitieProperty().set("0.2");
@@ -385,5 +389,49 @@ public class ViewModelTests {
         viewModel.selectOperation();
 
         assertEquals(true, viewModel.isCalculationDisabled());
+    }
+    @Test
+    public void canSetParametersPartVisibleWithDataAndCentralMoment() {
+        viewModel.newValueProperty().set("1");
+        viewModel.newProbabilitieProperty().set("1.0");
+        viewModel.updateTableElement();
+        viewModel.operationProperty().set(Operation.CENTRAL_MOMENT);
+        viewModel.selectOperation();
+
+        assertEquals(true, viewModel.enterParameterDisabledProperty().get());
+    }
+    @Test
+    public void canSetParametersPartVisibleWithDataAndRawMoment() {
+        viewModel.newValueProperty().set("1");
+        viewModel.newProbabilitieProperty().set("1.0");
+        viewModel.updateTableElement();
+        viewModel.operationProperty().set(Operation.RAW_MOMENT);
+        viewModel.selectOperation();
+
+        assertEquals(true, viewModel.enterParameterDisabledProperty().get());
+    }
+    @Test
+    public void caSetParametersPartInvisibleWithDataAndDispersion() {
+        viewModel.newValueProperty().set("1");
+        viewModel.newProbabilitieProperty().set("1.0");
+        viewModel.updateTableElement();
+        viewModel.operationProperty().set(Operation.DISPERSION);
+        viewModel.selectOperation();
+
+        assertEquals(false, viewModel.enterParameterDisabledProperty().get());
+    }
+    @Test
+    public void caSetParametersPartInvisibleWithIncorrectDataAndRawMoment() {
+        viewModel.newValueProperty().set("1");
+        viewModel.newProbabilitieProperty().set("1.0");
+        viewModel.updateTableElement();
+        viewModel.operationProperty().set(Operation.RAW_MOMENT);
+        viewModel.selectOperation();
+
+        viewModel.newValueProperty().set("1");
+        viewModel.newProbabilitieProperty().set("0.2");
+        viewModel.updateTableElement(0);
+
+        assertEquals(false, viewModel.enterParameterDisabledProperty().get());
     }
 }
