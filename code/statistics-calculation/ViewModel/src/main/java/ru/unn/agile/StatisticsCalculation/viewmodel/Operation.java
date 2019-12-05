@@ -5,23 +5,23 @@ import ru.unn.agile.StatisticsCalculation.model.StatisticsCalculation;
 
 public enum Operation {
     EXPECTED_VALUE("Calculate expected value") {
-        public Double apply(final DiscreteRandomVariable drv, final Integer ... params) {
+        public Double apply(final DiscreteRandomVariable drv, final String ... params) {
             return StatisticsCalculation.calculateExpectedValue(drv);
         }
     },
     DISPERSION("Calculate dispersion") {
-        public Double apply(final DiscreteRandomVariable drv, final Integer ... params) {
+        public Double apply(final DiscreteRandomVariable drv, final String ... params) {
             return StatisticsCalculation.calculateDispersion(drv);
         }
     },
     RAW_MOMENT("Calculate raw moment") {
-        public Double apply(final DiscreteRandomVariable drv, final Integer ... params) {
-            return StatisticsCalculation.calculateRawMoment(drv, params[0]);
+        public Double apply(final DiscreteRandomVariable drv, final String ... params) {
+            return StatisticsCalculation.calculateRawMoment(drv, Integer.parseInt(params[0]));
         }
     },
     CENTRAL_MOMENT("Calculate central moment") {
-        public Double apply(final DiscreteRandomVariable drv, final Integer ... params) {
-            return StatisticsCalculation.calculateCentralMoment(drv, params[0]);
+        public Double apply(final DiscreteRandomVariable drv, final String ... params) {
+            return StatisticsCalculation.calculateCentralMoment(drv, Integer.parseInt(params[0]));
         }
     };
 
@@ -35,5 +35,5 @@ public enum Operation {
         return name;
     }
 
-    public abstract Double apply(DiscreteRandomVariable drv, Integer ... params);
+    public abstract Double apply(DiscreteRandomVariable drv, String ... params);
 }

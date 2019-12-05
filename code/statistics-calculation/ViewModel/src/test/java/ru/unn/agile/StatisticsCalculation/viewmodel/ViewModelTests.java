@@ -474,4 +474,32 @@ public class ViewModelTests {
 
         assertEquals(OperationStatus.BAD_FORMAT.toString(), viewModel.getOperationStatus());
     }
+    @Test
+    public void canCalculateExpectedValue() {
+        viewModel.newValueProperty().set("1");
+        viewModel.newProbabilityProperty().set("1.0");
+        viewModel.updateTableElement();
+        viewModel.operationProperty().set(Operation.EXPECTED_VALUE);
+        viewModel.updateOperation();
+
+        viewModel.calculate();
+
+        assertEquals("1.0", viewModel.getResult());
+    }
+    @Test
+    public void canCalculateRawMoment() {
+        viewModel.newValueProperty().set("1");
+        viewModel.newProbabilityProperty().set("0.5");
+        viewModel.updateTableElement();
+        viewModel.newValueProperty().set("5");
+        viewModel.newProbabilityProperty().set("0.5");
+        viewModel.updateTableElement();
+        viewModel.operationProperty().set(Operation.RAW_MOMENT);
+        viewModel.updateOperation();
+        viewModel.operationParameterProperty().set("1");
+
+        viewModel.calculate();
+
+        assertEquals("3.0", viewModel.getResult());
+    }
 }

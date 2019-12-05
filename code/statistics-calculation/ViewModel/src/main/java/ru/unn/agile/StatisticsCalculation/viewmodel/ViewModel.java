@@ -235,7 +235,13 @@ public class ViewModel {
     }
 
     public void calculate() {
-
+        try{
+            Double operationResult = operation.get().apply(discreteRandomVariable, operationParameter.get());
+            operationStatus.set(OperationStatus.SUCCESS.toString());
+            result.set(operationResult.toString());
+        } catch (IllegalArgumentException exception) {
+            result.set(exception.toString());
+        }
     }
 
     private InputDataStatus updateInputDataStatus() {
