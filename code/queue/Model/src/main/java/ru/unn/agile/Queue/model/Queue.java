@@ -1,4 +1,4 @@
-package ru.unn.agile.queue.model;
+package ru.unn.agile.Queue.model;
 
 import java.util.LinkedList;
 import java.util.List;
