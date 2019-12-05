@@ -19,25 +19,25 @@ public class ViewModelTests {
     }
 
     @Test
-    public void canSetDefaultArrayValue() {
+    public void canInittArrayValue() {
 
         assertEquals("", viewModel.getArrayInputProperty());
     }
 
     @Test
-    public void canSetDefaultElementValue() {
+    public void canInitElementValue() {
 
         assertEquals("", viewModel.getElementInputProperty());
     }
 
     @Test
-    public void canSetDefaultStatus() {
+    public void canInitStatus() {
 
         assertEquals("", viewModel.getStatusProperty());
     }
 
     @Test
-    public void canSetDefaultResult() {
+    public void canInitResult() {
 
         assertEquals("", viewModel.getResultProperty());
     }
