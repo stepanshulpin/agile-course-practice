@@ -11,6 +11,8 @@ import java.util.Set;
 
 public class ViewModel {
 
+    private static final String ITEMS_SEPARATOR = " ";
+
     private BooleanProperty btnAddDisabledProp = new SimpleBooleanProperty();
     private BooleanProperty btnRemoveDisabledProp = new SimpleBooleanProperty();
     private BooleanProperty btnRetainDisabledProp = new SimpleBooleanProperty();
@@ -113,7 +115,7 @@ public class ViewModel {
         var isValidEnteredData = false;
 
         if (!itemsStr.isEmpty()) {
-            var splitedItems = itemsStr.split(" ");
+            var splitedItems = itemsStr.split(ITEMS_SEPARATOR);
             if (splitedItems.length > 0) {
                 for (String splitedItem : splitedItems) {
                     try {
@@ -141,7 +143,7 @@ public class ViewModel {
         var iterator = currentSet.iterator();
         while (iterator.hasNext()) {
             builder.append(iterator.next());
-            builder.append(" ");
+            builder.append(ITEMS_SEPARATOR);
         }
         builder.deleteCharAt(builder.length() - 1);
         return builder.toString();
