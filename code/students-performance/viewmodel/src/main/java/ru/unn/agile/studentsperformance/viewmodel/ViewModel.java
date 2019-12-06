@@ -40,7 +40,7 @@ public class ViewModel {
     private StringProperty satisfactoryCountProperty = new SimpleStringProperty();
     private StringProperty badCountProperty = new SimpleStringProperty();
 
-    private List<Student> studentMarks = new ArrayList<>();
+    private List<Student> students = new ArrayList<>();
 
     public ViewModel() {
         mathsMarkProperty.setValue(BAD_MARK);
@@ -102,7 +102,7 @@ public class ViewModel {
             add(historyMarkProperty.get());
             add(programmingMarkProperty.get());
         }};
-        studentMarks.add(new Student(marks));
+        students.add(new Student(marks));
         marksListProperty.add(
                 String.join(
                         MARKS_DELIMITER, marks.stream().map(String::valueOf).toArray(String[]::new)
@@ -112,7 +112,7 @@ public class ViewModel {
     }
 
     public void clearEnteredMarks() {
-        studentMarks.clear();
+        students.clear();
         marksListProperty.clear();
         calculateAll();
     }
@@ -126,53 +126,54 @@ public class ViewModel {
     }
 
     private void calculateAverage() {
-        if (studentMarks.isEmpty()) {
+        if (students.isEmpty()) {
             averageProperty.set(EMPTY);
             return;
         }
         averageProperty.set(
-                String.valueOf(new PerformanceCalculator(studentMarks).getAverageRating())
+                String.valueOf(new PerformanceCalculator(students).getAverageRating())
         );
     }
 
     private void calculateExcellentStudentsCount() {
-        if (studentMarks.isEmpty()) {
+        if (students.isEmpty()) {
             excellentCountProperty.set(EMPTY);
             return;
         }
         excellentCountProperty.set(
-                String.valueOf(new PerformanceCalculator(studentMarks).getExcellentStudentsCount())
+                String.valueOf(new PerformanceCalculator(students).getExcellentStudentsCount())
         );
     }
 
     private void calculateGoodStudentsCount() {
-        if (studentMarks.isEmpty()) {
+        if (students.isEmpty()) {
             goodCountProperty.set(EMPTY);
             return;
         }
         goodCountProperty.set(
-                String.valueOf(new PerformanceCalculator(studentMarks).getGoodStudentsCount())
+                String.valueOf(new PerformanceCalculator(students).getGoodStudentsCount())
         );
     }
 
     private void calculateSatisfactoryStudentsCount() {
-        if (studentMarks.isEmpty()) {
+        if (students.isEmpty()) {
             satisfactoryCountProperty.set(EMPTY);
             return;
         }
-        satisfactoryCountProperty.set(String.valueOf(
-                new PerformanceCalculator(studentMarks).getSatisfactoryStudentsCount()
+        satisfactoryCountProperty.set(
+                String.valueOf(
+                        new PerformanceCalculator(students).getSatisfactoryStudentsCount()
                 )
         );
     }
 
     private void calculateBadStudentsCount() {
-        if (studentMarks.isEmpty()) {
+        if (students.isEmpty()) {
             badCountProperty.set(EMPTY);
             return;
         }
         badCountProperty.set(
-                String.valueOf(new PerformanceCalculator(studentMarks).getBadStudentsCount())
+                String.valueOf(new PerformanceCalculator(students).getBadStudentsCount())
         );
     }
 }

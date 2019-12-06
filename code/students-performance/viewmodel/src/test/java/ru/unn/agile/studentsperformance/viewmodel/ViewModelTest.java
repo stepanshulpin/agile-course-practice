@@ -111,7 +111,7 @@ public class ViewModelTest {
     @Test
     public void canCalculateAverageForGoodStudent() {
         var good = 4;
-        setMarksForAll(good);
+        setMarksForAllSubjects(good);
 
         viewModel.addStudent();
 
@@ -121,7 +121,7 @@ public class ViewModelTest {
     @Test
     public void canCalculateCountOfExcellentStudents() {
         var excellent = 5;
-        setMarksForAll(excellent);
+        setMarksForAllSubjects(excellent);
 
         viewModel.addStudent();
         viewModel.addStudent();
@@ -131,15 +131,15 @@ public class ViewModelTest {
 
     @Test
     public void canClear() {
-        setMarksForAll(3);
-        setMarksForAll(4);
-        setMarksForAll(5);
+        setMarksForAllSubjects(3);
+        setMarksForAllSubjects(4);
+        setMarksForAllSubjects(5);
 
         viewModel.clearEnteredMarks();
         assertTrue(viewModel.marksListProperty().isEmpty());
     }
 
-    private void setMarksForAll(final int mark) {
+    private void setMarksForAllSubjects(final int mark) {
         viewModel.mathsMarkProperty().setValue(mark);
         viewModel.englishMarkProperty().setValue(mark);
         viewModel.historyMarkProperty().setValue(mark);
