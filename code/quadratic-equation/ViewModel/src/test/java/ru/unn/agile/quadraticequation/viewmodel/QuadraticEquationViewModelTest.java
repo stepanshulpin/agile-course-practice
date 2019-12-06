@@ -1,4 +1,4 @@
-package ru.unn.agile.QuadraticEquation.viewmodel;
+package ru.unn.agile.quadraticequation.viewmodel;
 
 import org.junit.After;
 import org.junit.Before;

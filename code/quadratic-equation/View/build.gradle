@@ -4,7 +4,7 @@ plugins {
 }
 
 apply plugin: 'application'
-mainClassName = 'ru.unn.agile.QuadraticEquation.view.Main'
+mainClassName = 'ru.unn.agile.quadraticequation.view.Main'
 
 javafx {
 	version = "11.0.2"

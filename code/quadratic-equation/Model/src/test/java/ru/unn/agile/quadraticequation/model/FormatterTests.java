@@ -1,8 +1,6 @@
-package ru.unn.agile.QuadraticEquation.Model;
+package ru.unn.agile.quadraticequation.model;
 
 import org.junit.Test;
-import ru.unn.agile.QuadraticEquation.model.Formatter;
-import ru.unn.agile.QuadraticEquation.model.QuadraticEquation;
 
 import static org.junit.Assert.assertEquals;
 

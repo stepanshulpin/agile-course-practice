@@ -1,11 +1,11 @@
-package ru.unn.agile.QuadraticEquation.viewmodel;
+package ru.unn.agile.quadraticequation.viewmodel;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import ru.unn.agile.ComplexNumber.model.ComplexNumber;
-import ru.unn.agile.QuadraticEquation.model.QuadraticEquation;
+import ru.unn.agile.quadraticequation.model.QuadraticEquation;
 
 public class QuadraticEquationViewModel {
     private BooleanProperty btnCalcDisabledProp = new SimpleBooleanProperty();

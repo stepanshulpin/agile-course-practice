@@ -1,10 +1,10 @@
-package ru.unn.agile.QuadraticEquation.view;
+package ru.unn.agile.quadraticequation.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import ru.unn.agile.QuadraticEquation.viewmodel.QuadraticEquationViewModel;
+import ru.unn.agile.quadraticequation.viewmodel.QuadraticEquationViewModel;
 
 public class QuadraticEquationView {
     @FXML

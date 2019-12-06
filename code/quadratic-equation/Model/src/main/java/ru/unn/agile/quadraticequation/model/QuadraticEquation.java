@@ -1,4 +1,4 @@
-package ru.unn.agile.QuadraticEquation.model;
+package ru.unn.agile.quadraticequation.model;
 
 import ru.unn.agile.ComplexNumber.model.ComplexNumber;
 

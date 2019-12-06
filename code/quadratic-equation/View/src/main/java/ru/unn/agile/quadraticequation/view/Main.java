@@ -1,4 +1,4 @@
-package ru.unn.agile.QuadraticEquation.view;
+package ru.unn.agile.quadraticequation.view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
