@@ -31,7 +31,6 @@ public class ViewModel {
 
     private final List<ValueChangeListener> valueChangedListeners = new ArrayList<>();
 
-    // FXML needs default c-tor for binding
     public ViewModel() {
         ax.set("");
         ay.set("");
@@ -55,7 +54,6 @@ public class ViewModel {
         };
         calculationDisabled.bind(couldCalculate.not());
 
-        // Add listeners to the input text fields
         final List<StringProperty> fields = new ArrayList<StringProperty>() {
             {
                 add(ax);

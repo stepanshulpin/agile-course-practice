@@ -2,8 +2,6 @@ package ru.unn.agile.triangle;
 
 import org.junit.Test;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,16 +11,10 @@ import static org.junit.Assert.*;
 public class TriangleTests {
 
     private final double delta = 0.01;
-    private final DecimalFormat numberFormat;
     private final Triangle testTriangle;
     private final Triangle testNegativeTriangle;
 
     public TriangleTests() {
-        this.numberFormat = new DecimalFormat();
-        DecimalFormatSymbols decimalFormatSymbols = numberFormat.getDecimalFormatSymbols();
-        decimalFormatSymbols.setDecimalSeparator('.');
-        numberFormat.setDecimalFormatSymbols(decimalFormatSymbols);
-        numberFormat.setMaximumFractionDigits(2);
 
         this.testTriangle = new Triangle(
                 new Point(0, 0),
@@ -131,7 +123,7 @@ public class TriangleTests {
         List angles = testTriangle.calculateAngles();
         List<String> actualAngles = new ArrayList<String>();
         for (Object o : angles) {
-            actualAngles.add(numberFormat.format(o));
+            actualAngles.add(Formatter.format(o));
         }
         assertEquals(expectedAngles, actualAngles);
     }
@@ -144,7 +136,7 @@ public class TriangleTests {
         List angles = testNegativeTriangle.calculateAngles();
         List<String> actualAngles = new ArrayList<String>();
         for (Object o : angles) {
-            actualAngles.add(numberFormat.format(o));
+            actualAngles.add(Formatter.format(o));
         }
         assertEquals(expectedAngles, actualAngles);
     }
@@ -170,7 +162,7 @@ public class TriangleTests {
         String expectedBisector = "0.71";
 
         double actualBisector = testTriangle.getBisectorA();
-        assertEquals(expectedBisector, numberFormat.format(actualBisector));
+        assertEquals(expectedBisector, Formatter.format(actualBisector));
     }
 
     @Test
@@ -178,7 +170,7 @@ public class TriangleTests {
         String expectedBisector = "1.08";
 
         double actualBisector = testTriangle.getBisectorB();
-        assertEquals(expectedBisector, numberFormat.format(actualBisector));
+        assertEquals(expectedBisector, Formatter.format(actualBisector));
     }
 
     @Test
@@ -186,7 +178,7 @@ public class TriangleTests {
         String expectedBisector = "1.08";
 
         double actualBisector = testTriangle.getBisectorC();
-        assertEquals(expectedBisector, numberFormat.format(actualBisector));
+        assertEquals(expectedBisector, Formatter.format(actualBisector));
     }
 
     @Test
@@ -194,7 +186,7 @@ public class TriangleTests {
         String expectedBisector = "3.79";
 
         double actualBisector = testNegativeTriangle.getBisectorA();
-        assertEquals(expectedBisector, numberFormat.format(actualBisector));
+        assertEquals(expectedBisector, Formatter.format(actualBisector));
     }
 
     @Test
@@ -202,7 +194,7 @@ public class TriangleTests {
         String expectedBisector = "1.29";
 
         double actualBisector = testNegativeTriangle.getBisectorB();
-        assertEquals(expectedBisector, numberFormat.format(actualBisector));
+        assertEquals(expectedBisector, Formatter.format(actualBisector));
     }
 
     @Test
@@ -210,7 +202,7 @@ public class TriangleTests {
         String expectedBisector = "1.83";
 
         double actualBisector = testNegativeTriangle.getBisectorC();
-        assertEquals(expectedBisector, numberFormat.format(actualBisector));
+        assertEquals(expectedBisector, Formatter.format(actualBisector));
     }
 
     @Test
@@ -218,7 +210,7 @@ public class TriangleTests {
         String expectedMedian = "0.71";
 
         double actualMedian = testTriangle.getMedianA();
-        assertEquals(expectedMedian, numberFormat.format(actualMedian));
+        assertEquals(expectedMedian, Formatter.format(actualMedian));
     }
 
     @Test
@@ -226,7 +218,7 @@ public class TriangleTests {
         String expectedMedian = "1.12";
 
         double actualMedian = testTriangle.getMedianB();
-        assertEquals(expectedMedian, numberFormat.format(actualMedian));
+        assertEquals(expectedMedian, Formatter.format(actualMedian));
     }
 
     @Test
@@ -234,7 +226,7 @@ public class TriangleTests {
         String expectedMedian = "1.12";
 
         double actualMedian = testTriangle.getMedianC();
-        assertEquals(expectedMedian, numberFormat.format(actualMedian));
+        assertEquals(expectedMedian, Formatter.format(actualMedian));
     }
 
     @Test
@@ -242,7 +234,7 @@ public class TriangleTests {
         String expectedMedian = "3.81";
 
         double actualMedian = testNegativeTriangle.getMedianA();
-        assertEquals(expectedMedian, numberFormat.format(actualMedian));
+        assertEquals(expectedMedian, Formatter.format(actualMedian));
     }
 
     @Test
@@ -250,7 +242,7 @@ public class TriangleTests {
         String expectedMedian = "1.8";
 
         double actualMedian = testNegativeTriangle.getMedianB();
-        assertEquals(expectedMedian, numberFormat.format(actualMedian));
+        assertEquals(expectedMedian, Formatter.format(actualMedian));
     }
 
     @Test
@@ -258,7 +250,7 @@ public class TriangleTests {
         String expectedMedian = "2.5";
 
         double actualMedian = testNegativeTriangle.getMedianC();
-        assertEquals(expectedMedian, numberFormat.format(actualMedian));
+        assertEquals(expectedMedian, Formatter.format(actualMedian));
     }
 
     @Test
@@ -266,7 +258,7 @@ public class TriangleTests {
         String expectedHeight = "0.71";
 
         double actualHeight = testTriangle.getHeightA();
-        assertEquals(expectedHeight, numberFormat.format(actualHeight));
+        assertEquals(expectedHeight, Formatter.format(actualHeight));
     }
 
     @Test
@@ -274,7 +266,7 @@ public class TriangleTests {
         String expectedHeight = "1";
 
         double actualHeight = testTriangle.getHeightB();
-        assertEquals(expectedHeight, numberFormat.format(actualHeight));
+        assertEquals(expectedHeight, Formatter.format(actualHeight));
     }
 
     @Test
@@ -282,7 +274,7 @@ public class TriangleTests {
         String expectedHeight = "1";
 
         double actualHeight = testTriangle.getHeightC();
-        assertEquals(expectedHeight, numberFormat.format(actualHeight));
+        assertEquals(expectedHeight, Formatter.format(actualHeight));
     }
 
     @Test
@@ -290,7 +282,7 @@ public class TriangleTests {
         String expectedHeight = "3.54";
 
         double actualHeight = testNegativeTriangle.getHeightA();
-        assertEquals(expectedHeight, numberFormat.format(actualHeight));
+        assertEquals(expectedHeight, Formatter.format(actualHeight));
     }
 
     @Test
@@ -298,7 +290,7 @@ public class TriangleTests {
         String expectedHeight = "1.21";
 
         double actualHeight = testNegativeTriangle.getHeightB();
-        assertEquals(expectedHeight, numberFormat.format(actualHeight));
+        assertEquals(expectedHeight, Formatter.format(actualHeight));
     }
 
     @Test
@@ -306,7 +298,7 @@ public class TriangleTests {
         String expectedHeight = "1.39";
 
         double actualHeight = testNegativeTriangle.getHeightC();
-        assertEquals(expectedHeight, numberFormat.format(actualHeight));
+        assertEquals(expectedHeight, Formatter.format(actualHeight));
     }
 
     @Test
@@ -316,8 +308,8 @@ public class TriangleTests {
         Point centroid = testTriangle.getMedianIntersection();
 
         String[] actualCoordinates = {
-                numberFormat.format(centroid.getX()),
-                numberFormat.format(centroid.getY())};
+                Formatter.format(centroid.getX()),
+                Formatter.format(centroid.getY())};
         assertArrayEquals(expectedCoordinates, actualCoordinates);
     }
 
@@ -328,8 +320,8 @@ public class TriangleTests {
         Point centroid = testNegativeTriangle.getMedianIntersection();
 
         String[] actualCoordinates = {
-                numberFormat.format(centroid.getX()),
-                numberFormat.format(centroid.getY())};
+                Formatter.format(centroid.getX()),
+                Formatter.format(centroid.getY())};
         assertArrayEquals(expectedCoordinates, actualCoordinates);
     }
 

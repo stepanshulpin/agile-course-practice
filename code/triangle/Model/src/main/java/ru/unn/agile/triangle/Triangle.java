@@ -1,7 +1,5 @@
 package ru.unn.agile.triangle;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,7 +11,6 @@ public class Triangle {
     private final Point b;
     private final Point c;
     private final int sideNumber = 3;
-    private final DecimalFormat numberFormat;
 
     public Triangle(final Point a, final Point b, final Point c) {
         if (a.equals(b) || b.equals(c)) {
@@ -25,12 +22,6 @@ public class Triangle {
         this.a = a;
         this.b = b;
         this.c = c;
-
-        this.numberFormat = new DecimalFormat();
-        DecimalFormatSymbols decimalFormatSymbols = numberFormat.getDecimalFormatSymbols();
-        decimalFormatSymbols.setDecimalSeparator('.');
-        numberFormat.setDecimalFormatSymbols(decimalFormatSymbols);
-        numberFormat.setMaximumFractionDigits(2);
     }
 
     public Point getA() {
@@ -105,7 +96,7 @@ public class Triangle {
     }
 
     public double getArea() {
-        return (double) abs((a.getX() - c.getX()) * (b.getY() - c.getY())
+        return abs((a.getX() - c.getX()) * (b.getY() - c.getY())
                 - (a.getY() - c.getY()) * (b.getX() - c.getX())) / 2;
     }
 
@@ -146,8 +137,8 @@ public class Triangle {
     private double getMedian(final Point anglePoint,
                              final Point sidePoint1,
                              final Point sidePoint2) {
-        double medianX = (double) (sidePoint1.getX() + sidePoint2.getX()) / 2;
-        double medianY = (double) (sidePoint1.getY() + sidePoint2.getY()) / 2;
+        double medianX = (sidePoint1.getX() + sidePoint2.getX()) / 2;
+        double medianY = (sidePoint1.getY() + sidePoint2.getY()) / 2;
         return sqrt(pow(medianX - anglePoint.getX(), 2) + pow(medianY - anglePoint.getY(), 2));
     }
 
@@ -175,7 +166,7 @@ public class Triangle {
     public Point getMedianIntersection() {
         double centroidX = (a.getX() + b.getX() + c.getX()) / sideNumber;
         double centroidY = (a.getY() + b.getY() + c.getY()) / sideNumber;
-        return new Point(numberFormat.format(centroidX), numberFormat.format(centroidY));
+        return new Point(Formatter.format(centroidX), Formatter.format(centroidY));
     }
 
     private boolean isOnSameLine(final Point point1, final Point point2, final Point point3) {
@@ -187,84 +178,84 @@ public class Triangle {
 
         GETANGLEA("getAngleA") {
             public String apply(final Triangle triangle) {
-                return triangle.numberFormat.format(triangle.getAngleA());
+                return Formatter.format(triangle.getAngleA());
             }
         },
         GETANGLEB("getAngleB") {
             public String apply(final Triangle triangle) {
-                return triangle.numberFormat.format(triangle.getAngleB());
+                return Formatter.format(triangle.getAngleB());
             }
         },
         GETANGLEC("getAngleC") {
             public String apply(final Triangle triangle) {
-                return triangle.numberFormat.format(triangle.getAngleC());
+                return Formatter.format(triangle.getAngleC());
             }
         }, GETSIDEABLENGTH("getSideABLength") {
             public String apply(final Triangle triangle) {
-                return triangle.numberFormat.format(triangle.getSideABLength());
+                return Formatter.format(triangle.getSideABLength());
             }
         },
         GETSIDEACLENGTH("getSideACLength") {
             public String apply(final Triangle triangle) {
-                return triangle.numberFormat.format(triangle.getSideACLength());
+                return Formatter.format(triangle.getSideACLength());
             }
         },
         GETSIDEBCLENGTH("getSideBCLength") {
             public String apply(final Triangle triangle) {
-                return triangle.numberFormat.format(triangle.getSideBCLength());
+                return Formatter.format(triangle.getSideBCLength());
             }
         }, GETAREA("getArea") {
             public String apply(final Triangle triangle) {
-                return triangle.numberFormat.format(triangle.getArea());
+                return Formatter.format(triangle.getArea());
             }
         },
         GETPERIMETER("getPerimeter") {
             public String apply(final Triangle triangle) {
-                return triangle.numberFormat.format(triangle.getPerimeter());
+                return Formatter.format(triangle.getPerimeter());
             }
         }, GETHEIGHTA("GetHeightA") {
             public String apply(final Triangle triangle) {
-                return triangle.numberFormat.format(triangle.getHeightA());
+                return Formatter.format(triangle.getHeightA());
             }
         },
         GETHEIGHTB("GetHeightB") {
             public String apply(final Triangle triangle) {
-                return triangle.numberFormat.format(triangle.getHeightB());
+                return Formatter.format(triangle.getHeightB());
             }
         },
         GETHEIGHTC("GetHeightC") {
             public String apply(final Triangle triangle) {
-                return triangle.numberFormat.format(triangle.getHeightC());
+                return Formatter.format(triangle.getHeightC());
             }
         },
         GETMEDIANA("getMedianA") {
             public String apply(final Triangle triangle) {
-                return triangle.numberFormat.format(triangle.getMedianA());
+                return Formatter.format(triangle.getMedianA());
             }
         },
         GETMEDIANB("getMedianB") {
             public String apply(final Triangle triangle) {
-                return triangle.numberFormat.format(triangle.getMedianB());
+                return Formatter.format(triangle.getMedianB());
             }
         },
         GETMEDIANC("getMedianC") {
             public String apply(final Triangle triangle) {
-                return triangle.numberFormat.format(triangle.getMedianC());
+                return Formatter.format(triangle.getMedianC());
             }
         },
         GETBISECTORA("getBisectorA") {
             public String apply(final Triangle triangle) {
-                return triangle.numberFormat.format(triangle.getBisectorA());
+                return Formatter.format(triangle.getBisectorA());
             }
         },
         GETBISECTORB("getBisectorB") {
             public String apply(final Triangle triangle) {
-                return triangle.numberFormat.format(triangle.getBisectorB());
+                return Formatter.format(triangle.getBisectorB());
             }
         },
         GETBISECTORC("getBisectorC") {
             public String apply(final Triangle triangle) {
-                return triangle.numberFormat.format(triangle.getBisectorC());
+                return Formatter.format(triangle.getBisectorC());
             }
         },
         GETMEDIANINTERSECTION("getMedianIntersection") {

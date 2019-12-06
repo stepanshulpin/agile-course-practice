@@ -32,7 +32,6 @@ public class Calculator {
     @FXML
     void initialize() {
 
-        // Two-way binding hasn't supported by FXML yet, so place it in code-behind
         txtAx.textProperty().bindBidirectional(viewModel.axProperty());
         txtAy.textProperty().bindBidirectional(viewModel.ayProperty());
         txtBx.textProperty().bindBidirectional(viewModel.bxProperty());
