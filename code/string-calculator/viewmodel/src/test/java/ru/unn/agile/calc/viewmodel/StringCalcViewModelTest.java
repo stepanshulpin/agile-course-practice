@@ -21,8 +21,10 @@ public class StringCalcViewModelTest {
     }
 
     @Test
-    public void fakeTest() {
-        assertTrue(true);
+    public void canCalculateExpression() {
+        viewModel.expressionTfProperty().setValue("1+1");
+        viewModel.calculate();
+        assertEquals("2.0", viewModel.resultLblProperty().get());
     }
 
 }

@@ -8,15 +8,17 @@ import javafx.stage.Stage;
 
 public class StringCalcApp extends Application {
 
+    private static final String APP_TITLE = "String Calculator";
+    private static final String APP_FXML = "StringCalculator.fxml";
     private static final int APP_HEIGHT = 350;
     private static final int APP_WIDTH = 600;
 
     @Override
     public void start(final Stage primaryStage) throws Exception {
 
-        Parent root = FXMLLoader.load(getClass().getResource("StringCalculator.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(APP_FXML));
 
-        primaryStage.setTitle("String Calculator");
+        primaryStage.setTitle(APP_TITLE);
         primaryStage.setHeight(APP_HEIGHT);
         primaryStage.setWidth(APP_WIDTH);
         primaryStage.setResizable(false);
