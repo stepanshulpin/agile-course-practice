@@ -68,9 +68,9 @@ public class VectorMetricsTests {
     public void canCalculateL2DistanceOneDimensionalVector() {
         Vector<Double> vector = new Vector<>();
         vector.add(2.0);
-        double expectedL1 = 2.0;
-        double actualL1 = VectorMetrics.calculateL2(vector);
-        assertEquals(expectedL1, actualL1, EPS);
+        double expectedL2 = 2.0;
+        double actualL2 = VectorMetrics.calculateL2(vector);
+        assertEquals(expectedL2, actualL2, EPS);
     }
 
     @Test
@@ -79,9 +79,9 @@ public class VectorMetricsTests {
         vector.add(2.0);
         vector.add(3.0);
         double sumSquared = 13.0;
-        double expectedL1 = Math.sqrt(sumSquared);
-        double actualL1 = VectorMetrics.calculateL2(vector);
-        assertEquals(expectedL1, actualL1, EPS);
+        double expectedL2 = Math.sqrt(sumSquared);
+        double actualL2 = VectorMetrics.calculateL2(vector);
+        assertEquals(expectedL2, actualL2, EPS);
     }
 
     @Test
@@ -91,9 +91,9 @@ public class VectorMetricsTests {
         vector.add(3.0);
         vector.add(4.0);
         double sumSquared = 29;
-        double expectedL1 = Math.sqrt(sumSquared);
-        double actualL1 = VectorMetrics.calculateL2(vector);
-        assertEquals(expectedL1, actualL1, EPS);
+        double expectedL2 = Math.sqrt(sumSquared);
+        double actualL2 = VectorMetrics.calculateL2(vector);
+        assertEquals(expectedL2, actualL2, EPS);
     }
 
     @Test
@@ -103,9 +103,9 @@ public class VectorMetricsTests {
         vector.add(3.0);
         vector.add(-4.0);
         double sumSquared = 26;
-        double expectedL1 = Math.sqrt(sumSquared);
-        double actualL1 = VectorMetrics.calculateL2(vector);
-        assertEquals(expectedL1, actualL1, EPS);
+        double expectedL2 = Math.sqrt(sumSquared);
+        double actualL2 = VectorMetrics.calculateL2(vector);
+        assertEquals(expectedL2, actualL2, EPS);
     }
 
     @Test(expected = NoSuchElementException.class)
