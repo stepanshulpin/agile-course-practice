@@ -16,12 +16,14 @@ public class ViewModel {
             new SimpleObjectProperty<>(FXCollections.observableArrayList(Operation.values()));
 
     private final ObjectProperty<Operation> operation = new SimpleObjectProperty<>();
+    private final StringProperty status = new SimpleStringProperty();
 
 
     public ViewModel() {
         userKey.set("");
         operationResult.set("");
         operation.set(Operation.ADD);
+        status.set(Status.WAITING.toString());
     }
 
     public StringProperty operationResultProperty() {
@@ -35,10 +37,29 @@ public class ViewModel {
     public ObjectProperty<Operation> operationProperty() {
         return operation;
     }
+
+    public StringProperty statusProperty() {
+        return status;
+    }
 }
 
 enum Operation {
     FIND,
     ADD,
     REMOVE
+}
+
+enum Status {
+    WAITING("Please provide input data"),
+    READY("Press 'Calculate' or Enter"),
+    BAD_FORMAT("Bad format"),
+    SUCCESS("Success");
+
+    private final String name;
+    Status(final String name) {
+        this.name = name;
+    }
+    public String toString() {
+        return name;
+    }
 }

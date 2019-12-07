@@ -24,5 +24,6 @@ public class ViewModelTests {
         assertEquals("", viewModel.userKeyProperty().get());
         assertEquals("", viewModel.operationResultProperty().get());
         assertEquals(Operation.ADD, viewModel.operationProperty().get());
+        assertEquals(Status.WAITING.toString(), viewModel.statusProperty().get());
     }
 }
