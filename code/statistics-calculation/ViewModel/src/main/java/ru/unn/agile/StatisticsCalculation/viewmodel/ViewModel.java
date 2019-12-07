@@ -39,12 +39,10 @@ public class ViewModel {
     private final List<UpdateDataChangeListener> updateDataChangedListeners = new ArrayList<>();
 
     private final int NOT_SELECTED = -1;
-
     private final String EMPTY = "";
 
     public ViewModel() {
-        newValue.set(EMPTY);
-        newProbability.set(EMPTY);
+        setInputFieldsToEmpty();
         operationParameter.set(EMPTY);
 
         selectedListIndex.set(NOT_SELECTED);
@@ -203,8 +201,7 @@ public class ViewModel {
             } else {
                 listData.add(new TableElement(newValue.getValue(), newProbability.getValue()));
             }
-            newValue.set(EMPTY);
-            newProbability.set(EMPTY);
+            setInputFieldsToEmpty();
             inputDataStatus.set(calculateInputDataStatus().toString());
         }
         dataStatus.set(calculateDataStatus().toString());
@@ -215,18 +212,19 @@ public class ViewModel {
         if (focusedIndex >= 0 && focusedIndex < listData.size()) {
             listData.remove(focusedIndex);
         }
-        newValue.set(EMPTY);
-        newProbability.set(EMPTY);
+        setInputFieldsToEmpty();
         inputDataStatus.set(calculateInputDataStatus().toString());
         dataStatus.set(calculateDataStatus().toString());
         operationStatus.set(calculateOperationStatus().toString());
     }
 
-    public void selectElement(final int focusedIndex) {
+    public void setSelectedElement(final int focusedIndex) {
         selectedListIndex.set(focusedIndex);
-        newValue.set(listData.get(selectedListIndex.get()).getValue());
-        newProbability.set(listData.get(selectedListIndex.get()).getProbability());
-        inputDataStatus.set(calculateInputDataStatus().toString());
+        if (selectedListIndex.get() != NOT_SELECTED) {
+            newValue.set(listData.get(selectedListIndex.get()).getValue());
+            newProbability.set(listData.get(selectedListIndex.get()).getProbability());
+            inputDataStatus.set(calculateInputDataStatus().toString());
+        }
     }
 
     public void updateOperation() {
@@ -242,6 +240,12 @@ public class ViewModel {
         } catch (IllegalArgumentException exception) {
             result.set(exception.toString());
         }
+    }
+
+    public void resetSelectedElement() {
+        selectedListIndex.set(NOT_SELECTED);
+        setInputFieldsToEmpty();
+        inputDataStatus.set(calculateInputDataStatus().toString());
     }
 
     private InputDataStatus calculateInputDataStatus() {
@@ -321,6 +325,11 @@ public class ViewModel {
         }
 
         return probabilities;
+    }
+
+    private void setInputFieldsToEmpty(){
+        newValue.set(EMPTY);
+        newProbability.set(EMPTY);
     }
 
     private class UpdateDataChangeListener implements ChangeListener<String> {

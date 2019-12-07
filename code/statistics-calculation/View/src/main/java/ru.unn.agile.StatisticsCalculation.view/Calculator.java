@@ -3,9 +3,11 @@ package ru.unn.agile.StatisticsCalculation.view;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import ru.unn.agile.StatisticsCalculation.viewmodel.Operation;
 import ru.unn.agile.StatisticsCalculation.viewmodel.TableElement;
 import ru.unn.agile.StatisticsCalculation.viewmodel.ViewModel;
@@ -24,6 +26,9 @@ public class Calculator {
 
     @FXML
     private ComboBox<Operation> comboBoxOperation;
+
+    @FXML
+    private AnchorPane anchorPaneSettings;
 
     @FXML
     private Button buttonUpdate;
@@ -75,11 +80,28 @@ public class Calculator {
         tableViewData.setOnMousePressed(new EventHandler<>() {
             @Override
             public void handle(final MouseEvent event) {
-                viewModel.selectElement(tableViewData.getSelectionModel().getFocusedIndex());
+                viewModel.setSelectedElement(tableViewData.getSelectionModel().getFocusedIndex());
             }
         });
 
-        //tableViewData.setOnMouseClicked();
+        tableViewData.setOnMouseClicked(new EventHandler<>() {
+            @Override
+            public void handle(final MouseEvent event) {
+                Node source = event.getPickResult().getIntersectedNode();
+
+                // move up through the node hierarchy until a TableRow or scene root is found
+                while (source != null && !(source instanceof TableRow)) {
+                    source = source.getParent();
+                }
+
+                // clear selection on click anywhere but on a filled row
+                if (source == null || (source instanceof TableRow
+                        && ((TableRow) source).isEmpty())) {
+                    viewModel.resetSelectedElement();
+                    tableViewData.getSelectionModel().clearSelection();
+                }
+            }
+        });
 
         comboBoxOperation.setOnAction(new EventHandler<>() {
             @Override

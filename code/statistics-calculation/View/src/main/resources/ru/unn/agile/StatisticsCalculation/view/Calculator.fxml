@@ -40,7 +40,7 @@
                         </SplitPane>
                     </children>
                 </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="285.0">
+                <AnchorPane fx:id="anchorPaneSettings" minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="285.0">
                     <children>
                         <Label layoutX="40.0" layoutY="149.0" text="Data status:" />
                         <Label layoutX="41.0" layoutY="298.0" text="Operation status:" />

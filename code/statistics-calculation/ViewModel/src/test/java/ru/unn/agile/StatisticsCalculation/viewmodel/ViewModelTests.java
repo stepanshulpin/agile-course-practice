@@ -150,7 +150,7 @@ public class ViewModelTests {
         viewModel.newProbabilityProperty().set("0.1");
         viewModel.updateTableElement();
 
-        viewModel.selectElement(0);
+        viewModel.setSelectedElement(0);
         viewModel.newValueProperty().set("20");
         viewModel.newProbabilityProperty().set("0.2");
         viewModel.updateTableElement();
@@ -316,11 +316,11 @@ public class ViewModelTests {
     }
     @Test
     public void canSetOperationStatusWaitingDataAfterUpdate() {
-        viewModel.newValueProperty().set("10");
+        viewModel.newValueProperty().set("100");
         viewModel.newProbabilityProperty().set("1.0");
         viewModel.updateTableElement();
 
-        viewModel.selectElement(0);
+        viewModel.setSelectedElement(0);
         viewModel.newValueProperty().set("10");
         viewModel.newProbabilityProperty().set("0.8");
         viewModel.updateTableElement();
@@ -335,8 +335,8 @@ public class ViewModelTests {
 
         viewModel.operationProperty().set(Operation.DISPERSION);
         viewModel.updateOperation();
-        viewModel.selectElement(0);
-        viewModel.newValueProperty().set("10");
+        viewModel.setSelectedElement(0);
+        viewModel.newValueProperty().set("100");
         viewModel.newProbabilityProperty().set("0.8");
         viewModel.updateTableElement();
 
@@ -435,7 +435,7 @@ public class ViewModelTests {
         viewModel.operationProperty().set(Operation.RAW_MOMENT);
         viewModel.updateOperation();
 
-        viewModel.selectElement(0);
+        viewModel.setSelectedElement(0);
         viewModel.newValueProperty().set("1");
         viewModel.newProbabilityProperty().set("0.8");
         viewModel.updateTableElement();
@@ -505,5 +505,20 @@ public class ViewModelTests {
         viewModel.calculate();
 
         assertEquals("3.0", viewModel.getResult());
+    }
+    @Test
+    public void canResetSelectedElement() {
+        viewModel.newValueProperty().set("1");
+        viewModel.newProbabilityProperty().set("0.5");
+        viewModel.updateTableElement();
+
+        viewModel.setSelectedElement(0);
+        viewModel.newValueProperty().set("1");
+        viewModel.newProbabilityProperty().set("0.2");
+        viewModel.resetSelectedElement();
+
+        assertEquals(InputDataStatus.WAITING.toString(), viewModel.getInputDataStatus());
+        assertEquals("", viewModel.newValueProperty().get());
+        assertEquals("", viewModel.newProbabilityProperty().get());
     }
 }
