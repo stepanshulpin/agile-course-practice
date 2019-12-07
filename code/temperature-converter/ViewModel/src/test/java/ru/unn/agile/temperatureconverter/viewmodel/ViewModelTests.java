@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
 
 public class ViewModelTests {
     private ViewModel viewModel;
+    private final double delta = 0.001;
 
     @Before
     public void setUp() {
@@ -104,5 +105,157 @@ public class ViewModelTests {
 
         assertEquals("The temperature is less than absolute zero!", viewModel.getStatusText());
     }
+    @Test
+    public void convertFromCelsius0ToFahrenheit32() {
+        viewModel.setFromTemperature("0.0");
+        viewModel.setTo(ListOfTemperatures.FAHRENHEIT);
+        viewModel.calculate();
 
+        assertEquals("32.0", viewModel.getResultTemperature());
+    }
+
+    @Test
+    public void convertFromCelsius5ToFahrenheit41() {
+        viewModel.setFromTemperature("5.0");
+        viewModel.setTo(ListOfTemperatures.FAHRENHEIT);
+        viewModel.calculate();
+
+        assertEquals("41.0", viewModel.getResultTemperature());
+    }
+
+    @Test
+    public void convertCelsius0ToKelvin273() {
+        viewModel.setFrom(ListOfTemperatures.CELSIUS);
+        viewModel.setFromTemperature("0.0");
+        viewModel.setTo(ListOfTemperatures.KELVIN);
+        viewModel.calculate();
+
+        assertEquals("273.15", viewModel.getResultTemperature());
+    }
+    @Test
+    public void convertFahrenheit41ToCelsius5() {
+        viewModel.setFrom(ListOfTemperatures.FAHRENHEIT);
+        viewModel.setFromTemperature("41.0");
+        viewModel.setTo(ListOfTemperatures.CELSIUS);
+        viewModel.calculate();
+
+        assertEquals("5.0", viewModel.getResultTemperature());
+    }
+
+    @Test
+    public void convertFahrenheit10ToKelvin260() {
+        viewModel.setFrom(ListOfTemperatures.FAHRENHEIT);
+        viewModel.setFromTemperature("10.0");
+        viewModel.setTo(ListOfTemperatures.KELVIN);
+        viewModel.calculate();
+
+        assertEquals(260.927, viewModel.getDoubleResult(), delta);
+    }
+
+    @Test
+    public void convertFahrenheit0ToKelvin255() {
+        viewModel.setFrom(ListOfTemperatures.FAHRENHEIT);
+        viewModel.setFromTemperature("0.0");
+        viewModel.setTo(ListOfTemperatures.KELVIN);
+        viewModel.calculate();
+
+        assertEquals(255.372, viewModel.getDoubleResult(), delta);
+    }
+
+    @Test
+    public void convertFahrenheit32ToNewton0() {
+        viewModel.setFrom(ListOfTemperatures.FAHRENHEIT);
+        viewModel.setFromTemperature("32.0");
+        viewModel.setTo(ListOfTemperatures.NEWTON);
+        viewModel.calculate();
+
+        assertEquals("0.0", viewModel.getResultTemperature());
+    }
+
+    @Test
+    public void convertKelvin0ToCelsiusAbsoluteZero() {
+        viewModel.setFrom(ListOfTemperatures.KELVIN);
+        viewModel.setFromTemperature("0.0");
+        viewModel.setTo(ListOfTemperatures.CELSIUS);
+        viewModel.calculate();
+
+        assertEquals("-273.15", viewModel.getResultTemperature());
+    }
+
+    @Test
+    public void convertKelvin0ToFahrenheitAbsoluteZero() {
+        viewModel.setFrom(ListOfTemperatures.KELVIN);
+        viewModel.setFromTemperature("0.0");
+        viewModel.setTo(ListOfTemperatures.FAHRENHEIT);
+        viewModel.calculate();
+
+        assertEquals(-459.67, viewModel.getDoubleResult(), delta);
+    }
+
+    @Test
+    public void convertKelvin455ToNewton60() {
+        viewModel.setFrom(ListOfTemperatures.KELVIN);
+        viewModel.setFromTemperature("455.0");
+        viewModel.setTo(ListOfTemperatures.NEWTON);
+        viewModel.calculate();
+
+        assertEquals(60.01, viewModel.getDoubleResult(), delta);
+    }
+
+    @Test
+    public void convertNewton0ToCelsius0() {
+        viewModel.setFrom(ListOfTemperatures.NEWTON);
+        viewModel.setFromTemperature("0.0");
+        viewModel.setTo(ListOfTemperatures.CELSIUS);
+        viewModel.calculate();
+
+        assertEquals("0.0", viewModel.getResultTemperature());
+    }
+
+    @Test
+    public void convertNewton33ToCelsius100() {
+        viewModel.setFrom(ListOfTemperatures.NEWTON);
+        viewModel.setFromTemperature("33.0");
+        viewModel.setTo(ListOfTemperatures.CELSIUS);
+        viewModel.calculate();
+
+        assertEquals("100.0", viewModel.getResultTemperature());
+    }
+
+    @Test
+    public void convertNewton0ToFahrenheit32() {
+        viewModel.setFrom(ListOfTemperatures.NEWTON);
+        viewModel.setFromTemperature("0.0");
+        viewModel.setTo(ListOfTemperatures.FAHRENHEIT);
+        viewModel.calculate();
+
+        assertEquals("32.0", viewModel.getResultTemperature());
+    }
+
+    @Test
+    public void convertNewton61ToKelvin458() {
+        viewModel.setFrom(ListOfTemperatures.NEWTON);
+        viewModel.setFromTemperature("61.0");
+        viewModel.setTo(ListOfTemperatures.KELVIN);
+        viewModel.calculate();
+
+        assertEquals(457.998, viewModel.getDoubleResult(), delta);
+    }
+
+    @Test
+    public void convertCelsius0ToCelsius0() {
+        viewModel.setTo(ListOfTemperatures.CELSIUS);
+        viewModel.setFromTemperature("0.0");
+        viewModel.setTo(ListOfTemperatures.CELSIUS);
+        viewModel.calculate();
+
+        assertEquals("0.0", viewModel.getResultTemperature());
+    }
+    @Test
+    public void convertCelsius100ToCelsius100() {
+        viewModel.setTo(ListOfTemperatures.CELSIUS);
+        viewModel.setFromTemperature("41.0");
+        viewModel.setTo(ListOfTemperatures.CELSIUS);
+        viewModel.calculate();
+    }
 }

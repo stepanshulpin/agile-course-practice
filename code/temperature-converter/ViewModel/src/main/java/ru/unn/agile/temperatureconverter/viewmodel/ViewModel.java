@@ -3,9 +3,9 @@ package ru.unn.agile.temperatureconverter.viewmodel;
 import ru.unn.agile.temperatureconverter.model.TemperatureConverter;
 import ru.unn.agile.temperatureconverter.model.CelsiusTemperature;
 import ru.unn.agile.temperatureconverter.model.NewtonTemperature;
+import ru.unn.agile.temperatureconverter.model.FahrenheitTemperature;
+import ru.unn.agile.temperatureconverter.model.KelvinTemperature;
 import ru.unn.agile.temperatureconverter.model.Temperature;
-
-
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,6 +24,8 @@ public class ViewModel {
 
     public enum ListOfTemperatures {
         CELSIUS("Celsius"),
+        FAHRENHEIT("Fahrenheit"),
+        KELVIN("Kelvin"),
         NEWTON("Newton");
         private final String temperature;
 
@@ -41,6 +43,10 @@ public class ViewModel {
 
     public String getResultTemperature() {
         return resultTemperature;
+    }
+
+    public double getDoubleResult() {
+        return Double.parseDouble(resultTemperature);
     }
 
     public String getStatusText() {
@@ -104,10 +110,12 @@ public class ViewModel {
     public boolean checkTemperature(final String fromTemperature, final ListOfTemperatures from) {
         try {
             if (from.equals(ListOfTemperatures.CELSIUS)) {
-                //  CelsiusTemperature celsius = new CelsiusTemperature(0.0);
                 CelsiusTemperature fromClass = new CelsiusTemperature(fromTemperature);
-            } else { //if (getFrom().equals(ListOfTemperatures.NEWTON)) {
-                //  CelsiusTemperature celsius = new CelsiusTemperature(0.0);
+            } else if (getFrom().equals(ListOfTemperatures.FAHRENHEIT)) {
+                FahrenheitTemperature fromClass = new FahrenheitTemperature(fromTemperature);
+            } else if (getFrom().equals(ListOfTemperatures.KELVIN)) {
+                KelvinTemperature fromClass = new KelvinTemperature(fromTemperature);
+            } else {
                 NewtonTemperature fromClass = new NewtonTemperature(fromTemperature);
             }
         } catch (IllegalArgumentException e) {
@@ -142,17 +150,24 @@ public class ViewModel {
 
             if (getFrom().equals(ListOfTemperatures.CELSIUS)) {
                 fromClass = new CelsiusTemperature(fromTemperature);
-            } else { //if (getFrom().equals(ListOfTemperatures.NEWTON)) {
+            } else if (getFrom().equals(ListOfTemperatures.FAHRENHEIT)) {
+                fromClass = new FahrenheitTemperature(fromTemperature);
+            } else if (getFrom().equals(ListOfTemperatures.KELVIN)) {
+                fromClass = new KelvinTemperature(fromTemperature);
+            } else {
                 fromClass = new NewtonTemperature(fromTemperature);
             }
 
-
             if (getTo().equals(ListOfTemperatures.CELSIUS)) {
                 toClass = converter.convert(fromClass, CelsiusTemperature.class);
-            } else { //          if (getFrom().equals(ListOfTemperatures.NEWTON)) {
-                //  CelsiusTemperature celsius = new CelsiusTemperature(0.0);
+            } else if (getTo().equals(ListOfTemperatures.FAHRENHEIT)) {
+                toClass = converter.convert(fromClass, FahrenheitTemperature.class);
+            } else if (getTo().equals(ListOfTemperatures.KELVIN)) {
+                toClass = converter.convert(fromClass, KelvinTemperature.class);
+            } else {
                 toClass = converter.convert(fromClass, NewtonTemperature.class);
             }
+
             resultTemperature = "" + toClass.getValue();
         }
     }
