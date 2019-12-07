@@ -48,15 +48,12 @@ public class ViewModel {
             add(addKey);
             add(addValue);
             add(addResult);
-            add(addStatus);
 
             add(findKey);
             add(findResult);
-            add(findStatus);
 
             add(removeKey);
             add(removeResult);
-            add(removeStatus);
         } };
 
         for (StringProperty field : fields) {
@@ -109,8 +106,10 @@ public class ViewModel {
     public void add() {
 //        final int key = Integer.parseInt(addKey.get());
 //        final String value = addValue.get();
-//
+
 //        binaryTree.add(key, value);
+
+        addStatus.set(Status.SUCCESS.toString());
     }
 
     private Status getAddStatus() {

@@ -68,7 +68,7 @@ public class ViewModelTests {
 
     @Test
     public void findStatusIsBadWhenNotIntegerInserted() {
-        viewModel.findKeyProperty().set("FYCK");
+        viewModel.findKeyProperty().set("PASS");
         assertEquals(Status.BAD_FORMAT.toString(), viewModel.findStatusProperty().get());
     }
 
@@ -80,8 +80,17 @@ public class ViewModelTests {
 
     @Test
     public void removeStatusIsBadWhenNotIntegerInserted() {
-        viewModel.removeKeyProperty().set("FYCK");
+        viewModel.removeKeyProperty().set("PASS");
         assertEquals(Status.BAD_FORMAT.toString(), viewModel.removeStatusProperty().get());
     }
 
+    @Test
+    public void addStatusIsSuccessWhenInputCorrect() {
+        viewModel.addKeyProperty().set("2");
+        viewModel.addValueProperty().set("PASS");
+
+        viewModel.add();
+
+        assertEquals(Status.SUCCESS.toString(), viewModel.addStatusProperty().get());
+    }
 }
