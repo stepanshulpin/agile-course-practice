@@ -4,9 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import ru.unn.agile.calc.viewmodel.StringCalcViewModel;
 
 public class StringCalcView {
+
+    private final String tooltip = "Type your expression here";
 
     @FXML
     private StringCalcViewModel viewModel;
@@ -21,7 +24,10 @@ public class StringCalcView {
     void initialize() {
 
         expressionTf.textProperty().bindBidirectional(viewModel.expressionTfProperty());
+        expressionTf.tooltipProperty().setValue(new Tooltip(tooltip));
         resultLbl.textProperty().bindBidirectional(viewModel.resultLblProperty());
+
+        calcBtn.setOnAction(e -> viewModel.calculate());
     }
 
 }
