@@ -116,6 +116,7 @@ public class ViewModel {
 
         final Boolean result = storage.remove(key);
 
+        removeResult.set(Boolean.toString(result));
         removeStatus.set(Status.SUCCESS.toString());
     }
     private Status getAddStatus() {
