@@ -85,40 +85,51 @@ public class ViewModel {
     }
 
     private boolean matchInput(final String line, final String pattern) {
-        boolean result = false;
         Pattern p  = Pattern.compile(pattern);
-        if (!line.isEmpty()) {
-            Matcher m = p.matcher(line);
-            result = m.matches();
+
+        if (line.isEmpty()) {
+            return false;
         }
-        return result;
+
+        Matcher m = p.matcher(line);
+        if (m.matches()) {
+            statusText = "";
+            return true;
+        } else {
+            statusText = "Error. Please enter correct temperature";
+            return false;
+        }
     }
 
-    private boolean isCorrectInputForFirstGroupOperation() {
-        boolean matchTempFrom = matchInput(getFromTemperature(), patternInput);
-        if (matchTempFrom) {
-            return true;
+    public boolean checkTemperature(final String fromTemperature, final ListOfTemperatures from) {
+        try {
+            if (from.equals(ListOfTemperatures.CELSIUS)) {
+                //  CelsiusTemperature celsius = new CelsiusTemperature(0.0);
+                CelsiusTemperature fromClass = new CelsiusTemperature(fromTemperature);
+            } else { //if (getFrom().equals(ListOfTemperatures.NEWTON)) {
+                //  CelsiusTemperature celsius = new CelsiusTemperature(0.0);
+                NewtonTemperature fromClass = new NewtonTemperature(fromTemperature);
+            }
+        } catch (IllegalArgumentException e) {
+            if (statusText.isEmpty()) {
+                statusText = e.getMessage();
+            }
+            return false;
         }
-        return false;
-    }
-    private void setError() {
-        if (isErrorMessageDisplayed) {
-            statusText = "Error. Please enter correct temperature";
-        } else {
-            statusText = "";
-        }
+        statusText = "";
+        return true;
     }
 
     public void processInput() {
-        boolean validation1 = isCorrectInputForFirstGroupOperation();
-        if (validation1) {
+        boolean validationInput = matchInput(getFromTemperature(), patternInput);
+        boolean validationWithAbsoluteZero = checkTemperature(getFromTemperature(), getFrom());
+        if (validationInput && validationWithAbsoluteZero) {
             isConvertButtonEnabled = true;
             isErrorMessageDisplayed = false;
         } else {
             isConvertButtonEnabled = false;
             isErrorMessageDisplayed = true;
         }
-        setError();
     }
 
     public void calculate() {
@@ -130,15 +141,13 @@ public class ViewModel {
             Temperature toClass;
 
             if (getFrom().equals(ListOfTemperatures.CELSIUS)) {
-              //  CelsiusTemperature celsius = new CelsiusTemperature(0.0);
                 fromClass = new CelsiusTemperature(fromTemperature);
             } else { //if (getFrom().equals(ListOfTemperatures.NEWTON)) {
-                //  CelsiusTemperature celsius = new CelsiusTemperature(0.0);
                 fromClass = new NewtonTemperature(fromTemperature);
             }
 
+
             if (getTo().equals(ListOfTemperatures.CELSIUS)) {
-                //  CelsiusTemperature celsius = new CelsiusTemperature(0.0);
                 toClass = converter.convert(fromClass, CelsiusTemperature.class);
             } else { //          if (getFrom().equals(ListOfTemperatures.NEWTON)) {
                 //  CelsiusTemperature celsius = new CelsiusTemperature(0.0);

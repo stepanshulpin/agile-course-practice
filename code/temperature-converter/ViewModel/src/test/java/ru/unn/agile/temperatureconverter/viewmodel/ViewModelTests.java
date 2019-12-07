@@ -44,6 +44,13 @@ public class ViewModelTests {
     }
 
     @Test
+    public void statusTextWhenFormatIsBad() {
+        viewModel.setFromTemperature("trash");
+        viewModel.processInput();
+        assertEquals("Error. Please enter correct temperature", viewModel.getStatusText());
+    }
+
+    @Test
     public void convertButtonIsDisabledWithEmptyInput() {
         viewModel.processInput();
 
@@ -73,98 +80,29 @@ public class ViewModelTests {
     }
 
     @Test
-    public void convertFromCelsiusToNewtonHasCorrectResult() {
+    public void convertFromCelsiusToCelsiusHasCorrectResult() {
         viewModel.setFromTemperature("0.0");
         viewModel.calculate();
 
         assertEquals("0.0", viewModel.getResultTemperature());
     }
-/*
-    @Test
-    public void statusIsWaitingWhenCalculateWithEmptyFields() {
-        viewModel.calculate();
-        assertEquals(Status.WAITING.toString(), viewModel.statusProperty().get());
-    }
 
     @Test
-    public void statusIsReadyWhenFieldsAreFill() {
-        viewModel.re1Property().set("1");
-        viewModel.im1Property().set("2");
-        viewModel.re2Property().set("3");
-        viewModel.im2Property().set("4");
-
-        assertEquals(Status.READY.toString(), viewModel.statusProperty().get());
-    }
-
-    @Test
-    public void canReportBadFormat() {
-        viewModel.re1Property().set("a");
-
-        assertEquals(Status.BAD_FORMAT.toString(), viewModel.statusProperty().get());
-    }
-
-    @Test
-    public void statusIsWaitingIfNotEnoughCorrectData() {
-        viewModel.re1Property().set("1");
-
-        assertEquals(Status.WAITING.toString(), viewModel.statusProperty().get());
-    }
-
-    @Test
-    public void canSetSuccessMessage() {
-        setInputData();
-
+    public void convertFromCelsiusToNewtonHasCorrectResult() {
+        viewModel.setFromTemperature("33.0");
+        viewModel.setTo(ListOfTemperatures.NEWTON);
         viewModel.calculate();
 
-        assertEquals(Status.SUCCESS.toString(), viewModel.statusProperty().get());
+        assertEquals("10.89", viewModel.getResultTemperature());
     }
 
     @Test
-    public void canSetBadFormatMessage() {
-        viewModel.re1Property().set("#selfie");
-
-        assertEquals(Status.BAD_FORMAT.toString(), viewModel.statusProperty().get());
-    }
-
-    @Test
-    public void statusIsReadyWhenSetProperData() {
-        setInputData();
-
-        assertEquals(Status.READY.toString(), viewModel.statusProperty().get());
-    }
-
-    @Test
-    public void operationMulHasCorrectResult() {
-        viewModel.re1Property().set("2");
-        viewModel.im1Property().set("3");
-        viewModel.re2Property().set("1");
-        viewModel.im2Property().set("2");
-        viewModel.operationProperty().set(Operation.MULTIPLY);
-
+    public void convertFromCelsiusToNewtonHasIncorrectResult() {
+        viewModel.setFromTemperature("-300.0");
+        viewModel.setTo(ListOfTemperatures.NEWTON);
         viewModel.calculate();
 
-        assertEquals("-4.0 + 7.0i", viewModel.resultProperty().get());
+        assertEquals("The temperature is less than absolute zero!", viewModel.getStatusText());
     }
 
-    @Test
-    public void operationAddWithNegativeNumbersHasCorrectResult() {
-        viewModel.re1Property().set("1.2");
-        viewModel.im1Property().set("2.3");
-        viewModel.re2Property().set("-10.4");
-        viewModel.im2Property().set("-20.5");
-        viewModel.operationProperty().set(Operation.ADD);
-
-        viewModel.calculate();
-
-        assertEquals("-9.2 - 18.2i", viewModel.resultProperty().get());
-    }
-
-    private void setInputData() {
-        viewModel.re1Property().set("1");
-        viewModel.im1Property().set("2");
-        viewModel.re2Property().set("3");
-        viewModel.im2Property().set("4");
-    }
-
- */
 }
