@@ -64,9 +64,13 @@ include "code/fractioncalculator"
 project(":code/fractioncalculator").name = "fractioncalculator"
 // Гришин Дмитрий
 // Зырина Анна
-// Кальянов Дмитрий
-include "code/string-calculator"
-project(":code/string-calculator").name = "string-calculator-Model"
+// string-calculator
+include "code/string-calculator/model"
+project(":code/string-calculator/model").name = "string-calculator-model"
+include "code/string-calculator/viewmodel"
+project(":code/string-calculator/viewmodel").name = "string-calculator-viewmodel"
+include "code/string-calculator/view"
+project(":code/string-calculator/view").name = "string-calculator-view"
 // Карев Борис
 include "code/length-converter"
 project(":code/length-converter").name = "length-converter-Model"
