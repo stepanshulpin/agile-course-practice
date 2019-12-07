@@ -35,11 +35,11 @@ public class ViewModelTests {
     @Test
     public void canSetDefaultButtons() {
         assertTrue(viewModel.calculationDisabledProperty().get());
-        assertFalse(viewModel.deleteDisabledProperty().get());
+        assertTrue(viewModel.deleteDisabledProperty().get());
     }
     @Test
     public void canSetParametersPartInvisibleByDefault() {
-        assertFalse(viewModel.enterParameterDisabledProperty().get());
+        assertFalse(viewModel.isEnterParameterVisible());
     }
     @Test
     public void canAddCorrectTableElement() {
@@ -402,7 +402,7 @@ public class ViewModelTests {
         viewModel.operationProperty().set(Operation.CENTRAL_MOMENT);
         viewModel.updateOperation();
 
-        assertTrue(viewModel.enterParameterDisabledProperty().get());
+        assertTrue(viewModel.isEnterParameterVisible());
     }
     @Test
     public void canSetParametersPartVisibleWithDataAndRawMoment() {
@@ -412,7 +412,7 @@ public class ViewModelTests {
         viewModel.operationProperty().set(Operation.RAW_MOMENT);
         viewModel.updateOperation();
 
-        assertTrue(viewModel.enterParameterDisabledProperty().get());
+        assertTrue(viewModel.isEnterParameterVisible());
     }
     @Test
     public void canSetParametersPartInvisibleWithDataAndDispersion() {
@@ -425,7 +425,7 @@ public class ViewModelTests {
         viewModel.operationProperty().set(Operation.DISPERSION);
         viewModel.updateOperation();
 
-        assertFalse(viewModel.enterParameterDisabledProperty().get());
+        assertFalse(viewModel.isEnterParameterVisible());
     }
     @Test
     public void canSetParametersPartInvisibleAfterUpdateData() {
@@ -440,7 +440,7 @@ public class ViewModelTests {
         viewModel.newProbabilityProperty().set("0.8");
         viewModel.updateTableElement();
 
-        assertFalse(viewModel.enterParameterDisabledProperty().get());
+        assertFalse(viewModel.isEnterParameterVisible());
     }
     @Test
     public void canSetOperationParameter() {
@@ -511,10 +511,8 @@ public class ViewModelTests {
         viewModel.newValueProperty().set("1");
         viewModel.newProbabilityProperty().set("0.5");
         viewModel.updateTableElement();
-
         viewModel.setSelectedElement(0);
-        viewModel.newValueProperty().set("1");
-        viewModel.newProbabilityProperty().set("0.2");
+
         viewModel.resetSelectedElement();
 
         assertEquals(InputDataStatus.WAITING.toString(), viewModel.getInputDataStatus());

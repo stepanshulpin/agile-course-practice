@@ -11,10 +11,61 @@ import ru.unn.agile.StatisticsCalculation.model.DiscreteRandomVariable;
 import java.util.ArrayList;
 import java.util.List;
 
+enum InputDataStatus {
+    WAITING("Enter data"),
+    READY("Input data is correct"),
+    BAD_FORMAT("Input data error");
+
+    private final String name;
+
+    InputDataStatus(final String name) {
+        this.name = name;
+    }
+
+    public String toString() {
+        return name;
+    }
+}
+
+enum DataStatus {
+    WAITING("Enter data"),
+    READY("Data is correct"),
+    BAD_FORMAT("Data normalization error");
+
+    private final String name;
+
+    DataStatus(final String name) {
+        this.name = name;
+    }
+
+    public String toString() {
+        return name;
+    }
+}
+
+enum OperationStatus {
+    WAITING_OPERATION("Choose an operation"),
+    WAITING_DATA("Waiting correct data"),
+    READY("Press 'Calculate'"),
+    WAITING_PARAMETER("Enter parameter"),
+    BAD_FORMAT("Error in parameter"),
+    SUCCESS("Success");
+
+    private final String name;
+
+    OperationStatus(final String name) {
+        this.name = name;
+    }
+
+    public String toString() {
+        return name;
+    }
+}
+
 public class ViewModel {
     private final StringProperty newValue = new SimpleStringProperty();
-    private final StringProperty newProbability  = new SimpleStringProperty();
-    private final StringProperty operationParameter  = new SimpleStringProperty();
+    private final StringProperty newProbability = new SimpleStringProperty();
+    private final StringProperty operationParameter = new SimpleStringProperty();
 
     private final StringProperty result = new SimpleStringProperty();
     private final StringProperty operationStatus = new SimpleStringProperty();
@@ -24,7 +75,7 @@ public class ViewModel {
     private final BooleanProperty calculationDisabled = new SimpleBooleanProperty();
     private final BooleanProperty deleteDisabled = new SimpleBooleanProperty();
     private final BooleanProperty updateDisabled = new SimpleBooleanProperty();
-    private final BooleanProperty enterParameterDisabled = new SimpleBooleanProperty();
+    private final BooleanProperty enterParameterVisible = new SimpleBooleanProperty();
     private final BooleanProperty isOperationParameterCorrect = new SimpleBooleanProperty();
 
     private final IntegerProperty selectedListIndex = new SimpleIntegerProperty();
@@ -34,12 +85,10 @@ public class ViewModel {
     private final ObjectProperty<Operation> operation = new SimpleObjectProperty<>();
 
     private final ObservableList<TableElement> listData = FXCollections.observableArrayList();
-    private DiscreteRandomVariable discreteRandomVariable;
-
     private final List<UpdateDataChangeListener> updateDataChangedListeners = new ArrayList<>();
-
     private final int NOT_SELECTED = -1;
     private final String EMPTY = "";
+    private DiscreteRandomVariable discreteRandomVariable;
 
     public ViewModel() {
         setInputFieldsToEmpty();
@@ -70,6 +119,7 @@ public class ViewModel {
             {
                 super.bind(newValue, newProbability);
             }
+
             @Override
             protected boolean computeValue() {
                 return calculateInputDataStatus() == InputDataStatus.READY;
@@ -77,10 +127,23 @@ public class ViewModel {
         };
         updateDisabled.bind(couldUpdateData.not());
 
+        BooleanBinding couldDelete = new BooleanBinding() {
+            {
+                super.bind(newValue, newProbability);
+            }
+
+            @Override
+            protected boolean computeValue() {
+                return !(newValue.isEmpty().get() && newProbability.isEmpty().get());
+            }
+        };
+        deleteDisabled.bind(couldDelete.not());
+
         BooleanBinding couldCalculate = new BooleanBinding() {
             {
                 super.bind(operationStatus, dataStatus);
             }
+
             @Override
             protected boolean computeValue() {
                 return calculateDataStatus() == DataStatus.READY
@@ -93,6 +156,7 @@ public class ViewModel {
             {
                 super.bind(operation, operationStatus);
             }
+
             @Override
             protected boolean computeValue() {
                 return calculateDataStatus() == DataStatus.READY
@@ -100,8 +164,7 @@ public class ViewModel {
                         || operation.get() == Operation.CENTRAL_MOMENT);
             }
         };
-        enterParameterDisabled.bind(couldEnterParameter);
-
+        enterParameterVisible.bind(couldEnterParameter);
 
         final List<StringProperty> fields = new ArrayList<>() {
             {
@@ -134,67 +197,86 @@ public class ViewModel {
     public StringProperty resultProperty() {
         return result;
     }
+
     public final String getResult() {
         return result.get();
     }
+
     public StringProperty operationStatusProperty() {
         return operationStatus;
     }
+
     public final String getOperationStatus() {
         return operationStatus.get();
     }
+
     public StringProperty dataStatusProperty() {
         return dataStatus;
     }
+
     public final String getDataStatus() {
         return dataStatus.get();
     }
+
     public StringProperty inputDataStatusProperty() {
         return inputDataStatus;
     }
+
     public final String getInputDataStatus() {
         return inputDataStatus.get();
     }
+
     public ObservableList<TableElement> getListData() {
         return listData;
     }
+
     public BooleanProperty calculationDisabledProperty() {
         return calculationDisabled;
     }
+
     public final boolean isCalculationDisabled() {
         return calculationDisabled.get();
     }
+
     public BooleanProperty deleteDisabledProperty() {
         return deleteDisabled;
     }
+
     public final boolean isDeleteDisabled() {
         return deleteDisabled.get();
     }
+
     public BooleanProperty updateDisabledProperty() {
         return updateDisabled;
     }
+
     public final boolean isUpdateDisabled() {
         return updateDisabled.get();
     }
-    public BooleanProperty enterParameterDisabledProperty() {
-        return enterParameterDisabled;
+
+    public BooleanProperty enterParameterVisibleProperty() {
+        return enterParameterVisible;
     }
-    public final boolean isEnterParameterDisabled() {
-        return enterParameterDisabled.get();
+
+    public final boolean isEnterParameterVisible() {
+        return enterParameterVisible.get();
     }
+
     public ObjectProperty<ObservableList<Operation>> operationsProperty() {
         return operations;
     }
+
     public final ObservableList<Operation> getOperations() {
         return operations.get();
     }
+
     public ObjectProperty<Operation> operationProperty() {
         return operation;
     }
 
     public void updateTableElement() {
         inputDataStatus.set(calculateInputDataStatus().toString());
-        if (calculateInputDataStatus() ==  InputDataStatus.READY) {
+        if (calculateInputDataStatus() == InputDataStatus.READY) {
             if (selectedListIndex.get() >= 0) {
                 listData.set(selectedListIndex.get(),
                         new TableElement(newValue.getValue(), newProbability.getValue()));
@@ -327,7 +409,7 @@ public class ViewModel {
         return probabilities;
     }
 
-    private void setInputFieldsToEmpty(){
+    private void setInputFieldsToEmpty() {
         newValue.set(EMPTY);
         newProbability.set(EMPTY);
     }
@@ -338,51 +420,6 @@ public class ViewModel {
                             final String oldValue, final String newValue) {
             inputDataStatus.set(calculateInputDataStatus().toString());
         }
-    }
-}
-
-enum InputDataStatus {
-    WAITING("Enter data"),
-    READY("Input data is correct"),
-    BAD_FORMAT("Input data error");
-
-    private final String name;
-    InputDataStatus(final String name) {
-        this.name = name;
-    }
-    public String toString() {
-        return name;
-    }
-}
-
-enum DataStatus {
-    WAITING("Enter data"),
-    READY("Data is correct"),
-    BAD_FORMAT("Data normalization error");
-
-    private final String name;
-    DataStatus(final String name) {
-        this.name = name;
-    }
-    public String toString() {
-        return name;
-    }
-}
-
-enum OperationStatus {
-    WAITING_OPERATION("Choose an operation"),
-    WAITING_DATA("Waiting correct data"),
-    READY("Press 'Calculate'"),
-    WAITING_PARAMETER("Enter parameter"),
-    BAD_FORMAT("Error in parameter"),
-    SUCCESS("Success");
-
-    private final String name;
-    OperationStatus(final String name) {
-        this.name = name;
-    }
-    public String toString() {
-        return name;
     }
 }
 
