@@ -64,8 +64,14 @@ project(":code/lab1-tdd-sorting").name = "lab1-tdd-Sorting"
 include "code/string-calculator"
 project(":code/string-calculator").name = "string-calculator-Model"
 // Карев Борис
-include "code/length-converter"
-project(":code/length-converter").name = "length-converter-Model"
+include "code/length-converter/Model"
+project(":code/length-converter/Model").name = "length-converter-Model"
+
+include "code/length-converter/View"
+project(":code/length-converter/View").name = "length-converter-View"
+
+include "code/length-converter/ViewModel"
+project(":code/length-converter/ViewModel").name = "length-converter-ViewModel"
 // Кильдишев Максим
 include "code/figures-volume-calculator"
 project(":code/figures-volume-calculator").name = "figures-volume-calculator-Model"
