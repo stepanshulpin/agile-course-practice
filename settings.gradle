@@ -142,8 +142,14 @@ project(":code/datastructure-set").name = "datastructure-set"
 include "code/lab1-tdd-arabic-roman-arabicromanconverter"
 project(":code/lab1-tdd-arabic-roman-arabicromanconverter").name = "lab1-tdd-arabic-roman-arabicromanconverter-Model"
 // Шульпин Степан
-include "code/mortgage-calculator"
-project(":code/mortgage-calculator").name = "mortgage-calculator-Model"
+include "code/mortgage-calculator/Model"
+project(":code/mortgage-calculator/Model").name = "mortgage-calculator-Model"
+
+include "code/mortgage-calculator/View"
+project(":code/mortgage-calculator/View").name = "mortgage-calculator-View"
+
+include "code/mortgage-calculator/ViewModel"
+project(":code/mortgage-calculator/ViewModel").name = "mortgage-calculator-ViewModel"
 // Шумихин Сергей
 include "code/binary-tree"
 project(":code/binary-tree").name = "binary-tree-Model"
