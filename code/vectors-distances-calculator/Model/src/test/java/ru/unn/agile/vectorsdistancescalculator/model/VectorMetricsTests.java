@@ -64,4 +64,13 @@ public class VectorMetricsTests {
         VectorMetrics.calculateL1(vector);
     }
 
+    @Test
+    public void canCalculateL2DistanceOneDimensionalVector() {
+        Vector<Float> vector = new Vector<>();
+        vector.add(2.0f);
+        float expectedL1 = 4.0f;
+        float actualL1 = VectorMetrics.calculateL2(vector);
+        assertEquals(expectedL1, actualL1, EPS);
+    }
+
 }
