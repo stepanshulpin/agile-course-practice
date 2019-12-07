@@ -50,20 +50,20 @@ public class Calculator {
         comboBoxOperation.valueProperty().bindBidirectional(viewModel.operationProperty());
 
         columnValue.setCellValueFactory(
-                new PropertyValueFactory<TableElement, String>("value"));
+                new PropertyValueFactory<>("value"));
         columnProbability.setCellValueFactory(
-                new PropertyValueFactory<TableElement, String>("probability"));
+                new PropertyValueFactory<>("probability"));
 
-        buttonUpdate.setOnAction(new EventHandler<ActionEvent>() {
+        buttonUpdate.setOnAction(new EventHandler<>() {
             @Override
             public void handle(final ActionEvent event) {
-                viewModel.updateTableElement(tableViewData.getSelectionModel().getFocusedIndex());
+                viewModel.updateTableElement();
                 tableViewData.setItems(viewModel.getListData());
                 tableViewData.getSelectionModel().clearSelection();
             }
         });
 
-        buttonDelete.setOnAction(new EventHandler<ActionEvent>() {
+        buttonDelete.setOnAction(new EventHandler<>() {
             @Override
             public void handle(final ActionEvent event) {
                 viewModel.deleteTableElement(tableViewData.getSelectionModel().getFocusedIndex());
@@ -72,21 +72,23 @@ public class Calculator {
             }
         });
 
-        tableViewData.setOnMousePressed(new EventHandler<MouseEvent>() {
+        tableViewData.setOnMousePressed(new EventHandler<>() {
             @Override
             public void handle(final MouseEvent event) {
                 viewModel.selectElement(tableViewData.getSelectionModel().getFocusedIndex());
             }
         });
 
-        comboBoxOperation.setOnAction(new EventHandler<ActionEvent>() {
+        //tableViewData.setOnMouseClicked();
+
+        comboBoxOperation.setOnAction(new EventHandler<>() {
             @Override
             public void handle(final ActionEvent event) {
                 viewModel.updateOperation();
             }
         });
 
-        buttonCalculate.setOnAction(new EventHandler<ActionEvent>() {
+        buttonCalculate.setOnAction(new EventHandler<>() {
             @Override
             public void handle(final ActionEvent event) {
                 viewModel.calculate();

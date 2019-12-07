@@ -23,7 +23,7 @@ public class ViewModelTests {
     public void canSetDefaultValuesTextFields() {
         assertEquals("", viewModel.newProbabilityProperty().get());
         assertEquals("", viewModel.newValueProperty().get());
-       // assertEquals("", viewModel.operationParameterProperty().get());
+        assertEquals("", viewModel.operationParameterProperty().get());
     }
     @Test
     public void canSetDefaultValuesLabels() {
@@ -34,12 +34,12 @@ public class ViewModelTests {
     }
     @Test
     public void canSetDefaultButtons() {
-        assertEquals(true, viewModel.calculationDisabledProperty().get());
-        assertEquals(false, viewModel.deleteDisabledProperty().get());
+        assertTrue(viewModel.calculationDisabledProperty().get());
+        assertFalse(viewModel.deleteDisabledProperty().get());
     }
     @Test
     public void canSetParametersPartInvisibleByDefault() {
-        assertEquals(false, viewModel.enterParameterDisabledProperty().get());
+        assertFalse(viewModel.enterParameterDisabledProperty().get());
     }
     @Test
     public void canAddCorrectTableElement() {
@@ -61,18 +61,18 @@ public class ViewModelTests {
         assertEquals(InputDataStatus.WAITING.toString(), viewModel.inputDataStatusProperty().get());
     }
     @Test
-    public void canNotAddTableElementWithProbabilitieMoreThen1() {
+    public void canNotAddTableElementWithProbabilityMoreThen1() {
         viewModel.newValueProperty().set("1");
         viewModel.newProbabilityProperty().set("1.1");
 
         viewModel.updateTableElement();
 
-        assertEquals(true, viewModel.getListData().isEmpty());
+        assertTrue(viewModel.getListData().isEmpty());
         assertEquals(InputDataStatus.BAD_FORMAT.toString(),
                 viewModel.inputDataStatusProperty().get());
     }
     @Test
-    public void canNotAddTableElementWithProbabilitieMoreThen1AndStatusBad() {
+    public void canNotAddTableElementWithProbabilityMoreThen1AndStatusBad() {
         viewModel.newValueProperty().set("1");
         viewModel.newProbabilityProperty().set("1.1");
 
@@ -86,21 +86,21 @@ public class ViewModelTests {
         viewModel.newValueProperty().set("2");
         viewModel.newProbabilityProperty().set("0.5");
 
-        assertEquals(false, viewModel.isUpdateDisabled());
+        assertFalse(viewModel.isUpdateDisabled());
     }
     @Test
     public void canNotPushAddButtonWithDoubleInputInValue() {
         viewModel.newValueProperty().set("2.1");
         viewModel.newProbabilityProperty().set("0.2");
 
-        assertEquals(true, viewModel.isUpdateDisabled());
+        assertTrue(viewModel.isUpdateDisabled());
     }
     @Test
-    public void canNotPushAddButtonWithUncorrectInput() {
+    public void canNotPushAddButtonWithIncorrectInput() {
         viewModel.newValueProperty().set("2");
         viewModel.newProbabilityProperty().set("1.5");
 
-        assertEquals(true, viewModel.isUpdateDisabled());
+        assertTrue(viewModel.isUpdateDisabled());
     }
     @Test
     public void canSetInputDataWaitingWithEmptyProperty() {
@@ -110,7 +110,7 @@ public class ViewModelTests {
         assertEquals(InputDataStatus.WAITING.toString(), viewModel.getInputDataStatus());
     }
     @Test
-    public void canSetInputDataBadFormatWithErrorProbabilitie() {
+    public void canSetInputDataBadFormatWithErrorProbability() {
         viewModel.newValueProperty().set("2");
         viewModel.newProbabilityProperty().set("10");
 
@@ -150,9 +150,10 @@ public class ViewModelTests {
         viewModel.newProbabilityProperty().set("0.1");
         viewModel.updateTableElement();
 
+        viewModel.selectElement(0);
         viewModel.newValueProperty().set("20");
         viewModel.newProbabilityProperty().set("0.2");
-        viewModel.updateTableElement(0);
+        viewModel.updateTableElement();
 
         assertEquals("20", viewModel.getListData().get(0).getValue());
         assertEquals("0.2", viewModel.getListData().get(0).getProbability());
@@ -164,7 +165,7 @@ public class ViewModelTests {
 
         viewModel.deleteTableElement(-1);
 
-        assertEquals(true, viewModel.getListData().isEmpty());
+        assertTrue(viewModel.getListData().isEmpty());
         assertEquals("", viewModel.newValueProperty().get());
         assertEquals("", viewModel.newProbabilityProperty().get());
     }
@@ -319,9 +320,10 @@ public class ViewModelTests {
         viewModel.newProbabilityProperty().set("1.0");
         viewModel.updateTableElement();
 
+        viewModel.selectElement(0);
         viewModel.newValueProperty().set("10");
         viewModel.newProbabilityProperty().set("0.8");
-        viewModel.updateTableElement(0);
+        viewModel.updateTableElement();
 
         assertEquals(OperationStatus.WAITING_DATA.toString(), viewModel.getOperationStatus());
     }
@@ -333,9 +335,10 @@ public class ViewModelTests {
 
         viewModel.operationProperty().set(Operation.DISPERSION);
         viewModel.updateOperation();
+        viewModel.selectElement(0);
         viewModel.newValueProperty().set("10");
         viewModel.newProbabilityProperty().set("0.8");
-        viewModel.updateTableElement(0);
+        viewModel.updateTableElement();
 
         assertEquals(OperationStatus.WAITING_DATA.toString(), viewModel.getOperationStatus());
     }
@@ -369,7 +372,7 @@ public class ViewModelTests {
         viewModel.operationProperty().set(Operation.DISPERSION);
         viewModel.updateOperation();
 
-        assertEquals(false, viewModel.isCalculationDisabled());
+        assertFalse(viewModel.isCalculationDisabled());
     }
     @Test
     public void canNotPushCalculateButtonWithUncorrectInput() {
@@ -379,7 +382,7 @@ public class ViewModelTests {
         viewModel.operationProperty().set(Operation.DISPERSION);
         viewModel.updateOperation();
 
-        assertEquals(true, viewModel.isCalculationDisabled());
+        assertTrue(viewModel.isCalculationDisabled());
     }
     @Test
     public void canNotPushCalculateButtonWithoutOperationParameter() {
@@ -389,7 +392,7 @@ public class ViewModelTests {
         viewModel.operationProperty().set(Operation.CENTRAL_MOMENT);
         viewModel.updateOperation();
 
-        assertEquals(true, viewModel.isCalculationDisabled());
+        assertTrue(viewModel.isCalculationDisabled());
     }
     @Test
     public void canSetParametersPartVisibleWithDataAndCentralMoment() {
@@ -399,7 +402,7 @@ public class ViewModelTests {
         viewModel.operationProperty().set(Operation.CENTRAL_MOMENT);
         viewModel.updateOperation();
 
-        assertEquals(true, viewModel.enterParameterDisabledProperty().get());
+        assertTrue(viewModel.enterParameterDisabledProperty().get());
     }
     @Test
     public void canSetParametersPartVisibleWithDataAndRawMoment() {
@@ -409,7 +412,7 @@ public class ViewModelTests {
         viewModel.operationProperty().set(Operation.RAW_MOMENT);
         viewModel.updateOperation();
 
-        assertEquals(true, viewModel.enterParameterDisabledProperty().get());
+        assertTrue(viewModel.enterParameterDisabledProperty().get());
     }
     @Test
     public void canSetParametersPartInvisibleWithDataAndDispersion() {
@@ -422,7 +425,7 @@ public class ViewModelTests {
         viewModel.operationProperty().set(Operation.DISPERSION);
         viewModel.updateOperation();
 
-        assertEquals(false, viewModel.enterParameterDisabledProperty().get());
+        assertFalse(viewModel.enterParameterDisabledProperty().get());
     }
     @Test
     public void canSetParametersPartInvisibleAfterUpdateData() {
@@ -432,11 +435,12 @@ public class ViewModelTests {
         viewModel.operationProperty().set(Operation.RAW_MOMENT);
         viewModel.updateOperation();
 
+        viewModel.selectElement(0);
         viewModel.newValueProperty().set("1");
         viewModel.newProbabilityProperty().set("0.8");
-        viewModel.updateTableElement(0);
+        viewModel.updateTableElement();
 
-        assertEquals(false, viewModel.enterParameterDisabledProperty().get());
+        assertFalse(viewModel.enterParameterDisabledProperty().get());
     }
     @Test
     public void canSetOperationParameter() {
