@@ -82,25 +82,32 @@ public class ViewModelTests {
                 viewModel.inputDataStatusProperty().get());
     }
     @Test
-    public void canPushAddButtonWithCorrectInput() {
+    public void canPushUpdateButtonWithCorrectInput() {
         viewModel.newValueProperty().set("2");
         viewModel.newProbabilityProperty().set("0.5");
 
         assertFalse(viewModel.isUpdateDisabled());
     }
     @Test
-    public void canNotPushAddButtonWithDoubleInputInValue() {
+    public void canNotPushUpdateButtonWithDoubleInputInValue() {
         viewModel.newValueProperty().set("2.1");
         viewModel.newProbabilityProperty().set("0.2");
 
         assertTrue(viewModel.isUpdateDisabled());
     }
     @Test
-    public void canNotPushAddButtonWithIncorrectInput() {
+    public void canNotPushUpdateButtonWithIncorrectInput() {
         viewModel.newValueProperty().set("2");
         viewModel.newProbabilityProperty().set("1.5");
 
         assertTrue(viewModel.isUpdateDisabled());
+    }
+    @Test
+    public void canPushDeleteButtonWithNotEmptyInput() {
+        viewModel.newValueProperty().set("2");
+        viewModel.newProbabilityProperty().set("0.5");
+
+        assertFalse(viewModel.isDeleteDisabled());
     }
     @Test
     public void canSetInputDataWaitingWithEmptyProperty() {
