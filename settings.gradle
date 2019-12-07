@@ -96,9 +96,13 @@ project(":code/complex-number-calculator/ViewModel").name = "complex-number-calc
 // Лапин Артем
 include "code/quadratic-equasion"
 project(":code/quadratic-equasion").name = "quadratic-equasion-Model"
-// Лахтачев Ярослав
-include "code/lab1-tdd-triangle"
-project(":code/lab1-tdd-triangle").name = "lab1-tdd-triangle-Model"
+// Triangle
+include "code/triangle/Model"
+project(":code/triangle/Model").name = "triangle-Model"
+include "code/triangle/ViewModel"
+project(":code/triangle/ViewModel").name = "triangle-ViewModel"
+include "code/triangle/View"
+project(":code/triangle/View").name = "triangle-View"
 // Миронова Анна
 include "code/statistics-calculation"
 project(":code/statistics-calculation").name = "statistics-calculation-Model"
