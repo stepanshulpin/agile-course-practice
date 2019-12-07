@@ -13,6 +13,12 @@ public class ViewModel {
     private final StringProperty removeResult = new SimpleStringProperty();
 
     public ViewModel() {
+        findKey.set("");
+        addKey.set("");
+        removeKey.set("");
+        findResult.set("");
+        addResult.set("");
+        removeResult.set("");
     }
 
     public StringProperty findKeyProperty() {
