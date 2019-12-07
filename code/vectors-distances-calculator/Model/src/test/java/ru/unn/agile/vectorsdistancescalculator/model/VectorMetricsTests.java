@@ -129,5 +129,40 @@ public class VectorMetricsTests {
         assertEquals(expectedL3, actualL3, EPS);
     }
 
+    @Test
+    public void canCalculateL3DistanceTwoDimensionalVector() {
+        Vector<Double> vector = new Vector<>();
+        vector.add(2.0);
+        vector.add(3.0);
+        double sum = 35.0;
+        double expectedL3 = Math.pow(sum, 1./3);
+        double actualL3 = VectorMetrics.calculateL3(vector);
+        assertEquals(expectedL3, actualL3, EPS);
+    }
+
+    @Test
+    public void canCalculateL3DistanceThreeDimensionalVector() {
+        Vector<Double> vector = new Vector<>();
+        vector.add(2.0);
+        vector.add(3.0);
+        vector.add(4.0);
+        double sum = 99;
+        double expectedL3 = Math.pow(sum, 1./3);
+        double actualL3 = VectorMetrics.calculateL3(vector);
+        assertEquals(expectedL3, actualL3, EPS);
+    }
+
+    @Test
+    public void canCalculateL3DistanceWithNegativeValues() {
+        Vector<Double> vector = new Vector<>();
+        vector.add(-1.0);
+        vector.add(3.0);
+        vector.add(-4.0);
+        double sum = 92;
+        double expectedL3 = Math.pow(sum, 1./3);
+        double actualL3 = VectorMetrics.calculateL3(vector);
+        assertEquals(expectedL3, actualL3, EPS);
+    }
+
 
 }
