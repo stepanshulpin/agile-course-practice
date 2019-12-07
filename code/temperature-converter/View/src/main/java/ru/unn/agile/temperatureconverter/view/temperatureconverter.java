@@ -6,13 +6,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class temperatureconverter {
+public class TemperatureConverter {
     private JLabel labelHello;
-    private JPanel MainPanel;
+    private JPanel mainPanel;
     private JLabel labelFrom;
-    private JComboBox comboBoxFrom;
+    private JComboBox<ViewModel.ListOfTemperatures> comboBoxFrom;
     private JLabel labelTo;
-    private JComboBox comboBoxTo;
+    private JComboBox<ViewModel.ListOfTemperatures> comboBoxTo;
     private JLabel labelResult;
     private JButton buttonConvert;
     private JLabel labelStatus;
@@ -20,26 +20,27 @@ public class temperatureconverter {
 
     private ViewModel viewModel;
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("temperatureconverter");
-        frame.setContentPane(new temperatureconverter(new ViewModel()).MainPanel);
+    public static void main(final String[] args) {
+        JFrame frame = new JFrame("Temperature Converter");
+        frame.setContentPane(new TemperatureConverter(new ViewModel()).mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
     }
 
-    public temperatureconverter(final ViewModel viewModel) {
+    public TemperatureConverter(final ViewModel viewModel) {
         this.viewModel = viewModel;
-        ViewModel.ListOfTemperatures[] operations = ViewModel.ListOfTemperatures.values();
-        comboBoxFrom.setModel(new JComboBox<>(operations).getModel());
-        comboBoxTo.setModel(new JComboBox<>(operations).getModel());
+        ViewModel.ListOfTemperatures[] temperatures = ViewModel.ListOfTemperatures.values();
+
+        comboBoxFrom.setModel(new JComboBox<>(temperatures).getModel());
+        comboBoxTo.setModel(new JComboBox<>(temperatures).getModel());
 
         backBind();
         buttonConvert.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent actionEvent) {
+            public void actionPerformed(final ActionEvent actionEvent) {
                 bind();
-                temperatureconverter.this.viewModel.calculate();
+                TemperatureConverter.this.viewModel.calculate();
                 backBind();
             }
         });
@@ -47,12 +48,13 @@ public class temperatureconverter {
         KeyAdapter keyListener = new KeyAdapter() {
             public void keyReleased(final KeyEvent e) {
                 bind();
-                temperatureconverter.this.viewModel.processInput();
+                TemperatureConverter.this.viewModel.processInput();
                 backBind();
             }
         };
         fromField.addKeyListener(keyListener);
     }
+
     private void backBind() {
         buttonConvert.setEnabled(viewModel.isConvertButtonEnabled());
         labelResult.setText(viewModel.getResultTemperature());
