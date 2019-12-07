@@ -1,8 +1,9 @@
 package ru.unn.agile.calc.viewmodel;
 
+import ru.unn.agile.calc.model.StringCalc;
+
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.*;
-import ru.unn.agile.calc.model.StringCalc;
 
 import java.util.regex.Pattern;
 
@@ -69,5 +70,4 @@ public class StringCalcViewModel {
     public BooleanProperty calculationDisabledProperty() {
         return calculationDisabled;
     }
-
 }

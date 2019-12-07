@@ -29,7 +29,6 @@ public class StringCalcViewModelTest {
         assertEquals("2.0", getResult());
     }
 
-
     @Test
     public void canNotCalculateInvalidExpression1() {
         setExpression("+-*/");
@@ -42,6 +41,13 @@ public class StringCalcViewModelTest {
         setExpression("1+2*3-4/5");
         calculate();
         assertEquals("6.2", getResult());
+    }
+
+    @Test
+    public void canCalculateValidExpressionWithSpaces() {
+        setExpression(" 1 + 1 * 3 - 5 / 10");
+        calculate();
+        assertEquals("3.5", getResult());
     }
 
     @Test
