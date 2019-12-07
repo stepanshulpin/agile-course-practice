@@ -57,6 +57,22 @@ public class StringCalcViewModelTest {
         assertEquals(r1, r2);
     }
 
+    @Test
+    public void isCalculateButtonDisabledForSpaceSymbol() {
+        setExpression(" ");
+        assertTrue(isCalculateButtonDisabled());
+    }
+
+    @Test
+    public void isCalculateButtonDisabledForLetterString() {
+        setExpression("ABC");
+        assertTrue(isCalculateButtonDisabled());
+    }
+
+    private boolean isCalculateButtonDisabled() {
+        return viewModel.calculationDisabledProperty().get();
+    }
+
     private void setExpression(final String expression) {
         viewModel.expressionTfProperty().setValue(expression);
     }

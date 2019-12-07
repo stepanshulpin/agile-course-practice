@@ -27,6 +27,8 @@ public class StringCalcView {
         expressionTf.tooltipProperty().setValue(new Tooltip(tooltip));
         resultLbl.textProperty().bindBidirectional(viewModel.resultLblProperty());
 
+        calcBtn.disableProperty().bindBidirectional(viewModel.calculationDisabledProperty());
+
         calcBtn.setOnAction(e -> viewModel.calculate());
     }
 
