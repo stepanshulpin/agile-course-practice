@@ -41,12 +41,14 @@ public class ViewModel {
         removeStatus.set(Status.WAITING.toString());
 
         // Add listeners to the input text fields
-        final List<StringProperty> fields = new ArrayList<StringProperty>() { {
-            add(addKey);
-            add(addValue);
-            add(findKey);
-            add(removeKey);
-        } };
+        final List<StringProperty> fields = new ArrayList<>() {
+            {
+                add(addKey);
+                add(addValue);
+                add(findKey);
+                add(removeKey);
+            }
+        };
 
         for (StringProperty field : fields) {
             final ValueChangeListener listener = new ValueChangeListener();
@@ -91,6 +93,26 @@ public class ViewModel {
         return removeStatus;
     }
 
+    public String getAddStatus() {
+        return addStatus.get();
+    }
+
+    public String getFindResult() {
+        return findResult.get();
+    }
+
+    public String getFindStatus() {
+        return findStatus.get();
+    }
+
+    public String getRemoveResult() {
+        return removeResult.get();
+    }
+
+    public String getRemoveStatus() {
+        return removeStatus.get();
+    }
+
     public void add() {
         final int key = Integer.parseInt(addKey.get());
         final String value = addValue.get();
@@ -103,7 +125,7 @@ public class ViewModel {
     public void find() {
         final int key = Integer.parseInt(findKey.get());
 
-        final String result = storage.find(key);
+        String result = storage.find(key);
 
         findResult.set(result);
         findStatus.set(Status.SUCCESS.toString());
@@ -112,12 +134,13 @@ public class ViewModel {
     public void remove() {
         final int key = Integer.parseInt(removeKey.get());
 
-        final Boolean result = storage.remove(key);
+        final boolean result = storage.remove(key);
 
         removeResult.set(Boolean.toString(result));
         removeStatus.set(Status.SUCCESS.toString());
     }
-    private Status getAddStatus() {
+
+    private Status getAddInputStatus() {
         Status addStatus = Status.READY;
         if (addKey.get().isEmpty() || addValue.get().isEmpty()) {
             addStatus = Status.WAITING;
@@ -136,7 +159,7 @@ public class ViewModel {
         return addStatus;
     }
 
-    private Status getFindStatus() {
+    private Status getFindInputStatus() {
         Status findStatus = Status.READY;
         if (findKey.get().isEmpty()) {
             findStatus = Status.WAITING;
@@ -152,7 +175,7 @@ public class ViewModel {
         return findStatus;
     }
 
-    private Status getRemoveStatus() {
+    private Status getRemoveInputStatus() {
         Status removeStatus = Status.READY;
         if (removeKey.get().isEmpty()) {
             removeStatus = Status.WAITING;
@@ -172,16 +195,16 @@ public class ViewModel {
         @Override
         public void changed(final ObservableValue<? extends String> observable,
                             final String oldValue, final String newValue) {
-            addStatus.set(getAddStatus().toString());
-            findStatus.set(getFindStatus().toString());
-            removeStatus.set(getRemoveStatus().toString());
+            addStatus.set(getAddInputStatus().toString());
+            findStatus.set(getFindInputStatus().toString());
+            removeStatus.set(getRemoveInputStatus().toString());
         }
     }
 }
 
 enum Status {
-    WAITING("Please provide input data"),
-    READY("Press 'Calculate' or Enter"),
+    WAITING("Please provide full input data"),
+    READY("Press button"),
     BAD_FORMAT("Bad format"),
     SUCCESS("Success");
 
