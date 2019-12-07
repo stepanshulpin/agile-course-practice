@@ -136,7 +136,7 @@ public class VectorMetricsTests {
         vector.add(3.0);
         double sum = 35.0;
         double power = 3.0;
-        double expectedL3 = Math.pow(sum, 1./3);
+        double expectedL3 = Math.pow(sum, 1. / 3);
         double actualL3 = VectorMetrics.calculateLp(vector, power);
         assertEquals(expectedL3, actualL3, EPS);
     }
@@ -149,7 +149,7 @@ public class VectorMetricsTests {
         vector.add(4.0);
         double sum = 99;
         double power = 3.0;
-        double expectedL3 = Math.pow(sum, 1./3);
+        double expectedL3 = Math.pow(sum, 1. / 3);
         double actualL3 = VectorMetrics.calculateLp(vector, power);
         assertEquals(expectedL3, actualL3, EPS);
     }
@@ -162,10 +162,50 @@ public class VectorMetricsTests {
         vector.add(-4.0);
         double sum = 92;
         double power = 3.0;
-        double expectedL3 = Math.pow(sum, 1./3);
+        double expectedL3 = Math.pow(sum, 1. / 3);
         double actualL3 = VectorMetrics.calculateLp(vector, power);
         assertEquals(expectedL3, actualL3, EPS);
     }
 
+    @Test
+    public void canCalculateLInfDistanceOneDimensionalVector() {
+        Vector<Double> vector = new Vector<>();
+        vector.add(2.0);
+        double expectedLInf = 2.0;
+        double actualLInf = VectorMetrics.calculateLInf(vector);
+        assertEquals(expectedLInf, actualLInf, EPS);
+    }
+
+    @Test
+    public void canCalculateLInfDistanceTwoDimensionalVector() {
+        Vector<Double> vector = new Vector<>();
+        vector.add(2.0);
+        vector.add(3.0);
+        double expectedLInf = 3.0;
+        double actualLInf = VectorMetrics.calculateLInf(vector);
+        assertEquals(expectedLInf, actualLInf, EPS);
+    }
+
+    @Test
+    public void canCalculateLInfDistanceThreeDimensionalVector() {
+        Vector<Double> vector = new Vector<>();
+        vector.add(2.0);
+        vector.add(3.0);
+        vector.add(4.0);
+        double expectedLInf = 4.0;
+        double actualLInf = VectorMetrics.calculateLInf(vector);
+        assertEquals(expectedLInf, actualLInf, EPS);
+    }
+
+    @Test
+    public void canCalculateLInfDistanceWithNegativeValues() {
+        Vector<Double> vector = new Vector<>();
+        vector.add(-1.0);
+        vector.add(3.0);
+        vector.add(-4.0);
+        double expectedLInf = 4.0;
+        double actualLInf = VectorMetrics.calculateLInf(vector);
+        assertEquals(expectedLInf, actualLInf, EPS);
+    }
 
 }
