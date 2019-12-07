@@ -132,6 +132,8 @@ include "code/priority-queue"
 project(":code/priority-queue").name = "priority-queue"
 // Тамилина Дарья
 // Тягунов Владимир
+include "code/polygon-area"
+project(":code/polygon-area").name = "polygon-area-Model"
 // Федорова Дарья
 // Федотов Андрей
 include "code/datastructure-set"
