@@ -22,6 +22,7 @@ public class ViewModelTests {
     @Test
     public void canSetDefaultValues() {
         assertEquals("", viewModel.userKeyProperty().get());
-        assertEquals("", viewModel.findResultProperty().get());
+        assertEquals("", viewModel.operationResultProperty().get());
+        assertEquals(Operation.ADD, viewModel.operationProperty().get());
     }
 }
