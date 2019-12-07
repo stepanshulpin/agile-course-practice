@@ -34,4 +34,10 @@ public class ViewModelTests {
         assertEquals("", viewModel.removeResultProperty().get());
         assertEquals(Status.WAITING.toString(), viewModel.removeStatusProperty().get());
     }
+
+    @Test
+    public void statusIsWaitingWhenCalculateWithEmptyFields() {
+        viewModel.add();
+        assertEquals(Status.WAITING.toString(), viewModel.addStatusProperty().get());
+    }
 }

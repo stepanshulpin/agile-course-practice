@@ -102,13 +102,11 @@ public class ViewModel {
     private final StringProperty removeResult = new SimpleStringProperty();
     private final StringProperty removeStatus = new SimpleStringProperty();
 
-    public void process() {
-//        int key = Integer.parseInt(userKey.get());
-//
-//        switch (operation.get()) {
-//            case ADD:
-//                binaryTree.add(key);
-//        }
+    public void add() {
+        final int key = Integer.parseInt(addKey.get());
+        final String value = addValue.get();
+
+        binaryTree.add(key, value);
     }
 
     public ViewModel() {
