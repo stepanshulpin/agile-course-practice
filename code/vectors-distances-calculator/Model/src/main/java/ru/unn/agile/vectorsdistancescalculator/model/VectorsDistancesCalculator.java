@@ -1,5 +1,8 @@
 package ru.unn.agile.vectorsdistancescalculator.model;
 
-public class VectorsDistancesCalculator {
+
+public final class VectorsDistancesCalculator {
+
+    private VectorsDistancesCalculator() { }
 
 }
