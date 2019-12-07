@@ -72,4 +72,16 @@ public class ViewModelTests {
         assertEquals(Status.BAD_FORMAT.toString(), viewModel.findStatusProperty().get());
     }
 
+    @Test
+    public void removeStatusIsReadyWhenIntegerInserted() {
+        viewModel.removeKeyProperty().set("18");
+        assertEquals(Status.READY.toString(), viewModel.removeStatusProperty().get());
+    }
+
+    @Test
+    public void removeStatusIsBadWhenNotIntegerInserted() {
+        viewModel.removeKeyProperty().set("FYCK");
+        assertEquals(Status.BAD_FORMAT.toString(), viewModel.removeStatusProperty().get());
+    }
+
 }
