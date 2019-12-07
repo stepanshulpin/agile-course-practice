@@ -23,7 +23,6 @@ public class ViewModelTests {
     public void canSetDefaultValues() {
         assertEquals("", viewModel.addKeyProperty().get());
         assertEquals("", viewModel.addValueProperty().get());
-        assertEquals("", viewModel.addResultProperty().get());
         assertEquals(Status.WAITING.toString(), viewModel.addStatusProperty().get());
 
         assertEquals("", viewModel.findKeyProperty().get());
@@ -92,5 +91,23 @@ public class ViewModelTests {
         viewModel.add();
 
         assertEquals(Status.SUCCESS.toString(), viewModel.addStatusProperty().get());
+    }
+
+    @Test
+    public void findStatusIsSuccessWhenInputCorrect() {
+        viewModel.findKeyProperty().set("3");
+
+        viewModel.find();
+
+        assertEquals(Status.SUCCESS.toString(), viewModel.findStatusProperty().get());
+    }
+
+    @Test
+    public void removeStatusIsSuccessWhenInputCorrect() {
+        viewModel.removeKeyProperty().set("3");
+
+        viewModel.remove();
+
+        assertEquals(Status.SUCCESS.toString(), viewModel.removeStatusProperty().get());
     }
 }

@@ -21,7 +21,6 @@ public class ViewModel {
     private final StringProperty findKey = new SimpleStringProperty();
     private final StringProperty removeKey = new SimpleStringProperty();
 
-    private final StringProperty addResult = new SimpleStringProperty();
     private final StringProperty addStatus = new SimpleStringProperty();
 
     private final StringProperty findResult = new SimpleStringProperty();
@@ -33,7 +32,6 @@ public class ViewModel {
     public ViewModel() {
         addKey.set("");
         addValue.set("");
-        addResult.set("");
         addStatus.set(Status.WAITING.toString());
 
         findKey.set("");
@@ -65,10 +63,6 @@ public class ViewModel {
 
     public StringProperty addValueProperty() {
         return addValue;
-    }
-
-    public StringProperty addResultProperty() {
-        return addResult;
     }
 
     public StringProperty addStatusProperty() {
@@ -108,6 +102,21 @@ public class ViewModel {
         addStatus.set(Status.SUCCESS.toString());
     }
 
+    public void find() {
+        final int key = Integer.parseInt(findKey.get());
+
+        final String result = storage.find(key);
+
+        findStatus.set(Status.SUCCESS.toString());
+    }
+
+    public void remove() {
+        final int key = Integer.parseInt(removeKey.get());
+
+        final Boolean result = storage.remove(key);
+
+        removeStatus.set(Status.SUCCESS.toString());
+    }
     private Status getAddStatus() {
         Status addStatus = Status.READY;
         if (addKey.get().isEmpty() || addValue.get().isEmpty()) {
