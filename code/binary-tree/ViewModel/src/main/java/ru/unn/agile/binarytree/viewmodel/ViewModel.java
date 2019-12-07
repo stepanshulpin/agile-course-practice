@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewModel {
-    private BinaryTree binaryTree;
+    private BinaryTree storage = new BinaryTree();
 
     private final List<ValueChangeListener> valueChangedListeners = new ArrayList<>();
 
@@ -47,13 +47,8 @@ public class ViewModel {
         final List<StringProperty> fields = new ArrayList<StringProperty>() { {
             add(addKey);
             add(addValue);
-            add(addResult);
-
             add(findKey);
-            add(findResult);
-
             add(removeKey);
-            add(removeResult);
         } };
 
         for (StringProperty field : fields) {
@@ -104,10 +99,10 @@ public class ViewModel {
     }
 
     public void add() {
-//        final int key = Integer.parseInt(addKey.get());
-//        final String value = addValue.get();
+        final int key = Integer.parseInt(addKey.get());
+        final String value = addValue.get();
 
-//        binaryTree.add(key, value);
+        storage.add(key, value);
 
         addStatus.set(Status.SUCCESS.toString());
     }
