@@ -86,8 +86,8 @@ public class ViewModel {
 
     private final ObservableList<TableElement> listData = FXCollections.observableArrayList();
     private final List<UpdateDataChangeListener> updateDataChangedListeners = new ArrayList<>();
-    private final int NOT_SELECTED = -1;
-    private final String EMPTY = "";
+    private static final int NOT_SELECTED = -1;
+    private static final String EMPTY = "";
     private DiscreteRandomVariable discreteRandomVariable;
 
     public ViewModel() {

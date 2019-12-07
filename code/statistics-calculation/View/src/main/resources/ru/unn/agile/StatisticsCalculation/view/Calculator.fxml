@@ -51,16 +51,16 @@
                         <Label fx:id="labelDataStatus" layoutX="135.0" layoutY="149.0" prefHeight="17.0" prefWidth="179.0" text="${viewModel.dataStatus}" />
                         <Label fx:id="labelOperationStatus" layoutX="155.0" layoutY="298.0" prefHeight="17.0" prefWidth="165.0" text="${viewModel.operationStatus}" />
                         <Label fx:id="labelResult" layoutX="98.0" layoutY="413.0" prefHeight="17.0" prefWidth="223.0" text="${viewModel.result}" />
-                        <Button fx:id="buttonUpdate" defaultButton="true" disable="${viewModel.updateDisabled}" layoutX="37.0" layoutY="32.0" mnemonicParsing="false" text="Update" />
-                        <Button fx:id="buttonDelete" defaultButton="true" disable="${viewModel.deleteDisabled}" layoutX="36.0" layoutY="68.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="65.0" text="Delete" />
-                  <TextField fx:id="textfieldNewValue" layoutX="109.0" layoutY="32.0" prefHeight="27.0" prefWidth="87.0" />
-                  <TextField fx:id="textfieldNewProbability" layoutX="217.0" layoutY="32.0" prefHeight="27.0" prefWidth="96.0" />
-                  <Label layoutX="112.0" layoutY="14.0" text="Value:" />
-                  <Label layoutX="217.0" layoutY="14.0" text="Probability:" />
+                        <Button fx:id="buttonUpdate" defaultButton="true" disable="${viewModel.updateDisabled}" layoutX="261.0" layoutY="32.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="65.0" text="Update" />
+                        <Button fx:id="buttonDelete" defaultButton="true" disable="${viewModel.deleteDisabled}" layoutX="261.0" layoutY="68.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="65.0" text="Delete" />
+                  <TextField fx:id="textfieldNewValue" layoutX="37.0" layoutY="32.0" prefHeight="27.0" prefWidth="87.0" />
+                  <TextField fx:id="textfieldNewProbability" layoutX="145.0" layoutY="32.0" prefHeight="27.0" prefWidth="96.0" />
+                  <Label layoutX="40.0" layoutY="14.0" text="Value:" />
+                  <Label layoutX="145.0" layoutY="14.0" text="Probability:" />
                   <Label layoutX="40.0" layoutY="113.0" text="Input data status:" />
                   <Label fx:id="labelInputDataStatus" layoutX="160.0" layoutY="113.0" prefHeight="17.0" prefWidth="154.0" text="${viewModel.inputDataStatus}" />
-                  <Label fx:id="labelParameter" layoutX="41.0" layoutY="260.0" prefHeight="17.0" prefWidth="107.0" text="Order:" visible="${viewModel.enterParameterDisabled}" />
-                  <TextField fx:id="textfieldParameter" layoutX="170.0" layoutY="255.0" prefHeight="27.0" prefWidth="154.0" visible="${viewModel.enterParameterDisabled}" />
+                  <Label fx:id="labelParameter" layoutX="41.0" layoutY="260.0" prefHeight="17.0" prefWidth="107.0" text="Order:" visible="${viewModel.enterParameterVisible}" />
+                  <TextField fx:id="textfieldParameter" layoutX="170.0" layoutY="255.0" prefHeight="27.0" prefWidth="154.0" visible="${viewModel.enterParameterVisible}" />
                     </children>
                 </AnchorPane>
             </items>
