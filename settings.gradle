@@ -139,8 +139,12 @@ project(":code/lab1-tdd-arabic-roman-arabicromanconverter").name = "lab1-tdd-ara
 include "code/mortgage-calculator"
 project(":code/mortgage-calculator").name = "mortgage-calculator-Model"
 // Шумихин Сергей
-include "code/binary-tree"
-project(":code/binary-tree").name = "binary-tree-Model"
+include "code/binary-tree/Model"
+project(":code/binary-tree/Model").name = "binary-tree-Model"
+include "code/binary-tree/View"
+project(":code/binary-tree/View").name = "binary-tree-View"
+include "code/binary-tree/ViewModel"
+project(":code/binary-tree/ViewModel").name = "binary-tree-ViewModel"
 // Юферев Кирилл
 include "code/stack"
 project(":code/stack").name = "stack-Model"

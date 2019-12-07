@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="200.0" maxWidth="400.0" minHeight="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.binarytree.view.BinaryTree">
+   <children>
+      <Button mnemonicParsing="false" text="Find" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="15.0" />
+      <Button mnemonicParsing="false" text="Add" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="100.0" />
+      <Button mnemonicParsing="false" text="Remove" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="150.0" />
+      <TextField AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="15.0" />
+      <TextField AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="100.0" />
+      <TextField AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="150.0" />
+      <Label text="FindResult" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="15.0" />
+      <Label text="Add result" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="100.0" />
+      <Label text="Remove result" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="150.0" />
+   </children>
+</AnchorPane>
