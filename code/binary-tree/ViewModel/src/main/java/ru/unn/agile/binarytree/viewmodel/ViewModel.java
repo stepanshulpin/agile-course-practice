@@ -3,8 +3,6 @@ package ru.unn.agile.binarytree.viewmodel;
 import javafx.beans.property.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 import ru.unn.agile.binarytree.model.BinaryTree;
 
