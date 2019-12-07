@@ -41,6 +41,17 @@ public class VectorMetricsTests {
         assertEquals(expectedL1, actualL1, EPS);
     }
 
+    @Test
+    public void canCalculateL1DistanceWithNegativeValues() {
+        Vector<Float> vector = new Vector<>();
+        vector.add(-1.1f);
+        vector.add(2.2f);
+        vector.add(-3.3f);
+        float expectedL1 = 6.6f;
+        float actualL1 = VectorMetrics.calculateL1(vector);
+        assertEquals(expectedL1, actualL1, EPS);
+    }
+
     @Test(expected = NoSuchElementException.class)
     public void throwExceptionCalculateL1DistanceEmptyVector() {
         Vector<Float> vector = new Vector<>();
