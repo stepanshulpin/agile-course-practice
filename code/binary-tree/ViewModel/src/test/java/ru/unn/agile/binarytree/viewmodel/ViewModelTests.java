@@ -25,5 +25,13 @@ public class ViewModelTests {
         assertEquals("", viewModel.addValueProperty().get());
         assertEquals("", viewModel.addResultProperty().get());
         assertEquals(Status.WAITING.toString(), viewModel.addStatusProperty().get());
+
+        assertEquals("", viewModel.findKeyProperty().get());
+        assertEquals("", viewModel.findResultProperty().get());
+        assertEquals(Status.WAITING.toString(), viewModel.findStatusProperty().get());
+
+        assertEquals("", viewModel.removeKeyProperty().get());
+        assertEquals("", viewModel.removeResultProperty().get());
+        assertEquals(Status.WAITING.toString(), viewModel.removeStatusProperty().get());
     }
 }
