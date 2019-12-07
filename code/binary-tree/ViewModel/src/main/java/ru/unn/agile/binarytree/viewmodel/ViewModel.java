@@ -1,93 +1,20 @@
 package ru.unn.agile.binarytree.viewmodel;
 
 import javafx.beans.property.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import ru.unn.agile.binarytree.model.BinaryTree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ViewModel {
     private BinaryTree binaryTree;
 
-    public String getAddKey() {
-        return addKey.get();
-    }
-
-    public StringProperty addKeyProperty() {
-        return addKey;
-    }
-
-    public String getAddValue() {
-        return addValue.get();
-    }
-
-    public StringProperty addValueProperty() {
-        return addValue;
-    }
-
-    public String getAddResult() {
-        return addResult.get();
-    }
-
-    public StringProperty addResultProperty() {
-        return addResult;
-    }
-
-    public String getAddStatus() {
-        return addStatus.get();
-    }
-
-    public StringProperty addStatusProperty() {
-        return addStatus;
-    }
-
-    public String getFindKey() {
-        return findKey.get();
-    }
-
-    public StringProperty findKeyProperty() {
-        return findKey;
-    }
-
-    public String getFindResult() {
-        return findResult.get();
-    }
-
-    public StringProperty findResultProperty() {
-        return findResult;
-    }
-
-    public String getFindStatus() {
-        return findStatus.get();
-    }
-
-    public StringProperty findStatusProperty() {
-        return findStatus;
-    }
-
-    public String getRemoveKey() {
-        return removeKey.get();
-    }
-
-    public StringProperty removeKeyProperty() {
-        return removeKey;
-    }
-
-    public String getRemoveResult() {
-        return removeResult.get();
-    }
-
-    public StringProperty removeResultProperty() {
-        return removeResult;
-    }
-
-    public String getRemoveStatus() {
-        return removeStatus.get();
-    }
-
-    public StringProperty removeStatusProperty() {
-        return removeStatus;
-    }
+    private final List<ValueChangeListener> valueChangedListeners = new ArrayList<>();
 
     private final StringProperty addKey = new SimpleStringProperty();
     private final StringProperty addValue = new SimpleStringProperty();
@@ -102,13 +29,6 @@ public class ViewModel {
     private final StringProperty removeResult = new SimpleStringProperty();
     private final StringProperty removeStatus = new SimpleStringProperty();
 
-    public void add() {
-        final int key = Integer.parseInt(addKey.get());
-        final String value = addValue.get();
-
-        binaryTree.add(key, value);
-    }
-
     public ViewModel() {
         addKey.set("");
         addValue.set("");
@@ -122,6 +42,136 @@ public class ViewModel {
         removeKey.set("");
         removeResult.set("");
         removeStatus.set(Status.WAITING.toString());
+
+        // Add listeners to the input text fields
+        final List<StringProperty> fields = new ArrayList<StringProperty>() { {
+            add(addKey);
+            add(addValue);
+            add(addResult);
+            add(addStatus);
+
+            add(findKey);
+            add(findResult);
+            add(findStatus);
+
+            add(removeKey);
+            add(removeResult);
+            add(removeStatus);
+        } };
+
+        for (StringProperty field : fields) {
+            final ValueChangeListener listener = new ValueChangeListener();
+            field.addListener(listener);
+            valueChangedListeners.add(listener);
+        }
+    }
+
+    public StringProperty addKeyProperty() {
+        return addKey;
+    }
+
+    public StringProperty addValueProperty() {
+        return addValue;
+    }
+
+    public StringProperty addResultProperty() {
+        return addResult;
+    }
+
+    public StringProperty addStatusProperty() {
+        return addStatus;
+    }
+
+    public StringProperty findKeyProperty() {
+        return findKey;
+    }
+
+    public StringProperty findResultProperty() {
+        return findResult;
+    }
+
+    public StringProperty findStatusProperty() {
+        return findStatus;
+    }
+
+    public StringProperty removeKeyProperty() {
+        return removeKey;
+    }
+
+    public StringProperty removeResultProperty() {
+        return removeResult;
+    }
+
+    public StringProperty removeStatusProperty() {
+        return removeStatus;
+    }
+
+    public void add() {
+//        final int key = Integer.parseInt(addKey.get());
+//        final String value = addValue.get();
+//
+//        binaryTree.add(key, value);
+    }
+
+    private Status getAddStatus() {
+        Status addStatus = Status.READY;
+        if (addKey.get().isEmpty() || addValue.get().isEmpty()) {
+            addStatus = Status.WAITING;
+        }
+        try {
+            if (!addKey.get().isEmpty()) {
+                Integer.parseInt(addKey.get());
+            }
+            if (!addValue.get().isEmpty()) {
+                addValue.get();
+            }
+        } catch (NumberFormatException nfe) {
+            addStatus = Status.BAD_FORMAT;
+        }
+
+        return addStatus;
+    }
+
+    private Status getFindStatus() {
+        Status findStatus = Status.READY;
+        if (findKey.get().isEmpty()) {
+            findStatus = Status.WAITING;
+        }
+        try {
+            if (!findKey.get().isEmpty()) {
+                Integer.parseInt(findKey.get());
+            }
+        } catch (NumberFormatException nfe) {
+            findStatus = Status.BAD_FORMAT;
+        }
+
+        return findStatus;
+    }
+
+    private Status getRemoveStatus() {
+        Status removeStatus = Status.READY;
+        if (removeKey.get().isEmpty()) {
+            removeStatus = Status.WAITING;
+        }
+        try {
+            if (!removeKey.get().isEmpty()) {
+                Integer.parseInt(removeKey.get());
+            }
+        } catch (NumberFormatException nfe) {
+            removeStatus = Status.BAD_FORMAT;
+        }
+
+        return removeStatus;
+    }
+
+    private class ValueChangeListener implements ChangeListener<String> {
+        @Override
+        public void changed(final ObservableValue<? extends String> observable,
+                            final String oldValue, final String newValue) {
+            addStatus.set(getAddStatus().toString());
+            findStatus.set(getFindStatus().toString());
+            removeStatus.set(getRemoveStatus().toString());
+        }
     }
 }
 

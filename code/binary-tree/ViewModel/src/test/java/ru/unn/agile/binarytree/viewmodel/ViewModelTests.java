@@ -36,8 +36,27 @@ public class ViewModelTests {
     }
 
     @Test
-    public void statusIsWaitingWhenCalculateWithEmptyFields() {
-        viewModel.add();
+    public void addStatusIsWaitingWhenOnlyKeyInserted() {
+        viewModel.addKeyProperty().set("18");
         assertEquals(Status.WAITING.toString(), viewModel.addStatusProperty().get());
+    }
+
+    @Test
+    public void addStatusIsWaitingWhenOnlyValuesInserted() {
+        viewModel.addValueProperty().set("FOO");
+        assertEquals(Status.WAITING.toString(), viewModel.addStatusProperty().get());
+    }
+
+    @Test
+    public void addStatusIsReadyWhenInsertedBoth() {
+        viewModel.addKeyProperty().set("18");
+        viewModel.addValueProperty().set("FOO");
+        assertEquals(Status.READY.toString(), viewModel.addStatusProperty().get());
+    }
+
+    @Test
+    public void addStatusIsBadWhenInsertKeyNotInteger() {
+        viewModel.addKeyProperty().set("PASS");
+        assertEquals(Status.BAD_FORMAT.toString(), viewModel.addStatusProperty().get());
     }
 }
