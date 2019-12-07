@@ -16,7 +16,8 @@ public class VectorMetricsTests {
         Vector<Double> vector = new Vector<>();
         vector.add(1.0);
         double expectedL1 = 1.0;
-        double actualL1 = VectorMetrics.calculateL1(vector);
+        double power = 1.0;
+        double actualL1 = VectorMetrics.calculateLp(vector, power);
         assertEquals(expectedL1, actualL1, EPS);
     }
 
@@ -26,7 +27,8 @@ public class VectorMetricsTests {
         vector.add(1.1);
         vector.add(2.2);
         double expectedL1 = 3.3f;
-        double actualL1 = VectorMetrics.calculateL1(vector);
+        double power = 1.0;
+        double actualL1 = VectorMetrics.calculateLp(vector, power);
         assertEquals(expectedL1, actualL1, EPS);
     }
 
@@ -37,7 +39,8 @@ public class VectorMetricsTests {
         vector.add(2.2);
         vector.add(3.3);
         double expectedL1 = 6.6;
-        double actualL1 = VectorMetrics.calculateL1(vector);
+        double power = 1.0;
+        double actualL1 = VectorMetrics.calculateLp(vector, power);
         assertEquals(expectedL1, actualL1, EPS);
     }
 
@@ -48,20 +51,23 @@ public class VectorMetricsTests {
         vector.add(2.2);
         vector.add(-3.3);
         double expectedL1 = 6.6;
-        double actualL1 = VectorMetrics.calculateL1(vector);
+        double power = 1.0;
+        double actualL1 = VectorMetrics.calculateLp(vector, power);
         assertEquals(expectedL1, actualL1, EPS);
     }
 
     @Test(expected = NoSuchElementException.class)
-    public void throwExceptionCalculateL1DistanceEmptyVector() {
+    public void throwExceptionCalculateLpDistanceEmptyVector() {
         Vector<Double> vector = new Vector<>();
-        VectorMetrics.calculateL1(vector);
+        double power = 1.0;
+        VectorMetrics.calculateLp(vector, power);
     }
 
     @Test(expected = NullPointerException.class)
-    public void throwNPECalculateL1DistanceNullVector() {
+    public void throwNPECalculateLpDistanceNullVector() {
         Vector<Double> vector = null;
-        VectorMetrics.calculateL1(vector);
+        double power = 1.0;
+        VectorMetrics.calculateLp(vector, power);
     }
 
     @Test
@@ -69,7 +75,8 @@ public class VectorMetricsTests {
         Vector<Double> vector = new Vector<>();
         vector.add(2.0);
         double expectedL2 = 2.0;
-        double actualL2 = VectorMetrics.calculateL2(vector);
+        double power = 2.0;
+        double actualL2 = VectorMetrics.calculateLp(vector, power);
         assertEquals(expectedL2, actualL2, EPS);
     }
 
@@ -79,8 +86,9 @@ public class VectorMetricsTests {
         vector.add(2.0);
         vector.add(3.0);
         double sumSquared = 13.0;
+        double power = 2.0;
         double expectedL2 = Math.sqrt(sumSquared);
-        double actualL2 = VectorMetrics.calculateL2(vector);
+        double actualL2 = VectorMetrics.calculateLp(vector, power);
         assertEquals(expectedL2, actualL2, EPS);
     }
 
@@ -91,8 +99,9 @@ public class VectorMetricsTests {
         vector.add(3.0);
         vector.add(4.0);
         double sumSquared = 29;
+        double power = 2.0;
         double expectedL2 = Math.sqrt(sumSquared);
-        double actualL2 = VectorMetrics.calculateL2(vector);
+        double actualL2 = VectorMetrics.calculateLp(vector, power);
         assertEquals(expectedL2, actualL2, EPS);
     }
 
@@ -103,29 +112,20 @@ public class VectorMetricsTests {
         vector.add(3.0);
         vector.add(-4.0);
         double sumSquared = 26;
+        double power = 2.0;
         double expectedL2 = Math.sqrt(sumSquared);
-        double actualL2 = VectorMetrics.calculateL2(vector);
+        double actualL2 = VectorMetrics.calculateLp(vector, power);
         assertEquals(expectedL2, actualL2, EPS);
     }
 
-    @Test(expected = NoSuchElementException.class)
-    public void throwExceptionCalculateL2DistanceEmptyVector() {
-        Vector<Double> vector = new Vector<>();
-        VectorMetrics.calculateL2(vector);
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void throwNPECalculateL2DistanceNullVector() {
-        Vector<Double> vector = null;
-        VectorMetrics.calculateL2(vector);
-    }
 
     @Test
     public void canCalculateL3DistanceOneDimensionalVector() {
         Vector<Double> vector = new Vector<>();
         vector.add(2.0);
         double expectedL3 = 2.0;
-        double actualL3 = VectorMetrics.calculateL3(vector);
+        double power = 3.0;
+        double actualL3 = VectorMetrics.calculateLp(vector, power);
         assertEquals(expectedL3, actualL3, EPS);
     }
 
@@ -135,8 +135,9 @@ public class VectorMetricsTests {
         vector.add(2.0);
         vector.add(3.0);
         double sum = 35.0;
+        double power = 3.0;
         double expectedL3 = Math.pow(sum, 1./3);
-        double actualL3 = VectorMetrics.calculateL3(vector);
+        double actualL3 = VectorMetrics.calculateLp(vector, power);
         assertEquals(expectedL3, actualL3, EPS);
     }
 
@@ -147,8 +148,9 @@ public class VectorMetricsTests {
         vector.add(3.0);
         vector.add(4.0);
         double sum = 99;
+        double power = 3.0;
         double expectedL3 = Math.pow(sum, 1./3);
-        double actualL3 = VectorMetrics.calculateL3(vector);
+        double actualL3 = VectorMetrics.calculateLp(vector, power);
         assertEquals(expectedL3, actualL3, EPS);
     }
 
@@ -159,21 +161,11 @@ public class VectorMetricsTests {
         vector.add(3.0);
         vector.add(-4.0);
         double sum = 92;
+        double power = 3.0;
         double expectedL3 = Math.pow(sum, 1./3);
-        double actualL3 = VectorMetrics.calculateL3(vector);
+        double actualL3 = VectorMetrics.calculateLp(vector, power);
         assertEquals(expectedL3, actualL3, EPS);
     }
 
-    @Test(expected = NoSuchElementException.class)
-    public void throwExceptionCalculateL3DistanceEmptyVector() {
-        Vector<Double> vector = new Vector<>();
-        VectorMetrics.calculateL3(vector);
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void throwNPECalculateL3DistanceNullVector() {
-        Vector<Double> vector = null;
-        VectorMetrics.calculateL3(vector);
-    }
 
 }
