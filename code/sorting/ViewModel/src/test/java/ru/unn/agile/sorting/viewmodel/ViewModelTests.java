@@ -23,12 +23,12 @@ public class ViewModelTests {
 
     @Test
     public void canSetEmptyInputArray() {
-        assertEquals("", viewModel.inputProperty().get());
+        assertEquals("", viewModel.inputArrayProperty().get());
     }
 
     @Test
     public void canSetEmptyResultArray() {
-        assertEquals("", viewModel.outputProperty().get());
+        assertEquals("", viewModel.sortedArrayProperty().get());
     }
 
     @Test
@@ -49,7 +49,7 @@ public class ViewModelTests {
 
     @Test
     public void canShowErrorMessage() {
-        viewModel.inputProperty().set("qwerty");
+        viewModel.inputArrayProperty().set("qwerty");
         assertEquals("Incorrect Input", viewModel.errorProperty().get());
     }
 
@@ -60,55 +60,62 @@ public class ViewModelTests {
 
     @Test
     public void isSortButtonDisabledAfterInputValue() {
-        viewModel.inputProperty().set("1");
+        viewModel.inputArrayProperty().set("1");
         assertEquals(false, viewModel.sortButtonDisabledProperty().get());
     }
 
     @Test
     public void isSortButtonDisabledAfterIncorrectInput() {
-        viewModel.inputProperty().set("q");
+        viewModel.inputArrayProperty().set("q");
         assertEquals(true, viewModel.sortButtonDisabledProperty().get());
     }
 
     @Test
     public void isSortButtonDisabledAfterNegativeValueInput() {
-        viewModel.inputProperty().set("-3");
+        viewModel.inputArrayProperty().set("-3");
         assertEquals(false, viewModel.sortButtonDisabledProperty().get());
     }
 
     @Test
     public void isSortButtonDisabledAfterDoubleValueInput() {
-        viewModel.inputProperty().set("2.5");
+        viewModel.inputArrayProperty().set("2.5");
         assertEquals(true, viewModel.sortButtonDisabledProperty().get());
     }
 
     @Test
     public void isSortButtonDisableAfterDeletingValue() {
-        viewModel.inputProperty().set("1 2 4 3");
-        viewModel.inputProperty().set("");
+        viewModel.inputArrayProperty().set("1 2 4 3");
+        viewModel.inputArrayProperty().set("");
         assertEquals(true, viewModel.sortButtonDisabledProperty().get());
     }
 
     @Test
     public void canSortNumbersDesc() {
         viewModel.directionProperty().set(Direction.DESC);
-        viewModel.inputProperty().set("2 1 3 6 9");
+        viewModel.inputArrayProperty().set("2 1 3 6 9");
         viewModel.sort();
-        assertEquals("9, 6, 3, 2, 1", viewModel.outputProperty().get());
+        assertEquals("9, 6, 3, 2, 1", viewModel.sortedArrayProperty().get());
     }
 
     @Test
     public void canSortNegativeNumbersAsc() {
-        viewModel.inputProperty().set("-2 -1 -5 -8");
+        viewModel.inputArrayProperty().set("-2 -1 -5 -8");
         viewModel.sort();
-        assertEquals("-8, -5, -2, -1", viewModel.outputProperty().get());
+        assertEquals("-8, -5, -2, -1", viewModel.sortedArrayProperty().get());
     }
 
     @Test
     public void canSortNegativeAndPositiveNumbersAsc() {
-        viewModel.inputProperty().set("5 -1 3 -6 12");
+        viewModel.inputArrayProperty().set("5 -1 3 -6 12");
         viewModel.sort();
-        assertEquals("-6, -1, 3, 5, 12", viewModel.outputProperty().get());
+        assertEquals("-6, -1, 3, 5, 12", viewModel.sortedArrayProperty().get());
+    }
+
+    @Test
+    public void canSortWrongValue() {
+        viewModel.inputArrayProperty().set("55555555555555");
+        viewModel.sort();
+        assertEquals("Bad format", viewModel.errorProperty().get());
     }
 }
 

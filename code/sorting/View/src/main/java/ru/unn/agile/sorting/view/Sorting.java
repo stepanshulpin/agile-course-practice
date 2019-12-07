@@ -19,7 +19,7 @@ public class Sorting {
 
     @FXML
     void initialize() {
-        txtArray.textProperty().bindBidirectional(viewModel.inputProperty());
+        txtArray.textProperty().bindBidirectional(viewModel.inputArrayProperty());
         cbDirection.valueProperty().bindBidirectional(viewModel.directionProperty());
         btnSort.disableProperty().bindBidirectional(viewModel.sortButtonDisabledProperty());
         btnSort.setOnAction(event -> viewModel.sort());
