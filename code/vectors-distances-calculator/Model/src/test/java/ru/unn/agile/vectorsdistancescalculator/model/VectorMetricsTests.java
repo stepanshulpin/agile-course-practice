@@ -120,4 +120,14 @@ public class VectorMetricsTests {
         VectorMetrics.calculateL2(vector);
     }
 
+    @Test
+    public void canCalculateL3DistanceOneDimensionalVector() {
+        Vector<Double> vector = new Vector<>();
+        vector.add(2.0);
+        double expectedL3 = 2.0;
+        double actualL3 = VectorMetrics.calculateL3(vector);
+        assertEquals(expectedL3, actualL3, EPS);
+    }
+
+
 }
