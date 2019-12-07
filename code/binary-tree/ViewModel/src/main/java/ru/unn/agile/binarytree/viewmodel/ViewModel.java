@@ -107,6 +107,7 @@ public class ViewModel {
 
         final String result = storage.find(key);
 
+        findResult.set(result);
         findStatus.set(Status.SUCCESS.toString());
     }
 

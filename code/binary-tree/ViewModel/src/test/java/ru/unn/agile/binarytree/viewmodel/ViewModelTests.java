@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class ViewModelTests {
     private ViewModel viewModel;
@@ -109,5 +110,31 @@ public class ViewModelTests {
         viewModel.remove();
 
         assertEquals(Status.SUCCESS.toString(), viewModel.removeStatusProperty().get());
+    }
+
+    @Test
+    public void findResultIsNullForNonAddedKey() {
+        viewModel.findKeyProperty().set("3");
+
+        viewModel.find();
+
+        assertNull(viewModel.findResultProperty().get());
+    }
+
+    @Test
+    public void findResultIsExpectedForAddedKey() {
+        final String key = "3";
+        final String value = "PASS";
+
+        viewModel.addKeyProperty().set(key);
+        viewModel.addValueProperty().set(value);
+
+        viewModel.add();
+
+        viewModel.findKeyProperty().set(key);
+
+        viewModel.find();
+
+        assertEquals(value, viewModel.findResultProperty().get());
     }
 }
