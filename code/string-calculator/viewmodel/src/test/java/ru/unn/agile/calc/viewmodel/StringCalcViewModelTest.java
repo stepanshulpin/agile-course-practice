@@ -8,6 +8,8 @@ import static org.junit.Assert.*;
 
 public class StringCalcViewModelTest {
 
+    private static final String ERROR_MESSAGE = "Error. Check your input";
+
     private StringCalcViewModel viewModel;
 
     @Before
@@ -22,36 +24,49 @@ public class StringCalcViewModelTest {
 
     @Test
     public void canCalculateExpression1() {
-        viewModel.expressionTfProperty().setValue("1+1");
-        viewModel.calculate();
-        assertEquals("2.0", viewModel.resultLblProperty().get());
+        setExpression("1+1");
+        calculate();
+        assertEquals("2.0", getResult());
+    }
+
+
+    @Test
+    public void canNotCalculateInvalidExpression1() {
+        setExpression("+-*/");
+        calculate();
+        assertEquals(ERROR_MESSAGE, getResult());
     }
 
     @Test
     public void canCalculateExpression2() {
-        viewModel.expressionTfProperty().setValue("1+2*3-4/5");
-        viewModel.calculate();
-        assertEquals("6.2", viewModel.resultLblProperty().get());
-    }
-
-    @Test
-    public void canNotCalculateInvalidExpression1() {
-        viewModel.expressionTfProperty().setValue("+-*/");
-        viewModel.calculate();
-        assertEquals("Error. Check your input", viewModel.resultLblProperty().get());
+        setExpression("1+2*3-4/5");
+        calculate();
+        assertEquals("6.2", getResult());
     }
 
     @Test
     public void isResultTheSameForSameExpression() {
+        setExpression("1+1");
 
-        viewModel.expressionTfProperty().setValue("1+1");
-        viewModel.calculate();
-        String r1 = viewModel.resultLblProperty().get();
+        calculate();
+        String r1 = getResult();
 
-        viewModel.calculate();
-        String r2 = viewModel.resultLblProperty().get();
+        calculate();
+        String r2 = getResult();
 
         assertEquals(r1, r2);
+    }
+
+    private void setExpression(final String expression) {
+        viewModel.expressionTfProperty().setValue(expression);
+    }
+
+    private void calculate() {
+        viewModel.calculate();
+    }
+
+    private String getResult() {
+        return viewModel.resultLblProperty().get();
     }
 
 }
