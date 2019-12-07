@@ -4,49 +4,127 @@ import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
-import java.util.List;
+import ru.unn.agile.binarytree.model.BinaryTree;
 
 public class ViewModel {
-    private final StringProperty userKey = new SimpleStringProperty();
+    private BinaryTree binaryTree;
 
-    private final StringProperty operationResult = new SimpleStringProperty();
+    public String getAddKey() {
+        return addKey.get();
+    }
 
-    private final ObjectProperty<ObservableList<Operation>> operations =
-            new SimpleObjectProperty<>(FXCollections.observableArrayList(Operation.values()));
+    public StringProperty addKeyProperty() {
+        return addKey;
+    }
 
-    private final ObjectProperty<Operation> operation = new SimpleObjectProperty<>();
-    private final StringProperty status = new SimpleStringProperty();
+    public String getAddValue() {
+        return addValue.get();
+    }
 
+    public StringProperty addValueProperty() {
+        return addValue;
+    }
+
+    public String getAddResult() {
+        return addResult.get();
+    }
+
+    public StringProperty addResultProperty() {
+        return addResult;
+    }
+
+    public String getAddStatus() {
+        return addStatus.get();
+    }
+
+    public StringProperty addStatusProperty() {
+        return addStatus;
+    }
+
+    public String getFindKey() {
+        return findKey.get();
+    }
+
+    public StringProperty findKeyProperty() {
+        return findKey;
+    }
+
+    public String getFindResult() {
+        return findResult.get();
+    }
+
+    public StringProperty findResultProperty() {
+        return findResult;
+    }
+
+    public String getFindStatus() {
+        return findStatus.get();
+    }
+
+    public StringProperty findStatusProperty() {
+        return findStatus;
+    }
+
+    public String getRemoveKey() {
+        return removeKey.get();
+    }
+
+    public StringProperty removeKeyProperty() {
+        return removeKey;
+    }
+
+    public String getRemoveResult() {
+        return removeResult.get();
+    }
+
+    public StringProperty removeResultProperty() {
+        return removeResult;
+    }
+
+    public String getRemoveStatus() {
+        return removeStatus.get();
+    }
+
+    public StringProperty removeStatusProperty() {
+        return removeStatus;
+    }
+
+    private final StringProperty addKey = new SimpleStringProperty();
+    private final StringProperty addValue = new SimpleStringProperty();
+    private final StringProperty addResult = new SimpleStringProperty();
+    private final StringProperty addStatus = new SimpleStringProperty();
+
+    private final StringProperty findKey = new SimpleStringProperty();
+    private final StringProperty findResult = new SimpleStringProperty();
+    private final StringProperty findStatus = new SimpleStringProperty();
+
+    private final StringProperty removeKey = new SimpleStringProperty();
+    private final StringProperty removeResult = new SimpleStringProperty();
+    private final StringProperty removeStatus = new SimpleStringProperty();
+
+    public void process() {
+//        int key = Integer.parseInt(userKey.get());
+//
+//        switch (operation.get()) {
+//            case ADD:
+//                binaryTree.add(key);
+//        }
+    }
 
     public ViewModel() {
-        userKey.set("");
-        operationResult.set("");
-        operation.set(Operation.ADD);
-        status.set(Status.WAITING.toString());
-    }
+        addKey.set("");
+        addValue.set("");
+        addResult.set("");
+        addStatus.set(Status.WAITING.toString());
 
-    public StringProperty operationResultProperty() {
-        return operationResult;
-    }
+        findKey.set("");
+        findResult.set("");
+        findStatus.set(Status.WAITING.toString());
 
-    public StringProperty userKeyProperty() {
-        return userKey;
+        removeKey.set("");
+        removeResult.set("");
+        removeStatus.set(Status.WAITING.toString());
     }
-
-    public ObjectProperty<Operation> operationProperty() {
-        return operation;
-    }
-
-    public StringProperty statusProperty() {
-        return status;
-    }
-}
-
-enum Operation {
-    FIND,
-    ADD,
-    REMOVE
 }
 
 enum Status {
