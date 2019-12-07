@@ -59,4 +59,17 @@ public class ViewModelTests {
         viewModel.addKeyProperty().set("PASS");
         assertEquals(Status.BAD_FORMAT.toString(), viewModel.addStatusProperty().get());
     }
+
+    @Test
+    public void findStatusIsReadyWhenIntegerInserted() {
+        viewModel.findKeyProperty().set("18");
+        assertEquals(Status.READY.toString(), viewModel.findStatusProperty().get());
+    }
+
+    @Test
+    public void findStatusIsBadWhenNotIntegerInserted() {
+        viewModel.findKeyProperty().set("FYCK");
+        assertEquals(Status.BAD_FORMAT.toString(), viewModel.findStatusProperty().get());
+    }
+
 }
