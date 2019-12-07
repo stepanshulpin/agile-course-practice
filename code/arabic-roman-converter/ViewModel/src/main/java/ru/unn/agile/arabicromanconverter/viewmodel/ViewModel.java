@@ -57,7 +57,6 @@ public class ViewModel {
         return convert;
     }
 
-
     public StringProperty getError() {
         return error;
     }
@@ -82,18 +81,18 @@ enum ConverterType {
     ARABICTOROMAN("Arabic to Roman", new ArabicToRomanConverter(), "Insert correct arabic number"),
     ROMANTOARABIC("Roman to Arabic", new RomanToArabicConverter(), "Insert correct roman number");
 
-    private final String label;
+    private final String lblConvertingType;
     private final NumConverter converter;
     private final String errorMessage;
 
     ConverterType(final String label, final NumConverter converter, final String errorMessage) {
-        this.label = label;
+        this.lblConvertingType = label;
         this.converter = converter;
         this.errorMessage = errorMessage;
     }
 
     public String toString() {
-        return label;
+        return lblConvertingType;
     }
 
     public NumConverter getConverter() {
