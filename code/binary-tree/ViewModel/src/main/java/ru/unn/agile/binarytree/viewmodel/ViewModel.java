@@ -18,14 +18,15 @@ public class ViewModel {
 
     private final StringProperty addKey = new SimpleStringProperty();
     private final StringProperty addValue = new SimpleStringProperty();
+    private final StringProperty findKey = new SimpleStringProperty();
+    private final StringProperty removeKey = new SimpleStringProperty();
+
     private final StringProperty addResult = new SimpleStringProperty();
     private final StringProperty addStatus = new SimpleStringProperty();
 
-    private final StringProperty findKey = new SimpleStringProperty();
     private final StringProperty findResult = new SimpleStringProperty();
     private final StringProperty findStatus = new SimpleStringProperty();
 
-    private final StringProperty removeKey = new SimpleStringProperty();
     private final StringProperty removeResult = new SimpleStringProperty();
     private final StringProperty removeStatus = new SimpleStringProperty();
 
