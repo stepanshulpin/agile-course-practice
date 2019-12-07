@@ -30,13 +30,6 @@ public class StringCalcViewModelTest {
     }
 
     @Test
-    public void canNotCalculateInvalidExpression1() {
-        setExpression("+-*/");
-        calculate();
-        assertEquals(ERROR_MESSAGE, getResult());
-    }
-
-    @Test
     public void canCalculateExpression2() {
         setExpression("1+2*3-4/5");
         calculate();
@@ -51,6 +44,13 @@ public class StringCalcViewModelTest {
     }
 
     @Test
+    public void canCalculateSingleDigitExpression() {
+        setExpression("111");
+        calculate();
+        assertEquals("111.0", getResult());
+    }
+
+    @Test
     public void isResultTheSameForSameExpression() {
         setExpression("1+1");
 
@@ -61,6 +61,13 @@ public class StringCalcViewModelTest {
         String r2 = getResult();
 
         assertEquals(r1, r2);
+    }
+
+    @Test
+    public void canNotCalculateInvalidExpression1() {
+        setExpression("+-*/");
+        calculate();
+        assertEquals(ERROR_MESSAGE, getResult());
     }
 
     @Test
