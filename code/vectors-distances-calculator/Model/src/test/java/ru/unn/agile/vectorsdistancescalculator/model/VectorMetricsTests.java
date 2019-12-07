@@ -164,5 +164,16 @@ public class VectorMetricsTests {
         assertEquals(expectedL3, actualL3, EPS);
     }
 
+    @Test(expected = NoSuchElementException.class)
+    public void throwExceptionCalculateL3DistanceEmptyVector() {
+        Vector<Double> vector = new Vector<>();
+        VectorMetrics.calculateL3(vector);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void throwNPECalculateL3DistanceNullVector() {
+        Vector<Double> vector = null;
+        VectorMetrics.calculateL3(vector);
+    }
 
 }
