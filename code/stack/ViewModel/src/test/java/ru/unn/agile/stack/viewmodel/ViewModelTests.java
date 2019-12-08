@@ -51,7 +51,7 @@ public class ViewModelTests {
 
     @Test
     public void checkDefaultStatus() {
-        var defaultStatus = "";
+        var defaultStatus = "Waiting for new element";
         assertEquals(defaultStatus, viewModel.getStatusProperty());
     }
 

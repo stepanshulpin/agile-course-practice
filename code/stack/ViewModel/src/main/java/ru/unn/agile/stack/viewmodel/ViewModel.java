@@ -10,6 +10,7 @@ public class ViewModel {
     private final StringProperty topElement = new SimpleStringProperty();
     private final StringProperty popElement = new SimpleStringProperty();
     private final StringProperty pushElement = new SimpleStringProperty();
+    private final StringProperty status = new SimpleStringProperty();
 
     public ViewModel() {
         stackDouble = new Stack<Double>();
@@ -18,6 +19,7 @@ public class ViewModel {
         topElement.set("None");
         popElement.set("None");
         pushElement.set("");
+        status.set(Status.WAITING.toString());
     }
 
     public String getIsStackEmptyInfoProperty() {
@@ -41,7 +43,23 @@ public class ViewModel {
     }
 
     public String getStatusProperty() {
-        return "";
+        return status.get();
     }
 
+}
+
+enum Status {
+    WAITING("Waiting for new element"),
+    READY("Ready to push new element"),
+    BAD_FORMAT("Invalid format of the pushing element");
+
+    private final String name;
+
+    Status(final String name) {
+        this.name = name;
+    }
+
+    public String toString() {
+        return name;
+    }
 }
