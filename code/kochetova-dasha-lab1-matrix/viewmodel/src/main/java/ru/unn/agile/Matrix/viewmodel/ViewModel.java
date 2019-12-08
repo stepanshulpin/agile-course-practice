@@ -1,5 +1,5 @@
 package ru.unn.agile.Matrix.viewmodel;
-import ru.unn.agile.matrix.model.Matrix;
+import ru.unn.agile.Matrix.Model.Matrix;
 import javafx.beans.property.*;
 
 public class ViewModel {
