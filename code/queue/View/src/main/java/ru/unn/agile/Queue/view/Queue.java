@@ -27,4 +27,10 @@ public class Queue {
     @FXML
     private Label status;
 
+    @FXML
+    void initialize() {
+        queueNewElement.textProperty().bindBidirectional(viewModel.queueElementProperty());
+        queueResult.textProperty().bindBidirectional(viewModel.queueResultProperty());
+        status.textProperty().bindBidirectional(viewModel.queueStatusProperty());
+    }
 }

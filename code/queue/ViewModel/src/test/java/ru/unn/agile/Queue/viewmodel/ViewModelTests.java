@@ -18,12 +18,17 @@ public class ViewModelTests {
     }
 
     @Test
-    public void canSetDefaultQueueValue() {
-        assertEquals("", viewModel.getQueueString());
+    public void canInitDefaultQueueInputValue() {
+        assertEquals("", viewModel.getQueueElement());
     }
 
     @Test
-    public void canSetDefaultInputElement() {
-        assertEquals("", viewModel.getInputElement());
+    public void canInitDefaultResult() {
+        assertEquals("", viewModel.getQueueResult());
+    }
+
+    @Test
+    public void canInitDefaultStatus() {
+        assertEquals("", viewModel.getQueueStatus());
     }
 }
