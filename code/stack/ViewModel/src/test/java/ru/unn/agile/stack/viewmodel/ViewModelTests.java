@@ -22,180 +22,247 @@ public class ViewModelTests {
     @Test
     public void checkDefaultEmptyStatus() {
         var emptyStatus = "Stack is empty";
-        assertEquals(emptyStatus, viewModel.getIsStackEmptyInfoProperty());
+        assertEquals(emptyStatus, viewModel.getIsStackEmptyInfo());
     }
 
     @Test
     public void checkDefaultStackSize() {
         var defaultSize = "0";
-        assertEquals(defaultSize, viewModel.getStackSizeProperty());
+        assertEquals(defaultSize, viewModel.getStackSize());
     }
 
     @Test
     public void checkDefaultTopElement() {
         var defaultTopElement = "None";
-        assertEquals(defaultTopElement, viewModel.getTopElementProperty());
+        assertEquals(defaultTopElement, viewModel.getTopElement());
     }
 
     @Test
     public void checkDefaultPopElement() {
         var defaultPopElement = "None";
-        assertEquals(defaultPopElement, viewModel.getPopElementProperty());
+        assertEquals(defaultPopElement, viewModel.getPopElement());
     }
 
     @Test
     public void checkDefaultPushElement() {
         var defaultPushElement = "";
-        assertEquals(defaultPushElement, viewModel.getPushElementProperty());
+        assertEquals(defaultPushElement, viewModel.getPushElement());
     }
 
     @Test
     public void checkDefaultStatus() {
         var defaultStatus = "Waiting for new element";
-        assertEquals(defaultStatus, viewModel.getStatusProperty());
+        assertEquals(defaultStatus, viewModel.getStatus());
     }
 
     @Test
     public void checkDefaultPopButtonState() {
-        assertFalse(viewModel.getDefaultPopButtonState());
+        assertFalse(viewModel.getPopButtonState());
     }
 
     @Test
     public void canPushNewElement() {
-        viewModel.pushNewElement("5");
+        viewModel.setPushElement("5");
+        viewModel.pushNewElement();
 
-        var notEmptyStack = "Stack is not empty";
         var stackSize = "1";
         var notNoneTopElement = "5.0";
-        var nonePopElement = "None";
         var pushElement = "5";
-        var readyStatus = "Ready to push new element";
 
-        assertEquals(notEmptyStack, viewModel.getIsStackEmptyInfoProperty());
-        assertEquals(stackSize, viewModel.getStackSizeProperty());
-        assertEquals(notNoneTopElement, viewModel.getTopElementProperty());
-        assertEquals(nonePopElement, viewModel.getPopElementProperty());
-        assertEquals(pushElement, viewModel.getPushElementProperty());
-        assertEquals(readyStatus, viewModel.getStatusProperty());
+        assertEquals(stackSize, viewModel.getStackSize());
+        assertEquals(notNoneTopElement, viewModel.getTopElement());
+        assertEquals(pushElement, viewModel.getPushElement());
+    }
+
+    @Test
+    public void stackIsNotEmptyAfterPush() {
+        viewModel.setPushElement("5");
+        viewModel.pushNewElement();
+
+        var stackEmptyStatus = "Stack is not empty";
+        assertEquals(stackEmptyStatus, viewModel.getIsStackEmptyInfo());
+    }
+
+    @Test
+    public void checkReadyStatusAfterPush() {
+        viewModel.setPushElement("5");
+        viewModel.pushNewElement();
+
+        var status = "Ready to push new element";
+        assertEquals(status, viewModel.getStatus());
     }
 
     @Test
     public void canNotPushInvalidFormat() {
-        viewModel.pushNewElement("k");
+        viewModel.setPushElement("k");
+        viewModel.pushNewElement();
 
-        var emptyStack = "Stack is empty";
         var stackSize = "0";
         var noneTopElement = "None";
-        var nonePopElement = "None";
-        var emptyPushElement = "";
-        var invalidStatus = "Invalid format of the pushing element";
+        var pushElement = "k";
 
-        assertEquals(emptyStack, viewModel.getIsStackEmptyInfoProperty());
-        assertEquals(stackSize, viewModel.getStackSizeProperty());
-        assertEquals(noneTopElement, viewModel.getTopElementProperty());
-        assertEquals(nonePopElement, viewModel.getPopElementProperty());
-        assertEquals(emptyPushElement, viewModel.getPushElementProperty());
-        assertEquals(invalidStatus, viewModel.getStatusProperty());
+        assertEquals(stackSize, viewModel.getStackSize());
+        assertEquals(noneTopElement, viewModel.getTopElement());
+        assertEquals(pushElement, viewModel.getPushElement());
+    }
+
+    @Test
+    public void checkIsEmptyStatusAfterFailedPush() {
+        viewModel.setPushElement("k");
+        viewModel.pushNewElement();
+
+        var stackEmptyStatus = "Stack is empty";
+        assertEquals(stackEmptyStatus, viewModel.getIsStackEmptyInfo());
+    }
+
+    @Test
+    public void checkBadInputStatusAfterFailedPush() {
+        viewModel.setPushElement("k");
+        viewModel.pushNewElement();
+
+        var status = "Invalid format of the pushing element";
+        assertEquals(status, viewModel.getStatus());
+    }
+
+    @Test
+    public void canNotPushEmptyElement() {
+        viewModel.setPushElement("");
+        viewModel.pushNewElement();
+
+        var stackSize = "0";
+        var noneTopElement = "None";
+        var emptyPushElement = "";
+
+        assertEquals(stackSize, viewModel.getStackSize());
+        assertEquals(noneTopElement, viewModel.getTopElement());
+        assertEquals(emptyPushElement, viewModel.getPushElement());
+    }
+
+    @Test
+    public void checkIsEmptyAfterPushEmptyElement() {
+        viewModel.setPushElement("");
+        viewModel.pushNewElement();
+
+        var stackEmptyStatus = "Stack is empty";
+        assertEquals(stackEmptyStatus, viewModel.getIsStackEmptyInfo());
+    }
+
+    @Test
+    public void checkWaitingStatusAfterPushEmptyElement() {
+        viewModel.setPushElement("");
+        viewModel.pushNewElement();
+
+        var status = "Waiting for new element";
+        assertEquals(status, viewModel.getStatus());
     }
 
     @Test
     public void canPopElement() {
-        viewModel.pushNewElement("1");
+        viewModel.setPushElement("1");
+        viewModel.pushNewElement();
         viewModel.popElement();
 
-        var emptyStack = "Stack is empty";
         var stackSize = "0";
         var noneTopElement = "None";
         var notNonePopElement = "1.0";
-        var pushElement = "1";
-        var readyStatus = "Ready to push new element";
 
-        assertEquals(emptyStack, viewModel.getIsStackEmptyInfoProperty());
-        assertEquals(stackSize, viewModel.getStackSizeProperty());
-        assertEquals(noneTopElement, viewModel.getTopElementProperty());
-        assertEquals(notNonePopElement, viewModel.getPopElementProperty());
-        assertEquals(pushElement, viewModel.getPushElementProperty());
-        assertEquals(readyStatus, viewModel.getStatusProperty());
+        assertEquals(stackSize, viewModel.getStackSize());
+        assertEquals(noneTopElement, viewModel.getTopElement());
+        assertEquals(notNonePopElement, viewModel.getPopElement());
+    }
+
+    @Test
+    public void checkIsEmptyStatusAfterOnePop() {
+        viewModel.setPushElement("1");
+        viewModel.pushNewElement();
+        viewModel.popElement();
+
+        var stackEmptyStatus = "Stack is empty";
+
+        assertEquals(stackEmptyStatus, viewModel.getIsStackEmptyInfo());
+    }
+
+    @Test
+    public void checkReadyStatusAfterOnePop() {
+        viewModel.setPushElement("1");
+        viewModel.pushNewElement();
+        viewModel.popElement();
+
+        var status = "Ready to push new element";
+
+        assertEquals(status, viewModel.getStatus());
     }
 
     @Test
     public void canNotPopElementFromEmptyStack() {
         viewModel.popElement();
 
-        var emptyStack = "Stack is empty";
         var nullStackSize = "0";
-        var noneTopElement = "None";
         var nonePopElement = "None";
-        var emptyPushElement = "";
-        var waitingStatus = "Waiting for new element";
 
-        assertEquals(emptyStack, viewModel.getIsStackEmptyInfoProperty());
-        assertEquals(nullStackSize, viewModel.getStackSizeProperty());
-        assertEquals(noneTopElement, viewModel.getTopElementProperty());
-        assertEquals(nonePopElement, viewModel.getPopElementProperty());
-        assertEquals(emptyPushElement, viewModel.getPushElementProperty());
-        assertEquals(waitingStatus, viewModel.getStatusProperty());
+        assertEquals(nullStackSize, viewModel.getStackSize());
+        assertEquals(nonePopElement, viewModel.getPopElement());
     }
 
     @Test
     public void isPopButtonEnabledForNotEmptyStack() {
-        viewModel.pushNewElement("1.0");
-        assertTrue(viewModel.getDefaultPopButtonState());
+        viewModel.setPushElement("1.0");
+        viewModel.pushNewElement();
+        assertTrue(viewModel.getPopButtonState());
     }
 
     @Test
     public void isPopButtonDisabledForEmptyStack() {
-        viewModel.pushNewElement("1.0");
+        viewModel.setPushElement("1.0");
+        viewModel.pushNewElement();
         viewModel.popElement();
-        assertFalse(viewModel.getDefaultPopButtonState());
+        assertFalse(viewModel.getPopButtonState());
     }
 
     @Test
-    public void isPopButtonDisabledWhenPushInvalidElement() {
-        viewModel.pushNewElement("abc");
-        assertFalse(viewModel.getDefaultPopButtonState());
+    public void isPopButtonDisabledAfterFailedPush() {
+        viewModel.setPushElement("k");
+        viewModel.pushNewElement();
+        assertFalse(viewModel.getPopButtonState());
     }
 
     @Test
     public void canWorkCorrectlyWithSeveralPush() {
-        viewModel.pushNewElement("1");
-        viewModel.pushNewElement("2");
-        viewModel.pushNewElement("3");
+        viewModel.setPushElement("1.0");
+        viewModel.setPushElement("2.0");
+        viewModel.setPushElement("3.0");
+        viewModel.pushNewElement();
+        viewModel.pushNewElement();
+        viewModel.pushNewElement();
 
-        var notEmptyStack = "Stack is not empty";
         var stackSize = "3";
         var notNoneTopElement = "3.0";
-        var nonePopElement = "None";
-        var notNullPushElement = "3";
-        var readyStatus = "Ready to push new element";
+        var notNullPushElement = "3.0";
 
-        assertEquals(notEmptyStack, viewModel.getIsStackEmptyInfoProperty());
-        assertEquals(stackSize, viewModel.getStackSizeProperty());
-        assertEquals(notNoneTopElement, viewModel.getTopElementProperty());
-        assertEquals(nonePopElement, viewModel.getPopElementProperty());
-        assertEquals(notNullPushElement, viewModel.getPushElementProperty());
-        assertEquals(readyStatus, viewModel.getStatusProperty());
+        assertEquals(stackSize, viewModel.getStackSize());
+        assertEquals(notNoneTopElement, viewModel.getTopElement());
+        assertEquals(notNullPushElement, viewModel.getPushElement());
     }
 
     @Test
     public void canWorkCorrectlyWithSeveralPop() {
-        viewModel.pushNewElement("1");
-        viewModel.pushNewElement("2");
-        viewModel.pushNewElement("3");
+        viewModel.setPushElement("1.0");
+        viewModel.pushNewElement();
+        viewModel.setPushElement("2.0");
+        viewModel.pushNewElement();
+        viewModel.setPushElement("3.0");
+        viewModel.pushNewElement();
         viewModel.popElement();
         viewModel.popElement();
 
-        var notEmptyStack = "Stack is not empty";
         var stackSize = "1";
         var notNoneTopElement = "1.0";
         var notNonePopElement = "2.0";
-        var notNullPushElement = "3";
-        var readyStatus = "Ready to push new element";
-        assertEquals(notEmptyStack, viewModel.getIsStackEmptyInfoProperty());
-        assertEquals(stackSize, viewModel.getStackSizeProperty());
-        assertEquals(notNoneTopElement, viewModel.getTopElementProperty());
-        assertEquals(notNonePopElement, viewModel.getPopElementProperty());
-        assertEquals(notNullPushElement, viewModel.getPushElementProperty());
-        assertEquals(readyStatus, viewModel.getStatusProperty());
+        var notNullPushElement = "3.0";
+
+        assertEquals(stackSize, viewModel.getStackSize());
+        assertEquals(notNoneTopElement, viewModel.getTopElement());
+        assertEquals(notNonePopElement, viewModel.getPopElement());
+        assertEquals(notNullPushElement, viewModel.getPushElement());
     }
 }

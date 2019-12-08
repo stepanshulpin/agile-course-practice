@@ -11,116 +11,125 @@ public class ViewModel {
     private final StringProperty popElement = new SimpleStringProperty();
     private final StringProperty pushElement = new SimpleStringProperty();
     private final StringProperty status = new SimpleStringProperty();
-    private boolean popButtonState;
+    private final BooleanProperty popButtonState = new SimpleBooleanProperty();
 
     public ViewModel() {
         stackDouble = new Stack<Double>();
-        isStackEmptyInfo.set("Stack is empty");
+        isStackEmptyInfo.set(Status.STACK_IS_EMPTY.toString());
         stackSize.set("0");
         topElement.set("None");
         popElement.set("None");
         pushElement.set("");
         status.set(Status.WAITING.toString());
-        popButtonState = false;
+        popButtonState.set(false);
     }
 
-    public String getIsStackEmptyInfoProperty() {
+    public String getIsStackEmptyInfo() {
         return isStackEmptyInfo.get();
     }
 
-    public String getStackSizeProperty() {
+    public StringProperty isStackEmptyInfoProperty() {
+        return isStackEmptyInfo;
+    }
+
+    public String getStackSize() {
         return stackSize.get();
     }
 
-    public String getTopElementProperty() {
+    public StringProperty stackSizeProperty() {
+        return stackSize;
+    }
+
+    public String getTopElement() {
         return topElement.get();
     }
 
-    public String getPopElementProperty() {
+    public StringProperty topElementProperty() {
+        return topElement;
+    }
+
+    public String getPopElement() {
         return popElement.get();
     }
 
-    public String getPushElementProperty() {
+    public StringProperty popElementProperty() {
+        return popElement;
+    }
+
+    public String getPushElement() {
         return pushElement.get();
     }
 
-    public String getStatusProperty() {
+    public StringProperty pushElementProperty() {
+        return pushElement;
+    }
+
+    public String getStatus() {
         return status.get();
     }
 
-    public boolean getDefaultPopButtonState() {
+    public StringProperty getStatusProperty() {
+        return status;
+    }
+
+    public boolean getPopButtonState() {
+        return popButtonState.get();
+    }
+
+    public BooleanProperty popButtonStateProperty() {
         return popButtonState;
     }
 
-    private void changePopButtonState() {
-        popButtonState = !stackDouble.isEmpty();
+    public void setPushElement(final String inputElement) {
+        pushElement.set(inputElement);
     }
 
-    private void changeStackEmptyInfo() {
-        if (stackDouble.isEmpty()) {
-            isStackEmptyInfo.set("Stack is empty");
-        } else {
-            isStackEmptyInfo.set("Stack is not empty");
-        }
-    }
 
-    private void changeStackSize() {
+    private void changeStackProperties() {
         int doubleStackSize = stackDouble.size();
         stackSize.set(Integer.toString(doubleStackSize));
-    }
-
-    private void changeStackTopElement() {
-        if (!stackDouble.isEmpty()) {
-            topElement.set(Double.toString(stackDouble.peek()));
-        } else {
+        if (stackDouble.isEmpty()) {
+            isStackEmptyInfo.set(Status.STACK_IS_EMPTY.toString());
             topElement.set("None");
+            popButtonState.set(false);
+        } else {
+            isStackEmptyInfo.set(Status.STACK_IS_NOT_EMPTY.toString());
+            topElement.set(Double.toString(stackDouble.peek()));
+            popButtonState.set(true);
         }
     }
 
-    private boolean checkInput(final String inputElement) {
-        if (inputElement.isEmpty()) {
-            status.set(Status.WAITING.toString());
-            return false;
-        }
-
+    public void pushNewElement() {
         try {
-            Double.parseDouble(inputElement);
-        } catch (Exception e) {
+            String pushElement = getPushElement();
+            if (pushElement.isEmpty()) {
+                status.set(Status.WAITING.toString());
+            } else {
+                stackDouble.push(Double.parseDouble(pushElement));
+                status.set(Status.READY.toString());
+                changeStackProperties();
+            }
+        } catch (NumberFormatException e) {
             status.set(Status.BAD_FORMAT.toString());
-            return false;
-        }
-
-        status.set(Status.READY.toString());
-        return true;
-    }
-
-    public void pushNewElement(final String inputElement) {
-        if (checkInput(inputElement)) {
-            pushElement.set(inputElement);
-            stackDouble.push(Double.parseDouble(inputElement));
-            changeStackSize();
-            changePopButtonState();
-            changeStackEmptyInfo();
-            changeStackTopElement();
         }
     }
+
+
 
     public void popElement() {
         if (!stackDouble.isEmpty()) {
             popElement.set(Double.toString(stackDouble.pop()));
-            changePopButtonState();
-            changeStackEmptyInfo();
-            changeStackSize();
-            changeStackTopElement();
+            changeStackProperties();
         }
     }
-
 }
 
 enum Status {
     WAITING("Waiting for new element"),
     READY("Ready to push new element"),
-    BAD_FORMAT("Invalid format of the pushing element");
+    BAD_FORMAT("Invalid format of the pushing element"),
+    STACK_IS_EMPTY("Stack is empty"),
+    STACK_IS_NOT_EMPTY("Stack is not empty");
 
     private final String name;
 
