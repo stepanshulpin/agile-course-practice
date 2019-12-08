@@ -59,6 +59,12 @@ public class ViewModelTests {
         assertTrue(viewModel.calculationDisabledProperty().get());
     }
 
+    @Test
+    public void calculateButtonIsDisabledIfNotAllFieldsFilled() {
+        viewModel.x1Property().setValue("1");
+        assertTrue(viewModel.calculationDisabledProperty().get());
+    }
+
     private void setPositiveInputVectors() {
         viewModel.x1Property().set("2");
         viewModel.y1Property().set("3");
