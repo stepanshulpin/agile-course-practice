@@ -25,4 +25,10 @@ public class ViewModelTests {
         assertEquals(emptyStatus, viewModel.getIsStackEmptyInfo());
     }
 
+    @Test
+    public void checkDefaultStackSize() {
+        var defaultSize = "0";
+        assertEquals(defaultSize, viewModel.getStackSize());
+    }
+
 }
