@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 
 public class VectorMetricsTests {
 
-    private static final double EPS = 0.01f;
+    private static final double EPS = 0.01;
 
     @Test
     public void canCalculateL1DistanceOneDimensionalVector() {

@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 
 public class VectorsDistancesCalculatorTests {
 
-    private static final double EPS = 0.01f;
+    private static final double EPS = 0.01;
 
     @Test(expected = IllegalArgumentException.class)
     public void calculateLpThrowExceptionIfVectorsHaveDifferentDimensions() {

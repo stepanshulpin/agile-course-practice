@@ -8,6 +8,7 @@ import ru.unn.agile.vectorsdistancescalculator.model.VectorsDistancesCalculator.
 import static org.junit.Assert.*;
 
 public class ViewModelTests {
+
     private ViewModel viewModel;
 
     @Before
@@ -74,6 +75,55 @@ public class ViewModelTests {
     public void canSetCalculateLInfDistanceOperation() {
         viewModel.operationProperty().set(Operation.CALCULATE_LInf_DISTANCE);
         assertEquals(Operation.CALCULATE_LInf_DISTANCE, viewModel.operationProperty().get());
+    }
+
+    @Test
+    public void calculateL1DistanceOperationsHasCorrectResult() {
+        setMixedInputVectors();
+        viewModel.calculate();
+        String expectedL1 = "27.0";
+        String actualL1 = viewModel.resultProperty().get();
+        assertEquals(expectedL1, actualL1);
+    }
+
+    @Test
+    public void calculateL2DistanceOperationsHasCorrectResult() {
+        setMixedInputVectors();
+        viewModel.operationProperty().set(Operation.CALCULATE_L2_DISTANCE);
+        viewModel.calculate();
+        String expectedL2 = "15.84297951775486";
+        String actualL2 = viewModel.resultProperty().get();
+        assertEquals(expectedL2, actualL2);
+    }
+
+    @Test
+    public void calculateL3DistanceOperationsHasCorrectResult() {
+        setMixedInputVectors();
+        viewModel.operationProperty().set(Operation.CALCULATE_L3_DISTANCE);
+        viewModel.calculate();
+        String expectedL3 = "13.394235286753611";
+        String actualL3 = viewModel.resultProperty().get();
+        assertEquals(expectedL3, actualL3);
+    }
+
+    @Test
+    public void calculateL4DistanceOperationsHasCorrectResult() {
+        setMixedInputVectors();
+        viewModel.operationProperty().set(Operation.CALCULATE_L4_DISTANCE);
+        viewModel.calculate();
+        String expectedL4 = "12.394865018039264";
+        String actualL4 = viewModel.resultProperty().get();
+        assertEquals(expectedL4, actualL4);
+    }
+
+    @Test
+    public void calculateLInfDistanceOperationsHasCorrectResult() {
+        setMixedInputVectors();
+        viewModel.operationProperty().set(Operation.CALCULATE_LInf_DISTANCE);
+        viewModel.calculate();
+        String expectedLInf = "11.0";
+        String actualLInf = viewModel.resultProperty().get();
+        assertEquals(expectedLInf, actualLInf);
     }
 
     private void setPositiveInputVectors() {

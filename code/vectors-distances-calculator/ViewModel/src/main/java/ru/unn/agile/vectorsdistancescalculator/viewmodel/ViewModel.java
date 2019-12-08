@@ -131,6 +131,23 @@ public class ViewModel {
         return calculationDisabled;
     }
 
+    public void calculate() {
+        if (calculationDisabled.get()) {
+            return;
+        }
+        double x1d = Double.parseDouble(x1.get());
+        double y1d = Double.parseDouble(y1.get());
+        double z1d = Double.parseDouble(z1.get());
+        double x2d = Double.parseDouble(x2.get());
+        double y2d = Double.parseDouble(y2.get());
+        double z2d = Double.parseDouble(z2.get());
+        List<Double> x = new ArrayList<>(List.of(x1d, y1d, z1d));
+        List<Double> y = new ArrayList<>(List.of(x2d, y2d, z2d));
+
+        result.set(String.valueOf(operation.get().apply(x, y)));
+        status.set(Status.SUCCESS.toString());
+    }
+
     private class ValueChangeListener implements ChangeListener<String> {
         @Override
         public void changed(final ObservableValue<? extends String> observable,
