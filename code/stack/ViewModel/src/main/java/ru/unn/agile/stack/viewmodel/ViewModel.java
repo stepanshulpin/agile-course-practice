@@ -11,6 +11,7 @@ public class ViewModel {
     private final StringProperty popElement = new SimpleStringProperty();
     private final StringProperty pushElement = new SimpleStringProperty();
     private final StringProperty status = new SimpleStringProperty();
+    private boolean popButtonState;
 
     public ViewModel() {
         stackDouble = new Stack<Double>();
@@ -20,6 +21,7 @@ public class ViewModel {
         popElement.set("None");
         pushElement.set("");
         status.set(Status.WAITING.toString());
+        popButtonState = false;
     }
 
     public String getIsStackEmptyInfoProperty() {
@@ -47,7 +49,32 @@ public class ViewModel {
     }
 
     public boolean getDefaultPopButtonState() {
-        return false;
+        return popButtonState;
+    }
+
+    private void changePopButtonState() {
+        popButtonState = !stackDouble.isEmpty();
+    }
+
+    private void changeStackEmptyInfo() {
+        if (stackDouble.isEmpty()) {
+            isStackEmptyInfo.set("Stack is empty");
+        } else {
+            isStackEmptyInfo.set("Stack is not empty");
+        }
+    }
+
+    private void changeStackSize() {
+        int doubleStackSize = stackDouble.size();
+        stackSize.set(Integer.toString(doubleStackSize));
+    }
+
+    private void changeStackTopElement() {
+        if (stackDouble.isEmpty()) {
+            topElement.set(Double.toString((double) stackDouble.peek()));
+        } else {
+            topElement.set("None");
+        }
     }
 
 }
