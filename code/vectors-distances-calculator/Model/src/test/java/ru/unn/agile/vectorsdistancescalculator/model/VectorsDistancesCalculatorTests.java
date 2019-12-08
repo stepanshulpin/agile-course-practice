@@ -63,7 +63,8 @@ public class VectorsDistancesCalculatorTests {
         List<Double> x = new ArrayList<>(List.of(3.0, 2.0));
         List<Double> y = new ArrayList<>(List.of(2.0, 1.0));
         int power = 2;
-        double expectedL2 = Math.sqrt(2.0);
+        double squaredSum = 2.0;
+        double expectedL2 = Math.sqrt(squaredSum);
         double actualL2 = VectorsDistancesCalculator.calculateLp(x, y, power);
         assertEquals(expectedL2, actualL2, EPS);
 
@@ -74,7 +75,8 @@ public class VectorsDistancesCalculatorTests {
         List<Double> x = new ArrayList<>(List.of(3.0, -2.0));
         List<Double> y = new ArrayList<>(List.of(-2.0, 1.0));
         int power = 2;
-        double expectedL2 = Math.sqrt(34);
+        double squaredSum = 34.0;
+        double expectedL2 = Math.sqrt(squaredSum);
         double actualL2 = VectorsDistancesCalculator.calculateLp(x, y, power);
         assertEquals(expectedL2, actualL2, EPS);
     }
