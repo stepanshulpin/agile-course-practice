@@ -4,7 +4,7 @@ import java.util.Hashtable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class RomanToArabicConverter implements NumConverter {
+public class RomanToArabicConverter implements Converter {
 
     private static final int[] ARABIC_NUMERALS = {1, 5, 10, 50,
             100, 500, 1000};
@@ -30,7 +30,12 @@ public class RomanToArabicConverter implements NumConverter {
         return matcher.matches();
     }
 
-    public String convert(final String romanNumber) {
+    @Override
+    public String convertValue(final String number) {
+        return String.valueOf(convert(number));
+    }
+
+    public int convert(final String romanNumber) {
         if (!validateRomanNumber(romanNumber)) {
             throw new IllegalArgumentException(romanNumber
                     + "is not a Roman number");
@@ -47,6 +52,6 @@ public class RomanToArabicConverter implements NumConverter {
             prevSymbol = currentSymbol;
         }
 
-        return String.valueOf(arabicNumber);
+        return arabicNumber;
     }
 }
