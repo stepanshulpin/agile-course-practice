@@ -51,6 +51,41 @@ public class ViewModelTests {
         assertTrue(viewModel.calculationDisabledProperty().get());
     }
 
+    @Test
+    public void calculateButtonIsDisabledWhenFormatIsBad() {
+        setPositiveInputVectors();
+        viewModel.x1Property().set("KABO");
+
+        assertTrue(viewModel.calculationDisabledProperty().get());
+    }
+
+    private void setPositiveInputVectors() {
+        viewModel.x1Property().set("2");
+        viewModel.y1Property().set("3");
+        viewModel.z1Property().set("4");
+        viewModel.x2Property().set("5");
+        viewModel.y2Property().set("6");
+        viewModel.z2Property().set("7");
+    }
+
+    private void setNegativeInputVectors() {
+        viewModel.x1Property().set("-2");
+        viewModel.y1Property().set("-3");
+        viewModel.z1Property().set("-4");
+        viewModel.x2Property().set("-5");
+        viewModel.y2Property().set("-6");
+        viewModel.z2Property().set("-7");
+    }
+
+    private void setMixedInputVectors() {
+        viewModel.x1Property().set("-2");
+        viewModel.y1Property().set("3");
+        viewModel.z1Property().set("-4");
+        viewModel.x2Property().set("5");
+        viewModel.y2Property().set("-6");
+        viewModel.z2Property().set("7");
+    }
+
 
 
 }
