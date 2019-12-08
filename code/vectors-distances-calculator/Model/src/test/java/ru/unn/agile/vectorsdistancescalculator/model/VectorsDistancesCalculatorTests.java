@@ -63,8 +63,8 @@ public class VectorsDistancesCalculatorTests {
         List<Double> x = new ArrayList<>(List.of(3.0, 2.0));
         List<Double> y = new ArrayList<>(List.of(2.0, 1.0));
         int power = 2;
-        double squaredSum = 2.0;
-        double expectedL2 = Math.sqrt(squaredSum);
+        double sum = 2.0;
+        double expectedL2 = Math.sqrt(sum);
         double actualL2 = VectorsDistancesCalculator.calculateLp(x, y, power);
         assertEquals(expectedL2, actualL2, EPS);
 
@@ -75,8 +75,31 @@ public class VectorsDistancesCalculatorTests {
         List<Double> x = new ArrayList<>(List.of(3.0, -2.0));
         List<Double> y = new ArrayList<>(List.of(-2.0, 1.0));
         int power = 2;
-        double squaredSum = 34.0;
-        double expectedL2 = Math.sqrt(squaredSum);
+        double sum = 34.0;
+        double expectedL2 = Math.sqrt(sum);
+        double actualL2 = VectorsDistancesCalculator.calculateLp(x, y, power);
+        assertEquals(expectedL2, actualL2, EPS);
+    }
+
+    @Test
+    public void canCalculateL3DistancePositiveElems() {
+        List<Double> x = new ArrayList<>(List.of(3.0, 2.0));
+        List<Double> y = new ArrayList<>(List.of(2.0, 1.0));
+        int power = 3;
+        double sum = 2.0;
+        double expectedL3 = Math.pow(sum, 1. / 3);
+        double actualL3 = VectorsDistancesCalculator.calculateLp(x, y, power);
+        assertEquals(expectedL3, actualL3, EPS);
+
+    }
+
+    @Test
+    public void canCalculateL3DistanceMixedElems() {
+        List<Double> x = new ArrayList<>(List.of(3.0, -2.0));
+        List<Double> y = new ArrayList<>(List.of(-2.0, 1.0));
+        int power = 3;
+        double sum = 152;
+        double expectedL2 = Math.pow(sum, 1./ 3);
         double actualL2 = VectorsDistancesCalculator.calculateLp(x, y, power);
         assertEquals(expectedL2, actualL2, EPS);
     }
