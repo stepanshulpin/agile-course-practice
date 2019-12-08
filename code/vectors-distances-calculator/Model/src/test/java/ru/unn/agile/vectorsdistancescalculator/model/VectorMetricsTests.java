@@ -191,4 +191,12 @@ public class VectorMetricsTests {
         int power = 0;
         VectorMetrics.calculateLp(vector, power);
     }
+
+    @Test
+    public void canCorrectlyCalculateLInfWithZeroFilledVectors() {
+        List<Double> x = new ArrayList<>(List.of(0.0, 0.0, 0.0));
+        double expectedLInf = 0.0;
+        double actualLInf = VectorMetrics.calculateLInf(x);
+        assertEquals(expectedLInf, actualLInf, EPS);
+    }
 }

@@ -22,7 +22,7 @@ public final class VectorMetrics {
         }
         return vector.stream()
                      .map(Math::abs)
-                     .reduce(Double.MIN_VALUE, (x, y) -> x < y ? y : x);
+                     .reduce(Double.NEGATIVE_INFINITY, (x, y) -> x < y ? y : x);
     }
 
     private VectorMetrics() { }
