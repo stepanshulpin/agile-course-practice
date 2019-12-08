@@ -37,4 +37,10 @@ public class ViewModelTests {
         assertEquals(defaultTopElement, viewModel.getTopElement());
     }
 
+    @Test
+    public void checkDefaultPopElement() {
+        var defaultPopElement = "None";
+        assertEquals(defaultPopElement, viewModel.getPopElement());
+    }
+
 }
