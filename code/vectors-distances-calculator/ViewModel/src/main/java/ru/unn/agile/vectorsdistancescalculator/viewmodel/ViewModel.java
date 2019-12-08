@@ -121,25 +121,25 @@ public class ViewModel {
     public ObjectProperty<Operation> operationProperty() {
         return operation;
     }
-    public StringProperty resultProperty() {
+    public StringProperty resultFieldProperty() {
         return resultField;
     }
-    public StringProperty statusProperty() {
+    public StringProperty statusFieldProperty() {
         return statusField;
     }
-    public BooleanProperty calculationDisabledProperty() {
+    public BooleanProperty calculationDisabledFlagProperty() {
         return calculationDisabledFlag;
     }
-    public final ObservableList<Operation> getOperations() {
+    public final ObservableList<Operation> getOperationList() {
         return operationList.get();
     }
-    public final boolean isCalculationDisabled() {
+    public final boolean isCalculationDisabledFlag() {
         return calculationDisabledFlag.get();
     }
-    public final String getResult() {
+    public final String getResultField() {
         return resultField.get();
     }
-    public final String getStatus() {
+    public final String getStatusField() {
         return statusField.get();
     }
 
@@ -170,8 +170,8 @@ public class ViewModel {
 }
 
 enum Status {
-    WAITING("Please provide correct input data"),
-    READY("Press 'Calculate' or Enter button"),
+    WAITING("Please enter input data"),
+    READY("Press 'Calculate'"),
     BAD_FORMAT("Bad format, please fix"),
     SUCCESS("Success!");
 

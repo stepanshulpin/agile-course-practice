@@ -32,25 +32,25 @@ public class ViewModelTests {
         assertEquals("", viewModel.y2Property().get());
         assertEquals("", viewModel.z2Property().get());
         assertEquals(Operation.CALCULATE_L1_DISTANCE, viewModel.operationProperty().get());
-        assertEquals("", viewModel.resultProperty().get());
-        assertEquals(Status.WAITING.toString(), viewModel.statusProperty().get());
+        assertEquals("", viewModel.resultFieldProperty().get());
+        assertEquals(Status.WAITING.toString(), viewModel.statusFieldProperty().get());
     }
 
     @Test
     public void canReportBadFormat() {
         viewModel.x1Property().set("@");
-        assertEquals(Status.BAD_FORMAT.toString(), viewModel.statusProperty().get());
+        assertEquals(Status.BAD_FORMAT.toString(), viewModel.statusFieldProperty().get());
     }
 
     @Test
     public void statusIsWaitingIfNotEnoughCorrectData() {
         viewModel.x1Property().set("2");
-        assertEquals(Status.WAITING.toString(), viewModel.statusProperty().get());
+        assertEquals(Status.WAITING.toString(), viewModel.statusFieldProperty().get());
     }
 
     @Test
     public void calculateButtonIsDisabledByInit() {
-        assertTrue(viewModel.calculationDisabledProperty().get());
+        assertTrue(viewModel.calculationDisabledFlagProperty().get());
     }
 
     @Test
@@ -58,19 +58,19 @@ public class ViewModelTests {
         setPositiveInputVectors();
         viewModel.x1Property().set("KABO");
 
-        assertTrue(viewModel.calculationDisabledProperty().get());
+        assertTrue(viewModel.calculationDisabledFlagProperty().get());
     }
 
     @Test
     public void calculateButtonIsDisabledIfNotAllFieldsFilled() {
         viewModel.x1Property().setValue("1");
-        assertTrue(viewModel.calculationDisabledProperty().get());
+        assertTrue(viewModel.calculationDisabledFlagProperty().get());
     }
 
     @Test
     public void calculateButtonIsEnabledIfDataFilledCorrect() {
         setMixedInputVectors();
-        assertFalse(viewModel.calculationDisabledProperty().get());
+        assertFalse(viewModel.calculationDisabledFlagProperty().get());
     }
 
     @Test
@@ -84,7 +84,7 @@ public class ViewModelTests {
         setMixedInputVectors();
         viewModel.calculate();
         double expectedL1 = 27.0;
-        double actualL1 = Double.parseDouble(viewModel.resultProperty().get());
+        double actualL1 = Double.parseDouble(viewModel.resultFieldProperty().get());
         assertEquals(expectedL1, actualL1, EPS);
     }
 
@@ -94,7 +94,7 @@ public class ViewModelTests {
         viewModel.operationProperty().set(Operation.CALCULATE_L2_DISTANCE);
         viewModel.calculate();
         double expectedL2 = 15.84;
-        double actualL2 = Double.parseDouble(viewModel.resultProperty().get());
+        double actualL2 = Double.parseDouble(viewModel.resultFieldProperty().get());
         assertEquals(expectedL2, actualL2, EPS);
     }
 
@@ -104,7 +104,7 @@ public class ViewModelTests {
         viewModel.operationProperty().set(Operation.CALCULATE_L3_DISTANCE);
         viewModel.calculate();
         double expectedL3 = 13.39;
-        double actualL3 = Double.parseDouble(viewModel.resultProperty().get());
+        double actualL3 = Double.parseDouble(viewModel.resultFieldProperty().get());
         assertEquals(expectedL3, actualL3, EPS);
     }
 
@@ -114,7 +114,7 @@ public class ViewModelTests {
         viewModel.operationProperty().set(Operation.CALCULATE_L4_DISTANCE);
         viewModel.calculate();
         double expectedL4 = 12.39;
-        double actualL4 = Double.parseDouble(viewModel.resultProperty().get());
+        double actualL4 = Double.parseDouble(viewModel.resultFieldProperty().get());
         assertEquals(expectedL4, actualL4, EPS);
     }
 
@@ -124,7 +124,7 @@ public class ViewModelTests {
         viewModel.operationProperty().set(Operation.CALCULATE_LInf_DISTANCE);
         viewModel.calculate();
         double expectedLInf = 11.0;
-        double actualLInf = Double.parseDouble(viewModel.resultProperty().get());
+        double actualLInf = Double.parseDouble(viewModel.resultFieldProperty().get());
         assertEquals(expectedLInf, actualLInf, EPS);
     }
 
@@ -132,7 +132,7 @@ public class ViewModelTests {
     public void canSetReadyMessage() {
         setMixedInputVectors();
         String expected = Status.READY.toString();
-        String actual = viewModel.statusProperty().get();
+        String actual = viewModel.statusFieldProperty().get();
         assertEquals(expected, actual);
     }
 
@@ -141,14 +141,14 @@ public class ViewModelTests {
         setMixedInputVectors();
         viewModel.calculate();
         String expected = Status.SUCCESS.toString();
-        String actual = viewModel.statusProperty().get();
+        String actual = viewModel.statusFieldProperty().get();
         assertEquals(expected, actual);
     }
 
     @Test
     public void canSetBadFormatMessage() {
         viewModel.x1Property().set("@");
-        assertEquals(Status.BAD_FORMAT.toString(), viewModel.statusProperty().get());
+        assertEquals(Status.BAD_FORMAT.toString(), viewModel.statusFieldProperty().get());
     }
 
     private void setPositiveInputVectors() {

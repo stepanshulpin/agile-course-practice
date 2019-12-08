@@ -25,9 +25,9 @@ public class VectorsDistancesCalculator {
     @FXML
     private TextField txtZ2;
     @FXML
-    private ComboBox<Operation> cbOperation;
+    private ComboBox<Operation> comboBoxOperation;
     @FXML
-    private Button btnCalc;
+    private Button buttonCalc;
 
     @FXML
     void initialize() {
@@ -38,9 +38,9 @@ public class VectorsDistancesCalculator {
         txtY2.textProperty().bindBidirectional(viewModel.y2Property());
         txtZ2.textProperty().bindBidirectional(viewModel.z2Property());
 
-        cbOperation.valueProperty().bindBidirectional(viewModel.operationProperty());
+        comboBoxOperation.valueProperty().bindBidirectional(viewModel.operationProperty());
 
-        btnCalc.setOnAction(new EventHandler<ActionEvent>() {
+        buttonCalc.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(final ActionEvent event) {
                 viewModel.calculate();
