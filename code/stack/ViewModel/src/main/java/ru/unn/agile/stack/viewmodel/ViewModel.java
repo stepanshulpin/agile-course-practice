@@ -6,6 +6,7 @@ public class ViewModel {
     private Stack<Double> stackDouble;
     private String isStackEmptyInfo;
     private String stackSize;
+    private String topElement;
 
     public ViewModel() {
         stackDouble = new Stack<Double>();
@@ -18,7 +19,11 @@ public class ViewModel {
     }
 
     public String getStackSize() {
-        return "0";
+        return stackSize;
+    }
+
+    public String getTopElement() {
+        return "None";
     }
 
 }

@@ -31,4 +31,10 @@ public class ViewModelTests {
         assertEquals(defaultSize, viewModel.getStackSize());
     }
 
+    @Test
+    public void checkDefaultTopElement() {
+        var defaultTopElement = "None";
+        assertEquals(defaultTopElement, viewModel.getTopElement());
+    }
+
 }
