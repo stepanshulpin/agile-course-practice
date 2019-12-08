@@ -98,7 +98,7 @@ project(":code/lab1-tdd-triangle").name = "lab1-tdd-triangle-Model"
 // Миронова Анна
 include "code/statistics-calculation"
 project(":code/statistics-calculation").name = "statistics-calculation-Model"
-// Митрохин Никита
+// Queue
 include "code/queue/Model"
 project(":code/queue/Model").name = "queue-Model"
 include "code/queue/View"

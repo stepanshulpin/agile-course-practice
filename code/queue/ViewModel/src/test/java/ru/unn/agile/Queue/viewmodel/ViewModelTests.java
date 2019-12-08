@@ -59,7 +59,7 @@ public class ViewModelTests {
 
     @Test
     public void canPushElementToQueue() {
-        String expectedStatusValue = "Push element:3.0";
+        String expectedStatusValue = "Push element: 3.0";
         viewModel.setQueueInputElement("3");
         viewModel.pushProcess();
 
@@ -69,7 +69,7 @@ public class ViewModelTests {
 
     @Test
     public void canPopElementFromQueue() {
-        String expectedStatusValue = "Pop element:3.0";
+        String expectedStatusValue = "Pop element: 3.0";
         viewModel.setQueueInputElement("3");
         viewModel.pushProcess();
         viewModel.popProcess();
