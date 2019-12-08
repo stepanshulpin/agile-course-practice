@@ -14,6 +14,10 @@ public final class VectorsDistancesCalculator {
         return VectorMetrics.calculateLp(dif, power);
     }
 
+    public static double calculateLInf(final List<Double> x, final List<Double> y) {
+        List<Double> dif = calculateVectorsDifference(x, y);
+        return VectorMetrics.calculateLInf(dif);
+    }
 
     private static List<Double> calculateVectorsDifference(final List<Double> x,
                                                            final List<Double> y) {

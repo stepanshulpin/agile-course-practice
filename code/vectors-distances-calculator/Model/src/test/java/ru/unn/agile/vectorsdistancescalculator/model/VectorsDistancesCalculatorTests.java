@@ -14,7 +14,7 @@ public class VectorsDistancesCalculatorTests {
     private static final double EPS = 0.01f;
 
     @Test(expected = IllegalArgumentException.class)
-    public void throwExceptionIfVectorsHaveDifferentDimensions() {
+    public void calculateLpThrowExceptionIfVectorsHaveDifferentDimensions() {
         List<Double> x = new ArrayList<>(List.of(1.0, 2.0));
         List<Double> y = new ArrayList<>(List.of(1.0));
         int power = 1;
@@ -22,7 +22,7 @@ public class VectorsDistancesCalculatorTests {
     }
 
     @Test(expected = NoSuchElementException.class)
-    public void throwExceptionIfVectorsEmpty() {
+    public void calculateLpThrowExceptionIfVectorsEmpty() {
         List<Double> x = new ArrayList<>(List.of(1.0));
         List<Double> y = new ArrayList<>();
         int power = 1;
@@ -30,7 +30,7 @@ public class VectorsDistancesCalculatorTests {
     }
 
     @Test(expected = NullPointerException.class)
-    public void throwExceptionIfVectorNull() {
+    public void calculateLpThrowExceptionIfVectorNull() {
         List<Double> x = null;
         List<Double> y = new ArrayList<>();
         int power = 1;
@@ -127,7 +127,43 @@ public class VectorsDistancesCalculatorTests {
         assertEquals(expectedL4, actualL4, EPS);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void calculateLInfThrowExceptionIfVectorsHaveDifferentDimensions() {
+        List<Double> x = new ArrayList<>(List.of(1.0, 2.0));
+        List<Double> y = new ArrayList<>(List.of(1.0));
+        VectorsDistancesCalculator.calculateLInf(x, y);
+    }
 
+    @Test(expected = NoSuchElementException.class)
+    public void calculateLInfThrowExceptionIfVectorsEmpty() {
+        List<Double> x = new ArrayList<>(List.of(1.0));
+        List<Double> y = new ArrayList<>();
+        VectorsDistancesCalculator.calculateLInf(x, y);
+    }
 
+    @Test(expected = NullPointerException.class)
+    public void calculateLInfThrowExceptionIfVectorNull() {
+        List<Double> x = null;
+        List<Double> y = new ArrayList<>();
+        VectorsDistancesCalculator.calculateLInf(x, y);
+    }
 
+    @Test
+    public void canCalculateLInfDistanceWithPositiveElems() {
+        List<Double> x = new ArrayList<>(List.of(3.0, 2.0));
+        List<Double> y = new ArrayList<>(List.of(2.0, 1.0));
+        double expectedLInf = 1.0;
+        double actualLInf = VectorsDistancesCalculator.calculateLInf(x, y);
+        assertEquals(expectedLInf, actualLInf, EPS);
+    }
+
+    @Test
+    public void canCalculateLInfDistanceWithMixedElems() {
+        List<Double> x = new ArrayList<>(List.of(3.0, -2.0));
+        List<Double> y = new ArrayList<>(List.of(-2.0, 1.0));
+        double expectedLInf = 5.0;
+        double actualLInf = VectorsDistancesCalculator.calculateLInf(x, y);
+        assertEquals(expectedLInf, actualLInf, EPS);
+    }
 }
+
