@@ -11,7 +11,7 @@ public class Main extends Application {
     @Override
     public void start(final Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("StackView.fxml"));
-        primaryStage.setTitle("Calculator");
+        primaryStage.setTitle("Stack");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
