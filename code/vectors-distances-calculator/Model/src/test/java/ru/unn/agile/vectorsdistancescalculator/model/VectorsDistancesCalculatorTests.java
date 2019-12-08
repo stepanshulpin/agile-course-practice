@@ -99,7 +99,7 @@ public class VectorsDistancesCalculatorTests {
         List<Double> y = new ArrayList<>(List.of(-2.0, 1.0));
         int power = 3;
         double sum = 152;
-        double expectedL3 = Math.pow(sum, 1./ 3);
+        double expectedL3 = Math.pow(sum, 1. / 3);
         double actualL3 = VectorsDistancesCalculator.calculateLp(x, y, power);
         assertEquals(expectedL3, actualL3, EPS);
     }
@@ -122,7 +122,7 @@ public class VectorsDistancesCalculatorTests {
         List<Double> y = new ArrayList<>(List.of(-2.0, 1.0));
         int power = 4;
         double sum = 706;
-        double expectedL4 = Math.pow(sum, 1./ 4);
+        double expectedL4 = Math.pow(sum, 1. / 4);
         double actualL4 = VectorsDistancesCalculator.calculateLp(x, y, power);
         assertEquals(expectedL4, actualL4, EPS);
     }
