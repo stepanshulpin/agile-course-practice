@@ -43,4 +43,10 @@ public class ViewModelTests {
         assertEquals(defaultPopElement, viewModel.getPopElement());
     }
 
+    @Test
+    public void checkDefaultPushElement() {
+        var defaultPushElement = "";
+        assertEquals(defaultPushElement, viewModel.getPushElement());
+    }
+
 }

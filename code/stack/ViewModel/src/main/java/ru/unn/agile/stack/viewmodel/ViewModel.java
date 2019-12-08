@@ -7,12 +7,14 @@ public class ViewModel {
     private String isStackEmptyInfo;
     private String stackSize;
     private String topElement;
+    private String popElement;
 
     public ViewModel() {
         stackDouble = new Stack<Double>();
         isStackEmptyInfo = "Stack is empty";
         stackSize = "0";
         topElement = "None";
+        popElement = "None";
     }
 
     public String getIsStackEmptyInfo() {
@@ -28,7 +30,11 @@ public class ViewModel {
     }
 
     public String getPopElement() {
-        return "None";
+        return popElement;
+    }
+
+    public String getPushElement() {
+        return "";
     }
 
 }
