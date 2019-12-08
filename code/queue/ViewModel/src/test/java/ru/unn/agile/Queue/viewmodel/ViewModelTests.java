@@ -58,7 +58,7 @@ public class ViewModelTests {
     }
 
     @Test
-    public void canPushElementToQueue() {
+    public void isStatusPushElementWhenPushElementToQueue() {
         String expectedStatusValue = "Push element: 3.0";
 
         viewModel.setQueueInputElement("3");
@@ -69,7 +69,7 @@ public class ViewModelTests {
     }
 
     @Test
-    public void canPushMoreThenOneElementToQueue() {
+    public void isStatusPushElementChangesWhenPushMoreThenOneElementToQueue() {
         String expectedStatusValue = "Push element: 5.0";
 
         viewModel.setQueueInputElement("3");
@@ -82,7 +82,7 @@ public class ViewModelTests {
     }
 
     @Test
-    public void canPopElementFromQueue() {
+    public void isStatusPopElementWhenPopElementFromQueue() {
         String expectedStatusValue = "Pop element: 3.0";
 
         viewModel.setQueueInputElement("3");
@@ -94,7 +94,7 @@ public class ViewModelTests {
     }
 
     @Test
-    public void canNotPopElementFromQueue() {
+    public void isStatusQueueIsEmptyWhenPopElementFromEmptyQueue() {
         String expectedStatusValue = "Queue is empty.";
 
         viewModel.popProcess();
@@ -104,7 +104,7 @@ public class ViewModelTests {
     }
 
     @Test
-    public void canClearQueueWithElements() {
+    public void isStatusQueueClearedWhenClearQueueWithElements() {
         String expectedStatusValue = "Queue cleared";
 
         viewModel.setQueueInputElement("3");
@@ -116,7 +116,7 @@ public class ViewModelTests {
     }
 
     @Test
-    public void canClearEmptyQueue() {
+    public void isStatusQueueClearedWhenClearQueueWithoutElements() {
         String expectedStatusValue = "Queue cleared";
 
         viewModel.clearProcess();
@@ -126,7 +126,7 @@ public class ViewModelTests {
     }
 
     @Test
-    public void canGetHeadFromQueue() {
+    public void isStatusHeadIsWhenGetHeadFromQueueWithElements() {
         String expectedStatusValue = "Head is: 3.0";
 
         viewModel.setQueueInputElement("3");
@@ -138,7 +138,7 @@ public class ViewModelTests {
     }
 
     @Test
-    public void canNotGetHeadFromQueue() {
+    public void isStatusQueueIsEmptyWhenGetHeadFromQueueWithoutElements() {
         String expectedStatusValue = "Queue is empty.";
 
         viewModel.getHeadProcess();
@@ -148,7 +148,7 @@ public class ViewModelTests {
     }
 
     @Test
-    public void canGetTailFromQueue() {
+    public void isStatusTailIsWhenGetTailFromQueueWithElements() {
         String expectedStatusValue = "Tail is: 3.0";
 
         viewModel.setQueueInputElement("3");
@@ -160,7 +160,7 @@ public class ViewModelTests {
     }
 
     @Test
-    public void canNotGetTailFromEmptyQueue() {
+    public void isStatusQueueIsEmptyWhenGetTailFromQueueWithoutElements() {
         String expectedStatusValue = "Queue is empty.";
 
         viewModel.getTailProcess();
