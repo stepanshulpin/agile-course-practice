@@ -336,7 +336,7 @@ public class ViewModel {
         }
         try {
             if (!newValueProperty().get().isEmpty()) {
-                Integer.parseInt(newValueProperty().get());
+                Double.parseDouble(newValueProperty().get());
             }
             if (!newProbabilityProperty().get().isEmpty()) {
                 Double.parseDouble(newProbabilityProperty().get());
@@ -393,7 +393,7 @@ public class ViewModel {
         Number[] values = new Number[listData.size()];
         int i = 0;
         for (TableElement element : listData) {
-            values[i++] = Integer.parseInt(element.getValue());
+            values[i++] = Double.parseDouble(element.getValue());
         }
 
         return values;

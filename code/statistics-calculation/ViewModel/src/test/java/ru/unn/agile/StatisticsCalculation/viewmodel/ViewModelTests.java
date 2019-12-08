@@ -89,11 +89,11 @@ public class ViewModelTests {
         assertFalse(viewModel.isUpdateDisabled());
     }
     @Test
-    public void canNotPushUpdateButtonWithDoubleInputInValue() {
+    public void canPushUpdateButtonWithDoubleInputInValue() {
         viewModel.newValueProperty().set("2.1");
         viewModel.newProbabilityProperty().set("0.2");
 
-        assertTrue(viewModel.isUpdateDisabled());
+        assertFalse(viewModel.isUpdateDisabled());
     }
     @Test
     public void canNotPushUpdateButtonWithIncorrectInput() {
@@ -138,11 +138,11 @@ public class ViewModelTests {
         assertEquals(InputDataStatus.BAD_FORMAT.toString(), viewModel.getInputDataStatus());
     }
     @Test
-    public void canSetInputDataBadFormatWithDoubleInValue() {
+    public void canSetInputDataReadyWithDoubleInValue() {
         viewModel.newValueProperty().set("1.1");
         viewModel.newProbabilityProperty().set("0.1");
 
-        assertEquals(InputDataStatus.BAD_FORMAT.toString(), viewModel.getInputDataStatus());
+        assertEquals(InputDataStatus.READY.toString(), viewModel.getInputDataStatus());
     }
     @Test
     public void canSetInputDataReady() {
@@ -525,5 +525,14 @@ public class ViewModelTests {
         assertEquals(InputDataStatus.WAITING.toString(), viewModel.getInputDataStatus());
         assertEquals("", viewModel.newValueProperty().get());
         assertEquals("", viewModel.newProbabilityProperty().get());
+    }
+    @Test
+    public void canSetDoubleValues() {
+        viewModel.newValueProperty().set("-2.0");
+        viewModel.newProbabilityProperty().set("0.5");
+
+        viewModel.updateTableElement();
+
+        assertEquals("-2.0", viewModel.getListData().get(0).getValue());
     }
 }
