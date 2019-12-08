@@ -19,13 +19,13 @@ public class ViewModel {
     private final StringProperty y2 = new SimpleStringProperty();
     private final StringProperty z2 = new SimpleStringProperty();
 
-    private final ObjectProperty<ObservableList<Operation>> operations =
+    private final ObjectProperty<ObservableList<Operation>> operationList =
             new SimpleObjectProperty<>(FXCollections.observableArrayList(Operation.values()));
     private final ObjectProperty<Operation> operation = new SimpleObjectProperty<>();
-    private final BooleanProperty calculationDisabled = new SimpleBooleanProperty();
+    private final BooleanProperty calculationDisabledFlag = new SimpleBooleanProperty();
 
-    private final StringProperty result = new SimpleStringProperty();
-    private final StringProperty status = new SimpleStringProperty();
+    private final StringProperty resultField = new SimpleStringProperty();
+    private final StringProperty statusField = new SimpleStringProperty();
 
     private final List<ValueChangeListener> valueChangedListeners = new ArrayList<>();
 
@@ -37,8 +37,8 @@ public class ViewModel {
         y2.set("");
         z2.set("");
         operation.set(Operation.CALCULATE_L1_DISTANCE);
-        result.set("");
-        status.set(Status.WAITING.toString());
+        resultField.set("");
+        statusField.set(Status.WAITING.toString());
 
         BooleanBinding couldCalculate = new BooleanBinding() {
             {
@@ -49,7 +49,7 @@ public class ViewModel {
                 return getInputStatus() == Status.READY;
             }
         };
-        calculationDisabled.bind(couldCalculate.not());
+        calculationDisabledFlag.bind(couldCalculate.not());
 
         final List<StringProperty> fields = new ArrayList<>() { {
             add(x1);
@@ -122,29 +122,29 @@ public class ViewModel {
         return operation;
     }
     public StringProperty resultProperty() {
-        return result;
+        return resultField;
     }
     public StringProperty statusProperty() {
-        return status;
+        return statusField;
     }
     public BooleanProperty calculationDisabledProperty() {
-        return calculationDisabled;
+        return calculationDisabledFlag;
     }
     public final ObservableList<Operation> getOperations() {
-        return operations.get();
+        return operationList.get();
     }
     public final boolean isCalculationDisabled() {
-        return calculationDisabled.get();
+        return calculationDisabledFlag.get();
     }
     public final String getResult() {
-        return result.get();
+        return resultField.get();
     }
     public final String getStatus() {
-        return status.get();
+        return statusField.get();
     }
 
     public void calculate() {
-        if (calculationDisabled.get()) {
+        if (calculationDisabledFlag.get()) {
             return;
         }
         double x1d = Double.parseDouble(x1.get());
@@ -156,24 +156,24 @@ public class ViewModel {
         List<Double> x = new ArrayList<>(List.of(x1d, y1d, z1d));
         List<Double> y = new ArrayList<>(List.of(x2d, y2d, z2d));
 
-        result.set(String.valueOf(operation.get().apply(x, y)));
-        status.set(Status.SUCCESS.toString());
+        resultField.set(String.valueOf(operation.get().apply(x, y)));
+        statusField.set(Status.SUCCESS.toString());
     }
 
     private class ValueChangeListener implements ChangeListener<String> {
         @Override
         public void changed(final ObservableValue<? extends String> observable,
                             final String oldValue, final String newValue) {
-            status.set(getInputStatus().toString());
+            statusField.set(getInputStatus().toString());
         }
     }
 }
 
 enum Status {
-    WAITING("Please provide input data"),
-    READY("Press 'Calculate' or Enter"),
-    BAD_FORMAT("Bad format"),
-    SUCCESS("Success");
+    WAITING("Please provide correct input data"),
+    READY("Press 'Calculate' or Enter button"),
+    BAD_FORMAT("Bad format, please fix"),
+    SUCCESS("Success!");
 
     private final String name;
     Status(final String name) {

@@ -44,12 +44,12 @@ public class ViewModelTests {
 
     @Test
     public void statusIsWaitingIfNotEnoughCorrectData() {
-        viewModel.x1Property().set("1");
+        viewModel.x1Property().set("2");
         assertEquals(Status.WAITING.toString(), viewModel.statusProperty().get());
     }
 
     @Test
-    public void calculateButtonIsDisabledInitially() {
+    public void calculateButtonIsDisabledByInit() {
         assertTrue(viewModel.calculationDisabledProperty().get());
     }
 
@@ -168,9 +168,4 @@ public class ViewModelTests {
         viewModel.y2Property().set("-6");
         viewModel.z2Property().set("7");
     }
-
-
-
-
-
 }
