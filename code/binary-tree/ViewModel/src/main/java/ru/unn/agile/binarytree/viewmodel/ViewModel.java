@@ -124,7 +124,11 @@ public class ViewModel {
     public void find() {
         final int key = Integer.parseInt(findKey.get());
 
-        final String result = storage.find(key);
+        String result = storage.find(key);
+
+        if (result == null) {
+            result = ">NOT FOUND<";
+        }
 
         findResult.set(result);
         findStatus.set(Status.SUCCESS.toString());
