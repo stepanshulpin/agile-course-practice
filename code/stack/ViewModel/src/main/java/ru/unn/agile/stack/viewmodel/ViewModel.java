@@ -1,40 +1,43 @@
 package ru.unn.agile.stack.viewmodel;
 
 import ru.unn.agile.stack.model.Stack;
+import javafx.beans.property.*;
 
 public class ViewModel {
     private Stack<Double> stackDouble;
-    private String isStackEmptyInfo;
-    private String stackSize;
-    private String topElement;
-    private String popElement;
+    private final StringProperty isStackEmptyInfo = new SimpleStringProperty();
+    private final StringProperty stackSize = new SimpleStringProperty();
+    private final StringProperty topElement = new SimpleStringProperty();
+    private final StringProperty popElement = new SimpleStringProperty();
+    private final StringProperty pushElement = new SimpleStringProperty();
 
     public ViewModel() {
         stackDouble = new Stack<Double>();
-        isStackEmptyInfo = "Stack is empty";
-        stackSize = "0";
-        topElement = "None";
-        popElement = "None";
+        isStackEmptyInfo.set("Stack is empty");
+        stackSize.set("0");
+        topElement.set("None");
+        popElement.set("None");
+        pushElement.set("");
     }
 
-    public String getIsStackEmptyInfo() {
-        return isStackEmptyInfo;
+    public String getIsStackEmptyInfoProperty() {
+        return isStackEmptyInfo.get();
     }
 
-    public String getStackSize() {
-        return stackSize;
+    public String getStackSizeProperty() {
+        return stackSize.get();
     }
 
-    public String getTopElement() {
-        return topElement;
+    public String getTopElementProperty() {
+        return topElement.get();
     }
 
-    public String getPopElement() {
-        return popElement;
+    public String getPopElementProperty() {
+        return popElement.get();
     }
 
-    public String getPushElement() {
-        return "";
+    public String getPushElementProperty() {
+        return pushElement.get();
     }
 
 }

@@ -22,31 +22,31 @@ public class ViewModelTests {
     @Test
     public void checkDefaultEmptyStatus() {
         var emptyStatus = "Stack is empty";
-        assertEquals(emptyStatus, viewModel.getIsStackEmptyInfo());
+        assertEquals(emptyStatus, viewModel.getIsStackEmptyInfoProperty());
     }
 
     @Test
     public void checkDefaultStackSize() {
         var defaultSize = "0";
-        assertEquals(defaultSize, viewModel.getStackSize());
+        assertEquals(defaultSize, viewModel.getStackSizeProperty());
     }
 
     @Test
     public void checkDefaultTopElement() {
         var defaultTopElement = "None";
-        assertEquals(defaultTopElement, viewModel.getTopElement());
+        assertEquals(defaultTopElement, viewModel.getTopElementProperty());
     }
 
     @Test
     public void checkDefaultPopElement() {
         var defaultPopElement = "None";
-        assertEquals(defaultPopElement, viewModel.getPopElement());
+        assertEquals(defaultPopElement, viewModel.getPopElementProperty());
     }
 
     @Test
     public void checkDefaultPushElement() {
         var defaultPushElement = "";
-        assertEquals(defaultPushElement, viewModel.getPushElement());
+        assertEquals(defaultPushElement, viewModel.getPushElementProperty());
     }
 
 }
