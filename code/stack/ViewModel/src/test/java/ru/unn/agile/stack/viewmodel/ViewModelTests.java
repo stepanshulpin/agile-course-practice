@@ -55,4 +55,9 @@ public class ViewModelTests {
         assertEquals(defaultStatus, viewModel.getStatusProperty());
     }
 
+    @Test
+    public void checkDefaultPopButtonState() {
+        assertEquals(false, viewModel.getDefaultPopButtonState());
+    }
+
 }

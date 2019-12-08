@@ -46,6 +46,10 @@ public class ViewModel {
         return status.get();
     }
 
+    public boolean getDefaultPopButtonState() {
+        return false;
+    }
+
 }
 
 enum Status {
