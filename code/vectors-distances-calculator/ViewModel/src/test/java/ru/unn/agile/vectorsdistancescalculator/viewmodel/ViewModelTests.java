@@ -9,6 +9,8 @@ import static org.junit.Assert.*;
 
 public class ViewModelTests {
 
+    private static final double EPS = 0.01;
+
     private ViewModel viewModel;
 
     @Before
@@ -81,9 +83,9 @@ public class ViewModelTests {
     public void calculateL1DistanceOperationsHasCorrectResult() {
         setMixedInputVectors();
         viewModel.calculate();
-        String expectedL1 = "27.0";
-        String actualL1 = viewModel.resultProperty().get();
-        assertEquals(expectedL1, actualL1);
+        double expectedL1 = 27.0;
+        double actualL1 = Double.parseDouble(viewModel.resultProperty().get());
+        assertEquals(expectedL1, actualL1, EPS);
     }
 
     @Test
@@ -91,9 +93,9 @@ public class ViewModelTests {
         setMixedInputVectors();
         viewModel.operationProperty().set(Operation.CALCULATE_L2_DISTANCE);
         viewModel.calculate();
-        String expectedL2 = "15.84297951775486";
-        String actualL2 = viewModel.resultProperty().get();
-        assertEquals(expectedL2, actualL2);
+        double expectedL2 = 15.84;
+        double actualL2 = Double.parseDouble(viewModel.resultProperty().get());
+        assertEquals(expectedL2, actualL2, EPS);
     }
 
     @Test
@@ -101,9 +103,9 @@ public class ViewModelTests {
         setMixedInputVectors();
         viewModel.operationProperty().set(Operation.CALCULATE_L3_DISTANCE);
         viewModel.calculate();
-        String expectedL3 = "13.394235286753611";
-        String actualL3 = viewModel.resultProperty().get();
-        assertEquals(expectedL3, actualL3);
+        double expectedL3 = 13.39;
+        double actualL3 = Double.parseDouble(viewModel.resultProperty().get());
+        assertEquals(expectedL3, actualL3, EPS);
     }
 
     @Test
@@ -111,9 +113,9 @@ public class ViewModelTests {
         setMixedInputVectors();
         viewModel.operationProperty().set(Operation.CALCULATE_L4_DISTANCE);
         viewModel.calculate();
-        String expectedL4 = "12.394865018039264";
-        String actualL4 = viewModel.resultProperty().get();
-        assertEquals(expectedL4, actualL4);
+        double expectedL4 = 12.39;
+        double actualL4 = Double.parseDouble(viewModel.resultProperty().get());
+        assertEquals(expectedL4, actualL4, EPS);
     }
 
     @Test
@@ -121,9 +123,9 @@ public class ViewModelTests {
         setMixedInputVectors();
         viewModel.operationProperty().set(Operation.CALCULATE_LInf_DISTANCE);
         viewModel.calculate();
-        String expectedLInf = "11.0";
-        String actualLInf = viewModel.resultProperty().get();
-        assertEquals(expectedLInf, actualLInf);
+        double expectedLInf = 11.0;
+        double actualLInf = Double.parseDouble(viewModel.resultProperty().get());
+        assertEquals(expectedLInf, actualLInf, EPS);
     }
 
     private void setPositiveInputVectors() {
@@ -133,15 +135,6 @@ public class ViewModelTests {
         viewModel.x2Property().set("5");
         viewModel.y2Property().set("6");
         viewModel.z2Property().set("7");
-    }
-
-    private void setNegativeInputVectors() {
-        viewModel.x1Property().set("-2");
-        viewModel.y1Property().set("-3");
-        viewModel.z1Property().set("-4");
-        viewModel.x2Property().set("-5");
-        viewModel.y2Property().set("-6");
-        viewModel.z2Property().set("-7");
     }
 
     private void setMixedInputVectors() {
