@@ -130,6 +130,18 @@ public class ViewModel {
     public BooleanProperty calculationDisabledProperty() {
         return calculationDisabled;
     }
+    public final ObservableList<Operation> getOperations() {
+        return operations.get();
+    }
+    public final boolean isCalculationDisabled() {
+        return calculationDisabled.get();
+    }
+    public final String getResult() {
+        return result.get();
+    }
+    public final String getStatus() {
+        return status.get();
+    }
 
     public void calculate() {
         if (calculationDisabled.get()) {
