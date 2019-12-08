@@ -69,5 +69,31 @@ public class ViewModelTests {
         assertEquals("5.0", viewModel.getTopElementProperty());
         assertEquals("None", viewModel.getPopElementProperty());
         assertEquals("5", viewModel.getPushElementProperty());
+        assertEquals("Ready to push new element", viewModel.getStatusProperty());
+    }
+
+    @Test
+    public void canNotPushInvalidFormat() {
+        viewModel.pushNewElement("k");
+
+        assertEquals("Stack is empty", viewModel.getIsStackEmptyInfoProperty());
+        assertEquals("0", viewModel.getStackSizeProperty());
+        assertEquals("None", viewModel.getTopElementProperty());
+        assertEquals("None", viewModel.getPopElementProperty());
+        assertEquals("", viewModel.getPushElementProperty());
+        assertEquals("Invalid format of the pushing element", viewModel.getStatusProperty());
+    }
+
+    @Test
+    public void canPopElement() {
+        viewModel.pushNewElement("1");
+        viewModel.popElement();
+
+        assertEquals("Stack is empty", viewModel.getIsStackEmptyInfoProperty());
+        assertEquals("0", viewModel.getStackSizeProperty());
+        assertEquals("None", viewModel.getTopElementProperty());
+        assertEquals("1.0", viewModel.getPopElementProperty());
+        assertEquals("1", viewModel.getPushElementProperty());
+        assertEquals("Ready to push new element", viewModel.getStatusProperty());
     }
 }

@@ -105,6 +105,16 @@ public class ViewModel {
         }
     }
 
+    public void popElement() {
+        if (!stackDouble.isEmpty()) {
+            popElement.set(Double.toString(stackDouble.pop()));
+            changePopButtonState();
+            changeStackEmptyInfo();
+            changeStackSize();
+            changeStackTopElement();
+        }
+    }
+
 }
 
 enum Status {
