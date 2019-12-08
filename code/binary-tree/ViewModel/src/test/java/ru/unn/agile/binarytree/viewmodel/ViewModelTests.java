@@ -117,7 +117,7 @@ public class ViewModelTests {
 
         viewModel.find();
 
-        assertNull(viewModel.findResultProperty().get());
+        assertEquals(">NOT FOUND<", viewModel.findResultProperty().get());
     }
 
     @Test
