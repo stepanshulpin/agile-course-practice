@@ -1,5 +1,7 @@
 package ru.unn.agile.Queue.view;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -32,5 +34,12 @@ public class Queue {
         queueNewElement.textProperty().bindBidirectional(viewModel.queueElementProperty());
         queueResult.textProperty().bindBidirectional(viewModel.queueResultProperty());
         status.textProperty().bindBidirectional(viewModel.queueStatusProperty());
+
+        addElement.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(final ActionEvent event) {
+                viewModel.pushProcess();
+            }
+        });
     }
 }

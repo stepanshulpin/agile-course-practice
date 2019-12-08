@@ -49,4 +49,21 @@ public class ViewModelTests {
 
         assertEquals(viewModel.getQueueElement(), viewModel.queueElementProperty().get());
     }
+
+    @Test
+    public void canGetResultProperty() {
+        viewModel.setQueueResult("1,2,3");
+
+        assertEquals(viewModel.getQueueResult(), viewModel.queueResultProperty().get());
+    }
+
+    @Test
+    public void canPushElementToQueue() {
+        String expectedStatusValue = "Push element:3.0";
+        viewModel.setQueueInputElement("3");
+        viewModel.pushProcess();
+
+        var actualStatusValue = viewModel.getQueueResult();
+        assertEquals(expectedStatusValue, actualStatusValue);
+    }
 }
