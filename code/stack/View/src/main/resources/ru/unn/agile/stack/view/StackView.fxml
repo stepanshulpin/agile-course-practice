@@ -8,7 +8,7 @@
 <AnchorPane prefHeight="401.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.stack.view.StackView">
     <children>
         <Pane layoutX="0.0" layoutY="298.0" prefHeight="95.0" prefWidth="455.0">
-            <children>git 
+            <children>git
                 <Button layoutX="334.0" layoutY="46.0" mnemonicParsing="false" prefWidth="81.0" text="PUSH" />
                 <Label layoutX="14.0" layoutY="8.0" text="Push element to the Stack" textAlignment="RIGHT">
                     <font>
