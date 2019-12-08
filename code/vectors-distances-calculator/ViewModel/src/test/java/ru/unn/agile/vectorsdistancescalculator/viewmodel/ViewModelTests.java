@@ -128,6 +128,29 @@ public class ViewModelTests {
         assertEquals(expectedLInf, actualLInf, EPS);
     }
 
+    @Test
+    public void canSetReadyMessage() {
+        setMixedInputVectors();
+        String expected = Status.READY.toString();
+        String actual = viewModel.statusProperty().get();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void canSetSuccessMessage() {
+        setMixedInputVectors();
+        viewModel.calculate();
+        String expected = Status.SUCCESS.toString();
+        String actual = viewModel.statusProperty().get();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void canSetBadFormatMessage() {
+        viewModel.x1Property().set("@");
+        assertEquals(Status.BAD_FORMAT.toString(), viewModel.statusProperty().get());
+    }
+
     private void setPositiveInputVectors() {
         viewModel.x1Property().set("2");
         viewModel.y1Property().set("3");
@@ -145,6 +168,8 @@ public class ViewModelTests {
         viewModel.y2Property().set("-6");
         viewModel.z2Property().set("7");
     }
+
+
 
 
 
