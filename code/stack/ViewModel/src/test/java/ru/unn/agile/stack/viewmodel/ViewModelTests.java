@@ -57,7 +57,17 @@ public class ViewModelTests {
 
     @Test
     public void checkDefaultPopButtonState() {
-        assertEquals(false, viewModel.getDefaultPopButtonState());
+        assertFalse(viewModel.getDefaultPopButtonState());
     }
 
+    @Test
+    public void canPushNewElement() {
+        viewModel.pushNewElement("5");
+
+        assertEquals("Stack is not empty", viewModel.getIsStackEmptyInfoProperty());
+        assertEquals("1", viewModel.getStackSizeProperty());
+        assertEquals("5.0", viewModel.getTopElementProperty());
+        assertEquals("None", viewModel.getPopElementProperty());
+        assertEquals("5", viewModel.getPushElementProperty());
+    }
 }

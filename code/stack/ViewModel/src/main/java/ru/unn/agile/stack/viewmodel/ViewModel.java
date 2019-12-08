@@ -70,10 +70,38 @@ public class ViewModel {
     }
 
     private void changeStackTopElement() {
-        if (stackDouble.isEmpty()) {
-            topElement.set(Double.toString((double) stackDouble.peek()));
+        if (!stackDouble.isEmpty()) {
+            topElement.set(Double.toString(stackDouble.peek()));
         } else {
             topElement.set("None");
+        }
+    }
+
+    private boolean checkInput(final String inputElement) {
+        if (inputElement.isEmpty()) {
+            status.set(Status.WAITING.toString());
+            return false;
+        }
+
+        try {
+            Double.parseDouble(inputElement);
+        } catch (Exception e) {
+            status.set(Status.BAD_FORMAT.toString());
+            return false;
+        }
+
+        status.set(Status.READY.toString());
+        return true;
+    }
+
+    public void pushNewElement(final String inputElement) {
+        if (checkInput(inputElement)) {
+            pushElement.set(inputElement);
+            stackDouble.push(Double.parseDouble(inputElement));
+            changeStackSize();
+            changePopButtonState();
+            changeStackEmptyInfo();
+            changeStackTopElement();
         }
     }
 
