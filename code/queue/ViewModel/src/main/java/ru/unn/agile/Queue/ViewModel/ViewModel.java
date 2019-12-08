@@ -131,7 +131,7 @@ public class ViewModel {
         } catch (NumberFormatException nfe) {
             status = Status.BAD_ELEMENT_FORMAT;
         }
-        if ("".equals(getQueueElement())) {
+        if (getQueueElement().isEmpty()) {
             status = Status.WAITING;
         }
 
