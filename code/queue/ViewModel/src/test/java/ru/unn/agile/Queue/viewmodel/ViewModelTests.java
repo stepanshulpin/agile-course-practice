@@ -66,4 +66,15 @@ public class ViewModelTests {
         var actualStatusValue = viewModel.getQueueResult();
         assertEquals(expectedStatusValue, actualStatusValue);
     }
+
+    @Test
+    public void canPopElementFromQueue() {
+        String expectedStatusValue = "Pop element:3.0";
+        viewModel.setQueueInputElement("3");
+        viewModel.pushProcess();
+        viewModel.popProcess();
+
+        var actualStatusValue = viewModel.getQueueResult();
+        assertEquals(expectedStatusValue, actualStatusValue);
+    }
 }

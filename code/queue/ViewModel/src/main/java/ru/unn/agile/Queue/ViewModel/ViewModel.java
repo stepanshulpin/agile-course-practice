@@ -88,6 +88,16 @@ public class ViewModel {
         }
     }
 
+    public void popProcess() {
+        try{
+            double PopElement = queue.pop();
+            queueStatus.set(Status.SUCCESS.toString());
+            queueResult.set("Pop element:" + Double.toString(PopElement));
+        } catch(NullPointerException npe) {
+            queueResult.set("Queue is empty.");
+        }
+    }
+
     public Status getStatus() {
         Status status = Status.READY;
         try {

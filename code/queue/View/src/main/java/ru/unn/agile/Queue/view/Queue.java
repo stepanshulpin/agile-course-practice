@@ -41,5 +41,12 @@ public class Queue {
                 viewModel.pushProcess();
             }
         });
+
+        popElement.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(final ActionEvent event) {
+                viewModel.popProcess();
+            }
+        });
     }
 }
