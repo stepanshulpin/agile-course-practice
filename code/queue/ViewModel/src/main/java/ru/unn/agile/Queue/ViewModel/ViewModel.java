@@ -82,18 +82,18 @@ public class ViewModel {
         try {
             queue.push(key);
             queueStatus.set(Status.SUCCESS.toString());
-            queueResult.set("Push element:" + Double.toString(key));
+            queueResult.set("Push element: " + Double.toString(key));
         } catch (IllegalArgumentException iae) {
             queueResult.set("The item cannot be empty.");
         }
     }
 
     public void popProcess() {
-        try{
-            double PopElement = queue.pop();
+        try {
+            double popElement = queue.pop();
             queueStatus.set(Status.SUCCESS.toString());
-            queueResult.set("Pop element:" + Double.toString(PopElement));
-        } catch(NullPointerException npe) {
+            queueResult.set("Pop element: " + Double.toString(popElement));
+        } catch (NullPointerException npe) {
             queueResult.set("Queue is empty.");
         }
     }
@@ -105,21 +105,21 @@ public class ViewModel {
     }
 
     public void getHeadProcess() {
-        try{
-            double Head = queue.getHead();
+        try {
+            double head = queue.getHead();
             queueStatus.set(Status.SUCCESS.toString());
-            queueResult.set("Head is: " + Double.toString(Head));
-        } catch(NullPointerException npe) {
+            queueResult.set("Head is: " + Double.toString(head));
+        } catch (NullPointerException npe) {
             queueResult.set("Queue is empty.");
         }
     }
 
     public void getTailProcess() {
-        try{
+        try {
             double tail = queue.getTail();
             queueStatus.set(Status.SUCCESS.toString());
             queueResult.set("Tail is: " + Double.toString(tail));
-        } catch(NullPointerException npe) {
+        } catch (NullPointerException npe) {
             queueResult.set("Queue is empty.");
         }
     }
