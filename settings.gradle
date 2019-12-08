@@ -147,7 +147,7 @@ project(":code/mortgage-calculator").name = "mortgage-calculator-Model"
 // Шумихин Сергей
 include "code/binary-tree"
 project(":code/binary-tree").name = "binary-tree-Model"
-// Юферев Кирилл
+// Stack
 include "code/stack/Model"
 project(":code/stack/Model").name = "stack-Model"
 include "code/stack/View"
