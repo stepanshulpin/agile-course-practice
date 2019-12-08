@@ -31,4 +31,22 @@ public class ViewModelTests {
     public void canInitDefaultStatus() {
         assertEquals("", viewModel.getQueueStatus());
     }
+
+
+    @Test
+    public void canSetElementInputValue() {
+        String expectedValue = "2";
+
+        viewModel.setQueueInputElement("2");
+        var actualValue = viewModel.getQueueElement();
+
+        assertEquals(expectedValue, actualValue);
+    }
+
+    @Test
+    public void canGetElementInputProperty() {
+        viewModel.setQueueInputElement("1");
+
+        assertEquals(viewModel.getQueueElement(), viewModel.queueElementProperty().get());
+    }
 }
