@@ -1,4 +1,4 @@
-package ru.unn.agile.Matrix.model;
+package ru.unn.agile.matrix.model;
 
 public class Matrix {
 

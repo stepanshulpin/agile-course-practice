@@ -3,7 +3,7 @@ package ru.unn.agile.Matrix.Model;
 import org.junit.Test;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
-import ru.unn.agile.Matrix.model.Matrix;
+import ru.unn.agile.matrix.model.Matrix;
 
 import static org.junit.Assert.*;
 
