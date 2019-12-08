@@ -142,7 +142,7 @@ public class ViewModel {
 enum Status {
     WAITING("Waiting for input"),
     READY("Press Add element"),
-    BAD_ELEMENT_FORMAT("Bad element format, please enter the key to add"),
+    BAD_ELEMENT_FORMAT("Bad element format."),
     SUCCESS("Success");
 
     private final String name;
