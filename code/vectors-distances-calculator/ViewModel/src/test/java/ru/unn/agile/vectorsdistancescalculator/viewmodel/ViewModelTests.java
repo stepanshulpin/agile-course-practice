@@ -5,8 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import ru.unn.agile.vectorsdistancescalculator.model.VectorsDistancesCalculator.Operation;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class ViewModelTests {
     private ViewModel viewModel;
@@ -63,6 +62,12 @@ public class ViewModelTests {
     public void calculateButtonIsDisabledIfNotAllFieldsFilled() {
         viewModel.x1Property().setValue("1");
         assertTrue(viewModel.calculationDisabledProperty().get());
+    }
+
+    @Test
+    public void calculateButtonIsEnabledIfDataFilledCorrect() {
+        setMixedInputVectors();
+        assertFalse(viewModel.calculationDisabledProperty().get());
     }
 
     private void setPositiveInputVectors() {
