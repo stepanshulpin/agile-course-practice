@@ -49,4 +49,10 @@ public class ViewModelTests {
         assertEquals(defaultPushElement, viewModel.getPushElementProperty());
     }
 
+    @Test
+    public void checkDefaultStatus() {
+        var defaultStatus = "";
+        assertEquals(defaultStatus, viewModel.getStatusProperty());
+    }
+
 }

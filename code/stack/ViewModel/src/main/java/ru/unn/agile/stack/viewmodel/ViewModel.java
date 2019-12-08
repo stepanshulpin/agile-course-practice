@@ -40,4 +40,8 @@ public class ViewModel {
         return pushElement.get();
     }
 
+    public String getStatusProperty() {
+        return "";
+    }
+
 }
