@@ -22,12 +22,12 @@
             <TextField fx:id="queueNewElement" layoutX="153.0" layoutY="12.0" prefHeight="25.0" prefWidth="117.0" />
             <Button fx:id="addElement" layoutX="294.0" layoutY="12.0" mnemonicParsing="false" text="Add element" />
             <Button fx:id="popElement" layoutX="294.0" layoutY="46.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="Pop element" />
-            <Label layoutX="15.0" layoutY="192.0" prefHeight="24.0" prefWidth="53.0" text="Queue:">
+            <Label layoutX="15.0" layoutY="235.0" prefHeight="25.0" prefWidth="101.0" text="Queue status:">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="queueResult" layoutX="88.0" layoutY="192.0" prefHeight="70.0" prefWidth="262.0">
+            <Label fx:id="queueResult" layoutX="125.0" layoutY="235.0" prefHeight="25.0" prefWidth="254.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
