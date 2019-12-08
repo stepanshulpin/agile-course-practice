@@ -70,6 +70,12 @@ public class ViewModelTests {
         assertFalse(viewModel.calculationDisabledProperty().get());
     }
 
+    @Test
+    public void canSetCalculateLInfDistanceOperation() {
+        viewModel.operationProperty().set(Operation.CALCULATE_LInf_DISTANCE);
+        assertEquals(Operation.CALCULATE_LInf_DISTANCE, viewModel.operationProperty().get());
+    }
+
     private void setPositiveInputVectors() {
         viewModel.x1Property().set("2");
         viewModel.y1Property().set("3");

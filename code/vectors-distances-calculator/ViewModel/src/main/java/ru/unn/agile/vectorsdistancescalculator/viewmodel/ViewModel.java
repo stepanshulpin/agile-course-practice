@@ -127,7 +127,9 @@ public class ViewModel {
     public StringProperty statusProperty() {
         return status;
     }
-    public BooleanProperty calculationDisabledProperty() { return calculationDisabled; }
+    public BooleanProperty calculationDisabledProperty() {
+        return calculationDisabled;
+    }
 
     private class ValueChangeListener implements ChangeListener<String> {
         @Override
