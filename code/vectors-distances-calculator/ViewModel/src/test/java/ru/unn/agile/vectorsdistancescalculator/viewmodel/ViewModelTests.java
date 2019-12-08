@@ -6,6 +6,7 @@ import org.junit.Test;
 import ru.unn.agile.vectorsdistancescalculator.model.VectorsDistancesCalculator.Operation;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ViewModelTests {
     private ViewModel viewModel;
@@ -44,6 +45,12 @@ public class ViewModelTests {
         viewModel.x1Property().set("1");
         assertEquals(Status.WAITING.toString(), viewModel.statusProperty().get());
     }
+
+    @Test
+    public void calculateButtonIsDisabledInitially() {
+        assertTrue(viewModel.calculationDisabledProperty().get());
+    }
+
 
 
 }

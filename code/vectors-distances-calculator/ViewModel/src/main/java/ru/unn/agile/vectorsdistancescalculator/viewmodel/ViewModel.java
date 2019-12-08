@@ -1,5 +1,6 @@
 package ru.unn.agile.vectorsdistancescalculator.viewmodel;
 
+import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -21,6 +22,7 @@ public class ViewModel {
     private final ObjectProperty<ObservableList<Operation>> operations =
             new SimpleObjectProperty<>(FXCollections.observableArrayList(Operation.values()));
     private final ObjectProperty<Operation> operation = new SimpleObjectProperty<>();
+    private final BooleanProperty calculationDisabled = new SimpleBooleanProperty();
 
     private final StringProperty result = new SimpleStringProperty();
     private final StringProperty status = new SimpleStringProperty();
@@ -37,6 +39,17 @@ public class ViewModel {
         operation.set(Operation.CALCULATE_L1_DISTANCE);
         result.set("");
         status.set(Status.WAITING.toString());
+
+        BooleanBinding couldCalculate = new BooleanBinding() {
+            {
+                super.bind(x1, y1, z1, x2, y2, z2);
+            }
+            @Override
+            protected boolean computeValue() {
+                return getInputStatus() == Status.READY;
+            }
+        };
+        calculationDisabled.bind(couldCalculate.not());
 
         final List<StringProperty> fields = new ArrayList<>() { {
             add(x1);
@@ -114,6 +127,7 @@ public class ViewModel {
     public StringProperty statusProperty() {
         return status;
     }
+    public BooleanProperty calculationDisabledProperty() { return calculationDisabled; }
 
     private class ValueChangeListener implements ChangeListener<String> {
         @Override
