@@ -104,6 +104,16 @@ public class ViewModel {
         queueResult.set("Queue cleared");
     }
 
+    public void getHeadProcess() {
+        try{
+            double Head = queue.getHead();
+            queueStatus.set(Status.SUCCESS.toString());
+            queueResult.set("Head is: " + Double.toString(Head));
+        } catch(NullPointerException npe) {
+            queueResult.set("Queue is empty.");
+        }
+    }
+
     public Status getStatus() {
         Status status = Status.READY;
         try {

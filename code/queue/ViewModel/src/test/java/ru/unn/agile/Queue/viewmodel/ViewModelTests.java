@@ -88,4 +88,15 @@ public class ViewModelTests {
         var actualStatusValue = viewModel.getQueueResult();
         assertEquals(expectedStatusValue, actualStatusValue);
     }
+
+    @Test
+    public void canGetHeadFromQueue() {
+        String expectedStatusValue = "Head is: 3.0";
+        viewModel.setQueueInputElement("3");
+        viewModel.pushProcess();
+        viewModel.getHeadProcess();
+
+        var actualStatusValue = viewModel.getQueueResult();
+        assertEquals(expectedStatusValue, actualStatusValue);
+    }
 }
