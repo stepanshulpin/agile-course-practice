@@ -62,5 +62,12 @@ public class Queue {
                 viewModel.getHeadProcess();
             }
         });
+
+        getTail.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(final ActionEvent event) {
+                viewModel.getTailProcess();
+            }
+        });
     }
 }

@@ -114,6 +114,16 @@ public class ViewModel {
         }
     }
 
+    public void getTailProcess() {
+        try{
+            double tail = queue.getTail();
+            queueStatus.set(Status.SUCCESS.toString());
+            queueResult.set("Tail is: " + Double.toString(tail));
+        } catch(NullPointerException npe) {
+            queueResult.set("Queue is empty.");
+        }
+    }
+
     public Status getStatus() {
         Status status = Status.READY;
         try {

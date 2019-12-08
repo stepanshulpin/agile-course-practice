@@ -99,4 +99,15 @@ public class ViewModelTests {
         var actualStatusValue = viewModel.getQueueResult();
         assertEquals(expectedStatusValue, actualStatusValue);
     }
+
+    @Test
+    public void canGetTailFromQueue() {
+        String expectedStatusValue = "Tail is: 3.0";
+        viewModel.setQueueInputElement("3");
+        viewModel.pushProcess();
+        viewModel.getTailProcess();
+
+        var actualStatusValue = viewModel.getQueueResult();
+        assertEquals(expectedStatusValue, actualStatusValue);
+    }
 }
