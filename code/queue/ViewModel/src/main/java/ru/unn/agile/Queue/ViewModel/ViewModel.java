@@ -98,6 +98,12 @@ public class ViewModel {
         }
     }
 
+    public void clearProcess() {
+        queue.clear();
+        queueStatus.set(Status.SUCCESS.toString());
+        queueResult.set("Queue cleared");
+    }
+
     public Status getStatus() {
         Status status = Status.READY;
         try {

@@ -77,4 +77,15 @@ public class ViewModelTests {
         var actualStatusValue = viewModel.getQueueResult();
         assertEquals(expectedStatusValue, actualStatusValue);
     }
+
+    @Test
+    public void canClearQueue() {
+        String expectedStatusValue = "Queue cleared";
+        viewModel.setQueueInputElement("3");
+        viewModel.pushProcess();
+        viewModel.clearProcess();
+
+        var actualStatusValue = viewModel.getQueueResult();
+        assertEquals(expectedStatusValue, actualStatusValue);
+    }
 }
