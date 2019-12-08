@@ -1,11 +1,11 @@
 package ru.unn.agile.vectorsdistancescalculator.model;
 
+import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Vector;
 
 public final class VectorMetrics {
 
-    public static double calculateLp(final Vector<Double> vector, final int power) {
+    public static double calculateLp(final List<Double> vector, final int power) {
         if (power < 1) {
             throw new IllegalArgumentException("Power can't be lower than one");
         }
@@ -16,7 +16,7 @@ public final class VectorMetrics {
                      .get(), 1. / power);
     }
 
-    public static double calculateLInf(final Vector<Double> vector) {
+    public static double calculateLInf(final List<Double> vector) {
         if (vector.isEmpty()) {
             throw new NoSuchElementException("Vector can't be empty");
         }
