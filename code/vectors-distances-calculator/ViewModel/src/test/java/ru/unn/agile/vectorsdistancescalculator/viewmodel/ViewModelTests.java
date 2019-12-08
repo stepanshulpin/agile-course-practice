@@ -39,6 +39,11 @@ public class ViewModelTests {
         assertEquals(Status.BAD_FORMAT.toString(), viewModel.statusProperty().get());
     }
 
+    @Test
+    public void statusIsWaitingIfNotEnoughCorrectData() {
+        viewModel.x1Property().set("1");
+        assertEquals(Status.WAITING.toString(), viewModel.statusProperty().get());
+    }
 
 
 }
