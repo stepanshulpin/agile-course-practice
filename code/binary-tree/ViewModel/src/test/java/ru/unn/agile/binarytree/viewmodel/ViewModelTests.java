@@ -37,50 +37,50 @@ public class ViewModelTests {
     @Test
     public void addStatusIsWaitingWhenOnlyKeyInserted() {
         viewModel.addKeyProperty().set("18");
-        assertEquals(Status.WAITING.toString(), viewModel.addStatusProperty().get());
+        assertEquals(Status.WAITING.toString(), viewModel.getAddStatus());
     }
 
     @Test
     public void addStatusIsWaitingWhenOnlyValuesInserted() {
         viewModel.addValueProperty().set("FOO");
-        assertEquals(Status.WAITING.toString(), viewModel.addStatusProperty().get());
+        assertEquals(Status.WAITING.toString(), viewModel.getAddStatus());
     }
 
     @Test
     public void addStatusIsReadyWhenInsertedBoth() {
         viewModel.addKeyProperty().set("18");
         viewModel.addValueProperty().set("FOO");
-        assertEquals(Status.READY.toString(), viewModel.addStatusProperty().get());
+        assertEquals(Status.READY.toString(), viewModel.getAddStatus());
     }
 
     @Test
     public void addStatusIsBadWhenInsertKeyNotInteger() {
         viewModel.addKeyProperty().set("PASS");
-        assertEquals(Status.BAD_FORMAT.toString(), viewModel.addStatusProperty().get());
+        assertEquals(Status.BAD_FORMAT.toString(), viewModel.getAddStatus());
     }
 
     @Test
     public void findStatusIsReadyWhenIntegerInserted() {
         viewModel.findKeyProperty().set("18");
-        assertEquals(Status.READY.toString(), viewModel.findStatusProperty().get());
+        assertEquals(Status.READY.toString(), viewModel.getFindStatus());
     }
 
     @Test
     public void findStatusIsBadWhenNotIntegerInserted() {
         viewModel.findKeyProperty().set("PASS");
-        assertEquals(Status.BAD_FORMAT.toString(), viewModel.findStatusProperty().get());
+        assertEquals(Status.BAD_FORMAT.toString(), viewModel.getFindStatus());
     }
 
     @Test
     public void removeStatusIsReadyWhenIntegerInserted() {
         viewModel.removeKeyProperty().set("18");
-        assertEquals(Status.READY.toString(), viewModel.removeStatusProperty().get());
+        assertEquals(Status.READY.toString(), viewModel.getRemoveStatus());
     }
 
     @Test
     public void removeStatusIsBadWhenNotIntegerInserted() {
         viewModel.removeKeyProperty().set("PASS");
-        assertEquals(Status.BAD_FORMAT.toString(), viewModel.removeStatusProperty().get());
+        assertEquals(Status.BAD_FORMAT.toString(), viewModel.getRemoveStatus());
     }
 
     @Test
