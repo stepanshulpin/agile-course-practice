@@ -168,7 +168,7 @@ public class ViewModel {
                 toClass = converter.convert(fromClass, NewtonTemperature.class);
             }
 
-            resultTemperature = "" + toClass.getValue();
+            resultTemperature = Double.toString(toClass.getValue());
         }
     }
 }

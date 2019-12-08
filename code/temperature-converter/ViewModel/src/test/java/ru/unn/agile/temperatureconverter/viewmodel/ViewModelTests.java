@@ -28,8 +28,8 @@ public class ViewModelTests {
         assertEquals(ListOfTemperatures.CELSIUS, viewModel.getFrom());
         assertEquals(ListOfTemperatures.CELSIUS, viewModel.getTo());
         assertEquals("", viewModel.getResultTemperature());
-        assertEquals(false, viewModel.isConvertButtonEnabled());
-        assertEquals(false, viewModel.isErrorMessageDisplayed());
+        assertFalse(viewModel.isConvertButtonEnabled());
+        assertFalse(viewModel.isErrorMessageDisplayed());
     }
 
     @Test
@@ -254,8 +254,10 @@ public class ViewModelTests {
     @Test
     public void convertCelsius100ToCelsius100() {
         viewModel.setTo(ListOfTemperatures.CELSIUS);
-        viewModel.setFromTemperature("41.0");
+        viewModel.setFromTemperature("100.0");
         viewModel.setTo(ListOfTemperatures.CELSIUS);
         viewModel.calculate();
+
+        assertEquals("100.0", viewModel.getResultTemperature());
     }
 }
