@@ -1,7 +1,7 @@
 package ru.unn.agile.arabicromanconverter.model;
 
-public interface NumConverter {
-    String convert(String number);
+public interface Converter {
+    String convertValue(String number);
 
     boolean validate(String number);
 }

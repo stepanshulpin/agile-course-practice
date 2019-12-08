@@ -24,8 +24,8 @@ public class ViewModel {
 
     public void convert() {
         String value = input.get();
-        NumConverter converter = selector.getConverter();
-        String result = converter.convert(value);
+        Converter converter = selector.getConverter();
+        String result = converter.convertValue(value);
         output.set(result);
     }
 
@@ -82,10 +82,10 @@ enum ConverterType {
     ROMANTOARABIC("Roman to Arabic", new RomanToArabicConverter(), "Insert correct roman number");
 
     private final String lblConvertingType;
-    private final NumConverter converter;
+    private final Converter converter;
     private final String errorMessage;
 
-    ConverterType(final String label, final NumConverter converter, final String errorMessage) {
+    ConverterType(final String label, final Converter converter, final String errorMessage) {
         this.lblConvertingType = label;
         this.converter = converter;
         this.errorMessage = errorMessage;
@@ -95,7 +95,7 @@ enum ConverterType {
         return lblConvertingType;
     }
 
-    public NumConverter getConverter() {
+    public Converter getConverter() {
         return converter;
     }
 

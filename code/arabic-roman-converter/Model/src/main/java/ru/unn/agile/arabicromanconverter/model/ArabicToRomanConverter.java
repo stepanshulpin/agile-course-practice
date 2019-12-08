@@ -1,6 +1,6 @@
 package ru.unn.agile.arabicromanconverter.model;
 
-public class ArabicToRomanConverter implements NumConverter {
+public class ArabicToRomanConverter implements Converter {
 
     private static final int[] ARABIC_NUMERALS = {1000, 900, 500, 400,
             100, 90, 50, 40, 10, 9, 5, 4, 1};
@@ -18,8 +18,12 @@ public class ArabicToRomanConverter implements NumConverter {
                 && Integer.parseInt(number) >= MIN_ARABIC_VALUE;
     }
 
-    public String convert(final String number) {
-        int arabicNumber = Integer.parseInt(number);
+    @Override
+    public String convertValue(final String number) {
+        return convert(Integer.parseInt(number));
+    }
+
+    public String convert(final Integer arabicNumber) {
         if (arabicNumber < MIN_ARABIC_VALUE || arabicNumber > MAX_ARABIC_VALUE) {
             throw new IllegalArgumentException("Roman Number"
                     + "doesn't exist for Arabic" + arabicNumber);
