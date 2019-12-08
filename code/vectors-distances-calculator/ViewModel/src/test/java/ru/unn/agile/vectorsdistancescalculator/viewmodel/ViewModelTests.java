@@ -32,4 +32,13 @@ public class ViewModelTests {
         assertEquals("", viewModel.resultProperty().get());
         assertEquals(Status.WAITING.toString(), viewModel.statusProperty().get());
     }
+
+    @Test
+    public void canReportBadFormat() {
+        viewModel.x1Property().set("@");
+        assertEquals(Status.BAD_FORMAT.toString(), viewModel.statusProperty().get());
+    }
+
+
+
 }
