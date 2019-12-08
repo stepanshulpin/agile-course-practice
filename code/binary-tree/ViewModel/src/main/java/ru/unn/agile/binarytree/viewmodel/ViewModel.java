@@ -40,7 +40,6 @@ public class ViewModel {
         removeResult.set("");
         removeStatus.set(Status.WAITING.toString());
 
-        // Add listeners to the input text fields
         final List<StringProperty> fields = new ArrayList<>() {
             {
                 add(addKey);
