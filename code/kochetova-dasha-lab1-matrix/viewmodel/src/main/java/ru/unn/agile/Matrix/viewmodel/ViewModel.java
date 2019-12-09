@@ -69,14 +69,6 @@ public class ViewModel {
         this.secondMatrixProperties = secondMatrixProperties;
     }
 
-    public StringProperty[] getResultMatrixProperties() {
-        return resultMatrixProperties;
-    }
-
-    public void setResultMatrixProperties(final StringProperty[] resultMatrixProperties) {
-        this.resultMatrixProperties = resultMatrixProperties;
-    }
-
     private boolean isPossibleToProcess(final int matrixNumber) {
         int i;
         boolean result = true;
@@ -108,10 +100,6 @@ public class ViewModel {
 
     public final String getResult() {
         return result.get();
-    }
-
-    public void setResult(final String result) {
-        this.result.set(result);
     }
 
     public void compareMatrices() {
@@ -190,21 +178,5 @@ public class ViewModel {
             result[i] = Double.parseDouble(secondMatrixProperties[i].get());
         }
         return result;
-    }
-
-    public Matrix getFirstMatrix() {
-        return firstMatrix;
-    }
-
-    public void setFirstMatrix(final Matrix firstMatrix) {
-        this.firstMatrix = firstMatrix;
-    }
-
-    public Matrix getSecondMatrix() {
-        return secondMatrix;
-    }
-
-    public void setSecondMatrix(final Matrix secondMatrix) {
-        this.secondMatrix = secondMatrix;
     }
 }
