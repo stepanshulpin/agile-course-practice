@@ -20,17 +20,17 @@ public class ViewModelTests {
     }
 
     @Test
-    public void canSetDefaultValuesTextFields() {
-        assertEquals("", viewModel.newProbabilityProperty().get());
-        assertEquals("", viewModel.newValueProperty().get());
-        assertEquals("", viewModel.operationParameterProperty().get());
-    }
-    @Test
     public void canSetDefaultValuesLabels() {
         assertEquals("", viewModel.resultProperty().get());
         assertEquals(OperationStatus.WAITING_DATA.toString(), viewModel.getOperationStatus());
         assertEquals(DataStatus.WAITING.toString(), viewModel.getDataStatus());
         assertEquals(InputDataStatus.WAITING.toString(), viewModel.getInputDataStatus());
+    }
+    @Test
+    public void canSetDefaultValuesTextFields() {
+        assertEquals("", viewModel.newProbabilityProperty().get());
+        assertEquals("", viewModel.newValueProperty().get());
+        assertEquals("", viewModel.operationParameterProperty().get());
     }
     @Test
     public void canSetDefaultButtons() {

@@ -8,9 +8,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import ru.unn.agile.statisticscalculation.viewmodel.ViewModel;
 import ru.unn.agile.statisticscalculation.viewmodel.Operation;
 import ru.unn.agile.statisticscalculation.viewmodel.TableElement;
-import ru.unn.agile.statisticscalculation.viewmodel.ViewModel;
+
 
 
 public class Calculator {
