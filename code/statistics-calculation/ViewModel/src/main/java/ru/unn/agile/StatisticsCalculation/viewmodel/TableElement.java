@@ -1,4 +1,4 @@
-package ru.unn.agile.StatisticsCalculation.viewmodel;
+package ru.unn.agile.statisticscalculation.viewmodel;
 
 public class TableElement {
     private String value;

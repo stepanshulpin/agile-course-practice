@@ -1,4 +1,4 @@
-package ru.unn.agile.StatisticsCalculation.view;
+package ru.unn.agile.statisticscalculation.view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

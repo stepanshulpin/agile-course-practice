@@ -1,4 +1,4 @@
-package ru.unn.agile.StatisticsCalculation.view;
+package ru.unn.agile.statisticscalculation.view;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,9 +8,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import ru.unn.agile.StatisticsCalculation.viewmodel.Operation;
-import ru.unn.agile.StatisticsCalculation.viewmodel.TableElement;
-import ru.unn.agile.StatisticsCalculation.viewmodel.ViewModel;
+import ru.unn.agile.statisticscalculation.viewmodel.Operation;
+import ru.unn.agile.statisticscalculation.viewmodel.TableElement;
+import ru.unn.agile.statisticscalculation.viewmodel.ViewModel;
 
 
 public class Calculator {

@@ -1,7 +1,7 @@
-package ru.unn.agile.StatisticsCalculation.viewmodel;
+package ru.unn.agile.statisticscalculation.viewmodel;
 
-import ru.unn.agile.StatisticsCalculation.model.DiscreteRandomVariable;
-import ru.unn.agile.StatisticsCalculation.model.StatisticsCalculation;
+import ru.unn.agile.statisticscalculation.model.DiscreteRandomVariable;
+import ru.unn.agile.statisticscalculation.model.StatisticsCalculation;
 
 public enum Operation {
     EXPECTED_VALUE("Calculate expected value") {

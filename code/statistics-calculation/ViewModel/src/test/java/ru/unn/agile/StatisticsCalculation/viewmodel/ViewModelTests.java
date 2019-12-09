@@ -1,4 +1,4 @@
-package ru.unn.agile.StatisticsCalculation.viewmodel;
+package ru.unn.agile.statisticscalculation.viewmodel;
 
 import org.junit.After;
 import org.junit.Before;

@@ -1,4 +1,4 @@
-package ru.unn.agile.StatisticsCalculation.viewmodel;
+package ru.unn.agile.statisticscalculation.viewmodel;
 
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.*;
@@ -6,7 +6,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import ru.unn.agile.StatisticsCalculation.model.DiscreteRandomVariable;
+import ru.unn.agile.statisticscalculation.model.DiscreteRandomVariable;
 
 import java.util.ArrayList;
 import java.util.List;

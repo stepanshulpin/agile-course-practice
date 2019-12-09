@@ -1,4 +1,4 @@
-package ru.unn.agile.StatisticsCalculation.model;
+package ru.unn.agile.statisticscalculation.model;
 
 public final class StatisticsCalculation {
     public static Double calculateExpectedValue(final DiscreteRandomVariable variable) {

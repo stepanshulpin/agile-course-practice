@@ -1,4 +1,4 @@
-package ru.unn.agile.StatisticsCalculation.model;
+package ru.unn.agile.statisticscalculation.model;
 
 final class DistributionChecker {
     public static void validate(final Number[] values, final Double[] probabilities) {

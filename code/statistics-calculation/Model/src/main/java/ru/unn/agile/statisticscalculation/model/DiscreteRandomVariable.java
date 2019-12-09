@@ -1,4 +1,4 @@
-package ru.unn.agile.StatisticsCalculation.model;
+package ru.unn.agile.statisticscalculation.model;
 
 public class DiscreteRandomVariable {
     private Number[] values;

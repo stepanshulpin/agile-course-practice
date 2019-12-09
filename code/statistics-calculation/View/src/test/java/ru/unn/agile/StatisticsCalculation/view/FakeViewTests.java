@@ -1,4 +1,4 @@
-package ru.unn.agile.StatisticsCalculation.view;
+package ru.unn.agile.statisticscalculation.view;
 
 import org.junit.Ignore;
 import org.junit.Test;

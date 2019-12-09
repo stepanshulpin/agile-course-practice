@@ -1,4 +1,4 @@
-package ru.unn.agile.StatisticsCalculation.model;
+package ru.unn.agile.statisticscalculation.model;
 
 final class MomentOrderChecker {
     public static void checkOrder(final Integer order) {

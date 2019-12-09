@@ -4,7 +4,7 @@ plugins {
 }
 
 apply plugin: 'application'
-mainClassName = 'ru.unn.agile.StatisticsCalculation.view.Main'
+mainClassName = 'ru.unn.agile.statisticscalculation.view.Main'
 
 javafx {
     version = "11.0.2"
