@@ -5,7 +5,8 @@ import java.util.NoSuchElementException;
 
 public final class VectorMetrics {
 
-    public static double calculateLp(final List<Double> vector, final int power) {
+    public static double calculateLp(final List<Double> vector, final int power)
+            throws IllegalArgumentException {
         if (power < 1) {
             throw new IllegalArgumentException("Power can't be lower than one");
         }
@@ -16,7 +17,8 @@ public final class VectorMetrics {
                      .get(), 1. / power);
     }
 
-    public static double calculateLInf(final List<Double> vector) {
+    public static double calculateLInf(final List<Double> vector)
+            throws NoSuchElementException {
         if (vector.isEmpty()) {
             throw new NoSuchElementException("Vector can't be empty");
         }

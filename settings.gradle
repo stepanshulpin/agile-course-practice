@@ -80,9 +80,10 @@ project(":code/length-converter/View").name = "length-converter-View"
 
 include "code/length-converter/ViewModel"
 project(":code/length-converter/ViewModel").name = "length-converter-ViewModel"
-// Кильдишев Максим
+// Figures Volume Calculator
 include "code/figures-volume-calculator"
 project(":code/figures-volume-calculator").name = "figures-volume-calculator-Model"
+// Vectors Distances Calculator
 include "code/vectors-distances-calculator/Model"
 project(":code/vectors-distances-calculator/Model").name = "vectors-distances-calculator-Model"
 include "code/vectors-distances-calculator/ViewModel"
