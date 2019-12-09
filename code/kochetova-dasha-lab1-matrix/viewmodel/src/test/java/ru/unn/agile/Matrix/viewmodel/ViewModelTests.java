@@ -18,27 +18,11 @@ public class ViewModelTests {
     @Test
     public void canSetDefaultValuesToFirstMatrix() {
         assertEquals("", viewModel.getFirstMatrixProperties()[0].get());
-        assertEquals("", viewModel.getFirstMatrixProperties()[1].get());
-        assertEquals("", viewModel.getFirstMatrixProperties()[2].get());
-        assertEquals("", viewModel.getFirstMatrixProperties()[3].get());
-        assertEquals("", viewModel.getFirstMatrixProperties()[4].get());
-        assertEquals("", viewModel.getFirstMatrixProperties()[5].get());
-        assertEquals("", viewModel.getFirstMatrixProperties()[6].get());
-        assertEquals("", viewModel.getFirstMatrixProperties()[7].get());
-        assertEquals("", viewModel.getFirstMatrixProperties()[8].get());
     }
 
     @Test
     public void canSetDefaultValuesToSecondMatrix() {
         assertEquals("", viewModel.getSecondMatrixProperties()[0].get());
-        assertEquals("", viewModel.getSecondMatrixProperties()[1].get());
-        assertEquals("", viewModel.getSecondMatrixProperties()[2].get());
-        assertEquals("", viewModel.getSecondMatrixProperties()[3].get());
-        assertEquals("", viewModel.getSecondMatrixProperties()[4].get());
-        assertEquals("", viewModel.getSecondMatrixProperties()[5].get());
-        assertEquals("", viewModel.getSecondMatrixProperties()[6].get());
-        assertEquals("", viewModel.getSecondMatrixProperties()[7].get());
-        assertEquals("", viewModel.getSecondMatrixProperties()[8].get());
     }
 
     @Test (expected = NumberFormatException.class)

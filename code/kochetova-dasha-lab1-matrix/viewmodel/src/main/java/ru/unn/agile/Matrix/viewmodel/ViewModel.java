@@ -16,14 +16,13 @@ public class ViewModel {
     private final StringProperty result = new SimpleStringProperty();
 
     public ViewModel() {
-        int i;
-        for (i = 0; i < firstMatrixProperties.length; i++) {
+        for (int i = 0; i < firstMatrixProperties.length; i++) {
             firstMatrixProperties[i] = new SimpleStringProperty("");
         }
-        for (i = 0; i < secondMatrixProperties.length; i++) {
+        for (int i = 0; i < secondMatrixProperties.length; i++) {
             secondMatrixProperties[i] = new SimpleStringProperty("");
         }
-        for (i = 0; i < resultMatrixProperties.length; i++) {
+        for (int i = 0; i < resultMatrixProperties.length; i++) {
             resultMatrixProperties[i] = new SimpleStringProperty("");
         }
         result.set("");
@@ -32,8 +31,7 @@ public class ViewModel {
     public boolean canTranspose() {
         boolean result = true;
         StringProperty[] properties = getFirstMatrixProperties();
-        int i;
-        for (i = 0; i < properties.length; i++) {
+        for (int i = 0; i < properties.length; i++) {
             if (properties[i].get().isEmpty()) {
                 result = false;
             }
@@ -70,7 +68,6 @@ public class ViewModel {
     }
 
     private boolean isPossibleToProcess(final int matrixNumber) {
-        int i;
         boolean result = true;
         StringProperty[] matrixProperties;
         switch (matrixNumber) {
@@ -83,7 +80,7 @@ public class ViewModel {
             default:
                 return false;
         }
-        for (i = 0; i < matrixProperties.length; i++) {
+        for (int i = 0; i < matrixProperties.length; i++) {
             if (!matrixProperties[i].get().isEmpty()) {
                 try {
                     Double.parseDouble(matrixProperties[i].get());
@@ -144,16 +141,14 @@ public class ViewModel {
         secondMatrix.initByArray(getSecondMatrixValues());
         Matrix resultMatrix = firstMatrix.add(secondMatrix);
         double[] sumValues = convertMatrixToArray(resultMatrix);
-        int i;
-        for (i = 0; i < resultMatrixProperties.length; i++) {
+        for (int i = 0; i < resultMatrixProperties.length; i++) {
             resultMatrixProperties[i].set(String.valueOf(sumValues[i]));
         }
     }
 
     private double[] convertMatrixToArray(final Matrix matrix) {
-        int i;
         double[] result = new double[matrix.getSize() * matrix.getSize()];
-        for (i = 0; i < matrix.getSize(); i++) {
+        for (int i = 0; i < matrix.getSize(); i++) {
             int j;
             for (j = 0; j < matrix.getSize(); j++) {
                 result[i * matrix.getSize() + j] = matrix.getValue(i, j);
@@ -164,8 +159,7 @@ public class ViewModel {
 
     private double[] getFirstMatrixValues() {
         double[] result = new double[firstMatrixProperties.length];
-        int i;
-        for (i = 0; i < firstMatrixProperties.length; i++) {
+        for (int i = 0; i < firstMatrixProperties.length; i++) {
             result[i] = Double.parseDouble(firstMatrixProperties[i].get());
         }
         return result;
@@ -173,8 +167,7 @@ public class ViewModel {
 
     private double[] getSecondMatrixValues() {
         double[] result = new double[secondMatrixProperties.length];
-        int i;
-        for (i = 0; i < secondMatrixProperties.length; i++) {
+        for (int i = 0; i < secondMatrixProperties.length; i++) {
             result[i] = Double.parseDouble(secondMatrixProperties[i].get());
         }
         return result;

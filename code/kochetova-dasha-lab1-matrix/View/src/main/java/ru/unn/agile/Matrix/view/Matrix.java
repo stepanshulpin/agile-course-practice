@@ -7,6 +7,24 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
 public class Matrix {
+    private static final String ZERO_ELEMENT_INDEX = "0";
+
+    private static final String FIRST_ELEMENT_INDEX = "1";
+
+    private static final String SECOND_ELEMENT_INDEX = "2";
+
+    private static final String THIRD_ELEMENT_INDEX = "3";
+
+    private static final String FOURTH_ELEMENT_INDEX = "4";
+
+    private static final String FIFTH_ELEMENT_INDEX = "5";
+
+    private static final String SIXTH_ELEMENT_INDEX = "6";
+
+    private static final String SEVENTH_ELEMENT_INDEX = "7";
+
+    private static final String EIGHT_ELEMENT_INDEX = "8";
+
     @FXML
     private ViewModel viewModel;
     @FXML
@@ -88,42 +106,102 @@ public class Matrix {
 
     @FXML
     void initialize() {
-        first00.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex("0"));
-        first10.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex("1"));
-        first20.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex("2"));
-        first01.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex("3"));
-        first11.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex("4"));
-        first21.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex("5"));
-        first02.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex("6"));
-        first12.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex("7"));
-        first22.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex("8"));
+        first00.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex(
+                ZERO_ELEMENT_INDEX
+        ));
+        first10.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex(
+                FIRST_ELEMENT_INDEX
+        ));
+        first20.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex(
+                SECOND_ELEMENT_INDEX
+        ));
+        first01.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex(
+                THIRD_ELEMENT_INDEX
+        ));
+        first11.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex(
+                FOURTH_ELEMENT_INDEX
+        ));
+        first21.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex(
+                FIFTH_ELEMENT_INDEX
+        ));
+        first02.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex(
+                SIXTH_ELEMENT_INDEX
+        ));
+        first12.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex(
+                SEVENTH_ELEMENT_INDEX
+        ));
+        first22.textProperty().bindBidirectional(viewModel.getFirstMatrixPropertiesByIndex(
+                EIGHT_ELEMENT_INDEX
+        ));
 
-        second00.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex("0"));
-        second10.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex("1"));
-        second20.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex("2"));
-        second01.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex("3"));
-        second11.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex("4"));
-        second21.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex("5"));
-        second02.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex("6"));
-        second12.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex("7"));
-        second22.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex("8"));
+        second00.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex(
+                ZERO_ELEMENT_INDEX
+        ));
+        second10.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex(
+                FIRST_ELEMENT_INDEX
+        ));
+        second20.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex(
+                SECOND_ELEMENT_INDEX
+        ));
+        second01.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex(
+                THIRD_ELEMENT_INDEX
+        ));
+        second11.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex(
+                FOURTH_ELEMENT_INDEX
+        ));
+        second21.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex(
+                FIFTH_ELEMENT_INDEX
+        ));
+        second02.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex(
+                SIXTH_ELEMENT_INDEX
+        ));
+        second12.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex(
+                SEVENTH_ELEMENT_INDEX
+        ));
+        second22.textProperty().bindBidirectional(viewModel.getSecondMatrixPropertiesByIndex(
+                EIGHT_ELEMENT_INDEX
+        ));
 
-        result00.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex("0"));
-        result10.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex("1"));
-        result20.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex("2"));
-        result01.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex("3"));
-        result11.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex("4"));
-        result21.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex("5"));
-        result02.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex("6"));
-        result12.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex("7"));
-        result22.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex("8"));
+        result00.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex(
+                ZERO_ELEMENT_INDEX
+        ));
+        result10.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex(
+                FIRST_ELEMENT_INDEX
+        ));
+        result20.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex(
+                SECOND_ELEMENT_INDEX
+        ));
+        result01.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex(
+                THIRD_ELEMENT_INDEX
+        ));
+        result11.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex(
+                FOURTH_ELEMENT_INDEX
+        ));
+        result21.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex(
+                FIFTH_ELEMENT_INDEX
+        ));
+        result02.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex(
+                SIXTH_ELEMENT_INDEX
+        ));
+        result12.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex(
+                SEVENTH_ELEMENT_INDEX
+        ));
+        result22.textProperty().bindBidirectional(viewModel.getResultMatrixPropertiesByIndex(
+                EIGHT_ELEMENT_INDEX
+        ));
 
         buttonCompare.setOnAction(actionEvent -> {
             viewModel.compareMatrices();
         });
-        transposeFirst.setOnAction(actionEvent -> viewModel.transposeFirstMatrix());
-        transposeSecond.setOnAction(actionEvent -> viewModel.transposeSecondMatrix());
-        sumButton.setOnAction(actionEvent -> viewModel.sumMatrices());
+        transposeFirst.setOnAction(actionEvent -> {
+            viewModel.transposeFirstMatrix();
+        });
+        transposeSecond.setOnAction(actionEvent -> {
+            viewModel.transposeSecondMatrix();
+        });
+        sumButton.setOnAction(actionEvent -> {
+            viewModel.sumMatrices();
+        });
 
     }
 
