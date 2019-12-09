@@ -1,4 +1,4 @@
-package ru.unn.agile.Queue.view;
+package ru.unn.agile.queue.view;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import ru.unn.agile.Queue.viewmodel.ViewModel;
+import ru.unn.agile.queue.viewmodel.ViewModel;
 
 public class Queue {
 

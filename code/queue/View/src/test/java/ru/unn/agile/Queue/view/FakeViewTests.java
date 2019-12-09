@@ -1,4 +1,4 @@
-package ru.unn.agile.Queue.view;
+package ru.unn.agile.queue.view;
 
 import org.junit.Ignore;
 import org.junit.Test;

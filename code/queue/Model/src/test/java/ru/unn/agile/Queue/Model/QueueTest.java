@@ -1,4 +1,4 @@
-package ru.unn.agile.Queue.model;
+package ru.unn.agile.queue.model;
 
 import org.junit.Test;
 

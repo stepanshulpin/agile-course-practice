@@ -1,4 +1,4 @@
-package ru.unn.agile.Queue.viewmodel;
+package ru.unn.agile.queue.viewmodel;
 
 import org.junit.After;
 import org.junit.Before;

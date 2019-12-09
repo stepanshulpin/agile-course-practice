@@ -1,4 +1,4 @@
-package ru.unn.agile.Queue.view;
+package ru.unn.agile.queue.view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
