@@ -29,34 +29,31 @@ public class ViewModel {
         arrayCorrect = false;
         elementCorrect = false;
 
-        final List<StringProperty> fields = new ArrayList<StringProperty>() { {
-            add(arrayInput);
-            add(elementInput);
-        }};
-        for (StringProperty field: fields) {
+        final List<StringProperty> fields = new ArrayList<StringProperty>() {
+            {
+                 add(arrayInput);
+                 add(elementInput);
+            }
+        };
+        for (StringProperty field : fields) {
             final ValueChangeListener listener = new ValueChangeListener();
             field.addListener(listener);
             valueChangedListeners.add(listener);
         }
     }
 
-    private class ValueChangeListener implements ChangeListener<String> {
-        @Override
-        public void changed(final ObservableValue<? extends String> observable,
-                            final String oldValue, final String newValue) {
-            status.set(getStatus().toString());
-        }
-    }
-
     public StringProperty arrayInputProperty() {
         return arrayInput;
     }
+
     public StringProperty elementInputProperty() {
         return elementInput;
     }
+
     public StringProperty statusProperty() {
         return status;
     }
+
     public StringProperty resultProperty() {
         return result;
     }
@@ -64,12 +61,15 @@ public class ViewModel {
     public String getArrayInputProperty() {
         return arrayInput.get();
     }
+
     public String getElementInputProperty() {
         return elementInput.get();
     }
+
     public String getStatusProperty() {
         return status.get();
     }
+
     public String getResultProperty() {
         return result.get();
     }
@@ -77,10 +77,12 @@ public class ViewModel {
     public void setArrayInputProperty(final String input) {
         arrayInput.set(input);
     }
+
     public void setElementInputProperty(final String input) {
         elementInput.set(input);
     }
-    public int[] getBinarySearchArray()  {
+
+    public int[] getBinarySearchArray() {
         return binarySearch.getArray();
     }
 
@@ -120,6 +122,14 @@ public class ViewModel {
 
         return status;
     }
+
+    private class ValueChangeListener implements ChangeListener<String> {
+        @Override
+        public void changed(final ObservableValue<? extends String> observable,
+                            final String oldValue, final String newValue) {
+            status.set(getStatus().toString());
+        }
+    }
 }
 
 enum Status {
@@ -129,9 +139,11 @@ enum Status {
     BAD_ELEMENT_FORMAT("Bad element format, please enter \n the key to search");
 
     private final String name;
+
     Status(final String name) {
         this.name = name;
     }
+
     public String toString() {
         return name;
     }
