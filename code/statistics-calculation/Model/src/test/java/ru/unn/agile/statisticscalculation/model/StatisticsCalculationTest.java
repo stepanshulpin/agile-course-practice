@@ -1,8 +1,6 @@
-package ru.unn.agile.statisticscalculation.Model;
+package ru.unn.agile.statisticscalculation.model;
 
 import org.junit.Test;
-import ru.unn.agile.statisticscalculation.model.DiscreteRandomVariable;
-import ru.unn.agile.statisticscalculation.model.StatisticsCalculation;
 
 import java.util.Arrays;
 
