@@ -30,6 +30,10 @@ public class Stack<T> {
         return list.get(list.size() - 1);
     }
 
+    public int size() {
+        return list.size();
+    }
+
     public boolean isEmpty() {
         return list.isEmpty();
     }
