@@ -1,7 +1,6 @@
-package ru.unn.agile.bitarray.test;
+package ru.unn.agile.bitarray.model;
 
 import org.junit.Test;
-import ru.unn.agile.bitarray.model.BitArray;
 
 import static org.junit.Assert.*;
 
@@ -20,7 +19,7 @@ public class BitArrayTest {
     }
 
     @Test(expected = NegativeArraySizeException.class)
-    public void canInitBitArrayWithNegative() {
+    public void throwInitBitArrayWithNegative() {
         new BitArray(-10);
     }
 
@@ -33,7 +32,7 @@ public class BitArrayTest {
         byte[] btrRawArray = btr.getRawArray();
 
         // assert
-        for (int elem : btrRawArray) {
+        for (byte elem : btrRawArray) {
             assertEquals(elem, 0);
         }
     }
@@ -41,32 +40,31 @@ public class BitArrayTest {
     @Test
     public void canUseGetCountBitFunc() {
         // arrange
-        BitArray btr = new BitArray(279);
+        final int countElements = 279;
+        BitArray btr = new BitArray(countElements);
 
         // act
         int countBit = btr.getCountBit();
 
         // assert
-        assertEquals(countBit, 279);
+        assertEquals(countBit, countElements);
     }
 
     @Test
     public void canSetBitInBitArray() {
         // arrange
-        BitArray btr = new BitArray(41);
+        final int countBits = 41;
+        final int sizeByte = 8;
+        BitArray btr = new BitArray(countBits);
 
         // act
-        btr.setBit(4);
-        btr.setBit(13);
-        btr.setBit(19);
-        btr.setBit(25);
-        btr.setBit(34);
-        btr.setBit(41);
+        final int actualBit = 19;
+        btr.setBit(actualBit);
 
         // assert
-        byte[] actual = btr.getRawArray();
-        byte[] reference = {16, 32, 8, 2, 4, 2};
-        assertArrayEquals(reference, actual);
+        final byte reference = 1 << (actualBit % sizeByte);
+        byte actual = btr.getRawArray()[actualBit / sizeByte];
+        assertEquals(reference, actual);
     }
 
     @Test
@@ -98,17 +96,12 @@ public class BitArrayTest {
         BitArray btr = new BitArray(41);
 
         // act
-        btr.setBit(4);
-        btr.setBit(13); btr.unsetBit(13);
-        btr.setBit(19);
         btr.setBit(25); btr.unsetBit(25);
-        btr.setBit(34);
-        btr.setBit(41); btr.unsetBit(41);
 
         // assert
-        byte[]actual = btr.getRawArray();
-        byte[] reference = {16, 0, 8, 0, 4, 0};
-        assertArrayEquals(reference, actual);
+        for (byte elem : btr.getRawArray()) {
+            assertEquals(elem, 0);
+        }
     }
 
     @Test

@@ -129,7 +129,7 @@ include "code/queue/ViewModel"
 project(":code/queue/ViewModel").name = "queue-ViewModel"
 // Нестеров Александр
 include "code/bit-array"
-project(":code/bit-array").name = "bit-array-test"
+project(":code/bit-array").name = "bit-array-Model"
 // Нечесанов Владимир
 // Овчарук Олег
 include "code/polynomialcalculator"

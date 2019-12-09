@@ -9,17 +9,15 @@ public class BitArray {
     private final int sizeByte = 8;
     private int countBit;
 
-    public BitArray(final int countBitCurr) {
-        countBit = countBitCurr;
+    public BitArray(final int quantityOfBits) {
+        countBit = quantityOfBits;
         int lengthRawArray = -1;
-        if (countBitCurr > 0) {
-            lengthRawArray = getNumElem(countBitCurr);
+        if (quantityOfBits > 0) {
+            lengthRawArray = getNumElem(quantityOfBits);
         }
         rawArray = new byte[lengthRawArray];
 
-        for (int i = 0; i < rawArray.length; i++)  {
-            rawArray[i] = 0;
-        }
+        Arrays.fill(rawArray, (byte) 0);
     }
 
     public BitArray(final BitArray rawArray) {
@@ -28,7 +26,7 @@ public class BitArray {
     }
 
     public byte[] getRawArray() {
-        return rawArray;
+        return rawArray.clone();
     }
 
     public int getCountBit() {
