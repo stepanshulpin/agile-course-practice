@@ -49,9 +49,13 @@ include "code/gameoflife"
 project(":code/gameoflife").name = "GameOfLife-Model"
 // Антипин Никита
 // Ахмедов Саркар
-// Бевзюк Семен
-include "code/temperature-converter"
-project(":code/temperature-converter").name = "temperature-converter-Model"
+// temperature-converter
+include "code/temperature-converter/Model"
+project(":code/temperature-converter/Model").name = "temperature-converter-Model"
+include "code/temperature-converter/ViewModel"
+project(":code/temperature-converter/ViewModel").name = "temperature-converter-ViewModel"
+include "code/temperature-converter/View"
+project(":code/temperature-converter/View").name = "temperature-converter-View"
 // Власов Антон
 // Гречухин Никита
 include "code/fractioncalculator"
