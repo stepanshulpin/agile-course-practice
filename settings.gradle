@@ -128,9 +128,13 @@ include "code/triangle/ViewModel"
 project(":code/triangle/ViewModel").name = "triangle-ViewModel"
 include "code/triangle/View"
 project(":code/triangle/View").name = "triangle-View"
-// Миронова Анна
-include "code/statistics-calculation"
-project(":code/statistics-calculation").name = "statistics-calculation-Model"
+// statistics-calculation
+include "code/statistics-calculation/Model"
+project(":code/statistics-calculation/Model").name = "statistics-calculation-Model"
+include "code/statistics-calculation/ViewModel"
+project(":code/statistics-calculation/ViewModel").name = "statistics-calculation-ViewModel"
+include "code/statistics-calculation/View"
+project(":code/statistics-calculation/View").name = "statistics-calculation-View"
 // Queue
 include "code/queue/Model"
 project(":code/queue/Model").name = "queue-Model"
