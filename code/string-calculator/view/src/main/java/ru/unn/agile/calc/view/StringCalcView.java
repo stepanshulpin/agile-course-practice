@@ -11,7 +11,7 @@ import ru.unn.agile.calc.viewmodel.StringCalcViewModel;
 public class StringCalcView {
 
     private final PseudoClass errorClass = PseudoClass.getPseudoClass("error");
-    private final String tooltip = "Type your expression here";
+    private final String tooltip = "Allowed symbols: 0-9,+,-,*,/,.";
 
     @FXML
     private StringCalcViewModel viewModel;
@@ -26,11 +26,13 @@ public class StringCalcView {
     void initialize() {
 
         expressionTf.textProperty().bindBidirectional(viewModel.expressionTfProperty());
+        expressionTf.textProperty().addListener((observable, oldValue, newValue) -> {
+                    expressionTf.textProperty().setValue(newValue.replaceAll("\\s", ""));
+                    setErrorBorder(!viewModel.isExpressionValid());
+                }
+        );
         expressionTf.tooltipProperty().setValue(new Tooltip(tooltip));
         resultLbl.textProperty().bindBidirectional(viewModel.resultLblProperty());
-
-        viewModel.expressionTfProperty()
-                .addListener(obs  -> setErrorBorder(!viewModel.isExpressionValid()));
 
         calcBtn.disableProperty().bindBidirectional(viewModel.calculationDisabledProperty());
 

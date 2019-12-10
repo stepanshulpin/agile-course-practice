@@ -82,12 +82,22 @@ public class StringCalcViewModelTest {
         assertTrue(isCalculateButtonDisabled());
     }
 
+    @Test
+    public void areSpacesRemoving() {
+        setExpression("1 + 2 + 3");
+        assertEquals("1+2+3", getExpression());
+    }
+
     private boolean isCalculateButtonDisabled() {
         return viewModel.calculationDisabledProperty().get();
     }
 
     private void setExpression(final String expression) {
         viewModel.expressionTfProperty().setValue(expression);
+    }
+
+    private String getExpression() {
+        return viewModel.expressionTfProperty().getValue();
     }
 
     private void calculate() {

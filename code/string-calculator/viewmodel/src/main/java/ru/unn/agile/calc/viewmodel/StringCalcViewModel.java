@@ -21,6 +21,9 @@ public class StringCalcViewModel {
     public StringCalcViewModel() {
         expressionTf.set("");
         resultLbl.set("");
+        expressionTf.addListener((observable, oldValue, newValue) ->
+                    expressionTf.setValue(newValue.replaceAll("\\s", ""))
+        );
         BooleanBinding canCalculateBoolBinding = new BooleanBinding() {
             {
                 super.bind(expressionTf);
@@ -36,7 +39,7 @@ public class StringCalcViewModel {
     public void calculate() {
         if (!isCalculationDisabled()) {
             try {
-                String calcResult = String.valueOf(calculator.result(expressionTf.get()));
+                String calcResult = String.valueOf(calculator.result(getExpression()));
                 resultLbl.setValue((calcResult));
             } catch (Exception e) {
                 resultLbl.setValue(ERROR_MESSAGE);
@@ -45,7 +48,7 @@ public class StringCalcViewModel {
     }
 
     public boolean isExpressionValid() {
-        String exprText = expressionTf.get().trim();
+        String exprText = getExpression();
         return !(exprText.isEmpty() || hasRestrictedSymbols(exprText));
     }
 
@@ -57,6 +60,10 @@ public class StringCalcViewModel {
 
     public StringProperty expressionTfProperty() {
         return expressionTf;
+    }
+
+    private String getExpression() {
+        return expressionTf.get().replaceAll("\\s", "");
     }
 
     public StringProperty resultLblProperty() {
