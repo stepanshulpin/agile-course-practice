@@ -38,5 +38,9 @@ public class ViewModelTest {
         Assert.assertEquals("1000", viewModel.getStartSummProperty());
     }
 
+    @Test
+    public void canSetDefaultPercent() {
+        Assert.assertEquals("8", viewModel.getPercentProperty());
+    }
 
 }
