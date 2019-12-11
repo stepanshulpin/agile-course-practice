@@ -15,7 +15,7 @@
    <children>
       <Button fx:id="btnCalc" defaultButton="true" layoutX="256.0" layoutY="375.0" mnemonicParsing="false" text="Calculate" />
 
-      <TextArea disable="true" layoutX="22.0" layoutY="179.0" prefHeight="183.0" prefWidth="299.0" />
+      <TextArea fx:id="txtResult" layoutX="22.0" layoutY="179.0" prefHeight="183.0" prefWidth="299.0" wrapText="true"/>
 
       <ComboBox fx:id="cmbPeriod" items="${viewModel.periods}" layoutX="169.0" layoutY="20.0" prefWidth="150.0" />
       <ComboBox fx:id="cmbCapit" items="${viewModel.capitalizations}" layoutX="169.0" layoutY="58.0" prefWidth="150.0" />

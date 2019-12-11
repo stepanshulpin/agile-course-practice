@@ -114,6 +114,10 @@ public class ViewModel {
         this.resultProperty.set(resultProperty);
     }
 
+    public void calculate() {
+    }
+
+
     public ViewModel() {
         setCapitalization(CapitalizationPeriod.MONTH);
         setPeriod(DepositTimeType.DAY);

@@ -33,4 +33,10 @@ public class ViewModelTest {
         Assert.assertEquals(CapitalizationPeriod.MONTH, viewModel.capitalizationProperty().get());
     }
 
+    @Test
+    public void canSetDefaultStartSum() {
+        Assert.assertEquals(1000, viewModel.getStartSummProperty());
+    }
+
+
 }
