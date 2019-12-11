@@ -122,5 +122,6 @@ public class ViewModel {
         setCapitalization(CapitalizationPeriod.MONTH);
         setPeriod(DepositTimeType.DAY);
         setStartSummProperty("1000");
+        setPercentProperty("8");
     }
 }
