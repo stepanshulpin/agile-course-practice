@@ -1,4 +1,4 @@
-package ru.unn.agile.depositcalculator.View;
+package ru.unn.agile.depositcalculator.view;
 
 import org.junit.Ignore;
 import org.junit.Test;

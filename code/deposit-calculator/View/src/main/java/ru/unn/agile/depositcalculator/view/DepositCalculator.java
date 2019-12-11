@@ -1,4 +1,4 @@
-package ru.unn.agile.depositcalculator.View;
+package ru.unn.agile.depositcalculator.view;
 
 import javafx.fxml.FXML;
 
