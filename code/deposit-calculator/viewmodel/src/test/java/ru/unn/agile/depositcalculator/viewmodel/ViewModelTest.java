@@ -5,6 +5,8 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import ru.unn.agile.depositcalculator.model.CapitalizationPeriod;
+import ru.unn.agile.depositcalculator.model.DepositTimeType;
 
 
 public class ViewModelTest {
@@ -22,8 +24,13 @@ public class ViewModelTest {
     }
 
     @Test
-    public void canSetDefaultValues() {
-        Assert.assertEquals(true, true);
+    public void canSetDefaultDepositPeriod() {
+        Assert.assertEquals(DepositTimeType.DAY, viewModel.periodProperty().get());
+    }
+
+    @Test
+    public void canSetDefaultCapitPeriod() {
+        Assert.assertEquals(CapitalizationPeriod.MONTH, viewModel.capitalizationProperty().get());
     }
 
 }
