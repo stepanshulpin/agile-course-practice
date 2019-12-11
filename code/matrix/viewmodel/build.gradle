@@ -8,5 +8,5 @@ javafx {
 }
 
 dependencies {
-    compile project(':kochetova-dasha-lab1-matrix-model')
+    compile project(':matrix-model')
 }

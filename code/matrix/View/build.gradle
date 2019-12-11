@@ -12,5 +12,5 @@ javafx {
 }
 
 dependencies {
-    compile project(':kochetova-dasha-lab1-matrix-viewmodel')
+    compile project(':matrix-viewmodel')
 }
