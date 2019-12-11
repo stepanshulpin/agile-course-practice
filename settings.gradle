@@ -96,12 +96,12 @@ include "code/numbers-in-words"
 project(":code/numbers-in-words").name = "numbers-in-words-Model"
 
 // Deposit Calculator
-include "code/deposit-calculator/Model"
-project(":code/deposit-calculator/Model").name = "deposit-calculator-Model"
-include "code/deposit-calculator/View"
-project(":code/deposit-calculator/View").name = "deposit-calculator-View"
-include "code/deposit-calculator/ViewModel"
-project(":code/deposit-calculator/ViewModel").name = "deposit-calculator-ViewModel"
+include "code/deposit-calculator/model"
+project(":code/deposit-calculator/model").name = "deposit-calculator-model"
+include "code/deposit-calculator/view"
+project(":code/deposit-calculator/view").name = "deposit-calculator-view"
+include "code/deposit-calculator/viewmodel"
+project(":code/deposit-calculator/viewmodel").name = "deposit-calculator-viewmodel"
 // Кочетова Дарья
 include "code/kochetova-dasha-lab1-matrix"
 project(":code/kochetova-dasha-lab1-matrix").name = "kochetova-dasha-lab1-matrix"

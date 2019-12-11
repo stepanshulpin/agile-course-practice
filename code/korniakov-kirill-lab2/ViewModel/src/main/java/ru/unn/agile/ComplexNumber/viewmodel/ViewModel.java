@@ -91,12 +91,15 @@ public class ViewModel {
     public ObjectProperty<ObservableList<Operation>> operationsProperty() {
         return operations;
     }
+
     public final ObservableList<Operation> getOperations() {
         return operations.get();
     }
+
     public ObjectProperty<Operation> operationProperty() {
         return operation;
     }
+
     public BooleanProperty calculationDisabledProperty() {
         return calculationDisabled;
     }

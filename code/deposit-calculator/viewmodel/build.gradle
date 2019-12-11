@@ -8,5 +8,5 @@ javafx {
 }
 
 dependencies {
-    compile project(':deposit-calculator-Model')
+    compile project(':deposit-calculator-model')
 }
