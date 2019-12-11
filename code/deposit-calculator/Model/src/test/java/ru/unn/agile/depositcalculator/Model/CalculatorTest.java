@@ -1,4 +1,4 @@
-package ru.unn.agile.DepositCalculator.Model;
+package ru.unn.agile.depositcalculator.Model;
 
 import org.junit.Test;
 import static org.junit.Assert.*;

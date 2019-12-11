@@ -1,4 +1,4 @@
-package ru.unn.agile.DepositCalculator.Model;
+package ru.unn.agile.depositcalculator.Model;
 
 public enum DepositTimeType {
     YEAR,
