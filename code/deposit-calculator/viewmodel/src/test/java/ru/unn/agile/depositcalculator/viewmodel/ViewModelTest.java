@@ -58,5 +58,12 @@ public class ViewModelTest {
         Assert.assertEquals(VALIDATION_ERROR, viewModel.getResultProperty());
     }
 
+    @Test
+    public void canValidateEmptyStartSum() {
+        viewModel.setStartSumProperty("");
+        viewModel.calculate();
+        Assert.assertEquals(VALIDATION_ERROR, viewModel.getResultProperty());
+    }
+
 
 }
