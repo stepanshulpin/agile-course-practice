@@ -25,10 +25,12 @@ public class ViewModel {
     private final SimpleStringProperty resultProperty = new SimpleStringProperty();
 
     private final ObjectProperty<ObservableList<DepositTimeType>> periods =
-            new SimpleObjectProperty<>(FXCollections.observableArrayList(DepositTimeType.values()));
+            new SimpleObjectProperty<>(
+                    FXCollections.observableArrayList(DepositTimeType.values()));
 
     private final ObjectProperty<ObservableList<CapitalizationPeriod>> capitalizations =
-            new SimpleObjectProperty<>(FXCollections.observableArrayList(CapitalizationPeriod.values()));
+            new SimpleObjectProperty<>(
+                    FXCollections.observableArrayList(CapitalizationPeriod.values()));
 
     private final ObjectProperty<DepositTimeType> period = new SimpleObjectProperty<>();
     private final ObjectProperty<CapitalizationPeriod> capitalization =
@@ -43,7 +45,7 @@ public class ViewModel {
     public ObjectProperty<ObservableList<DepositTimeType>> periodsProperty() {
         return periods;
     }
-    public void setPeriods(ObservableList<DepositTimeType> periods) {
+    public void setPeriods(final ObservableList<DepositTimeType> periods) {
         this.periods.set(periods);
     }
 
@@ -53,7 +55,7 @@ public class ViewModel {
     public ObjectProperty<ObservableList<CapitalizationPeriod>> capitalizationsProperty() {
         return capitalizations;
     }
-    public void setCapitalizations(ObservableList<CapitalizationPeriod> capitalizations) {
+    public void setCapitalizations(final ObservableList<CapitalizationPeriod> capitalizations) {
         this.capitalizations.set(capitalizations);
     }
 
@@ -63,7 +65,7 @@ public class ViewModel {
     public ObjectProperty<DepositTimeType> periodProperty() {
         return period;
     }
-    public void setPeriod(DepositTimeType period) {
+    public void setPeriod(final DepositTimeType period) {
         this.period.set(period);
     }
 
@@ -73,7 +75,7 @@ public class ViewModel {
     public ObjectProperty<CapitalizationPeriod> capitalizationProperty() {
         return capitalization;
     }
-    public void setCapitalization(CapitalizationPeriod capitalization) {
+    public void setCapitalization(final CapitalizationPeriod capitalization) {
         this.capitalization.set(capitalization);
     }
 
@@ -83,7 +85,7 @@ public class ViewModel {
     public SimpleStringProperty percentProperty() {
         return percentProperty;
     }
-    public void setPercentProperty(String percentProperty) {
+    public void setPercentProperty(final String percentProperty) {
         this.percentProperty.set(percentProperty);
     }
 
@@ -93,7 +95,7 @@ public class ViewModel {
     public SimpleStringProperty startSumProperty() {
         return startSumProperty;
     }
-    public void setStartSumProperty(String startSumProperty) {
+    public void setStartSumProperty(final String startSumProperty) {
         this.startSumProperty.set(startSumProperty);
     }
 
@@ -103,7 +105,7 @@ public class ViewModel {
     public SimpleStringProperty resultProperty() {
         return resultProperty;
     }
-    public void setResultProperty(String resultProperty) {
+    public void setResultProperty(final String resultProperty) {
         this.resultProperty.set(resultProperty);
     }
 
@@ -120,7 +122,7 @@ public class ViewModel {
         setResultProperty(String.format("%s", result));
     }
 
-    private double getCustomerFormat(double input) {
+    private double getCustomerFormat(final double input) {
         BigDecimal bd = new BigDecimal(input);
         return bd.setScale(2, RoundingMode.UP).doubleValue();
     }
