@@ -72,5 +72,12 @@ public class ViewModelTest {
         Assert.assertEquals(VALIDATION_ERROR, viewModel.getResultProperty());
     }
 
+    @Test
+    public void canValidateNegativePercentage() {
+        viewModel.setPercentProperty("-1");
+        viewModel.calculate();
+        Assert.assertEquals(VALIDATION_ERROR, viewModel.getResultProperty());
+    }
+
 
 }
