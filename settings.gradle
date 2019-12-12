@@ -94,9 +94,14 @@ project(":code/vectors-distances-calculator/View").name = "vectors-distances-cal
 // Конева Александра
 include "code/numbers-in-words"
 project(":code/numbers-in-words").name = "numbers-in-words-Model"
-// Коневский Виталий
-include "code/deposit-calculator"
-project(":code/deposit-calculator").name = "deposit-calculator-Model"
+
+// Deposit Calculator
+include "code/deposit-calculator/model"
+project(":code/deposit-calculator/model").name = "deposit-calculator-model"
+include "code/deposit-calculator/view"
+project(":code/deposit-calculator/view").name = "deposit-calculator-view"
+include "code/deposit-calculator/viewmodel"
+project(":code/deposit-calculator/viewmodel").name = "deposit-calculator-viewmodel"
 // Кочетова Дарья
 include "code/kochetova-dasha-lab1-matrix"
 project(":code/kochetova-dasha-lab1-matrix").name = "kochetova-dasha-lab1-matrix"
