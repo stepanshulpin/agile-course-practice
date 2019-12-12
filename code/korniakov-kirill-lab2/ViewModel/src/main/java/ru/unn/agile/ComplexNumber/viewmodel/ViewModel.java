@@ -88,7 +88,6 @@ public class ViewModel {
     public StringProperty im2Property() {
         return im2;
     }
-
     public ObjectProperty<ObservableList<Operation>> operationsProperty() {
         return operations;
     }
