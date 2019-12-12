@@ -11,9 +11,13 @@ import ru.unn.agile.depositcalculator.model.DepositTimeType;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class ViewModel {
+
+    private final Pattern pattern = Pattern.compile("^([0-9]*)(\\.)?([0-9]*)$", Pattern.CASE_INSENSITIVE);
 
     public static final String VALIDATION_ERROR = "Fields should contains only number and values should be more or equal 0";
 
@@ -114,10 +118,11 @@ public class ViewModel {
     //endregion
 
     public void calculate() {
-
         if (getStartSumProperty().isEmpty() ||
-                Double.parseDouble(getStartSumProperty()) < 0 ||
                 getPercentProperty().isEmpty() ||
+                !getValidationStatus(getStartSumProperty()) ||
+                !getValidationStatus(getPercentProperty()) ||
+                Double.parseDouble(getStartSumProperty()) < 0 ||
                 Double.parseDouble(getPercentProperty()) < 0) {
             setResultProperty(VALIDATION_ERROR);
             return;
@@ -131,6 +136,12 @@ public class ViewModel {
         double result = calculator.calculate();
         result = getCustomerFormat(result);
         setResultProperty(String.format("%s", result));
+    }
+
+    private boolean getValidationStatus(final String value) {
+        Matcher matcher = pattern.matcher(value);
+        System.out.println(matcher.matches());
+        return matcher.matches();
     }
 
     private double getCustomerFormat(final double input) {
