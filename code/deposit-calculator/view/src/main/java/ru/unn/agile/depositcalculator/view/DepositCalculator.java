@@ -1,7 +1,5 @@
 package ru.unn.agile.depositcalculator.view;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -42,12 +40,7 @@ public class DepositCalculator {
         cmbPeriod.valueProperty().bindBidirectional(viewModel.periodProperty());
         cmbCapit.valueProperty().bindBidirectional(viewModel.capitalizationProperty());
 
-        btnCalc.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(final ActionEvent event) {
-                viewModel.calculate();
-            }
-        });
+        btnCalc.setOnAction(event -> viewModel.calculate());
     }
 
 }
