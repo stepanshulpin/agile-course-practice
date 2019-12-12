@@ -5,12 +5,17 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import ru.unn.agile.depositcalculator.model.Calculator;
 import ru.unn.agile.depositcalculator.model.CapitalizationPeriod;
 import ru.unn.agile.depositcalculator.model.DepositTimeType;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 
 public class ViewModel {
 
+    // region fields
     private final SimpleStringProperty periodProperty = new SimpleStringProperty();
     private final SimpleStringProperty capitProperty = new SimpleStringProperty();
 
@@ -28,7 +33,9 @@ public class ViewModel {
     private final ObjectProperty<DepositTimeType> period = new SimpleObjectProperty<>();
     private final ObjectProperty<CapitalizationPeriod> capitalization =
             new SimpleObjectProperty<>();
+    // endregion
 
+    // region getters/setters
 
     public ObservableList<DepositTimeType> getPeriods() {
         return periods.get();
@@ -100,8 +107,22 @@ public class ViewModel {
         this.resultProperty.set(resultProperty);
     }
 
-    public void calculate() {
+    //endregion
 
+    public void calculate() {
+        Calculator calculator = new Calculator();
+        calculator.setPeriod(getPeriod(), 1);
+        calculator.setPercent(Integer.parseInt(getPercentProperty()));
+        calculator.setStartSum(Double.parseDouble(getStartSumProperty()));
+        calculator.setCapitalizationPeriod(getCapitalization());
+        double result = calculator.calculate();
+        result = getCustomerFormat(result);
+        setResultProperty(String.format("%s", result));
+    }
+
+    private double getCustomerFormat(double input) {
+        BigDecimal bd = new BigDecimal(input);
+        return bd.setScale(2, RoundingMode.UP).doubleValue();
     }
 
     public ViewModel() {

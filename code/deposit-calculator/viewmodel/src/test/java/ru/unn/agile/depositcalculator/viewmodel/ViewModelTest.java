@@ -43,4 +43,10 @@ public class ViewModelTest {
         Assert.assertEquals("8", viewModel.getPercentProperty());
     }
 
+    @Test
+    public void canCalculate() {
+        viewModel.calculate();
+        Assert.assertEquals("1000.22", viewModel.getResultProperty());
+    }
+
 }
