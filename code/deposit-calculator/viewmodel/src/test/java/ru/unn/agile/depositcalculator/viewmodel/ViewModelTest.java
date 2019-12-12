@@ -65,5 +65,12 @@ public class ViewModelTest {
         Assert.assertEquals(VALIDATION_ERROR, viewModel.getResultProperty());
     }
 
+    @Test
+    public void canValidateNegativeStartSum() {
+        viewModel.setStartSumProperty("-1");
+        viewModel.calculate();
+        Assert.assertEquals(VALIDATION_ERROR, viewModel.getResultProperty());
+    }
+
 
 }
