@@ -140,7 +140,6 @@ public class ViewModel {
 
     private boolean getValidationStatus(final String value) {
         Matcher matcher = pattern.matcher(value);
-        System.out.println(matcher.matches());
         return matcher.matches();
     }
 

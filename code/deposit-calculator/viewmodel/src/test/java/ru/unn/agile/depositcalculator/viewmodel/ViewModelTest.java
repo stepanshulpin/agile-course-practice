@@ -86,4 +86,10 @@ public class ViewModelTest {
         Assert.assertEquals(VALIDATION_ERROR, viewModel.getResultProperty());
     }
 
+    @Test
+    public void canValidateNotNumberSymbolsStartSum() {
+        viewModel.setStartSumProperty("asdfasdf100-adsf.0");
+        viewModel.calculate();
+        Assert.assertEquals(VALIDATION_ERROR, viewModel.getResultProperty());
+    }
 }
