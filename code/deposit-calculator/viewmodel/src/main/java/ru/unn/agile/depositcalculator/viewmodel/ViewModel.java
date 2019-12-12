@@ -123,9 +123,7 @@ public class ViewModel {
         if (getStartSumProperty().isEmpty()
                 || getPercentProperty().isEmpty()
                 || !getValidationStatus(getStartSumProperty())
-                || !getValidationStatus(getPercentProperty())
-                || Double.parseDouble(getStartSumProperty()) < 0
-                || Double.parseDouble(getPercentProperty()) < 0) {
+                || !getValidationStatus(getPercentProperty())) {
             setResultProperty(VALIDATION_ERROR);
             return;
         }
