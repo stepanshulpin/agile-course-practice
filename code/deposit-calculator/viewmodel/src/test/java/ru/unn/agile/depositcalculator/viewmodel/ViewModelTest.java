@@ -49,4 +49,5 @@ public class ViewModelTest {
         Assert.assertEquals("1000.22", viewModel.getResultProperty());
     }
 
+
 }
