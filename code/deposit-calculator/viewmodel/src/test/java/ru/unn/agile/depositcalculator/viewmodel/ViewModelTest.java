@@ -8,6 +8,8 @@ import org.junit.Test;
 import ru.unn.agile.depositcalculator.model.CapitalizationPeriod;
 import ru.unn.agile.depositcalculator.model.DepositTimeType;
 
+import static ru.unn.agile.depositcalculator.viewmodel.ViewModel.VALIDATION_ERROR;
+
 
 public class ViewModelTest {
 
@@ -47,6 +49,13 @@ public class ViewModelTest {
     public void canCalculate() {
         viewModel.calculate();
         Assert.assertEquals("1000.22", viewModel.getResultProperty());
+    }
+
+    @Test
+    public void canValidateEmptyPercentage() {
+        viewModel.setPercentProperty("");
+        viewModel.calculate();
+        Assert.assertEquals(VALIDATION_ERROR, viewModel.getResultProperty());
     }
 
 

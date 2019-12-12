@@ -15,6 +15,8 @@ import java.math.RoundingMode;
 
 public class ViewModel {
 
+    public static final String VALIDATION_ERROR = "Fields should contains only number and values should be more or equal 0";
+
     // region fields
     private final SimpleStringProperty periodProperty = new SimpleStringProperty();
     private final SimpleStringProperty capitProperty = new SimpleStringProperty();
@@ -112,6 +114,15 @@ public class ViewModel {
     //endregion
 
     public void calculate() {
+
+        if (getStartSumProperty().isEmpty() ||
+                Double.parseDouble(getStartSumProperty()) < 0 ||
+                getPercentProperty().isEmpty() ||
+                Double.parseDouble(getPercentProperty()) < 0) {
+            setResultProperty(VALIDATION_ERROR);
+            return;
+        }
+
         Calculator calculator = new Calculator();
         calculator.setPeriod(getPeriod(), 1);
         calculator.setPercent(Integer.parseInt(getPercentProperty()));
