@@ -23,6 +23,13 @@ public class ViewModel {
     public static final String VALIDATION_ERROR =
             "Fields should contains only number and values should be more or equal 0";
 
+    public ViewModel() {
+        setCapitalization(CapitalizationPeriod.MONTH);
+        setPeriod(DepositTimeType.DAY);
+        setStartSumProperty("1000");
+        setPercentProperty("8");
+    }
+
     // region fields
     private final SimpleStringProperty periodProperty = new SimpleStringProperty();
     private final SimpleStringProperty capitProperty = new SimpleStringProperty();
@@ -148,10 +155,4 @@ public class ViewModel {
         return bd.setScale(2, RoundingMode.UP).doubleValue();
     }
 
-    public ViewModel() {
-        setCapitalization(CapitalizationPeriod.MONTH);
-        setPeriod(DepositTimeType.DAY);
-        setStartSumProperty("1000");
-        setPercentProperty("8");
-    }
 }
