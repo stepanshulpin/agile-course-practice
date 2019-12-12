@@ -17,9 +17,11 @@ import java.util.regex.Pattern;
 
 public class ViewModel {
 
-    private final Pattern pattern = Pattern.compile("^([0-9]*)(\\.)?([0-9]*)$", Pattern.CASE_INSENSITIVE);
+    private final Pattern pattern =
+            Pattern.compile("^([0-9]*)(\\.)?([0-9]*)$", Pattern.CASE_INSENSITIVE);
 
-    public static final String VALIDATION_ERROR = "Fields should contains only number and values should be more or equal 0";
+    public static final String VALIDATION_ERROR =
+            "Fields should contains only number and values should be more or equal 0";
 
     // region fields
     private final SimpleStringProperty periodProperty = new SimpleStringProperty();
@@ -118,12 +120,12 @@ public class ViewModel {
     //endregion
 
     public void calculate() {
-        if (getStartSumProperty().isEmpty() ||
-                getPercentProperty().isEmpty() ||
-                !getValidationStatus(getStartSumProperty()) ||
-                !getValidationStatus(getPercentProperty()) ||
-                Double.parseDouble(getStartSumProperty()) < 0 ||
-                Double.parseDouble(getPercentProperty()) < 0) {
+        if (getStartSumProperty().isEmpty()
+                || getPercentProperty().isEmpty()
+                || !getValidationStatus(getStartSumProperty())
+                || !getValidationStatus(getPercentProperty())
+                || Double.parseDouble(getStartSumProperty()) < 0
+                || Double.parseDouble(getPercentProperty()) < 0) {
             setResultProperty(VALIDATION_ERROR);
             return;
         }
