@@ -35,7 +35,7 @@ public class ViewModelTest {
 
     @Test
     public void canSetDefaultStartSum() {
-        Assert.assertEquals("1000", viewModel.getStartSummProperty());
+        Assert.assertEquals("1000", viewModel.getStartSumProperty());
     }
 
     @Test

@@ -15,7 +15,7 @@ public class ViewModel {
     private final SimpleStringProperty capitProperty = new SimpleStringProperty();
 
     private final SimpleStringProperty percentProperty = new SimpleStringProperty();
-    private final SimpleStringProperty startSummProperty = new SimpleStringProperty();
+    private final SimpleStringProperty startSumProperty = new SimpleStringProperty();
 
     private final SimpleStringProperty resultProperty = new SimpleStringProperty();
 
@@ -33,11 +33,9 @@ public class ViewModel {
     public ObservableList<DepositTimeType> getPeriods() {
         return periods.get();
     }
-
     public ObjectProperty<ObservableList<DepositTimeType>> periodsProperty() {
         return periods;
     }
-
     public void setPeriods(ObservableList<DepositTimeType> periods) {
         this.periods.set(periods);
     }
@@ -45,11 +43,9 @@ public class ViewModel {
     public ObservableList<CapitalizationPeriod> getCapitalizations() {
         return capitalizations.get();
     }
-
     public ObjectProperty<ObservableList<CapitalizationPeriod>> capitalizationsProperty() {
         return capitalizations;
     }
-
     public void setCapitalizations(ObservableList<CapitalizationPeriod> capitalizations) {
         this.capitalizations.set(capitalizations);
     }
@@ -57,11 +53,9 @@ public class ViewModel {
     public DepositTimeType getPeriod() {
         return period.get();
     }
-
     public ObjectProperty<DepositTimeType> periodProperty() {
         return period;
     }
-
     public void setPeriod(DepositTimeType period) {
         this.period.set(period);
     }
@@ -69,11 +63,9 @@ public class ViewModel {
     public CapitalizationPeriod getCapitalization() {
         return capitalization.get();
     }
-
     public ObjectProperty<CapitalizationPeriod> capitalizationProperty() {
         return capitalization;
     }
-
     public void setCapitalization(CapitalizationPeriod capitalization) {
         this.capitalization.set(capitalization);
     }
@@ -81,47 +73,41 @@ public class ViewModel {
     public String getPercentProperty() {
         return percentProperty.get();
     }
-
     public SimpleStringProperty percentProperty() {
         return percentProperty;
     }
-
     public void setPercentProperty(String percentProperty) {
         this.percentProperty.set(percentProperty);
     }
 
-    public String getStartSummProperty() {
-        return startSummProperty.get();
+    public String getStartSumProperty() {
+        return startSumProperty.get();
     }
-
-    public SimpleStringProperty startSummProperty() {
-        return startSummProperty;
+    public SimpleStringProperty startSumProperty() {
+        return startSumProperty;
     }
-
-    public void setStartSummProperty(String startSummProperty) {
-        this.startSummProperty.set(startSummProperty);
+    public void setStartSumProperty(String startSumProperty) {
+        this.startSumProperty.set(startSumProperty);
     }
 
     public String getResultProperty() {
         return resultProperty.get();
     }
-
     public SimpleStringProperty resultProperty() {
         return resultProperty;
     }
-
     public void setResultProperty(String resultProperty) {
         this.resultProperty.set(resultProperty);
     }
 
     public void calculate() {
-    }
 
+    }
 
     public ViewModel() {
         setCapitalization(CapitalizationPeriod.MONTH);
         setPeriod(DepositTimeType.DAY);
-        setStartSummProperty("1000");
+        setStartSumProperty("1000");
         setPercentProperty("8");
     }
 }

@@ -36,7 +36,7 @@ public class DepositCalculator {
     void initialize() {
 
         txtPercentage.textProperty().bindBidirectional(viewModel.percentProperty());
-        txtStartSum.textProperty().bindBidirectional(viewModel.startSummProperty());
+        txtStartSum.textProperty().bindBidirectional(viewModel.startSumProperty());
         txtResult.textProperty().bindBidirectional(viewModel.resultProperty());
 
         cmbPeriod.valueProperty().bindBidirectional(viewModel.periodProperty());
