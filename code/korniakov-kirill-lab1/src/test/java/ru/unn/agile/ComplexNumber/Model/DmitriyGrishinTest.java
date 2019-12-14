@@ -18,8 +18,8 @@ public class DmitriyGrishinTest {
 
     @Test
     public void canCreateComplexNumberBasedOnStringPresentation() {
-        var realPartString = "1.2";
-        var imaginaryPartString = "3.4i";
+        var realPartString = "1,2";
+        var imaginaryPartString = "3,4i";
         ComplexNumber complexNumber = new ComplexNumber(realPartString, imaginaryPartString);
         assertEquals(new ComplexNumber(1.2, 3.4), complexNumber);
     }
