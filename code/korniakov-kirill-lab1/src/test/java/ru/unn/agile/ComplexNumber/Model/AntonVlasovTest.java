@@ -4,7 +4,6 @@ import org.junit.Test;
 import ru.unn.agile.ComplexNumber.model.ComplexNumber;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class AntonVlasovTest {
     @Test(expected = NumberFormatException.class)
