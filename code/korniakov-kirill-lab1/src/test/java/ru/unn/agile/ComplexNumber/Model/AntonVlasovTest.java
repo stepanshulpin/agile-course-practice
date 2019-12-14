@@ -22,7 +22,7 @@ public class AntonVlasovTest {
     }
 
     @Test
-    public void canCompareComplexNumbersDifferentByInitializationType() {
+    public void canCompareComplexNumbersWithDifferentInitializationTypes() {
         var number1 = new ComplexNumber("1", "1");
         var number2 = new ComplexNumber(1, 1);
         assertEquals(number1, number2);
