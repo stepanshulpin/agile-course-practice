@@ -10,14 +10,25 @@ import static org.junit.Assert.*;
 public class QuadraticEquationViewModelTest {
     private QuadraticEquationViewModel viewModel;
 
+    public void setExternalViewModel(final QuadraticEquationViewModel viewModel) {
+        this.viewModel = viewModel;
+    }
+
     @Before
     public void setUp() {
-        viewModel = new QuadraticEquationViewModel();
+        if (viewModel == null) {
+            viewModel = new QuadraticEquationViewModel(new QuadraticEquationFakeLogger());
+        }
     }
 
     @After
     public void tearDown() {
         viewModel = null;
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void viewModelConstructorThrowsExceptionWithNullLogger() {
+        QuadraticEquationViewModel viewModel = new QuadraticEquationViewModel(null);
     }
 
     @Test

@@ -15,7 +15,12 @@ public class QuadraticEquationViewModel {
     private StringProperty txtResultProp = new SimpleStringProperty();
     private StringProperty getTxtErrorProp = new SimpleStringProperty();
 
-    public QuadraticEquationViewModel() {
+    public QuadraticEquationViewModel(final QuadraticEquationILogger logger) {
+
+        if (logger == null) {
+            throw new IllegalArgumentException("Logger parameter can't be null");
+        }
+
         btnCalcDisabledProp.setValue(true);
         txtCoeffAProp.setValue("");
         txtCoeffBProp.setValue("");
