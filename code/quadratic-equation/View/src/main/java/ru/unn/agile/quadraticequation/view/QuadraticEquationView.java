@@ -25,7 +25,8 @@ public class QuadraticEquationView {
 
     @FXML
     void initialize() {
-        viewModel.setLogger(new QuadraticEquationTxtLogger("./QuadraticEquationViewModel_with_TxtLogger_Tests.log"));
+        viewModel.setLogger(
+                new QuadraticEquationTxtLogger("./QuadraticEquationViewModel_with_TxtLogger.log"));
         btnCalc.disableProperty().bindBidirectional(viewModel.isCalculateButtonDisabled());
         txtCoeffA.textProperty().bindBidirectional(viewModel.getTxtCoeffAProperty());
         txtCoeffB.textProperty().bindBidirectional(viewModel.getTxtCoeffBProperty());

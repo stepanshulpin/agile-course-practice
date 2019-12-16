@@ -14,7 +14,7 @@ import static ru.unn.agile.quadraticequation.infrastructure.RegexMatcher.matches
 
 public class QuadraticEquationTxtLoggerTests {
 
-    private static final String FILENAME = "./QuadraticEquationViewModel_with_TxtLogger_Tests.log";
+    private static final String FILENAME = "./QuadraticEquationViewModel_with_TxtLogger.log";
     private QuadraticEquationTxtLogger txtLogger;
 
     @Before

@@ -94,10 +94,10 @@ public class QuadraticEquationViewModel {
         }
         ComplexNumber[] result = qe.solve();
         String res = formatResult(result);
-        String message = "Calculate for: " + "A = " + txtCoeffAProp.get() +
-                " B = " + txtCoeffBProp.get() +
-                " C = " + txtCoeffCProp.get() +
-                " Result: " + res;
+        String message = "Calculate for: " + "A = " + txtCoeffAProp.get()
+                + " B = " + txtCoeffBProp.get()
+                + " C = " + txtCoeffCProp.get()
+                + " Result: " + res;
         logger.log(message);
         updateLogs();
         setTxtResultProp(res);
@@ -113,7 +113,7 @@ public class QuadraticEquationViewModel {
         return res.toString();
     }
 
-    private void setTxtResultProp(String result) {
+    private void setTxtResultProp(final String result) {
         txtResultProp.setValue(result);
     }
 
@@ -136,7 +136,7 @@ public class QuadraticEquationViewModel {
         return logger.getLog();
     }
 
-    public void setLogger(QuadraticEquationILogger logger) {
+    public void setLogger(final QuadraticEquationILogger logger) {
         this.logger = logger;
     }
 
@@ -151,8 +151,5 @@ public class QuadraticEquationViewModel {
             record.append(log).append("\n");
         }
         logs.set(record.toString());
-
-
-
     }
 }

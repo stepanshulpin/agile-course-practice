@@ -9,7 +9,7 @@ public class ViewModelWithTxtLoggerTests extends QuadraticEquationViewModelTest 
     @Override
     public void setUp() {
         QuadraticEquationTxtLogger realLogger =
-                new QuadraticEquationTxtLogger("./QuadraticEquationViewModel_with_TxtLogger_Tests.log");
+                new QuadraticEquationTxtLogger("./QuadraticEquationViewModel_with_TxtLogger.log");
         super.setExternalViewModel(new QuadraticEquationViewModel(realLogger));
     }
 }
