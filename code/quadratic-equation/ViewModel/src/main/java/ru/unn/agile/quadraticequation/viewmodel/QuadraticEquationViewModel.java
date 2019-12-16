@@ -16,14 +16,22 @@ public class QuadraticEquationViewModel {
     private StringProperty txtCoeffCProp = new SimpleStringProperty();
     private StringProperty txtResultProp = new SimpleStringProperty();
     private StringProperty getTxtErrorProp = new SimpleStringProperty();
+    private final StringProperty logs = new SimpleStringProperty();
     private QuadraticEquationILogger logger;
 
-    public QuadraticEquationViewModel(final QuadraticEquationILogger logger) {
+    public QuadraticEquationViewModel() {
+        init();
+    }
 
+    public QuadraticEquationViewModel(final QuadraticEquationILogger logger) {
         if (logger == null) {
             throw new IllegalArgumentException("Logger parameter can't be null");
         }
         this.logger = logger;
+        init();
+    }
+
+    private void init() {
         btnCalcDisabledProp.setValue(true);
         txtCoeffAProp.setValue("");
         txtCoeffBProp.setValue("");
@@ -91,6 +99,7 @@ public class QuadraticEquationViewModel {
                 " C = " + txtCoeffCProp.get() +
                 " Result: " + res;
         logger.log(message);
+        updateLogs();
         setTxtResultProp(res);
     }
 
@@ -125,5 +134,25 @@ public class QuadraticEquationViewModel {
 
     public List<String> getLog() {
         return logger.getLog();
+    }
+
+    public void setLogger(QuadraticEquationILogger logger) {
+        this.logger = logger;
+    }
+
+    public final String getLogs() {
+        return logs.get();
+    }
+
+    private void updateLogs() {
+        List<String> fullLog = logger.getLog();
+        StringBuilder record = new StringBuilder("");
+        for (String log : fullLog) {
+            record.append(log).append("\n");
+        }
+        logs.set(record.toString());
+
+
+
     }
 }
