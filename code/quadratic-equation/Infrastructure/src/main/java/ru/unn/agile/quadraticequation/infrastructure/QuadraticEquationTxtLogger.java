@@ -17,7 +17,7 @@ public class QuadraticEquationTxtLogger implements QuadraticEquationILogger {
     private static final String DATE_FORMAT_NOW = "yyyy-MM-dd HH:mm:ss.SSS";
     private static final String LOG_FORMAT = "%s > %s";
     private final BufferedWriter writer;
-    private final String filename;
+    private final String logFilename;
 
     private static String now() {
         Calendar cal = Calendar.getInstance();
@@ -25,16 +25,16 @@ public class QuadraticEquationTxtLogger implements QuadraticEquationILogger {
         return sdf.format(cal.getTime());
     }
 
-    public QuadraticEquationTxtLogger(final String filename) {
-        this.filename = filename;
+    public QuadraticEquationTxtLogger(final String logFilename) {
+        this.logFilename = logFilename;
 
-        BufferedWriter logWriter = null;
+        BufferedWriter writer = null;
         try {
-            logWriter = new BufferedWriter(new FileWriter(filename));
+            writer = new BufferedWriter(new FileWriter(logFilename));
         } catch (Exception e) {
             e.printStackTrace();
         }
-        writer = logWriter;
+        this.writer = writer;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class QuadraticEquationTxtLogger implements QuadraticEquationILogger {
         BufferedReader reader;
         ArrayList<String> log = new ArrayList<String>();
         try {
-            reader = new BufferedReader(new FileReader(filename));
+            reader = new BufferedReader(new FileReader(logFilename));
             String line = reader.readLine();
 
             while (line != null) {

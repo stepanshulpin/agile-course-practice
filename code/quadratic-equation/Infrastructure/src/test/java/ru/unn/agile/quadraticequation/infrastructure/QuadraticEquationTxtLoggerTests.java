@@ -10,16 +10,16 @@ import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
-import static ru.unn.agile.quadraticequation.infrastructure.RegexMatcher.matchesPattern;
+import static ru.unn.agile.quadraticequation.infrastructure.ExtendedRegexMatcher.matches;
 
 public class QuadraticEquationTxtLoggerTests {
 
-    private static final String FILENAME = "./QuadraticEquationViewModel_with_TxtLogger.log";
+    private static final String LOG_FILENAME = "./QuadraticEquationViewModel_with_TxtLogger.log";
     private QuadraticEquationTxtLogger textLogger;
 
     @Before
     public void setUp() {
-        textLogger = new QuadraticEquationTxtLogger(FILENAME);
+        textLogger = new QuadraticEquationTxtLogger(LOG_FILENAME);
     }
 
     @Test
@@ -30,9 +30,9 @@ public class QuadraticEquationTxtLoggerTests {
     @Test
     public void canCreateLogFileOnDisk() {
         try {
-            new BufferedReader(new FileReader(FILENAME));
+            new BufferedReader(new FileReader(LOG_FILENAME));
         } catch (FileNotFoundException e) {
-            fail("File " + FILENAME + " wasn't found!");
+            fail("File " + LOG_FILENAME + " wasn't found!");
         }
     }
 
@@ -41,7 +41,7 @@ public class QuadraticEquationTxtLoggerTests {
         String testLog = "Test log";
         textLogger.log(testLog);
         String message = textLogger.getLog().get(0);
-        assertThat(message, matchesPattern(".*" + testLog + "$"));
+        assertThat(message, matches(".*" + testLog + "$"));
     }
 
     @Test
@@ -53,7 +53,7 @@ public class QuadraticEquationTxtLoggerTests {
 
         List<String> actualMessages = textLogger.getLog();
         for (int i = 0; i < actualMessages.size(); i++) {
-            assertThat(actualMessages.get(i), matchesPattern(".*" + testLogs[i] + "$"));
+            assertThat(actualMessages.get(i), matches(".*" + testLogs[i] + "$"));
         }
     }
 
@@ -65,6 +65,6 @@ public class QuadraticEquationTxtLoggerTests {
 
         String message = textLogger.getLog().get(0);
         assertThat(message,
-                matchesPattern("^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3} > .*"));
+                matches("^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3} > .*"));
     }
 }
