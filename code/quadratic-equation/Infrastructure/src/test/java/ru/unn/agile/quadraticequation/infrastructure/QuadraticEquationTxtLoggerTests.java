@@ -15,16 +15,16 @@ import static ru.unn.agile.quadraticequation.infrastructure.RegexMatcher.matches
 public class QuadraticEquationTxtLoggerTests {
 
     private static final String FILENAME = "./QuadraticEquationViewModel_with_TxtLogger.log";
-    private QuadraticEquationTxtLogger txtLogger;
+    private QuadraticEquationTxtLogger textLogger;
 
     @Before
-    public void setUp() throws Exception {
-        txtLogger = new QuadraticEquationTxtLogger(FILENAME);
+    public void setUp() {
+        textLogger = new QuadraticEquationTxtLogger(FILENAME);
     }
 
     @Test
     public void canCreateLoggerWithFileName() {
-        assertNotNull(txtLogger);
+        assertNotNull(textLogger);
     }
 
     @Test
@@ -38,22 +38,22 @@ public class QuadraticEquationTxtLoggerTests {
 
     @Test
     public void canWriteLogMessage() {
-        String testMessage = "Test message";
-        txtLogger.log(testMessage);
-        String message = txtLogger.getLog().get(0);
-        assertThat(message, matchesPattern(".*" + testMessage + "$"));
+        String testLog = "Test log";
+        textLogger.log(testLog);
+        String message = textLogger.getLog().get(0);
+        assertThat(message, matchesPattern(".*" + testLog + "$"));
     }
 
     @Test
     public void canWriteSeveralLogMessage() {
-        String[] messages = {"Test message 1", "Test message 2"};
+        String[] testLogs = new String[]{"Test log 1", "Test log 2"};
+        for (String testLog: testLogs) {
+            textLogger.log(testLog);
+        }
 
-        txtLogger.log(messages[0]);
-        txtLogger.log(messages[1]);
-
-        List<String> actualMessages = txtLogger.getLog();
+        List<String> actualMessages = textLogger.getLog();
         for (int i = 0; i < actualMessages.size(); i++) {
-            assertThat(actualMessages.get(i), matchesPattern(".*" + messages[i] + "$"));
+            assertThat(actualMessages.get(i), matchesPattern(".*" + testLogs[i] + "$"));
         }
     }
 
@@ -61,9 +61,9 @@ public class QuadraticEquationTxtLoggerTests {
     public void doesLogContainDateAndTime() {
         String testMessage = "Test message";
 
-        txtLogger.log(testMessage);
+        textLogger.log(testMessage);
 
-        String message = txtLogger.getLog().get(0);
-        assertThat(message, matchesPattern("^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2} > .*"));
+        String message = textLogger.getLog().get(0);
+        assertThat(message, matchesPattern("^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{3} > .*"));
     }
 }

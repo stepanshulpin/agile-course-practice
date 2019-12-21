@@ -156,7 +156,7 @@ public class QuadraticEquationViewModelTest {
     }
 
     @Test
-    public void argumentsInfoIssProperlyFormatted() {
+    public void argumentsInfoIsProperlyFormatted() {
         setParams("-2", "2", "4");
 
         viewModel.calculate();
@@ -175,8 +175,7 @@ public class QuadraticEquationViewModelTest {
         viewModel.calculate();
 
         String message = viewModel.getLog().get(0);
-        assertTrue(message.matches(".*"
-                + "Result" + ".*"));
+        assertTrue(message.matches(".*" + "Result" + ".*"));
     }
 
     @Test

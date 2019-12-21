@@ -14,7 +14,8 @@ import java.util.Locale;
 
 public class QuadraticEquationTxtLogger implements QuadraticEquationILogger {
 
-    private static final String DATE_FORMAT_NOW = "yyyy-MM-dd HH:mm:ss";
+    private static final String DATE_FORMAT_NOW = "yyyy-MM-dd HH:mm:ss.SSS";
+    private static final String LOG_FORMAT = "%s > %s";
     private final BufferedWriter writer;
     private final String filename;
 
@@ -39,7 +40,7 @@ public class QuadraticEquationTxtLogger implements QuadraticEquationILogger {
     @Override
     public void log(final String s) {
         try {
-            writer.write(now() + " > " + s);
+            writer.write(String.format(LOG_FORMAT, now(), s));
             writer.newLine();
             writer.flush();
         } catch (Exception e) {

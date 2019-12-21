@@ -7,5 +7,4 @@ public interface QuadraticEquationILogger {
     void log(String message);
 
     List<String> getLog();
-
 }
