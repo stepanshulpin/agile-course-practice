@@ -58,7 +58,7 @@ public class QuadraticEquationTxtLoggerTests {
     }
 
     @Test
-    public void doesLogContainDateAndTime() {
+    public void doesLogContainDate() {
         String testMessage = "Test message";
 
         textLogger.log(testMessage);

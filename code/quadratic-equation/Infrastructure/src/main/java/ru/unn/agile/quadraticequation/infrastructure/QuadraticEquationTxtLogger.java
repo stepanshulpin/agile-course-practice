@@ -50,20 +50,20 @@ public class QuadraticEquationTxtLogger implements QuadraticEquationILogger {
 
     @Override
     public List<String> getLog() {
-        BufferedReader reader;
-        ArrayList<String> log = new ArrayList<String>();
+        BufferedReader bufferedReader;
+        ArrayList<String> logs = new ArrayList<String>();
         try {
-            reader = new BufferedReader(new FileReader(logFilename));
-            String line = reader.readLine();
+            bufferedReader = new BufferedReader(new FileReader(logFilename));
+            String newLine = bufferedReader.readLine();
 
-            while (line != null) {
-                log.add(line);
-                line = reader.readLine();
+            while (newLine != null) {
+                logs.add(newLine);
+                newLine = bufferedReader.readLine();
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
-        return log;
+        return logs;
     }
 }
